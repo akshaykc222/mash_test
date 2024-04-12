@@ -49,52 +49,46 @@ class _CommonTextFieldState extends State<CommonTextField> {
   final _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const Padding(
-          padding:  EdgeInsets.only(left: 4.0),
-        ),
-        spacer10,
-        TextFormField(
-          onTap: () {
-            setState(() {
-              if (!_focusNode.hasFocus) {
-                showPrefixIcon = true;
-              } else {
-                showPrefixIcon = true;
-              }
-            });
-          },
-          controller: widget.controller,
-          validator: widget.validator == null
-              ? null
-              : (val) => widget.validator!(val ?? ""),
-          focusNode: _focusNode,
-          obscureText: widget.passwordField == true ? showPassword : false,
-          keyboardType: widget.textInputType ?? TextInputType.text,
-          maxLines: widget.passwordField == true ? 1 : widget.lines,
-          decoration: InputDecoration(
-              prefixIcon: showPrefixIcon ? widget.prefix : null,
-              suffixIcon: widget.passwordField == true
-                  ? IconButton(
-                      onPressed: () {
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                      icon: showPassword
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility))
-                  : widget.suffix,
-              label: widget.widgetLabel ??
-                  Text(
-                    widget.title,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-              enabled: widget.enable ?? true),
-        ),
-      ],
+    return TextFormField(
+
+      style: TextStyle(fontSize: 18),
+      onTap: () {
+        setState(() {
+          if (!_focusNode.hasFocus) {
+            showPrefixIcon = true;
+          } else {
+            showPrefixIcon = true;
+          }
+        });
+      },
+      controller: widget.controller,
+      validator: widget.validator == null
+          ? null
+          : (val) => widget.validator!(val ?? ""),
+      focusNode: _focusNode,
+      obscureText: widget.passwordField == true ? showPassword : false,
+      keyboardType: widget.textInputType ?? TextInputType.text,
+      maxLines: widget.passwordField == true ? 1 : widget.lines,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.zero,
+          prefixIcon: showPrefixIcon ? widget.prefix : null,
+          suffixIcon: widget.passwordField == true
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      showPassword = !showPassword;
+                    });
+                  },
+                  icon: showPassword
+                      ? const Icon(Icons.visibility)
+                      : const Icon(Icons.visibility_off))
+              : widget.suffix,
+          label: widget.widgetLabel ??
+              Text(
+                widget.title,
+                style: const TextStyle(color: Colors.grey),
+              ),
+          enabled: widget.enable ?? true),
     );
   }
 }
