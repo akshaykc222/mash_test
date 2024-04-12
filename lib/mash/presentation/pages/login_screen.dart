@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_theme.dart';
+import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
 void main(){
-  runApp(const MaterialApp(
+  runApp( MaterialApp(
+    theme: AppThemes.mainTheme,
     debugShowCheckedModeBanner:false,
-    home: LoginScreen(),));
+    home: const LoginScreen(),));
 }
 
 class LoginScreen extends StatelessWidget {
@@ -19,18 +25,78 @@ class LoginScreen extends StatelessWidget {
   }
 
   _loginBody() {
-    return ListView(
-      children: [
-         _mashIcon(),
-      ],
+    return  SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _mashIcon(),
+            spacer10,
+            _welcomeText(),
+            spacer20,
+            _userIDTextField(),
+            spacer10,
+            _passwordTextField(),
+            spacer30,
+            _loginButton()
+          ],
+        ),
+      ),
     );
   }
 
   Widget _mashIcon() {
-    return SvgPicture.network(
-        AppAssets.mashLoginLogo
+    return Center(
+      child: SvgPicture.network(
+          AppAssets.mashLoginLogo,
+        height: 100,
+        width: 100,
+      ),
     );
   }
 
+ Widget _welcomeText() {
+   return const Center(child: Text('WELCOME', style: TextStyle(letterSpacing: 2),));
+ }
+
+ Widget _loginButton() {
+    return ElevatedButton(onPressed: (){},
+        child: Text('SIGN IN',));
+  }
+
+  Widget _userIDTextField() {
+    return CommonTextField(title: 'User Id',showSuffixIcon: true,prefix:Icon(LineIcons.user,),);
+  }
+
+   Widget _passwordTextField() {
+    return CommonTextField(title: 'Password',passwordField: true,showSuffixIcon: true,prefix: Icon(LineIcons.lock,color: Colors.black,),);
+   }
 
 }
+
+/*
+class TextFieldWithIcon extends StatelessWidget {
+  final IconData icon;
+  final String hintText;
+  final bool isPassword;
+
+  const TextFieldWithIcon({
+    required this.icon,
+    required this.hintText,
+    this.isPassword = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      obscureText: isPassword,
+      decoration: InputDecoration(
+        prefixIcon: Icon(icon),
+        hintText: hintText,
+        suffixIcon: isPassword ? const Icon(Icons.remove_red_eye_outlined): null,
+        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      ),
+    );
+  }*/

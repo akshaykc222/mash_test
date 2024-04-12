@@ -113,7 +113,9 @@ static LinearGradient lightBlueGradientColors= LinearGradient(colors: [
   static Color border4 = HexColor.fromHex('#FF6D6D');
   static Color border5 = HexColor.fromHex('#067C54');
 
-
+ static const LinearGradient loginButtonGradient = LinearGradient(
+  colors: [Color(0xffA8FED9), Color(0xff00F1FF)],
+ );
  
 }
 extension HexColor on Color {
