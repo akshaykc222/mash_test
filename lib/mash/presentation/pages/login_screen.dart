@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
 
 void main(){
-  runApp(MaterialApp(home: LoginScreen(),));
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner:false,
+    home: LoginScreen(),));
 }
 
 class LoginScreen extends StatelessWidget {
@@ -15,12 +19,18 @@ class LoginScreen extends StatelessWidget {
   }
 
   _loginBody() {
-    return SingleChildScrollView(
-      child: ListView(
-        children: [
-
-        ],
-      ),
+    return ListView(
+      children: [
+         _mashIcon(),
+      ],
     );
   }
+
+  Widget _mashIcon() {
+    return SvgPicture.network(
+        AppAssets.mashLoginLogo
+    );
+  }
+
+
 }
