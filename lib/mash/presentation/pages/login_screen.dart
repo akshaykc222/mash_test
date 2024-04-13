@@ -8,7 +8,9 @@ import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
 void main(){
-  runApp( MaterialApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+      MaterialApp(
     theme: AppThemes.mainTheme,
     debugShowCheckedModeBanner:false,
     home: const LoginScreen(),));
@@ -32,14 +34,15 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _mashIcon(),
-            spacer10,
-            _welcomeText(),
             spacer20,
+            _mashIcon(),
+            spacer80,
+            _welcomeText(),
+            spacer120,
             _userIDTextField(),
-            spacer10,
-            _passwordTextField(),
             spacer30,
+            _passwordTextField(),
+            spacer80,
             _loginButton()
           ],
         ),
@@ -49,29 +52,35 @@ class LoginScreen extends StatelessWidget {
 
   Widget _mashIcon() {
     return Center(
-      child: SvgPicture.network(
+      child: SvgPicture.asset(
           AppAssets.mashLoginLogo,
-        height: 100,
-        width: 100,
       ),
     );
   }
 
  Widget _welcomeText() {
-   return const Center(child: Text('WELCOME', style: TextStyle(letterSpacing: 2),));
+   return Column(
+     crossAxisAlignment: CrossAxisAlignment.start,
+     children: [
+       Text('WELCOME', style: TextStyle(letterSpacing: 2,fontSize: 35,fontWeight: FontWeight.w700),),
+       Text('Sign in to Continue.', style: TextStyle(letterSpacing: 2,fontSize: 35,fontWeight: FontWeight.w700),),
+
+     ],
+   );
  }
+
 
  Widget _loginButton() {
     return ElevatedButton(onPressed: (){},
-        child: Text('SIGN IN',));
+        child: const Text('SIGN IN',));
   }
 
   Widget _userIDTextField() {
-    return CommonTextField(title: 'User Id',showSuffixIcon: true,prefix:Icon(LineIcons.user,),);
+    return const CommonTextField(title: 'User Id',showSuffixIcon: true,prefix:Icon(LineIcons.user,),);
   }
 
    Widget _passwordTextField() {
-    return CommonTextField(title: 'Password',passwordField: true,showSuffixIcon: true,prefix: Icon(LineIcons.lock,color: Colors.black,),);
+    return const CommonTextField(title: 'Password',passwordField: true,showSuffixIcon: true,prefix: Icon(LineIcons.lock,color: Colors.black,),);
    }
 
 }
