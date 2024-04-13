@@ -4,9 +4,15 @@ class AppConstants {
   static const appName = "MASH";
 }
 
-//
+//height
+const spacer4 = SizedBox(
+  height: 4,
+);
 const spacer10 = SizedBox(
   height: 10,
+);
+const spacer7 = SizedBox(
+  height: 7,
 );
 const spacer20 = SizedBox(
   height: 20,
@@ -48,23 +54,23 @@ const spacer120 = SizedBox(
 
 //width
 const spacerWidth10 = SizedBox(
-  height: 10,
+  width: 10,
 );
 const spacerWidth20 = SizedBox(
-  height: 20,
+  width: 20,
 );
 const spacerWidth30 = SizedBox(
-  height: 30,
+  width: 30,
 );
 const spacerWidth40 = SizedBox(
-  height: 40,
+  width: 40,
 );
 const spacerWidth50 = SizedBox(
-  height: 50,
+  width: 50,
 );
 const spacerWidth60 = SizedBox(
-  height: 60,
+  width: 60,
 );
 const spacerWidth70 = SizedBox(
-  height: 70,
+  width: 70,
 );
