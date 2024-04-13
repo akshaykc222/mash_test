@@ -1,3 +1,4 @@
 class AppAssets{
- static const mashLoginLogo = 'asssets/images/app_logo_large.svg';
-}
+ static const mashLoginLogo = 'assets/images/app_logo_large.svg';
+ static const notificationIcon = 'assets/icons/notification.svg';
+ }

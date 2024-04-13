@@ -11,6 +11,8 @@ class MashApp extends StatelessWidget {
     return MaterialApp.router(
         theme: AppThemes.mainTheme,
       routerConfig: AppRouteManager.router,
+      debugShowCheckedModeBanner: false,
+      
     );
   }
 }
