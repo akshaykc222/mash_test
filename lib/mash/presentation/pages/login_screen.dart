@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
-import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-      MaterialApp(
+  runApp(MaterialApp(
     theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner:false,
-    home: const LoginScreen(),));
+    debugShowCheckedModeBanner: false,
+    home: const LoginScreen(),
+  ));
 }
 
 class LoginScreen extends StatelessWidget {
@@ -22,30 +23,79 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: _loginBody() ,
+      body: _loginBody(context),
     );
   }
 
-  _loginBody() {
-    return  SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            spacer20,
-            _mashIcon(),
-            spacer80,
-            _welcomeText(),
-            spacer120,
-            _userIDTextField(),
-            spacer30,
-            _passwordTextField(),
-            spacer80,
-            _loginButton()
-          ],
-        ),
+  _loginBody(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          spacer20,
+          _mashIcon(),
+          spacer80,
+          _welcomeText(),
+          spacer90,
+          _userIDTextField(),
+          spacer30,
+          _passwordTextField(),
+          spacer10,
+          _forgotPassWordText(),
+          spacer60,
+          _loginButton(),
+          SizedBox(
+            height: SizeUtility(context).height / 50,
+          ),
+          _footer(context),
+        ],
+      ),
+    );
+  }
+
+  Align _forgotPassWordText() {
+    return Align(
+      alignment: Alignment.topRight,
+      child: TextButton(
+          onPressed: () {},
+          child: const Text(
+            'Forgot Password ?',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          )),
+    );
+  }
+
+  Widget _footer(BuildContext context) {
+    return SizedBox(
+      child: Column(
+        children: [
+          const Text('Version:10.6'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Powered By',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
+              ),
+              spacerWidth10,
+              SizedBox(
+                height: 20,
+                child: Image.asset(AppAssets.manappuramLogo),
+              ),
+              SizedBox(
+                height: SizeUtility(context).height * 0.14,
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -53,36 +103,58 @@ class LoginScreen extends StatelessWidget {
   Widget _mashIcon() {
     return Center(
       child: SvgPicture.asset(
-          AppAssets.mashLoginLogo,
+        AppAssets.mashLoginLogo,
       ),
     );
   }
 
- Widget _welcomeText() {
-   return Column(
-     crossAxisAlignment: CrossAxisAlignment.start,
-     children: [
-       Text('WELCOME', style: TextStyle(letterSpacing: 2,fontSize: 35,fontWeight: FontWeight.w700),),
-       Text('Sign in to Continue.', style: TextStyle(letterSpacing: 2,fontSize: 35,fontWeight: FontWeight.w700),),
+  Widget _welcomeText() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'WELCOME',
+          style: TextStyle(
+              letterSpacing: 2, fontSize: 35, fontWeight: FontWeight.w700),
+        ),
+        Text(
+          'Sign in to Continue.',
+          style: TextStyle(
+              letterSpacing: 2, fontSize: 35, fontWeight: FontWeight.w700),
+        ),
+      ],
+    );
+  }
 
-     ],
-   );
- }
-
-
- Widget _loginButton() {
-    return ElevatedButton(onPressed: (){},
-        child: const Text('SIGN IN',));
+  Widget _loginButton() {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            fixedSize: const Size(double.infinity, 50)),
+        onPressed: () {},
+        child: const Text(
+          'SIGN IN',
+        ));
   }
 
   Widget _userIDTextField() {
-    return const CommonTextField(title: 'User Id',showSuffixIcon: true,prefix:Icon(LineIcons.user,),);
+    return CommonTextField(
+      title: 'User Id',
+      prefix: const Icon(
+        LineIcons.user,
+      ),
+    );
   }
 
-   Widget _passwordTextField() {
-    return const CommonTextField(title: 'Password',passwordField: true,showSuffixIcon: true,prefix: Icon(LineIcons.lock,color: Colors.black,),);
-   }
-
+  Widget _passwordTextField() {
+    return CommonTextField(
+      title: 'Password',
+      passwordField: true,
+      prefix: const Icon(
+        LineIcons.lock,
+        color: Colors.black,
+      ),
+    );
+  }
 }
 
 /*
