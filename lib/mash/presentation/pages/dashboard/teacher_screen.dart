@@ -2,7 +2,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:mash/mash/presentation/pages/dashboard/widgets/schedule_item.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -89,14 +91,20 @@ class _TeacherDashboardState extends State<TeacherDashboard>{
  Widget _buildSchedules(){
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(children: [
+      child: Wrap(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(AppStrings.schedulesForClass,style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: AppColors.textColorNew),),
-            Text(AppStrings.viewAll)
+            Text(AppStrings.viewAll,style:TextStyle(fontSize: 10,color: AppColors.headText) ,)
           ],
-        )
+        ),
+        // spacer10,
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+            itemCount: 3,
+            shrinkWrap: true,
+            itemBuilder: (c,index)=>ScheduleItem())
       ],),
     );
   }
