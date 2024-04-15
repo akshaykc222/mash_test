@@ -2,8 +2,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mash/mash/presentation/pages/dashboard/widgets/schedule_item.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -11,7 +9,7 @@ import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 
 void main(){
-  runApp(MaterialApp(home: TeacherDashboard(),));
+  runApp(const MaterialApp(home: TeacherDashboard(),));
 }
 class TeacherDashboard extends StatefulWidget {
   const TeacherDashboard({super.key});
