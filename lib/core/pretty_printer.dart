@@ -1,10 +1,6 @@
-import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 
 import '../mash/presentation/utils/app_constants.dart';
-
-
 
 prettyPrint(String? msg, {String? type}) {
   debugPrint(

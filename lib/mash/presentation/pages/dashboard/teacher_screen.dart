@@ -1,13 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: TeacherDashboard(),
   ));
 }
@@ -111,7 +108,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                     fontWeight: FontWeight.w400,
                     color: AppColors.textColorNew),
               ),
-              Text(AppStrings.viewAll)
+              const Text(AppStrings.viewAll)
             ],
           )
         ],
