@@ -1,12 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes{
  static ThemeData get mainTheme=>ThemeData(
   textTheme: GoogleFonts.montserratTextTheme(),
-  inputDecorationTheme: InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.never,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -22,6 +21,13 @@ class AppThemes{
   );
   ThemeData get darkTheme=>ThemeData(
 
+
+  inputDecorationTheme: const InputDecorationTheme(
+   border: UnderlineInputBorder(
+
+
+   )
+  )
   );
   ThemeData get lightTheme=>ThemeData(
 
