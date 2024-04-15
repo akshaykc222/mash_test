@@ -58,7 +58,7 @@ class _TeacherDashboardState extends State<TeacherDashboard>{
 
     ]
   ));
-  Widget _basicDetails(){
+  Widget _basicDetails(){//to build
     return  Column(
       children: [
         spacer20,
@@ -102,7 +102,7 @@ class _TeacherDashboardState extends State<TeacherDashboard>{
           physics: const NeverScrollableScrollPhysics(),
             itemCount: 3,
             shrinkWrap: true,
-            itemBuilder: (c,index)=>ScheduleItem())
+            itemBuilder: (c,index)=>const ScheduleItem())
       ],),
     );
   }
