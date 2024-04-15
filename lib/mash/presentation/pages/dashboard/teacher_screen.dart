@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -17,14 +18,6 @@ class TeacherDashboard extends StatefulWidget {
 }
 
 class _TeacherDashboardState extends State<TeacherDashboard> {
-  late MediaQueryData mediaQuery;
-
-  @override
-  void didChangeDependencies() {
-    mediaQuery = MediaQuery.of(context);
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +79,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
           ],
         ),
         SizedBox(
-          height: mediaQuery.size.height * 0.06,
+          height: SizeUtility(context).height * 0.06,
         ),
         _buildSchedules()
       ],

@@ -1,31 +1,22 @@
+
+
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner: false,
-    home: const LoginScreen(),
-  ));
-}
-
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset:  false,
       body: _loginBody(context),
     );
   }
@@ -48,11 +39,11 @@ class LoginScreen extends StatelessWidget {
                 spacer90,
                 _userIDTextField(),
                 spacer30,
-                _passwordTextField(),
-                spacer10,
-                _forgotPassWordText(context),
+                _phoneNumberField(),
                 spacer60,
-                _loginButton(),
+                _sendOtpButton(),
+                spacer20,
+                _backToLoginText(context),
                 SizedBox(
                   height: SizeUtility(context).height / 50,
                 ),
@@ -61,19 +52,17 @@ class LoginScreen extends StatelessWidget {
             _footer(context)
           ],
         ),
-      )
+      ),
     );
   }
 
-  Align _forgotPassWordText(BuildContext context) {
+  Align _backToLoginText(BuildContext context) {
     return Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.topCenter,
       child: TextButton(
-          onPressed: () {
-            GoRouter.of(context).pushNamed(AppPages.forgotPassword);
-          },
+          onPressed: ()=> GoRouter.of(context).pop(),
           child: const Text(
-            'Forgot Password ?',
+            'Back to login?',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 15,
@@ -127,30 +116,23 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _welcomeText() {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'WELCOME',
-          style: TextStyle(
-              letterSpacing: 2, fontSize: 35, fontWeight: FontWeight.w700),
-        ),
-        Text(
-          'Sign in to Continue.',
-          style: TextStyle(
-              letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
-        ),
-      ],
+    return const Align(
+      alignment: Alignment.topCenter,
+      child:  Text(
+        'Reset Your Password.',
+        style: TextStyle(
+            letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
+      ),
     );
   }
 
-  Widget _loginButton() {
+  Widget _sendOtpButton() {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(double.infinity, 50)),
         onPressed: () {},
         child: const Text(
-          'SIGN IN',
+          'SEND OTP',
         ));
   }
 
@@ -163,39 +145,13 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _passwordTextField() {
+  Widget _phoneNumberField() {
     return CommonTextField(
-      title: 'Password',
-      passwordField: true,
+      title: 'Registered Phone Number',
       prefix: const Icon(
-        LineIcons.lock,
+        LineIcons.phone,
         color: Colors.black,
       ),
     );
   }
 }
-
-/*
-class TextFieldWithIcon extends StatelessWidget {
-  final IconData icon;
-  final String hintText;
-  final bool isPassword;
-
-  const TextFieldWithIcon({
-    required this.icon,
-    required this.hintText,
-    this.isPassword = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon),
-        hintText: hintText,
-        suffixIcon: isPassword ? const Icon(Icons.remove_red_eye_outlined): null,
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-      ),
-    );
-  }*/
