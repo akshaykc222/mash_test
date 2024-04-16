@@ -53,7 +53,7 @@ class AddOnDetailCard extends StatelessWidget {
                       children: [
                         ListTile(
                           title: Text(title),
-                          subtitle: Text('Info'),
+                          subtitle: const Text('Info'),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -101,7 +101,7 @@ class __DescriptionWidgetState extends State<_DescriptionWidget> {
             },
             child: Text(
               _isExpanded ? 'Show Less' : 'Show More',
-              style: TextStyle(color: Colors.blue),
+              style: const TextStyle(color: Colors.blue),
             ),
           ),
       ],
