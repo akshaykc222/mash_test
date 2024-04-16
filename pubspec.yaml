@@ -29,6 +29,7 @@ dependencies:
   google_fonts:
   line_icons:
   otp_text_field:
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
