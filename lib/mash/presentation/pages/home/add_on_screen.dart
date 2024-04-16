@@ -1,6 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/add_on_card.dart';
@@ -28,10 +31,10 @@ class _AddOnScreenState extends State<AddOnScreen> with SingleTickerProviderStat
 
    @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
    }
+
   @override
   Widget build(BuildContext context) {
      SizeConfig().init(context);
@@ -39,15 +42,15 @@ class _AddOnScreenState extends State<AddOnScreen> with SingleTickerProviderStat
       drawer: DrawerWidget(),
       appBar:  AppBar(
         centerTitle: true,
-        title: const Text('ADD ONS'),
+        title: const Text(AppStrings.addOnScreenTItle),
         bottom: TabBar(
           indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 2.0,color: Colors.purple),
           ),
           controller: _tabController,
           tabs: const  [
-            Tab(text: 'ACADEMICS'),
-            Tab(text: 'NON-ACADEMICS'),
+            Tab(text: AppStrings.tabBarTitleAcademic),
+            Tab(text: AppStrings.tabBarTitleNonAcademic),
           ],
         ),
       ),
@@ -66,7 +69,8 @@ class _AddOnScreenState extends State<AddOnScreen> with SingleTickerProviderStat
             },
               itemCount: 5,
               itemBuilder: (context,index){
-            return AddOnCard(cardImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',onPress: (){},);
+            return AddOnCard(
+              cardImage: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',onPress: ()=> GoRouter.of(context).pushNamed(AppPages.addonDetailScreen),);
           }),
         ),
         Center(
@@ -76,7 +80,7 @@ class _AddOnScreenState extends State<AddOnScreen> with SingleTickerProviderStat
               },
               itemCount: 5,
               itemBuilder: (context,index){
-            return AddOnCard(cardImage: 'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',onPress: (){},);
+            return AddOnCard(cardImage: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',onPress: ()=> GoRouter.of(context).pushNamed(AppPages.addonDetailScreen),);
           }),
         ),
       ],
