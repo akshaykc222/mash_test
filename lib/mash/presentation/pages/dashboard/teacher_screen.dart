@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/pages/dashboard/widgets/schedule_item.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -22,10 +23,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
-        slivers: [
-          _header(),
-          _body(),
-        ],
+        slivers: [_header(), _body()],
       ),
     );
   }
@@ -45,6 +43,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
         _basicDetails(),
       ]));
   Widget _basicDetails() {
+    //to build
     return Column(
       children: [
         spacer20,
@@ -89,7 +88,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
   Widget _buildSchedules() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
+      child: Wrap(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,9 +100,18 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                     fontWeight: FontWeight.w400,
                     color: AppColors.textColorNew),
               ),
-              const Text(AppStrings.viewAll)
+              Text(
+                AppStrings.viewAll,
+                style: TextStyle(fontSize: 10, color: AppColors.headText),
+              )
             ],
-          )
+          ),
+          // spacer10,
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              shrinkWrap: true,
+              itemBuilder: (c, index) => const ScheduleItem())
         ],
       ),
     );

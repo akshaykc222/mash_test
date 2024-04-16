@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
@@ -33,36 +32,35 @@ class LoginScreen extends StatelessWidget {
   _loginBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: SizedBox(
-        height: size.height,
-        child: Stack(
-          children: [
-            ListView(
-              shrinkWrap: true,
-              children: [
-                spacer20,
-                _mashIcon(),
-                spacer80,
-                _welcomeText(),
-                spacer90,
-                _userIDTextField(),
-                spacer30,
-                _passwordTextField(),
-                spacer10,
-                _forgotPassWordText(context),
-                spacer60,
-                _loginButton(),
-                SizedBox(
-                  height: SizeUtility(context).height / 50,
-                ),
-              ],
-            ),
-            _footer(context)
-          ],
-        ),
-      )
-    );
+        padding: const EdgeInsets.all(20.0),
+        child: SizedBox(
+          height: size.height,
+          child: Stack(
+            children: [
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  spacer20,
+                  _mashIcon(),
+                  spacer80,
+                  _welcomeText(),
+                  spacer90,
+                  _userIDTextField(),
+                  spacer30,
+                  _passwordTextField(),
+                  spacer10,
+                  _forgotPassWordText(context),
+                  spacer60,
+                  _loginButton(),
+                  SizedBox(
+                    height: SizeUtility(context).height / 50,
+                  ),
+                ],
+              ),
+              _footer(context)
+            ],
+          ),
+        ));
   }
 
   Align _forgotPassWordText(BuildContext context) {
