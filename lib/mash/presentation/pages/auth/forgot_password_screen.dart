@@ -1,22 +1,56 @@
-
-
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
+import 'package:otp_text_field/otp_text_field.dart';
+import 'package:otp_text_field/style.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+ const ForgotPasswordScreen({super.key});
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  Timer? _timer;
+
+  int _countDown = 30;
+
+  bool _showResendButton = false;
+
+  void startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_countDown > 0) {
+          _countDown--;
+        } else {
+          _showResendButton = true;
+          _timer!.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startTimer();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset:  false,
+      resizeToAvoidBottomInset: false,
       body: _loginBody(context),
     );
   }
@@ -41,7 +75,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 spacer30,
                 _phoneNumberField(),
                 spacer60,
-                _sendOtpButton(),
+                _sendOtpButton(context),
                 spacer20,
                 _backToLoginText(context),
                 SizedBox(
@@ -60,7 +94,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: TextButton(
-          onPressed: ()=> GoRouter.of(context).pop(),
+          onPressed: () => GoRouter.of(context).pop(),
           child: const Text(
             'Back to login?',
             textAlign: TextAlign.right,
@@ -118,7 +152,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget _welcomeText() {
     return const Align(
       alignment: Alignment.topCenter,
-      child:  Text(
+      child: Text(
         'Reset Your Password.',
         style: TextStyle(
             letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
@@ -126,11 +160,12 @@ class ForgotPasswordScreen extends StatelessWidget {
     );
   }
 
-  Widget _sendOtpButton() {
+  Widget _sendOtpButton(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(double.infinity, 50)),
-        onPressed: () {},
+        onPressed: () =>
+            GoRouter.of(context).pushNamed(AppPages.otpScreen),
         child: const Text(
           'SEND OTP',
         ));
@@ -154,4 +189,14 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
     );
   }
+
+
+  @override
+  void dispose() {
+    _timer!.cancel();
+    super.dispose();
+  }
+
+
+  
 }

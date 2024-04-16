@@ -28,6 +28,9 @@ dependencies:
   flutter_svg:
   google_fonts:
   line_icons:
+  otp_text_field:
+  build_runner: ^2.4.9
+  fl_chart: ^0.67.0
 
 dev_dependencies:
   flutter_test:
