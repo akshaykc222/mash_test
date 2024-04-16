@@ -1,12 +1,10 @@
 import 'dart:io';
 
-
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:mash/core/pretty_printer.dart';
-
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
 
@@ -132,7 +130,6 @@ class ApiProvider {
   // }
 
   Map<String, dynamic> classifyResponse(Response response) {
-    print(response);
     // try {
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;

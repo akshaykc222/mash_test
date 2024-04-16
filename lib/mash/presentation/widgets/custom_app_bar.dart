@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
@@ -11,10 +9,15 @@ PreferredSize customAppbar(BuildContext context) {
     child: Padding(
       padding: const EdgeInsets.only(left: 20),
       child: AppBar(
-        leading:assetFromSvg(
+        leading: assetFromSvg(
           AppAssets.mashLoginLogo,
         ),
-     actions: [assetFromSvg(AppAssets.notificationIcon),spacer20,Icon(Icons.menu),], ),
+        actions: [
+          assetFromSvg(AppAssets.notificationIcon),
+          spacer20,
+          Icon(Icons.menu),
+        ],
+      ),
     ),
   );
 }
