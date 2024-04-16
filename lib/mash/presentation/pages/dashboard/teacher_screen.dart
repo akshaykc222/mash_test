@@ -6,6 +6,7 @@ import 'package:mash/mash/presentation/pages/dashboard/widgets/schedule_item.dar
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
 
 void main(){
@@ -32,6 +33,7 @@ class _TeacherDashboardState extends State<TeacherDashboard>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidget(),
       body: CustomScrollView(
         slivers: [
             _header(),
