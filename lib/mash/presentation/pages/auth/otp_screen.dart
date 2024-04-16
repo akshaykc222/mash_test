@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -44,6 +45,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: _loginBody(context),
@@ -54,34 +56,31 @@ class _OtpScreenState extends State<OtpScreen> {
     var size = MediaQuery.sizeOf(context);
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: SizedBox(
-        height: size.height,
-        child: Stack(
-          children: [
-            ListView(
-              shrinkWrap: true,
-              children: [
-                spacer20,
-                _mashIcon(),
-                spacer80,
-                _welcomeText(),
-                spacer100,
-                _otpField(),
-                spacer60,
-                _submitOtpButton(context),
-                spacer10,
-                _resendButtonAndTimer(),
-                spacer20,
-                _backToLoginText(context),
-                SizedBox(
-                  height: SizeUtility(context).height / 50,
-                ),
-              ],
-            ),
-            _footer(context)
-          ],
-        ),
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          sizedBox(20.0),
+          _mashIcon(),
+          sizedBox(80.0),
+          _welcomeText(),
+          sizedBox(100.0),
+          _otpField(),
+          sizedBox(60.0),
+          _submitOtpButton(context),
+          sizedBox(10.0),
+          _resendButtonAndTimer(),
+          sizedBox(20.0),
+          _backToLoginText(context),
+          sizedBox(40.0),
+          _footer(context)
+        ],
       ),
+    );
+  }
+
+  sizedBox(height){
+    return SizedBox(
+      height: SizeConfig.height(height),
     );
   }
 
@@ -102,36 +101,31 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   Widget _footer(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: SizedBox(
-        child: Column(
-          children: [
-            const Text('Version:10.6'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Powered By',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                  ),
+    return SizedBox(
+      child: Column(
+        children: [
+          const Text('Version:10.6'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Powered By',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
                 ),
-                spacerWidth10,
-                SizedBox(
-                  height: 20,
-                  child: Image.asset(AppAssets.manappuramLogo),
-                ),
-                SizedBox(
-                  height: SizeUtility(context).height * 0.14,
-                )
-              ],
-            ),
-          ],
-        ),
+              ),
+              spacerWidth10,
+              SizedBox(
+                height: 20,
+                child: Image.asset(AppAssets.manappuramLogo),
+              ),
+              SizedBox(
+                height: SizeUtility(context).height * 0.14,
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -168,6 +162,9 @@ class _OtpScreenState extends State<OtpScreen> {
   _otpField() {
     return OTPTextField(
       length: 4,
+      otpFieldStyle: OtpFieldStyle(
+        focusBorderColor: Colors.purple
+      ),
       width: 150,
       fieldWidth: 60,
       style: const TextStyle(fontSize: 14),
@@ -210,7 +207,6 @@ class _OtpScreenState extends State<OtpScreen> {
                   onPressed: () {},
                   child: const Text('Submit'),
                 ),
-
               ],
             );
           }),

@@ -12,7 +12,14 @@ class MashApp extends StatelessWidget {
         theme: AppThemes.mainTheme,
       routerConfig: AppRouteManager.router,
       debugShowCheckedModeBanner: false,
-      
+      builder: (context,child){
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaler: TextScaler.linear(MediaQuery.of(context).size.shortestSide < 600 ? 0.85 : 1.5)
+            ),
+            child: child!,
+          );
+      },
     );
   }
 }

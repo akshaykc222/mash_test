@@ -29,8 +29,8 @@ dependencies:
   google_fonts:
   line_icons:
   otp_text_field:
+  cached_network_image:
   fl_chart: ^0.67.0
-  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
@@ -38,8 +38,6 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
   freezed: ^2.5.2
-  build_runner: ^2.4.9
-
 
 
 flutter:
