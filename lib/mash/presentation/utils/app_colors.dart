@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppColors{
-static LinearGradient lightBlueGradientColors= LinearGradient(colors: [
-  HexColor.fromHex('#A8FDE9'),HexColor.fromHex('#03EFFD'),
-]);
- static Color purple200 = HexColor.fromHex('#FFBB86FC');
+class AppColors {
+  static LinearGradient lightBlueGradientColors = LinearGradient(colors: [
+    HexColor.fromHex('#A8FDE9'),
+    HexColor.fromHex('#03EFFD'),
+  ]);
+  static Color purple200 = HexColor.fromHex('#FFBB86FC');
   static Color purple500 = HexColor.fromHex('#FF6200EE');
   static Color purple700 = HexColor.fromHex('#FF3700B3');
   static Color teal200 = HexColor.fromHex('#FF03DAC5');
@@ -112,12 +113,21 @@ static LinearGradient lightBlueGradientColors= LinearGradient(colors: [
   static Color border3 = HexColor.fromHex('#948BFC');
   static Color border4 = HexColor.fromHex('#FF6D6D');
   static Color border5 = HexColor.fromHex('#067C54');
+  //graph colors
+  static Color graphColor1 = HexColor.fromHex('#Ff3525'); // Red
+  static Color graphColor2 = HexColor.fromHex('#3bee7d'); // Green
+  static Color graphColor3 = HexColor.fromHex('#2596be'); // Blue
+  static Color graphColor4 = HexColor.fromHex('#Eee53b'); // Yellow
+  // static Color graphColor5 = HexColor.fromHex('#dc89f5'); // Magenta
+  // static Color graphColor6 = HexColor.fromHex('#00FFFF'); // Cyan
+  // static Color graphColor7 = HexColor.fromHex('#167ae6'); // Purple
+  // static Color graphColor8 = HexColor.fromHex('#008000'); // Dark Green
 
- static const LinearGradient loginButtonGradient = LinearGradient(
-  colors: [Color(0xffA8FED9), Color(0xff00F1FF)],
- );
- 
+  static const LinearGradient loginButtonGradient = LinearGradient(
+    colors: [Color(0xffA8FED9), Color(0xff00F1FF)],
+  );
 }
+
 extension HexColor on Color {
   static Color fromHex(String hexColorString) {
     hexColorString = hexColorString.replaceAll('#', '');
