@@ -6,4 +6,5 @@ class AppPages {
   static const attendanceDetailScreen = '/attendenceDetail';
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
+  static const home = '/home';
 }

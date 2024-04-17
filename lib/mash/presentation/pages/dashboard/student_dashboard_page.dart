@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/pages/dashboard/attendence_detail_screen.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 import '../../router/app_pages.dart';
-import '../../utils/app_theme.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    home: AttendenceDetailScreen(),
-  ));
-}
+import '../home/widgets/progress_indicator_widget.dart';
 
 class StudentDashboardPage extends StatelessWidget {
   const StudentDashboardPage({super.key});
@@ -47,6 +41,33 @@ class StudentDashboardPage extends StatelessWidget {
             ],
           ),
           _studentDetailWidget(context),
+          spacer50,
+          _viewCalenderBtn()
+        ],
+      ),
+    );
+  }
+
+  Widget _viewCalenderBtn() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          fixedSize: Size(200, 45), backgroundColor: AppColors.white),
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          assetFromSvg(
+            AppAssets.timeTableIcon,
+            color: AppColors.primaryColor,
+          ),
+          spacerWidth10,
+          const Text(
+            AppStrings.viewCalendar,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
+          )
         ],
       ),
     );
@@ -119,43 +140,48 @@ class StudentDashboardPage extends StatelessWidget {
           verticalDirection: VerticalDirection.down,
           children: [
             _attendenceProgressWidget(context),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 9,
-                      offset: const Offset(0, 5))
-                ],
-              ),
-              child: Container(
-                height: 91,
-                width: 91,
-                padding: const EdgeInsets.all(18),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.grey.withOpacity(0.2),
-                  ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'A',
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.purple,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            )
+            _gradeWidget(),
           ],
         ),
       ],
+    );
+  }
+
+  Widget _gradeWidget() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 1,
+            blurRadius: 9,
+            offset: const Offset(0, 5),
+          )
+        ],
+      ),
+      child: Container(
+        height: 91,
+        width: 91,
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.grey.withOpacity(0.2),
+          ),
+        ),
+        child: const Center(
+          child: Text(
+            'A',
+            style: TextStyle(
+              fontSize: 40,
+              color: Colors.purple,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -186,20 +212,17 @@ class StudentDashboardPage extends StatelessWidget {
               color: AppColors.textShadowWhite,
             ),
           ),
-          child: Stack(
+          child: const Stack(
             children: [
               SizedBox(
-                  height: 170,
-                  width: 170,
-                  child: CircularProgressIndicator(
-                    value: 0.8,
-                    color: AppColors.gradient,
-                    backgroundColor: Colors.grey,
-                    strokeWidth: 8,
-                    // strokeAlign: BorderSide.strokeAlignInside,
-                    strokeCap: StrokeCap.round,
-                  )),
-              const Positioned(
+                height: 170,
+                width: 170,
+                child: ProgressIndicatorWidget(
+                  progressIndicatorType: ProgressIndicatorType.circular,
+                  initialValue: 0.8,
+                ),
+              ),
+              Positioned(
                 left: 0,
                 top: 0,
                 bottom: 0,

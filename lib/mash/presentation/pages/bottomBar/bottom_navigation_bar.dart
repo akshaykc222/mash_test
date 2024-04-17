@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../../core/pretty_printer.dart';
 import '../../manager/cubit/bottom_navigation_cubit.dart';
+import '../../router/router_config.dart';
 import '../../utils/enums.dart';
 
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({super.key});
+class BottomNavigationBarScreen extends StatefulWidget {
+  const BottomNavigationBarScreen({super.key});
 
   @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
+  State<BottomNavigationBarScreen> createState() =>
+      _BottomNavigationBarScreenState();
 }
 
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
+class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,14 +33,13 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
           height: 77,
           decoration: BoxDecoration(color: AppColors.white, boxShadow: [
             BoxShadow(
-              color: AppColors.grey200,
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, -1),
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 1,
+              blurRadius: 9,
+              offset: const Offset(0, 0),
             )
           ]),
-          child: BlocConsumer<BottomNavigationCubit, BottomNavigationState>(
-            listener: (context, state) {},
+          child: BlocBuilder<BottomNavigationCubit, BottomNavigationState>(
             builder: (context, state) {
               prettyPrint("rebuilding");
               return Row(
@@ -51,34 +55,23 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
                               splashColor: Colors.black12,
                               highlightColor: Colors.transparent,
                               onTap: () {
-                                // cubit.changeBottomNav(menu.index);
-                                // GoRouter.of(context).go(AppRouteManager.home(
-                                //     CustomBottomNavigationItems
-                                //         .values[menu.index]));
+                                BlocProvider.of<BottomNavigationCubit>(context)
+                                    .changeBottomNav(menu.index);
+                                GoRouter.of(context).go(AppRouteManager.home(
+                                    CustomBottomNavigationItems
+                                        .values[menu.index]));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  // SvgPicture.asset(
-                                  //   // getHomeIcon(menu),
-                                  //   color: cubit.currentIndex != menu.index
-                                  //       ? Colors.grey
-                                  //       : AppColors.primaryColor,
-                                  //   width: 30,
-                                  //   height: 30,
-                                  // ),
-                                  // const SizedBox(
-                                  //   height: 3,
-                                  // ),
-                                  // Text(
-                                  //   "${menu.name[0].toUpperCase()}${menu.name.substring(1)}",
-                                  //   style: TextStyle(
-                                  //     fontSize: 12,
-                                  //     color: cubit.currentIndex != menu.index
-                                  //         ? Colors.grey
-                                  //         : Colors.blue.withOpacity(0.7),
-                                  //   ),
-                                  // )
+                                  assetFromSvg(
+                                    getHomeIcon(menu),
+                                    color: state.index != menu.index
+                                        ? AppColors.black.withOpacity(0.6)
+                                        : AppColors.primaryColor,
+                                    width: 25,
+                                    height: 25,
+                                  ),
                                 ],
                               ),
                             ),
@@ -91,5 +84,23 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
         ),
       ],
     );
+  }
+}
+
+String getHomeIcon(CustomBottomNavigationItems menu) {
+  switch (menu) {
+    case CustomBottomNavigationItems.home:
+      return AppAssets.homeTabIcon;
+    case CustomBottomNavigationItems.timetable:
+      return AppAssets.timeTableIcon;
+    case CustomBottomNavigationItems.library:
+      return AppAssets.libraryTabIcon;
+    case CustomBottomNavigationItems.addOn:
+      return AppAssets.addOnsTabIcon;
+    case CustomBottomNavigationItems.homework:
+      return AppAssets.homeWorkTabIcon;
+
+    default:
+      return AppAssets.homeTabIcon;
   }
 }
