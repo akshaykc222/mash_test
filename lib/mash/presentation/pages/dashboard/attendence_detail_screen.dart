@@ -34,7 +34,10 @@ class AttendenceDetailScreen extends StatelessWidget {
       centerTitle: true,
       title: Text(
         AppStrings.attendenceReport,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
       ),
     );
   }
@@ -159,10 +162,10 @@ class AttendenceDetailScreen extends StatelessWidget {
     return CustomAnimatedWidget(
       type: AnimationTypes.scaleAndFade,
       child: Container(
-        height: 280,
+        height: 260,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: const Color.fromARGB(255, 183, 228, 228).withOpacity(0.3),
+          color: const Color.fromARGB(207, 140, 240, 240).withOpacity(0.3),
         ),
         child: Stack(
           children: [
@@ -206,11 +209,21 @@ class AttendenceDetailScreen extends StatelessWidget {
             Positioned.fill(
                 child: Align(
               alignment: Alignment.center,
-              child: Text(
-                '${data.attendancePercentage}%',
-                style: const TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
+              child: Container(
+                height: 145,
+                width: 145,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    '${data.attendancePercentage}%',
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
               ),
             ))

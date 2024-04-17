@@ -4,13 +4,15 @@ import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/attendence_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/add_on_screen.dart';
+import 'package:mash/mash/presentation/pages/home/innerPages/addon_detail_screen.dart';
 
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/splash_screen.dart';
 
 class AppRouteManager {
-  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.addOnScreen, routes: [
     GoRoute(
       path: AppPages.splash,
       name: AppPages.splash,
@@ -37,6 +39,15 @@ class AppRouteManager {
       builder: (context, state) {
         return AttendenceDetailScreen();
       },
+    ),
+    GoRoute(
+      path: AppPages.addonDetailScreen,
+      name: AppPages.addonDetailScreen,
+      builder: (context, state) => const AddonDetailScreen(),
+    ),GoRoute(
+      path: AppPages.addOnScreen,
+      name: AppPages.addOnScreen,
+      builder: (context, state) => const AddOnScreen(),
     ),
   ]);
 }

@@ -4,4 +4,6 @@ class AppPages {
   static const forgotPassword = "/forgotPassword";
   static const otpScreen = "/otpScreen";
   static const attendanceDetailScreen = '/attendenceDetail';
+  static const addOnScreen = "/addOnscreen";
+  static const addonDetailScreen = '/addonDetailScreen';
 }
