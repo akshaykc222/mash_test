@@ -9,10 +9,28 @@ import 'package:mash/mash/presentation/pages/home/innerPages/addon_detail_screen
 
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../pages/home/home_screen.dart';
 import '../pages/splash_screen.dart';
+import '../utils/enums.dart';
 
 class AppRouteManager {
-  static GoRouter router = GoRouter(initialLocation: AppPages.addOnScreen, routes: [
+  static home([CustomBottomNavigationItems? type]) =>
+      '/${type?.index ?? ':type'}';
+  static Widget _homePageRouteBuilder(
+      BuildContext context, GoRouterState state) {
+    return HomeScreen(
+      currentIndex: int.parse(state.pathParameters['type']!),
+    );
+  }
+
+  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
+    GoRoute(
+      path: AppPages.home,
+      name: AppPages.home,
+      builder: (context, state) => const HomeScreen(
+        currentIndex: 0,
+      ),
+    ),
     GoRoute(
       path: AppPages.splash,
       name: AppPages.splash,
@@ -44,10 +62,12 @@ class AppRouteManager {
       path: AppPages.addonDetailScreen,
       name: AppPages.addonDetailScreen,
       builder: (context, state) => const AddonDetailScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.addOnScreen,
       name: AppPages.addOnScreen,
       builder: (context, state) => const AddOnScreen(),
     ),
+    GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
 }

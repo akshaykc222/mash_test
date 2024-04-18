@@ -5,4 +5,5 @@ class AppStrings {
   static const tabBarTitleAcademic = "ACADEMIC";
   static const tabBarTitleNonAcademic = "NON-ACADEMICS";
   static const addOnScreenTItle = "ADD ONS";
+  static const viewCalendar = 'View Calendar';
 }
