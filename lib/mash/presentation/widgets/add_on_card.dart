@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 class AddOnCard extends StatelessWidget {
   const AddOnCard({super.key,required this.cardImage,required this.onPress});
@@ -27,7 +28,7 @@ class AddOnCard extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: size.height* 0.22,
                 width: size.width,
-                placeholder: (BuildContext context, String url) => Image.asset(AppAssets.mashLoginLogo),
+                placeholder: (BuildContext context, String url) => Container(color: Colors.grey.shade50,),
                 errorWidget: (BuildContext context, String url, dynamic error) => const Icon(Icons.error),
               ),
             ),
@@ -43,10 +44,9 @@ class AddOnCard extends StatelessWidget {
                 child: const Padding(
                   padding:  EdgeInsets.symmetric(horizontal: 15.0),
                   child:  Text(
-                    'Explore',
+                    AppStrings.addOnExplore,
                     style: TextStyle(
                       color: Colors.white,
-
                     ),
                   ),
                 ),

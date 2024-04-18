@@ -4,8 +4,8 @@ import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/attendence_detail_screen.dart';
-import 'package:mash/mash/presentation/pages/home/add_on_screen.dart';
-import 'package:mash/mash/presentation/pages/home/innerPages/addon_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
+import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 
 import 'package:mash/mash/presentation/router/app_pages.dart';
 

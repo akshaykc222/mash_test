@@ -20,9 +20,9 @@ class LibraryScreen extends StatelessWidget {
 
   libraryBody() {
     List list =[AppAssets.libImageAcademic,AppAssets.libImageNonAcademic,AppAssets.libImageResearch,AppAssets.libImageUserActivity];
-    List titleList = ['ACADEMIC','NON ACADEMIC', 'R','RESEARCH'];
+    List titleList = ['ACADEMIC','NON ACADEMIC','RESEARCH', 'USER ACTIVITY'];
       return Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
         child: ListView.builder(
             itemCount: 4,
             itemBuilder: (context,index){
@@ -32,23 +32,31 @@ class LibraryScreen extends StatelessWidget {
   }
 
   libraryCard(onPress,title,assetName) {
-    return InkWell(
-        onTap: onPress,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [BoxShadow(
-              color: Colors.grey,
-              blurRadius: 5.0,
-            ),],
-          ),
-          child:  Column(
-            children: [
-              SvgPicture.asset(assetName),
-              Text(title)
-            ],
-          ),
-        ));
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: InkWell(
+          onTap: onPress,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: const [BoxShadow(
+                color: Colors.grey,
+                blurRadius: 5.0,
+              ),],
+            ),
+            child:  Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: SvgPicture.asset(assetName),
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(title))
+              ],
+            ),
+          )),
+    );
   }
 }
