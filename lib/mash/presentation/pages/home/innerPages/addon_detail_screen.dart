@@ -3,7 +3,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/add_on_detail_card.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';

@@ -5,3 +5,8 @@ enum CustomBottomNavigationItems {
   library,
   addOn,
 }
+
+enum ProgressIndicatorType {
+  linear,
+  circular,
+}
