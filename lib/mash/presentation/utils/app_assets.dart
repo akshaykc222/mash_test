@@ -7,9 +7,9 @@ class AppAssets {
   static const libImageNonAcademic = 'assets/images/app_image_non_academic.svg';
   static const libImageResearch = 'assets/images/app_image_research.svg';
   static const libImageUserActivity = 'assets/images/app_image_user_activity.svg';
-  static const dailyTimeTable = 'assets/images/app_image_daily_timetable.SVG';
-  static const weekyTimeTable = 'assets/images/app_image_weekly_timetable.SVG';
-  static const examTimeTable = 'assets/images/app_image_exam_timetable.SVG';
+  static const dailyTimeTable = 'assets/images/ai_daily.svg';
+  static const weekyTimeTable = 'assets/images/ai_weekly.svg';
+  static const examTimeTable = 'assets/images/ai_exam.svg';
 
 
   // Icons

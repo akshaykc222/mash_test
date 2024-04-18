@@ -35,11 +35,12 @@ class TimeTable extends StatelessWidget {
       child: InkWell(
           onTap: onPress,
           child: Container(
+            height: 210,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: const [BoxShadow(
-                color: Colors.grey,
+              boxShadow:  [BoxShadow(
+                color: Colors.grey.withOpacity(0.6),
                 blurRadius: 5.0,
               ),],
             ),
