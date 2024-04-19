@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore:
   cached_network_image:
   fl_chart:
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -49,3 +50,15 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - lib/mash/presentation/pages/
+    - lib/mash/presentation/pages/auth/
+    - lib/mash/presentation/pages/home/
+    - lib/mash/presentation/pages/home/addOn/
+    - lib/mash/presentation/pages/home/library/
+    - lib/mash/presentation/pages/home/widgets/
+    - lib/mash/presentation/pages/home/homeWork/
+    - lib/mash/presentation/pages/home/timeTable/
+    - lib/mash/presentation/pages/profile/
+    - lib/mash/presentation/pages/bottomBar/
+    - lib/mash/presentation/pages/dashboard/
+    - lib/mash/presentation/pages/dashboard/widgets/
