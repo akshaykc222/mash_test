@@ -25,7 +25,7 @@ void main(){
                     _isLoading.notifyListeners();
                   });
                 },
-                title: const Text("Login"), isLoading: data,
+                title: const Text("Login",style: TextStyle(color: Colors.white),), isLoading: data,
 
 
               );

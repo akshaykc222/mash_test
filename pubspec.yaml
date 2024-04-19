@@ -33,7 +33,6 @@ dependencies:
   cached_network_image:
   fl_chart:
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -50,8 +49,3 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-
-  fonts:
-    - family: SofiaPro
-      fonts:
-        - asset: fonts/sofi_pro_regular.otf

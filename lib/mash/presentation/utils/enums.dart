@@ -10,3 +10,13 @@ enum ProgressIndicatorType {
   linear,
   circular,
 }
+
+enum Day {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday
+}
