@@ -10,6 +10,10 @@ class AppAssets {
   static const dailyTimeTable = 'assets/images/ai_daily.svg';
   static const weekyTimeTable = 'assets/images/ai_weekly.svg';
   static const examTimeTable = 'assets/images/ai_exam.svg';
+  static const onBoard1 = 'assets/images/onboard_1.png';
+  static const onBoard2 = 'assets/images/onboard_2.png';
+  static const onBoard3 = 'assets/images/onboard_3.png';
+
 
 
   // Icons

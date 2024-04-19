@@ -17,7 +17,7 @@ class TimeTable extends StatelessWidget {
   }
 
   timeTableBody() {
-    List titleList = ['DAILY\n TIMETABLE', 'WEEKLY\n TIMETABLE', 'EXAM\n TIMETABLE'];
+    List titleList = ['DAILY\nTIMETABLE', 'WEEKLY\nTIMETABLE', 'EXAM\nTIMETABLE'];
     List assetList = [AppAssets.dailyTimeTable,AppAssets.weekyTimeTable,AppAssets.examTimeTable];
     return Padding(
       padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
