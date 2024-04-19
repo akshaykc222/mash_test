@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes{
  static ThemeData get mainTheme=>ThemeData(
-  textTheme: GoogleFonts.montserratTextTheme(),
+  fontFamily: 'SofiPro',
+  // textTheme: GoogleFonts.montserratTextTheme(),
   inputDecorationTheme: const InputDecorationTheme(
     floatingLabelBehavior: FloatingLabelBehavior.never,
   ),
