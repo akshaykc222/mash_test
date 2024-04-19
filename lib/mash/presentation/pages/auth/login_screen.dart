@@ -45,27 +45,35 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _loginBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          sizedBox(20.0),
-          _mashIcon(),
-          sizedBox(80.0),
-          _welcomeText(),
-          sizedBox(90.0),
-          _userIDTextField(),
-          sizedBox(30.0),
-          _passwordTextField(),
-          sizedBox(10.0),
-          _forgotPassWordText(context),
-          sizedBox(60.0),
-          _loginButton(),
-          sizedBox(50.0),
-          _footer(context)
-        ],
-      )
+    return Stack(
+      children: [
+        Positioned(
+            top: 0,
+            right: 0,
+            child: SvgPicture.asset(AppAssets.loginStackImage,color: Colors.purple.withOpacity(0.5),)),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              sizedBox(20.0),
+              _mashIcon(),
+              sizedBox(80.0),
+              _welcomeText(),
+              sizedBox(90.0),
+              _userIDTextField(),
+              sizedBox(30.0),
+              _passwordTextField(),
+              sizedBox(10.0),
+              _forgotPassWordText(context),
+              sizedBox(60.0),
+              _loginButton(),
+              sizedBox(50.0),
+              _footer(context)
+            ],
+          )
+        ),
+      ],
     );
   }
 

@@ -2,6 +2,15 @@ class AppAssets {
   static const mashLoginLogo = 'assets/images/app_logo_large.svg';
   static const notificationIcon = 'assets/icons/notification.svg';
   static const manappuramLogo = 'assets/images/manappuram_logo.png';
+  static const loginStackImage = 'assets/images/app_stack_image.svg';
+  static const libImageAcademic = 'assets/images/app_image_academic.svg';
+  static const libImageNonAcademic = 'assets/images/app_image_non_academic.svg';
+  static const libImageResearch = 'assets/images/app_image_research.svg';
+  static const libImageUserActivity = 'assets/images/app_image_user_activity.svg';
+  static const dailyTimeTable = 'assets/images/ai_daily.svg';
+  static const weekyTimeTable = 'assets/images/ai_weekly.svg';
+  static const examTimeTable = 'assets/images/ai_exam.svg';
+
 
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';

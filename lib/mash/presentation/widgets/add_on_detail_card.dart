@@ -19,7 +19,9 @@ class AddOnDetailCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: InkWell(
         onTap: onPress,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(microseconds: 300),
+          curve: Curves.easeIn,
           // height: size.height * 0.21,
           width: size.width,
           decoration: BoxDecoration(
