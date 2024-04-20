@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mash/mash/presentation/pages/dashboard/teacher_screen.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 void main() {
   runApp(const MaterialApp(

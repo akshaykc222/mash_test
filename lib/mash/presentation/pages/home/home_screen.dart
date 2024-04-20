@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const screens = [
-      StudentDashboardPage(),
+      ParentDashBoard(),
       TimeTable(),
       HomeWork(),
       LibraryScreen(),

@@ -10,8 +10,17 @@ import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 import '../../router/app_pages.dart';
 import '../home/widgets/progress_indicator_widget.dart';
 
-class StudentDashboardPage extends StatelessWidget {
-  const StudentDashboardPage({super.key});
+List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+
+class ParentDashBoard extends StatefulWidget {
+  const ParentDashBoard({super.key});
+
+  @override
+  State<ParentDashBoard> createState() => _ParentDashBoardState();
+}
+
+class _ParentDashBoardState extends State<ParentDashBoard> {
+  String dropdownValue = list.first;
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +51,52 @@ class StudentDashboardPage extends StatelessWidget {
           ),
           _studentDetailWidget(context),
           spacer50,
-          _viewCalenderBtn()
+          _viewCalenderBtn(context),
+          spacer30,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  AppStrings.perfomance,
+                  style: TextStyle(
+                    fontSize: 17,
+                    letterSpacing: 1.3,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                DropdownMenu<String>(
+                  menuStyle: MenuStyle(),
+                  initialSelection: list.first,
+                  enableSearch: true,
+                  onSelected: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                      dropdownValue = value!;
+                    });
+                  },
+                  dropdownMenuEntries:
+                      list.map<DropdownMenuEntry<String>>((String value) {
+                    return DropdownMenuEntry<String>(
+                        value: value, label: value);
+                  }).toList(),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
   }
 
-  Widget _viewCalenderBtn() {
+  Widget _viewCalenderBtn(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          fixedSize: Size(200, 45), backgroundColor: AppColors.white),
+        fixedSize: Size(SizeUtility(context).width / 2, 45),
+        elevation: 2,
+        backgroundColor: AppColors.white,
+      ),
       onPressed: () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,10 +106,11 @@ class StudentDashboardPage extends StatelessWidget {
             color: AppColors.primaryColor,
           ),
           spacerWidth10,
-          const Text(
+          Text(
             AppStrings.viewCalendar,
             style: TextStyle(
               fontSize: 16,
+              color: AppColors.black,
               fontWeight: FontWeight.w700,
             ),
           )
@@ -107,14 +153,14 @@ class StudentDashboardPage extends StatelessWidget {
               height: 1,
               width: SizeUtility(context).width * 0.28,
               decoration: BoxDecoration(
-                gradient: AppColors.lightBlueGradientColors,
+                color: AppColors.primaryColor,
               ),
             ),
             Container(
               height: 1,
               width: SizeUtility(context).width * 0.28,
               decoration: BoxDecoration(
-                gradient: AppColors.lightBlueGradientColors,
+                color: AppColors.primaryColor,
               ),
             )
           ],
@@ -304,14 +350,15 @@ class StudentDashboardPage extends StatelessWidget {
       height: 50,
       width: 50,
       decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: AppColors.gradient,
-            width: 3,
-          ),
-          image: const DecorationImage(
-            image: AssetImage('assets/images/student_dummy.png'),
-          )),
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: AppColors.primaryColor,
+          width: 3,
+        ),
+        image: const DecorationImage(
+          image: AssetImage('assets/images/student_dummy.png'),
+        ),
+      ),
     );
   }
 }

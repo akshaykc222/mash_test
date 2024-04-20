@@ -52,8 +52,8 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget>
           return widget.progressIndicatorType == ProgressIndicatorType.circular
               ? CircularProgressIndicator(
                   value: initialAnimation.value,
-                  color: AppColors.gradient,
-                  backgroundColor: Colors.grey,
+                  color: AppColors.primaryColor,
+                  backgroundColor: Colors.grey.withOpacity(0.4),
                   strokeWidth: 8,
                   // strokeAlign: BorderSide.strokeAlignInside,
                   strokeCap: StrokeCap.round,

@@ -7,4 +7,5 @@ class AppStrings {
   static const addOnScreenTItle = "ADD ONS";
   static const viewCalendar = 'View Calendar';
   static const addOnExplore = 'Explore';
+  static const perfomance = 'PERFOMANCE';
 }
