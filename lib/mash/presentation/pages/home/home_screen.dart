@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/pages/bottomBar/bottom_navigation_bar.dart';
-import 'package:mash/mash/presentation/pages/dashboard/student_dashboard_page.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/parent_dashboard_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/home_work_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/library_screen.dart';
 // import 'package:mash/mash/presentation/pages/h/ome/timeTable/time_table.screen.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
-
 import '../../manager/cubit/bottom_navigation_cubit.dart';
 import '../../utils/app_theme.dart';
 
@@ -32,7 +31,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const screens = [
       ParentDashBoard(),
-      // TimeTable(),
       HomeWork(),
       HomeWork(),
       LibraryScreen(),

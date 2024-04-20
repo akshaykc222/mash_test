@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 
 class AppThemes {
   static ThemeData get mainTheme => ThemeData(
+      scaffoldBackgroundColor: AppColors.white,
       fontFamily: 'SofiPro',
       // textTheme: GoogleFonts.montserratTextTheme(),
       inputDecorationTheme: const InputDecorationTheme(
@@ -9,10 +11,10 @@ class AppThemes {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.purple),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          foregroundColor: AppColors.white,
+          backgroundColor: AppColors.primaryColor,
+        ),
       )
       // fontFamily: GoogleFonts.montserrat().fontFamily
       );
