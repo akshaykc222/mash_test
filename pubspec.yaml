@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore:
   cached_network_image:
   fl_chart: ^0.67.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -49,4 +50,10 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
- test
+
+  fonts:
+    - family: SofiaPro
+      fonts:
+        - asset: fonts/sofi_pro_regular.otf
+        
+  

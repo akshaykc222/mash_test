@@ -1,181 +1,354 @@
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/utils/app_theme.dart';
-import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
+
+import '../../../utils/app_colors.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner: false,
-    home: const WeeklyTimeTable(),
+    home: TimeTable(),
   ));
 }
 
-class WeeklyTimeTable extends StatelessWidget {
-  const WeeklyTimeTable({super.key});
+class TimeTable extends StatefulWidget {
+  const TimeTable({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    return Scaffold(
-      appBar: commonAppbar(title: 'Weekly TimeTable'),
-      // body: timeTableBody(days,context),
-      body: CalendarUI(),
-      drawer: DrawerWidget(),
-    );
-  }
-
-  Widget dateCard(days, onPress) {
-    return InkWell(
-      onTap: onPress,
-      child: Container(
-        height: 80,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.purple.shade300),
-        child: Center(
-          child: Text(
-            days,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-          ),
-        ),
-      ),
-    );
-  }
-
-  timeTableBody(List<String> days, BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        width: size.width ,
-        padding: const EdgeInsets.only( top: 10, bottom: 10),
-        /* child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: ListView.separated(
-                separatorBuilder: (context,index){
-                  return spacer10;
-                },
-                itemCount: days.length,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context,index){
-                    return dateCard(days[index],(){});
-                  }),
-            ),
-            const Expanded(
-              flex: 6,
-              child: Padding(padding:  EdgeInsets.only(right: 10),
-               */ /* child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                    itemBuilder: (context,index){
-                      return const PeriodCard(periodNumber: '1', time: '10 AM - 11 AM', subjectName: 'EVS',);
-                    }, itemCount: 3,)*/ /*
-              ),
-            ),
-
-          ],
-        ),*/
-        child: Table(
-          children: [
-            buildRow(['Days/Periods','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Monday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Tuesday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Wednesday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Thursday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Friday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-            buildRow(['Saturday','Period 1','Period 2','Period 3','Period 4','Period 5','Period 6','Period 7','Period 8',]),
-          ],
-    border:  TableBorder.symmetric(
-      outside:  BorderSide(width: 5, color: Colors.purple,style: BorderStyle.solid),
-        inside: BorderSide(width: 2, color: Colors.purple)),
-        ),
-      ),
-    );
-  }
-
-  TableRow buildRow(List<String> cells) => TableRow(
-    decoration: BoxDecoration(
-      border: Border.all(width: 1,color: Colors.purple),
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.purple.shade200
-    ),
-          children: cells.map((cell) {
-        return Container(
-          margin: const EdgeInsets.all(5),
-          padding: const EdgeInsets.all(10),
-          child: Center(
-            child: Text(cell,style: const TextStyle(color: Colors.white),),
-          ),
-        );
-      }).toList());
-
-
+  State<TimeTable> createState() => _TimeTableState();
 }
 
-class CalendarUI extends StatelessWidget {
-  const CalendarUI({super.key});
+class _TimeTableState extends State<TimeTable> {
+  List<PeriodModel> periods = [];
+
+  List<Day> daysList = [];
+  @override
+  void initState() {
+    daysList.addAll(Day.values
+        .where((element) => element != Day.sunday && element != Day.saturday));
+    for (int i = 1; i <= 8; i++) {
+      if (i == 3 || i == 6) {
+        periods.add(PeriodModel(
+            title: "Break",
+            isBreak: true,
+            isPeriod: true,
+            startTime: DateTime.now(),
+            endTime: DateTime.now().add(const Duration(minutes: 15))));
+      } else {
+        periods.add(PeriodModel(
+            title: "Period$i",
+            isPeriod: true,
+            startTime: DateTime.now(),
+            endTime: DateTime.now().add(const Duration(hours: 1))));
+      }
+    }
+    for (var d in daysList) {
+      for (int i = 1; i <= 8; i++) {
+        if (i == 3 || i == 6) {
+          periods.add(PeriodModel(
+              title: "Break",
+              isBreak: true,
+              day: d,
+              startTime: DateTime.now(),
+              endTime: DateTime.now().add(const Duration(minutes: 15))));
+        } else {
+          periods.add(PeriodModel(
+              title: "English",
+              day: d,
+              teacher: "Akshay",
+              startTime: DateTime.now(),
+              endTime: DateTime.now().add(const Duration(hours: 1))));
+        }
+      }
+    }
+    print(
+        "item length ${periods.where((element) => element.isPeriod != true && element.day == Day.monday).length}");
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
+    super.initState();
+  }
+
+  final ValueNotifier<PeriodModel?> _selectedItem = ValueNotifier(null);
 
   @override
   Widget build(BuildContext context) {
-var size = MediaQuery.sizeOf(context);
-    return SizedBox(
-      height: size.height*0.6,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          children: [
-            Container(
-              constraints: const BoxConstraints(
-                minHeight: 200,
-                minWidth: 60
-              ),
-              child: const Column(
-                // crossAxisAlignment: ,
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Spacer(flex: 1),
-                  Text('Mon'),
-                  Spacer(flex: 2),
-                  Text('Tue'),
-                  Spacer(flex: 2),
-                  Text('Wed'),
-                  Spacer(flex: 2),
-                  Text('Thu'),
-                  Spacer(flex: 2),
-                  Text('Fri'),
-                  Spacer(flex: 2),
-                  Text('Sat'),
-                  Spacer(flex: 1),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                child: GridView.builder(
-                    scrollDirection: Axis.horizontal,
-                    reverse: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 6,
-                    ),
-                    itemCount: 48,
-                    itemBuilder: (BuildContext context, int key) {
-                        return Card(
-                            color: Colors.purple.shade300,
-                            child: Center(
-                              child: Text('periods'),
-                            ));
-                      }
-                    ),
-              ),
-            ),
+    return Scaffold(
+        body: SafeArea(
+            top: false,
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 65.0, right: 10, left: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: daysList
+                              .map((e) => Container(
+                                    margin: const EdgeInsets.only(top: 5),
+                                    padding: const EdgeInsets.all(5),
+                                    height: 62,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.primaryColor
+                                            .withOpacity(0.6),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                      child: Text(
+                                        "${e.name[0].toUpperCase()}${e.name.substring(1, 3)}",
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ))
+                              .toList(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.4),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: periods
+                                        .where((element) =>
+                                            element.isPeriod == true)
+                                        .map((e) => TimeTableItem(
+                                              e: e,
+                                              onTap: () {},
+                                            ))
+                                        .toList(),
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 5),
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.withOpacity(0.4),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Column(
+                                    children: [
+                                      for (var d in daysList)
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: periods
+                                              .where((element) =>
+                                                  element.isPeriod != true &&
+                                                  element.day == d)
+                                              .map((e) => TimeTableItem(
+                                                    e: e,
+                                                    onTap: () {
+                                                      _selectedItem.value = e;
+                                                    },
+                                                  ))
+                                              .toList(),
+                                        ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+                ValueListenableBuilder(
+                    valueListenable: _selectedItem,
+                    builder: (context, data, child) {
+                      return data == null
+                          ? const SizedBox()
+                          : Positioned(
+                              right: 0,
+                              child: Container(
+                                margin: const EdgeInsets.all(10),
+                                width: SizeUtility(context).width * 0.3,
+                                height: SizeUtility(context).height,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.6),
+                                        blurRadius: 5,
+                                        spreadRadius: 4)
+                                  ],
+                                  borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      topLeft: Radius.circular(10)),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          data.title,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        IconButton(
+                                            onPressed: () {
+                                              _selectedItem.value = null;
+                                            },
+                                            icon: const Icon(Icons.close))
+                                      ],
+                                    ),
+                                    TitleValue(
+                                      title: "Start Time",
+                                      value: DateFormat("hh:mm")
+                                          .format(data.startTime),
+                                      padding: const EdgeInsets.only(left: 10),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TitleValue(
+                                      title: "End Time",
+                                      value: DateFormat("hh:mm")
+                                          .format(data.endTime),
+                                      padding: const EdgeInsets.only(left: 10),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    data.teacher == null
+                                        ? const SizedBox()
+                                        : TitleValue(
+                                            title: "Teacher",
+                                            value: data.teacher ?? "",
+                                            padding:
+                                                const EdgeInsets.only(left: 10),
+                                          ),
+                                  ],
+                                ),
+                              ));
+                    }),
+              ],
+            )));
+  }
+}
 
+class TitleValue extends StatelessWidget {
+  final String title;
+  final String value;
+  final EdgeInsets? padding;
+
+  const TitleValue(
+      {super.key, required this.title, required this.value, this.padding});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: padding,
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(color: Colors.grey, fontSize: 16),
+              ),
+              Text(
+                value,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TimeTableItem extends StatelessWidget {
+  final PeriodModel e;
+  final Function onTap;
+
+  const TimeTableItem({super.key, required this.e, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Container(
+        margin: const EdgeInsets.all(4),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+        decoration: BoxDecoration(
+            color: e.isBreak == true
+                ? Colors.green.withOpacity(0.6)
+                : e.isPeriod == true
+                    ? Colors.blue.withOpacity(0.5)
+                    : Colors.white,
+            borderRadius: BorderRadius.circular(10)),
+        height: e.isPeriod == true ? 30 : 60,
+        width: e.isBreak == true ? 50 : 80,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              e.isBreak == true
+                  ? e.isPeriod == true
+                      ? "Break"
+                      : "${e.endTime.difference(e.startTime).inMinutes} Min"
+                  : e.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: e.isPeriod != true || e.isBreak != true
+                    ? Colors.black
+                    : Colors.white,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+class PeriodModel {
+  final String title;
+  final bool? isPeriod;
+  final DateTime startTime;
+  final DateTime endTime;
+  final Day? day;
+  final String? teacher;
+  final bool? isBreak;
+
+  PeriodModel(
+      {required this.title,
+      required this.startTime,
+      required this.endTime,
+      this.teacher,
+      this.isBreak,
+      this.isPeriod,
+      this.day})
+      : assert(isPeriod != true || day == null,
+            "if is period is true don't enter day"),
+        assert(isPeriod == true || day != null,
+            "if not a period day must be entered ");
 }

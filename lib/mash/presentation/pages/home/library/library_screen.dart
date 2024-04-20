@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
@@ -21,12 +24,13 @@ class LibraryScreen extends StatelessWidget {
   libraryBody() {
     List list =[AppAssets.libImageAcademic,AppAssets.libImageNonAcademic,AppAssets.libImageResearch,AppAssets.libImageUserActivity];
     List titleList = ['ACADEMIC','NON ACADEMIC','RESEARCH', 'USER ACTIVITY'];
+    List routes = [AppPages.academicLibraryScreen,];
       return Padding(
         padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
         child: ListView.builder(
             itemCount: 4,
             itemBuilder: (context,index){
-          return libraryCard((){},titleList[index],list[index]);
+          return libraryCard(()=> GoRouter.of(context).pushNamed(routes[0]),titleList[index],list[index]);
         }),
       );
   }
@@ -40,8 +44,8 @@ class LibraryScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: const [BoxShadow(
-                color: Colors.grey,
+              boxShadow:  [BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
                 blurRadius: 5.0,
               ),],
             ),

@@ -5,7 +5,7 @@ import 'package:mash/mash/presentation/pages/dashboard/student_dashboard_page.da
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/home_work_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/library_screen.dart';
-import 'package:mash/mash/presentation/pages/home/timeTable/time_table.screen.dart';
+// import 'package:mash/mash/presentation/pages/h/ome/timeTable/time_table.screen.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
 
 import '../../manager/cubit/bottom_navigation_cubit.dart';
@@ -32,7 +32,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const screens = [
       ParentDashBoard(),
-      TimeTable(),
+      // TimeTable(),
+      HomeWork(),
       HomeWork(),
       LibraryScreen(),
       AddOnScreen()

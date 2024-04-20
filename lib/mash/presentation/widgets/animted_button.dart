@@ -21,7 +21,10 @@ void main() {
                       _isLoading.notifyListeners();
                     });
                   },
-                  title: const Text("Login"),
+                  title: const Text(
+                    "Login",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   isLoading: data,
                 );
               }),

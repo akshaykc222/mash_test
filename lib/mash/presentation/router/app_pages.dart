@@ -7,4 +7,7 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
+  static const academicLibraryScreen = '/academicLibraryScreen';
+  static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
+
 }
