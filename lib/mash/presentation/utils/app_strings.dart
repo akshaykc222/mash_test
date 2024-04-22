@@ -7,5 +7,11 @@ class AppStrings {
   static const addOnScreenTItle = "ADD ONS";
   static const viewCalendar = 'View Calendar';
   static const addOnExplore = 'Explore';
-  static const perfomance = 'PERFOMANCE';
+  static const perfomance = 'Perfomance';
+  static List<String> dashboardPerfomanceList = <String>[
+    'ANNUAL ASSESSMENT',
+    'FIRST TERMINAL ASSESSMENT',
+    'FIRST PERIODIC ASSESSMENT',
+    'SECOND PERIODIC ASSESSMENT'
+  ];
 }

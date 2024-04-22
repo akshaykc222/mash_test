@@ -11,6 +11,7 @@ import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -112,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Powered By',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w400,
                   fontSize: AppTextSize.t13,
                 ),
               ),
@@ -199,22 +200,29 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _userIDTextField() {
     return CommonTextField(
-      title: 'User Id',
-      prefix: const Icon(
-        LineIcons.user,
-      ),
-    );
+        title: 'User Id',
+        prefix: Padding(
+          padding: const EdgeInsets.all(12),
+          child: assetFromSvg(
+            AppAssets.user,
+            height: 20,
+            color: AppColors.black,
+          ),
+        ));
   }
 
   Widget _passwordTextField() {
     return CommonTextField(
-      title: 'Password',
-      passwordField: true,
-      prefix: const Icon(
-        LineIcons.lock,
-        color: Colors.black,
-      ),
-    );
+        title: 'Password',
+        passwordField: true,
+        prefix: Padding(
+          padding: const EdgeInsets.all(12),
+          child: assetFromSvg(
+            AppAssets.password,
+            height: 20,
+            color: AppColors.black,
+          ),
+        ));
   }
 
   sizedBox(height) {
