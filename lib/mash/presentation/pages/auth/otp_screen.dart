@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:otp_text_field/otp_text_field.dart';
@@ -98,7 +99,7 @@ class _OtpScreenState extends State<OtpScreen> {
       child: TextButton(
           onPressed: () => GoRouter.of(context).pop(),
           child: const Text(
-            'Back to login?',
+            AppStrings.backToLogin,
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 15,
@@ -117,7 +118,7 @@ class _OtpScreenState extends State<OtpScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Powered By',
+                AppStrings.backToLogin,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
@@ -150,7 +151,7 @@ class _OtpScreenState extends State<OtpScreen> {
     return const Align(
       alignment: Alignment.topCenter,
       child: Text(
-        'Enter 4 Digit OTP',
+        AppStrings.enter4DigitOtp,
         style: TextStyle(
             letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
       ),
@@ -163,7 +164,7 @@ class _OtpScreenState extends State<OtpScreen> {
             fixedSize: const Size(double.infinity, 50)),
         onPressed: () => dialogBox(),
         child: const Text(
-          'SUBMIT OTP',
+          AppStrings.submitOtp,
         ));
   }
 
@@ -194,7 +195,7 @@ class _OtpScreenState extends State<OtpScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Enter OTP'),
+          title: const Text(AppStrings.enterOtp),
           content: StatefulBuilder(builder: (context, setState) {
             return Column(
               mainAxisSize: MainAxisSize.min,
@@ -213,7 +214,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 spacer20,
                 ElevatedButton(
                   onPressed: () {},
-                  child: const Text('Submit'),
+                  child: const Text(AppStrings.submit),
                 ),
               ],
             );
@@ -247,7 +248,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 });
               },
               child: const Text(
-                'Resend',
+                AppStrings.resend,
                 style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
               ),
             ),

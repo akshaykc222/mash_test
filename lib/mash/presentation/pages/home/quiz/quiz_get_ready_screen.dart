@@ -1,8 +1,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 class QuizGetReadyScreen extends StatelessWidget {
   const QuizGetReadyScreen({super.key});
@@ -18,14 +22,7 @@ class QuizGetReadyScreen extends StatelessWidget {
     var size = MediaQuery.sizeOf(context);
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.center,
-          end: Alignment.bottomRight,
-          colors: [
-            Colors.purple,
-            Color(0xfffe439e),
-          ],
-        ),
+        gradient: AppColors.quizBgGradient,
       ),
       height: size.height,
       width: size.width,
@@ -51,7 +48,7 @@ class QuizGetReadyScreen extends StatelessWidget {
                           alignment: Alignment.bottomCenter,
                           child: IconButton(
                             style: IconButton.styleFrom(backgroundColor: Colors.white),
-                            onPressed: (){},
+                            onPressed: ()=> GoRouter.of(context).pushNamed(AppPages.quizQuestionPage),
                             icon: const Padding(
                               padding:  EdgeInsets.all(8.0),
                               child: Icon(Icons.arrow_forward_ios,color: Colors.purple,),
@@ -64,9 +61,9 @@ class QuizGetReadyScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text('Get Ready for\nDaily Quiz',textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Comfortaa',color: Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
+                            Text(AppStrings.getReadyTitle,textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Comfortaa',color: Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
                             spacer10,
-                            Text('your daily Quiz is ready for\n you, wish you best of luck',style: TextStyle(fontFamily: 'Comfortaa'),)
+                            Text(AppStrings.getReadyDesc,style: TextStyle(fontFamily: 'Comfortaa'),)
                           ],
                         ),
                       ),

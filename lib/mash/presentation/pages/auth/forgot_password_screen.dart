@@ -7,6 +7,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
@@ -95,7 +96,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       child: TextButton(
           onPressed: () => GoRouter.of(context).pop(),
           child: const Text(
-            'Back to login?',
+            AppStrings.backToLogin,
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 15,
@@ -120,7 +121,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Powered By',
+                AppStrings.poweredBy,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
@@ -153,7 +154,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return const Align(
       alignment: Alignment.topCenter,
       child: Text(
-        'Reset Your Password.',
+        AppStrings.resetPassword,
         style: TextStyle(
             letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
       ),
@@ -167,13 +168,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         onPressed: () =>
             GoRouter.of(context).pushNamed(AppPages.otpScreen),
         child: const Text(
-          'SEND OTP',
+          AppStrings.sendotp,
         ));
   }
 
   Widget _userIDTextField() {
     return CommonTextField(
-      title: 'User Id',
+      title: AppStrings.userId,
       prefix: const Icon(
         LineIcons.user,
       ),
@@ -182,7 +183,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   Widget _phoneNumberField() {
     return CommonTextField(
-      title: 'Registered Phone Number',
+      title: AppStrings.registeredPhoneNumber,
       prefix: const Icon(
         LineIcons.phone,
         color: Colors.black,

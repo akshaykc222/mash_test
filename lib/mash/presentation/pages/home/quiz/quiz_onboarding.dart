@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 
 void main() {
@@ -47,13 +48,13 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
   }
 
   onBoardingBody() {
-    List<Widget> _pages = [
-      onBoardingPages(AppAssets.onBoard1, "Let’s Start the Game",
-          'You earn points as you play and\ncan watch the scores of other\nConsentence real time'),
-      onBoardingPages(AppAssets.onBoard2, "Learn more in\ngame mode",
-          'Immerse yourself in knowledge of\nleranship in game mode where\neducation meets entertainments'),
-      onBoardingPages(AppAssets.onBoard3, "Get interesting facts\nabout Quiz",
-          'Discover intriguing facts in our\nQuiz where knowledge meets\nexcitements !')
+    List<Widget> onBoardingPageList = [
+      onBoardingPages(AppAssets.onBoard1, AppStrings.onBoard1Title,
+         AppStrings.onBoard1Desc),
+      onBoardingPages(AppAssets.onBoard2, AppStrings.onBoard2Title,
+          AppStrings.onBoard1Desc),
+      onBoardingPages(AppAssets.onBoard3, AppStrings.onBoard3Title,
+          AppStrings.onBoard3Desc)
     ];
     var size = MediaQuery.sizeOf(context);
     return Container(
@@ -72,7 +73,7 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
       child: Stack(
         children: [
           PageView.builder(
-            itemCount: _pages.length,
+            itemCount: onBoardingPageList.length,
             onPageChanged: (int page) {
               setState(() {
                 currentPage = page;
@@ -81,7 +82,7 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
             scrollDirection: Axis.horizontal,
             controller: _controller,
             itemBuilder: (BuildContext context, int index) {
-              return _pages[index % _pages.length];
+              return onBoardingPageList[index % onBoardingPageList.length];
             },
           ),
           Positioned(
@@ -95,7 +96,7 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List<Widget>.generate(
-                        _pages.length,
+                        onBoardingPageList.length,
                         (index) => Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),

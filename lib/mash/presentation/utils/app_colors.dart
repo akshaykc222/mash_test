@@ -126,6 +126,22 @@ class AppColors {
   static const LinearGradient loginButtonGradient = LinearGradient(
     colors: [Color(0xffA8FED9), Color(0xff00F1FF)],
   );
+  static const LinearGradient quizBgGradient = LinearGradient(
+    begin: Alignment.center,
+    end: Alignment.bottomRight,
+    colors: [
+      Colors.purple,
+      Color(0xfffe439e),
+    ],
+  );
+  static const LinearGradient quizAnswerGradient = LinearGradient(
+    begin: Alignment.center,
+    end: Alignment.centerRight,
+    colors: [
+      Colors.purple,
+      Color(0xfffe439e),
+    ],
+  );
 }
 
 extension HexColor on Color {

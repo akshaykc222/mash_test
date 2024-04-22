@@ -10,6 +10,7 @@ import 'package:mash/mash/presentation/pages/home/homeWork/home_work_screen.dart
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -92,6 +93,10 @@ class AppRouteManager {
       path: AppPages.quizGetReadyScreen,
       name: AppPages.quizGetReadyScreen,
       builder: (context, state) => const QuizGetReadyScreen(),
+    ),GoRoute(
+      path: AppPages.quizQuestionPage,
+      name: AppPages.quizQuestionPage,
+      builder: (context, state) => const QuizQuestionPage(),
     ),
     GoRoute(
       path: AppPages.homeWorkDetailsScreen,

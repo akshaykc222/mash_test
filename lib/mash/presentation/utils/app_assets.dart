@@ -17,6 +17,8 @@ class AppAssets {
   static const quizGetReadyBg = 'assets/images/quiz_get_ready_bg.png';
   static const quizGetReadyCard = 'assets/images/quiz_get_ready_bottom_card.png';
   static const quizGetReadyBoyImage = 'assets/images/quiz_get_ready_boy_image.png';
+  static const quizQuestionScreenBG = 'assets/images/quiz_question_bg.png';
+  static const quizFinishBoy = 'assets/images/quiz_finish_boy.png';
 
 
   // Icons
