@@ -199,7 +199,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       appType: '1')));
               // }
             },
-            title: const Text("Sign in"),
+            title: Text(
+              "Sign in",
+              style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
             isLoading: state.loginResponse.status == Status.LOADING);
       },
     );
