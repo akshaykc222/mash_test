@@ -11,5 +11,6 @@ class AppPages {
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';
+  static const quizQuestionPage = '/quizQuestionScreen';
 
 }
