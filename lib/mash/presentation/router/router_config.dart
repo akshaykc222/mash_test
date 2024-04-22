@@ -11,7 +11,6 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
-
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/home/home_screen.dart';
@@ -28,7 +27,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.quizOnBoardScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -87,7 +86,8 @@ class AppRouteManager {
       path: AppPages.quizOnBoardScreen,
       name: AppPages.quizOnBoardScreen,
       builder: (context, state) => const QuizOnBoarding(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.quizGetReadyScreen,
       name: AppPages.quizGetReadyScreen,
       builder: (context, state) => const QuizGetReadyScreen(),

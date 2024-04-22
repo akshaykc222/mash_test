@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 abstract class ConnectionChecker {
@@ -5,6 +6,8 @@ abstract class ConnectionChecker {
   Stream<InternetConnectionStatus> getConnectionInfo();
 }
 
+@LazySingleton(as: ConnectionChecker)
+@injectable
 class ConnectionCheckerImpl extends ConnectionChecker {
   final InternetConnectionChecker connectionChecker;
 
