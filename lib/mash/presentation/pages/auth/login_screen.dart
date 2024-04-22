@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:line_icons/line_icons.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
@@ -10,6 +13,7 @@ import 'package:mash/mash/presentation/utils/app_size.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
+import 'package:mash/mash/presentation/widgets/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
@@ -30,15 +34,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late AuthBloc _authBloc;
   @override
   void initState() {
-    // TODO: implement initState
+    _authBloc = AuthBloc.get(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: _loginBody(context),
@@ -46,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
@@ -181,20 +184,30 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _loginButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            fixedSize: Size(double.infinity, SizeConfig.height(50))),
-        onPressed: () {},
-        child: Text(
-          'SIGN IN',
-          style: TextStyle(
-            fontSize: AppTextSize.t16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        return AnimatedSharedButton(
+            onTap: () {
+              // if (state.loginResponse.status == Status.INITIAL) {
+              _authBloc.add(AuthEvent.login(
+                  loginRequest: LoginRequest(
+                      userId: '1',
+                      password: '1',
+                      deviceId: '1',
+                      appType: '1')));
+              GoRouter.of(context).goNamed(AppPages.home);
+
+              // }
+            },
+            title: Text(
+              "Sign in",
+              style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+            isLoading: state.loginResponse.status == Status.LOADING);
+      },
     );
   }
 

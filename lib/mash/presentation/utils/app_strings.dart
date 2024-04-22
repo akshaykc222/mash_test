@@ -8,6 +8,9 @@ class AppStrings {
   static const viewCalendar = 'View Calendar';
   static const addOnExplore = 'Explore';
   static const perfomance = 'Perfomance';
+  static const selectDetails = 'SELECT DETAILS';
+  static const String chooseSubject = 'choose subject';
+
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',
     'FIRST TERMINAL ASSESSMENT',

@@ -93,7 +93,7 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
             onTap: () => widget.onTap(),
             child: Container(
                 width: MediaQuery.sizeOf(context).width,
-                height: 60,
+                height: 50,
                 decoration: const BoxDecoration(),
                 child: Stack(
                   children: [
@@ -102,7 +102,7 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
                       child: FractionallySizedBox(
                         widthFactor: _colorSizeAnimation.value,
                         child: Container(
-                          height: 60,
+                          height: 50,
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
                               color: AppColors.primaryColor,

@@ -31,8 +31,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const screens = [
       ParentDashBoard(),
-      HomeWork(),
-      HomeWork(),
+      HomeWorkScreen(),
+      HomeWorkScreen(),
       LibraryScreen(),
       AddOnScreen()
     ];

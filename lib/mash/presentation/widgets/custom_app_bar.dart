@@ -15,7 +15,7 @@ PreferredSize customAppbar(BuildContext context) {
         actions: [
           assetFromSvg(AppAssets.notificationIcon),
           spacer20,
-          Icon(Icons.menu),
+          const Icon(Icons.menu),
         ],
       ),
     ),

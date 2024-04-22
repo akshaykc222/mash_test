@@ -4,6 +4,7 @@ class ResponseClassify<T> {
   String? error;
 
   ResponseClassify.loading() : status = Status.LOADING;
+  ResponseClassify.initial() : status = Status.INITIAL;
 
   ResponseClassify.completed(this.data) : status = Status.COMPLETED;
 
@@ -15,4 +16,4 @@ class ResponseClassify<T> {
   }
 }
 
-enum Status { LOADING, COMPLETED, ERROR }
+enum Status { LOADING, COMPLETED, ERROR, INITIAL }
