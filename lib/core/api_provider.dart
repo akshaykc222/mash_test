@@ -131,6 +131,7 @@ class ApiProvider {
 
   Map<String, dynamic> classifyResponse(Response response) {
     // try {
+    print(response.data);
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;
     String errorMsg = "";

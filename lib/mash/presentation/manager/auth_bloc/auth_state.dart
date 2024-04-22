@@ -6,5 +6,5 @@ class AuthState with _$AuthState {
           {required ResponseClassify<AuthResponseEntity> loginResponse}) =
       _AuthState;
   factory AuthState.initial() =>
-      AuthState(loginResponse: ResponseClassify.loading());
+      AuthState(loginResponse: ResponseClassify.initial());
 }
