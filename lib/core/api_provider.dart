@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
-
+import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
-
 import 'custom_exception.dart';
 
+@Singleton()
 class ApiProvider {
   late Dio _dio;
 

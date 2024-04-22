@@ -27,13 +27,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
-  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -44,35 +43,36 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
             top: 0,
             right: 0,
-            child: SvgPicture.asset(AppAssets.loginStackImage,color: Colors.purple.withOpacity(0.5),)),
+            child: SvgPicture.asset(
+              AppAssets.loginStackImage,
+              color: Colors.purple.withOpacity(0.5),
+            )),
         Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              sizedBox(20.0),
-              _mashIcon(),
-              sizedBox(80.0),
-              _welcomeText(),
-              sizedBox(90.0),
-              _userIDTextField(),
-              sizedBox(30.0),
-              _passwordTextField(),
-              sizedBox(10.0),
-              _forgotPassWordText(context),
-              sizedBox(60.0),
-              _loginButton(),
-              sizedBox(50.0),
-              _footer(context)
-            ],
-          )
-        ),
+            padding: const EdgeInsets.all(20.0),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                sizedBox(20.0),
+                _mashIcon(),
+                sizedBox(80.0),
+                _welcomeText(),
+                sizedBox(90.0),
+                _userIDTextField(),
+                sizedBox(30.0),
+                _passwordTextField(),
+                sizedBox(10.0),
+                _forgotPassWordText(context),
+                sizedBox(60.0),
+                _loginButton(),
+                sizedBox(50.0),
+                _footer(context)
+              ],
+            )),
       ],
     );
   }
@@ -150,8 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
-  
-
 
   Widget _loginButton() {
     return ElevatedButton(
@@ -183,8 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
-  sizedBox(height){
+  sizedBox(height) {
     return SizedBox(
       height: SizeConfig.height(height),
     );

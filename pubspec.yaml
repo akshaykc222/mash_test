@@ -33,6 +33,14 @@ dependencies:
   cached_network_image:
   fl_chart:
   intl: ^0.19.0
+  dartz: ^0.10.1
+  json_annotation: ^4.8.1
+  dev: ^1.0.0
+  mockito: ^5.4.4
+  equatable: ^2.0.5
+  injectable: ^2.4.1
+  injectable_generator: ^2.6.1
+
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +49,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   freezed: ^2.5.2
   build_runner: ^2.4.9
+  json_serializable: ^6.7.1
 
 
 flutter:
