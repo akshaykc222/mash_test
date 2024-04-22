@@ -4,11 +4,14 @@ import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/app_size.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _loginBody(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
@@ -54,22 +58,24 @@ class _LoginScreenState extends State<LoginScreen> {
             )),
         Padding(
             padding: const EdgeInsets.all(20.0),
-            child: ListView(
-              shrinkWrap: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+
+              // shrinkWrap: true,
               children: [
-                sizedBox(20.0),
+                const Spacer(),
                 _mashIcon(),
-                sizedBox(80.0),
+                const Spacer(),
                 _welcomeText(),
-                sizedBox(90.0),
+                const Spacer(),
                 _userIDTextField(),
                 sizedBox(30.0),
                 _passwordTextField(),
-                sizedBox(10.0),
+                spacer10,
                 _forgotPassWordText(context),
-                sizedBox(60.0),
+                const Spacer(),
                 _loginButton(),
-                sizedBox(50.0),
+                const Spacer(),
                 _footer(context)
               ],
             )),
@@ -77,18 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Align _forgotPassWordText(BuildContext context) {
+  Widget _forgotPassWordText(BuildContext context) {
     return Align(
       alignment: Alignment.topRight,
       child: TextButton(
           onPressed: () {
             GoRouter.of(context).pushNamed(AppPages.forgotPassword);
           },
-          child: const Text(
+          child: Text(
             'Forgot Password ?',
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: AppTextSize.t15,
               fontWeight: FontWeight.w600,
             ),
           )),
@@ -98,16 +104,17 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _footer(BuildContext context) {
     return SizedBox(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text('Version:10.6'),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Powered By',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
+                  fontSize: AppTextSize.t13,
                 ),
               ),
               spacerWidth10,
@@ -134,51 +141,88 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _welcomeText() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'WELCOME',
+          'Sign In',
           style: TextStyle(
-              letterSpacing: 2, fontSize: 35, fontWeight: FontWeight.w700),
+            // letterSpacing: 0,
+            fontSize: AppTextSize.t30,
+            fontWeight: FontWeight.bold,
+            height: 1,
+          ),
         ),
         Text(
-          'Sign in to Continue.',
+          'Sign in to your Registered Account.',
           style: TextStyle(
-              letterSpacing: 2, fontSize: 30, fontWeight: FontWeight.w700),
+            // letterSpacing: 2,
+            fontSize: AppTextSize.t14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.greyText.withOpacity(0.8),
+
+            height: 2,
+          ),
         ),
+        spacer10,
+        Container(
+          height: 5,
+          width: 50,
+          decoration: BoxDecoration(
+              color: AppColors.primaryColor,
+              gradient: LinearGradient(colors: [
+                AppColors.primaryColor,
+                AppColors.primaryColor.withOpacity(0.5),
+              ]),
+              borderRadius: BorderRadius.circular(8)),
+        )
       ],
     );
   }
 
   Widget _loginButton() {
-    return ElevatedButton(
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            fixedSize: const Size(double.infinity, 50)),
+            fixedSize: Size(double.infinity, SizeConfig.height(50))),
         onPressed: () {},
-        child: const Text(
+        child: Text(
           'SIGN IN',
-        ));
+          style: TextStyle(
+            fontSize: AppTextSize.t16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _userIDTextField() {
     return CommonTextField(
-      title: 'User Id',
-      prefix: const Icon(
-        LineIcons.user,
-      ),
-    );
+        title: 'User Id',
+        prefix: Padding(
+          padding: const EdgeInsets.all(12),
+          child: assetFromSvg(
+            AppAssets.user,
+            height: 20,
+            color: AppColors.black,
+          ),
+        ));
   }
 
   Widget _passwordTextField() {
     return CommonTextField(
-      title: 'Password',
-      passwordField: true,
-      prefix: const Icon(
-        LineIcons.lock,
-        color: Colors.black,
-      ),
-    );
+        title: 'Password',
+        passwordField: true,
+        prefix: Padding(
+          padding: const EdgeInsets.all(12),
+          child: assetFromSvg(
+            AppAssets.password,
+            height: 20,
+            color: AppColors.black,
+          ),
+        ));
   }
 
   sizedBox(height) {

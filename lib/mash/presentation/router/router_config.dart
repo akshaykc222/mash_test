@@ -3,9 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
-import 'package:mash/mash/presentation/pages/dashboard/attendence_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
@@ -23,7 +27,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.quizOnBoardScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -67,6 +71,25 @@ class AppRouteManager {
       path: AppPages.addOnScreen,
       name: AppPages.addOnScreen,
       builder: (context, state) => const AddOnScreen(),
+    ),
+    GoRoute(
+      path: AppPages.academicLibraryScreen,
+      name: AppPages.academicLibraryScreen,
+      builder: (context, state) => const AcademicsScreen(),
+    ),
+    GoRoute(
+      path: AppPages.academicDetailLibraryScreen,
+      name: AppPages.academicDetailLibraryScreen,
+      builder: (context, state) => const AcademicDetailScreen(),
+    ),
+    GoRoute(
+      path: AppPages.quizOnBoardScreen,
+      name: AppPages.quizOnBoardScreen,
+      builder: (context, state) => const QuizOnBoarding(),
+    ),GoRoute(
+      path: AppPages.quizGetReadyScreen,
+      name: AppPages.quizGetReadyScreen,
+      builder: (context, state) => const QuizGetReadyScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
