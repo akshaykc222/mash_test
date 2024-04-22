@@ -8,6 +8,8 @@ import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
@@ -25,7 +27,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.quizOnBoardScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -77,6 +79,15 @@ class AppRouteManager {
       path: AppPages.academicDetailLibraryScreen,
       name: AppPages.academicDetailLibraryScreen,
       builder: (context, state) => const AcademicDetailScreen(),
+    ),
+    GoRoute(
+      path: AppPages.quizOnBoardScreen,
+      name: AppPages.quizOnBoardScreen,
+      builder: (context, state) => const QuizOnBoarding(),
+    ),GoRoute(
+      path: AppPages.quizGetReadyScreen,
+      name: AppPages.quizGetReadyScreen,
+      builder: (context, state) => const QuizGetReadyScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

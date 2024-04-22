@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
@@ -7,7 +8,7 @@ import 'package:mash/mash/presentation/utils/app_theme.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
+    theme: AppThemes.quizTheme,
     debugShowCheckedModeBanner: false,
     home: const QuizOnBoarding(),
   ));
@@ -41,25 +42,22 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: IconButton(
-        onPressed: () {},
-        icon: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(
-            Icons.arrow_forward_ios,
-            color: Colors.purple,
-          ),
-        ),
-        style: IconButton.styleFrom(backgroundColor: Colors.white),
-      ),
       body: onBoardingBody(),
     );
   }
 
   onBoardingBody() {
+    List<Widget> _pages = [
+      onBoardingPages(AppAssets.onBoard1, "Let’s Start the Game",
+          'You earn points as you play and\ncan watch the scores of other\nConsentence real time'),
+      onBoardingPages(AppAssets.onBoard2, "Learn more in\ngame mode",
+          'Immerse yourself in knowledge of\nleranship in game mode where\neducation meets entertainments'),
+      onBoardingPages(AppAssets.onBoard3, "Get interesting facts\nabout Quiz",
+          'Discover intriguing facts in our\nQuiz where knowledge meets\nexcitements !')
+    ];
     var size = MediaQuery.sizeOf(context);
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.center,
           end: Alignment.bottomRight,
@@ -73,21 +71,84 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
       width: size.width,
       child: Stack(
         children: [
-          PageView(
-            onPageChanged: (value) {},
+          PageView.builder(
+            itemCount: _pages.length,
+            onPageChanged: (int page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
             scrollDirection: Axis.horizontal,
             controller: _controller,
-            children: [
-              onBoardingPages(AppAssets.onBoard1, "Let’s Start the Game",
-                  'You earn points as you play and can watch the scores of other Consentence real time'),
-              onBoardingPages(AppAssets.onBoard2, "Learn more in\ngame mode",
-                  'You earn points as you play and can watch the scores of other Consentence real time'),
-              onBoardingPages(
-                  AppAssets.onBoard3,
-                  "Get interesting facts\nabout Quiz",
-                  'You earn points as you play and can watch the scores of other Consentence real time')
-            ],
+            itemBuilder: (BuildContext context, int index) {
+              return _pages[index % _pages.length];
+            },
           ),
+          Positioned(
+              bottom: 100,
+              right: 0,
+              left: 0,
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List<Widget>.generate(
+                        _pages.length,
+                        (index) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: InkWell(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: currentPage == index
+                                        ? Colors.white
+                                        : Colors.purple.shade400,
+                                    borderRadius: BorderRadius.circular(15)
+                                  ),
+                                  width: 25,
+                                  height: 5,
+                                ),
+                                onTap: () {
+                                  _controller.animateToPage(index,
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeIn);
+                                },
+                              ),
+                            )),
+                  ),
+                ),
+              )),
+          Positioned(
+              right: 20,
+              bottom: 20,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    elevation: 10,
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                onPressed: ()=> GoRouter.of(context).pushNamed(AppPages.quizGetReadyScreen),
+                child: const Padding(
+                  padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Skip',
+                        style: TextStyle(fontSize: 20, color: Colors.purple),
+                      ),
+                      spacerWidth10,
+                      Icon(
+                        Icons.keyboard_double_arrow_right,
+                        color: Colors.purple,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
+              ))
         ],
       ),
     );
@@ -102,11 +163,11 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
           img,
           height: MediaQuery.of(context).size.height / 3.5,
         ),
-        spacer20,
+        spacer40,
         Text(
           title,
           style: const TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
+              color: Colors.white, fontSize: 28, fontWeight: FontWeight.w600),
           textAlign: TextAlign.center,
         ),
         spacer30,

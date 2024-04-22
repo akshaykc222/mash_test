@@ -20,4 +20,20 @@ class AppThemes {
       inputDecorationTheme:
           const InputDecorationTheme(border: UnderlineInputBorder()));
   ThemeData get lightTheme => ThemeData();
+
+  static ThemeData get quizTheme => ThemeData(
+      fontFamily: 'Comfortaa',
+      // textTheme: GoogleFonts.montserratTextTheme(),
+      inputDecorationTheme: const InputDecorationTheme(
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.purple),
+      )
+    // fontFamily: GoogleFonts.montserrat().fontFamily
+  );
 }

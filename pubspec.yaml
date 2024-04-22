@@ -55,5 +55,8 @@ flutter:
     - family: SofiaPro
       fonts:
         - asset: fonts/sofi_pro_regular.otf
+    - family: Comfortaa
+      fonts:
+        - asset: fonts/Comfortaa-Regular.ttf
         
   
