@@ -22,11 +22,12 @@ class AppColors {
   static Color textColor = HexColor.fromHex('#FFFFFFFF');
   static Color textErrorColor = HexColor.fromHex('#FF4624');
   static Color navigationViewBackground = HexColor.fromHex('#CC000000');
-  static Color transparent = HexColor.fromHex('#00FFFFFF');
+  static Color transparent = Colors.transparent;
   static Color badRed = HexColor.fromHex('#FF0000');
   static Color transparentLogin = HexColor.fromHex('#80000000');
   static Color green2 = HexColor.fromHex('#32CD30');
   static Color grey200 = HexColor.fromHex('#999999');
+  static Color greyClr200 = Colors.grey.shade200;
   static Color violet = HexColor.fromHex('#873FC6');
   static Color quizhead = HexColor.fromHex('#F5309C');
   static Color violet100 = HexColor.fromHex('#8800FF');

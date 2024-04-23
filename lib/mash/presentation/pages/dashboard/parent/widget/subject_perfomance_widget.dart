@@ -15,7 +15,7 @@ class SubjectPerfomanceWidget extends StatelessWidget {
         _title(),
         spacer20,
         ListView.separated(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           itemCount: 5,

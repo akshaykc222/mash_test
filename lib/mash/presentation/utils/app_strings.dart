@@ -41,6 +41,7 @@ class AppStrings {
   static const String homeWorkDetails = 'Home Work Details';
   static const String wordOfTheDay = 'Word Of The Day';
   static const String newsAndArticles = 'News & Articles';
+  static const String selectProfile = 'Select Profile';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',
