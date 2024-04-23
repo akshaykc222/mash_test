@@ -42,6 +42,7 @@ class AppColors {
   static Color progressBlue = HexColor.fromHex('#948BFF');
   static Color textColorNew = HexColor.fromHex('#5D5D5D');
   static Color headText = HexColor.fromHex('#222222');
+  static Color grey600 = Colors.grey.shade600;
   static Color gradeTxt = HexColor.fromHex('#AB7EFF');
   static Color violetSmooth = HexColor.fromHex('#8543FF');
   static Color greyText = HexColor.fromHex('#6F6F6F');

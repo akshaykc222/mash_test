@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_student_detail_widget.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_strings.dart';
@@ -54,29 +55,43 @@ class ParentDashboardTopSection extends StatelessWidget {
   }
 
   Widget _buildSelectStudentWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        const Icon(Icons.arrow_back_ios),
-        _buildSelectStudentProfileWidget(),
-        _buildSelectStudentProfileWidget(),
-        const Icon(Icons.arrow_forward_ios),
-      ],
+    return ListTile(
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Image.asset(
+          'assets/images/student_dummy.png',
+          width: 50,
+          height: 50,
+          fit: BoxFit.cover,
+        ),
+      ),
+      title: Text('Title Text'),
+      subtitle: Text('Subtitle Text'),
+      trailing: Text(
+        'Switch account',
+        style: TextStyle(),
+      ),
     );
+    //   Row(
+    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //   children: [
+    //     _buildSelectStudentProfileWidget(),
+    //     _buildSelectStudentProfileWidget(width: 70, height: 70),
+    //     _buildSelectStudentProfileWidget(),
+    //   ],
+    // );
   }
 
-  Widget _buildSelectStudentProfileWidget() {
+  Widget _buildSelectStudentProfileWidget(
+      {double height = 50, double? width = 50}) {
     return Container(
-      height: 50,
-      width: 50,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(
-          color: AppColors.primaryColor,
-          width: 3,
-        ),
         image: const DecorationImage(
           image: AssetImage('assets/images/student_dummy.png'),
+          fit: BoxFit.cover,
         ),
       ),
     );

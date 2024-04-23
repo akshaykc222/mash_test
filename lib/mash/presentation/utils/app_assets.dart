@@ -15,11 +15,13 @@ class AppAssets {
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
   static const quizGetReadyBg = 'assets/images/quiz_get_ready_bg.png';
-  static const quizGetReadyCard = 'assets/images/quiz_get_ready_bottom_card.png';
-  static const quizGetReadyBoyImage = 'assets/images/quiz_get_ready_boy_image.png';
+  static const quizGetReadyCard =
+      'assets/images/quiz_get_ready_bottom_card.png';
+  static const quizGetReadyBoyImage =
+      'assets/images/quiz_get_ready_boy_image.png';
   static const quizQuestionScreenBG = 'assets/images/quiz_question_bg.png';
   static const quizFinishBoy = 'assets/images/quiz_finish_boy.png';
-
+  static const tekieImg = 'assets/images/tekie_img.png';
 
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';

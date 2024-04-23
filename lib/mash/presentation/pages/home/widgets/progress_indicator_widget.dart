@@ -58,11 +58,34 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget>
                   // strokeAlign: BorderSide.strokeAlignInside,
                   strokeCap: StrokeCap.round,
                 )
-              : LinearProgressIndicator(
-                  value: initialAnimation.value,
-                  semanticsLabel: 'Linear progress indicator',
-                  color: AppColors.gradient,
-                  backgroundColor: Colors.grey,
+              : Container(
+                  height: 20,
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: AppColors.primaryColor,
+                        width: 0.1,
+                      )
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.grey.withOpacity(0.5),
+                      //     spreadRadius: 1,
+                      //     blurRadius: 2,
+                      //     offset:
+                      //         const Offset(0, 2), // changes position of shadow
+                      //   ),
+                      // ],
+                      ),
+                  child: LinearProgressIndicator(
+                    borderRadius: BorderRadius.circular(30),
+                    value: initialAnimation.value,
+                    semanticsLabel: 'Linear progress indicator',
+                    backgroundColor: Colors.grey.withOpacity(0.3),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                        AppColors.primaryColor.withOpacity(0.5)),
+                  ),
                 );
         });
   }
