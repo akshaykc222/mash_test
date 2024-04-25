@@ -21,7 +21,7 @@ class _CustomAnimatedWidgetState extends State<CustomAnimatedWidget>
   @override
   void initState() {
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _fadeAnimation = Tween<double>(begin: 0, end: 1)
         .chain(CurveTween(curve: Curves.easeIn))
         .animate(_controller);

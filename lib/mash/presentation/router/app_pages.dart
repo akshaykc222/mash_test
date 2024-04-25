@@ -9,13 +9,21 @@ class AppPages {
   static const home = '/home';
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
+
+  //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';
-
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
   static const quizQuestionPage = '/quizQuestionScreen';
+  static const quizCompletedScreen = '/quizCompletedScreen';
+  static const quizProfileScreen = '/quizProfileScreen';
+  static const quizRankingScreen = '/quizRankingScreen';
+
+  //leave
+  static const leaveScreen = '/leaveScreen';
+
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';

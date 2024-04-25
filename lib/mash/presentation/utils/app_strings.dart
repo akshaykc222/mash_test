@@ -20,6 +20,9 @@ class AppStrings {
   static const submit = "Submit";
   static const resend = "Resend";
   static const submitOtp = "SUBMIT OTP";
+
+
+  //quiz
   static const onBoard1Title = "Let’s Start the Game";
   static const onBoard1Desc =
       "You earn points as you play and\ncan watch the scores of other\nConsentence real time";
@@ -32,6 +35,9 @@ class AppStrings {
   static const getReadyTitle = "Get Ready for\nDaily Quiz";
   static const getReadyDesc =
       'your daily Quiz is ready for\n you, wish you best of luck';
+  static const congrats = 'Congrats !';
+
+
   static const selectDetails = 'SELECT DETAILS';
   static const String chooseSubject = 'choose subject';
   static const String fromDate = 'from Date';
