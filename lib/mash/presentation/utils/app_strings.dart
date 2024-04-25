@@ -42,6 +42,13 @@ class AppStrings {
   static const String wordOfTheDay = 'Word Of The Day';
   static const String newsAndArticles = 'News & Articles';
   static const String selectProfile = 'Select Profile';
+  static const String timeTable = 'Time Table';
+  static const String notes = 'Notes';
+  static const String addNote = 'Add Note';
+  static const String createNote = 'Create Note';
+  static const String note = 'Note';
+  static const String uploadFile = 'Upload File';
+  static const String documentUploadText = 'If any documents upload here';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',

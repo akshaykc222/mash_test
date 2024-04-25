@@ -22,12 +22,14 @@ class NoteScreen extends StatelessWidget {
       body: _body(context),
       floatingActionButton: FloatingActionButton(
         elevation: 3,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         child: assetFromSvg(
           AppAssets.addNote,
           color: AppColors.black,
         ),
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed(AppPages.noteAddTeacherScreen);
+        },
       ),
     );
   }

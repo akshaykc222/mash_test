@@ -18,4 +18,6 @@ class AppPages {
   static const quizQuestionPage = '/quizQuestionScreen';
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
+  static const noteAddTeacherScreen = '/noteAddTeacherScreen';
+  static const addNotScreen = '/addNotScreen';
 }
