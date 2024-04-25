@@ -55,7 +55,6 @@ class AnimatedSharedButton extends StatefulWidget {
 class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _borderAnimation;
 
   late Animation<double> _colorSizeAnimation;
 
@@ -64,12 +63,17 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
   void initState() {
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 600));
-    _borderAnimation =
-        Tween<double>(begin: 0, end: 80).animate(_animationController);
+
     _colorSizeAnimation =
         Tween<double>(begin: 1, end: minSize).animate(_animationController);
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override

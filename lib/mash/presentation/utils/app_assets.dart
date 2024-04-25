@@ -17,8 +17,10 @@ class AppAssets {
 
   //quiz
   static const quizGetReadyBg = 'assets/images/quiz_get_ready_bg.png';
-  static const quizGetReadyCard = 'assets/images/quiz_get_ready_bottom_card.png';
-  static const quizGetReadyBoyImage = 'assets/images/quiz_get_ready_boy_image.png';
+  static const quizGetReadyCard =
+      'assets/images/quiz_get_ready_bottom_card.png';
+  static const quizGetReadyBoyImage =
+      'assets/images/quiz_get_ready_boy_image.png';
   static const quizQuestionScreenBG = 'assets/images/quiz_question_bg.png';
   static const quizFinishBoy = 'assets/images/quiz_finish_boy.png';
   static const fireCracksQuizBg = 'assets/images/firecracks_quiz_completed.png';
@@ -44,6 +46,7 @@ class AppAssets {
   static const leaveStatus ='assets/images/leave_status.svg';
 
 
+  static const tekieImg = 'assets/images/tekie_img.png';
 
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
@@ -53,4 +56,5 @@ class AppAssets {
   static const homeWorkTabIcon = 'assets/icons/home_work_tab.svg';
   static const user = 'assets/icons/user.svg';
   static const password = 'assets/icons/password.svg';
+  static const addNote = 'assets/icons/add_note.svg';
 }

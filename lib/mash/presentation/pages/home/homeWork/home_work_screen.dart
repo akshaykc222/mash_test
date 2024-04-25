@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/domain/entities/home_work_Item_data.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../router/app_pages.dart';
 
 class HomeWorkScreen extends StatelessWidget {
   const HomeWorkScreen({super.key});
@@ -14,37 +17,43 @@ class HomeWorkScreen extends StatelessWidget {
     return Scaffold(
       drawer: DrawerWidget(),
       appBar: commonAppbar(title: 'HOMEWORK/NOTES'),
-      body: homeWorkBody(),
+      body: homeWorkBody(context),
     );
   }
 
-  homeWorkBody() {
-    List titleList = ['HOMEWORK', 'NOTES'];
-    List assetList = [
-      AppAssets.libImageAcademic,
-      AppAssets.libImageNonAcademic
+  homeWorkBody(BuildContext context) {
+    List<HomeWorkItemModel> items = [
+      HomeWorkItemModel(
+          title: 'HOMEWORK',
+          asset: AppAssets.libImageAcademic,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
+          }),
+      HomeWorkItemModel(
+          title: 'NOTES',
+          asset: AppAssets.libImageNonAcademic,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.noteScreen);
+          }),
     ];
+
     return Padding(
-      padding: const EdgeInsets.only(top: 80, right: 10, left: 10),
-      child: Center(
-        child: ListView.builder(
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return homeWorkCard(() {
-                GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
-              }, assetList[index], titleList[index]);
-            }),
-      ),
+      padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+      child: ListView.builder(
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return homeWorkCard(items[index], context);
+          }),
     );
   }
 
-  homeWorkCard(onPress, assetName, title) {
+  homeWorkCard(HomeWorkItemModel data, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: InkWell(
-          onTap: onPress,
+          onTap: () => data.onTap(),
           child: Container(
-            height: 210,
+            height: SizeUtility(context).height / 4,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -61,13 +70,14 @@ class HomeWorkScreen extends StatelessWidget {
                   flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: SvgPicture.asset(assetName),
+                    child: SvgPicture.asset(data.asset),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Padding(
-                      padding: const EdgeInsets.all(15.0), child: Text(title)),
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(data.title)),
                 )
               ],
             ),

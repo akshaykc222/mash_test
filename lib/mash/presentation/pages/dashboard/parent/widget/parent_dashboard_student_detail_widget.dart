@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';
@@ -14,31 +15,16 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20),
-        _buildStudentName(),
-        const SizedBox(height: 30),
+        spacer30,
         _buildInfoRow(),
-        const SizedBox(height: 7),
+        spacer7,
         _buildDivider(context),
-        const SizedBox(height: 10),
+        spacer10,
         _buildContactRow(context),
-        const SizedBox(height: 10),
+        spacer10,
         _buildProgressWidgets(context),
-        const SizedBox(height: 50),
+        spacer50,
       ],
-    );
-  }
-
-  Widget _buildStudentName() {
-    return const Align(
-      alignment: Alignment.center,
-      child: Text(
-        "Rahul Balakrishnan",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
     );
   }
 
@@ -50,14 +36,16 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildInfoItem('Class Teacher', 'Rajani Rajan'),
-          _buildInfoItem('Roll No', '0394'),
+          _buildInfoItem('Roll No', '0394', isEnd: true),
         ],
       ),
     );
   }
 
-  Widget _buildInfoItem(String title, String value) {
+  Widget _buildInfoItem(String title, String value, {bool isEnd = false}) {
     return Column(
+      crossAxisAlignment:
+          isEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Text(
           title,
@@ -71,7 +59,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           value,
           style: const TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -109,7 +97,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           const SizedBox(width: 20),
           const Icon(Icons.chat_bubble_outline),
           const Spacer(),
-          _buildInfoItem('Class', 'LKG A')
+          _buildInfoItem('Class', 'LKG A', isEnd: true)
         ],
       ),
     );
@@ -150,11 +138,13 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            color: AppColors.greyClr200,
             border: Border.all(
-              color: AppColors.textShadowWhite,
+              color: AppColors.white,
+              width: 2,
             ),
           ),
-          child: Stack(
+          child: const Stack(
             children: [
               SizedBox(
                 height: 170,
@@ -170,7 +160,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
                 bottom: 0,
                 right: 0,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(vertical: 30),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,

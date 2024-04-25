@@ -22,11 +22,12 @@ class AppColors {
   static Color textColor = HexColor.fromHex('#FFFFFFFF');
   static Color textErrorColor = HexColor.fromHex('#FF4624');
   static Color navigationViewBackground = HexColor.fromHex('#CC000000');
-  static Color transparent = HexColor.fromHex('#00FFFFFF');
+  static Color transparent = Colors.transparent;
   static Color badRed = HexColor.fromHex('#FF0000');
   static Color transparentLogin = HexColor.fromHex('#80000000');
   static Color green2 = HexColor.fromHex('#32CD30');
   static Color grey200 = HexColor.fromHex('#999999');
+  static Color greyClr200 = Colors.grey.shade200;
   static Color violet = HexColor.fromHex('#873FC6');
   static Color quizhead = HexColor.fromHex('#F5309C');
   static Color violet100 = HexColor.fromHex('#8800FF');
@@ -42,6 +43,7 @@ class AppColors {
   static Color progressBlue = HexColor.fromHex('#948BFF');
   static Color textColorNew = HexColor.fromHex('#5D5D5D');
   static Color headText = HexColor.fromHex('#222222');
+  static Color grey600 = Colors.grey.shade600;
   static Color gradeTxt = HexColor.fromHex('#AB7EFF');
   static Color violetSmooth = HexColor.fromHex('#8543FF');
   static Color greyText = HexColor.fromHex('#6F6F6F');

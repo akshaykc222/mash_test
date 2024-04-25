@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppStrings {
   static const schedulesForClass = "SCHEDULES FOR THE CLASS";
   static const viewAll = "View All";
@@ -42,6 +40,14 @@ class AppStrings {
 
   static const selectDetails = 'SELECT DETAILS';
   static const String chooseSubject = 'choose subject';
+  static const String fromDate = 'from Date';
+  static const String toDate = 'to Date';
+  static const String homeWorks = "Home Works";
+  static const String details = 'Details';
+  static const String homeWorkDetails = 'Home Work Details';
+  static const String wordOfTheDay = 'Word Of The Day';
+  static const String newsAndArticles = 'News & Articles';
+  static const String selectProfile = 'Select Profile';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',

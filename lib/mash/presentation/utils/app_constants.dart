@@ -13,12 +13,16 @@ class AppConstants {
 const spacer4 = SizedBox(
   height: 4,
 );
-const spacer10 = SizedBox(
-  height: 10,
-);
 const spacer7 = SizedBox(
   height: 7,
 );
+const spacer10 = SizedBox(
+  height: 10,
+);
+const spacer15 = SizedBox(
+  height: 15,
+);
+
 const spacer20 = SizedBox(
   height: 20,
 );
@@ -58,6 +62,12 @@ const spacer120 = SizedBox(
 );
 
 //width
+const spacerWidth4 = SizedBox(
+  width: 4,
+);
+const spacerWidth6 = SizedBox(
+  width: 6,
+);
 const spacerWidth10 = SizedBox(
   width: 10,
 );

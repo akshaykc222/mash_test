@@ -14,6 +14,8 @@ class AppPages {
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
+  static const noteScreen = '/noteDetailsScreen';
+
   static const quizQuestionPage = '/quizQuestionScreen';
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
@@ -22,4 +24,6 @@ class AppPages {
   //leave
   static const leaveScreen = '/leaveScreen';
 
+  static const homeWorksViewScreen = '/homeWorksViewScreen';
+  static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
 }

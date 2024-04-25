@@ -11,6 +11,7 @@ class AppThemes {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          shadowColor: AppColors.primaryColor.withOpacity(0.3),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           foregroundColor: AppColors.white,
           backgroundColor: AppColors.primaryColor,
@@ -32,10 +33,10 @@ class AppThemes {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             foregroundColor: Colors.white,
             backgroundColor: Colors.purple),
       )
-    // fontFamily: GoogleFonts.montserrat().fontFamily
-  );
+      // fontFamily: GoogleFonts.montserrat().fontFamily
+      );
 }

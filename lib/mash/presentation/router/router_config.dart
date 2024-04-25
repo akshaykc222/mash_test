@@ -6,9 +6,11 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_completed_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
@@ -96,7 +98,8 @@ class AppRouteManager {
       path: AppPages.quizGetReadyScreen,
       name: AppPages.quizGetReadyScreen,
       builder: (context, state) => const QuizGetReadyScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.quizQuestionPage,
       name: AppPages.quizQuestionPage,
       builder: (context, state) => const QuizQuestionPage(),
@@ -114,6 +117,16 @@ class AppRouteManager {
       path: AppPages.leaveScreen,
       name: AppPages.leaveScreen,
       builder: (context, state) =>   LeaveScreen(),
+    ),
+    GoRoute(
+      name: AppPages.homeWorksViewScreen,
+      path: AppPages.homeWorksViewScreen,
+      builder: (context, state) => const HomeworksView(),
+    ),
+    GoRoute(
+      name: AppPages.noteScreen,
+      path: AppPages.noteScreen,
+      builder: (context, state) => const NoteScreen(),
     ),
 GoRoute(
       path: AppPages.quizProfileScreen,
