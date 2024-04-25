@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/subject_perfomance_widget.dart';
+import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
@@ -25,7 +26,15 @@ class ParentDashboardLastSection extends StatelessWidget {
           _buildPerformanceSelectWidget(context),
           spacer30,
           const SubjectPerfomanceWidget(),
-          spacer30,
+          spacer40,
+          Align(
+            alignment: Alignment.center,
+            child: CustomIconButton(
+              name: 'View Dashboard',
+              onTap: () {},
+            ),
+          ),
+          spacer40,
           _wordOfTheDay(),
           spacer30,
           _newsAndArticles(context),
@@ -55,43 +64,77 @@ class ParentDashboardLastSection extends StatelessWidget {
           ],
         ),
         spacer20,
-        Container(
-          height: SizeUtility(context).height / 2.5,
+        SizedBox(
+          // height: SizeUtility(context).height / 2.5,
+
           width: SizeUtility(context).width,
           child: Card(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/student_dummy.png',
-                    height: SizeUtility(context).height / 5.5,
-                    width: SizeUtility(context).width,
-                    fit: BoxFit.cover,
-                  ),
-                  spacer15,
-                  Text(
-                    'Mathematic Lab',
-                    style: _titleStyle(),
-                  ),
-                  spacer4,
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor',
-                    style: TextStyle(
-                      overflow: TextOverflow.ellipsis,
-                      color: AppColors.greyText,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      'assets/images/student_dummy.png',
+                      height: SizeUtility(context).height / 5.5,
+                      width: SizeUtility(context).width,
+                      fit: BoxFit.cover,
                     ),
-                    maxLines: 2,
                   ),
                   spacer15,
-                  Row(
-                    children: [
-                      Text(
-                        '19/03/2024',
-                        style: _lightText(),
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Mathematic Lab',
+                          style: _titleStyle(),
+                        ),
+                        spacer4,
+                        Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor',
+                          style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            color: AppColors.greyText,
+                          ),
+                          maxLines: 2,
+                        ),
+                        spacer20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '19/03/2024',
+                              style: _lightText(),
+                            ),
+                            Text(
+                              '2 min read',
+                              style: _lightText(),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.grey200,
+                                  ),
+                                ),
+                                spacerWidth4,
+                                Text(
+                                  'General',
+                                  style: _lightText(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

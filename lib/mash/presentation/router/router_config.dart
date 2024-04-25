@@ -6,11 +6,11 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
-import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
@@ -111,9 +111,9 @@ class AppRouteManager {
       builder: (context, state) => const HomeworksView(),
     ),
     GoRoute(
-      name: AppPages.homeWorksViewDetailsScreen,
-      path: AppPages.homeWorksViewDetailsScreen,
-      builder: (context, state) => const HomeWorkViewDetailsScreen(),
+      name: AppPages.noteScreen,
+      path: AppPages.noteScreen,
+      builder: (context, state) => const NoteScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

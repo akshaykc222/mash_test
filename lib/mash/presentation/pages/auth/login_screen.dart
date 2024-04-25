@@ -13,7 +13,7 @@ import 'package:mash/mash/presentation/utils/app_size.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
-import 'package:mash/mash/presentation/widgets/animted_button.dart';
+import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 

@@ -36,14 +36,16 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildInfoItem('Class Teacher', 'Rajani Rajan'),
-          _buildInfoItem('Roll No', '0394'),
+          _buildInfoItem('Roll No', '0394', isEnd: true),
         ],
       ),
     );
   }
 
-  Widget _buildInfoItem(String title, String value) {
+  Widget _buildInfoItem(String title, String value, {bool isEnd = false}) {
     return Column(
+      crossAxisAlignment:
+          isEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Text(
           title,
@@ -57,7 +59,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           value,
           style: const TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -95,7 +97,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           const SizedBox(width: 20),
           const Icon(Icons.chat_bubble_outline),
           const Spacer(),
-          _buildInfoItem('Class', 'LKG A')
+          _buildInfoItem('Class', 'LKG A', isEnd: true)
         ],
       ),
     );
@@ -136,11 +138,13 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
+            color: AppColors.greyClr200,
             border: Border.all(
-              color: AppColors.textShadowWhite,
+              color: AppColors.white,
+              width: 2,
             ),
           ),
-          child: Stack(
+          child: const Stack(
             children: [
               SizedBox(
                 height: 170,
@@ -156,7 +160,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
                 bottom: 0,
                 right: 0,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  padding: EdgeInsets.symmetric(vertical: 30),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,

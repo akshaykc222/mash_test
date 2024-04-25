@@ -31,4 +31,5 @@ class AppAssets {
   static const homeWorkTabIcon = 'assets/icons/home_work_tab.svg';
   static const user = 'assets/icons/user.svg';
   static const password = 'assets/icons/password.svg';
+  static const addNote = 'assets/icons/add_note.svg';
 }
