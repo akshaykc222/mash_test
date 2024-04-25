@@ -6,13 +6,16 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
-import 'package:mash/mash/presentation/pages/home/homeWork/home_work_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_completed_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
+import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/home/home_screen.dart';
@@ -29,7 +32,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.quizRankingScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -102,7 +105,26 @@ class AppRouteManager {
       path: AppPages.homeWorkDetailsScreen,
       name: AppPages.homeWorkDetailsScreen,
       builder: (context, state) => const HomeWorkSelectDetailsWidget(),
+    ),GoRoute(
+      path: AppPages.quizCompletedScreen,
+      name: AppPages.quizCompletedScreen,
+      builder: (context, state) =>  const QuizCompletedScreen(),
     ),
+    GoRoute(
+      path: AppPages.leaveScreen,
+      name: AppPages.leaveScreen,
+      builder: (context, state) =>   LeaveScreen(),
+    ),
+GoRoute(
+      path: AppPages.quizProfileScreen,
+      name: AppPages.quizProfileScreen,
+      builder: (context, state) =>   const QuizProfile(),
+    ),GoRoute(
+      path: AppPages.quizRankingScreen,
+      name: AppPages.quizRankingScreen,
+      builder: (context, state) =>   const QuizRankingScreen(),
+    ),
+
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
 }

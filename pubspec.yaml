@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.5
   injectable: ^2.4.1
   injectable_generator: ^2.6.1
+  confetti:
 
 
 dev_dependencies:

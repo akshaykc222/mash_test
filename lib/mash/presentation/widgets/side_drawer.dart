@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Drawer(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       width: size.width,
       child: Column(
         children: [
@@ -62,6 +62,7 @@ class DrawerWidget extends StatelessWidget {
               ),
               itemBuilder: (BuildContext context, int index) {
                 return Card(
+                  elevation: 3,
                   child: InkWell(
                     onTap: () {
                       // Handle item tap

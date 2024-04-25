@@ -134,6 +134,14 @@ class AppColors {
       Color(0xfffe439e),
     ],
   );
+  static const LinearGradient quizRankListGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.topRight,
+    colors: [
+      Colors.purple,
+      Color(0xfffe439e),
+    ],
+  );
   static const LinearGradient quizAnswerGradient = LinearGradient(
     begin: Alignment.center,
     end: Alignment.centerRight,
@@ -142,7 +150,13 @@ class AppColors {
       Color(0xfffe439e),
     ],
   );
+
+  final Shader quizButtonTextGradient = const LinearGradient(
+    colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 }
+
+
 
 extension HexColor on Color {
   static Color fromHex(String hexColorString) {

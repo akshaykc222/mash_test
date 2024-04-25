@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -57,16 +55,9 @@ class _QuizQuestionPageState extends State<QuizQuestionPage> {
     );
   }
 
-  void _toggleSelection(int index) {
-    setState(() {
-      _isSelectedList[index] = !_isSelectedList[index];
-    });
-  }
-
   void _selectCard(int index) {
     setState(() {
       if (_selectedIndex == index) {
-        // Deselect the card if it's already selected
         _selectedIndex = -1;
       } else {
         _selectedIndex = index;
@@ -178,25 +169,28 @@ class _QuizQuestionPageState extends State<QuizQuestionPage> {
   }
 
   nextButton(Size size) {
-    return Container(
-      height:  SizeConfig.height(60),
-      width: size.width * 0.4 ,
-      decoration: BoxDecoration(
-        boxShadow: [BoxShadow(
-          color: Colors.grey.withOpacity(0.8),
-          blurRadius: 5.0,
-        ),],
-          borderRadius: BorderRadius.circular(50),
-          gradient: AppColors.quizAnswerGradient
-      ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text('next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontFamily: 'Comfortaa',fontSize: 20),),
-          spacerWidth10,
-          Icon(Icons.arrow_forward_ios,color: Colors.white,)
-        ],
+    return InkWell(
+      onTap: ()=> GoRouter.of(context).pushNamed(AppPages.quizCompletedScreen),
+      child: Container(
+        height:  SizeConfig.height(60),
+        width: size.width * 0.4 ,
+        decoration: BoxDecoration(
+          boxShadow: [BoxShadow(
+            color: Colors.grey.withOpacity(0.8),
+            blurRadius: 5.0,
+          ),],
+            borderRadius: BorderRadius.circular(50),
+            gradient: AppColors.quizAnswerGradient
+        ),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontFamily: 'Comfortaa',fontSize: 20),),
+            spacerWidth10,
+            Icon(Icons.arrow_forward_ios,color: Colors.white,)
+          ],
+        ),
       ),
     );
   }
