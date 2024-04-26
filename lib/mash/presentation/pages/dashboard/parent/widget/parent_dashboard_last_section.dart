@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/subject_perfomance_widget.dart';
+import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
+import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
@@ -25,7 +27,15 @@ class ParentDashboardLastSection extends StatelessWidget {
           _buildPerformanceSelectWidget(context),
           spacer30,
           const SubjectPerfomanceWidget(),
-          spacer30,
+          spacer40,
+          Align(
+            alignment: Alignment.center,
+            child: CustomIconButton(
+              name: 'View Dashboard',
+              onTap: () {},
+            ),
+          ),
+          spacer40,
           _wordOfTheDay(),
           spacer30,
           _newsAndArticles(context),
@@ -55,43 +65,77 @@ class ParentDashboardLastSection extends StatelessWidget {
           ],
         ),
         spacer20,
-        Container(
-          height: SizeUtility(context).height / 2.5,
+        SizedBox(
+          // height: SizeUtility(context).height / 2.5,
+
           width: SizeUtility(context).width,
           child: Card(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/student_dummy.png',
-                    height: SizeUtility(context).height / 5.5,
-                    width: SizeUtility(context).width,
-                    fit: BoxFit.cover,
-                  ),
-                  spacer15,
-                  Text(
-                    'Mathematic Lab',
-                    style: _titleStyle(),
-                  ),
-                  spacer4,
-                  Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor',
-                    style: TextStyle(
-                      overflow: TextOverflow.ellipsis,
-                      color: AppColors.greyText,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      'assets/images/student_dummy.png',
+                      height: SizeUtility(context).height / 5.5,
+                      width: SizeUtility(context).width,
+                      fit: BoxFit.cover,
                     ),
-                    maxLines: 2,
                   ),
                   spacer15,
-                  Row(
-                    children: [
-                      Text(
-                        '19/03/2024',
-                        style: _lightText(),
-                      )
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Mathematic Lab',
+                          style: _titleStyle(),
+                        ),
+                        spacer4,
+                        Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor',
+                          style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
+                            color: AppColors.greyText,
+                          ),
+                          maxLines: 2,
+                        ),
+                        spacer20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '19/03/2024',
+                              style: _lightText(),
+                            ),
+                            Text(
+                              '2 min read',
+                              style: _lightText(),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 10,
+                                  width: 10,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.grey200,
+                                  ),
+                                ),
+                                spacerWidth4,
+                                Text(
+                                  'General',
+                                  style: _lightText(),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -160,71 +204,41 @@ class ParentDashboardLastSection extends StatelessWidget {
   }
 
   void _showPerformanceSelection(BuildContext context) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (context) => _buildPerformanceSelection(context),
+    commonBottomSheet(
+      context,
+      title: '',
+      child: _buildPerformanceSelection(context),
+      height: 0.4,
     );
   }
 
   Widget _buildPerformanceSelection(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      height: SizeUtility(context).height / 3,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: const BorderRadius.horizontal(
-          left: Radius.circular(20),
-          right: Radius.circular(20),
-        ),
-      ),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        ...AppStrings.dashboardPerfomanceList.map((performance) {
+          final isSelected = performance == performanceValue.value;
+          return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                color: AppColors.greyBg,
-                onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.arrow_back_ios, size: 16),
+              Text(
+                performance,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: isSelected ? Colors.deepPurple : AppColors.black,
+                ),
               ),
-              const Text(
-                'Select',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              IconButton(
-                color: AppColors.greyBg,
-                onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.close, size: 14),
+              Radio(
+                value: true,
+                groupValue: isSelected,
+                onChanged: (value) {
+                  performanceValue.value = performance;
+                },
               ),
             ],
-          ),
-          ...AppStrings.dashboardPerfomanceList.map((performance) {
-            final isSelected = performance == performanceValue.value;
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  performance,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: isSelected ? Colors.deepPurple : AppColors.black,
-                  ),
-                ),
-                Radio(
-                  value: true,
-                  groupValue: isSelected,
-                  onChanged: (value) {
-                    performanceValue.value = performance;
-                  },
-                ),
-              ],
-            );
-          }),
-        ],
-      ),
+          );
+        }),
+      ],
     );
   }
 

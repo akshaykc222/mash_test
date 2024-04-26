@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: ListView.builder(
-          itemCount: 10, itemBuilder: (c, index) => ScheduleItem()),
-    ),
-  ));
-}
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 class ScheduleItem extends StatelessWidget {
   const ScheduleItem({super.key});
@@ -29,7 +23,9 @@ class ScheduleItem extends StatelessWidget {
                 width: 30,
                 height: 30,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: AppColors.green),
+                  shape: BoxShape.circle,
+                  color: AppColors.green,
+                ),
                 child: Center(
                   child: Icon(
                     Icons.done,
@@ -64,17 +60,46 @@ class ScheduleItem extends StatelessWidget {
                     ],
                     borderRadius: BorderRadius.circular(5)),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "CLASS X11 D",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.headText),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "CLASS X11 D",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.headText),
+                          ),
+                          GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () {
+                              context.pushNamed(AppPages.addNotScreen);
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  AppStrings.addNote,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.primaryColor,
+                                  ),
+                                ),
+                                spacerWidth4,
+                                Icon(
+                                  Icons.add,
+                                  size: 16,
+                                  color: AppColors.primaryColor,
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                       Text(
                         "Social Science",
@@ -87,12 +112,20 @@ class ScheduleItem extends StatelessWidget {
                             TextStyle(fontSize: 12, color: AppColors.headText),
                       ),
                       Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                          decoration: BoxDecoration(
-                              color: AppColors.grey200,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Text("COMPLETED"))
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 6.5,
+                        ),
+                        decoration: BoxDecoration(
+                            color: AppColors.grey200,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Text(
+                          "Completed",
+                          style: TextStyle(
+                            color: AppColors.white,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 )),

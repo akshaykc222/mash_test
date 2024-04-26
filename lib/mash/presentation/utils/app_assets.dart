@@ -14,6 +14,8 @@ class AppAssets {
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
+
+  //quiz
   static const quizGetReadyBg = 'assets/images/quiz_get_ready_bg.png';
   static const quizGetReadyCard =
       'assets/images/quiz_get_ready_bottom_card.png';
@@ -21,6 +23,29 @@ class AppAssets {
       'assets/images/quiz_get_ready_boy_image.png';
   static const quizQuestionScreenBG = 'assets/images/quiz_question_bg.png';
   static const quizFinishBoy = 'assets/images/quiz_finish_boy.png';
+  static const fireCracksQuizBg = 'assets/images/firecracks_quiz_completed.png';
+  static const quizProfileGradientBg = 'assets/images/quiz_gradient_bg.svg';
+  static const quizProfileEclipseBg = 'assets/images/quiz_eclipse_bg.svg';
+  static const quizStartImage = 'assets/images/start_quiz_image.png';
+  static const quizRankingBg = 'assets/images/ranking_bg_image.png';
+
+  //quiz icons
+
+  static const quizProfileIcon1 = 'assets/images/profile_icon1.png';
+  static const quizProfileIcon2 = 'assets/images/profile_icon2.png';
+  static const quizProfileIcon3 = 'assets/images/profile_icon3.png';
+  static const quizProfileIcon4 = 'assets/images/profile_icon4.png';
+  static const quizProfileIcon5 = 'assets/images/profile_icon5.png';
+  static const quizRank1 = 'assets/images/rank_1.png';
+  static const quizRank2 = 'assets/images/rank_2.png';
+  static const quizRank3 = 'assets/images/rank_3.png';
+  static const quizRankMedal = 'assets/images/quiz_rank_medal.png';
+
+  //leave
+  static const leaveApply = 'assets/images/leave_application.svg';
+  static const leaveStatus ='assets/images/leave_status.svg';
+
+
   static const tekieImg = 'assets/images/tekie_img.png';
 
   // Icons
@@ -31,4 +56,6 @@ class AppAssets {
   static const homeWorkTabIcon = 'assets/icons/home_work_tab.svg';
   static const user = 'assets/icons/user.svg';
   static const password = 'assets/icons/password.svg';
+  static const addNote = 'assets/icons/add_note.svg';
+  static const uploadIcon = 'assets/icons/upload.svg';
 }

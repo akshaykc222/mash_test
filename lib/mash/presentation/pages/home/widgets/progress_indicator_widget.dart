@@ -25,8 +25,6 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget>
   @override
   void initState() {
     controller = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
       vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
@@ -53,8 +51,10 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget>
               ? CircularProgressIndicator(
                   value: initialAnimation.value,
                   color: AppColors.primaryColor,
+
                   backgroundColor: Colors.grey.withOpacity(0.4),
                   strokeWidth: 8,
+
                   // strokeAlign: BorderSide.strokeAlignInside,
                   strokeCap: StrokeCap.round,
                 )

@@ -20,6 +20,8 @@ class AppStrings {
   static const String submit = "Submit";
   static const String resend = "Resend";
   static const String submitOtp = "SUBMIT OTP";
+
+  //quiz
   static const String onBoard1Title = "Let’s Start the Game";
   static const String onBoard1Desc =
       "You earn points as you play and\ncan watch the scores of other\nConsentence real time";
@@ -32,6 +34,8 @@ class AppStrings {
   static const String getReadyTitle = "Get Ready for\nDaily Quiz";
   static const String getReadyDesc =
       'your daily Quiz is ready for\n you, wish you best of luck';
+  static const congrats = 'Congrats !';
+
   static const String selectDetails = 'SELECT DETAILS';
   static const String chooseSubject = 'choose subject';
   static const String fromDate = 'from Date';
@@ -42,6 +46,13 @@ class AppStrings {
   static const String wordOfTheDay = 'Word Of The Day';
   static const String newsAndArticles = 'News & Articles';
   static const String selectProfile = 'Select Profile';
+  static const String timeTable = 'Time Table';
+  static const String notes = 'Notes';
+  static const String addNote = 'Add Note';
+  static const String createNote = 'Create Note';
+  static const String note = 'Note';
+  static const String uploadFile = 'Upload File';
+  static const String documentUploadText = 'If any documents upload here';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',

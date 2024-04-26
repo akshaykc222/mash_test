@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_field.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -28,8 +29,7 @@ class HomeWorkSelectDetailsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _fieldWidget(
-            context,
+          CustomHomeWorkField(
             name: AppStrings.chooseSubject,
             onTap: () {
               _showBottomSheet(context);
@@ -39,8 +39,7 @@ class HomeWorkSelectDetailsWidget extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: _fieldWidget(
-                  context,
+                child: CustomHomeWorkField(
                   name: AppStrings.fromDate,
                   onTap: () {
                     showDatePicker(
@@ -53,8 +52,7 @@ class HomeWorkSelectDetailsWidget extends StatelessWidget {
               ),
               spacerWidth10,
               Expanded(
-                child: _fieldWidget(
-                  context,
+                child: CustomHomeWorkField(
                   name: AppStrings.toDate,
                   onTap: () {},
                 ),
@@ -83,101 +81,27 @@ class HomeWorkSelectDetailsWidget extends StatelessWidget {
     return commonBottomSheet(
       context,
       title: AppStrings.chooseSubject,
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 14,
-          horizontal: 10,
-        ).copyWith(bottom: 30),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.white),
-          color: Colors.grey[200],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: const Offset(0, 0),
+      child: ListView.builder(
+        itemCount: 20,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(
+            'Subjects',
+            style: TextStyle(
+              fontSize: SizeConfig.textSize(16),
+              height: 1.2,
+              fontWeight: FontWeight.w400,
             ),
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: const Offset(0, 0),
-            ),
-          ],
-        ),
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context, index) => ListTile(
-            title: Text(
-              'Subjects',
-              style: TextStyle(
-                fontSize: SizeConfig.textSize(16),
-                height: 1.2,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_forward_ios_outlined,
-                size: 16,
-                color: AppColors.blackOverlay,
-              ),
+          ),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_forward_ios_outlined,
+              size: 16,
+              color: AppColors.blackOverlay,
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _fieldWidget(BuildContext context,
-      {required String name, required VoidCallback onTap}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          name,
-          style: TextStyle(
-            fontSize: SizeConfig.textSize(16),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        spacer10,
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            alignment: Alignment.centerRight,
-            height: SizeConfig.height(45),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: AppColors.grey200,
-              ),
-              borderRadius: BorderRadius.circular(9),
-              color: AppColors.white,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
-                    color: AppColors.grey200,
-                  ),
-                ),
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  color: AppColors.blackOverlay,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
