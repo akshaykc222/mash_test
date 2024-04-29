@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 class WordThoughtsEntity extends Equatable {
   final int statusCode;
   final String statusMessage;
-  final List<WordTable> wordTable;
-  final List<ThoughtTable> thoughtTable;
+  final List<Object> wordTable;
+  final List<Object> thoughtTable;
 
   const WordThoughtsEntity({
     required this.statusCode,
@@ -14,36 +14,36 @@ class WordThoughtsEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [statusCode, statusMessage, wordTable, thoughtTable];
 }
 
-class ThoughtTable extends Equatable {
-  final int thoughtId;
+class ThoughtTableEntity extends Equatable {
+  final double thoughtId;
   final String thoughtOfTheDayUrl;
   final String publishedDate;
 
-  const ThoughtTable({
+  const ThoughtTableEntity({
     required this.thoughtId,
     required this.thoughtOfTheDayUrl,
     required this.publishedDate,
   });
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [thoughtId, thoughtOfTheDayUrl, publishedDate];
 }
 
-class WordTable extends Equatable {
-  final int wordId;
+class WordTableEntity extends Equatable {
+  final double wordId;
   final String wordName;
   final String wordMeaning1;
   final String wordMeaning2;
-  final String hasImg;
+  final bool hasImg;
   final dynamic wordImage;
-  final int status;
-  final int compId;
+  final double status;
+  final double compId;
   final String createdBy;
 
-  const WordTable({
+  const WordTableEntity({
     required this.wordId,
     required this.wordName,
     required this.wordMeaning1,
@@ -55,30 +55,6 @@ class WordTable extends Equatable {
     required this.createdBy,
   });
 
-  factory WordTable.fromJson(Map<String, dynamic> json) => WordTable(
-        wordId: json["WORD_ID"],
-        wordName: json["WORD_NAME"],
-        wordMeaning1: json["WORD_MEANING1"],
-        wordMeaning2: json["WORD_MEANING2"],
-        hasImg: json["HAS_IMG"],
-        wordImage: json["WORD_IMAGE"],
-        status: json["STATUS"],
-        compId: json["COMP_ID"],
-        createdBy: json["CREATED_BY"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "WORD_ID": wordId,
-        "WORD_NAME": wordName,
-        "WORD_MEANING1": wordMeaning1,
-        "WORD_MEANING2": wordMeaning2,
-        "HAS_IMG": hasImg,
-        "WORD_IMAGE": wordImage,
-        "STATUS": status,
-        "COMP_ID": compId,
-        "CREATED_BY": createdBy,
-      };
-
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [wordId, wordName, wordMeaning1, wordMeaning2, hasImg, wordImage, status, compId, createdBy];
 }

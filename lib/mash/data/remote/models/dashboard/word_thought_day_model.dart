@@ -2,70 +2,100 @@ import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 
 class WordThoughtsModel extends WordThoughtsEntity {
   const WordThoughtsModel({
-    required super.statusCode,
-    required super.statusMessage,
-    required super.wordTable,
-    required super.thoughtTable,
-  });
-  factory WordThoughtsModel.fromJson(Map<String, dynamic> json) =>
-      WordThoughtsModel(
-        statusCode: json["statusCode"],
-        statusMessage: json["statusMessage"],
-        wordTable: List<WordTableModel>.from(
-            json["wordTable"].map((x) => WordTableModel.fromJson(x))),
-        thoughtTable: List<ThoughtTable>.from(
-            json["thoughtTable"].map((x) => ThoughtTable.fromJson(x))),
-      );
+    required int statusCode,
+    required String statusMessage,
+    required List<Object> wordTable,
+    required List<Object> thoughtTable,
+  }) : super(
+    statusCode: statusCode,
+    statusMessage: statusMessage,
+    wordTable: wordTable,
+    thoughtTable: thoughtTable,
+  );
+
+  factory WordThoughtsModel.fromJson(Map<String, dynamic> json) => WordThoughtsModel(
+    statusCode: json['statusCode'] as int,
+    statusMessage: json['statusMessage'] as String,
+    wordTable: (json['wordTable'] as List<dynamic>).map((e) => WordTableModel.fromJson(e as Map<String, dynamic>)).toList(),
+    thoughtTable: (json['thoughtTable'] as List<dynamic>).map((e) => ThoughtTableModel.fromJson(e as Map<String, dynamic>)).toList(),
+  );
 
   Map<String, dynamic> toJson() => {
-        "statusCode": statusCode,
-        "statusMessage": statusMessage,
-        "wordTable": List<dynamic>.from(wordTable.map((x) => x.toJson())),
-        "thoughtTable": List<dynamic>.from(thoughtTable.map((x) => x.toJson())),
-      };
+    'statusCode': statusCode,
+    'statusMessage': statusMessage,
+    'wordTable': wordTable.map((e) => (e as WordTableModel).toJson()).toList(),
+    'thoughtTable': thoughtTable.map((e) => (e as ThoughtTableModel).toJson()).toList(),
+  };
 }
 
 class ThoughtTableModel extends ThoughtTableEntity {
-  ThoughtTableModel({
-    required super.thoughtId,
-    required super.thoughtOfTheDayUrl,
-    required super.publishedDate,
-  });
+  const ThoughtTableModel({
+    required double thoughtId,
+    required String thoughtOfTheDayUrl,
+    required String publishedDate,
+  }) : super(
+    thoughtId: thoughtId,
+    thoughtOfTheDayUrl: thoughtOfTheDayUrl,
+    publishedDate: publishedDate,
+  );
+
+  factory ThoughtTableModel.fromJson(Map<String, dynamic> json) => ThoughtTableModel(
+    thoughtId: json['THOUGHT_ID'] as double,
+    thoughtOfTheDayUrl: json['THOUGHT_OF_THE_DAY_URL'] as String,
+    publishedDate: json['PUBLISHED_DATE'] as String,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'THOUGHT_ID': thoughtId,
+    'THOUGHT_OF_THE_DAY_URL': thoughtOfTheDayUrl,
+    'PUBLISHED_DATE': publishedDate,
+  };
 }
 
 class WordTableModel extends WordTableEntity {
   const WordTableModel({
-    required super.wordId,
-    required super.wordName,
-    required super.wordMeaning1,
-    required super.wordMeaning2,
-    required super.hasImg,
-    required super.wordImage,
-    required super.status,
-    required super.compId,
-    required super.createdBy,
-  });
+    required double wordId,
+    required String wordName,
+    required String wordMeaning1,
+    required String wordMeaning2,
+    required bool hasImg,
+    required dynamic wordImage,
+    required double status,
+    required double compId,
+    required String createdBy,
+  }) : super(
+    wordId: wordId,
+    wordName: wordName,
+    wordMeaning1: wordMeaning1,
+    wordMeaning2: wordMeaning2,
+    hasImg: hasImg,
+    wordImage: wordImage,
+    status: status,
+    compId: compId,
+    createdBy: createdBy,
+  );
+
   factory WordTableModel.fromJson(Map<String, dynamic> json) => WordTableModel(
-        wordId: json["WORD_ID"],
-        wordName: json["WORD_NAME"],
-        wordMeaning1: json["WORD_MEANING1"],
-        wordMeaning2: json["WORD_MEANING2"],
-        hasImg: json["HAS_IMG"],
-        wordImage: json["WORD_IMAGE"],
-        status: json["STATUS"],
-        compId: json["COMP_ID"],
-        createdBy: json["CREATED_BY"],
-      );
+    wordId: json['WORD_ID'] as double,
+    wordName: json['WORD_NAME'] as String,
+    wordMeaning1: json['WORD_MEANING1'] as String,
+    wordMeaning2: json['WORD_MEANING2'] as String,
+    hasImg: json['HAS_IMG'] as bool,
+    wordImage: json['WORD_IMAGE'],
+    status: json['STATUS'] as double,
+    compId: json['COMP_ID'] as double,
+    createdBy: json['CREATED_BY'] as String,
+  );
 
   Map<String, dynamic> toJson() => {
-        "WORD_ID": wordId,
-        "WORD_NAME": wordName,
-        "WORD_MEANING1": wordMeaning1,
-        "WORD_MEANING2": wordMeaning2,
-        "HAS_IMG": hasImg,
-        "WORD_IMAGE": wordImage,
-        "STATUS": status,
-        "COMP_ID": compId,
-        "CREATED_BY": createdBy,
-      };
+    'WORD_ID': wordId,
+    'WORD_NAME': wordName,
+    'WORD_MEANING1': wordMeaning1,
+    'WORD_MEANING2': wordMeaning2,
+    'HAS_IMG': hasImg,
+    'WORD_IMAGE': wordImage,
+    'STATUS': status,
+    'COMP_ID': compId,
+    'CREATED_BY': createdBy,
+  };
 }

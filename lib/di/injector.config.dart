@@ -17,7 +17,7 @@ import '../core/api_provider.dart' as _i4;
 import '../core/connection_checker.dart' as _i6;
 import '../mash/data/remote/data_sources/auth/auth_data_source.dart' as _i5;
 import '../mash/data/repositories/auth/auth_repository.dart' as _i8;
-import '../mash/domain/repositories/auth_repository_impl.dart' as _i9;
+import '../mash/domain/repositories/auth/auth_repository_impl.dart' as _i9;
 import '../mash/domain/use_cases/login_use_case.dart' as _i10;
 import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
 
