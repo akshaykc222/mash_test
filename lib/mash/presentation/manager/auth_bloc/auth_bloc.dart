@@ -8,7 +8,7 @@ import 'package:mash/mash/domain/use_cases/login_use_case.dart';
 
 import '../../../../core/custom_exception.dart';
 import '../../../../core/response_classify.dart';
-import '../../../domain/entities/auth_response_entity.dart';
+import '../../../domain/entities/auth/auth_response_entity.dart';
 import '../../utils/app_constants.dart';
 
 part 'auth_bloc.freezed.dart';

@@ -206,7 +206,7 @@ class ParentDashboardLastSection extends StatelessWidget {
   void _showPerformanceSelection(BuildContext context) {
     commonBottomSheet(
       context,
-      title: '',
+      title: AppStrings.select,
       child: _buildPerformanceSelection(context),
       height: 0.4,
     );

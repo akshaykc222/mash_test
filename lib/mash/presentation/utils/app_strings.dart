@@ -53,6 +53,7 @@ class AppStrings {
   static const String note = 'Note';
   static const String uploadFile = 'Upload File';
   static const String documentUploadText = 'If any documents upload here';
+  static const String select = 'select';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',
