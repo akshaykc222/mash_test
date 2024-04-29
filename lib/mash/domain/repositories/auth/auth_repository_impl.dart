@@ -3,7 +3,7 @@ import 'package:mash/mash/data/remote/data_sources/auth/auth_data_source.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/data/repositories/auth/auth_repository.dart';
 
-import '../entities/auth/auth_response_entity.dart';
+import '../../entities/auth/auth_response_entity.dart';
 
 @LazySingleton(as: AuthRepository)
 @injectable
