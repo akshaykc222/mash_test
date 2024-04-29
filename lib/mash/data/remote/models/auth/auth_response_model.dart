@@ -1,4 +1,4 @@
-import 'package:mash/mash/domain/entities/auth_response_entity.dart';
+import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 
 class AuthResponseModel extends AuthResponseEntity {
   AuthResponseModel({
