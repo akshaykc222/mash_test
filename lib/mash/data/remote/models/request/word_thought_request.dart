@@ -1,10 +1,15 @@
-class WordThought {
+class WordThoughtRequest {
   final String pAcademicId;
   final String pCompID;
 
-  WordThought({
+  WordThoughtRequest({
     required this.pAcademicId,
     required this.pCompID,
   });
-  // Map<String,d>
+  Map<String, dynamic> toJson() {
+    return {
+      "P_ACADEMIC_ID": pAcademicId,
+      "P_COMP_ID": pCompID,
+    };
+  }
 }

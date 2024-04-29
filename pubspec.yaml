@@ -13,7 +13,6 @@ dependencies:
   cloud_firestore: null
   confetti: null
   cupertino_icons: ^1.0.6
-  dartz: ^0.10.1
   dev: ^1.0.0
   dio: ^5.4.2+1
   equatable: ^2.0.5

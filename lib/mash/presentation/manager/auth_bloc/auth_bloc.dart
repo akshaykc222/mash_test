@@ -35,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } on UnauthorisedException catch (e) {
       handleUnAuthorizedError();
       emit(state.copyWith(
-          loginResponse: ResponseClassify.error("Un authorized")));
+          loginResponse: ResponseClassify.error(" $e Un authorized")));
     } catch (e) {
       prettyPrint(e.toString());
       emit(state.copyWith(loginResponse: ResponseClassify.error(e.toString())));
