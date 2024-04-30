@@ -35,4 +35,6 @@ class AppPages {
 
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
+  static const noteAddTeacherScreen = '/noteAddTeacherScreen';
+  static const addNotScreen = '/addNotScreen';
 }

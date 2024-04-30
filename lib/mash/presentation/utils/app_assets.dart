@@ -61,4 +61,5 @@ class AppAssets {
   static const user = 'assets/icons/user.svg';
   static const password = 'assets/icons/password.svg';
   static const addNote = 'assets/icons/add_note.svg';
+  static const uploadIcon = 'assets/icons/upload.svg';
 }

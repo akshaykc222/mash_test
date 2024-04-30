@@ -9,8 +9,13 @@ class CustomIconButton extends StatelessWidget {
   final String name;
   final String? icon;
   final VoidCallback onTap;
+  final double? width;
   const CustomIconButton(
-      {super.key, required this.name, this.icon, required this.onTap});
+      {super.key,
+      required this.name,
+      this.icon,
+      required this.onTap,
+      this.width});
 
   @override
   Widget build(BuildContext context) {
