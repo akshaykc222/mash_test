@@ -1,4 +1,3 @@
-import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';

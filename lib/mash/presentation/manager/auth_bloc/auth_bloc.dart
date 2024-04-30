@@ -5,11 +5,9 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
-
 import '../../../../core/custom_exception.dart';
 import '../../../../core/response_classify.dart';
 import '../../../domain/entities/auth/auth_response_entity.dart';
-import '../../utils/app_constants.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
