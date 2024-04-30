@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/connection_checker.dart';
 import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.dart';
@@ -21,12 +23,12 @@ class DashBoardRepoImpl extends DashBoardRepository {
     if (await connectionChecker.isConnected) {
       final result = await dashBoardDataSource
           .fetchWordandThoghtOfTheDay(wordThoughtRequest);
-      await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(result);
-
+      dashBoardLocalDataSource.saveWordandThoghtOfTheDay(result);
       return result;
     } else {
       final result =
           await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
+      log(result?.wordTable.toString() ?? "null");
       return result;
     }
   }

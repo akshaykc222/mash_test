@@ -18,4 +18,6 @@ void configureDependencies() {
       InternetConnectionChecker());
   getIt.init();
   Hive.registerAdapter(WordThoughtsHiveModelAdapter());
+  Hive.registerAdapter(ThoughtTableModelAdapter());
+  Hive.registerAdapter(WordTableModelAdapter());
 }

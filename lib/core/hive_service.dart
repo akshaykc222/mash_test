@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 
-@LazySingleton()
 class HiveService {
   Future<Box<T>> getBox<T>({required String boxName}) async {
     if (Hive.isBoxOpen(boxName)) {
@@ -17,17 +16,22 @@ class HiveService {
     return length != 0;
   }
 
-  addBoxes<T>(List<T> items, String boxName) async {
-    final openBox = await getBox<T>(boxName: boxName);
-    final existingItems = openBox.values.toList();
+  Future<void> addBoxes<T>(List<T> items, String boxName) async {
+    try {
+      final openBox = await getBox<T>(boxName: boxName);
+      final existingItems = openBox.values.toList();
 
-    for (var item in items) {
-      if (existingItems.contains(item)) {
-        // prettyPrint(msg: "item exits $item");
-      } else {
-        // prettyPrint(msg: "item added $item");
-        openBox.add(item);
+      for (var item in items) {
+        if (existingItems.contains(item)) {
+          prettyPrint("msg: item exits ${openBox.keys}");
+        } else {
+          prettyPrint("msg: item added $item");
+          openBox.add(item);
+        }
       }
+    } catch (e) {
+      prettyPrint('Error in addBoxes: $e');
+      throw Exception(e);
     }
   }
 
