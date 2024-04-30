@@ -23,6 +23,10 @@ class DeleteConflictException extends CustomException {
       : super(message ?? "No Internet Found");
 }
 
+class NetWorkException extends CustomException {
+  NetWorkException([String? message]) : super(message ?? "No Internet Found");
+}
+
 class UnauthorisedException extends CustomException {
   UnauthorisedException([String? message])
       : super(message ?? "No Internet Found");

@@ -30,11 +30,13 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
   Future<void> saveWordandThoghtOfTheDay(
       WordThoughtsEntity wordThoughtsModel) async {
     try {
-      await hiveService
-          .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
-      await hiveService.addBoxes<WordThoughtsHiveModel>(
-          [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
-          LocalStorageNames.dashBoard);
+      await Future.wait([
+        hiveService
+            .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard),
+        hiveService.addBoxes<WordThoughtsHiveModel>(
+            [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
+            LocalStorageNames.dashBoard)
+      ]);
     } catch (e) {
       log(e.toString());
       throw Exception(e);
