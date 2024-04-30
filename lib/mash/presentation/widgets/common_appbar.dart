@@ -8,8 +8,8 @@ PreferredSize commonAppbar({required String title}) => PreferredSize(
         title: Text(
           title,
           style: TextStyle(
-            fontSize: SizeConfig.textSize(17),
-            fontWeight: FontWeight.bold,
+            fontSize: SizeConfig.textSize(18),
+            // fontWeight: FontWeight.bold,
           ),
         ),
       ),

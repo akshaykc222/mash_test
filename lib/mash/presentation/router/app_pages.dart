@@ -24,6 +24,15 @@ class AppPages {
   //leave
   static const leaveScreen = '/leaveScreen';
 
+  //progressReport
+  static const progressReport = '/progressReport';
+
+  //syllabus
+  static const syllabusScreen = '/syllabusScreen';
+
+  //tc
+  static const tcMainScreen = '/tcMainScreen';
+
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
 }

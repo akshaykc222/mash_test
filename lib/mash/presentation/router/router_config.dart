@@ -11,12 +11,15 @@ import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_w
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
+import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_completed_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
@@ -34,7 +37,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.quizRankingScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.tcMainScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -136,6 +139,18 @@ GoRoute(
       path: AppPages.quizRankingScreen,
       name: AppPages.quizRankingScreen,
       builder: (context, state) =>   const QuizRankingScreen(),
+    ),GoRoute(
+      path: AppPages.progressReport,
+      name: AppPages.progressReport,
+      builder: (context, state) =>   const ProgressReport(),
+    ),GoRoute(
+      path: AppPages.syllabusScreen,
+      name: AppPages.syllabusScreen,
+      builder: (context, state) =>   const SyllabusScreen(),
+    ),GoRoute(
+      path: AppPages.tcMainScreen,
+      name: AppPages.tcMainScreen,
+      builder: (context, state) =>   const TransferCertificateMainScreen(),
     ),
 
     GoRoute(path: home(), builder: _homePageRouteBuilder)

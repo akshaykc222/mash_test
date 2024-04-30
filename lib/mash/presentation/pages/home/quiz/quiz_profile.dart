@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
@@ -25,7 +23,7 @@ class QuizProfile extends StatelessWidget {
     SizeConfig().init;
     var size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: size.height,
         width: size.width,
         child: Column(

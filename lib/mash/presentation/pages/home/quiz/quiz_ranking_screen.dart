@@ -5,6 +5,19 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 
+class ScrollPositionNotifier extends ChangeNotifier {
+  bool _showFAB = false;
+
+  bool get showFAB => _showFAB;
+
+  set showFAB(bool value) {
+    if (_showFAB != value) {
+      _showFAB = value;
+      notifyListeners();
+    }
+  }
+}
+
 class QuizRankingScreen extends StatefulWidget {
   const QuizRankingScreen({super.key});
 
@@ -13,6 +26,37 @@ class QuizRankingScreen extends StatefulWidget {
 }
 
 class _QuizRankingScreenState extends State<QuizRankingScreen> {
+  final ScrollController _scrollController = ScrollController();
+  final ScrollPositionNotifier _scrollPositionNotifier =
+      ScrollPositionNotifier();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset >= 100) {
+      _scrollPositionNotifier.showFAB = true;
+    } else {
+      _scrollPositionNotifier.showFAB = false;
+    }
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0.0,
+      duration: const Duration(milliseconds: 700),
+      curve: Curves.linear,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +65,18 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: const BoxDecoration(gradient: AppColors.quizRankListGradient),
+        decoration:
+            const BoxDecoration(gradient: AppColors.quizRankListGradient),
         child: CustomScrollView(
           slivers: [
             _header(context),
             _rankList(context, size),
           ],
+          controller: _scrollController,
         ),
       ),
       // body: rankingBody(context),
+      floatingActionButton: floatingButton(),
     );
   }
 
@@ -102,19 +149,20 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                   image: DecorationImage(
                                       image: CachedNetworkImageProvider(
                                           "https://cdn-icons-png.flaticon.com/512/3135/3135768.png"))),
-                              child:Stack(
+                              child: Stack(
                                 alignment: Alignment.bottomCenter,
                                 children: [
                                   Positioned(
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
-                                          color: Colors.white,
-                                        ),
-                                        height: SizeConfig.height(18),
-                                        width: SizeConfig.width(50),
-                                        child: Center(child: shaderMask('1992 PT', 10.0)),
-                                      ))
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.white,
+                                    ),
+                                    height: SizeConfig.height(18),
+                                    width: SizeConfig.width(50),
+                                    child: Center(
+                                        child: shaderMask('1992 PT', 10.0)),
+                                  ))
                                 ],
                               ),
                             ),
@@ -139,7 +187,13 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                 fit: BoxFit.fill,
                                 image: AssetImage(AppAssets.quizRank1))),
                         child: const Center(
-                          child: Text('2',style: TextStyle(fontSize: 35,fontWeight: FontWeight.w700,color: Colors.white),),
+                          child: Text(
+                            '2',
+                            style: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     )
@@ -170,19 +224,20 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                   image: DecorationImage(
                                       image: CachedNetworkImageProvider(
                                           "https://cdn-icons-png.flaticon.com/512/3135/3135768.png"))),
-                              child:Stack(
+                              child: Stack(
                                 alignment: Alignment.bottomCenter,
                                 children: [
                                   Positioned(
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
-                                          color: Colors.white,
-                                        ),
-                                        height: SizeConfig.height(18),
-                                        width: SizeConfig.width(50),
-                                        child: Center(child: shaderMask('1992 PT', 10.0)),
-                                      ))
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.white,
+                                    ),
+                                    height: SizeConfig.height(18),
+                                    width: SizeConfig.width(50),
+                                    child: Center(
+                                        child: shaderMask('1992 PT', 10.0)),
+                                  ))
                                 ],
                               ),
                             ),
@@ -209,7 +264,13 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                 fit: BoxFit.fill,
                                 image: AssetImage(AppAssets.quizRank2))),
                         child: const Center(
-                          child: Text('1',style: TextStyle(fontSize: 50,fontWeight: FontWeight.w700,color: Colors.white),),
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                                fontSize: 50,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     )
@@ -240,19 +301,20 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                   image: DecorationImage(
                                       image: CachedNetworkImageProvider(
                                           "https://cdn-icons-png.flaticon.com/512/3135/3135768.png"))),
-                              child:Stack(
+                              child: Stack(
                                 alignment: Alignment.bottomCenter,
                                 children: [
                                   Positioned(
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
-                                          color: Colors.white,
-                                        ),
-                                        height: SizeConfig.height(18),
-                                        width: SizeConfig.width(50),
-                                        child: Center(child: shaderMask('1992 PT', 10.0)),
-                                      ))
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.white,
+                                    ),
+                                    height: SizeConfig.height(18),
+                                    width: SizeConfig.width(50),
+                                    child: Center(
+                                        child: shaderMask('1992 PT', 10.0)),
+                                  ))
                                 ],
                               ),
                             ),
@@ -277,7 +339,13 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
                                 fit: BoxFit.fill,
                                 image: AssetImage(AppAssets.quizRank3))),
                         child: const Center(
-                          child: Text('3',style: TextStyle(fontSize: 35,fontWeight: FontWeight.w700,color: Colors.white),),
+                          child: Text(
+                            '3',
+                            style: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     )
@@ -340,7 +408,8 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
           borderRadius: BorderRadius.circular(10)),
       child: Center(
         child: ListTile(
-          leading: leadingImage('https://cdn-icons-png.flaticon.com/512/3135/3135768.png'),
+          leading: leadingImage(
+              'https://cdn-icons-png.flaticon.com/512/3135/3135768.png'),
           title: shaderMask('Ananya Mathew', 15.0),
           subtitle: const Text(
             '8th Standard',
@@ -370,8 +439,9 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
     return Container(
       height: SizeConfig.height(65),
       width: SizeConfig.width(65),
-      decoration:
-           BoxDecoration(shape: BoxShape.circle, color: Colors.blue,
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.blue,
           image: DecorationImage(image: CachedNetworkImageProvider(urls))),
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -408,6 +478,23 @@ class _QuizRankingScreenState extends State<QuizRankingScreen> {
               fontFamily: 'Comfortaa',
               fontSize: textSize),
         ));
+  }
+
+  floatingButton() {
+    return AnimatedBuilder(
+      animation: _scrollPositionNotifier,
+      builder: (context, child) {
+        return _scrollPositionNotifier.showFAB
+            ? FloatingActionButton(
+                onPressed: _scrollToTop,
+                child: Icon(
+                  Icons.arrow_upward,
+                  color: AppColors.primaryColor,
+                ),
+              )
+            : const SizedBox();
+      },
+    );
   }
 }
 

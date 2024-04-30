@@ -48,6 +48,10 @@ class AppAssets {
 
   static const tekieImg = 'assets/images/tekie_img.png';
 
+  //tc
+  static const tcApply = 'assets/images/tc_apply.svg';
+  static const tcCancel = 'assets/images/tc_cancel.svg';
+
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
   static const libraryTabIcon = 'assets/icons/library_tab.svg';
