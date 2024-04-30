@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
@@ -27,10 +29,15 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
   @override
   Future<void> saveWordandThoghtOfTheDay(
       WordThoughtsEntity wordThoughtsModel) async {
-    await hiveService
-        .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
-    hiveService.addBoxes<WordThoughtsHiveModel>(
-        [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
-        LocalStorageNames.dashBoard);
+    try {
+      await hiveService
+          .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
+      await hiveService.addBoxes<WordThoughtsHiveModel>(
+          [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
+          LocalStorageNames.dashBoard);
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 }

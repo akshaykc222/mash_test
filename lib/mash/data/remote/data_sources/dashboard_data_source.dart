@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/request/word_thought_request.dart';
 import '../../../../core/api_provider.dart';
@@ -19,8 +20,13 @@ class DashBoardDataSourceImpl extends DashBoardDataSource {
   @override
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
       WordThoughtRequest wordThoughtRequest) async {
-    final data = await apiProvider.post(
-        AppRemoteRoutes.wordAndThougthofTheDay, wordThoughtRequest.toJson());
-    return WordThoughtsModel.fromJson(data);
+    try {
+      final data = await apiProvider.post(
+          AppRemoteRoutes.wordAndThougthofTheDay, wordThoughtRequest.toJson());
+      return WordThoughtsModel.fromJson(data);
+    } catch (e) {
+      prettyPrint(e.toString());
+      throw Exception(e);
+    }
   }
 }
