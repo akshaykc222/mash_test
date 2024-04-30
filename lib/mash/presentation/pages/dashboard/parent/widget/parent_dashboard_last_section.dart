@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/subject_perfomance_widget.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 
+import '../../../../../data/remote/models/request/word_thought_request.dart';
+import '../../../../manager/dashboard_bloc/dashboard_bloc.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_strings.dart';
@@ -11,10 +14,30 @@ import '../../../../utils/size_utility.dart';
 final ValueNotifier<String> performanceValue =
     ValueNotifier<String>(AppStrings.dashboardPerfomanceList.first);
 
-class ParentDashboardLastSection extends StatelessWidget {
+class ParentDashboardLastSection extends StatefulWidget {
   const ParentDashboardLastSection({
     super.key,
   });
+
+  @override
+  State<ParentDashboardLastSection> createState() =>
+      _ParentDashboardLastSectionState();
+}
+
+class _ParentDashboardLastSectionState
+    extends State<ParentDashboardLastSection> {
+  @override
+  void initState() {
+    BlocProvider.of<DashboardBloc>(context).add(
+      DashboardEvent.fetchWordAndThoughtOftheDayEvent(
+          WordThoughtRequest(
+            pAcademicId: '87',
+            pCompID: '200001',
+          ),
+          context),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

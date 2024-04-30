@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
-import 'package:mash/mash/data/repositories/auth_repository.dart';
+import 'package:mash/mash/domain/repositories/auth_repository.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
-import 'package:mash/mash/domain/use_cases/login_use_case.dart';
+import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
 import 'package:mockito/mockito.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {

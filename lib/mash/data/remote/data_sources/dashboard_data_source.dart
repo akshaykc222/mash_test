@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/request/word_thought_request.dart';
 import '../../../../core/api_provider.dart';
@@ -8,6 +9,8 @@ abstract class DashBoardDataSource {
       WordThoughtRequest wordThoughtRequest);
 }
 
+@LazySingleton(as: DashBoardDataSource)
+@injectable
 class DashBoardDataSourceImpl extends DashBoardDataSource {
   final ApiProvider apiProvider;
 

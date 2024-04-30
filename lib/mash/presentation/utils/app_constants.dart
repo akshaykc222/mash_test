@@ -90,13 +90,17 @@ const spacerWidth70 = SizedBox(
   width: 70,
 );
 
-handleUnAuthorizedError() {
+handleUnAuthorizedError(BuildContext context) {
   showModalBottomSheet(
       isDismissible: false,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      context: navigatorKey.currentState!.context,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      )),
+      context: context,
       builder: (context) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
             child: Wrap(
               children: [
                 Padding(
@@ -104,7 +108,10 @@ handleUnAuthorizedError() {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: Text(
                     "Session Expired!",
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(

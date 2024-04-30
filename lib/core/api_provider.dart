@@ -45,7 +45,10 @@ class ApiProvider {
     // String? token = storage.read(
     //   LocalStorageNames.token,
     // );
-    // _dio.options.headers.addAll({'Authorization': 'Bearer $token'});
+    // _dio.options.headers.addAll({
+    //   'Authorization':
+    //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibmJmIjoxNzEzOTQzNDgyLCJleHAiOjE3MTM5NDcwODIsImlhdCI6MTcxMzk0MzQ4Mn0.bIvUBUdGKRwoCwHxz_pGcVnfUNdui7dMnkHFFHOWny8',
+    // });
   }
 
   Future<Map<String, dynamic>> get(String endPoint) async {
