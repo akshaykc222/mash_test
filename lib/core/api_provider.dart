@@ -4,7 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/hive_service.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
 import 'custom_exception.dart';
@@ -41,13 +43,9 @@ class ApiProvider {
     }
   }
   addToken() async {
-    // GetStorage storage = GetStorage();
-    // String? token = storage.read(
-    //   LocalStorageNames.token,
-    // );
+    final token = await HiveService().getBox(boxName: LocalStorageNames.token);
     _dio.options.headers.addAll({
-      'Authorization':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibmJmIjoxNzEzOTQzNDgyLCJleHAiOjE3MTM5NDcwODIsImlhdCI6MTcxMzk0MzQ4Mn0.bIvUBUdGKRwoCwHxz_pGcVnfUNdui7dMnkHFFHOWny8',
+      'Authorization': token,
     });
   }
 
@@ -70,7 +68,7 @@ class ApiProvider {
 
   Future<Map<String, dynamic>> delete(String endPoint) async {
     try {
-      addToken();
+      // addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.delete(
         endPoint,

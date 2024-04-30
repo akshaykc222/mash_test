@@ -1,4 +1,4 @@
 class LocalStorageNames {
-  static const token = "token";
-  static const dashBoard = 'dashboard';
+  static const String token = "token";
+  static const String dashBoard = 'dashboard';
 }

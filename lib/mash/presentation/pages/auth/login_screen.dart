@@ -34,18 +34,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late AuthBloc _authBloc;
   @override
   void initState() {
-    _authBloc = AuthBloc.get(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: _loginBody(context),
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.loginResponse.status == Status.COMPLETED) {
+          GoRouter.of(context).pushNamed(AppPages.home);
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: _loginBody(context),
+      ),
     );
   }
 
@@ -189,13 +194,12 @@ class _LoginScreenState extends State<LoginScreen> {
         return AnimatedSharedButton(
             onTap: () {
               // if (state.loginResponse.status == Status.INITIAL) {
-              _authBloc.add(AuthEvent.login(
+              BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
                   loginRequest: LoginRequest(
                       userId: '1',
                       password: '1',
                       deviceId: '1',
                       appType: '1')));
-              GoRouter.of(context).goNamed(AppPages.home);
 
               // }
             },

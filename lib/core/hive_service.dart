@@ -1,12 +1,18 @@
+import 'dart:developer';
+
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 
+@Singleton()
 class HiveService {
   Future<Box<T>> getBox<T>({required String boxName}) async {
     if (Hive.isBoxOpen(boxName)) {
       return Hive.box<T>(boxName);
     } else {
-      return await Hive.openBox<T>(boxName);
+      final db = await Hive.openBox<T>(boxName);
+      log('token ${db.values}');
+      return db;
     }
   }
 
@@ -23,7 +29,6 @@ class HiveService {
 
       for (var item in items) {
         if (existingItems.contains(item)) {
-          prettyPrint("msg: item exits ${openBox.keys}");
         } else {
           prettyPrint("msg: item added $item");
           openBox.add(item);
@@ -35,7 +40,7 @@ class HiveService {
     }
   }
 
-  clearAllValues<T>(String boxName) async {
+  Future<void> clearAllValues<T>(String boxName) async {
     final openBox = await getBox<T>(boxName: boxName);
     await openBox.clear();
   }
