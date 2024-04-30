@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 class WordThoughtsEntity extends Equatable {
   final int statusCode;
   final String statusMessage;
-  final List<Object> wordTable;
-  final List<Object> thoughtTable;
+  final List<WordTableEntity> wordTable;
+  final List<ThoughtTableEntity> thoughtTable;
 
   const WordThoughtsEntity({
     required this.statusCode,
@@ -14,7 +14,8 @@ class WordThoughtsEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [statusCode, statusMessage, wordTable, thoughtTable];
+  List<Object?> get props =>
+      [statusCode, statusMessage, wordTable, thoughtTable];
 }
 
 class ThoughtTableEntity extends Equatable {
@@ -37,7 +38,7 @@ class WordTableEntity extends Equatable {
   final String wordName;
   final String wordMeaning1;
   final String wordMeaning2;
-  final bool hasImg;
+  final String hasImg;
   final dynamic wordImage;
   final double status;
   final double compId;
@@ -56,5 +57,15 @@ class WordTableEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [wordId, wordName, wordMeaning1, wordMeaning2, hasImg, wordImage, status, compId, createdBy];
+  List<Object?> get props => [
+        wordId,
+        wordName,
+        wordMeaning1,
+        wordMeaning2,
+        hasImg,
+        wordImage,
+        status,
+        compId,
+        createdBy
+      ];
 }

@@ -1,3 +1,4 @@
-class LocalStorageNames{
-  static const token ="token";
+class LocalStorageNames {
+  static const token = "token";
+  static const dashBoard = 'dashboard';
 }
