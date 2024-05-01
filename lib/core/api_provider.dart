@@ -43,7 +43,11 @@ class ApiProvider {
     }
   }
   addToken() async {
-    final token = await HiveService().getBox(boxName: LocalStorageNames.token);
+    final token = '';
+    // await HiveService().getToken(
+    //   LocalStorageNames.token,
+    // );
+
     _dio.options.headers.addAll({
       'Authorization': token,
     });
@@ -88,14 +92,14 @@ class ApiProvider {
     try {
       prettyPrint("starting dio");
 
-      addToken();
+      // addToken();
       // prettyPrint(_dio.options.)
       final Response response = await _dio.post(
         endPoint,
         data: formBody ?? body,
       );
 
-      prettyPrint("getting response${response.realUri}");
+      prettyPrint("getting response${response.data}");
       final Map<String, dynamic> responseData = classifyResponse(response);
       prettyPrint(responseData.toString());
       return responseData;
@@ -132,7 +136,7 @@ class ApiProvider {
 
   Map<String, dynamic> classifyResponse(Response response) {
     // try {
-    print(response.data);
+    prettyPrint(response.data);
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;
     String errorMsg = "";
@@ -167,8 +171,5 @@ class ApiProvider {
           'Error occurred while Communication with Server with StatusCode : ${response.statusCode}',
         );
     }
-    // } catch (e) {
-    //   throw BadRequestException("something went  wrong");
-    // }
   }
 }
