@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -11,7 +9,7 @@ class HiveService {
       return Hive.box<T>(boxName);
     } else {
       final db = await Hive.openBox<T>(boxName);
-      log('token ${db.values}');
+
       return db;
     }
   }
@@ -30,7 +28,7 @@ class HiveService {
       for (var item in items) {
         if (existingItems.contains(item)) {
         } else {
-          prettyPrint("msg: item added $item");
+          prettyPrint("msg:  item added $item");
           openBox.add(item);
         }
       }

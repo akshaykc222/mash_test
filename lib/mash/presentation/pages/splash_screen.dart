@@ -20,14 +20,15 @@ class _SplashScreenState extends State<SplashScreen> {
     _init();
   }
 
-  _init() {
-    // final token = await HiveService().getBox(boxName: LocalStorageNames.token);
-    // log(token.values.toString());
-    // if (token.isNotEmpty) {
-    //   context.pushNamed(AppPages.home);
-    // } else {
-    // context.pushNamed(AppPages.login);
-    // }
+  _init() async {
+    final token =
+        await HiveService().getBox<String>(boxName: LocalStorageNames.token);
+    log(token.values.toString());
+    if (token.isNotEmpty) {
+      context.pushNamed(AppPages.home);
+    } else {
+      context.pushNamed(AppPages.login);
+    }
   }
 
   @override
