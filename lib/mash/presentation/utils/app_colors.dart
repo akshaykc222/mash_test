@@ -44,6 +44,7 @@ class AppColors {
   static Color textColorNew = HexColor.fromHex('#5D5D5D');
   static Color headText = HexColor.fromHex('#222222');
   static Color grey600 = Colors.grey.shade600;
+  static Color grey700 = Colors.grey.shade700;
   static Color gradeTxt = HexColor.fromHex('#AB7EFF');
   static Color violetSmooth = HexColor.fromHex('#8543FF');
   static Color greyText = HexColor.fromHex('#6F6F6F');
@@ -136,6 +137,10 @@ class AppColors {
       Color(0xfffe439e),
     ],
   );
+  static LinearGradient primaryLinearGradient = LinearGradient(colors: [
+    AppColors.primaryColor,
+    AppColors.primaryColor.withOpacity(0.5),
+  ]);
   static const LinearGradient quizRankListGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.topRight,
@@ -157,8 +162,6 @@ class AppColors {
     colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
   ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 }
-
-
 
 extension HexColor on Color {
   static Color fromHex(String hexColorString) {

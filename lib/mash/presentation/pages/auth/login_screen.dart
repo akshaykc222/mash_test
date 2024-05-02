@@ -178,10 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: 50,
           decoration: BoxDecoration(
               color: AppColors.primaryColor,
-              gradient: LinearGradient(colors: [
-                AppColors.primaryColor,
-                AppColors.primaryColor.withOpacity(0.5),
-              ]),
+              gradient: AppColors.primaryLinearGradient,
               borderRadius: BorderRadius.circular(8)),
         )
       ],

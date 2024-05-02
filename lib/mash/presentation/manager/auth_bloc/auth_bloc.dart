@@ -5,7 +5,7 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
-import '../../../../core/custom_exception.dart';
+
 import '../../../../core/response_classify.dart';
 import '../../../domain/entities/auth/auth_response_entity.dart';
 
@@ -18,28 +18,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthState.initial()) {
     on<_Login>(_login);
   }
+
   _login(AuthEvent event, Emitter<AuthState> emit) async {
     emit(AuthState(loginResponse: ResponseClassify.loading()));
-    try {
-      final res = await loginUseCase.call(event.loginRequest);
-      prettyPrint("response ${res.token}");
+    // try {
+    final res = await loginUseCase.call(event.loginRequest);
+    prettyPrint("response ${res.token}");
 
-      await Future.delayed(
-        const Duration(seconds: 3),
-        () {
-          emit(AuthState(loginResponse: ResponseClassify.completed(res)));
-        },
-      );
-    } on UnauthorisedException catch (e) {
-      // handleUnAuthorizedError();
-      emit(state.copyWith(
-          loginResponse: ResponseClassify.error(" $e Un authorized")));
-    } catch (e) {
-      prettyPrint(e.toString());
-      emit(state.copyWith(loginResponse: ResponseClassify.error(e.toString())));
-    }
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        emit(AuthState(loginResponse: ResponseClassify.completed(res)));
+      },
+    );
+    // } on UnauthorisedException catch (e) {
+    // handleUnAuthorizedError();
+    // emit(state.copyWith(
+    //     loginResponse: ResponseClassify.error(" $e Un authorized")));
+    // } catch (e) {
+    //   prettyPrint(e.toString());
+    //   emit(state.copyWith(loginResponse: ResponseClassify.error(e.toString())));
+    // }
   }
-
   //use cases
 
   final loginUseCase = getIt<LoginUseCase>();

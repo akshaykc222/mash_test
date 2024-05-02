@@ -21,13 +21,13 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<AuthResponseEntity> login(LoginRequest request) async {
-    try {
-      final data =
-          await apiProvider.post(AppRemoteRoutes.login, request.toJson());
-      log(data.toString());
-      return AuthResponseModel.fromJson(data);
-    } catch (e) {
-      throw Exception(e);
-    }
+    // try {
+    final data =
+        await apiProvider.post(AppRemoteRoutes.login, request.toJson());
+    log(data.toString());
+    return AuthResponseModel.fromJson(data);
+    // } catch (e) {
+    //   throw Exception(e);
+    // }
   }
 }
