@@ -178,14 +178,16 @@ class _ParentDashboardLastSectionState
   }
 
   Widget _wordOfTheDay() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          AppStrings.wordOfTheDay,
-          style: _titleStyle(),
-        ),
-      ],
+    return BlocBuilder<DashboardBloc, DashboardState>(
+      builder: (context, state) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            state.wordThoughtResponse?.data?.wordTable.first.wordMeaning1 ?? "",
+            style: _titleStyle(),
+          ),
+        ],
+      ),
     );
   }
 

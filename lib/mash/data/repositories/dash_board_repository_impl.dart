@@ -22,12 +22,12 @@ class DashBoardRepoImpl extends DashBoardRepository {
     if (await connectionChecker.isConnected) {
       final result = await dashBoardDataSource
           .fetchWordandThoghtOfTheDay(wordThoughtRequest);
-      await dashBoardLocalDataSource.saveWordAndThoughtOfTheDay(result);
+      await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(result);
 
       return result;
     } else {
       final result =
-          await dashBoardLocalDataSource.fetchWordAndThoughtOfTheDay();
+          await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
       return result;
     }
   }

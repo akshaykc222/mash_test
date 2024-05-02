@@ -1,10 +1,13 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/hive_service.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
 import 'custom_exception.dart';
@@ -41,13 +44,12 @@ class ApiProvider {
     }
   }
   addToken() async {
-    // GetStorage storage = GetStorage();
-    // String? token = storage.read(
-    //   LocalStorageNames.token,
-    // );
+    final token = await HiveService().getBox(
+      boxName: LocalStorageNames.token,
+    );
+
     _dio.options.headers.addAll({
-      'Authorization':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibmJmIjoxNzEzOTQzNDgyLCJleHAiOjE3MTM5NDcwODIsImlhdCI6MTcxMzk0MzQ4Mn0.bIvUBUdGKRwoCwHxz_pGcVnfUNdui7dMnkHFFHOWny8',
+      'Authorization': token,
     });
   }
 
@@ -70,7 +72,7 @@ class ApiProvider {
 
   Future<Map<String, dynamic>> delete(String endPoint) async {
     try {
-      addToken();
+      // addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.delete(
         endPoint,
@@ -97,10 +99,10 @@ class ApiProvider {
         data: formBody ?? body,
       );
 
-      prettyPrint("getting response${response.realUri}");
-      final Map<String, dynamic> responseData = classifyResponse(response);
-      prettyPrint(responseData.toString());
-      return responseData;
+      prettyPrint("getting response${response.data}");
+      // final Map<String, dynamic> responseData = classifyResponse(response);
+      // prettyPrint(responseData.toString());
+      return response.data;
     } on DioException catch (err) {
       prettyPrint(err.toString());
       throw FetchDataException("internetError");
@@ -134,7 +136,7 @@ class ApiProvider {
 
   Map<String, dynamic> classifyResponse(Response response) {
     // try {
-    print(response.data);
+    log(response.data);
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;
     String errorMsg = "";
@@ -169,8 +171,5 @@ class ApiProvider {
           'Error occurred while Communication with Server with StatusCode : ${response.statusCode}',
         );
     }
-    // } catch (e) {
-    //   throw BadRequestException("something went  wrong");
-    // }
   }
 }

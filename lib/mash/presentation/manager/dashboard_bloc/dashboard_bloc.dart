@@ -33,8 +33,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     } on UnauthorisedException catch (e) {
       emit(state.copyWith(
           wordThoughtResponse: ResponseClassify.error("$e Un authorized")));
-    } catch (e) {
       handleUnAuthorizedError(event.context);
+    } catch (e) {
       prettyPrint(e.toString());
     }
   }
