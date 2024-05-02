@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
@@ -19,9 +21,13 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<AuthResponseEntity> login(LoginRequest request) async {
-    final data =
-        await apiProvider.post(AppRemoteRoutes.login, request.toJson());
-
-    return AuthResponseModel.fromJson(data);
+    try {
+      final data =
+          await apiProvider.post(AppRemoteRoutes.login, request.toJson());
+      log(data.toString());
+      return AuthResponseModel.fromJson(data);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

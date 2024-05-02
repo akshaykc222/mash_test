@@ -18,8 +18,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   Future<void> saveUserToken(String token) async {
     try {
       await Future.wait([
-        hiveService.clearAllValues<String>(LocalStorageNames.token),
-        hiveService.addBoxes([token], LocalStorageNames.token)
+        hiveService.addBoxes<String>([token], LocalStorageNames.token)
       ]);
     } catch (e) {
       throw Exception(e);
