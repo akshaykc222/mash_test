@@ -5,8 +5,8 @@ import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 
 abstract class DashBoardLocalDataSource {
-  Future<WordThoughtsHiveModel?> fetchWordandThoghtOfTheDay();
-  Future<void> saveWordandThoghtOfTheDay(WordThoughtsEntity wordThoughtsModel);
+  Future<WordThoughtsHiveModel?> fetchWordAndThoughtOfTheDay();
+  Future<void> saveWordAndThoughtOfTheDay(WordThoughtsEntity wordThoughtsModel);
 }
 
 @LazySingleton(as: DashBoardLocalDataSource)
@@ -17,7 +17,7 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
   DashBoardLocalDataSourceImpl({required this.hiveService});
 
   @override
-  Future<WordThoughtsHiveModel?> fetchWordandThoghtOfTheDay() async {
+  Future<WordThoughtsHiveModel?> fetchWordAndThoughtOfTheDay() async {
     final result = await hiveService.getBox<WordThoughtsHiveModel>(
         boxName: LocalStorageNames.dashBoard);
 
@@ -25,12 +25,12 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
   }
 
   @override
-  Future<void> saveWordandThoghtOfTheDay(
+  Future<void> saveWordAndThoughtOfTheDay(
       WordThoughtsEntity wordThoughtsModel) async {
     await hiveService
         .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
-    hiveService.addBoxes<WordThoughtsHiveModel>(
-        [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
-        LocalStorageNames.dashBoard);
+    hiveService.addBoxes<WordThoughtsHiveModel>([
+      WordThoughtsHiveModel.fromEnity(wordThoughtsModel),
+    ], LocalStorageNames.dashBoard);
   }
 }
