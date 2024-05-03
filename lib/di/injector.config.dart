@@ -44,7 +44,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i3.AuthBloc>(() => _i3.AuthBloc());
     gh.singleton<_i4.ApiProvider>(() => _i4.ApiProvider());
-    gh.singleton<_i5.HiveService>(() => _i5.HiveService());
+    gh.lazySingleton<_i5.HiveService>(() => _i5.HiveService());
     gh.lazySingleton<_i6.AuthDataSource>(
         () => _i6.AuthDataSourceImpl(gh<_i4.ApiProvider>()));
     gh.lazySingleton<_i7.AuthLocalDataSource>(

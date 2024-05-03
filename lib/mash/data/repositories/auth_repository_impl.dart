@@ -10,7 +10,7 @@ import '../../domain/entities/auth/auth_response_entity.dart';
 
 @LazySingleton(as: AuthRepository)
 @injectable
-class AuthRepositoryImpl extends AuthRepository {
+class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource authRemoteDataSource;
   final AuthLocalDataSource authLocalDataSource;
   final ConnectionChecker connectionChecker;
