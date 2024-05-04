@@ -5,17 +5,17 @@ import 'package:mash/mash/data/remote/models/request/word_thought_request.dart';
 import '../../../../core/api_provider.dart';
 import '../routes/app_remote_routes.dart';
 
-abstract class DashBoardDataSource {
+abstract class DashBoardRemoteDataSource {
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
       WordThoughtRequest wordThoughtRequest);
 }
 
-@LazySingleton(as: DashBoardDataSource)
+@LazySingleton(as: DashBoardRemoteDataSource)
 @injectable
-class DashBoardDataSourceImpl extends DashBoardDataSource {
+class DashBoardRemoteDataSourceImpl extends DashBoardRemoteDataSource {
   final ApiProvider apiProvider;
 
-  DashBoardDataSourceImpl({required this.apiProvider});
+  DashBoardRemoteDataSourceImpl({required this.apiProvider});
 
   @override
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(

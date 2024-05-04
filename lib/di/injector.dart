@@ -2,9 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:mash/di/injector.config.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
-
-import 'injector.config.dart';
 
 final getIt = GetIt.instance;
 
