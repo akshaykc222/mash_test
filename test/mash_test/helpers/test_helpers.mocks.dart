@@ -3,21 +3,23 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:dio/dio.dart' as _i8;
+import 'package:dio/dio.dart' as _i9;
+import 'package:hive/hive.dart' as _i4;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i3;
-import 'package:mash/core/api_provider.dart' as _i7;
-import 'package:mash/core/connection_checker.dart' as _i11;
+import 'package:mash/core/api_provider.dart' as _i8;
+import 'package:mash/core/connection_checker.dart' as _i12;
+import 'package:mash/core/hive_service.dart' as _i13;
 import 'package:mash/mash/data/local/data_sources/auth_local_data_source.dart'
-    as _i10;
+    as _i11;
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
-    as _i9;
-import 'package:mash/mash/data/remote/models/request/login_request.dart' as _i6;
+    as _i10;
+import 'package:mash/mash/data/remote/models/request/login_request.dart' as _i7;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i2;
-import 'package:mash/mash/domain/repositories/auth_repository.dart' as _i4;
+import 'package:mash/mash/domain/repositories/auth_repository.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -65,30 +67,40 @@ class _FakeAddressCheckResult_2 extends _i1.SmartFake
         );
 }
 
+class _FakeBox_3<E> extends _i1.SmartFake implements _i4.Box<E> {
+  _FakeBox_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i4.AuthRepository {
+class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
   MockAuthRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.AuthResponseEntity> login(_i6.LoginRequest? request) =>
+  _i6.Future<_i2.AuthResponseEntity> login(_i7.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i5.Future<_i2.AuthResponseEntity>.value(_FakeAuthResponseEntity_0(
+            _i6.Future<_i2.AuthResponseEntity>.value(_FakeAuthResponseEntity_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i5.Future<_i2.AuthResponseEntity>);
+      ) as _i6.Future<_i2.AuthResponseEntity>);
 }
 
 /// A class which mocks [InternetConnectionChecker].
@@ -134,25 +146,25 @@ class MockInternetConnectionChecker extends _i1.Mock
       );
 
   @override
-  _i5.Future<bool> get hasConnection => (super.noSuchMethod(
+  _i6.Future<bool> get hasConnection => (super.noSuchMethod(
         Invocation.getter(#hasConnection),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 
   @override
-  _i5.Future<_i3.InternetConnectionStatus> get connectionStatus =>
+  _i6.Future<_i3.InternetConnectionStatus> get connectionStatus =>
       (super.noSuchMethod(
         Invocation.getter(#connectionStatus),
-        returnValue: _i5.Future<_i3.InternetConnectionStatus>.value(
+        returnValue: _i6.Future<_i3.InternetConnectionStatus>.value(
             _i3.InternetConnectionStatus.connected),
-      ) as _i5.Future<_i3.InternetConnectionStatus>);
+      ) as _i6.Future<_i3.InternetConnectionStatus>);
 
   @override
-  _i5.Stream<_i3.InternetConnectionStatus> get onStatusChange =>
+  _i6.Stream<_i3.InternetConnectionStatus> get onStatusChange =>
       (super.noSuchMethod(
         Invocation.getter(#onStatusChange),
-        returnValue: _i5.Stream<_i3.InternetConnectionStatus>.empty(),
-      ) as _i5.Stream<_i3.InternetConnectionStatus>);
+        returnValue: _i6.Stream<_i3.InternetConnectionStatus>.empty(),
+      ) as _i6.Stream<_i3.InternetConnectionStatus>);
 
   @override
   bool get hasListeners => (super.noSuchMethod(
@@ -167,7 +179,7 @@ class MockInternetConnectionChecker extends _i1.Mock
       ) as bool);
 
   @override
-  _i5.Future<_i3.AddressCheckResult> isHostReachable(
+  _i6.Future<_i3.AddressCheckResult> isHostReachable(
           _i3.AddressCheckOptions? options) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -175,50 +187,50 @@ class MockInternetConnectionChecker extends _i1.Mock
           [options],
         ),
         returnValue:
-            _i5.Future<_i3.AddressCheckResult>.value(_FakeAddressCheckResult_2(
+            _i6.Future<_i3.AddressCheckResult>.value(_FakeAddressCheckResult_2(
           this,
           Invocation.method(
             #isHostReachable,
             [options],
           ),
         )),
-      ) as _i5.Future<_i3.AddressCheckResult>);
+      ) as _i6.Future<_i3.AddressCheckResult>);
 }
 
 /// A class which mocks [ApiProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiProvider extends _i1.Mock implements _i7.ApiProvider {
+class MockApiProvider extends _i1.Mock implements _i8.ApiProvider {
   MockApiProvider() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<Map<String, dynamic>> get(String? endPoint) => (super.noSuchMethod(
+  _i6.Future<Map<String, dynamic>> get(String? endPoint) => (super.noSuchMethod(
         Invocation.method(
           #get,
           [endPoint],
         ),
         returnValue:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i5.Future<Map<String, dynamic>>);
+            _i6.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i6.Future<Map<String, dynamic>>);
 
   @override
-  _i5.Future<Map<String, dynamic>> delete(String? endPoint) =>
+  _i6.Future<Map<String, dynamic>> delete(String? endPoint) =>
       (super.noSuchMethod(
         Invocation.method(
           #delete,
           [endPoint],
         ),
         returnValue:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i5.Future<Map<String, dynamic>>);
+            _i6.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i6.Future<Map<String, dynamic>>);
 
   @override
-  _i5.Future<Map<String, dynamic>> post(
+  _i6.Future<Map<String, dynamic>> post(
     String? endPoint,
     Map<String, dynamic>? body, {
-    _i8.FormData? formBody,
+    _i9.FormData? formBody,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -230,11 +242,11 @@ class MockApiProvider extends _i1.Mock implements _i7.ApiProvider {
           {#formBody: formBody},
         ),
         returnValue:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i5.Future<Map<String, dynamic>>);
+            _i6.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i6.Future<Map<String, dynamic>>);
 
   @override
-  _i5.Future<Map<String, dynamic>> put(
+  _i6.Future<Map<String, dynamic>> put(
     String? endPoint,
     Map<String, dynamic>? body,
   ) =>
@@ -247,11 +259,11 @@ class MockApiProvider extends _i1.Mock implements _i7.ApiProvider {
           ],
         ),
         returnValue:
-            _i5.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i5.Future<Map<String, dynamic>>);
+            _i6.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i6.Future<Map<String, dynamic>>);
 
   @override
-  Map<String, dynamic> classifyResponse(_i8.Response<dynamic>? response) =>
+  Map<String, dynamic> classifyResponse(_i9.Response<dynamic>? response) =>
       (super.noSuchMethod(
         Invocation.method(
           #classifyResponse,
@@ -265,70 +277,142 @@ class MockApiProvider extends _i1.Mock implements _i7.ApiProvider {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i9.AuthRemoteDataSource {
+    implements _i10.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.AuthResponseEntity> login(_i6.LoginRequest? request) =>
+  _i6.Future<_i2.AuthResponseEntity> login(_i7.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
         returnValue:
-            _i5.Future<_i2.AuthResponseEntity>.value(_FakeAuthResponseEntity_0(
+            _i6.Future<_i2.AuthResponseEntity>.value(_FakeAuthResponseEntity_0(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i5.Future<_i2.AuthResponseEntity>);
+      ) as _i6.Future<_i2.AuthResponseEntity>);
 }
 
 /// A class which mocks [AuthLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthLocalDataSource extends _i1.Mock
-    implements _i10.AuthLocalDataSource {
+    implements _i11.AuthLocalDataSource {
   MockAuthLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<void> saveUserToken(String? token) => (super.noSuchMethod(
+  _i6.Future<void> saveUserToken(String? token) => (super.noSuchMethod(
         Invocation.method(
           #saveUserToken,
           [token],
         ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }
 
 /// A class which mocks [ConnectionChecker].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectionChecker extends _i1.Mock implements _i11.ConnectionChecker {
+class MockConnectionChecker extends _i1.Mock implements _i12.ConnectionChecker {
   MockConnectionChecker() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<bool> get isConnected => (super.noSuchMethod(
+  _i6.Future<bool> get isConnected => (super.noSuchMethod(
         Invocation.getter(#isConnected),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 
   @override
-  _i5.Stream<_i3.InternetConnectionStatus> getConnectionInfo() =>
+  _i6.Stream<_i3.InternetConnectionStatus> getConnectionInfo() =>
       (super.noSuchMethod(
         Invocation.method(
           #getConnectionInfo,
           [],
         ),
-        returnValue: _i5.Stream<_i3.InternetConnectionStatus>.empty(),
-      ) as _i5.Stream<_i3.InternetConnectionStatus>);
+        returnValue: _i6.Stream<_i3.InternetConnectionStatus>.empty(),
+      ) as _i6.Stream<_i3.InternetConnectionStatus>);
+}
+
+/// A class which mocks [HiveService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHiveService extends _i1.Mock implements _i13.HiveService {
+  MockHiveService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<_i4.Box<T>> getBox<T>({required String? boxName}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getBox,
+          [],
+          {#boxName: boxName},
+        ),
+        returnValue: _i6.Future<_i4.Box<T>>.value(_FakeBox_3<T>(
+          this,
+          Invocation.method(
+            #getBox,
+            [],
+            {#boxName: boxName},
+          ),
+        )),
+      ) as _i6.Future<_i4.Box<T>>);
+
+  @override
+  dynamic isExists({required String? boxName}) =>
+      super.noSuchMethod(Invocation.method(
+        #isExists,
+        [],
+        {#boxName: boxName},
+      ));
+
+  @override
+  dynamic addBoxes<T>(
+    List<T>? items,
+    String? boxName,
+  ) =>
+      super.noSuchMethod(Invocation.method(
+        #addBoxes,
+        [
+          items,
+          boxName,
+        ],
+      ));
+
+  @override
+  dynamic clearAllValues<T>(String? boxName) =>
+      super.noSuchMethod(Invocation.method(
+        #clearAllValues,
+        [boxName],
+      ));
+
+  @override
+  dynamic getBoxes<T>(String? boxName) => super.noSuchMethod(Invocation.method(
+        #getBoxes,
+        [boxName],
+      ));
+
+  @override
+  dynamic deleteBoxes<T>(
+    String? boxName, {
+    required int? index,
+  }) =>
+      super.noSuchMethod(Invocation.method(
+        #deleteBoxes,
+        [boxName],
+        {#index: index},
+      ));
 }
