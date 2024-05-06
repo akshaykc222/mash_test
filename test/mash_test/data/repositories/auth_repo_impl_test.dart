@@ -10,8 +10,7 @@ void main() {
   late MockAuthRemoteDataSource mockAuthRemoteDataSource;
   late AuthRepositoryImpl authRepositoryImpl;
   late MockConnectionChecker connectionChecker;
-  late MockAuthLocalDataSource mockAuthLocalDataSource;
-
+  late MockAuthLocalDataSource mockAuthLocalDataSourc
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
     connectionChecker = MockConnectionChecker();
