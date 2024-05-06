@@ -1,16 +1,17 @@
+import 'dart:developer';
+
+import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 
-@Singleton()
+@LazySingleton()
 class HiveService {
   Future<Box<T>> getBox<T>({required String boxName}) async {
     if (Hive.isBoxOpen(boxName)) {
       return Hive.box<T>(boxName);
     } else {
-      final db = await Hive.openBox<T>(boxName);
-
-      return db;
+      return await Hive.openBox<T>(boxName);
     }
   }
 
@@ -20,25 +21,22 @@ class HiveService {
     return length != 0;
   }
 
-  Future<void> addBoxes<T>(List<T> items, String boxName) async {
-    try {
-      final openBox = await getBox<T>(boxName: boxName);
-      final existingItems = openBox.values.toList();
-
-      for (var item in items) {
-        if (existingItems.contains(item)) {
-        } else {
-          prettyPrint("msg:  item added $item");
-          openBox.add(item);
-        }
+  addBoxes<T>(List<T> items, String boxName) async {
+    final openBox = await getBox<T>(boxName: boxName);
+    final existingItems = openBox.values.toList();
+    log('existing values $existingItems}');
+    for (var item in items) {
+      if (existingItems.contains(item)) {
+        // prettyPrint(msg: "item exits $item");
+      } else {
+        // prettyPrint(msg: "item added $item");
+        final res = await openBox.add(item);
+        prettyPrint('box res ${res.val}');
       }
-    } catch (e) {
-      prettyPrint('Error in addBoxes: $e');
-      throw Exception(e);
     }
   }
 
-  Future<void> clearAllValues<T>(String boxName) async {
+  clearAllValues<T>(String boxName) async {
     final openBox = await getBox<T>(boxName: boxName);
     await openBox.clear();
   }

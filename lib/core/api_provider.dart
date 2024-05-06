@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -44,13 +43,15 @@ class ApiProvider {
     }
   }
   addToken() async {
-    final token = await HiveService().getBox(
-      boxName: LocalStorageNames.token,
+    List<String> token = await HiveService().getBoxes<String>(
+      LocalStorageNames.token,
     );
-
-    _dio.options.headers.addAll({
-      'Authorization': token,
-    });
+    if (token.isNotEmpty) {
+      prettyPrint('token ${token.first}');
+      _dio.options.headers.addAll({
+        'Authorization': token.first,
+      });
+    }
   }
 
   Future<Map<String, dynamic>> get(String endPoint) async {
@@ -92,7 +93,7 @@ class ApiProvider {
     try {
       prettyPrint("starting dio");
 
-      addToken();
+      await addToken();
       // prettyPrint(_dio.options.)
       final Response response = await _dio.post(
         endPoint,
@@ -100,9 +101,9 @@ class ApiProvider {
       );
 
       prettyPrint("getting response${response.data}");
-      // final Map<String, dynamic> responseData = classifyResponse(response);
-      // prettyPrint(responseData.toString());
-      return response.data;
+      final Map<String, dynamic> responseData = classifyResponse(response);
+      prettyPrint(responseData.toString());
+      return responseData;
     } on DioException catch (err) {
       prettyPrint(err.toString());
       throw FetchDataException("internetError");
@@ -136,7 +137,7 @@ class ApiProvider {
 
   Map<String, dynamic> classifyResponse(Response response) {
     // try {
-    log(response.data);
+    // log(response.data);
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;
     String errorMsg = "";
