@@ -17,19 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthEvent {
   LoginRequest get loginRequest => throw _privateConstructorUsedError;
+  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginRequest loginRequest) login,
+    required TResult Function(LoginRequest loginRequest, BuildContext context)
+        login,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginRequest loginRequest)? login,
+    TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginRequest loginRequest)? login,
+    TResult Function(LoginRequest loginRequest, BuildContext context)? login,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +62,7 @@ abstract class $AuthEventCopyWith<$Res> {
   factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
       _$AuthEventCopyWithImpl<$Res, AuthEvent>;
   @useResult
-  $Res call({LoginRequest loginRequest});
+  $Res call({LoginRequest loginRequest, BuildContext context});
 }
 
 /// @nodoc
@@ -77,12 +79,17 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   @override
   $Res call({
     Object? loginRequest = null,
+    Object? context = null,
   }) {
     return _then(_value.copyWith(
       loginRequest: null == loginRequest
           ? _value.loginRequest
           : loginRequest // ignore: cast_nullable_to_non_nullable
               as LoginRequest,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ) as $Val);
   }
 }
@@ -94,7 +101,7 @@ abstract class _$$LoginImplCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
       __$$LoginImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LoginRequest loginRequest});
+  $Res call({LoginRequest loginRequest, BuildContext context});
 }
 
 /// @nodoc
@@ -109,12 +116,17 @@ class __$$LoginImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loginRequest = null,
+    Object? context = null,
   }) {
     return _then(_$LoginImpl(
       loginRequest: null == loginRequest
           ? _value.loginRequest
           : loginRequest // ignore: cast_nullable_to_non_nullable
               as LoginRequest,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
@@ -122,14 +134,16 @@ class __$$LoginImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginImpl implements _Login {
-  const _$LoginImpl({required this.loginRequest});
+  const _$LoginImpl({required this.loginRequest, required this.context});
 
   @override
   final LoginRequest loginRequest;
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'AuthEvent.login(loginRequest: $loginRequest)';
+    return 'AuthEvent.login(loginRequest: $loginRequest, context: $context)';
   }
 
   @override
@@ -138,11 +152,12 @@ class _$LoginImpl implements _Login {
         (other.runtimeType == runtimeType &&
             other is _$LoginImpl &&
             (identical(other.loginRequest, loginRequest) ||
-                other.loginRequest == loginRequest));
+                other.loginRequest == loginRequest) &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginRequest);
+  int get hashCode => Object.hash(runtimeType, loginRequest, context);
 
   @JsonKey(ignore: true)
   @override
@@ -153,27 +168,28 @@ class _$LoginImpl implements _Login {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LoginRequest loginRequest) login,
+    required TResult Function(LoginRequest loginRequest, BuildContext context)
+        login,
   }) {
-    return login(loginRequest);
+    return login(loginRequest, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LoginRequest loginRequest)? login,
+    TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
   }) {
-    return login?.call(loginRequest);
+    return login?.call(loginRequest, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LoginRequest loginRequest)? login,
+    TResult Function(LoginRequest loginRequest, BuildContext context)? login,
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(loginRequest);
+      return login(loginRequest, context);
     }
     return orElse();
   }
@@ -208,11 +224,14 @@ class _$LoginImpl implements _Login {
 }
 
 abstract class _Login implements AuthEvent {
-  const factory _Login({required final LoginRequest loginRequest}) =
-      _$LoginImpl;
+  const factory _Login(
+      {required final LoginRequest loginRequest,
+      required final BuildContext context}) = _$LoginImpl;
 
   @override
   LoginRequest get loginRequest;
+  @override
+  BuildContext get context;
   @override
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>

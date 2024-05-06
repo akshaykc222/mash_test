@@ -11,7 +11,7 @@ const tAuthModel = AuthResponseModel(
       studentId: 'studentId',
       admissionNo: 'admissionNo',
       studentName: 'studentName',
-      compId: 1,
+      compId: '200001',
       roleId: 1,
       activeStatus: 1,
       pwdChangeStatus: 1,

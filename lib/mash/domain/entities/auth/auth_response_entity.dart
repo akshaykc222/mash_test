@@ -42,7 +42,7 @@ class LoginResTableEntity extends Equatable {
   final String studentId;
   final String admissionNo;
   final String studentName;
-  final double compId;
+  final String compId;
   final double roleId;
   final double activeStatus;
   final double pwdChangeStatus;

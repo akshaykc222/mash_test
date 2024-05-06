@@ -5,6 +5,7 @@ import '../../../../core/hive_service.dart';
 
 abstract class AuthLocalDataSource {
   Future<void> saveUserToken(String token);
+
 }
 
 @LazySingleton(as: AuthLocalDataSource)

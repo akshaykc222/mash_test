@@ -42,16 +42,18 @@ class ApiProvider {
       };
     }
   }
-  addToken() async {
-    List<String> token = await HiveService().getBoxes<String>(
-      LocalStorageNames.token,
-    );
-    if (token.isNotEmpty) {
-      prettyPrint('token ${token.first}');
-      _dio.options.headers.addAll({
-        'Authorization': token.first,
-      });
-    }
+  addToken() {
+    // List<String> token = await HiveService().getBoxes<String>(
+    //   LocalStorageNames.token,
+    // );
+
+    // if (token.isNotEmpty) {
+    // prettyPrint('token ${token.first}');
+    _dio.options.headers.addAll({
+      'Authorization':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJNR1MxMDAwNjYwIiwibmJmIjoxNzE0ODI0NjIyLCJleHAiOjE3MTQ4MjgyMjIsImlhdCI6MTcxNDgyNDYyMn0.x6VVZIs6YDzGqQA47eMQ4pMtTquYFLmCz13EsqcrFrk'
+    });
+    // }
   }
 
   Future<Map<String, dynamic>> get(String endPoint) async {
@@ -91,10 +93,8 @@ class ApiProvider {
       {FormData? formBody}) async {
     prettyPrint("on post call$body");
     try {
-      prettyPrint("starting dio");
+      addToken();
 
-      await addToken();
-      // prettyPrint(_dio.options.)
       final Response response = await _dio.post(
         endPoint,
         data: formBody ?? body,

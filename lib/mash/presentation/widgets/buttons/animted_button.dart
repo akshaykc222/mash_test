@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 
@@ -110,14 +111,21 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
                               color: AppColors.primaryColor,
-                              borderRadius: BorderRadius.circular(80)),
+                              shape: _colorSizeAnimation.value == minSize
+                                  ? BoxShape.circle
+                                  : BoxShape.rectangle,
+                              borderRadius: _colorSizeAnimation.value == minSize
+                                  ? null
+                                  : BorderRadius.circular(80)),
                           child: _colorSizeAnimation.value == minSize
-                              ? const Center(
+                              ? Center(
                                   child: CircularProgressIndicator(
-                                    color: Colors.white,
+                                    color: AppColors.white,
+                                    strokeCap: StrokeCap.round,
+                                    strokeWidth: 2,
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                         ),
                       ),
                     ),

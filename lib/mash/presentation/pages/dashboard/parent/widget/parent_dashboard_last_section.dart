@@ -8,7 +8,7 @@ import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
-import '../../../../../data/remote/models/request/word_thought_request.dart';
+import '../../../../../data/remote/models/request/academic_comp_id_request.dart';
 import '../../../../manager/dashboard_bloc/dashboard_bloc.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_strings.dart';

@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
-import 'package:mash/mash/data/remote/models/request/word_thought_request.dart';
+import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
-import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought.dart';
+import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart';
 
 import '../../../../core/custom_exception.dart';
 import '../../../../core/response_classify.dart';

@@ -10,7 +10,8 @@ void main() {
   late MockAuthRemoteDataSource mockAuthRemoteDataSource;
   late AuthRepositoryImpl authRepositoryImpl;
   late MockConnectionChecker connectionChecker;
-  late MockAuthLocalDataSource mockAuthLocalDataSourc
+  late MockAuthLocalDataSource mockAuthLocalDataSource;
+
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
     connectionChecker = MockConnectionChecker();
@@ -70,6 +71,5 @@ void main() {
       verifyZeroInteractions(mockAuthRemoteDataSource);
       verifyZeroInteractions(mockAuthLocalDataSource);
     });
-    ;
   });
 }
