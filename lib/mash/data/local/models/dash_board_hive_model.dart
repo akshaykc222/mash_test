@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
+
 part 'dash_board_hive_model.g.dart';
 
 @HiveType(typeId: 1)
