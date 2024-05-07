@@ -44,6 +44,10 @@ class AppPages {
   static const noticeBoardMainScreen = '/noticeBoardMainScreen';
   static const noticeBoardDetailScreen = '/noticeDetailScreen';
 
+  //timeTable
+
+  static const timeTableMainScreen = '/timeTableMainScreen';
+  static const weeklyTimetableScreen = '/weeklyTimetableScreen';
 
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';

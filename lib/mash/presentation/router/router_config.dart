@@ -24,6 +24,7 @@ import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
@@ -192,6 +193,10 @@ GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
       builder: (context, state) => const NoticeBoardDetailScreen(),
+    ),GoRoute(
+      name: AppPages.weeklyTimetableScreen,
+      path: AppPages.weeklyTimetableScreen,
+      builder: (context, state) => const WeeklyTimeTable(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

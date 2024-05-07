@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import '../../../../core/api_provider.dart';
+import '../models/request/academic_comp_id_request.dart';
 import '../routes/app_remote_routes.dart';
 
 abstract class DashBoardDataSource {
