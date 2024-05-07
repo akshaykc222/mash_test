@@ -1,7 +1,7 @@
-import 'package:mash/mash/domain/entities/auth_response_entity.dart';
+import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 
 class AuthResponseModel extends AuthResponseEntity {
-  AuthResponseModel({
+  const AuthResponseModel({
     required super.statusCode,
     required super.statusMessage,
     required super.resTable,
@@ -19,7 +19,7 @@ class AuthResponseModel extends AuthResponseEntity {
 }
 
 class LoginResTableModel extends LoginResTableEntity {
-  LoginResTableModel({
+  const LoginResTableModel({
     required super.studentId,
     required super.admissionNo,
     required super.studentName,
@@ -45,7 +45,7 @@ class LoginResTableModel extends LoginResTableEntity {
         studentId: json["STUDENT_ID"],
         admissionNo: json["ADMISSION_NO"],
         studentName: json["STUDENT_NAME"],
-        compId: json["COMP_ID"].toDouble(),
+        compId: json["COMP_ID"],
         roleId: json["ROLE_ID"].toDouble(),
         activeStatus: json["ACTIVE_STATUS"].toDouble(),
         pwdChangeStatus: json["PWD_CHANGE_STATUS"].toDouble(),

@@ -54,13 +54,15 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
             top: 0,
             right: 0,
-            child: SvgPicture.asset(AppAssets.loginStackImage,color: Colors.purple.withOpacity(0.5),)),
+            child: SvgPicture.asset(
+              AppAssets.loginStackImage,
+              color: Colors.purple.withOpacity(0.5),
+            )),
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView(
@@ -87,7 +89,7 @@ class _OtpScreenState extends State<OtpScreen> {
     );
   }
 
-  sizedBox(height){
+  sizedBox(height) {
     return SizedBox(
       height: SizeConfig.height(height),
     );
@@ -171,9 +173,7 @@ class _OtpScreenState extends State<OtpScreen> {
   _otpField() {
     return OTPTextField(
       length: 4,
-      otpFieldStyle: OtpFieldStyle(
-        focusBorderColor: Colors.purple
-      ),
+      otpFieldStyle: OtpFieldStyle(focusBorderColor: Colors.purple),
       width: 150,
       fieldWidth: 60,
       style: const TextStyle(fontSize: 14),
@@ -249,7 +249,7 @@ class _OtpScreenState extends State<OtpScreen> {
               },
               child: const Text(
                 AppStrings.resend,
-                style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
           ),

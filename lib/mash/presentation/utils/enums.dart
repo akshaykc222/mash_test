@@ -11,12 +11,9 @@ enum ProgressIndicatorType {
   circular,
 }
 
-enum Day {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday
+enum Day { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
+
+enum ChatType {
+  personal,
+  group,
 }

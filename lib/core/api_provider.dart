@@ -4,7 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/hive_service.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
 import 'custom_exception.dart';
@@ -40,12 +42,18 @@ class ApiProvider {
       };
     }
   }
-  addToken() async {
-    // GetStorage storage = GetStorage();
-    // String? token = storage.read(
+  addToken() {
+    // List<String> token = await HiveService().getBoxes<String>(
     //   LocalStorageNames.token,
     // );
-    // _dio.options.headers.addAll({'Authorization': 'Bearer $token'});
+
+    // if (token.isNotEmpty) {
+    // prettyPrint('token ${token.first}');
+    _dio.options.headers.addAll({
+      'Authorization':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJNR1MxMDAwNjYwIiwibmJmIjoxNzE0ODI0NjIyLCJleHAiOjE3MTQ4MjgyMjIsImlhdCI6MTcxNDgyNDYyMn0.x6VVZIs6YDzGqQA47eMQ4pMtTquYFLmCz13EsqcrFrk'
+    });
+    // }
   }
 
   Future<Map<String, dynamic>> get(String endPoint) async {
@@ -67,7 +75,7 @@ class ApiProvider {
 
   Future<Map<String, dynamic>> delete(String endPoint) async {
     try {
-      addToken();
+      // addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.delete(
         endPoint,
@@ -85,16 +93,14 @@ class ApiProvider {
       {FormData? formBody}) async {
     prettyPrint("on post call$body");
     try {
-      prettyPrint("starting dio");
-
       addToken();
-      // prettyPrint(_dio.options.)
+
       final Response response = await _dio.post(
         endPoint,
         data: formBody ?? body,
       );
 
-      prettyPrint("getting response${response.realUri}");
+      prettyPrint("getting response${response.data}");
       final Map<String, dynamic> responseData = classifyResponse(response);
       prettyPrint(responseData.toString());
       return responseData;
@@ -131,7 +137,7 @@ class ApiProvider {
 
   Map<String, dynamic> classifyResponse(Response response) {
     // try {
-    print(response.data);
+    // log(response.data);
     final Map<String, dynamic> responseData =
         response.data as Map<String, dynamic>;
     String errorMsg = "";
@@ -166,8 +172,5 @@ class ApiProvider {
           'Error occurred while Communication with Server with StatusCode : ${response.statusCode}',
         );
     }
-    // } catch (e) {
-    //   throw BadRequestException("something went  wrong");
-    // }
   }
 }

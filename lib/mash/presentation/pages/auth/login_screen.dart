@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/data/remote/models/request/notice_pop_up_request.dart';
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
@@ -16,6 +17,8 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
+
+import '../../manager/notic_bloc/notice_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,18 +37,31 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late AuthBloc _authBloc;
   @override
   void initState() {
-    _authBloc = AuthBloc.get(context);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<NoticeBloc>(context).add(
+          NoticeEvent.getNoticePopUp(
+              NoticePopUpRequest(pCompId: '200001', noticeId: '1822'))),
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: _loginBody(context),
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.loginResponse.status == Status.COMPLETED) {
+          GoRouter.of(context).pushNamed(AppPages.home);
+        } else if (state.loginResponse.status == Status.ERROR) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.loginResponse.error.toString())));
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: _loginBody(context),
+      ),
     );
   }
 
@@ -173,10 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: 50,
           decoration: BoxDecoration(
               color: AppColors.primaryColor,
-              gradient: LinearGradient(colors: [
-                AppColors.primaryColor,
-                AppColors.primaryColor.withOpacity(0.5),
-              ]),
+              gradient: AppColors.primaryLinearGradient,
               borderRadius: BorderRadius.circular(8)),
         )
       ],
@@ -189,13 +202,13 @@ class _LoginScreenState extends State<LoginScreen> {
         return AnimatedSharedButton(
             onTap: () {
               // if (state.loginResponse.status == Status.INITIAL) {
-              _authBloc.add(AuthEvent.login(
+              BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
+                  context: context,
                   loginRequest: LoginRequest(
                       userId: '1',
                       password: '1',
                       deviceId: '1',
                       appType: '1')));
-              GoRouter.of(context).goNamed(AppPages.home);
 
               // }
             },
