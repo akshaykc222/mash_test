@@ -49,10 +49,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     This function is responsible for saving user response from the successfully login
    */
   saveUserInfo(LoginResTableEntity entity) async {
-   await saveUserUseCase.call(LoginLocalModel.fromEntity(entity));
+    await saveUserUseCase.call(LoginLocalModel.fromEntity(entity));
   }
 
-  getUserInfo(){
+  getUserInfo() {
     getUserInfoUseCase.call(NoParams());
   }
 
