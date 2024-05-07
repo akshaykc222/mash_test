@@ -8,7 +8,7 @@ part of 'login_local_model.dart';
 
 class LoginLocalModelAdapter extends TypeAdapter<LoginLocalModel> {
   @override
-  final int typeId = 2;
+  final int typeId = 4;
 
   @override
   LoginLocalModel read(BinaryReader reader) {

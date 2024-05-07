@@ -4,7 +4,7 @@ import '../../../domain/entities/auth/auth_response_entity.dart';
 
 part 'login_local_model.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 4)
 class LoginLocalModel extends LoginResTableEntity {
   @HiveField(0)
   final String studentId;

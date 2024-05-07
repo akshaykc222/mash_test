@@ -11,7 +11,8 @@ class NoticeRepositoryImple implements NoticeRepository {
 
   NoticeRepositoryImple({required this.noticeRemoteDataSource});
   @override
-  Future<NoticePopUpEntity> getNoticePopUp(NoticePopUpRequest params) async {
+  Future<List<NoticePopUpEntity>> getNoticePopUp(
+      NoticePopUpRequest params) async {
     return await noticeRemoteDataSource.getNoticePopUp(params);
   }
 }
