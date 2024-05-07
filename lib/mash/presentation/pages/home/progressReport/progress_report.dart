@@ -55,7 +55,7 @@ class _ProgressReportState extends State<ProgressReport> {
   }
 
   _selectTermTitle() {
-    return Expanded(
+    return const Expanded(
       flex: 1,
       child: Align(
           alignment: Alignment.centerLeft,
@@ -225,7 +225,7 @@ class _ProgressReportState extends State<ProgressReport> {
           Expanded(
             flex: 2,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -285,7 +285,7 @@ class _ProgressReportState extends State<ProgressReport> {
         flex: 1,
         child: Text(
           title,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ));
   }
 

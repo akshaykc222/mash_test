@@ -4,10 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mash/core/hive_service.dart';
 import 'package:mash/core/pretty_printer.dart';
-import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
-
 import '../mash/data/remote/routes/app_remote_routes.dart';
 import 'custom_exception.dart';
 

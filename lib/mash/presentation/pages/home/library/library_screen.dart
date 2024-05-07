@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
@@ -37,7 +36,7 @@ class LibraryScreen extends StatelessWidget {
 
   libraryCard(onPress,title,assetName) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: InkWell(
           onTap: onPress,
           child: Container(

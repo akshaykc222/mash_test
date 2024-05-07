@@ -7,7 +7,7 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import '../../../utils/app_colors.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: TimeTable(),
   ));
 }

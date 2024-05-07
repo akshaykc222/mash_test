@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
-import 'package:mash/mash/presentation/manager/notic_bloc/notice_bloc.dart';
+import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 

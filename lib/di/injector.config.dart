@@ -40,7 +40,7 @@ import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i21;
 import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
 import '../mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart'
     as _i22;
-import '../mash/presentation/manager/notic_bloc/notice_bloc.dart' as _i23;
+import '../mash/presentation/manager/notice_bloc/notice_bloc.dart' as _i23;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

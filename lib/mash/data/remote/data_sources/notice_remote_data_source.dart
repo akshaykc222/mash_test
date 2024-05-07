@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 

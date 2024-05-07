@@ -5,7 +5,6 @@ import 'package:mash/mash/domain/repositories/auth_repository.dart';
 import '../../entities/auth/auth_response_entity.dart';
 
 @injectable
-@lazySingleton
 class GetUserInfoUseCase extends UseCase<LoginResTableEntity?, NoParams> {
   final AuthRepository repository;
 

@@ -19,7 +19,7 @@ class AcademicDetailScreen extends StatelessWidget {
 
   academicDetailBody() {
     return Padding(
-      padding: EdgeInsets.only(left: 10,right: 10,top: 10),
+      padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
       child: GridView.builder(
         itemCount: 4,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -55,7 +55,7 @@ class AcademicDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Center(
               child: Text('books'),

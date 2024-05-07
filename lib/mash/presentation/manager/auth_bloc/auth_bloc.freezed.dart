@@ -16,44 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthEvent {
-  LoginRequest get loginRequest => throw _privateConstructorUsedError;
-  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(LoginRequest loginRequest, BuildContext context)
         login,
+    required TResult Function() getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult? Function()? getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult Function()? getUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_GetUser value) getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
+    TResult? Function(_GetUser value)? getUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetUser value)? getUser,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AuthEventCopyWith<AuthEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +61,6 @@ mixin _$AuthEvent {
 abstract class $AuthEventCopyWith<$Res> {
   factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
       _$AuthEventCopyWithImpl<$Res, AuthEvent>;
-  @useResult
-  $Res call({LoginRequest loginRequest, BuildContext context});
 }
 
 /// @nodoc
@@ -74,32 +72,13 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? loginRequest = null,
-    Object? context = null,
-  }) {
-    return _then(_value.copyWith(
-      loginRequest: null == loginRequest
-          ? _value.loginRequest
-          : loginRequest // ignore: cast_nullable_to_non_nullable
-              as LoginRequest,
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$LoginImplCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+abstract class _$$LoginImplCopyWith<$Res> {
   factory _$$LoginImplCopyWith(
           _$LoginImpl value, $Res Function(_$LoginImpl) then) =
       __$$LoginImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({LoginRequest loginRequest, BuildContext context});
 }
@@ -170,6 +149,7 @@ class _$LoginImpl implements _Login {
   TResult when<TResult extends Object?>({
     required TResult Function(LoginRequest loginRequest, BuildContext context)
         login,
+    required TResult Function() getUser,
   }) {
     return login(loginRequest, context);
   }
@@ -178,6 +158,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult? Function()? getUser,
   }) {
     return login?.call(loginRequest, context);
   }
@@ -186,6 +167,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult Function()? getUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -198,6 +180,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_GetUser value) getUser,
   }) {
     return login(this);
   }
@@ -206,6 +189,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
+    TResult? Function(_GetUser value)? getUser,
   }) {
     return login?.call(this);
   }
@@ -214,6 +198,7 @@ class _$LoginImpl implements _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetUser value)? getUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -228,20 +213,121 @@ abstract class _Login implements AuthEvent {
       {required final LoginRequest loginRequest,
       required final BuildContext context}) = _$LoginImpl;
 
-  @override
   LoginRequest get loginRequest;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$GetUserImplCopyWith<$Res> {
+  factory _$$GetUserImplCopyWith(
+          _$GetUserImpl value, $Res Function(_$GetUserImpl) then) =
+      __$$GetUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetUserImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$GetUserImpl>
+    implements _$$GetUserImplCopyWith<$Res> {
+  __$$GetUserImplCopyWithImpl(
+      _$GetUserImpl _value, $Res Function(_$GetUserImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetUserImpl implements _GetUser {
+  const _$GetUserImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.getUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoginRequest loginRequest, BuildContext context)
+        login,
+    required TResult Function() getUser,
+  }) {
+    return getUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult? Function()? getUser,
+  }) {
+    return getUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult Function()? getUser,
+    required TResult orElse(),
+  }) {
+    if (getUser != null) {
+      return getUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_GetUser value) getUser,
+  }) {
+    return getUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_GetUser value)? getUser,
+  }) {
+    return getUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetUser value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (getUser != null) {
+      return getUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetUser implements AuthEvent {
+  const factory _GetUser() = _$GetUserImpl;
+}
+
+/// @nodoc
 mixin _$AuthState {
   ResponseClassify<AuthResponseEntity> get loginResponse =>
       throw _privateConstructorUsedError;
+  LoginResTableEntity? get userDetails => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -253,7 +339,9 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({ResponseClassify<AuthResponseEntity> loginResponse});
+  $Res call(
+      {ResponseClassify<AuthResponseEntity> loginResponse,
+      LoginResTableEntity? userDetails});
 }
 
 /// @nodoc
@@ -270,12 +358,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? loginResponse = null,
+    Object? userDetails = freezed,
   }) {
     return _then(_value.copyWith(
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<AuthResponseEntity>,
+      userDetails: freezed == userDetails
+          ? _value.userDetails
+          : userDetails // ignore: cast_nullable_to_non_nullable
+              as LoginResTableEntity?,
     ) as $Val);
   }
 }
@@ -288,7 +381,9 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<AuthResponseEntity> loginResponse});
+  $Res call(
+      {ResponseClassify<AuthResponseEntity> loginResponse,
+      LoginResTableEntity? userDetails});
 }
 
 /// @nodoc
@@ -303,12 +398,17 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loginResponse = null,
+    Object? userDetails = freezed,
   }) {
     return _then(_$AuthStateImpl(
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<AuthResponseEntity>,
+      userDetails: freezed == userDetails
+          ? _value.userDetails
+          : userDetails // ignore: cast_nullable_to_non_nullable
+              as LoginResTableEntity?,
     ));
   }
 }
@@ -316,14 +416,17 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl({required this.loginResponse});
+  const _$AuthStateImpl(
+      {required this.loginResponse, required this.userDetails});
 
   @override
   final ResponseClassify<AuthResponseEntity> loginResponse;
+  @override
+  final LoginResTableEntity? userDetails;
 
   @override
   String toString() {
-    return 'AuthState(loginResponse: $loginResponse)';
+    return 'AuthState(loginResponse: $loginResponse, userDetails: $userDetails)';
   }
 
   @override
@@ -332,11 +435,13 @@ class _$AuthStateImpl implements _AuthState {
         (other.runtimeType == runtimeType &&
             other is _$AuthStateImpl &&
             (identical(other.loginResponse, loginResponse) ||
-                other.loginResponse == loginResponse));
+                other.loginResponse == loginResponse) &&
+            (identical(other.userDetails, userDetails) ||
+                other.userDetails == userDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginResponse);
+  int get hashCode => Object.hash(runtimeType, loginResponse, userDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -347,11 +452,13 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-          {required final ResponseClassify<AuthResponseEntity> loginResponse}) =
-      _$AuthStateImpl;
+      {required final ResponseClassify<AuthResponseEntity> loginResponse,
+      required final LoginResTableEntity? userDetails}) = _$AuthStateImpl;
 
   @override
   ResponseClassify<AuthResponseEntity> get loginResponse;
+  @override
+  LoginResTableEntity? get userDetails;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>

@@ -48,7 +48,7 @@ class ScheduleItem extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                     color: AppColors.white,
                     boxShadow: [

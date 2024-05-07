@@ -44,9 +44,9 @@ class ProfileScreen extends StatelessWidget {
             ),
           ]),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Center(
             child: Container(
               width: 120,
@@ -54,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 1)),
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 radius: 60,
                 backgroundImage: AssetImage('assets/images/student_dummy.png'),
                 // adjust the size as needed
@@ -62,45 +62,45 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           const Text(
             'Abhishek V',
             style: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           const Text(
             'ADM NO : 157/200',
             style: TextStyle(
                 fontSize: 12, fontWeight: FontWeight.w300, color: Colors.black),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           _basicDetails(title: "Basic Details", value: [
             _buildRow(Icons.person, 'User ID', "MGS1000152"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.email, 'Email', "abhishekvmenon970@gmail.com"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.phone, 'Phone', "9353929448"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.date_range, 'Date of Birth', "10/09/2017"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.bloodtype, 'Blood Group', "AB+"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           _basicDetails(title: "Personal Information", value: [
             _buildRow(Icons.family_restroom, 'Father Name', "Haridas C"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.family_restroom, 'Mother Name', "Ambika V"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.phone_android, 'Mother Contact No.', "9995553571"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             _buildRow(Icons.phone_android, 'Father Contact', "9892929301"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           ]),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -111,12 +111,12 @@ class ProfileScreen extends StatelessWidget {
               ),
               elevation: 4,
               child: Padding(
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
                     _buildRow(Icons.place, 'Address',
                         "Sree rama nivas, P.O Urakam,Cherpu ,Thrissur 680562."),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                   ],
                 ),
               ),
@@ -137,11 +137,11 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               TextButton(
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     children: [
                       Text(
                         "Edit",
@@ -157,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                   ))
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Card(
@@ -176,7 +176,7 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildRow(IconData iconData1, String leftText, String rightText) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -185,10 +185,10 @@ class ProfileScreen extends StatelessWidget {
             child: Row(
               children: [
                 Icon(iconData1, color: Colors.black), // Icon
-                SizedBox(width: 10), // Space between icon and text
+                const SizedBox(width: 10), // Space between icon and text
                 Text(
                   leftText,
-                  style: TextStyle(fontSize: 14),
+                  style: const TextStyle(fontSize: 14),
                 ),
               ],
             ),
@@ -200,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
               child: Text(
                 rightText,
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: const TextStyle(
                   letterSpacing: 1,
                   fontSize: 12,
                   fontWeight: FontWeight.bold,

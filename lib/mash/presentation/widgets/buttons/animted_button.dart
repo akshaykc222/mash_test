@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/size_utility.dart';
 
 void main() {
-  ValueNotifier<bool> _isLoading = ValueNotifier(false);
+  ValueNotifier<bool> isLoading = ValueNotifier(false);
 
   runApp(MaterialApp(
     home: Scaffold(
@@ -12,14 +10,14 @@ void main() {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ValueListenableBuilder(
-              valueListenable: _isLoading,
+              valueListenable: isLoading,
               builder: (context, data, child) {
                 return AnimatedSharedButton(
                   onTap: () {
-                    _isLoading.value = !_isLoading.value;
+                    isLoading.value = !isLoading.value;
                     Future.delayed(const Duration(seconds: 2), () {
-                      _isLoading.value = !_isLoading.value;
-                      _isLoading.notifyListeners();
+                      isLoading.value = !isLoading.value;
+                      isLoading.notifyListeners();
                     });
                   },
                   title: const Text(

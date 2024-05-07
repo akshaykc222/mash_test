@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/app.dart';
 
 import '../router/app_pages.dart';
 import 'app_colors.dart';

@@ -6,4 +6,5 @@ class AuthEvent with _$AuthEvent {
     required LoginRequest loginRequest,
     required BuildContext context,
   }) = _Login;
+  const factory AuthEvent.getUser() = _GetUser;
 }

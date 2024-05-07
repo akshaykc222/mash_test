@@ -119,7 +119,7 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
           },
           itemCount: 7,
           itemBuilder: (context, index) {
-            return AcademicCardItem();
+            return const AcademicCardItem();
           }),
     );
   }
@@ -162,7 +162,7 @@ class AcademicCardItem extends StatelessWidget {
             errorWidget: (BuildContext context, String url, dynamic error) =>
                 const Icon(Icons.error),
           ),
-          title: Text(
+          title: const Text(
             'library books',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),

@@ -7,7 +7,7 @@ import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
