@@ -20,17 +20,20 @@ import '../mash/data/local/data_sources/auth_local_data_source.dart' as _i8;
 import '../mash/data/local/data_sources/dash_board_local_data_source.dart'
     as _i11;
 import '../mash/data/remote/data_sources/auth_remote_data_source.dart' as _i6;
+import '../mash/data/remote/data_sources/dashboard_data_source.dart' as _i12;
 import '../mash/data/remote/data_sources/dashboard_remote_data_source.dart'
     as _i7;
-import '../mash/data/repositories/auth_repository_impl.dart' as _i15;
-import '../mash/data/repositories/dash_board_repository_impl.dart' as _i13;
-import '../mash/domain/repositories/auth_repository.dart' as _i14;
-import '../mash/domain/repositories/dash_board_repository.dart' as _i12;
-import '../mash/domain/use_cases/auth/login_use_case.dart' as _i17;
-import '../mash/domain/use_cases/dashboard/fetch_word_thought.dart' as _i16;
+import '../mash/data/repositories/auth_repository_impl.dart' as _i16;
+import '../mash/data/repositories/dash_board_repository_impl.dart' as _i14;
+import '../mash/domain/repositories/auth_repository.dart' as _i15;
+import '../mash/domain/repositories/dash_board_repository.dart' as _i13;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i18;
+import '../mash/domain/use_cases/auth/login_use_case.dart' as _i19;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i20;
+import '../mash/domain/use_cases/dashboard/fetch_word_thought.dart' as _i17;
 import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
 import '../mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart'
-    as _i18;
+    as _i21;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -56,22 +59,28 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i9.ConnectionCheckerImpl(gh<_i10.InternetConnectionChecker>()));
     gh.lazySingleton<_i11.DashBoardLocalDataSource>(() =>
         _i11.DashBoardLocalDataSourceImpl(hiveService: gh<_i5.HiveService>()));
-    gh.lazySingleton<_i12.DashBoardRepository>(() => _i13.DashBoardRepoImpl(
+    gh.lazySingleton<_i12.DashBoardDataSource>(
+        () => _i12.DashBoardDataSourceImpl(apiProvider: gh<_i4.ApiProvider>()));
+    gh.lazySingleton<_i13.DashBoardRepository>(() => _i14.DashBoardRepoImpl(
           gh<_i7.DashBoardRemoteDataSource>(),
           gh<_i9.ConnectionChecker>(),
           gh<_i11.DashBoardLocalDataSource>(),
         ));
-    gh.lazySingleton<_i14.AuthRepository>(() => _i15.AuthRepositoryImpl(
+    gh.lazySingleton<_i15.AuthRepository>(() => _i16.AuthRepositoryImpl(
           gh<_i9.ConnectionChecker>(),
           authRemoteDataSource: gh<_i6.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i8.AuthLocalDataSource>(),
         ));
-    gh.factory<_i16.FetchWordThoughtUseCase>(
-        () => _i16.FetchWordThoughtUseCase(gh<_i12.DashBoardRepository>()));
-    gh.factory<_i17.LoginUseCase>(
-        () => _i17.LoginUseCase(gh<_i14.AuthRepository>()));
-    gh.factory<_i18.DashboardBloc>(
-        () => _i18.DashboardBloc(gh<_i16.FetchWordThoughtUseCase>()));
+    gh.factory<_i17.FetchWordThoughtUseCase>(
+        () => _i17.FetchWordThoughtUseCase(gh<_i13.DashBoardRepository>()));
+    gh.factory<_i18.GetUserInfoUseCase>(
+        () => _i18.GetUserInfoUseCase(gh<_i15.AuthRepository>()));
+    gh.factory<_i19.LoginUseCase>(
+        () => _i19.LoginUseCase(gh<_i15.AuthRepository>()));
+    gh.lazySingleton<_i20.SaveUserInfoUseCase>(
+        () => _i20.SaveUserInfoUseCase(gh<_i15.AuthRepository>()));
+    gh.factory<_i21.DashboardBloc>(
+        () => _i21.DashboardBloc(gh<_i17.FetchWordThoughtUseCase>()));
     return this;
   }
 }

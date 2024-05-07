@@ -5,6 +5,8 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mash/di/injector.config.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 
+import '../mash/data/local/models/login_local_model.dart';
+
 final getIt = GetIt.instance;
 
 @InjectableInit(
@@ -18,5 +20,6 @@ void configureDependencies() {
   getIt.init();
   Hive.registerAdapter(WordThoughtsHiveModelAdapter());
   Hive.registerAdapter(ThoughtTableModelAdapter());
+  Hive.registerAdapter(LoginLocalModelAdapter());
   Hive.registerAdapter(WordTableModelAdapter());
 }

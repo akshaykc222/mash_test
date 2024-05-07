@@ -47,10 +47,6 @@ class AppAssets {
 
   static const tekieImg = 'assets/images/tekie_img.png';
 
-  //tc
-  static const tcApply = 'assets/images/tc_apply.svg';
-  static const tcCancel = 'assets/images/tc_cancel.svg';
-
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
   static const libraryTabIcon = 'assets/icons/library_tab.svg';
@@ -62,4 +58,12 @@ class AppAssets {
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
+
+  static var tcApply = "";
+
+  static var tcCancel = "";
+
+  static String messages = "";
+
+  static String groups = "";
 }

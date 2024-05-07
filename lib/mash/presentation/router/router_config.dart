@@ -32,7 +32,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,

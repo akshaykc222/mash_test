@@ -7,6 +7,7 @@ abstract class ConnectionChecker {
 }
 
 @LazySingleton(as: ConnectionChecker)
+@injectable
 class ConnectionCheckerImpl extends ConnectionChecker {
   final InternetConnectionChecker connectionChecker;
 
