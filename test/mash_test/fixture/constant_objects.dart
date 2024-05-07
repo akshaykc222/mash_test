@@ -1,4 +1,7 @@
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
+import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
+import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
+import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 
 //auth model
@@ -36,4 +39,45 @@ final tLoginRequest = LoginRequest(
   password: 'password',
   deviceId: '123',
   appType: 'appType',
+);
+/* 
+dashboard
+*/
+
+//--> word thought
+const tWordThoughtModel =
+    WordThoughtsModel(statusCode: 200, statusMessage: 'message', wordTable: [
+  WordTableModel(
+      wordId: 12,
+      wordName: 'wordName',
+      wordMeaning1: 'wordMeaning1',
+      wordMeaning2: 'wordMeaning2',
+      hasImg: 'hasImg',
+      wordImage: 'wordImage',
+      status: 1,
+      compId: 1,
+      createdBy: 'createdBy'),
+], thoughtTable: [
+  ThoughtTableModel(
+    thoughtId: 1,
+    thoughtOfTheDayUrl: 'thoughtOfTheDayUrl',
+    publishedDate: 'publishedDate',
+  ),
+]);
+
+//--> word thought response
+final tWordThoughtRequest =
+    WordThoughtRequest(pAcademicId: '87', pCompID: '200001');
+/* 
+notice
+*/
+
+//-->notice pop up
+
+const tNoticePopUpModel = NoticePopUpModel(
+  topicHead: 'Sample Topic Head',
+  topicDesc: 'Sample Topic Description',
+  noticeDate: '2024-05-07',
+  docFile: 'sample_document.pdf',
+  ext: 'pdf',
 );

@@ -5,4 +5,6 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getWordThought";
   static const noticePopUp =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticePopUp";
+  static const classDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
 }

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ClassInfoEntity extends Equatable {
+class ClassDetailsEntity extends Equatable {
   final String? className;
   final double? classId;
   final double? academicId;
@@ -9,7 +9,7 @@ class ClassInfoEntity extends Equatable {
   final double? mediumId;
   final double? isActive;
 
-  const ClassInfoEntity({
+  const ClassDetailsEntity({
     required this.className,
     required this.classId,
     required this.academicId,

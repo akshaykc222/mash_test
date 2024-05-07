@@ -10,4 +10,15 @@ class ClassDetailsModel extends ClassDetailsEntity {
     required super.mediumId,
     required super.isActive,
   });
+  factory ClassDetailsModel.fromJson(Map<String, dynamic> json) {
+    return ClassDetailsModel(
+      className: json['CLASS_NAME'],
+      classId: json['CLASS_ID'].toDouble(),
+      academicId: json['ACADEMIC_ID'].toDouble(),
+      noSeats: json['NO_SEATS'].toDouble(),
+      order: json['ORDR'].toDouble(),
+      mediumId: json['MEDIUM_ID'].toDouble(),
+      isActive: json['IS_ACTIVE'].toDouble(),
+    );
+  }
 }
