@@ -45,7 +45,7 @@ class LoginResTableModel extends LoginResTableEntity {
         studentId: json["STUDENT_ID"],
         admissionNo: json["ADMISSION_NO"],
         studentName: json["STUDENT_NAME"],
-        compId: json["COMP_ID"].toDouble(),
+        compId: json["COMP_ID"],
         roleId: json["ROLE_ID"].toDouble(),
         activeStatus: json["ACTIVE_STATUS"].toDouble(),
         pwdChangeStatus: json["PWD_CHANGE_STATUS"].toDouble(),

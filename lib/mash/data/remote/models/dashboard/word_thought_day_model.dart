@@ -24,15 +24,6 @@ class WordThoughtsModel extends WordThoughtsEntity {
             .map((e) => ThoughtTableModel.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
-
-  Map<String, dynamic> toJson() => {
-        'statusCode': statusCode,
-        'statusMessage': statusMessage,
-        'wordTable':
-            wordTable.map((e) => (e as WordTableModel).toJson()).toList(),
-        'thoughtTable':
-            thoughtTable.map((e) => (e as ThoughtTableModel).toJson()).toList(),
-      };
 }
 
 class ThoughtTableModel extends ThoughtTableEntity {

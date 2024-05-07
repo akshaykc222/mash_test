@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/data/remote/models/request/notice_pop_up_request.dart';
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
@@ -16,6 +17,8 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
+
+import '../../manager/notic_bloc/notice_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +39,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => BlocProvider.of<NoticeBloc>(context).add(
+          NoticeEvent.getNoticePopUp(
+              NoticePopUpRequest(pCompId: '200001', noticeId: '1822'))),
+    );
     super.initState();
   }
 
@@ -45,6 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if (state.loginResponse.status == Status.COMPLETED) {
           GoRouter.of(context).pushNamed(AppPages.home);
+        } else if (state.loginResponse.status == Status.ERROR) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.loginResponse.error.toString())));
         }
       },
       child: Scaffold(
@@ -192,6 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () {
               // if (state.loginResponse.status == Status.INITIAL) {
               BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
+                  context: context,
                   loginRequest: LoginRequest(
                       userId: '1',
                       password: '1',

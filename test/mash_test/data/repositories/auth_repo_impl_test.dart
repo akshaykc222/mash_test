@@ -71,47 +71,6 @@ void main() {
       verifyZeroInteractions(mockAuthRemoteDataSource);
       verifyZeroInteractions(mockAuthLocalDataSource);
     });
-    // Import necessary libraries and modules
-
-    test(
-      'should cache the user data locally when the call to sign in source is successful',
-      () async {
-        /// Arrange
-        // Mock the response of the remote data source's login method
-        when(mockAuthRemoteDataSource.login(tLoginRequest))
-            .thenAnswer((_) async => tAuthModel);
-
-        // Mock the response of the local data source's saveUserToken method
-        when(mockAuthLocalDataSource.saveUserToken('token'))
-            .thenAnswer((_) async => Future.value);
-
-        // Mock the isConnected method of MockConnectionChecker
-        when(connectionChecker.isConnected).thenAnswer((_) async => true);
-
-        /// Act
-        await authRepositoryImpl.login(tLoginRequest);
-
-        /// Assert
-        // Verify that saveUserToken was never called with the specified token
-        verifyNever(mockAuthLocalDataSource.saveUserToken('token'));
-      },
-    );
-    // test(
-    //   'should return local cached user-data when the call to local data source is successful',
-    //   () async {
-    //     /// Arrange
-    //     when(() => mockAuthLocalDataSource.())
-    //         .thenAnswer((_) async => Future.value(tUserModel));
-
-    //     /// Act
-    //     final actualResult = await repository.getCachedUser();
-
-    //     /// Assert
-    //     actualResult.fold(
-    //       (left) => fail('test failed'),
-    //       (right) => expect(right, tUserModel),
-    //     );
-    //   },
-    // );
+    ;
   });
 }

@@ -2,7 +2,7 @@ import '../../data/local/models/login_local_model.dart';
 import '../../data/remote/models/request/login_request.dart';
 import '../entities/auth/auth_response_entity.dart';
 
-abstract class AuthRepository {
+abstract interface class AuthRepository {
   Future<AuthResponseEntity> login(LoginRequest request);
   /* This method used for saving user response data from successful login response */
   Future<void> saveUserInfo(LoginLocalModel userInfo);
