@@ -79,14 +79,14 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
   @override
   $Res call({
     Object? loginRequest = null,
-    Object? context = null,
+    Object? context = freezed,
   }) {
     return _then(_value.copyWith(
       loginRequest: null == loginRequest
           ? _value.loginRequest
           : loginRequest // ignore: cast_nullable_to_non_nullable
               as LoginRequest,
-      context: null == context
+      context: freezed == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
@@ -116,14 +116,14 @@ class __$$LoginImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? loginRequest = null,
-    Object? context = null,
+    Object? context = freezed,
   }) {
     return _then(_$LoginImpl(
       loginRequest: null == loginRequest
           ? _value.loginRequest
           : loginRequest // ignore: cast_nullable_to_non_nullable
               as LoginRequest,
-      context: null == context
+      context: freezed == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
@@ -153,11 +153,12 @@ class _$LoginImpl implements _Login {
             other is _$LoginImpl &&
             (identical(other.loginRequest, loginRequest) ||
                 other.loginRequest == loginRequest) &&
-            (identical(other.context, context) || other.context == context));
+            const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginRequest, context);
+  int get hashCode => Object.hash(
+      runtimeType, loginRequest, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
