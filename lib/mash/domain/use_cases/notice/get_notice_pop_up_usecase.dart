@@ -7,12 +7,14 @@ import '../../../data/remote/models/request/notice_pop_up_request.dart';
 
 @injectable
 class GetNoticeBoardPopUp
-    implements UseCase<NoticePopUpEntity?, NoticePopUpRequest> {
+    implements UseCase<List<NoticePopUpEntity>?, NoticePopUpRequest> {
   final NoticeRepository noticeRepository;
 
   GetNoticeBoardPopUp(this.noticeRepository);
+
   @override
-  Future<NoticePopUpEntity?> call(params) {
-    return noticeRepository.getNoticePopUp(params);
+  Future<List<NoticePopUpEntity>?> call(NoticePopUpRequest params) async {
+    return await noticeRepository.getNoticePopUp(params);
   }
+  //
 }
