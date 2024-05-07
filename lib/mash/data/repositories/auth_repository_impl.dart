@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/connection_checker.dart';
 import 'package:mash/core/custom_exception.dart';
 import 'package:mash/mash/data/local/data_sources/auth_local_data_source.dart';
+import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/domain/repositories/auth_repository.dart';
@@ -35,5 +36,15 @@ class AuthRepositoryImpl implements AuthRepository {
     // } catch (e) {
     //   throw Exception(e);
     // }
+  }
+
+  @override
+  Future<void> saveUserInfo(LoginLocalModel userInfo) {
+    return authLocalDataSource.saveUserInfo(userInfo);
+  }
+
+  @override
+  Future<LoginResTableEntity?> getUserInfo() {
+    return authLocalDataSource.getUserInfo();
   }
 }

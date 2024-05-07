@@ -58,4 +58,12 @@ class AppAssets {
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
+
+  static var tcApply = "";
+
+  static var tcCancel = "";
+
+  static String messages = "";
+
+  static String groups = "";
 }

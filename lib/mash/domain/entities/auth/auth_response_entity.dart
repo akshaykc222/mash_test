@@ -43,21 +43,21 @@ class LoginResTableEntity extends Equatable {
   final String admissionNo;
   final String studentName;
   final String compId;
-  final double roleId;
-  final double activeStatus;
-  final double pwdChangeStatus;
+  final String roleId;
+  final String activeStatus;
+  final String pwdChangeStatus;
   final String profilePhoto;
   final String eMail;
-  final double mobile;
+  final String mobile;
   final String parentId;
-  final double academicId;
+  final String academicId;
   final String academicYear;
   final String usrId;
-  final double divisionId;
-  final double classId;
-  final double medium;
-  final double userType;
+  final String divisionId;
+  final String classId;
+  final String medium;
+  final String userType;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [studentId];
 }

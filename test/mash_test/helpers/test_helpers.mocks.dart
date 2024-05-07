@@ -5,17 +5,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
 
-import 'package:dio/dio.dart' as _i9;
+import 'package:dio/dio.dart' as _i10;
 import 'package:hive/hive.dart' as _i4;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i3;
-import 'package:mash/core/api_provider.dart' as _i8;
-import 'package:mash/core/connection_checker.dart' as _i12;
-import 'package:mash/core/hive_service.dart' as _i13;
+import 'package:mash/core/api_provider.dart' as _i9;
+import 'package:mash/core/connection_checker.dart' as _i13;
+import 'package:mash/core/hive_service.dart' as _i14;
 import 'package:mash/mash/data/local/data_sources/auth_local_data_source.dart'
-    as _i11;
+    as _i12;
+import 'package:mash/mash/data/local/models/login_local_model.dart' as _i8;
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
-    as _i10;
+    as _i11;
 import 'package:mash/mash/data/remote/models/request/login_request.dart' as _i7;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i2;
@@ -101,6 +102,26 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
           ),
         )),
       ) as _i6.Future<_i2.AuthResponseEntity>);
+
+  @override
+  _i6.Future<void> saveUserInfo(_i8.LoginLocalModel? userInfo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUserInfo,
+          [userInfo],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Future<_i2.LoginResTableEntity?> getUserInfo() => (super.noSuchMethod(
+        Invocation.method(
+          #getUserInfo,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.LoginResTableEntity?>.value(),
+      ) as _i6.Future<_i2.LoginResTableEntity?>);
 }
 
 /// A class which mocks [InternetConnectionChecker].
@@ -200,7 +221,7 @@ class MockInternetConnectionChecker extends _i1.Mock
 /// A class which mocks [ApiProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiProvider extends _i1.Mock implements _i8.ApiProvider {
+class MockApiProvider extends _i1.Mock implements _i9.ApiProvider {
   MockApiProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -230,7 +251,7 @@ class MockApiProvider extends _i1.Mock implements _i8.ApiProvider {
   _i6.Future<Map<String, dynamic>> post(
     String? endPoint,
     Map<String, dynamic>? body, {
-    _i9.FormData? formBody,
+    _i10.FormData? formBody,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -263,7 +284,7 @@ class MockApiProvider extends _i1.Mock implements _i8.ApiProvider {
       ) as _i6.Future<Map<String, dynamic>>);
 
   @override
-  Map<String, dynamic> classifyResponse(_i9.Response<dynamic>? response) =>
+  Map<String, dynamic> classifyResponse(_i10.Response<dynamic>? response) =>
       (super.noSuchMethod(
         Invocation.method(
           #classifyResponse,
@@ -277,7 +298,7 @@ class MockApiProvider extends _i1.Mock implements _i8.ApiProvider {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i10.AuthRemoteDataSource {
+    implements _i11.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -304,7 +325,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthLocalDataSource extends _i1.Mock
-    implements _i11.AuthLocalDataSource {
+    implements _i12.AuthLocalDataSource {
   MockAuthLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -318,12 +339,32 @@ class MockAuthLocalDataSource extends _i1.Mock
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
+
+  @override
+  _i6.Future<void> saveUserInfo(_i8.LoginLocalModel? userInfo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUserInfo,
+          [userInfo],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Future<_i2.LoginResTableEntity?> getUserInfo() => (super.noSuchMethod(
+        Invocation.method(
+          #getUserInfo,
+          [],
+        ),
+        returnValue: _i6.Future<_i2.LoginResTableEntity?>.value(),
+      ) as _i6.Future<_i2.LoginResTableEntity?>);
 }
 
 /// A class which mocks [ConnectionChecker].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockConnectionChecker extends _i1.Mock implements _i12.ConnectionChecker {
+class MockConnectionChecker extends _i1.Mock implements _i13.ConnectionChecker {
   MockConnectionChecker() {
     _i1.throwOnMissingStub(this);
   }
@@ -348,7 +389,7 @@ class MockConnectionChecker extends _i1.Mock implements _i12.ConnectionChecker {
 /// A class which mocks [HiveService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHiveService extends _i1.Mock implements _i13.HiveService {
+class MockHiveService extends _i1.Mock implements _i14.HiveService {
   MockHiveService() {
     _i1.throwOnMissingStub(this);
   }
