@@ -10,15 +10,29 @@ import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_vi
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
+import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
+import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
+import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
+import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
+import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
+import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/home/home_screen.dart';
+import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 
@@ -32,7 +46,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -106,6 +120,15 @@ class AppRouteManager {
       path: AppPages.homeWorkDetailsScreen,
       name: AppPages.homeWorkDetailsScreen,
       builder: (context, state) => const HomeWorkSelectDetailsWidget(),
+    ),GoRoute(
+      path: AppPages.quizCompletedScreen,
+      name: AppPages.quizCompletedScreen,
+      builder: (context, state) =>  const QuizCompletedScreen(),
+    ),
+    GoRoute(
+      path: AppPages.leaveScreen,
+      name: AppPages.leaveScreen,
+      builder: (context, state) =>   LeaveScreen(),
     ),
     GoRoute(
       name: AppPages.homeWorksViewScreen,
@@ -117,6 +140,26 @@ class AppRouteManager {
       path: AppPages.noteScreen,
       builder: (context, state) => const NoteScreen(),
     ),
+GoRoute(
+      path: AppPages.quizProfileScreen,
+      name: AppPages.quizProfileScreen,
+      builder: (context, state) =>   const QuizProfile(),
+    ),GoRoute(
+      path: AppPages.quizRankingScreen,
+      name: AppPages.quizRankingScreen,
+      builder: (context, state) =>   const QuizRankingScreen(),
+    ),GoRoute(
+      path: AppPages.progressReport,
+      name: AppPages.progressReport,
+      builder: (context, state) =>   const ProgressReport(),
+    ),GoRoute(
+      path: AppPages.syllabusScreen,
+      name: AppPages.syllabusScreen,
+      builder: (context, state) =>   const SyllabusScreen(),
+    ),GoRoute(
+      path: AppPages.tcMainScreen,
+      name: AppPages.tcMainScreen,
+      builder: (context, state) =>   const TransferCertificateMainScreen(),),
     GoRoute(
       name: AppPages.noteAddTeacherScreen,
       path: AppPages.noteAddTeacherScreen,
@@ -126,6 +169,34 @@ class AppRouteManager {
       name: AppPages.addNotScreen,
       path: AppPages.addNotScreen,
       builder: (context, state) => const AddNoteScreen(),
+    ),GoRoute(
+      name: AppPages.tcCancelScreen,
+      path: AppPages.tcCancelScreen,
+      builder: (context, state) => const TransferCancelScreen(),
+    ),GoRoute(
+      name: AppPages.tcRequestScreen,
+      path: AppPages.tcRequestScreen,
+      builder: (context, state) => const TransferRequestScreen(),
+    ),GoRoute(
+      name: AppPages.newsBoardMainScreen,
+      path: AppPages.newsBoardMainScreen,
+      builder: (context, state) => const NewsBoardMainScreen(),
+    ),GoRoute(
+      name: AppPages.newsBoardDetailScreen,
+      path: AppPages.newsBoardDetailScreen,
+      builder: (context, state) => const NewsBoardDetailScreen(),
+    ),GoRoute(
+      name: AppPages.noticeBoardMainScreen,
+      path: AppPages.noticeBoardMainScreen,
+      builder: (context, state) => const NoticeBoardMainScreen(),
+    ),GoRoute(
+      name: AppPages.noticeBoardDetailScreen,
+      path: AppPages.noticeBoardDetailScreen,
+      builder: (context, state) => const NoticeBoardDetailScreen(),
+    ),GoRoute(
+      name: AppPages.weeklyTimetableScreen,
+      path: AppPages.weeklyTimetableScreen,
+      builder: (context, state) => const WeeklyTimeTable(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
