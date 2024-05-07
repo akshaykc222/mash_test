@@ -28,11 +28,11 @@ void main() {
       const expectedUrl = AppRemoteRoutes.wordAndThougthofTheDay;
       final fakeResponse =
           json.decode(fixture('dashboard/word_thought_response.json'));
-      when(mockApiProvider.post(expectedUrl, tWordThoughtResponse.toJson()))
+      when(mockApiProvider.post(expectedUrl, tWordThoughtRequest.toJson()))
           .thenAnswer((_) async => fakeResponse);
       //Act
       final result = await dashBoardRemoteDataSourceImpl
-          .fetchWordandThoghtOfTheDay(tWordThoughtResponse);
+          .fetchWordandThoghtOfTheDay(tWordThoughtRequest);
       //Assert
       expect(result, isA<List<dynamic>>);
     });
