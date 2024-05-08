@@ -4,7 +4,10 @@ part of 'auth_bloc.dart';
 class AuthState with _$AuthState {
   const factory AuthState({
     required ResponseClassify<AuthResponseEntity> loginResponse,
+    required LoginResTableEntity? userDetails,
   }) = _AuthState;
-  factory AuthState.initial() =>
-      AuthState(loginResponse: ResponseClassify.initial());
+  factory AuthState.initial() => AuthState(
+        loginResponse: ResponseClassify.initial(),
+        userDetails: null,
+      );
 }

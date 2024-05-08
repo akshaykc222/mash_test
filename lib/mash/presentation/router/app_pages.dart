@@ -33,6 +33,21 @@ class AppPages {
 
   //tc
   static const tcMainScreen = '/tcMainScreen';
+  static const tcCancelScreen = '/tcCancelScreen';
+  static const tcRequestScreen = '/tcRequestScreen';
+
+  //newsBoard
+  static const newsBoardMainScreen = '/newsBoardMainScreen';
+  static const newsBoardDetailScreen = '/newsDetailScreen';
+
+  //noticeBoard
+  static const noticeBoardMainScreen = '/noticeBoardMainScreen';
+  static const noticeBoardDetailScreen = '/noticeDetailScreen';
+
+  //timeTable
+
+  static const timeTableMainScreen = '/timeTableMainScreen';
+  static const weeklyTimetableScreen = '/weeklyTimetableScreen';
 
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';

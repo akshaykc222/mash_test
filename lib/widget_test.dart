@@ -32,7 +32,7 @@ class TestScreen extends StatelessWidget {
           child: Align(
               alignment: Alignment.bottomCenter,
               child: ListTile(
-                title: Text(
+                title: const Text(
                   'Rudn Enclave',
                   style: TextStyle(
                       fontSize: 14,
@@ -41,7 +41,7 @@ class TestScreen extends StatelessWidget {
                 ),
                 subtitle: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_on,
                       color: Colors.amber,
                     ),

@@ -6,57 +6,75 @@ part 'login_local_model.g.dart';
 
 @HiveType(typeId: 4)
 class LoginLocalModel extends LoginResTableEntity {
+  @override
   @HiveField(0)
   final String studentId;
 
+  @override
   @HiveField(1)
   final String admissionNo;
 
+  @override
   @HiveField(2)
   final String studentName;
 
+  @override
   @HiveField(3)
   final String compId;
 
+  @override
   @HiveField(4)
   final String roleId;
 
+  @override
   @HiveField(5)
   final String activeStatus;
 
+  @override
   @HiveField(6)
   final String pwdChangeStatus;
 
+  @override
   @HiveField(7)
   final String profilePhoto;
 
+  @override
   @HiveField(8)
   final String eMail;
 
+  @override
   @HiveField(9)
   final String mobile;
 
+  @override
   @HiveField(10)
   final String parentId;
 
+  @override
   @HiveField(11)
   final String academicId;
 
+  @override
   @HiveField(12)
   final String academicYear;
 
+  @override
   @HiveField(13)
   final String usrId;
 
+  @override
   @HiveField(14)
   final String divisionId;
 
+  @override
   @HiveField(15)
   final String classId;
 
+  @override
   @HiveField(16)
   final String medium;
 
+  @override
   @HiveField(17)
   final String userType;
 

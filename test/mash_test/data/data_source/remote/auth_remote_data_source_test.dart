@@ -10,12 +10,12 @@ import '../../../fixture/fixtures_readers.dart';
 import '../../../helpers/test_helpers.mocks.dart';
 
 void main() {
-  late ApiProvider apiProvider;
+  late ApiProvider mockApiProvider;
   late AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
 
   setUp(() {
-    apiProvider = MockApiProvider();
-    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(apiProvider);
+    mockApiProvider = MockApiProvider();
+    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(mockApiProvider);
   });
 
   group('Auth Repository Data Source', () {
@@ -23,10 +23,10 @@ void main() {
       test('should return auth response model when the response code is 200',
           () async {
         // Arrange
-
         final mockResponse = json.decode(fixture('auth/auth_response.json'));
 
-        when(apiProvider.post(AppRemoteRoutes.login, tLoginRequest.toJson()))
+        when(mockApiProvider.post(
+                AppRemoteRoutes.login, tLoginRequest.toJson()))
             .thenAnswer((_) async => mockResponse);
 
         // Act

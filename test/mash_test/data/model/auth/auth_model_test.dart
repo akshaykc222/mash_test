@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 
-import '../../fixture/constant_objects.dart';
-import '../../fixture/fixtures_readers.dart';
+import '../../../fixture/constant_objects.dart';
+import '../../../fixture/fixtures_readers.dart';
 
 void main() {
   test('should be a subclass of auth entity', () {

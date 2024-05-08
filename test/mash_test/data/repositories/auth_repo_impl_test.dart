@@ -71,6 +71,5 @@ void main() {
       verifyZeroInteractions(mockAuthRemoteDataSource);
       verifyZeroInteractions(mockAuthLocalDataSource);
     });
-    ;
   });
 }

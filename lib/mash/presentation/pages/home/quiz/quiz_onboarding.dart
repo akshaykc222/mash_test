@@ -91,7 +91,7 @@ class _QuizOnBoardingState extends State<QuizOnBoarding> {
               left: 0,
               child: Align(
                 alignment: Alignment.center,
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

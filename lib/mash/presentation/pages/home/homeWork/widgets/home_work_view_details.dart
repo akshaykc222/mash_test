@@ -68,8 +68,8 @@ class HomeWorkViewDetailsScreen extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              padding: EdgeInsets.all(10.0),
-              child: Text(
+              padding: const EdgeInsets.all(10.0),
+              child: const Text(
                 'Test please ignore',
                 style: TextStyle(
                   color: Colors.grey,

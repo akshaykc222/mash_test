@@ -43,7 +43,7 @@ class StudentProfileWidget extends StatelessWidget {
                               color: AppColors.black,
                             ),
                           ),
-                          Text(
+                          const Text(
                             '3B',
                           ),
                         ],

@@ -29,6 +29,7 @@ class AuthRepositoryImpl implements AuthRepository {
       final res = await authRemoteDataSource.login(request);
 
       await authLocalDataSource.saveUserToken(res.token);
+
       return res;
     } else {
       throw NetWorkException();

@@ -10,9 +10,7 @@ import '../mash/data/local/models/login_local_model.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit(
-  // initializerName: 'init', // default
-  preferRelativeImports: true, // default
-  // asExtension: true, // default
+  preferRelativeImports: true,
 )
 void configureDependencies() {
   getIt.registerSingleton<InternetConnectionChecker>(

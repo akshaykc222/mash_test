@@ -16,20 +16,19 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NoticeEvent {
-  NoticePopUpRequest get params => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NoticePopUpRequest params) getNoticePopUp,
+    required TResult Function() getNoticePopUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NoticePopUpRequest params)? getNoticePopUp,
+    TResult? Function()? getNoticePopUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NoticePopUpRequest params)? getNoticePopUp,
+    TResult Function()? getNoticePopUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,10 +48,6 @@ mixin _$NoticeEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NoticeEventCopyWith<NoticeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -60,8 +55,6 @@ abstract class $NoticeEventCopyWith<$Res> {
   factory $NoticeEventCopyWith(
           NoticeEvent value, $Res Function(NoticeEvent) then) =
       _$NoticeEventCopyWithImpl<$Res, NoticeEvent>;
-  @useResult
-  $Res call({NoticePopUpRequest params});
 }
 
 /// @nodoc
@@ -73,30 +66,13 @@ class _$NoticeEventCopyWithImpl<$Res, $Val extends NoticeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? params = null,
-  }) {
-    return _then(_value.copyWith(
-      params: null == params
-          ? _value.params
-          : params // ignore: cast_nullable_to_non_nullable
-              as NoticePopUpRequest,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetNoticePopUpImplCopyWith<$Res>
-    implements $NoticeEventCopyWith<$Res> {
+abstract class _$$GetNoticePopUpImplCopyWith<$Res> {
   factory _$$GetNoticePopUpImplCopyWith(_$GetNoticePopUpImpl value,
           $Res Function(_$GetNoticePopUpImpl) then) =
       __$$GetNoticePopUpImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({NoticePopUpRequest params});
 }
 
 /// @nodoc
@@ -106,76 +82,51 @@ class __$$GetNoticePopUpImplCopyWithImpl<$Res>
   __$$GetNoticePopUpImplCopyWithImpl(
       _$GetNoticePopUpImpl _value, $Res Function(_$GetNoticePopUpImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? params = null,
-  }) {
-    return _then(_$GetNoticePopUpImpl(
-      null == params
-          ? _value.params
-          : params // ignore: cast_nullable_to_non_nullable
-              as NoticePopUpRequest,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetNoticePopUpImpl implements _GetNoticePopUp {
-  const _$GetNoticePopUpImpl(this.params);
-
-  @override
-  final NoticePopUpRequest params;
+  const _$GetNoticePopUpImpl();
 
   @override
   String toString() {
-    return 'NoticeEvent.getNoticePopUp(params: $params)';
+    return 'NoticeEvent.getNoticePopUp()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetNoticePopUpImpl &&
-            (identical(other.params, params) || other.params == params));
+        (other.runtimeType == runtimeType && other is _$GetNoticePopUpImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, params);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetNoticePopUpImplCopyWith<_$GetNoticePopUpImpl> get copyWith =>
-      __$$GetNoticePopUpImplCopyWithImpl<_$GetNoticePopUpImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(NoticePopUpRequest params) getNoticePopUp,
+    required TResult Function() getNoticePopUp,
   }) {
-    return getNoticePopUp(params);
+    return getNoticePopUp();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NoticePopUpRequest params)? getNoticePopUp,
+    TResult? Function()? getNoticePopUp,
   }) {
-    return getNoticePopUp?.call(params);
+    return getNoticePopUp?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NoticePopUpRequest params)? getNoticePopUp,
+    TResult Function()? getNoticePopUp,
     required TResult orElse(),
   }) {
     if (getNoticePopUp != null) {
-      return getNoticePopUp(params);
+      return getNoticePopUp();
     }
     return orElse();
   }
@@ -210,15 +161,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
 }
 
 abstract class _GetNoticePopUp implements NoticeEvent {
-  const factory _GetNoticePopUp(final NoticePopUpRequest params) =
-      _$GetNoticePopUpImpl;
-
-  @override
-  NoticePopUpRequest get params;
-  @override
-  @JsonKey(ignore: true)
-  _$$GetNoticePopUpImplCopyWith<_$GetNoticePopUpImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _GetNoticePopUp() = _$GetNoticePopUpImpl;
 }
 
 /// @nodoc

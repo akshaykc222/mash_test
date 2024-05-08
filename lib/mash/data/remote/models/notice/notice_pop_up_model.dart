@@ -10,10 +10,10 @@ class NoticePopUpModel extends NoticePopUpEntity {
   });
   factory NoticePopUpModel.fromJson(Map<String, dynamic> json) {
     return NoticePopUpModel(
-      topicHead: json['TOPIC_HEAD'],
-      topicDesc: json['TOPIC_DESC'],
-      noticeDate: json['NOTICE_DATE'],
-      docFile: json['DOC_FILE'],
+      topicHead: json['TOPIC_HEAD'] as String,
+      topicDesc: json['TOPIC_DESC'] as String,
+      noticeDate: json['NOTICE_DATE'] as String,
+      docFile: json['DOC_FILE'] as String,
       ext: json['EXT'],
     );
   }
