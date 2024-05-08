@@ -40,12 +40,17 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     ///checking any previous records in hive data base
     List<LoginLocalModel> getExisting =
         await hiveService.getBoxes<LoginLocalModel>(LocalStorageNames.userInfo);
+
     if (getExisting.isNotEmpty) {
       /// only saving single user data so clearing all
+
       /// previous values before adding new user data
       await hiveService
           .clearAllValues<LoginLocalModel>(LocalStorageNames.userInfo);
     }
+/*
+adding user info to hive
+*/
     await hiveService
         .addBoxes<LoginLocalModel>([userInfo], LocalStorageNames.userInfo);
   }

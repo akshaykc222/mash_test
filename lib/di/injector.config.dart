@@ -41,6 +41,8 @@ import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
 import '../mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart'
     as _i22;
 import '../mash/presentation/manager/notic_bloc/notice_bloc.dart' as _i23;
+    as _i26;
+import '../mash/presentation/manager/notice_bloc/notice_bloc.dart' as _i27;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -73,11 +75,26 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i14.NoticeRepository>(() => _i15.NoticeRepositoryImple(
         noticeRemoteDataSource: gh<_i11.NoticeRemoteDataSource>()));
     gh.lazySingleton<_i16.DashBoardRepository>(() => _i17.DashBoardRepoImpl(
+    gh.lazySingleton<_i11.NoticeRemoteDataSource>(() =>
+        _i11.NoticeRemoteDataSourceImpl(apiProvider: gh<_i4.ApiProvider>()));
+    gh.lazySingleton<_i12.AcademicRepostory>(() =>
+        _i13.AcademicRepositoryImple(gh<_i14.AcademicRemoteDataSource>()));
+    gh.lazySingleton<_i15.DashBoardLocalDataSource>(() =>
+        _i15.DashBoardLocalDataSourceImpl(hiveService: gh<_i5.HiveService>()));
+    gh.lazySingleton<_i16.DashBoardDataSource>(
+        () => _i16.DashBoardDataSourceImpl(apiProvider: gh<_i4.ApiProvider>()));
+    gh.factory<_i17.GetClassInforUseCase>(
+        () => _i17.GetClassInforUseCase(gh<_i12.AcademicRepostory>()));
+    gh.lazySingleton<_i18.NoticeRepository>(() => _i19.NoticeRepositoryImple(
+        noticeRemoteDataSource: gh<_i11.NoticeRemoteDataSource>()));
+    gh.lazySingleton<_i20.DashBoardRepository>(() => _i21.DashBoardRepoImpl(
           gh<_i7.DashBoardRemoteDataSource>(),
           gh<_i9.ConnectionChecker>(),
           gh<_i12.DashBoardLocalDataSource>(),
+          gh<_i15.DashBoardLocalDataSource>(),
         ));
     gh.lazySingleton<_i18.AuthRepository>(() => _i19.AuthRepositoryImpl(
+    gh.lazySingleton<_i22.AuthRepository>(() => _i23.AuthRepositoryImpl(
           gh<_i9.ConnectionChecker>(),
           authRemoteDataSource: gh<_i6.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i8.AuthLocalDataSource>(),
@@ -96,6 +113,20 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i25.LoginUseCase(gh<_i18.AuthRepository>()));
     gh.lazySingleton<_i26.SaveUserInfoUseCase>(
         () => _i26.SaveUserInfoUseCase(gh<_i18.AuthRepository>()));
+    gh.factory<_i24.FetchWordThoughtUseCase>(
+        () => _i24.FetchWordThoughtUseCase(gh<_i20.DashBoardRepository>()));
+    gh.factory<_i25.GetNoticeBoardPopUp>(
+        () => _i25.GetNoticeBoardPopUp(gh<_i18.NoticeRepository>()));
+    gh.factory<_i26.DashboardBloc>(
+        () => _i26.DashboardBloc(gh<_i24.FetchWordThoughtUseCase>()));
+    gh.factory<_i27.NoticeBloc>(
+        () => _i27.NoticeBloc(gh<_i25.GetNoticeBoardPopUp>()));
+    gh.factory<_i28.LoginUseCase>(
+        () => _i28.LoginUseCase(gh<_i22.AuthRepository>()));
+    gh.lazySingleton<_i29.GetUserInfoUseCase>(
+        () => _i29.GetUserInfoUseCase(gh<_i22.AuthRepository>()));
+    gh.lazySingleton<_i30.SaveUserInfoUseCase>(
+        () => _i30.SaveUserInfoUseCase(gh<_i22.AuthRepository>()));
     return this;
   }
 }

@@ -5,15 +5,19 @@ part 'dash_board_hive_model.g.dart';
 
 @HiveType(typeId: 1)
 class WordThoughtsHiveModel extends WordThoughtsEntity {
+  @override
   @HiveField(0)
   final int statusCode;
 
+  @override
   @HiveField(1)
   final String statusMessage;
 
+  @override
   @HiveField(2)
   final List<WordTableModel> wordTable;
 
+  @override
   @HiveField(3)
   final List<ThoughtTableModel> thoughtTable;
 
@@ -53,16 +57,19 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
 
 @HiveType(typeId: 2)
 class ThoughtTableModel extends ThoughtTableEntity {
+  @override
   @HiveField(0)
   final double thoughtId;
 
+  @override
   @HiveField(1)
   final String thoughtOfTheDayUrl;
 
+  @override
   @HiveField(2)
   final String publishedDate;
 
-  ThoughtTableModel(
+  const ThoughtTableModel(
       {required this.thoughtId,
       required this.thoughtOfTheDayUrl,
       required this.publishedDate})
@@ -75,34 +82,43 @@ class ThoughtTableModel extends ThoughtTableEntity {
 
 @HiveType(typeId: 3)
 class WordTableModel extends WordTableEntity {
+  @override
   @HiveField(0)
   final double wordId;
 
+  @override
   @HiveField(1)
   final String wordName;
 
+  @override
   @HiveField(2)
   final String wordMeaning1;
 
+  @override
   @HiveField(3)
   final String wordMeaning2;
 
+  @override
   @HiveField(4)
   final String hasImg;
 
+  @override
   @HiveField(5)
   final dynamic wordImage;
 
+  @override
   @HiveField(6)
   final double status;
 
+  @override
   @HiveField(7)
   final double compId;
 
+  @override
   @HiveField(8)
   final String createdBy;
 
-  WordTableModel({
+  const WordTableModel({
     required this.wordId,
     required this.wordName,
     required this.wordMeaning1,

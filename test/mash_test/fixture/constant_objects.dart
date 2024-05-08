@@ -8,6 +8,25 @@ const tAuthModel = AuthResponseModel(
   statusMessage: 'Success',
   resTable: [
     LoginResTableModel(
+      studentId: 'studentId',
+      admissionNo: 'admissionNo',
+      studentName: 'studentName',
+      compId: '200001',
+      roleId: '1',
+      activeStatus: '1',
+      pwdChangeStatus: '1',
+      profilePhoto: 'profile photo',
+      eMail: 'email',
+      mobile: '1',
+      parentId: 'ajkl',
+      academicId: '1',
+      academicYear: 'academic year',
+      usrId: 'user id',
+      divisionId: '1',
+      classId: '1',
+      medium: '1',
+      userType: '1',
+    ),
         studentId: 'studentId',
         admissionNo: 'admissionNo',
         studentName: 'studentName',
@@ -36,4 +55,45 @@ final tLoginRequest = LoginRequest(
   password: 'password',
   deviceId: '123',
   appType: 'appType',
+);
+/*
+dashboard
+*/
+
+//--> word thought
+const tWordThoughtModel =
+    WordThoughtsModel(statusCode: 200, statusMessage: 'message', wordTable: [
+  WordTableModel(
+      wordId: 12,
+      wordName: 'wordName',
+      wordMeaning1: 'wordMeaning1',
+      wordMeaning2: 'wordMeaning2',
+      hasImg: 'hasImg',
+      wordImage: 'wordImage',
+      status: 1,
+      compId: 1,
+      createdBy: 'createdBy'),
+], thoughtTable: [
+  ThoughtTableModel(
+    thoughtId: 1,
+    thoughtOfTheDayUrl: 'thoughtOfTheDayUrl',
+    publishedDate: 'publishedDate',
+  ),
+]);
+
+//--> word thought response
+final tWordThoughtRequest =
+    WordThoughtRequest(pAcademicId: '87', pCompID: '200001');
+/*
+notice
+*/
+
+//-->notice pop up
+
+const tNoticePopUpModel = NoticePopUpModel(
+  topicHead: 'Sample Topic Head',
+  topicDesc: 'Sample Topic Description',
+  noticeDate: '2024-05-07',
+  docFile: 'sample_document.pdf',
+  ext: 'pdf',
 );

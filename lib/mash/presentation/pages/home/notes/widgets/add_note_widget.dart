@@ -76,7 +76,7 @@ class AddNoteScreen extends StatelessWidget {
                     backgroundColor: AppColors.purple200,
                   ),
                   onPressed: () {},
-                  child: Text('Add Note'),
+                  child: const Text('Add Note'),
                 ),
               ),
             ],

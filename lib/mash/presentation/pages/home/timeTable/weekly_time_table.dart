@@ -6,15 +6,20 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 
 import '../../../utils/app_colors.dart';
 
-
-class WeeklyTimeTable extends StatefulWidget {
-  const WeeklyTimeTable({super.key});
-
-  @override
-  State<WeeklyTimeTable> createState() => _WeeklyTimeTableState();
+void main() {
+  runApp(MaterialApp(
+    home: TimeTable(),
+  ));
 }
 
-class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
+class TimeTable extends StatefulWidget {
+  const TimeTable({super.key});
+
+  @override
+  State<TimeTable> createState() => _TimeTableState();
+}
+
+class _TimeTableState extends State<TimeTable> {
   List<PeriodModel> periods = [];
 
   List<Day> daysList = [];
@@ -65,17 +70,6 @@ class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom,SystemUiOverlay.top]);
-    super.dispose();
   }
 
   final ValueNotifier<PeriodModel?> _selectedItem = ValueNotifier(null);

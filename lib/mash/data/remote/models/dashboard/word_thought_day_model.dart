@@ -2,16 +2,11 @@ import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 
 class WordThoughtsModel extends WordThoughtsEntity {
   const WordThoughtsModel({
-    required int statusCode,
-    required String statusMessage,
-    required List<WordTableEntity> wordTable,
-    required List<ThoughtTableEntity> thoughtTable,
-  }) : super(
-          statusCode: statusCode,
-          statusMessage: statusMessage,
-          wordTable: wordTable,
-          thoughtTable: thoughtTable,
-        );
+    required super.statusCode,
+    required super.statusMessage,
+    required super.wordTable,
+    required super.thoughtTable,
+  });
 
   factory WordThoughtsModel.fromJson(Map<String, dynamic> json) =>
       WordThoughtsModel(
@@ -28,14 +23,10 @@ class WordThoughtsModel extends WordThoughtsEntity {
 
 class ThoughtTableModel extends ThoughtTableEntity {
   const ThoughtTableModel({
-    required double thoughtId,
-    required String thoughtOfTheDayUrl,
-    required String publishedDate,
-  }) : super(
-          thoughtId: thoughtId,
-          thoughtOfTheDayUrl: thoughtOfTheDayUrl,
-          publishedDate: publishedDate,
-        );
+    required super.thoughtId,
+    required super.thoughtOfTheDayUrl,
+    required super.publishedDate,
+  });
 
   factory ThoughtTableModel.fromJson(Map<String, dynamic> json) =>
       ThoughtTableModel(
@@ -53,26 +44,16 @@ class ThoughtTableModel extends ThoughtTableEntity {
 
 class WordTableModel extends WordTableEntity {
   const WordTableModel({
-    required double wordId,
-    required String wordName,
-    required String wordMeaning1,
-    required String wordMeaning2,
-    required String hasImg,
-    required dynamic wordImage,
-    required double status,
-    required double compId,
-    required String createdBy,
-  }) : super(
-          wordId: wordId,
-          wordName: wordName,
-          wordMeaning1: wordMeaning1,
-          wordMeaning2: wordMeaning2,
-          hasImg: hasImg,
-          wordImage: wordImage,
-          status: status,
-          compId: compId,
-          createdBy: createdBy,
-        );
+    required super.wordId,
+    required super.wordName,
+    required super.wordMeaning1,
+    required super.wordMeaning2,
+    required super.hasImg,
+    required super.wordImage,
+    required super.status,
+    required super.compId,
+    required super.createdBy,
+  });
 
   factory WordTableModel.fromJson(Map<String, dynamic> json) => WordTableModel(
         wordId: json['WORD_ID'] as double,

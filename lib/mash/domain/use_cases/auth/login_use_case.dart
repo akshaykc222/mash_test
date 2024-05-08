@@ -2,7 +2,6 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/domain/repositories/auth_repository.dart';
-
 import '../../entities/auth/auth_response_entity.dart';
 
 @injectable

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';

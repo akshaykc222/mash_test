@@ -20,13 +20,8 @@ class DashBoardRemoteDataSourceImpl extends DashBoardRemoteDataSource {
   @override
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
       WordThoughtRequest wordThoughtRequest) async {
-    try {
-      final data = await apiProvider.post(
-          AppRemoteRoutes.wordAndThougthofTheDay, wordThoughtRequest.toJson());
-      return WordThoughtsModel.fromJson(data);
-    } catch (e) {
-      prettyPrint(e.toString());
-      throw Exception(e);
-    }
+    final data = await apiProvider.post(
+        AppRemoteRoutes.wordAndThougthofTheDay, wordThoughtRequest.toJson());
+    return WordThoughtsModel.fromJson(data);
   }
 }

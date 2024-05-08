@@ -3,9 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
+import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart';
 
+import '../../../../di/injector.dart';
 import '../../../data/remote/models/request/notice_pop_up_request.dart';
+import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'notice_event.dart';
 part 'notice_state.dart';
@@ -20,7 +23,9 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
 
   _getNoticePopUp(_GetNoticePopUp event, Emitter<NoticeState> emit) async {
     try {
-      final data = await getNoticeBoardPopUp.call(event.params);
+      final userdata = await getUserInfoUseCase.call(NoParams());
+      final data = await getNoticeBoardPopUp.call(NoticePopUpRequest(
+          pCompId: userdata?.compId ?? "", noticeId: userdata?.classId ?? ""));
       emit(state.copyWith(noticeResponseData: ResponseClassify.SUCCESS(data)));
     } catch (e) {
       emit(state.copyWith(
@@ -29,4 +34,6 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
       prettyPrint(e.toString());
     }
   }
+
+  final getUserInfoUseCase = getIt<GetUserInfoUseCase>();
 }
