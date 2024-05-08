@@ -1,4 +1,3 @@
-
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -10,6 +9,7 @@ import '../models/request/login_request.dart';
 
 abstract class AuthRemoteDataSource {
   Future<AuthResponseEntity> login(LoginRequest request);
+  Future<void> signOut();
 }
 
 @LazySingleton(as: AuthRemoteDataSource)
@@ -29,5 +29,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     // } catch (e) {
     //   throw Exception(e);
     // }
+  }
+
+  @override
+  Future<void> signOut() async {
+    //todo implement sign out api
   }
 }

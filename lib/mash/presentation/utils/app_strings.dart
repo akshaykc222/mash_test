@@ -54,6 +54,7 @@ class AppStrings {
   static const String uploadFile = 'Upload File';
   static const String documentUploadText = 'If any documents upload here';
   static const String select = 'select';
+  static const String appType = '1';
 
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',
@@ -61,4 +62,6 @@ class AppStrings {
     'FIRST PERIODIC ASSESSMENT',
     'SECOND PERIODIC ASSESSMENT'
   ];
+  static const kPasswordInvalidError = "Please enter valid password";
+  static const kUserNameInvalidError = " Please enter valid user name";
 }

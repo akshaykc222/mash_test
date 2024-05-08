@@ -48,6 +48,7 @@ class AppRouteManager {
     );
   }
 
+  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
   static GoRouter router = GoRouter(initialLocation: AppPages.suggestionMainScreen, routes: [
     GoRoute(
       path: AppPages.home,
@@ -122,15 +123,16 @@ class AppRouteManager {
       path: AppPages.homeWorkDetailsScreen,
       name: AppPages.homeWorkDetailsScreen,
       builder: (context, state) => const HomeWorkSelectDetailsWidget(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.quizCompletedScreen,
       name: AppPages.quizCompletedScreen,
-      builder: (context, state) =>  const QuizCompletedScreen(),
+      builder: (context, state) => const QuizCompletedScreen(),
     ),
     GoRoute(
       path: AppPages.leaveScreen,
       name: AppPages.leaveScreen,
-      builder: (context, state) =>   LeaveScreen(),
+      builder: (context, state) => LeaveScreen(),
     ),
     GoRoute(
       name: AppPages.homeWorksViewScreen,
@@ -142,26 +144,31 @@ class AppRouteManager {
       path: AppPages.noteScreen,
       builder: (context, state) => const NoteScreen(),
     ),
-GoRoute(
+    GoRoute(
       path: AppPages.quizProfileScreen,
       name: AppPages.quizProfileScreen,
-      builder: (context, state) =>   const QuizProfile(),
-    ),GoRoute(
+      builder: (context, state) => const QuizProfile(),
+    ),
+    GoRoute(
       path: AppPages.quizRankingScreen,
       name: AppPages.quizRankingScreen,
-      builder: (context, state) =>   const QuizRankingScreen(),
-    ),GoRoute(
+      builder: (context, state) => const QuizRankingScreen(),
+    ),
+    GoRoute(
       path: AppPages.progressReport,
       name: AppPages.progressReport,
-      builder: (context, state) =>   const ProgressReport(),
-    ),GoRoute(
+      builder: (context, state) => const ProgressReport(),
+    ),
+    GoRoute(
       path: AppPages.syllabusScreen,
       name: AppPages.syllabusScreen,
-      builder: (context, state) =>   const SyllabusScreen(),
-    ),GoRoute(
+      builder: (context, state) => const SyllabusScreen(),
+    ),
+    GoRoute(
       path: AppPages.tcMainScreen,
       name: AppPages.tcMainScreen,
-      builder: (context, state) =>   const TransferCertificateMainScreen(),),
+      builder: (context, state) => const TransferCertificateMainScreen(),
+    ),
     GoRoute(
       name: AppPages.noteAddTeacherScreen,
       path: AppPages.noteAddTeacherScreen,
@@ -171,31 +178,38 @@ GoRoute(
       name: AppPages.addNotScreen,
       path: AppPages.addNotScreen,
       builder: (context, state) => const AddNoteScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.tcCancelScreen,
       path: AppPages.tcCancelScreen,
       builder: (context, state) => const TransferCancelScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.tcRequestScreen,
       path: AppPages.tcRequestScreen,
       builder: (context, state) => const TransferRequestScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.newsBoardMainScreen,
       path: AppPages.newsBoardMainScreen,
       builder: (context, state) => const NewsBoardMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.newsBoardDetailScreen,
       path: AppPages.newsBoardDetailScreen,
       builder: (context, state) => const NewsBoardDetailScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.noticeBoardMainScreen,
       path: AppPages.noticeBoardMainScreen,
       builder: (context, state) => const NoticeBoardMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
       builder: (context, state) => const NoticeBoardDetailScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),

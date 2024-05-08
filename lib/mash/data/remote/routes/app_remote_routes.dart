@@ -7,4 +7,5 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticePopUp";
   static const classDetails =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
+  // static const
 }

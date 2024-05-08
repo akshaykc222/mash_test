@@ -11,4 +11,5 @@ abstract interface class AuthRepository {
   * if the return data type is null the will be no saved records.
   *  */
   Future<LoginResTableEntity?> getUserInfo();
+  Future<void> signOut();
 }

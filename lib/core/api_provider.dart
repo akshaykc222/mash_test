@@ -5,8 +5,11 @@ import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
+
 import '../mash/data/remote/routes/app_remote_routes.dart';
+import '../mash/data/remote/routes/local_storage_name.dart';
 import 'custom_exception.dart';
+import 'hive_service.dart';
 
 @Singleton()
 class ApiProvider {
@@ -39,23 +42,20 @@ class ApiProvider {
       };
     }
   }
-  addToken() {
-    // List<String> token = await HiveService().getBoxes<String>(
-    //   LocalStorageNames.token,
-    // );
+  addToken() async {
+    List<String> token = await HiveService().getBoxes<String>(
+      LocalStorageNames.token,
+    );
 
-    // if (token.isNotEmpty) {
-    // prettyPrint('token ${token.first}');
-    _dio.options.headers.addAll({
-      'Authorization':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJNR1MxMDAwNjYwIiwibmJmIjoxNzE0ODI0NjIyLCJleHAiOjE3MTQ4MjgyMjIsImlhdCI6MTcxNDgyNDYyMn0.x6VVZIs6YDzGqQA47eMQ4pMtTquYFLmCz13EsqcrFrk'
-    });
-    // }
+    if (token.isNotEmpty) {
+      prettyPrint('token ${token.first}');
+      _dio.options.headers.addAll({'Authorization': token.first});
+    }
   }
 
   Future<Map<String, dynamic>> get(String endPoint) async {
     try {
-      addToken();
+      await addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.get(
         endPoint,
@@ -72,7 +72,7 @@ class ApiProvider {
 
   Future<Map<String, dynamic>> delete(String endPoint) async {
     try {
-      // addToken();
+      await addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.delete(
         endPoint,
@@ -90,7 +90,7 @@ class ApiProvider {
       {FormData? formBody}) async {
     prettyPrint("on post call$body");
     try {
-      addToken();
+      await addToken();
 
       final Response response = await _dio.post(
         endPoint,
@@ -111,7 +111,7 @@ class ApiProvider {
       String endPoint, Map<String, dynamic> body) async {
     prettyPrint("on post call");
     try {
-      addToken();
+      await addToken();
       final Response response = await _dio.put(
         endPoint,
         data: body,
@@ -140,11 +140,15 @@ class ApiProvider {
     String errorMsg = "";
     try {
       // errorMsg=responseData["error"][""]
-      var error = responseData["errors"];
-      var allErrors = error!.map((item) => item["message"]);
-      String errorString = "";
-      for (var i in allErrors) {
-        errorString = "$errorString$i,";
+      var error = responseData["statusMessage"];
+      if (error is List) {
+        var allErrors = error!.map((item) => item["message"]);
+        String errorString = "";
+        for (var i in allErrors) {
+          errorMsg = "$errorString$i,";
+        }
+      } else {
+        errorMsg = error.toString();
       }
     } catch (e) {
       errorMsg = responseData.toString();

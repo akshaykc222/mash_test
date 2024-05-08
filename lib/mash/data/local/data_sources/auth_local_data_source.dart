@@ -16,6 +16,7 @@ abstract class AuthLocalDataSource {
   * if the return data type is null the will be no saved records.
   *  */
   Future<LoginResTableEntity?> getUserInfo();
+  Future<void> signOut();
 }
 
 @LazySingleton(as: AuthLocalDataSource)
@@ -63,5 +64,12 @@ adding user info to hive
       return getBoxes.first;
     }
     return null;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await hiveService.clearAllValues<String>(LocalStorageNames.token);
+    await hiveService
+        .clearAllValues<LoginLocalModel>(LocalStorageNames.userInfo);
   }
 }

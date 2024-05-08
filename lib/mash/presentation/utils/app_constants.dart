@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart' as res;
+import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 
-import '../router/app_pages.dart';
 import 'app_colors.dart';
 
 class AppConstants {
@@ -127,12 +129,22 @@ handleUnAuthorizedError(BuildContext context) {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      GoRouter.of(context).goNamed(AppPages.login);
+                  child: BlocConsumer<AuthBloc, AuthState>(
+                    listener: (context, state) {},
+                    builder: (ctx, state) {
+                      return AnimatedSharedButton(
+                        onTap: () {
+                          AuthBloc.get(context)
+                              .add(AuthEvent.signOut(context: context));
+                        },
+                        title: const Text(
+                          "Login",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        isLoading:
+                            state.signOutResponse?.status == res.Status.LOADING,
+                      );
                     },
-                    child: const Text("Login"),
                   ),
                 )
               ],
