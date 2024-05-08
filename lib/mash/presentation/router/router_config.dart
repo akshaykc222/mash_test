@@ -13,16 +13,17 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -33,6 +34,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
+import '../pages/home/suggestionBox/suggestion_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 
@@ -46,7 +48,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.suggestionMainScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -197,6 +199,14 @@ GoRoute(
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
+    ),GoRoute(
+      name: AppPages.suggestionMainScreen,
+      path: AppPages.suggestionMainScreen,
+      builder: (context, state) => const SuggestionMainScreen(),
+    ),GoRoute(
+      name: AppPages.suggestionScreen,
+      path: AppPages.suggestionScreen,
+      builder: (context, state) => const SuggestionScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

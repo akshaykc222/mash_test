@@ -61,6 +61,11 @@ class AppAssets {
 
   static const tekieImg = 'assets/images/tekie_img.png';
 
+  // suggestion
+  static const suggestionImage = 'assets/images/app_image_suggestion.svg';
+  static const responseImage = 'assets/images/app_image_response.svg';
+
+
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
   static const libraryTabIcon = 'assets/icons/library_tab.svg';
@@ -72,6 +77,7 @@ class AppAssets {
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
+
 
   static var tcApply = "";
 
