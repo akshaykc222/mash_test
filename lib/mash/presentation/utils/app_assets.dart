@@ -3,11 +3,21 @@ class AppAssets {
   static const notificationIcon = 'assets/icons/notification.svg';
   static const manappuramLogo = 'assets/images/manappuram_logo.png';
   static const loginStackImage = 'assets/images/app_stack_image.svg';
-  static const libImageAcademic = 'assets/images/app_image_academic.svg';
+  /*static const libImageAcademic = 'assets/images/app_image_academic.svg';
   static const libImageNonAcademic = 'assets/images/app_image_non_academic.svg';
   static const libImageResearch = 'assets/images/app_image_research.svg';
   static const libImageUserActivity =
-      'assets/images/app_image_user_activity.svg';
+      'assets/images/app_image_user_activity.svg'; */
+
+  static const libImageAcademic = 'assets/images/academic.svg';
+  static const libImageNonAcademic = 'assets/images/non_academic.svg';
+  static const libImageResearch = 'assets/images/research.svg';
+  static const libImageUserActivity =
+      'assets/images/user_activity.svg';
+
+
+  static const homeworkImage = 'assets/images/homework.svg';
+  static const notesImage = 'assets/images/notes.svg';
 
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';

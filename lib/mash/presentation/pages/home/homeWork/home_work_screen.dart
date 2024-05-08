@@ -25,13 +25,13 @@ class HomeWorkScreen extends StatelessWidget {
     List<HomeWorkItemModel> items = [
       HomeWorkItemModel(
           title: 'HOMEWORK',
-          asset: AppAssets.libImageAcademic,
+          asset: AppAssets.homeworkImage,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
           }),
       HomeWorkItemModel(
           title: 'NOTES',
-          asset: AppAssets.libImageNonAcademic,
+          asset: AppAssets.notesImage,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.noteScreen);
           }),
