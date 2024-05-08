@@ -37,9 +37,10 @@ import '../mash/domain/repositories/dash_board_repository.dart' as _i20;
 import '../mash/domain/repositories/notice_repository.dart' as _i18;
 import '../mash/domain/use_cases/academic/get_class_details_usecase.dart'
     as _i17;
-import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i29;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i30;
 import '../mash/domain/use_cases/auth/login_use_case.dart' as _i28;
-import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i30;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i31;
+import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i29;
 import '../mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart'
     as _i24;
 import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i25;
@@ -104,10 +105,12 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i27.NoticeBloc(gh<_i25.GetNoticeBoardPopUp>()));
     gh.factory<_i28.LoginUseCase>(
         () => _i28.LoginUseCase(gh<_i22.AuthRepository>()));
-    gh.lazySingleton<_i29.GetUserInfoUseCase>(
-        () => _i29.GetUserInfoUseCase(gh<_i22.AuthRepository>()));
-    gh.lazySingleton<_i30.SaveUserInfoUseCase>(
-        () => _i30.SaveUserInfoUseCase(gh<_i22.AuthRepository>()));
+    gh.singleton<_i29.SignOutUseCase>(
+        () => _i29.SignOutUseCase(gh<_i22.AuthRepository>()));
+    gh.lazySingleton<_i30.GetUserInfoUseCase>(
+        () => _i30.GetUserInfoUseCase(gh<_i22.AuthRepository>()));
+    gh.lazySingleton<_i31.SaveUserInfoUseCase>(
+        () => _i31.SaveUserInfoUseCase(gh<_i22.AuthRepository>()));
     return this;
   }
 }

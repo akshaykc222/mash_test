@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,6 +11,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_size.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
@@ -26,24 +28,46 @@ void main() {
   ));
 }
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _userNameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  late AndroidDeviceInfo androidInfo;
+  _init() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    androidInfo = await deviceInfo.androidInfo;
+  }
+
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state.loginResponse.status == Status.COMPLETED) {
+        if (state.loginResponse?.status == Status.COMPLETED) {
           GoRouter.of(context).pushNamed(AppPages.home);
-        } else if (state.loginResponse.status == Status.ERROR) {
+        } else if (state.loginResponse?.status == Status.ERROR) {
           ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.loginResponse.error.toString())));
+              SnackBar(content: Text("${state.loginResponse?.error}")));
         }
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: _loginBody(context),
-      ),
+          resizeToAvoidBottomInset: false,
+          body: Form(
+            key: _formKey,
+            child: _loginBody(context),
+          )),
     );
   }
 
@@ -182,15 +206,17 @@ class LoginScreen extends StatelessWidget {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return AnimatedSharedButton(
-            onTap: () {
+            onTap: () async {
               // if (state.loginResponse.status == Status.INITIAL) {
-              BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
-                  context: context,
-                  loginRequest: LoginRequest(
-                      userId: '1',
-                      password: '1',
-                      deviceId: '1',
-                      appType: '1')));
+              if (_formKey.currentState?.validate() == true) {
+                BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
+                    context: context,
+                    loginRequest: LoginRequest(
+                        userId: _userNameController.text,
+                        password: _passwordController.text,
+                        deviceId: androidInfo.id,
+                        appType: AppStrings.appType)));
+              }
 
               // }
             },
@@ -201,7 +227,7 @@ class LoginScreen extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
-            isLoading: state.loginResponse.status == Status.LOADING);
+            isLoading: state.loginResponse?.status == Status.LOADING);
       },
     );
   }
@@ -209,6 +235,12 @@ class LoginScreen extends StatelessWidget {
   Widget _userIDTextField() {
     return CommonTextField(
         title: 'User Id',
+        controller: _userNameController,
+        validator: (val) {
+          if (val.isEmpty) {
+            return AppStrings.kUserNameInvalidError;
+          }
+        },
         prefix: Padding(
           padding: const EdgeInsets.all(12),
           child: assetFromSvg(
@@ -222,7 +254,13 @@ class LoginScreen extends StatelessWidget {
   Widget _passwordTextField() {
     return CommonTextField(
         title: 'Password',
+        controller: _passwordController,
         passwordField: true,
+        validator: (val) {
+          if (val.isEmpty || val.length < 4) {
+            return AppStrings.kPasswordInvalidError;
+          }
+        },
         prefix: Padding(
           padding: const EdgeInsets.all(12),
           child: assetFromSvg(

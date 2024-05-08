@@ -407,6 +407,16 @@ class MockAuthRepository extends _i1.Mock implements _i11.AuthRepository {
         ),
         returnValue: _i6.Future<_i4.LoginResTableEntity?>.value(),
       ) as _i6.Future<_i4.LoginResTableEntity?>);
+
+  @override
+  _i6.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(
+          #signOut,
+          [],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }
 
 /// A class which mocks [AuthRemoteDataSource].
@@ -434,6 +444,16 @@ class MockAuthRemoteDataSource extends _i1.Mock
           ),
         )),
       ) as _i6.Future<_i4.AuthResponseEntity>);
+
+  @override
+  _i6.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(
+          #signOut,
+          [],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }
 
 /// A class which mocks [AuthLocalDataSource].
@@ -474,6 +494,16 @@ class MockAuthLocalDataSource extends _i1.Mock
         ),
         returnValue: _i6.Future<_i4.LoginResTableEntity?>.value(),
       ) as _i6.Future<_i4.LoginResTableEntity?>);
+
+  @override
+  _i6.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(
+          #signOut,
+          [],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 }
 
 /// A class which mocks [DashBoardRemoteDataSource].

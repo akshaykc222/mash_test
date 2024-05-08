@@ -48,4 +48,10 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<LoginResTableEntity?> getUserInfo() {
     return authLocalDataSource.getUserInfo();
   }
+
+  @override
+  Future<void> signOut() async {
+    authLocalDataSource.signOut();
+    authRemoteDataSource.signOut();
+  }
 }

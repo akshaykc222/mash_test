@@ -14,7 +14,7 @@ class AuthResponseModel extends AuthResponseEntity {
         statusMessage: json["statusMessage"],
         resTable: List<LoginResTableModel>.from(
             json["resTable"].map((x) => LoginResTableModel.fromJson(x))),
-        token: json["Token"],
+        token: json["AccessToken"],
       );
 }
 

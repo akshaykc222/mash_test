@@ -21,18 +21,21 @@ mixin _$AuthEvent {
     required TResult Function(LoginRequest loginRequest, BuildContext context)
         login,
     required TResult Function() getUser,
+    required TResult Function(BuildContext context) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult? Function()? getUser,
+    TResult? Function(BuildContext context)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult Function()? getUser,
+    TResult Function(BuildContext context)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
     TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,6 +156,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(LoginRequest loginRequest, BuildContext context)
         login,
     required TResult Function() getUser,
+    required TResult Function(BuildContext context) signOut,
   }) {
     return login(loginRequest, context);
   }
@@ -159,6 +166,7 @@ class _$LoginImpl implements _Login {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult? Function()? getUser,
+    TResult? Function(BuildContext context)? signOut,
   }) {
     return login?.call(loginRequest, context);
   }
@@ -168,6 +176,7 @@ class _$LoginImpl implements _Login {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult Function()? getUser,
+    TResult Function(BuildContext context)? signOut,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -181,6 +190,7 @@ class _$LoginImpl implements _Login {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return login(this);
   }
@@ -190,6 +200,7 @@ class _$LoginImpl implements _Login {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
     TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return login?.call(this);
   }
@@ -199,6 +210,7 @@ class _$LoginImpl implements _Login {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -261,6 +273,7 @@ class _$GetUserImpl implements _GetUser {
     required TResult Function(LoginRequest loginRequest, BuildContext context)
         login,
     required TResult Function() getUser,
+    required TResult Function(BuildContext context) signOut,
   }) {
     return getUser();
   }
@@ -270,6 +283,7 @@ class _$GetUserImpl implements _GetUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult? Function()? getUser,
+    TResult? Function(BuildContext context)? signOut,
   }) {
     return getUser?.call();
   }
@@ -279,6 +293,7 @@ class _$GetUserImpl implements _GetUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LoginRequest loginRequest, BuildContext context)? login,
     TResult Function()? getUser,
+    TResult Function(BuildContext context)? signOut,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -292,6 +307,7 @@ class _$GetUserImpl implements _GetUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return getUser(this);
   }
@@ -301,6 +317,7 @@ class _$GetUserImpl implements _GetUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Login value)? login,
     TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return getUser?.call(this);
   }
@@ -310,6 +327,7 @@ class _$GetUserImpl implements _GetUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -324,10 +342,152 @@ abstract class _GetUser implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$SignOutImplCopyWith<$Res> {
+  factory _$$SignOutImplCopyWith(
+          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
+      __$$SignOutImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$SignOutImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SignOutImpl>
+    implements _$$SignOutImplCopyWith<$Res> {
+  __$$SignOutImplCopyWithImpl(
+      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SignOutImpl(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignOutImpl implements _SignOut {
+  const _$SignOutImpl({required this.context});
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.signOut(context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignOutImpl &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignOutImplCopyWith<_$SignOutImpl> get copyWith =>
+      __$$SignOutImplCopyWithImpl<_$SignOutImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoginRequest loginRequest, BuildContext context)
+        login,
+    required TResult Function() getUser,
+    required TResult Function(BuildContext context) signOut,
+  }) {
+    return signOut(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult? Function()? getUser,
+    TResult? Function(BuildContext context)? signOut,
+  }) {
+    return signOut?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoginRequest loginRequest, BuildContext context)? login,
+    TResult Function()? getUser,
+    TResult Function(BuildContext context)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_GetUser value) getUser,
+    required TResult Function(_SignOut value) signOut,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Login value)? login,
+    TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_SignOut value)? signOut,
+  }) {
+    return signOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetUser value)? getUser,
+    TResult Function(_SignOut value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignOut implements AuthEvent {
+  const factory _SignOut({required final BuildContext context}) = _$SignOutImpl;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$SignOutImplCopyWith<_$SignOutImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AuthState {
-  ResponseClassify<AuthResponseEntity> get loginResponse =>
+  ResponseClassify<AuthResponseEntity>? get loginResponse =>
       throw _privateConstructorUsedError;
   LoginResTableEntity? get userDetails => throw _privateConstructorUsedError;
+  ResponseClassify<void>? get signOutResponse =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -340,8 +500,9 @@ abstract class $AuthStateCopyWith<$Res> {
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
   $Res call(
-      {ResponseClassify<AuthResponseEntity> loginResponse,
-      LoginResTableEntity? userDetails});
+      {ResponseClassify<AuthResponseEntity>? loginResponse,
+      LoginResTableEntity? userDetails,
+      ResponseClassify<void>? signOutResponse});
 }
 
 /// @nodoc
@@ -357,18 +518,23 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = null,
+    Object? loginResponse = freezed,
     Object? userDetails = freezed,
+    Object? signOutResponse = freezed,
   }) {
     return _then(_value.copyWith(
-      loginResponse: null == loginResponse
+      loginResponse: freezed == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<AuthResponseEntity>,
+              as ResponseClassify<AuthResponseEntity>?,
       userDetails: freezed == userDetails
           ? _value.userDetails
           : userDetails // ignore: cast_nullable_to_non_nullable
               as LoginResTableEntity?,
+      signOutResponse: freezed == signOutResponse
+          ? _value.signOutResponse
+          : signOutResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
     ) as $Val);
   }
 }
@@ -382,8 +548,9 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ResponseClassify<AuthResponseEntity> loginResponse,
-      LoginResTableEntity? userDetails});
+      {ResponseClassify<AuthResponseEntity>? loginResponse,
+      LoginResTableEntity? userDetails,
+      ResponseClassify<void>? signOutResponse});
 }
 
 /// @nodoc
@@ -397,18 +564,23 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginResponse = null,
+    Object? loginResponse = freezed,
     Object? userDetails = freezed,
+    Object? signOutResponse = freezed,
   }) {
     return _then(_$AuthStateImpl(
-      loginResponse: null == loginResponse
+      loginResponse: freezed == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<AuthResponseEntity>,
+              as ResponseClassify<AuthResponseEntity>?,
       userDetails: freezed == userDetails
           ? _value.userDetails
           : userDetails // ignore: cast_nullable_to_non_nullable
               as LoginResTableEntity?,
+      signOutResponse: freezed == signOutResponse
+          ? _value.signOutResponse
+          : signOutResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
     ));
   }
 }
@@ -417,16 +589,18 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {required this.loginResponse, required this.userDetails});
+      {this.loginResponse, this.userDetails, this.signOutResponse});
 
   @override
-  final ResponseClassify<AuthResponseEntity> loginResponse;
+  final ResponseClassify<AuthResponseEntity>? loginResponse;
   @override
   final LoginResTableEntity? userDetails;
+  @override
+  final ResponseClassify<void>? signOutResponse;
 
   @override
   String toString() {
-    return 'AuthState(loginResponse: $loginResponse, userDetails: $userDetails)';
+    return 'AuthState(loginResponse: $loginResponse, userDetails: $userDetails, signOutResponse: $signOutResponse)';
   }
 
   @override
@@ -437,11 +611,14 @@ class _$AuthStateImpl implements _AuthState {
             (identical(other.loginResponse, loginResponse) ||
                 other.loginResponse == loginResponse) &&
             (identical(other.userDetails, userDetails) ||
-                other.userDetails == userDetails));
+                other.userDetails == userDetails) &&
+            (identical(other.signOutResponse, signOutResponse) ||
+                other.signOutResponse == signOutResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginResponse, userDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, loginResponse, userDetails, signOutResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -452,13 +629,16 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {required final ResponseClassify<AuthResponseEntity> loginResponse,
-      required final LoginResTableEntity? userDetails}) = _$AuthStateImpl;
+      {final ResponseClassify<AuthResponseEntity>? loginResponse,
+      final LoginResTableEntity? userDetails,
+      final ResponseClassify<void>? signOutResponse}) = _$AuthStateImpl;
 
   @override
-  ResponseClassify<AuthResponseEntity> get loginResponse;
+  ResponseClassify<AuthResponseEntity>? get loginResponse;
   @override
   LoginResTableEntity? get userDetails;
+  @override
+  ResponseClassify<void>? get signOutResponse;
   @override
   @JsonKey(ignore: true)
   _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
