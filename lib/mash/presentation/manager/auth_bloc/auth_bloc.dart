@@ -25,7 +25,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   _login(AuthEvent event, Emitter<AuthState> emit) async {
-    emit(AuthState(loginResponse: ResponseClassify.loading()));
+    emit(AuthState(
+        loginResponse: ResponseClassify.loading(), userDetails: null));
     // try {
     final res = await loginUseCase.call(event.loginRequest);
     prettyPrint("response ${res.token}");
