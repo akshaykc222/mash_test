@@ -11,7 +11,7 @@ abstract interface class AcademicRemoteDataSource {
 
 @injectable
 @LazySingleton(as: AcademicRemoteDataSource)
-class AcademicRemoteDataSourceImpl implements AcademicRemoteDataSource {
+class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
   final ApiProvider apiProvider;
 
   AcademicRemoteDataSourceImpl(this.apiProvider);

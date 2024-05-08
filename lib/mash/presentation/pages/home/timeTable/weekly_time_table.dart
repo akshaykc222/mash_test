@@ -8,18 +8,18 @@ import '../../../utils/app_colors.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: TimeTable(),
+    home: WeeklyTimeTable(),
   ));
 }
 
-class TimeTable extends StatefulWidget {
-  const TimeTable({super.key});
+class WeeklyTimeTable extends StatefulWidget {
+  const WeeklyTimeTable({super.key});
 
   @override
-  State<TimeTable> createState() => _TimeTableState();
+  State<WeeklyTimeTable> createState() => _WeeklyTimeTableState();
 }
 
-class _TimeTableState extends State<TimeTable> {
+class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
   List<PeriodModel> periods = [];
 
   List<Day> daysList = [];

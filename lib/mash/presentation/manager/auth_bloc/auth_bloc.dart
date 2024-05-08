@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_Login>(_login);
   }
 
-  _login(AuthEvent event, Emitter<AuthState> emit) async {
+  _login(_Login event, Emitter<AuthState> emit) async {
     emit(AuthState(
         loginResponse: ResponseClassify.loading(), userDetails: null));
     // try {
@@ -34,7 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await Future.delayed(
       const Duration(seconds: 3),
       () {
-        emit(AuthState(loginResponse: ResponseClassify.completed(res)));
+        emit(AuthState(
+            loginResponse: ResponseClassify.completed(res), userDetails: null));
       },
     );
     // } on UnauthorisedException catch (e) {
