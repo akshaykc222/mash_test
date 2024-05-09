@@ -1,38 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 
-void main() {
-  ValueNotifier<bool> isLoading = ValueNotifier(false);
-
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ValueListenableBuilder(
-              valueListenable: isLoading,
-              builder: (context, data, child) {
-                return AnimatedSharedButton(
-                  onTap: () {
-                    isLoading.value = !isLoading.value;
-                    Future.delayed(const Duration(seconds: 2), () {
-                      isLoading.value = !isLoading.value;
-                      isLoading.notifyListeners();
-                    });
-                  },
-                  title: const Text(
-                    "Login",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  isLoading: data,
-                );
-              }),
-        ],
-      ),
-    ),
-  ));
-}
-
 typedef BoolCallback = void Function(bool value);
 
 class AnimatedSharedButton extends StatefulWidget {

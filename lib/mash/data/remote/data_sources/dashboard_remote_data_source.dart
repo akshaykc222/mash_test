@@ -7,7 +7,7 @@ import '../routes/app_remote_routes.dart';
 
 abstract class DashBoardRemoteDataSource {
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
-      WordThoughtRequest wordThoughtRequest);
+      AcademicAndCompIdRequest wordThoughtRequest);
 }
 
 @LazySingleton(as: DashBoardRemoteDataSource)
@@ -19,7 +19,7 @@ class DashBoardRemoteDataSourceImpl extends DashBoardRemoteDataSource {
 
   @override
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
-      WordThoughtRequest wordThoughtRequest) async {
+      AcademicAndCompIdRequest wordThoughtRequest) async {
     final data = await apiProvider.post(
         AppRemoteRoutes.wordAndThougthofTheDay, wordThoughtRequest.toJson());
     return WordThoughtsModel.fromJson(data);

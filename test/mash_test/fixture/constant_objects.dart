@@ -68,7 +68,7 @@ WordThoughtsModel tWordThoughtModel =
 
 //--> word thought response
 final tWordThoughtRequest =
-    WordThoughtRequest(pAcademicId: '87', pCompID: '200001');
+    AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001');
 /*
 notice
 */

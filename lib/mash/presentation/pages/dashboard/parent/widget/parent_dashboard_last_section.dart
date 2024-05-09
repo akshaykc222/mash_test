@@ -32,7 +32,7 @@ class _ParentDashboardLastSectionState
         ValueNotifier<String>(AppStrings.dashboardPerfomanceList.first);
     BlocProvider.of<DashboardBloc>(context).add(
       DashboardEvent.fetchWordAndThoughtOftheDayEvent(
-        WordThoughtRequest(pAcademicId: '87', pCompID: '200001'),
+        AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001'),
         context,
       ),
     );

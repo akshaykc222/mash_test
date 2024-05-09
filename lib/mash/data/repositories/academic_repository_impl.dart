@@ -1,5 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
+import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
@@ -14,7 +16,14 @@ class AcademicRepositoryImple implements AcademicRepostory {
 
   @override
   Future<List<ClassDetailsEntity?>> getClassDetails(
-      WordThoughtRequest params) async {
+      AcademicAndCompIdRequest params) async {
     return await academicRemoteDataSource.getClassDetails(params);
+  }
+
+  @override
+  Future<List<AcademicSubjectEntity>> getAcademicSubjects(
+      AcademicSubjectRequests params) {
+    // TODO: implement getAcademicSubjects
+    throw UnimplementedError();
   }
 }

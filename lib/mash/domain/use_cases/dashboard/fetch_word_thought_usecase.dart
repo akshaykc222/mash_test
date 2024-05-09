@@ -8,12 +8,12 @@ import '../../../data/remote/models/request/academic_comp_id_request.dart';
 @injectable
 @LazySingleton(as: UseCase)
 class FetchWordThoughtUseCase
-    extends UseCase<WordThoughtsEntity?, WordThoughtRequest> {
+    extends UseCase<WordThoughtsEntity?, AcademicAndCompIdRequest> {
   final DashBoardRepository dashBoardRepository;
 
   FetchWordThoughtUseCase(this.dashBoardRepository);
   @override
-  Future<WordThoughtsEntity?> call(WordThoughtRequest params) {
+  Future<WordThoughtsEntity?> call(AcademicAndCompIdRequest params) {
     return dashBoardRepository.fetchWordandThoghtOfTheDay(params);
   }
 }

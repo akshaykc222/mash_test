@@ -4,6 +4,7 @@ import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.d
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
+
 import '../remote/data_sources/dashboard_remote_data_source.dart';
 
 @LazySingleton(as: DashBoardRepository)
@@ -17,7 +18,7 @@ class DashBoardRepoImpl implements DashBoardRepository {
       this.dashBoardLocalDataSource);
   @override
   Future<WordThoughtsEntity?> fetchWordandThoghtOfTheDay(
-      WordThoughtRequest wordThoughtRequest) async {
+      AcademicAndCompIdRequest wordThoughtRequest) async {
     if (await connectionChecker.isConnected) {
       final result = await dashBoardDataSource
           .fetchWordandThoghtOfTheDay(wordThoughtRequest);
