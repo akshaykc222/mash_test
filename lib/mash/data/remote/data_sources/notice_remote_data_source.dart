@@ -1,12 +1,16 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
+import 'package:mash/mash/data/remote/models/notice/notice_all_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
+import 'package:mash/mash/data/remote/models/request/notice_all_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
+import 'package:mash/mash/domain/entities/notice/notice_all_entity.dart';
 
 import '../models/request/notice_pop_up_request.dart';
 
 abstract interface class NoticeRemoteDataSource {
   Future<List<NoticePopUpModel>> getNoticePopUp(NoticePopUpRequest params);
+  Future<List<NoticeAllEntity>> getAllNotice(NoticeAllRequest params);
 }
 
 @LazySingleton(as: NoticeRemoteDataSource)
@@ -22,5 +26,13 @@ class NoticeRemoteDataSourceImpl implements NoticeRemoteDataSource {
         await apiProvider.post(AppRemoteRoutes.noticePopUp, params.toJson());
     final List<dynamic> dataList = data['resTable'];
     return dataList.map((e) => NoticePopUpModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<NoticeAllEntity>> getAllNotice(NoticeAllRequest params) async {
+    final data =
+        await apiProvider.post(AppRemoteRoutes.noticeAll, params.toJson());
+    final List<dynamic> dataList = data['resTable'];
+    return dataList.map((e) => NoticeAllModel.fromJson(e)).toList();
   }
 }

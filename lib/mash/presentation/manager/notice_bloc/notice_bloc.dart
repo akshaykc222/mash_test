@@ -4,7 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
+import 'package:mash/mash/data/remote/models/request/notice_all_request.dart';
 import 'package:mash/mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart';
+import 'package:mash/mash/domain/use_cases/notice/notice_all_usecase.dart';
 
 import '../../../../di/injector.dart';
 import '../../../data/remote/models/request/notice_pop_up_request.dart';
@@ -17,16 +19,23 @@ part 'notice_bloc.freezed.dart';
 @injectable
 class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
   final GetNoticeBoardPopUp getNoticeBoardPopUp;
-  NoticeBloc(this.getNoticeBoardPopUp) : super(NoticeState.initial()) {
+  final GetAllNoticeUseCase getAllNoticeUseCase;
+  final getUserInfoUseCase = getIt<GetUserInfoUseCase>();
+  NoticeBloc(this.getNoticeBoardPopUp, this.getAllNoticeUseCase)
+      : super(NoticeState.initial()) {
     on<_GetNoticePopUp>(_getNoticePopUp);
+    on<_GetAllNotice>(_getAllNotice);
   }
 
   _getNoticePopUp(_GetNoticePopUp event, Emitter<NoticeState> emit) async {
+    emit(state.copyWith(noticeResponseData: ResponseClassify.loading()));
     try {
       final userdata = await getUserInfoUseCase.call(NoParams());
       final data = await getNoticeBoardPopUp.call(NoticePopUpRequest(
           pCompId: userdata?.compId ?? "", noticeId: userdata?.classId ?? ""));
-      emit(state.copyWith(noticeResponseData: ResponseClassify.SUCCESS(data)));
+      emit(state.copyWith(
+        noticeResponseData: ResponseClassify.SUCCESS(data),
+      ));
     } catch (e) {
       emit(state.copyWith(
           noticeResponseData: ResponseClassify.error(e.toString())));
@@ -35,5 +44,22 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
     }
   }
 
-  final getUserInfoUseCase = getIt<GetUserInfoUseCase>();
+  _getAllNotice(_GetAllNotice event, Emitter<NoticeState> emit) async {
+    emit(state.copyWith(noticeResponseData: ResponseClassify.loading()));
+    try {
+      final userdata = await getUserInfoUseCase.call(NoParams());
+      final data = await getAllNoticeUseCase.call(NoticeAllRequest(
+        pCompId: userdata?.compId ?? "",
+        usertype: userdata?.userType ?? "",
+      ));
+      emit(state.copyWith(
+        noticeResponseData: ResponseClassify.SUCCESS(data),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          noticeResponseData: ResponseClassify.error(e.toString())));
+
+      prettyPrint(e.toString());
+    }
+  }
 }

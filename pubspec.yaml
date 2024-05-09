@@ -11,14 +11,14 @@ environment:
 dependencies:
   cached_network_image: null
 #  cloud_firestore: null
-  cloud_firestore: ^4.17.2
+  # cloud_firestore: ^4.17.2
   confetti: null
   cupertino_icons: ^1.0.6
   dev: ^1.0.0
   dio: ^5.4.2+1
   equatable: ^2.0.5
-  firebase_core: ^2.30.1
-  firebase_messaging: ^14.8.1
+  # firebase_core: ^2.30.1
+  # firebase_messaging: ^14.8.1
   fl_chart: ^0.67.0
   flutter:
     sdk: flutter

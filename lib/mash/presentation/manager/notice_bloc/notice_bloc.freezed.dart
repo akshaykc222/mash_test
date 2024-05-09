@@ -19,32 +19,38 @@ mixin _$NoticeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNoticePopUp,
+    required TResult Function() getAllNotice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNoticePopUp,
+    TResult? Function()? getAllNotice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNoticePopUp,
+    TResult Function()? getAllNotice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNoticePopUp value) getNoticePopUp,
+    required TResult Function(_GetAllNotice value) getAllNotice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult? Function(_GetAllNotice value)? getAllNotice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult Function(_GetAllNotice value)? getAllNotice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNoticePopUp,
+    required TResult Function() getAllNotice,
   }) {
     return getNoticePopUp();
   }
@@ -115,6 +122,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNoticePopUp,
+    TResult? Function()? getAllNotice,
   }) {
     return getNoticePopUp?.call();
   }
@@ -123,6 +131,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNoticePopUp,
+    TResult Function()? getAllNotice,
     required TResult orElse(),
   }) {
     if (getNoticePopUp != null) {
@@ -135,6 +144,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNoticePopUp value) getNoticePopUp,
+    required TResult Function(_GetAllNotice value) getAllNotice,
   }) {
     return getNoticePopUp(this);
   }
@@ -143,6 +153,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult? Function(_GetAllNotice value)? getAllNotice,
   }) {
     return getNoticePopUp?.call(this);
   }
@@ -151,6 +162,7 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult Function(_GetAllNotice value)? getAllNotice,
     required TResult orElse(),
   }) {
     if (getNoticePopUp != null) {
@@ -162,6 +174,108 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
 
 abstract class _GetNoticePopUp implements NoticeEvent {
   const factory _GetNoticePopUp() = _$GetNoticePopUpImpl;
+}
+
+/// @nodoc
+abstract class _$$GetAllNoticeImplCopyWith<$Res> {
+  factory _$$GetAllNoticeImplCopyWith(
+          _$GetAllNoticeImpl value, $Res Function(_$GetAllNoticeImpl) then) =
+      __$$GetAllNoticeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAllNoticeImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$GetAllNoticeImpl>
+    implements _$$GetAllNoticeImplCopyWith<$Res> {
+  __$$GetAllNoticeImplCopyWithImpl(
+      _$GetAllNoticeImpl _value, $Res Function(_$GetAllNoticeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAllNoticeImpl implements _GetAllNotice {
+  const _$GetAllNoticeImpl();
+
+  @override
+  String toString() {
+    return 'NoticeEvent.getAllNotice()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetAllNoticeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNoticePopUp,
+    required TResult Function() getAllNotice,
+  }) {
+    return getAllNotice();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNoticePopUp,
+    TResult? Function()? getAllNotice,
+  }) {
+    return getAllNotice?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNoticePopUp,
+    TResult Function()? getAllNotice,
+    required TResult orElse(),
+  }) {
+    if (getAllNotice != null) {
+      return getAllNotice();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetNoticePopUp value) getNoticePopUp,
+    required TResult Function(_GetAllNotice value) getAllNotice,
+  }) {
+    return getAllNotice(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult? Function(_GetAllNotice value)? getAllNotice,
+  }) {
+    return getAllNotice?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult Function(_GetAllNotice value)? getAllNotice,
+    required TResult orElse(),
+  }) {
+    if (getAllNotice != null) {
+      return getAllNotice(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllNotice implements NoticeEvent {
+  const factory _GetAllNotice() = _$GetAllNoticeImpl;
 }
 
 /// @nodoc

@@ -49,7 +49,7 @@ class AppRouteManager {
   }
 
   static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
-  static GoRouter router = GoRouter(initialLocation: AppPages.suggestionMainScreen, routes: [
+    // static GoRouter router = GoRouter(initialLocation: AppPages.suggestionMainScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -213,11 +213,13 @@ class AppRouteManager {
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionMainScreen,
       path: AppPages.suggestionMainScreen,
       builder: (context, state) => const SuggestionMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionScreen,
       path: AppPages.suggestionScreen,
       builder: (context, state) => const SuggestionScreen(),
