@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 
-import '../../../fixture/constant_objects.dart';
-import '../../../fixture/fixtures_readers.dart';
+import '../../../../../fixture/constant_objects.dart';
+import '../../../../../fixture/fixtures_readers.dart';
 
 void main() {
   group('NoticePopUpModel', () {

@@ -1,3 +1,4 @@
+import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
@@ -75,6 +76,32 @@ WordThoughtsModel tWordThoughtModel = const WordThoughtsModel(
 //--> word thought response
 final tWordThoughtRequest =
     AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001');
+
+//--> word thought hive model
+const twordThoughtsHiveModel = WordThoughtsHiveModel(
+  statusCode: 200,
+  statusMessage: 'SUCCESS',
+  wordTable: [
+    WordTableHiveModel(
+      wordId: '1',
+      wordName: 'TestWord',
+      wordMeaning1: 'Meaning 1',
+      wordMeaning2: 'Meaning 2',
+      hasImg: '0',
+      wordImage: null,
+      status: '1',
+      compId: '1',
+      createdBy: 'John Doe',
+    )
+  ],
+  thoughtTable: [
+    ThoughtTableHiveModel(
+      thoughtId: '1',
+      thoughtOfTheDayUrl: 'https://example.com',
+      publishedDate: '2024-05-10',
+    )
+  ],
+);
 /*
 notice
 */

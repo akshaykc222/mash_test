@@ -12,10 +12,10 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
   final String? statusMessage;
 
   @HiveField(2)
-  final List<WordTableModel> wordTable;
+  final List<WordTableHiveModel> wordTable;
 
   @HiveField(3)
-  final List<ThoughtTableModel> thoughtTable;
+  final List<ThoughtTableHiveModel> thoughtTable;
 
   const WordThoughtsHiveModel({
     required this.statusCode,
@@ -32,9 +32,9 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
       WordThoughtsHiveModel(
         statusCode: entity.statusCode,
         statusMessage: entity.statusMessage,
-        wordTable: List<WordTableModel>.from(
+        wordTable: List<WordTableHiveModel>.from(
           entity.resTable1!.map(
-            (e) => WordTableModel(
+            (e) => WordTableHiveModel(
               compId: e.compId ?? "",
               createdBy: e.createdBy ?? "",
               hasImg: e.hasImg ?? "",
@@ -47,9 +47,9 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
             ),
           ),
         ),
-        thoughtTable: List<ThoughtTableModel>.from(
+        thoughtTable: List<ThoughtTableHiveModel>.from(
           entity.resTable2!.map(
-            (e) => ThoughtTableModel(
+            (e) => ThoughtTableHiveModel(
               thoughtId: e.thoughtId ?? "",
               thoughtOfTheDayUrl: e.thoughtOfTheDayUrl ?? "",
               publishedDate: e.publishedDate ?? "",
@@ -60,7 +60,7 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
 }
 
 @HiveType(typeId: 2)
-class ThoughtTableModel extends ThoughtTableEntity {
+class ThoughtTableHiveModel extends ThoughtTableEntity {
   @override
   @HiveField(0)
   final String thoughtId;
@@ -73,7 +73,7 @@ class ThoughtTableModel extends ThoughtTableEntity {
   @HiveField(2)
   final String publishedDate;
 
-  const ThoughtTableModel(
+  const ThoughtTableHiveModel(
       {required this.thoughtId,
       required this.thoughtOfTheDayUrl,
       required this.publishedDate})
@@ -85,7 +85,7 @@ class ThoughtTableModel extends ThoughtTableEntity {
 }
 
 @HiveType(typeId: 3)
-class WordTableModel extends WordTableEntity {
+class WordTableHiveModel extends WordTableEntity {
   @override
   @HiveField(0)
   final String wordId;
@@ -122,7 +122,7 @@ class WordTableModel extends WordTableEntity {
   @HiveField(8)
   final String createdBy;
 
-  const WordTableModel({
+  const WordTableHiveModel({
     required this.wordId,
     required this.wordName,
     required this.wordMeaning1,

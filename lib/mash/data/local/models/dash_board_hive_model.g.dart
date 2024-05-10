@@ -19,8 +19,8 @@ class WordThoughtsHiveModelAdapter extends TypeAdapter<WordThoughtsHiveModel> {
     return WordThoughtsHiveModel(
       statusCode: fields[0] as int?,
       statusMessage: fields[1] as String?,
-      wordTable: (fields[2] as List).cast<WordTableModel>(),
-      thoughtTable: (fields[3] as List).cast<ThoughtTableModel>(),
+      wordTable: (fields[2] as List).cast<WordTableHiveModel>(),
+      thoughtTable: (fields[3] as List).cast<ThoughtTableHiveModel>(),
     );
   }
 
@@ -49,17 +49,17 @@ class WordThoughtsHiveModelAdapter extends TypeAdapter<WordThoughtsHiveModel> {
           typeId == other.typeId;
 }
 
-class ThoughtTableModelAdapter extends TypeAdapter<ThoughtTableModel> {
+class ThoughtTableHiveModelAdapter extends TypeAdapter<ThoughtTableHiveModel> {
   @override
   final int typeId = 2;
 
   @override
-  ThoughtTableModel read(BinaryReader reader) {
+  ThoughtTableHiveModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ThoughtTableModel(
+    return ThoughtTableHiveModel(
       thoughtId: fields[0] as String,
       thoughtOfTheDayUrl: fields[1] as String,
       publishedDate: fields[2] as String,
@@ -67,7 +67,7 @@ class ThoughtTableModelAdapter extends TypeAdapter<ThoughtTableModel> {
   }
 
   @override
-  void write(BinaryWriter writer, ThoughtTableModel obj) {
+  void write(BinaryWriter writer, ThoughtTableHiveModel obj) {
     writer
       ..writeByte(3)
       ..writeByte(0)
@@ -84,22 +84,22 @@ class ThoughtTableModelAdapter extends TypeAdapter<ThoughtTableModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ThoughtTableModelAdapter &&
+      other is ThoughtTableHiveModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
 
-class WordTableModelAdapter extends TypeAdapter<WordTableModel> {
+class WordTableHiveModelAdapter extends TypeAdapter<WordTableHiveModel> {
   @override
   final int typeId = 3;
 
   @override
-  WordTableModel read(BinaryReader reader) {
+  WordTableHiveModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return WordTableModel(
+    return WordTableHiveModel(
       wordId: fields[0] as String,
       wordName: fields[1] as String,
       wordMeaning1: fields[2] as String,
@@ -113,7 +113,7 @@ class WordTableModelAdapter extends TypeAdapter<WordTableModel> {
   }
 
   @override
-  void write(BinaryWriter writer, WordTableModel obj) {
+  void write(BinaryWriter writer, WordTableHiveModel obj) {
     writer
       ..writeByte(9)
       ..writeByte(0)
@@ -142,7 +142,7 @@ class WordTableModelAdapter extends TypeAdapter<WordTableModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WordTableModelAdapter &&
+      other is WordTableHiveModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

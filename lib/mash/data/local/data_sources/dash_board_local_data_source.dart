@@ -18,10 +18,10 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
 
   @override
   Future<WordThoughtsHiveModel?> fetchWordandThoghtOfTheDay() async {
-    final result = await hiveService.getBox<WordThoughtsHiveModel>(
-        boxName: LocalStorageNames.dashBoard);
+    final List<WordThoughtsHiveModel>? result = await hiveService
+        .getBoxes<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
 
-    return result.isEmpty ? null : result.values.first;
+    return result?.first;
   }
 
   @override
