@@ -56,6 +56,25 @@ class AppStrings {
   static const String select = 'select';
   static const String appType = '1';
 
+  //AttendanceMarking
+  static const String attendaceMarking = 'ATTENDANCE MARKING';
+  static const String academicYear = 'Academic Year';
+  static const String academicYearDynamic = '2023-2024';
+  static const String classTitle = 'Class';
+  static const String selectClass = 'Select Class';
+  static const String division = 'Division';
+  static const String date = 'Date';
+  static const String selectType = 'Select Type';
+  static const String next = 'NEXT';
+  static const String dynamicClassName = 'CLASS PRE-KG';
+  static const String present = 'Present';
+  static const String absent = 'Absent';
+  static const String selectAll = 'Select All';
+  static const String markAttendance = 'MARK ATTENDANCE';
+  static const String nameOfAbsentees = 'NAME OF ABSENTEES';
+
+
+
   static List<String> dashboardPerfomanceList = <String>[
     'ANNUAL ASSESSMENT',
     'FIRST TERMINAL ASSESSMENT',

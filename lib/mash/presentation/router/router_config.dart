@@ -6,6 +6,8 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
@@ -48,7 +50,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.homeWorksViewScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.attendanceMarkingScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -220,6 +222,14 @@ class AppRouteManager {
       name: AppPages.suggestionScreen,
       path: AppPages.suggestionScreen,
       builder: (context, state) => const SuggestionScreen(),
+    ),GoRoute(
+      name: AppPages.attendanceMarkingScreen,
+      path: AppPages.attendanceMarkingScreen,
+      builder: (context, state) => const AttendanceMarkingScreen(),
+    ),GoRoute(
+      name: AppPages.classAttendanceMarkingScreen,
+      path: AppPages.classAttendanceMarkingScreen,
+      builder: (context, state) => const ClassAttendanceMarkingScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
