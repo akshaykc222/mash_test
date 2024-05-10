@@ -21,7 +21,7 @@ void main() {
       //act
       final result = WordThoughtsModel.fromJson(jsonMap);
       //assert
-      expect(result, equals(tNoticePopUpModel));
+      expect(result, tWordThoughtModel);
     });
   });
 }
