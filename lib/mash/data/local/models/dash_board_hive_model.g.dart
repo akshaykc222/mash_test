@@ -17,8 +17,8 @@ class WordThoughtsHiveModelAdapter extends TypeAdapter<WordThoughtsHiveModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WordThoughtsHiveModel(
-      statusCode: fields[0] as int,
-      statusMessage: fields[1] as String,
+      statusCode: fields[0] as int?,
+      statusMessage: fields[1] as String?,
       wordTable: (fields[2] as List).cast<WordTableModel>(),
       thoughtTable: (fields[3] as List).cast<ThoughtTableModel>(),
     );
@@ -60,7 +60,7 @@ class ThoughtTableModelAdapter extends TypeAdapter<ThoughtTableModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ThoughtTableModel(
-      thoughtId: fields[0] as double,
+      thoughtId: fields[0] as String,
       thoughtOfTheDayUrl: fields[1] as String,
       publishedDate: fields[2] as String,
     );
@@ -100,14 +100,14 @@ class WordTableModelAdapter extends TypeAdapter<WordTableModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WordTableModel(
-      wordId: fields[0] as double,
+      wordId: fields[0] as String,
       wordName: fields[1] as String,
       wordMeaning1: fields[2] as String,
       wordMeaning2: fields[3] as String,
       hasImg: fields[4] as String,
       wordImage: fields[5] as dynamic,
-      status: fields[6] as double,
-      compId: fields[7] as double,
+      status: fields[6] as String,
+      compId: fields[7] as String,
       createdBy: fields[8] as String,
     );
   }

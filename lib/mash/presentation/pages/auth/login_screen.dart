@@ -236,6 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return CommonTextField(
         title: 'User Id',
         controller: _userNameController,
+        isCaps: true,
         validator: (val) {
           if (val.isEmpty) {
             return AppStrings.kUserNameInvalidError;

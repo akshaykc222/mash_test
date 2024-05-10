@@ -29,8 +29,8 @@ class DashBoardLocalDataSourceImpl extends DashBoardLocalDataSource {
       WordThoughtsEntity wordThoughtsModel) async {
     await hiveService
         .clearAllValues<WordThoughtsHiveModel>(LocalStorageNames.dashBoard);
-    hiveService.addBoxes<WordThoughtsHiveModel>(
-        [WordThoughtsHiveModel.fromEnity(wordThoughtsModel)],
-        LocalStorageNames.dashBoard);
+    hiveService.addBoxes<WordThoughtsHiveModel>([
+      WordThoughtsHiveModel.fromEntity(wordThoughtsModel),
+    ], LocalStorageNames.dashBoard);
   }
 }

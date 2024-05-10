@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CommonTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -9,6 +10,7 @@ class CommonTextField extends StatelessWidget {
   final Widget? widgetLabel;
   final TextInputType? textInputType;
   final bool? enable;
+  final bool? isCaps;
   final Function(String)? validator;
   final bool? passwordField;
   final int? lines;
@@ -26,6 +28,7 @@ class CommonTextField extends StatelessWidget {
     this.textInputType,
     this.passwordField,
     this.lines,
+    this.isCaps = false,
   });
 
   final ValueNotifier<bool> showPasswordNotifier = ValueNotifier<bool>(true);
@@ -37,11 +40,17 @@ class CommonTextField extends StatelessWidget {
       valueListenable: showPasswordNotifier,
       builder: (context, showPassword, _) {
         return TextFormField(
+          textCapitalization: TextCapitalization.sentences,
           style: const TextStyle(fontSize: 18),
           controller: controller,
           autovalidateMode: AutovalidateMode.always,
           validator: validator == null ? null : (val) => validator!(val ?? ""),
           focusNode: _focusNode,
+          inputFormatters: isCaps == true
+              ? [
+                  UpperCaseTextFormatter(),
+                ]
+              : [],
           obscureText: passwordField == true ? showPassword : false,
           keyboardType: textInputType ?? TextInputType.text,
           maxLines: passwordField == true ? 1 : lines,
@@ -67,6 +76,17 @@ class CommonTextField extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
     );
   }
 }

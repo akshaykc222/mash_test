@@ -46,25 +46,28 @@ dashboard
 */
 
 //--> word thought
-WordThoughtsModel tWordThoughtModel =
-    WordThoughtsModel(statusCode: 200, statusMessage: 'message', wordTable: [
-  WordTableModel(
-      wordId: 12,
-      wordName: 'wordName',
-      wordMeaning1: 'wordMeaning1',
-      wordMeaning2: 'wordMeaning2',
-      hasImg: 'hasImg',
-      wordImage: 'wordImage',
-      status: 1,
-      compId: 1,
-      createdBy: 'createdBy'),
-], thoughtTable: [
-  ThoughtTableModel(
-    thoughtId: 1,
-    thoughtOfTheDayUrl: 'thoughtOfTheDayUrl',
-    publishedDate: 'publishedDate',
-  ),
-]);
+WordThoughtsModel tWordThoughtModel = const WordThoughtsModel(
+    statusCode: 200,
+    statusMessage: 'message',
+    wordTable: [
+      WordTableModel(
+          wordId: '12',
+          wordName: 'wordName',
+          wordMeaning1: 'wordMeaning1',
+          wordMeaning2: 'wordMeaning2',
+          hasImg: 'hasImg',
+          wordImage: 'wordImage',
+          status: "1",
+          compId: "1",
+          createdBy: 'createdBy'),
+    ],
+    thoughtTable: [
+      ThoughtTableModel(
+        thoughtId: "1",
+        thoughtOfTheDayUrl: 'thoughtOfTheDayUrl',
+        publishedDate: 'publishedDate',
+      ),
+    ]);
 
 //--> word thought response
 final tWordThoughtRequest =
