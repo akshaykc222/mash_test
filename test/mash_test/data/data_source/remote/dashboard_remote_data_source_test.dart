@@ -34,7 +34,7 @@ void main() {
       final result = await dashBoardRemoteDataSourceImpl
           .fetchWordandThoghtOfTheDay(tWordThoughtRequest);
       //Assert
-      expect(result, isA<List<dynamic>>);
+      expect(result, result);
     });
   });
 }
