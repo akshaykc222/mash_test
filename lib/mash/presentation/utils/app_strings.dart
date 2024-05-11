@@ -102,6 +102,10 @@ class AppStrings {
   static const String overallRemarks = 'Overall Remarks';
   static const String totalPeriods = 'Total Periods';
 
+  //
+  static const String mashSupport = 'MASH SUPPORT';
+  static const String userActivity = 'USER ACTIVITY';
+
 
   static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',

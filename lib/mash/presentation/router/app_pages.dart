@@ -8,8 +8,11 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
+
+  //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
+  static const userActivity = '/userActivityScreen';
 
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
@@ -21,6 +24,9 @@ class AppPages {
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
+
+  // support
+  static const supportScreen = '/supportScreen';
 
   //leave
   static const leaveScreen = '/leaveScreen';
@@ -69,5 +75,8 @@ class AppPages {
   static const viewYearPlanListScreen = '/viewYearPlanListScreen';
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
+
+
+
 
 }

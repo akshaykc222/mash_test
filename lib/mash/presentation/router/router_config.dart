@@ -18,6 +18,7 @@ import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_s
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/user_activity_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
@@ -32,6 +33,7 @@ import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
 import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -56,7 +58,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.lessonPlannerMainScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.supportScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -261,6 +263,14 @@ class AppRouteManager {
       name: AppPages.viewWeekPlansScreen,
       path: AppPages.viewWeekPlansScreen,
       builder: (context, state) => const ViewWeekPlanScreen(),
+    ),GoRoute(
+      name: AppPages.userActivity,
+      path: AppPages.userActivity,
+      builder: (context, state) => const UserActivityScreen(),
+    ),GoRoute(
+      name: AppPages.supportScreen,
+      path: AppPages.supportScreen,
+      builder: (context, state) => const MashSupportScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

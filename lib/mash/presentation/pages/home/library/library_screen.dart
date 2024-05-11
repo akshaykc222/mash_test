@@ -44,7 +44,7 @@ class LibraryScreen extends StatelessWidget {
           title: 'USER\nACTIVITY',
           asset: AppAssets.libImageUserActivity,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.userActivity);
           }),
     ];
 

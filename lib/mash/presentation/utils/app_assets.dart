@@ -70,6 +70,8 @@ class AppAssets {
   static const lessonView = 'assets/images/lesson_view.svg';
   static const lessonStatus = 'assets/images/lesson_status.svg';
 
+  static const meageethSchoolLogo = 'assets/images/schoolnew.png';
+
 
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
