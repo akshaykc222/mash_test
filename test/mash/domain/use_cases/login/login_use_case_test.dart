@@ -3,8 +3,8 @@ import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../fixture/constant_objects.dart';
-import '../../helpers/test_helpers.mocks.dart';
+import '../../../fixture/constant_objects.dart';
+import '../../../helpers/test_helpers.mocks.dart';
 
 void main() {
   late LoginUseCase loginUseCase;
