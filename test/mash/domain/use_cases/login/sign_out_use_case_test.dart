@@ -1,10 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/core/usecase.dart';
-import 'package:mash/mash/domain/use_cases/auth/save_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/sign_out_use_case.dart';
 import 'package:mockito/mockito.dart';
-
-import '../../../fixture/constant_objects.dart';
 import '../../../helpers/test_helpers.mocks.dart';
 
 void main() {
@@ -16,9 +13,9 @@ void main() {
     signOutUseCase = SignOutUseCase(mockAuthRepository);
   });
 
-  test('Should save user info when SaveUserInfoUseCase is called', () async {
+  test('Should save user info when Sign out use case is called', () async {
     // Arrange
-    when(mockAuthRepository.saveUserInfo(tLoginLocalModel))
+    when(mockAuthRepository.signOut())
         .thenAnswer((_) async => Future<void>.value);
 
     // Act
