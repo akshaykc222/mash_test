@@ -53,6 +53,8 @@ dev_dependencies:
   hive_generator: ^2.0.1
   image_picker:
   photo_view:
+  lottie:
+  url_launcher:
   
 
 flutter:
@@ -62,6 +64,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lottie/
 
   fonts:
     - family: SofiaPro

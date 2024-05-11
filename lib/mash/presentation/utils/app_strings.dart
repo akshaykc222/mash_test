@@ -105,6 +105,7 @@ class AppStrings {
   //
   static const String mashSupport = 'MASH SUPPORT';
   static const String userActivity = 'USER ACTIVITY';
+  static const String contactUs = 'CONTACT US';
 
 
   static List<String> dashboardPerformanceList = <String>[
