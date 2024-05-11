@@ -10,6 +10,12 @@ import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_mar
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_week_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_year_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/lesson_planner_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_week_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
@@ -50,7 +56,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.attendanceMarkingScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.lessonPlannerMainScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -230,6 +236,31 @@ class AppRouteManager {
       name: AppPages.classAttendanceMarkingScreen,
       path: AppPages.classAttendanceMarkingScreen,
       builder: (context, state) => const ClassAttendanceMarkingScreen(),
+    ),GoRoute(
+      name: AppPages.lessonPlannerMainScreen,
+      path: AppPages.lessonPlannerMainScreen,
+      builder: (context, state) => const LessonPlannerMainScreen(),
+    ),
+    GoRoute(
+      name: AppPages.insertYearPlanScreen,
+      path: AppPages.insertYearPlanScreen,
+      builder: (context, state) => const InsertYearPlanScreen(),
+    ),GoRoute(
+      name: AppPages.viewYearPlanScreen,
+      path: AppPages.viewYearPlanScreen,
+      builder: (context, state) => const ViewYearPlanScreen(),
+    ),GoRoute(
+      name: AppPages.viewYearPlanListScreen,
+      path: AppPages.viewYearPlanListScreen,
+      builder: (context, state) => const ViewYearlyPlanListScreen(),
+    ),GoRoute(
+      name: AppPages.insertWeekPlanScreen,
+      path: AppPages.insertWeekPlanScreen,
+      builder: (context, state) => const InsertWeekPlanScreen(),
+    ),GoRoute(
+      name: AppPages.viewWeekPlansScreen,
+      path: AppPages.viewWeekPlansScreen,
+      builder: (context, state) => const ViewWeekPlanScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

@@ -1,72 +1,80 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/domain/entities/library/library_item_model.dart';
+import 'package:mash/mash/domain/entities/menuCardModel/menu_card_model.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
-class LibraryScreen extends StatelessWidget {
-  const LibraryScreen({super.key});
+class LessonPlannerMainScreen extends StatelessWidget {
+  const LessonPlannerMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
-      appBar: commonAppbar(title: 'LIBRARY'),
-      body: libraryBody(context),
+      endDrawer: DrawerWidget(),
+      appBar: commonAppbar(title: 'LESSON PLANNER'),
+      body: lessonPlannerBody(context),
     );
   }
 
-  libraryBody(BuildContext context) {
-    List<LibraryItemModel> items = [
-      LibraryItemModel(
-          title: 'ACADEMIC',
-          asset: AppAssets.libImageAcademic,
+  lessonPlannerBody(BuildContext context) {
+    List<MenuCardItemModel> items = [
+      MenuCardItemModel(
+          title: AppStrings.insertYearPlan,
+          asset: AppAssets.lessonInsert,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.insertYearPlanScreen);
           }),
-      LibraryItemModel(
-          title: 'NON\nACADEMIC',
-          asset: AppAssets.libImageNonAcademic,
+      MenuCardItemModel(
+          title: AppStrings.viewYearPlan,
+          asset: AppAssets.lessonView,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.viewYearPlanScreen);
           }),
-      LibraryItemModel(
-          title: 'RESEARCH',
-          asset: AppAssets.libImageResearch,
+      MenuCardItemModel(
+          title: AppStrings.insertWeekPlan,
+          asset: AppAssets.lessonInsert,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.insertWeekPlanScreen);
           }),
-      LibraryItemModel(
-          title: 'USER\nACTIVITY',
-          asset: AppAssets.libImageUserActivity,
+      MenuCardItemModel(
+          title: AppStrings.viewWeekPlan,
+          asset: AppAssets.lessonView,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.viewWeekPlansScreen);
+          }),MenuCardItemModel(
+          title: AppStrings.status,
+          asset: AppAssets.lessonStatus,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
           }),
     ];
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+    var size = MediaQuery.sizeOf(context);
+    return SizedBox(
+      height: size.height,
+      width: size.width,
       child: ListView.builder(
-          itemCount: 4,
+          itemCount: 5,
           itemBuilder: (context, index) {
-            return libraryCard(items[index], context);
+            return lessonPlannerCard(items[index], context);
           }),
     );
   }
 
 
-
-  libraryCard(LibraryItemModel data, BuildContext context) {
+  lessonPlannerCard(MenuCardItemModel data, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: InkWell(
           onTap: () => data.onTap(),
           child: Container(
-            height: SizeUtility(context).height / 4.5,
+            height: SizeUtility(context).height / 5,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
