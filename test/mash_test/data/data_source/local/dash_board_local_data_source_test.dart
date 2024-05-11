@@ -17,38 +17,89 @@ void main() {
     dashBoardLocalDataSource =
         DashBoardLocalDataSourceImpl(hiveService: mockHiveService);
   });
-  group('get word thought', () {
-    test('should return word thought hive model from hive', () async {
-      final data = WordThoughtsHiveModel.fromEntity(tWordThoughtModel);
-      //Arrange
+  group('DashboardLocalDataSource ', () {
+    group('get word thought', () {
+      test('should return word thought hive model from hive', () async {
+        final data = WordThoughtsHiveModel.fromEntity(tWordThoughtModel);
+        //Arrange
+        when(mockHiveService
+                .getBoxes<WordTableHiveModel>(LocalStorageNames.dashBoard))
+            .thenAnswer((_) async => Future.value([data]));
+        //Act
+        final result =
+            await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
+        //Assert
+        expect(result, data);
+      });
+    });
+    group("save word thought", () {
+      test('should save the data when the hive table is empty', () async {
+        //Arrange
+        final data = WordThoughtsHiveModel.fromEntity(tWordThoughtModel);
+        when(mockHiveService
+                .getBoxes<WordThoughtsHiveModel>(LocalStorageNames.dashBoard))
+            .thenAnswer((_) async => Future.value(<WordThoughtsHiveModel>[]));
+        when(mockHiveService.addBoxes([data], LocalStorageNames.dashBoard))
+            .thenAnswer((_) => Future<void>);
+
+        //Act
+        await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(
+            WordThoughtsHiveModel.fromEntity(tWordThoughtModel));
+
+        //Assert
+        verify(mockHiveService.addBoxes([data], LocalStorageNames.dashBoard))
+            .called(1);
+      });
+      test('should save the data to hive when  previous data exists', () async {
+        //Arrange
+
+        final data = WordThoughtsHiveModel.fromEntity(tWordThoughtModel);
+        when(mockHiveService.addBoxes<WordThoughtsHiveModel>(
+                [data], LocalStorageNames.dashBoard))
+            .thenAnswer((_) => Future<void>);
+        when(mockHiveService
+                .getBoxes<WordThoughtsHiveModel>(LocalStorageNames.dashBoard))
+            .thenAnswer(
+                (_) async => Future.value(<WordThoughtsHiveModel>[data]));
+
+        when(mockHiveService.clearAllValues<WordThoughtsHiveModel>(
+                LocalStorageNames.dashBoard))
+            .thenAnswer((_) async => Future<void>);
+        //Act
+
+        await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(
+            WordThoughtsHiveModel.fromEntity(tWordThoughtModel));
+
+        //Assert
+        verify(mockHiveService.clearAllValues<WordThoughtsHiveModel>(
+          LocalStorageNames.dashBoard,
+        )).called(1);
+        verify(mockHiveService.addBoxes([data], LocalStorageNames.dashBoard))
+            .called(1);
+      });
+    });
+
+    test('should data info from hive if available', () async {
+      // Arrange
       when(mockHiveService
-              .getBoxes<WordTableHiveModel>(LocalStorageNames.dashBoard))
-          .thenAnswer((_) async => Future.value([data]));
+              .getBoxes<WordThoughtsHiveModel>(LocalStorageNames.dashBoard))
+          .thenAnswer((_) => Future.value([twordThoughtsHiveModel]));
       //Act
       final result =
           await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
       //Assert
-      expect(result, data);
+      expect(result, twordThoughtsHiveModel);
     });
-  });
-  group("save word thougt", () {
-    test('should call when save word thoughts in hive', () async {
-      //Arrange
-
+    test('should data info from hive if is not available', () async {
+      // Arrange
       when(mockHiveService
-          .addBoxes([twordThoughtsHiveModel], LocalStorageNames.dashBoard));
-      when(mockHiveService.clearAllValues<WordThoughtsHiveModel>(
-              LocalStorageNames.dashBoard))
-          .thenAnswer((_) async => Future<void>);
-
+              .getBoxes<WordThoughtsHiveModel>(LocalStorageNames.dashBoard))
+          .thenAnswer((_) => Future.value(<WordThoughtsHiveModel>[]));
       //Act
-      await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(
-          WordThoughtsHiveModel.fromEntity(tWordThoughtModel));
-
+      final result =
+          await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
       //Assert
-      verify(mockHiveService
-              .addBoxes([twordThoughtsHiveModel], LocalStorageNames.dashBoard))
-          .called(1);
+      expect(result, null);
     });
   });
 }

@@ -1,15 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/custom_exception.dart';
-import 'package:mash/core/pretty_printer.dart';
-import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
-import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../fixture/constant_objects.dart';

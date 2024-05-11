@@ -7,6 +7,8 @@ import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 
 import '../remote/data_sources/dashboard_remote_data_source.dart';
 
+/// Implementation of [DashBoardRepository] responsible for coordinating data flow
+/// between remote and local data sources for dashboard-related operations.
 @LazySingleton(as: DashBoardRepository)
 @injectable
 class DashBoardRepoImpl implements DashBoardRepository {
@@ -14,18 +16,27 @@ class DashBoardRepoImpl implements DashBoardRepository {
   final DashBoardRemoteDataSource dashBoardDataSource;
   final DashBoardLocalDataSource dashBoardLocalDataSource;
 
-  DashBoardRepoImpl(this.dashBoardDataSource, this.connectionChecker,
-      this.dashBoardLocalDataSource);
+  /// Constructs an instance of [DashBoardRepoImpl] with the provided dependencies.
+  DashBoardRepoImpl(
+    this.dashBoardDataSource,
+    this.connectionChecker,
+    this.dashBoardLocalDataSource,
+  );
+
   @override
   Future<WordThoughtsEntity?> fetchWordandThoghtOfTheDay(
-      AcademicAndCompIdRequest wordThoughtRequest) async {
+    AcademicAndCompIdRequest wordThoughtRequest,
+  ) async {
+    // Check if the device is connected to the internet
     if (await connectionChecker.isConnected) {
+      // Fetch word and thought of the day from the remote data source
       final result = await dashBoardDataSource
           .fetchWordandThoghtOfTheDay(wordThoughtRequest);
+      // Save the fetched data to local storage
       await dashBoardLocalDataSource.saveWordandThoghtOfTheDay(result);
-
       return result;
     } else {
+      // If device is offline, fetch data from local storage
       final result =
           await dashBoardLocalDataSource.fetchWordandThoghtOfTheDay();
       return result;

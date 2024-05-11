@@ -29,7 +29,22 @@ class HomeworksView extends StatelessWidget {
               child: Image.asset(AppAssets.tekieImg),
             ),
             const SizedBox(height: 20),
-            HomeworkCard(
+            Expanded(
+              child: ListView.builder(
+                  itemCount: 6,
+                  itemBuilder: (context,index){
+                return HomeworkCard(
+                  subject: 'Maths',
+                  task: 'Project Work',
+                  assignedDate: '10/10/2023',
+                  submissionDate: '04-09-2023',
+                  onTap: () {
+                    context.pushNamed(AppPages.homeWorksViewDetailsScreen);
+                  },
+                );
+              }),
+            )
+            /*HomeworkCard(
               subject: 'Maths',
               task: 'Project Work',
               assignedDate: '10/10/2023',
@@ -37,7 +52,7 @@ class HomeworksView extends StatelessWidget {
               onTap: () {
                 context.pushNamed(AppPages.homeWorksViewDetailsScreen);
               },
-            ),
+            ),*/
           ],
         ),
       ),
