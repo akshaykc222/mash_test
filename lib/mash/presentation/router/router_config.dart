@@ -6,27 +6,18 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
-import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
-import 'package:mash/mash/presentation/pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_week_plan_screen.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_year_plan_screen.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/lesson_planner_main_screen.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_week_plan_screen.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_screen.dart';
-import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
-import 'package:mash/mash/presentation/pages/home/library/user_activity_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
@@ -44,7 +35,6 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
-import '../pages/home/suggestionBox/suggestion_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 
@@ -59,6 +49,7 @@ class AppRouteManager {
   }
 
   static GoRouter router = GoRouter(initialLocation: AppPages.supportScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.home, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -263,14 +254,6 @@ class AppRouteManager {
       name: AppPages.viewWeekPlansScreen,
       path: AppPages.viewWeekPlansScreen,
       builder: (context, state) => const ViewWeekPlanScreen(),
-    ),GoRoute(
-      name: AppPages.userActivity,
-      path: AppPages.userActivity,
-      builder: (context, state) => const UserActivityScreen(),
-    ),GoRoute(
-      name: AppPages.supportScreen,
-      path: AppPages.supportScreen,
-      builder: (context, state) => const MashSupportScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

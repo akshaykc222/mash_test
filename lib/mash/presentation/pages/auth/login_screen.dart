@@ -236,6 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return CommonTextField(
         title: 'User Id',
         controller: _userNameController,
+        isCaps: true,
         validator: (val) {
           if (val.isEmpty) {
             return AppStrings.kUserNameInvalidError;
@@ -294,7 +295,8 @@ class TextFieldWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isPassword,
-      decoration: InputDecoration(
+      decoration
+      : InputDecoration(
         prefixIcon: Icon(icon),
         hintText: hintText,
         suffixIcon: isPassword ? const Icon(Icons.remove_red_eye_outlined): null,

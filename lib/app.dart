@@ -23,11 +23,9 @@ class MashApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AuthBloc>()),
-        BlocProvider(create: (context) => getIt<DashboardBloc>()),
+        BlocProvider(create: (_) => getIt<NoticeBloc>()),
+        BlocProvider(create: (_) => getIt<DashboardBloc>()),
         BlocProvider(create: (_) => BottomNavigationCubit()),
-        BlocProvider(
-          create: (_) => getIt<NoticeBloc>(),
-        )
       ],
       child: MaterialApp.router(
         theme: AppThemes.mainTheme,

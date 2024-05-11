@@ -15,7 +15,7 @@ void main() {
     authLocalDataSourceImpl =
         AuthLocalDataSourceImpl(hiveService: mockHiveService);
   });
-  group('save token', () {
+  group('AuthLocalDataSoruce', () {
     test('should cache the token', () async {
       //Arrange
       when(mockHiveService.addBoxes(['token'], 'token'))
@@ -41,14 +41,24 @@ void main() {
     group('saveUserInfo', () {
       test('should save the user info to hive when where no previous data',
           () async {
+        //Arrange
+
         final userInfo = LoginLocalModel.fromEntity(tAuthModel.resTable.first);
         when(mockHiveService.addBoxes<LoginLocalModel>(
                 [userInfo], LocalStorageNames.userInfo))
             .thenAnswer((_) async => Future<void>);
+
+        ///here returning empty data when existin gata is empty
+
         when(mockHiveService
                 .getBoxes<LoginLocalModel>(LocalStorageNames.userInfo))
             .thenAnswer((_) async => Future.value(<LoginLocalModel>[]));
+
+        //Act
+
         await authLocalDataSourceImpl.saveUserInfo(userInfo);
+
+        //Assert
 
         verify(mockHiveService.addBoxes<LoginLocalModel>(
           [userInfo],
@@ -58,17 +68,29 @@ void main() {
 
       test('should save the user info to hive when  previous data exists',
           () async {
+        //Arrange
         final userInfo = LoginLocalModel.fromEntity(tAuthModel.resTable.first);
+
+        ///adding data to hive
         when(mockHiveService.addBoxes<LoginLocalModel>(
                 [userInfo], LocalStorageNames.userInfo))
             .thenAnswer((_) async => Future<void>);
+
+        ///returning user info here
         when(mockHiveService
                 .getBoxes<LoginLocalModel>(LocalStorageNames.userInfo))
             .thenAnswer((_) async => Future.value(<LoginLocalModel>[userInfo]));
+
+        ///clearing all data in hive
         when(mockHiveService
                 .clearAllValues<LoginLocalModel>(LocalStorageNames.userInfo))
             .thenAnswer((_) async => Future<void>);
+
+        //Act
+
         await authLocalDataSourceImpl.saveUserInfo(userInfo);
+
+        //Assert
 
         verify(mockHiveService.clearAllValues<LoginLocalModel>(
           LocalStorageNames.userInfo,

@@ -1,8 +1,8 @@
-class WordThoughtRequest {
+class AcademicAndCompIdRequest {
   final String pAcademicId;
   final String pCompID;
 
-  WordThoughtRequest({
+  AcademicAndCompIdRequest({
     required this.pAcademicId,
     required this.pCompID,
   });

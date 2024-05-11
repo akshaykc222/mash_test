@@ -6,12 +6,12 @@ import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
 @injectable
 class GetClassInforUseCase
-    implements UseCase<List<ClassDetailsEntity?>, WordThoughtRequest> {
+    implements UseCase<List<ClassDetailsEntity?>, AcademicAndCompIdRequest> {
   final AcademicRepostory academicRepostory;
 
   GetClassInforUseCase(this.academicRepostory);
   @override
-  Future<List<ClassDetailsEntity?>> call(WordThoughtRequest params) {
+  Future<List<ClassDetailsEntity?>> call(AcademicAndCompIdRequest params) {
     return academicRepostory.getClassDetails(params);
   }
 }

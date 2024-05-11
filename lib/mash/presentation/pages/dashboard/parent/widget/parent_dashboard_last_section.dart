@@ -18,11 +18,11 @@ class ParentDashboardLastSection extends StatefulWidget {
   const ParentDashboardLastSection({super.key});
 
   @override
-  _ParentDashboardLastSectionState createState() =>
-      _ParentDashboardLastSectionState();
+  ParentDashboardLastSectionState createState() =>
+      ParentDashboardLastSectionState();
 }
 
-class _ParentDashboardLastSectionState
+class ParentDashboardLastSectionState
     extends State<ParentDashboardLastSection> {
   late final ValueNotifier<String> performanceValue;
 
@@ -32,7 +32,7 @@ class _ParentDashboardLastSectionState
         ValueNotifier<String>(AppStrings.dashboardPerformanceList.first);
     BlocProvider.of<DashboardBloc>(context).add(
       DashboardEvent.fetchWordAndThoughtOftheDayEvent(
-        WordThoughtRequest(pAcademicId: '87', pCompID: '200001'),
+        AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001'),
         context,
       ),
     );
@@ -164,26 +164,26 @@ class _ParentDashboardLastSectionState
             ),
             spacer10,
             SizedBox(
-              height: SizeUtility(context).height / 3.5,
+              height: SizeUtility(context).height / 3.3,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemCount: (data?.thoughtTable.length ?? 0) +
-                    (data?.wordTable.length ?? 0),
+                itemCount: (data?.resTable1?.length ?? 0) +
+                    (data?.resTable2?.length ?? 0),
                 separatorBuilder: (context, index) => spacerWidth10,
                 itemBuilder: (context, index) {
-                  final isWord = data!.wordTable.length > index;
+                  final isWord = data!.resTable1!.length > index;
                   int tempIndex = 0;
                   if (!isWord) {
-                    tempIndex = index - data.wordTable.length;
+                    tempIndex = index - data.resTable1!.length;
                   }
                   return !isWord
                       ? wordImageWidget(
-                          data.thoughtTable[tempIndex].thoughtOfTheDayUrl ?? "",
+                          data.resTable2?[tempIndex].thoughtOfTheDayUrl ?? "",
                           tempIndex)
-                      : data.wordTable[index].wordImage == null
+                      : data.resTable1?[index].wordImage == ""
                           ? wordOfTheDayCard(context, data, index)
                           : wordImageWidget(
-                              data.wordTable[index].wordImage ?? "",
+                              data.resTable1?[index].wordImage ?? "",
                               tempIndex,
                             );
                 },
@@ -230,7 +230,7 @@ class _ParentDashboardLastSectionState
             ),
             spacer15,
             Text(
-              data.wordTable[index].wordName,
+              data.resTable1?[index].wordName ?? "",
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -240,7 +240,7 @@ class _ParentDashboardLastSectionState
             ),
             spacer15,
             Text(
-              data.wordTable[index].wordMeaning1,
+              data.resTable1?[index].wordMeaning1 ?? "",
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,
@@ -249,7 +249,7 @@ class _ParentDashboardLastSectionState
             ),
             spacer4,
             Text(
-              data.wordTable[index].wordMeaning2,
+              data.resTable1?[index].wordMeaning1 ?? "",
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,

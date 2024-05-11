@@ -142,7 +142,7 @@ class ApiProvider {
       // errorMsg=responseData["error"][""]
       var error = responseData["statusMessage"];
       if (error is List) {
-        var allErrors = error!.map((item) => item["message"]);
+        var allErrors = error.map((item) => item["message"]);
         String errorString = "";
         for (var i in allErrors) {
           errorMsg = "$errorString$i,";

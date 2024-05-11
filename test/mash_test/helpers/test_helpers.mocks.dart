@@ -517,7 +517,7 @@ class MockDashBoardRemoteDataSource extends _i1.Mock
 
   @override
   _i6.Future<_i5.WordThoughtsModel> fetchWordandThoghtOfTheDay(
-          _i17.WordThoughtRequest? wordThoughtRequest) =>
+          _i17.AcademicAndCompIdRequest? wordThoughtRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #fetchWordandThoghtOfTheDay,
