@@ -29,7 +29,7 @@ class ParentDashboardLastSectionState
   @override
   void initState() {
     performanceValue =
-        ValueNotifier<String>(AppStrings.dashboardPerfomanceList.first);
+        ValueNotifier<String>(AppStrings.dashboardPerformanceList.first);
     BlocProvider.of<DashboardBloc>(context).add(
       DashboardEvent.fetchWordAndThoughtOftheDayEvent(
         AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001'),
@@ -312,7 +312,7 @@ class ParentDashboardLastSectionState
 
   Widget _buildPerformanceSelection() {
     return Column(
-      children: AppStrings.dashboardPerfomanceList.map((performance) {
+      children: AppStrings.dashboardPerformanceList.map((performance) {
         final isSelected = performance == performanceValue.value;
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

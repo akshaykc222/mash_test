@@ -61,4 +61,13 @@ class AppPages {
   //attendance marking
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';
   static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
+
+ //lesson planner
+  static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
+  static const insertYearPlanScreen = '/insertYearPlanScreen';
+  static const viewYearPlanScreen = '/viewYearPlanScreen';
+  static const viewYearPlanListScreen = '/viewYearPlanListScreen';
+  static const insertWeekPlanScreen = '/insertWeekPlanScreen';
+  static const viewWeekPlansScreen = '/viewWeekPlanScreen';
+
 }
