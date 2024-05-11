@@ -39,7 +39,9 @@ class CommonTextField extends StatelessWidget {
         return TextFormField(
           style: const TextStyle(fontSize: 18),
           controller: controller,
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: controller?.text.isNotEmpty == true
+              ? AutovalidateMode.always
+              : null,
           validator: validator == null ? null : (val) => validator!(val ?? ""),
           focusNode: _focusNode,
           obscureText: passwordField == true ? showPassword : false,

@@ -11,23 +11,27 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i2;
 import 'package:mash/core/api_provider.dart' as _i7;
 import 'package:mash/core/connection_checker.dart' as _i9;
+import 'package:mash/core/firebase_database.dart' as _i11;
 import 'package:mash/core/hive_service.dart' as _i10;
 import 'package:mash/mash/data/local/data_sources/auth_local_data_source.dart'
-    as _i15;
-import 'package:mash/mash/data/local/models/login_local_model.dart' as _i13;
+    as _i18;
+import 'package:mash/mash/data/local/models/login_local_model.dart' as _i16;
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
-    as _i14;
+    as _i17;
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart'
-    as _i16;
+    as _i19;
+import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart'
+    as _i12;
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart' as _i13;
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart'
     as _i5;
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart'
-    as _i17;
+    as _i20;
 import 'package:mash/mash/data/remote/models/request/login_request.dart'
-    as _i12;
+    as _i15;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i4;
-import 'package:mash/mash/domain/repositories/auth_repository.dart' as _i11;
+import 'package:mash/mash/domain/repositories/auth_repository.dart' as _i14;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -363,16 +367,131 @@ class MockHiveService extends _i1.Mock implements _i10.HiveService {
       ));
 }
 
+/// A class which mocks [FirebaseDatabaseMethods].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseDatabaseMethods extends _i1.Mock
+    implements _i11.FirebaseDatabaseMethods {
+  MockFirebaseDatabaseMethods() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<void> addUserInfo(dynamic userData) => (super.noSuchMethod(
+        Invocation.method(
+          #addUserInfo,
+          [userData],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Future<void> updateUserInfo({
+    required String? id,
+    required Map<String, dynamic>? data,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateUserInfo,
+          [],
+          {
+            #id: id,
+            #data: data,
+          },
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Stream<List<_i4.LoginResTableEntity>> getUsers(String? role) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUsers,
+          [role],
+        ),
+        returnValue: _i6.Stream<List<_i4.LoginResTableEntity>>.empty(),
+      ) as _i6.Stream<List<_i4.LoginResTableEntity>>);
+
+  @override
+  dynamic getUserInfo(String? userId) => super.noSuchMethod(Invocation.method(
+        #getUserInfo,
+        [userId],
+      ));
+
+  @override
+  dynamic searchByName(String? searchField) =>
+      super.noSuchMethod(Invocation.method(
+        #searchByName,
+        [searchField],
+      ));
+
+  @override
+  _i6.Future<void> addChatRoom(
+    dynamic chatRoom,
+    dynamic chatRoomId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addChatRoom,
+          [
+            chatRoom,
+            chatRoomId,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Stream<List<_i12.ChatMessageModel>> getChats(String? chatRoomId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getChats,
+          [chatRoomId],
+        ),
+        returnValue: _i6.Stream<List<_i12.ChatMessageModel>>.empty(),
+      ) as _i6.Stream<List<_i12.ChatMessageModel>>);
+
+  @override
+  _i6.Future<void> addMessage(
+    String? chatRoomId,
+    dynamic chatMessageData,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addMessage,
+          [
+            chatRoomId,
+            chatMessageData,
+          ],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
+
+  @override
+  _i6.Stream<List<_i13.ChatRoomModel>> getUserChats(String? itIsMyName) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserChats,
+          [itIsMyName],
+        ),
+        returnValue: _i6.Stream<List<_i13.ChatRoomModel>>.empty(),
+      ) as _i6.Stream<List<_i13.ChatRoomModel>>);
+}
+
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i11.AuthRepository {
+class MockAuthRepository extends _i1.Mock implements _i14.AuthRepository {
   MockAuthRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i4.AuthResponseEntity> login(_i12.LoginRequest? request) =>
+  _i6.Future<_i4.AuthResponseEntity> login(_i15.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
@@ -389,7 +508,7 @@ class MockAuthRepository extends _i1.Mock implements _i11.AuthRepository {
       ) as _i6.Future<_i4.AuthResponseEntity>);
 
   @override
-  _i6.Future<void> saveUserInfo(_i13.LoginLocalModel? userInfo) =>
+  _i6.Future<void> saveUserInfo(_i16.LoginLocalModel? userInfo) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveUserInfo,
@@ -423,13 +542,13 @@ class MockAuthRepository extends _i1.Mock implements _i11.AuthRepository {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i14.AuthRemoteDataSource {
+    implements _i17.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i4.AuthResponseEntity> login(_i12.LoginRequest? request) =>
+  _i6.Future<_i4.AuthResponseEntity> login(_i15.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
@@ -460,7 +579,7 @@ class MockAuthRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthLocalDataSource extends _i1.Mock
-    implements _i15.AuthLocalDataSource {
+    implements _i18.AuthLocalDataSource {
   MockAuthLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -476,7 +595,7 @@ class MockAuthLocalDataSource extends _i1.Mock
       ) as _i6.Future<void>);
 
   @override
-  _i6.Future<void> saveUserInfo(_i13.LoginLocalModel? userInfo) =>
+  _i6.Future<void> saveUserInfo(_i16.LoginLocalModel? userInfo) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveUserInfo,
@@ -510,14 +629,14 @@ class MockAuthLocalDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockDashBoardRemoteDataSource extends _i1.Mock
-    implements _i16.DashBoardRemoteDataSource {
+    implements _i19.DashBoardRemoteDataSource {
   MockDashBoardRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   _i6.Future<_i5.WordThoughtsModel> fetchWordandThoghtOfTheDay(
-          _i17.WordThoughtRequest? wordThoughtRequest) =>
+          _i20.WordThoughtRequest? wordThoughtRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #fetchWordandThoghtOfTheDay,

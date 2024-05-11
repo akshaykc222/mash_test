@@ -15,6 +15,8 @@ final getIt = GetIt.instance;
 void configureDependencies() {
   getIt.registerSingleton<InternetConnectionChecker>(
       InternetConnectionChecker());
+  // getIt.registerSingleton<FirebaseDatabaseMethods>(FirebaseDatabaseMethods());
+
   getIt.init();
   Hive.registerAdapter(WordThoughtsHiveModelAdapter());
   Hive.registerAdapter(ThoughtTableModelAdapter());

@@ -12,9 +12,7 @@ class AppAssets {
   static const libImageAcademic = 'assets/images/academic.svg';
   static const libImageNonAcademic = 'assets/images/non_academic.svg';
   static const libImageResearch = 'assets/images/research.svg';
-  static const libImageUserActivity =
-      'assets/images/user_activity.svg';
-
+  static const libImageUserActivity = 'assets/images/user_activity.svg';
 
   static const homeworkImage = 'assets/images/homework.svg';
   static const notesImage = 'assets/images/notes.svg';
@@ -22,7 +20,6 @@ class AppAssets {
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
-
 
   //timeTable
   static const dailyTimeTable = 'assets/images/ai_daily.svg';
@@ -80,4 +77,5 @@ class AppAssets {
   static String messages = "";
 
   static String groups = "";
+  static String tickLottie = "assets/lottie/tick_animation.json";
 }

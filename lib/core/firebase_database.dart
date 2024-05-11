@@ -1,7 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
+import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart';
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
+import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/presentation/utils/chat_db_names.dart';
 
+@singleton
 class FirebaseDatabaseMethods {
   Future<void> addUserInfo(userData) async {
     FirebaseFirestore.instance
@@ -10,10 +16,33 @@ class FirebaseDatabaseMethods {
         .catchError((e) {});
   }
 
-  getUserInfo(String email) async {
+  Future<void> updateUserInfo(
+      {required String id, required Map<String, dynamic> data}) async {
+    FirebaseFirestore.instance
+        .collection(ChatDbNames.users)
+        .doc(id)
+        .update(data)
+        .catchError((e) {});
+  }
+
+  Stream<List<LoginResTableEntity>> getUsers(String role) {
+    prettyPrint("Fetching users with role $role");
     return FirebaseFirestore.instance
         .collection(ChatDbNames.users)
-        .where("userEmail", isEqualTo: email)
+        .where("USER_TYPE", isEqualTo: role)
+        .snapshots()
+        .map((event) {
+      prettyPrint("users list length :${event.docs.first.get("USER_TYPE")}");
+      return event.docs
+          .map((e) => LoginResTableModel.fromJson(e.data()))
+          .toList();
+    });
+  }
+
+  getUserInfo(String userId) async {
+    return FirebaseFirestore.instance
+        .collection(ChatDbNames.users)
+        .where("USR_ID", isEqualTo: userId)
         .get()
         .catchError((e) {});
   }
@@ -21,25 +50,28 @@ class FirebaseDatabaseMethods {
   searchByName(String searchField) {
     return FirebaseFirestore.instance
         .collection(ChatDbNames.users)
-        .where('userName', isEqualTo: searchField)
+        .where('USR_ID', isEqualTo: searchField)
         .get();
   }
 
   Future<void> addChatRoom(chatRoom, chatRoomId) async {
     FirebaseFirestore.instance
         .collection(ChatDbNames.chatRooms)
-        .doc(chatRoomId)
+        .doc()
         .set(chatRoom)
         .catchError((e) {});
   }
 
-  getChats(String chatRoomId) async {
+  Stream<List<ChatMessageModel>> getChats(String chatRoomId) {
     return FirebaseFirestore.instance
         .collection(ChatDbNames.chatRooms)
         .doc(chatRoomId)
         .collection(ChatDbNames.chats)
         .orderBy('time', descending: true)
-        .snapshots();
+        .snapshots()
+        .map((event) {
+      return event.docs.map((e) => ChatMessageModel.fromMap(e.data())).toList();
+    });
   }
 
   Future<void> addMessage(String chatRoomId, chatMessageData) async {
@@ -53,10 +85,12 @@ class FirebaseDatabaseMethods {
     });
   }
 
-  getUserChats(String itIsMyName) async {
+  Stream<List<ChatRoomModel>> getUserChats(String itIsMyName) {
     return FirebaseFirestore.instance
         .collection(ChatDbNames.chatRooms)
-        .where('users', arrayContains: itIsMyName)
-        .snapshots();
+        .where('members', arrayContains: itIsMyName)
+        .snapshots()
+        .map((event) =>
+            event.docs.map((e) => ChatRoomModel.fromMap(e.data())).toList());
   }
 }
