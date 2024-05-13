@@ -7,8 +7,10 @@ import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
+import 'package:mash/mash/presentation/pages/home/idCardRequest/id_card_request_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
@@ -57,7 +59,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.supportScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.idCardRequestScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -266,6 +268,14 @@ class AppRouteManager {
       name: AppPages.supportScreen,
       path: AppPages.supportScreen,
       builder: (context, state) => const MashSupportScreen(),
+    ),GoRoute(
+      name: AppPages.feedbackScreen,
+      path: AppPages.feedbackScreen,
+      builder: (context, state) => const FeedbackScreen(),
+    ),GoRoute(
+      name: AppPages.idCardRequestScreen,
+      path: AppPages.idCardRequestScreen,
+      builder: (context, state) => const IdCardRequestScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

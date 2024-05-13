@@ -55,6 +55,7 @@ dev_dependencies:
   photo_view:
   lottie:
   url_launcher:
+  flutter_emoji_feedback:
   
 
 flutter:

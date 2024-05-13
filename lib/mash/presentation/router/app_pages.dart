@@ -76,6 +76,9 @@ class AppPages {
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
 
+  static const feedbackScreen = '/feedbackScreen';
+  static const idCardRequestScreen = '/idCardRequestScreen';
+
 
 
 
