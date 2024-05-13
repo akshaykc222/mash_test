@@ -7,7 +7,7 @@ import 'package:mash/mash/domain/repositories/academic_repository.dart';
 @injectable
 class GetClassInforUseCase
     implements UseCase<List<ClassDetailsEntity?>, AcademicAndCompIdRequest> {
-  final AcademicRepostory academicRepostory;
+  final AcademicRepository academicRepostory;
 
   GetClassInforUseCase(this.academicRepostory);
   @override

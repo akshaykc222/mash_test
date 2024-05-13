@@ -7,12 +7,12 @@ import 'package:mash/mash/domain/repositories/academic_repository.dart';
 @injectable
 @lazySingleton
 class GetAcademicSubjectUseCase
-    implements UseCase<List<AcademicSubjectEntity?>, AcademicSubjectRequests> {
-  final AcademicRepostory academicRepostory;
+    implements UseCase<List<AcademicSubjectEntity?>, ClassAndCompIdRequest> {
+  final AcademicRepository academicRepostory;
 
   GetAcademicSubjectUseCase({required this.academicRepostory});
   @override
-  Future<List<AcademicSubjectEntity?>> call(AcademicSubjectRequests params) {
+  Future<List<AcademicSubjectEntity?>> call(ClassAndCompIdRequest params) {
     return academicRepostory.getAcademicSubjects(params);
   }
 }

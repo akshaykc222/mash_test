@@ -6,7 +6,7 @@ import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 import '../../../data/remote/models/request/academic_comp_id_request.dart';
 
 @injectable
-@LazySingleton(as: UseCase)
+@lazySingleton
 class FetchWordThoughtUseCase
     extends UseCase<WordThoughtsEntity?, AcademicAndCompIdRequest> {
   final DashBoardRepository dashBoardRepository;

@@ -38,7 +38,7 @@ void main() {
     });
 
     test(
-        'should return user data data when the call to login in source is successful',
+        'should return user data data when the call to login in remote source is successful',
         () async {
       //Arrange
       when(connectionChecker.isConnected).thenAnswer((_) async => true);

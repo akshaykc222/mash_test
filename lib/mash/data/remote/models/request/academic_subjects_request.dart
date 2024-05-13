@@ -1,8 +1,8 @@
-class AcademicSubjectRequests {
+class ClassAndCompIdRequest {
   final String compId;
   final String classId;
 
-  AcademicSubjectRequests({
+  ClassAndCompIdRequest({
     required this.compId,
     required this.classId,
   });

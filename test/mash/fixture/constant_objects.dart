@@ -1,4 +1,5 @@
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
+import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
@@ -42,6 +43,26 @@ final tLoginRequest = LoginRequest(
   deviceId: '123',
   appType: 'appType',
 );
+//login local Model
+const tLoginLocalModel = LoginLocalModel(
+    studentId: 'studentId',
+    admissionNo: 'admissionNo',
+    studentName: 'studentName',
+    compId: 'compId',
+    roleId: 'roleId',
+    activeStatus: 'activeStatus',
+    pwdChangeStatus: 'pwdChangeStatus',
+    profilePhoto: 'profilePhoto',
+    eMail: 'eMail',
+    mobile: 'mobile',
+    parentId: 'parentId',
+    academicId: 'academicId',
+    academicYear: 'academicYear',
+    usrId: 'usrId',
+    divisionId: 'divisionId',
+    classId: 'classId',
+    medium: 'medium',
+    userType: 'userType');
 /*
 dashboard
 */

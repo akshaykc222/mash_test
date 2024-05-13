@@ -5,14 +5,15 @@ import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart'
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
+import '../../domain/entities/academic/division_details_entity.dart';
 import '../remote/models/request/academic_comp_id_request.dart';
 
-@LazySingleton(as: AcademicRepostory)
+@LazySingleton(as: AcademicRepository)
 @injectable
-class AcademicRepositoryImple implements AcademicRepostory {
+class AcademicRepositoryImpl implements AcademicRepository {
   final AcademicRemoteDataSource academicRemoteDataSource;
 
-  AcademicRepositoryImple(this.academicRemoteDataSource);
+  AcademicRepositoryImpl(this.academicRemoteDataSource);
 
   @override
   Future<List<ClassDetailsEntity?>> getClassDetails(
@@ -22,8 +23,13 @@ class AcademicRepositoryImple implements AcademicRepostory {
 
   @override
   Future<List<AcademicSubjectEntity>> getAcademicSubjects(
-      AcademicSubjectRequests params) {
-    // TODO: implement getAcademicSubjects
-    throw UnimplementedError();
+      ClassAndCompIdRequest params) async {
+    return await academicRemoteDataSource.getAcademicSubjects(params);
+  }
+
+  @override
+  Future<List<DivisionEntityDetailsEnitity?>> getDivisionDetails(
+      ClassAndCompIdRequest params) async {
+    return await academicRemoteDataSource.getDivisionDetails(params);
   }
 }
