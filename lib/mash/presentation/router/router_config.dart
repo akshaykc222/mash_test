@@ -34,8 +34,18 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/lessonPlanner/insert_week_plan_screen.dart';
+import '../pages/home/lessonPlanner/insert_year_plan_screen.dart';
+import '../pages/home/lessonPlanner/lesson_planner_main_screen.dart';
+import '../pages/home/lessonPlanner/view_week_plan_screen.dart';
+import '../pages/home/lessonPlanner/view_year_plan_screen.dart';
+import '../pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
+import '../pages/home/suggestionBox/suggestion_box_main_screen.dart';
+import '../pages/home/suggestionBox/suggestion_screen.dart';
+import '../pages/home/supportScreen/mash_support_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 
@@ -50,7 +60,6 @@ class AppRouteManager {
   }
 
   static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
-  static GoRouter router = GoRouter(initialLocation: AppPages.idCardRequestScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -214,23 +223,28 @@ class AppRouteManager {
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionMainScreen,
       path: AppPages.suggestionMainScreen,
       builder: (context, state) => const SuggestionMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionScreen,
       path: AppPages.suggestionScreen,
       builder: (context, state) => const SuggestionScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.attendanceMarkingScreen,
       path: AppPages.attendanceMarkingScreen,
       builder: (context, state) => const AttendanceMarkingScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.classAttendanceMarkingScreen,
       path: AppPages.classAttendanceMarkingScreen,
       builder: (context, state) => const ClassAttendanceMarkingScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.lessonPlannerMainScreen,
       path: AppPages.lessonPlannerMainScreen,
       builder: (context, state) => const LessonPlannerMainScreen(),
@@ -239,31 +253,38 @@ class AppRouteManager {
       name: AppPages.insertYearPlanScreen,
       path: AppPages.insertYearPlanScreen,
       builder: (context, state) => const InsertYearPlanScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.viewYearPlanScreen,
       path: AppPages.viewYearPlanScreen,
       builder: (context, state) => const ViewYearPlanScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.viewYearPlanListScreen,
       path: AppPages.viewYearPlanListScreen,
       builder: (context, state) => const ViewYearlyPlanListScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.insertWeekPlanScreen,
       path: AppPages.insertWeekPlanScreen,
       builder: (context, state) => const InsertWeekPlanScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.viewWeekPlansScreen,
       path: AppPages.viewWeekPlansScreen,
       builder: (context, state) => const ViewWeekPlanScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.supportScreen,
       path: AppPages.supportScreen,
       builder: (context, state) => const MashSupportScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.feedbackScreen,
       path: AppPages.feedbackScreen,
       builder: (context, state) => const FeedbackScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.idCardRequestScreen,
       path: AppPages.idCardRequestScreen,
       builder: (context, state) => const IdCardRequestScreen(),
