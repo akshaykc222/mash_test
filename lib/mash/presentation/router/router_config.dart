@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -33,7 +34,6 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscr
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-
 import '../pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/lessonPlanner/insert_week_plan_screen.dart';
@@ -207,7 +207,11 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.newsBoardDetailScreen,
       path: AppPages.newsBoardDetailScreen,
-      builder: (context, state) => const NewsBoardDetailScreen(),
+      builder: (context, state) {
+        return NewsBoardDetailScreen(
+          newsDetails: state.extra as NewsBoardEntity,
+        );
+      },
     ),
     GoRoute(
       name: AppPages.noticeBoardMainScreen,
