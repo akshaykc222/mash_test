@@ -165,6 +165,7 @@ class UserChatTile extends StatefulWidget {
   final bool? selected;
   final Function? onTap;
   final bool? isAdmin;
+  final bool? isFromList;
   final LoginResTableEntity user;
 
   const UserChatTile(
@@ -173,6 +174,7 @@ class UserChatTile extends StatefulWidget {
       this.haveSelection,
       this.selected,
       this.onTap,
+      this.isFromList,
       required this.user,
       this.isAdmin});
 
@@ -271,7 +273,8 @@ class _UserChatTileState extends State<UserChatTile> {
                               ),
                             ),
                             if (getUserType(widget.user.userType) ==
-                                UserTypes.student)
+                                    UserTypes.student &&
+                                widget.isFromList != true)
                               GestureDetector(
                                 onTap: () {
                                   chatBloc.add(ChatEvent.addAdmins(

@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/usecase.dart';
+import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
@@ -34,6 +38,7 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/create_group.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/home/home_screen.dart';
@@ -49,6 +54,26 @@ class AppRouteManager {
     return HomeScreen(
       currentIndex: int.parse(state.pathParameters['type']!),
     );
+  }
+
+  static Future<Widget> navigateByUserType(
+      {required Widget staff, required Widget parent, required student}) async {
+    var getUser = getIt<GetUserInfoUseCase>();
+    var user = await getUser.call(NoParams());
+    if (user == null) {
+      return const LoginScreen();
+    } else {
+      switch (getUserType(user.userType)) {
+        case UserTypes.staff:
+          return staff;
+        case UserTypes.student:
+          return student;
+        case UserTypes.parent:
+          return parent;
+        default:
+          return const SizedBox();
+      }
+    }
   }
 
   static GoRouter router =

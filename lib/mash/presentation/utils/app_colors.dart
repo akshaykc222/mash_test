@@ -14,6 +14,7 @@ class AppColors {
   static Color white = HexColor.fromHex('#FFFFFFFF');
   static Color gradientItem = HexColor.fromHex('#A8FED9');
   static Color primaryColor = HexColor.fromHex('#A45EE5');
+  static Color selPrimaryColor = HexColor.fromHex('#7FFF00');
   static Color secondaryColor = HexColor.fromHex('#7F00FF');
   static Color backgroundColor = HexColor.fromHex('#FFFFFFFF');
   static Color backgroundDarkColor = HexColor.fromHex('#FAFAFA');

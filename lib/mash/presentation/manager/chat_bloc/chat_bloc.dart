@@ -32,7 +32,15 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_AddRooms>(_createChatRoom);
     on<_SendMessage>(_sendMessage);
     on<_GetMessages>(_getMessage);
+    on<_GetUsers>(_getUsers);
     on<_GetMembersOfGroup>(_getMembersOfGroup);
+  }
+
+  _getUsers(_GetUsers event, emit) {
+    emit(state.copyWith(
+      selectedType: event.selectedUserType,
+      getUsers: getUsersUseCase.call("${event.selectedUserType.index + 1}"),
+    ));
   }
 
   _getMembersOfGroup(_GetMembersOfGroup event, emit) async {

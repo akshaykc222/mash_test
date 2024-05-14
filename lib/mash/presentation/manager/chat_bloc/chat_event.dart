@@ -4,6 +4,8 @@ part of 'chat_bloc.dart';
 class ChatEvent with _$ChatEvent {
   const factory ChatEvent.started() = _Started;
   const factory ChatEvent.getChatRooms() = _GetRooms;
+  const factory ChatEvent.getUsers({required UserTypes selectedUserType}) =
+      _GetUsers;
   const factory ChatEvent.getMembersOfGroup() = _GetMembersOfGroup;
   const factory ChatEvent.createGroupInit() = _CreateGroupInit;
   const factory ChatEvent.getMessages({required ChatRoomModel room}) =
