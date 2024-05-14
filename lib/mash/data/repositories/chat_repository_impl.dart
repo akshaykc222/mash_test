@@ -36,4 +36,9 @@ class ChatRepositoryImpl extends ChatRepository {
   Future<void> sendMessage(ChatMessageModel chatRoom) {
     return dataSource.sendMessage(chatRoom);
   }
+
+  @override
+  Future<List<LoginResTableEntity>> getUsersOfGroups(List<String> members) {
+    return dataSource.getUsersOfGroups(members);
+  }
 }

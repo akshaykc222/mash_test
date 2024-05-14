@@ -4,6 +4,8 @@ part of 'chat_bloc.dart';
 class ChatState with _$ChatState {
   const factory ChatState(
       {ChatRoomModel? selectedChatRoom,
+      ResponseClassify<List<LoginResTableEntity>>? selectedMembers,
+      Stream<List<ChatMessageModel>>? selectedChatRoomMessages,
       Stream<List<LoginResTableEntity>>? getUsers,
       Stream<List<ChatRoomModel>>? getChatRooms,
       ResponseClassify<void>? addGroupResponse,

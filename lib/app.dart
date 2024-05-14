@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
@@ -25,6 +26,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<DashboardBloc>()),
         BlocProvider(create: (_) => BottomNavigationCubit()),
+        BlocProvider(create: (_) => ChatBloc()),
         BlocProvider(
           create: (_) => getIt<NoticeBloc>(),
         )

@@ -53,4 +53,10 @@ class AppPages {
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
   static const addNotScreen = '/addNotScreen';
+
+  //chats
+  static const chatsListScreen = "/chatListScreen";
+  static const messageScreen = "/messageScreen";
+  static const createGroup = "/createGroup";
+  static const groupDetails = "/groupDetails";
 }

@@ -1,49 +1,67 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart' as ui;
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:uuid/uuid.dart';
 
-class MessagesScreen extends StatefulWidget {
-  final String id;
+import '../../../data/remote/models/chat/chat_message_model.dart';
+import '../../widgets/chat_app_bar.dart';
 
-  const MessagesScreen({super.key, required this.id});
+class MessagesScreen extends StatefulWidget {
+  final ChatRoomModel model;
+
+  const MessagesScreen({super.key, required this.model});
 
   @override
   State<MessagesScreen> createState() => _MessagesScreenState();
 }
 
 class _MessagesScreenState extends State<MessagesScreen> {
-  final List<types.Message> _messages = [];
   late types.User _user;
   late ChatBloc chatBloc;
+
   void _handleSendPressed(types.PartialText message) {
     addMessage(message.text);
   }
 
   addMessage(String message) async {
-    if (message.isNotEmpty) {}
+    if (message.isNotEmpty) {
+      chatBloc.add(ChatEvent.sendMessage(
+          message: ChatMessageModel(
+        id: const Uuid().v1(),
+        senderId: widget.model.id,
+        roomId: widget.model.id,
+        text: message,
+        timestamp: DateTime.now(),
+      )));
+    }
   }
 
-  Stream<QuerySnapshot>? chats;
   Widget _chatMessages() {
-    return StreamBuilder(
-      stream: chats,
-      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        return Chat(
-          messages: snapshot.hasData
-              ? snapshot.data!.docs
-                  .map((e) => types.TextMessage(
-                      author: types.User(id: e.get('sendBy')),
-                      id: const Uuid().v1(),
-                      text: e.get('message'),
-                      createdAt: e.get('time')))
-                  .toList()
-              : [],
-          onPreviewDataFetched: _handlePreviewDataFetched,
-          onSendPressed: _handleSendPressed,
-          user: _user,
+    return BlocBuilder<ChatBloc, ChatState>(
+      builder: (context, state) {
+        return StreamBuilder(
+          stream: state.selectedChatRoomMessages,
+          builder: (context, AsyncSnapshot<List<ChatMessageModel>> snapshot) {
+            return ui.Chat(
+              messages: snapshot.hasData
+                  ? snapshot.data!
+                      .map((e) => types.TextMessage(
+                          author: types.User(id: e.senderId),
+                          id: const Uuid().v1(),
+                          text: e.text,
+                          roomId: e.roomId,
+                          createdAt: Timestamp.fromDate(e.timestamp).seconds))
+                      .toList()
+                  : [],
+              onPreviewDataFetched: _handlePreviewDataFetched,
+              onSendPressed: _handleSendPressed,
+              user: _user,
+            );
+          },
         );
       },
     );
@@ -52,22 +70,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
   void _handlePreviewDataFetched(
     types.TextMessage message,
     types.PreviewData previewData,
-  ) {
-    final index = _messages.indexWhere((element) => element.id == message.id);
-    final updatedMessage = _messages[index];
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(() {
-        _messages[index] = updatedMessage;
-      });
-    });
-  }
+  ) {}
 
   @override
   void initState() {
-    _user = types.User(id: widget.id);
+    _user = types.User(id: widget.model.id);
     chatBloc = ChatBloc.get(context);
-    // chatBloc.add(ChatEvent.)
+    chatBloc.add(ChatEvent.getMessages(room: widget.model));
     super.initState();
   }
 
@@ -76,8 +85,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
     return SafeArea(
       top: true,
       child: Scaffold(
-        appBar: const PreferredSize(
-            preferredSize: Size(double.infinity, 98), child: SizedBox()),
+        appBar: chapAppBar(context),
         resizeToAvoidBottomInset: true,
         body: _chatMessages(),
       ),

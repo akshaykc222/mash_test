@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class ChatRoomModel extends Equatable {
@@ -17,9 +18,10 @@ class ChatRoomModel extends Equatable {
     required this.isGroupChat,
   });
 
-  factory ChatRoomModel.fromMap(Map<String, dynamic> map) {
+  factory ChatRoomModel.fromMap(QueryDocumentSnapshot<Map<String, dynamic>> e) {
+    var map = e.data();
     return ChatRoomModel(
-      id: map['id'] ?? '',
+      id: e.id,
       name: map['name'] ?? '',
       icon: map['icon'],
       members: List<String>.from(map['members'] ?? []),

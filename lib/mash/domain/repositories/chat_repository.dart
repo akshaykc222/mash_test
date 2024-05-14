@@ -9,4 +9,5 @@ abstract class ChatRepository {
   Future<void> addChatRoom(ChatRoomModel roomModel);
   Stream<List<ChatRoomModel>> getChatRooms();
   Stream<List<LoginResTableEntity>> getUsers(String role);
+  Future<List<LoginResTableEntity>> getUsersOfGroups(List<String> members);
 }

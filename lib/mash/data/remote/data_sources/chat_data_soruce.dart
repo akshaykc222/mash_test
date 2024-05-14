@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/firebase_database.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
+import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
@@ -16,6 +17,7 @@ abstract class ChatDataSource {
   Stream<List<ChatRoomModel>> getChatRooms();
   Stream<List<ChatMessageModel>> getChatRoomMessages(String chatRoomId);
   Stream<List<LoginResTableEntity>> getUsers(String role);
+  Future<List<LoginResTableEntity>> getUsersOfGroups(List<String> members);
 }
 
 @LazySingleton(as: ChatDataSource)
@@ -68,5 +70,12 @@ class ChatDataSourceImpl extends ChatDataSource {
   @override
   Future<void> sendMessage(ChatMessageModel chatRoom) async {
     await firebaseDatabase.addMessage(chatRoom.roomId, chatRoom.toMap());
+  }
+
+  @override
+  Future<List<LoginResTableEntity>> getUsersOfGroups(
+      List<String> members) async {
+    final data = await firebaseDatabase.getMembers(members);
+    return data.docs.map((e) => LoginResTableModel.fromJson(e.data())).toList();
   }
 }

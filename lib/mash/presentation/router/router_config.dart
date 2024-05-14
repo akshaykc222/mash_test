@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/message_details.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
@@ -31,6 +34,8 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../pages/chat/create_group.dart';
+import '../pages/chat/message_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -46,7 +51,8 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.login, routes: [
+  static GoRouter router =
+      GoRouter(initialLocation: AppPages.chatsListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -210,6 +216,35 @@ class AppRouteManager {
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
+    ),
+
+    ///chats
+    GoRoute(
+      name: AppPages.chatsListScreen,
+      path: AppPages.chatsListScreen,
+      builder: (context, state) => const ChatScreen(),
+    ),
+    GoRoute(
+      name: AppPages.createGroup,
+      path: AppPages.createGroup,
+      builder: (context, state) => const GroupAddScreen(),
+    ),
+    GoRoute(
+      name: AppPages.groupDetails,
+      path: AppPages.groupDetails,
+      builder: (context, state) => const MessageDetails(),
+    ),
+    GoRoute(
+      name: AppPages.messageScreen,
+      path: AppPages.messageScreen,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return MessagesScreen(
+            model: state.extra as ChatRoomModel,
+          );
+        }
+        return const Placeholder();
+      },
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

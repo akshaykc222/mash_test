@@ -28,7 +28,7 @@ class ChatMessageModel {
       id: map['id'] ?? '',
       senderId: map['senderId'] ?? '',
       text: map['text'] ?? '',
-      timestamp: (map['timestamp'] as Timestamp).toDate(),
+      timestamp: (map['timestamp'] as Timestamp).toDate().toLocal(),
       seenUsers: List<String>.from(map['seenUsers'] ?? []),
       pinMessage: map['pinMessage'] ?? false,
       hasReply: map['hasReply'] ?? '',

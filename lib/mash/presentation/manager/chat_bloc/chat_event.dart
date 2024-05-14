@@ -4,8 +4,10 @@ part of 'chat_bloc.dart';
 class ChatEvent with _$ChatEvent {
   const factory ChatEvent.started() = _Started;
   const factory ChatEvent.getChatRooms() = _GetRooms;
+  const factory ChatEvent.getMembersOfGroup() = _GetMembersOfGroup;
   const factory ChatEvent.createGroupInit() = _CreateGroupInit;
-  const factory ChatEvent.getMessages({required String id}) = _CreateGroupInit;
+  const factory ChatEvent.getMessages({required ChatRoomModel room}) =
+      _GetMessages;
   const factory ChatEvent.sendMessage({required ChatMessageModel message}) =
       _SendMessage;
   // const factory ChatEvent.getChatRooms() = _GetChatRooms;

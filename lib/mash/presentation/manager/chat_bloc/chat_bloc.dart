@@ -10,6 +10,7 @@ import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/domain/use_cases/chat/add_chat_room_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/get_chat_rooms_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/get_chat_use_case.dart';
+import 'package:mash/mash/domain/use_cases/chat/get_group_members_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/get_users_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/send_message_use_case.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
@@ -30,6 +31,28 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_AddAdmins>(_addAdmin);
     on<_AddRooms>(_createChatRoom);
     on<_SendMessage>(_sendMessage);
+    on<_GetMessages>(_getMessage);
+    on<_GetMembersOfGroup>(_getMembersOfGroup);
+  }
+
+  _getMembersOfGroup(_GetMembersOfGroup event, emit) async {
+    emit(state.copyWith(selectedMembers: ResponseClassify.loading()));
+    try {
+      emit(state.copyWith(
+          selectedMembers: ResponseClassify.completed(
+              await getGroupMembersDetails
+                  .call(state.selectedChatRoom?.members ?? []))));
+    } catch (e) {
+      prettyPrint(e.toString());
+      emit(state.copyWith(
+          selectedMembers: ResponseClassify.error(e.toString())));
+    }
+  }
+
+  _getMessage(_GetMessages event, emit) {
+    var userChats = getUserChatsUseCase.call(event.room.id);
+    emit(state.copyWith(
+        selectedChatRoomMessages: userChats, selectedChatRoom: event.room));
   }
 
   _sendMessage(_SendMessage event, emit) {
@@ -126,6 +149,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final createChatRoomUseCase = getIt<AddChatRoomUseCase>();
   final getUsersUseCase = getIt<GetUsersUseCase>();
   final sendMessageUseCase = getIt<SendMessageUserCase>();
+  final getGroupMembersDetails = getIt<GetUserMembersUseCase>();
 
   static ChatBloc get(context) => BlocProvider.of(context);
 }

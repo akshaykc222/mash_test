@@ -63,15 +63,22 @@ class FirebaseDatabaseMethods {
   }
 
   Stream<List<ChatMessageModel>> getChats(String chatRoomId) {
+    prettyPrint("Chat Room Id $chatRoomId");
     return FirebaseFirestore.instance
-        .collection(ChatDbNames.chatRooms)
-        .doc(chatRoomId)
-        .collection(ChatDbNames.chats)
-        .orderBy('time', descending: true)
+        .collection("${ChatDbNames.chatRooms}/$chatRoomId/messages")
+        .orderBy('timestamp', descending: true)
         .snapshots()
         .map((event) {
       return event.docs.map((e) => ChatMessageModel.fromMap(e.data())).toList();
     });
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getMembers(
+      List<String> members) async {
+    return FirebaseFirestore.instance
+        .collection(ChatDbNames.users)
+        .where("USR_ID", whereIn: members)
+        .get();
   }
 
   Future<void> addMessage(String chatRoomId, chatMessageData) async {
@@ -91,6 +98,6 @@ class FirebaseDatabaseMethods {
         .where('members', arrayContains: itIsMyName)
         .snapshots()
         .map((event) =>
-            event.docs.map((e) => ChatRoomModel.fromMap(e.data())).toList());
+            event.docs.map((e) => ChatRoomModel.fromMap(e)).toList());
   }
 }
