@@ -2,7 +2,6 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/user_activity_post_card.dart';
@@ -53,13 +52,13 @@ class UserActivityScreen extends StatelessWidget {
             return divider();
           },
             itemCount: 3,
-            itemBuilder: (contetx,index){
+            itemBuilder: (context,index){
           return  PostCard(profileImage: images[index], name: 'REENA GEORGE P', postedTime: "5 days ago", postImage: images[index], description: 'A Warm Welocme');
         }));
   }
 
   divider() {
-    return Divider(
+    return const Divider(
       thickness: 5,
       color: Colors.grey,
     );
@@ -68,7 +67,7 @@ class UserActivityScreen extends StatelessWidget {
 
 profileAndTextField(){
   return  Container(
-padding: EdgeInsets.symmetric(horizontal: 15),
+padding: const EdgeInsets.symmetric(horizontal: 15),
     height: SizeConfig.height(150),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,11 +147,13 @@ addPhotoAndPostButtons(BuildContext context) {
 }
 
 class SelectedPhotos extends StatelessWidget {
+  const SelectedPhotos({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhotoBloc, List<File>>(
       builder: (context, selectedPhotos) {
-        return Container(
+        return SizedBox(
           height: 100,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,

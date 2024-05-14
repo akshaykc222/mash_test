@@ -106,6 +106,17 @@ class AppStrings {
   static const String mashSupport = 'MASH SUPPORT';
   static const String userActivity = 'USER ACTIVITY';
   static const String contactUs = 'CONTACT US';
+  static const String feedbackForm = 'FEEDBACK FORM';
+  static const String selectModule = 'Select Module';
+  static const String howSatisfied = 'How Satisfied are you with our Modules ?'                                   ;
+  static const String howToImprove = 'How can we improve your Experience ?';
+  static const String suggestFeedback = 'Suggest Your Feedback..';
+  static const String idCardRequest = 'ID CARD REQUEST';
+  static const String studentName = 'Student Name';
+  static const String request = 'Request';
+  static const String requestType = 'Select Request Type';
+  static const String remarks = 'Remarks';
+  static const String enterRemarks = 'Enter Remarks..';
 
 
   static List<String> dashboardPerformanceList = <String>[
