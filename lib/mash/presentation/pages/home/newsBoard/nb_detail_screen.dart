@@ -17,7 +17,9 @@ class NewsBoardDetailScreen extends StatelessWidget {
       appBar: commonAppbar(title: newsDetails.newsTitle ?? ""),
       endDrawer: DrawerWidget(),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {}, label: const Text('VIEW ATTACHMENT')),
+        onPressed: () {},
+        label: const Text('VIEW ATTACHMENT'),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: newsDetailBody(context),
     );
@@ -36,10 +38,9 @@ class NewsBoardDetailScreen extends StatelessWidget {
           spacer20,
           title(newsDetails.newsTitle ?? ""),
           spacer20,
-          date('18/02/2024'),
+          date(newsDetails.newsDate ?? ""),
           spacer20,
-          description(
-              'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available')
+          description(newsDetails.description ?? "")
         ],
       ),
     );
