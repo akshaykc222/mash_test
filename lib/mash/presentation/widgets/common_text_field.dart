@@ -43,7 +43,9 @@ class CommonTextField extends StatelessWidget {
           textCapitalization: TextCapitalization.sentences,
           style: const TextStyle(fontSize: 18),
           controller: controller,
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: controller?.text.isNotEmpty == true
+              ? AutovalidateMode.always
+              : null,
           validator: validator == null ? null : (val) => validator!(val ?? ""),
           focusNode: _focusNode,
           inputFormatters: isCaps == true
