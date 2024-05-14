@@ -52,9 +52,9 @@ import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i35;
 import '../mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart'
     as _i30;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
-    as _i31;
-import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
     as _i32;
+import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
+    as _i31;
 import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i33;
 import '../mash/domain/use_cases/notice/notice_all_usecase.dart' as _i29;
 import '../mash/presentation/manager/academic_bloc/academic_bloc.dart' as _i41;
@@ -127,11 +127,11 @@ extension GetItInjectableX on _i1.GetIt {
         noticeRepository: gh<_i27.NoticeRepository>()));
     gh.factory<_i30.FetchWordThoughtUseCase>(
         () => _i30.FetchWordThoughtUseCase(gh<_i23.DashBoardRepository>()));
-    gh.lazySingleton<_i31.HomeWorkReportsUseCase>(() =>
-        _i31.HomeWorkReportsUseCase(
-            homeWorkNotesRepository: gh<_i21.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i32.NotesReportsUseCase>(() => _i32.NotesReportsUseCase(
+    gh.lazySingleton<_i31.NotesReportsUseCase>(() => _i31.NotesReportsUseCase(
         homeWorkNotesRepository: gh<_i21.HomeWorkNotesRepository>()));
+    gh.lazySingleton<_i32.HomeWorkReportsUseCase>(() =>
+        _i32.HomeWorkReportsUseCase(
+            homeWorkNotesRepository: gh<_i21.HomeWorkNotesRepository>()));
     gh.factory<_i33.GetNoticeBoardPopUp>(
         () => _i33.GetNoticeBoardPopUp(gh<_i27.NoticeRepository>()));
     gh.factory<_i34.DashboardBloc>(
@@ -149,9 +149,9 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i29.GetAllNoticeUseCase>(),
         ));
     gh.factory<_i40.HomeWorkNotesBloc>(() => _i40.HomeWorkNotesBloc(
-          gh<_i31.HomeWorkReportsUseCase>(),
+          gh<_i32.HomeWorkReportsUseCase>(),
           gh<_i36.GetUserInfoUseCase>(),
-          gh<_i32.NotesReportsUseCase>(),
+          gh<_i31.NotesReportsUseCase>(),
         ));
     gh.factory<_i41.AcademicBloc>(() => _i41.AcademicBloc(
           gh<_i12.GetDivisionDetailsUseCase>(),
