@@ -8,8 +8,11 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
+
+  //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
+  static const userActivity = '/userActivityScreen';
 
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
@@ -21,6 +24,9 @@ class AppPages {
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
+
+  // support
+  static const supportScreen = '/supportScreen';
 
   //leave
   static const leaveScreen = '/leaveScreen';
@@ -57,4 +63,23 @@ class AppPages {
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
   static const addNotScreen = '/addNotScreen';
+
+  //attendance marking
+  static const attendanceMarkingScreen = '/attendanceMarkingScreen';
+  static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
+
+ //lesson planner
+  static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
+  static const insertYearPlanScreen = '/insertYearPlanScreen';
+  static const viewYearPlanScreen = '/viewYearPlanScreen';
+  static const viewYearPlanListScreen = '/viewYearPlanListScreen';
+  static const insertWeekPlanScreen = '/insertWeekPlanScreen';
+  static const viewWeekPlansScreen = '/viewWeekPlanScreen';
+
+  static const feedbackScreen = '/feedbackScreen';
+  static const idCardRequestScreen = '/idCardRequestScreen';
+
+
+
+
 }

@@ -19,32 +19,44 @@ mixin _$AcademicEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +119,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
   }) {
     return getClassDetails();
   }
@@ -115,6 +129,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
   }) {
     return getClassDetails?.call();
   }
@@ -123,6 +139,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -135,6 +153,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
   }) {
     return getClassDetails(this);
   }
@@ -143,6 +163,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
   }) {
     return getClassDetails?.call(this);
   }
@@ -151,6 +173,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -165,8 +189,229 @@ abstract class _GetClassDetails implements AcademicEvent {
 }
 
 /// @nodoc
+abstract class _$$GetAcademicSubjectsImplCopyWith<$Res> {
+  factory _$$GetAcademicSubjectsImplCopyWith(_$GetAcademicSubjectsImpl value,
+          $Res Function(_$GetAcademicSubjectsImpl) then) =
+      __$$GetAcademicSubjectsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAcademicSubjectsImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$GetAcademicSubjectsImpl>
+    implements _$$GetAcademicSubjectsImplCopyWith<$Res> {
+  __$$GetAcademicSubjectsImplCopyWithImpl(_$GetAcademicSubjectsImpl _value,
+      $Res Function(_$GetAcademicSubjectsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
+  const _$GetAcademicSubjectsImpl();
+
+  @override
+  String toString() {
+    return 'AcademicEvent.getAcademicSubjects()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAcademicSubjectsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+  }) {
+    return getAcademicSubjects();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+  }) {
+    return getAcademicSubjects?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    required TResult orElse(),
+  }) {
+    if (getAcademicSubjects != null) {
+      return getAcademicSubjects();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+  }) {
+    return getAcademicSubjects(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+  }) {
+    return getAcademicSubjects?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    required TResult orElse(),
+  }) {
+    if (getAcademicSubjects != null) {
+      return getAcademicSubjects(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAcademicSubjects implements AcademicEvent {
+  const factory _GetAcademicSubjects() = _$GetAcademicSubjectsImpl;
+}
+
+/// @nodoc
+abstract class _$$GetDevisionDetailsImplCopyWith<$Res> {
+  factory _$$GetDevisionDetailsImplCopyWith(_$GetDevisionDetailsImpl value,
+          $Res Function(_$GetDevisionDetailsImpl) then) =
+      __$$GetDevisionDetailsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetDevisionDetailsImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$GetDevisionDetailsImpl>
+    implements _$$GetDevisionDetailsImplCopyWith<$Res> {
+  __$$GetDevisionDetailsImplCopyWithImpl(_$GetDevisionDetailsImpl _value,
+      $Res Function(_$GetDevisionDetailsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
+  const _$GetDevisionDetailsImpl();
+
+  @override
+  String toString() {
+    return 'AcademicEvent.getDivisionDetails()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetDevisionDetailsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+  }) {
+    return getDivisionDetails();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+  }) {
+    return getDivisionDetails?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    required TResult orElse(),
+  }) {
+    if (getDivisionDetails != null) {
+      return getDivisionDetails();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+  }) {
+    return getDivisionDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+  }) {
+    return getDivisionDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    required TResult orElse(),
+  }) {
+    if (getDivisionDetails != null) {
+      return getDivisionDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDevisionDetails implements AcademicEvent {
+  const factory _GetDevisionDetails() = _$GetDevisionDetailsImpl;
+}
+
+/// @nodoc
 mixin _$AcademicState {
   ResponseClassify<dynamic> get classDetails =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<dynamic> get divisionDetails =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<dynamic> get academicSubjects =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -180,7 +425,10 @@ abstract class $AcademicStateCopyWith<$Res> {
           AcademicState value, $Res Function(AcademicState) then) =
       _$AcademicStateCopyWithImpl<$Res, AcademicState>;
   @useResult
-  $Res call({ResponseClassify<dynamic> classDetails});
+  $Res call(
+      {ResponseClassify<dynamic> classDetails,
+      ResponseClassify<dynamic> divisionDetails,
+      ResponseClassify<dynamic> academicSubjects});
 }
 
 /// @nodoc
@@ -197,11 +445,21 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
   @override
   $Res call({
     Object? classDetails = null,
+    Object? divisionDetails = null,
+    Object? academicSubjects = null,
   }) {
     return _then(_value.copyWith(
       classDetails: null == classDetails
           ? _value.classDetails
           : classDetails // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<dynamic>,
+      divisionDetails: null == divisionDetails
+          ? _value.divisionDetails
+          : divisionDetails // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<dynamic>,
+      academicSubjects: null == academicSubjects
+          ? _value.academicSubjects
+          : academicSubjects // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<dynamic>,
     ) as $Val);
   }
@@ -215,7 +473,10 @@ abstract class _$$AcademicStateImplCopyWith<$Res>
       __$$AcademicStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<dynamic> classDetails});
+  $Res call(
+      {ResponseClassify<dynamic> classDetails,
+      ResponseClassify<dynamic> divisionDetails,
+      ResponseClassify<dynamic> academicSubjects});
 }
 
 /// @nodoc
@@ -230,11 +491,21 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? classDetails = null,
+    Object? divisionDetails = null,
+    Object? academicSubjects = null,
   }) {
     return _then(_$AcademicStateImpl(
       classDetails: null == classDetails
           ? _value.classDetails
           : classDetails // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<dynamic>,
+      divisionDetails: null == divisionDetails
+          ? _value.divisionDetails
+          : divisionDetails // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<dynamic>,
+      academicSubjects: null == academicSubjects
+          ? _value.academicSubjects
+          : academicSubjects // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<dynamic>,
     ));
   }
@@ -243,14 +514,21 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AcademicStateImpl implements _AcademicState {
-  const _$AcademicStateImpl({required this.classDetails});
+  const _$AcademicStateImpl(
+      {required this.classDetails,
+      required this.divisionDetails,
+      required this.academicSubjects});
 
   @override
   final ResponseClassify<dynamic> classDetails;
+  @override
+  final ResponseClassify<dynamic> divisionDetails;
+  @override
+  final ResponseClassify<dynamic> academicSubjects;
 
   @override
   String toString() {
-    return 'AcademicState(classDetails: $classDetails)';
+    return 'AcademicState(classDetails: $classDetails, divisionDetails: $divisionDetails, academicSubjects: $academicSubjects)';
   }
 
   @override
@@ -259,11 +537,16 @@ class _$AcademicStateImpl implements _AcademicState {
         (other.runtimeType == runtimeType &&
             other is _$AcademicStateImpl &&
             (identical(other.classDetails, classDetails) ||
-                other.classDetails == classDetails));
+                other.classDetails == classDetails) &&
+            (identical(other.divisionDetails, divisionDetails) ||
+                other.divisionDetails == divisionDetails) &&
+            (identical(other.academicSubjects, academicSubjects) ||
+                other.academicSubjects == academicSubjects));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, classDetails);
+  int get hashCode =>
+      Object.hash(runtimeType, classDetails, divisionDetails, academicSubjects);
 
   @JsonKey(ignore: true)
   @override
@@ -274,11 +557,17 @@ class _$AcademicStateImpl implements _AcademicState {
 
 abstract class _AcademicState implements AcademicState {
   const factory _AcademicState(
-          {required final ResponseClassify<dynamic> classDetails}) =
+          {required final ResponseClassify<dynamic> classDetails,
+          required final ResponseClassify<dynamic> divisionDetails,
+          required final ResponseClassify<dynamic> academicSubjects}) =
       _$AcademicStateImpl;
 
   @override
   ResponseClassify<dynamic> get classDetails;
+  @override
+  ResponseClassify<dynamic> get divisionDetails;
+  @override
+  ResponseClassify<dynamic> get academicSubjects;
   @override
   @JsonKey(ignore: true)
   _$$AcademicStateImplCopyWith<_$AcademicStateImpl> get copyWith =>

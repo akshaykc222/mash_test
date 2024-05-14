@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class NoticePopUpEntity extends Equatable {
- final String topicHead;
- final String topicDesc;
- final String noticeDate;
- final String docFile;
- final String ext;
+  final String? topicHead;
+  final String? topicDesc;
+  final String? noticeDate;
+  final String? docFile;
+  final String? ext;
 
- const NoticePopUpEntity({
+  const NoticePopUpEntity({
     required this.topicHead,
     required this.topicDesc,
     required this.noticeDate,
@@ -16,5 +16,5 @@ class NoticePopUpEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [topicHead,topicDesc,noticeDate,docFile,ext];
+  List<Object?> get props => [topicHead, topicDesc, noticeDate, docFile, ext];
 }

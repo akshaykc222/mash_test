@@ -20,6 +20,9 @@ class AppStrings {
   static const String submit = "Submit";
   static const String resend = "Resend";
   static const String submitOtp = "SUBMIT OTP";
+  static const String submitCapital = 'SUBMIT';
+  static const String viewWeekPlans = 'VIEW WEEK PLAN';
+  static const String view = 'VIEW';
 
   //quiz
   static const String onBoard1Title = "Let’s Start the Game";
@@ -38,8 +41,8 @@ class AppStrings {
 
   static const String selectDetails = 'SELECT DETAILS';
   static const String chooseSubject = 'choose subject';
-  static const String fromDate = 'from Date';
-  static const String toDate = 'to Date';
+  static const String fromDate = 'From Date';
+  static const String toDate = 'To Date';
   static const String homeWorks = "Home Works";
   static const String details = 'Details';
   static const String homeWorkDetails = 'Home Work Details';
@@ -56,7 +59,67 @@ class AppStrings {
   static const String select = 'select';
   static const String appType = '1';
 
-  static List<String> dashboardPerfomanceList = <String>[
+  //AttendanceMarking
+  static const String attendaceMarking = 'ATTENDANCE MARKING';
+  static const String academicYear = 'Academic Year';
+  static const String academicYearDynamic = '2023-2024';
+  static const String classTitle = 'Class';
+  static const String selectClass = 'Select Class';
+  static const String division = 'Division';
+  static const String date = 'Date';
+  static const String selectType = 'Select Type';
+  static const String next = 'NEXT';
+  static const String dynamicClassName = 'CLASS PRE-KG';
+  static const String present = 'Present';
+  static const String absent = 'Absent';
+  static const String selectAll = 'Select All';
+  static const String markAttendance = 'MARK ATTENDANCE';
+  static const String nameOfAbsentees = 'NAME OF ABSENTEES';
+
+  // lesson planner
+  static const String insertYearPlan = 'INSERT\nYEAR PLAN';
+  static const String viewYearPlan = 'VIEW\nYEAR PLAN';
+  static const String insertWeekPlan = 'INSERT\nWEEK PLAN';
+  static const String viewWeekPlan = 'VIEW\nWEEK PLAN';
+  static const String status = 'STATUS';
+  static const String yearlyWise = 'YEARLY WISE';
+  static const String selectDivision = 'Select Division';
+  static const String selectSubject = 'Select Subject';
+  static const String selectTerm = 'Select Term';
+  static const String selectMonth = 'Select Month';
+  static const String chapters = 'Chapters';
+  static const String chapterRemarks = 'Chapter Remarks';
+  static const String enterChapterRemarks = 'Enter Chapter Remarks';
+  static const String viewYearPlanTitle = 'VIEW YEAR PLAN';
+  static const String viewYearDetails = 'VIEW YEAR DETAILS';
+  static const String insertWeekPlans = 'INSERT WEEK PLANS';
+  static const String learningObjects = 'Learning Objects';
+  static const String enter = 'Enter ';
+  static const String contents = 'Contents';
+  static const String teachingAids = 'Teaching Aids';
+  static const String classWorks = 'Class Works';
+  static const String learningOutComes = 'Learning Outcomes';
+  static const String overallRemarks = 'Overall Remarks';
+  static const String totalPeriods = 'Total Periods';
+
+  //
+  static const String mashSupport = 'MASH SUPPORT';
+  static const String userActivity = 'USER ACTIVITY';
+  static const String contactUs = 'CONTACT US';
+  static const String feedbackForm = 'FEEDBACK FORM';
+  static const String selectModule = 'Select Module';
+  static const String howSatisfied = 'How Satisfied are you with our Modules ?'                                   ;
+  static const String howToImprove = 'How can we improve your Experience ?';
+  static const String suggestFeedback = 'Suggest Your Feedback..';
+  static const String idCardRequest = 'ID CARD REQUEST';
+  static const String studentName = 'Student Name';
+  static const String request = 'Request';
+  static const String requestType = 'Select Request Type';
+  static const String remarks = 'Remarks';
+  static const String enterRemarks = 'Enter Remarks..';
+
+
+  static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',
     'FIRST TERMINAL ASSESSMENT',
     'FIRST PERIODIC ASSESSMENT',

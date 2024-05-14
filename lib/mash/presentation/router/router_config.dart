@@ -6,24 +6,26 @@ import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
+import 'package:mash/mash/presentation/pages/home/idCardRequest/id_card_request_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
-import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -32,9 +34,18 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/lessonPlanner/insert_week_plan_screen.dart';
+import '../pages/home/lessonPlanner/insert_year_plan_screen.dart';
+import '../pages/home/lessonPlanner/lesson_planner_main_screen.dart';
+import '../pages/home/lessonPlanner/view_week_plan_screen.dart';
+import '../pages/home/lessonPlanner/view_year_plan_screen.dart';
+import '../pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
+import '../pages/home/suggestionBox/suggestion_box_main_screen.dart';
 import '../pages/home/suggestionBox/suggestion_screen.dart';
+import '../pages/home/supportScreen/mash_support_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 
@@ -48,7 +59,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.homeWorksViewScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -212,14 +223,71 @@ class AppRouteManager {
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionMainScreen,
       path: AppPages.suggestionMainScreen,
       builder: (context, state) => const SuggestionMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.suggestionScreen,
       path: AppPages.suggestionScreen,
       builder: (context, state) => const SuggestionScreen(),
+    ),
+    GoRoute(
+      name: AppPages.attendanceMarkingScreen,
+      path: AppPages.attendanceMarkingScreen,
+      builder: (context, state) => const AttendanceMarkingScreen(),
+    ),
+    GoRoute(
+      name: AppPages.classAttendanceMarkingScreen,
+      path: AppPages.classAttendanceMarkingScreen,
+      builder: (context, state) => const ClassAttendanceMarkingScreen(),
+    ),
+    GoRoute(
+      name: AppPages.lessonPlannerMainScreen,
+      path: AppPages.lessonPlannerMainScreen,
+      builder: (context, state) => const LessonPlannerMainScreen(),
+    ),
+    GoRoute(
+      name: AppPages.insertYearPlanScreen,
+      path: AppPages.insertYearPlanScreen,
+      builder: (context, state) => const InsertYearPlanScreen(),
+    ),
+    GoRoute(
+      name: AppPages.viewYearPlanScreen,
+      path: AppPages.viewYearPlanScreen,
+      builder: (context, state) => const ViewYearPlanScreen(),
+    ),
+    GoRoute(
+      name: AppPages.viewYearPlanListScreen,
+      path: AppPages.viewYearPlanListScreen,
+      builder: (context, state) => const ViewYearlyPlanListScreen(),
+    ),
+    GoRoute(
+      name: AppPages.insertWeekPlanScreen,
+      path: AppPages.insertWeekPlanScreen,
+      builder: (context, state) => const InsertWeekPlanScreen(),
+    ),
+    GoRoute(
+      name: AppPages.viewWeekPlansScreen,
+      path: AppPages.viewWeekPlansScreen,
+      builder: (context, state) => const ViewWeekPlanScreen(),
+    ),
+    GoRoute(
+      name: AppPages.supportScreen,
+      path: AppPages.supportScreen,
+      builder: (context, state) => const MashSupportScreen(),
+    ),
+    GoRoute(
+      name: AppPages.feedbackScreen,
+      path: AppPages.feedbackScreen,
+      builder: (context, state) => const FeedbackScreen(),
+    ),
+    GoRoute(
+      name: AppPages.idCardRequestScreen,
+      path: AppPages.idCardRequestScreen,
+      builder: (context, state) => const IdCardRequestScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

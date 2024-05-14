@@ -5,21 +5,17 @@ part 'dash_board_hive_model.g.dart';
 
 @HiveType(typeId: 1)
 class WordThoughtsHiveModel extends WordThoughtsEntity {
-  @override
   @HiveField(0)
-  final int statusCode;
+  final int? statusCode;
 
-  @override
   @HiveField(1)
-  final String statusMessage;
+  final String? statusMessage;
 
-  @override
   @HiveField(2)
-  final List<WordTableModel> wordTable;
+  final List<WordTableHiveModel> wordTable;
 
-  @override
   @HiveField(3)
-  final List<ThoughtTableModel> thoughtTable;
+  final List<ThoughtTableHiveModel> thoughtTable;
 
   const WordThoughtsHiveModel({
     required this.statusCode,
@@ -29,37 +25,45 @@ class WordThoughtsHiveModel extends WordThoughtsEntity {
   }) : super(
           statusCode: statusCode,
           statusMessage: statusMessage,
-          thoughtTable: thoughtTable,
-          wordTable: wordTable,
+          resTable1: wordTable,
+          resTable2: thoughtTable,
         );
-  factory WordThoughtsHiveModel.fromEnity(WordThoughtsEntity entity) =>
+  factory WordThoughtsHiveModel.fromEntity(WordThoughtsEntity entity) =>
       WordThoughtsHiveModel(
         statusCode: entity.statusCode,
         statusMessage: entity.statusMessage,
-        wordTable: List<WordTableModel>.from(entity.wordTable.map((e) =>
-            WordTableModel(
-                compId: e.compId,
-                createdBy: e.createdBy,
-                hasImg: e.hasImg,
-                status: e.status,
-                wordId: e.wordId,
-                wordImage: e.wordImage,
-                wordMeaning1: e.wordMeaning1,
-                wordMeaning2: e.wordMeaning2,
-                wordName: e.wordName))),
-        thoughtTable: List<ThoughtTableModel>.from(entity.thoughtTable.map(
-            (e) => ThoughtTableModel(
-                thoughtId: e.thoughtId,
-                thoughtOfTheDayUrl: e.thoughtOfTheDayUrl,
-                publishedDate: e.publishedDate))),
+        wordTable: List<WordTableHiveModel>.from(
+          entity.resTable1!.map(
+            (e) => WordTableHiveModel(
+              compId: e.compId ?? "",
+              createdBy: e.createdBy ?? "",
+              hasImg: e.hasImg ?? "",
+              status: e.status ?? "",
+              wordId: e.wordId ?? "",
+              wordImage: e.wordImage,
+              wordMeaning1: e.wordMeaning1 ?? "",
+              wordMeaning2: e.wordMeaning2 ?? "",
+              wordName: e.wordName ?? "",
+            ),
+          ),
+        ),
+        thoughtTable: List<ThoughtTableHiveModel>.from(
+          entity.resTable2!.map(
+            (e) => ThoughtTableHiveModel(
+              thoughtId: e.thoughtId ?? "",
+              thoughtOfTheDayUrl: e.thoughtOfTheDayUrl ?? "",
+              publishedDate: e.publishedDate ?? "",
+            ),
+          ),
+        ),
       );
 }
 
 @HiveType(typeId: 2)
-class ThoughtTableModel extends ThoughtTableEntity {
+class ThoughtTableHiveModel extends ThoughtTableEntity {
   @override
   @HiveField(0)
-  final double thoughtId;
+  final String thoughtId;
 
   @override
   @HiveField(1)
@@ -69,7 +73,7 @@ class ThoughtTableModel extends ThoughtTableEntity {
   @HiveField(2)
   final String publishedDate;
 
-  const ThoughtTableModel(
+  const ThoughtTableHiveModel(
       {required this.thoughtId,
       required this.thoughtOfTheDayUrl,
       required this.publishedDate})
@@ -81,10 +85,10 @@ class ThoughtTableModel extends ThoughtTableEntity {
 }
 
 @HiveType(typeId: 3)
-class WordTableModel extends WordTableEntity {
+class WordTableHiveModel extends WordTableEntity {
   @override
   @HiveField(0)
-  final double wordId;
+  final String wordId;
 
   @override
   @HiveField(1)
@@ -108,17 +112,17 @@ class WordTableModel extends WordTableEntity {
 
   @override
   @HiveField(6)
-  final double status;
+  final String status;
 
   @override
   @HiveField(7)
-  final double compId;
+  final String compId;
 
   @override
   @HiveField(8)
   final String createdBy;
 
-  const WordTableModel({
+  const WordTableHiveModel({
     required this.wordId,
     required this.wordName,
     required this.wordMeaning1,

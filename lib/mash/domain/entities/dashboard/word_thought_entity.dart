@@ -1,32 +1,31 @@
 import 'package:equatable/equatable.dart';
 
 class WordThoughtsEntity extends Equatable {
-  final int statusCode;
-  final String statusMessage;
-  final List<WordTableEntity> wordTable;
-  final List<ThoughtTableEntity> thoughtTable;
+  final int? statusCode;
+  final String? statusMessage;
+  final List<WordTableEntity>? resTable1;
+  final List<ThoughtTableEntity>? resTable2;
 
   const WordThoughtsEntity({
     required this.statusCode,
     required this.statusMessage,
-    required this.wordTable,
-    required this.thoughtTable,
+    required this.resTable1,
+    required this.resTable2,
   });
 
   @override
-  List<Object?> get props =>
-      [statusCode, statusMessage, wordTable, thoughtTable];
+  List<Object?> get props => [statusCode, statusMessage, resTable1, resTable2];
 }
 
 class ThoughtTableEntity extends Equatable {
-  final double thoughtId;
-  final String thoughtOfTheDayUrl;
-  final String publishedDate;
+  final String? thoughtId;
+  final String? thoughtOfTheDayUrl;
+  final String? publishedDate;
 
   const ThoughtTableEntity({
-    required this.thoughtId,
-    required this.thoughtOfTheDayUrl,
-    required this.publishedDate,
+    this.thoughtId,
+    this.thoughtOfTheDayUrl,
+    this.publishedDate,
   });
 
   @override
@@ -34,26 +33,26 @@ class ThoughtTableEntity extends Equatable {
 }
 
 class WordTableEntity extends Equatable {
-  final double wordId;
-  final String wordName;
-  final String wordMeaning1;
-  final String wordMeaning2;
-  final String hasImg;
+  final String? wordId;
+  final String? wordName;
+  final String? wordMeaning1;
+  final String? wordMeaning2;
+  final String? hasImg;
   final dynamic wordImage;
-  final double status;
-  final double compId;
-  final String createdBy;
+  final String? status;
+  final String? compId;
+  final String? createdBy;
 
   const WordTableEntity({
-    required this.wordId,
-    required this.wordName,
-    required this.wordMeaning1,
-    required this.wordMeaning2,
-    required this.hasImg,
-    required this.wordImage,
-    required this.status,
-    required this.compId,
-    required this.createdBy,
+    this.wordId,
+    this.wordName,
+    this.wordMeaning1,
+    this.wordMeaning2,
+    this.hasImg,
+    this.wordImage,
+    this.status,
+    this.compId,
+    this.createdBy,
   });
 
   @override

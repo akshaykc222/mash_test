@@ -65,6 +65,15 @@ class AppAssets {
   static const suggestionImage = 'assets/images/app_image_suggestion.svg';
   static const responseImage = 'assets/images/app_image_response.svg';
 
+  //lesson plannner
+  static const lessonInsert = 'assets/images/lesson_insert.svg';
+  static const lessonView = 'assets/images/lesson_view.svg';
+  static const lessonStatus = 'assets/images/lesson_status.svg';
+
+  // support
+  static const mageethSchoolLogo = 'assets/images/schoolnew.png';
+  static const supportLottie = 'assets/lottie/mash_support.json';
+
 
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
