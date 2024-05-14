@@ -37,10 +37,10 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: userData.classId,
-          divId: userData.divisionId,
-          subjId: userData.studentId,
-          acadId: userData.academicId,
+          classId: userData.classId ?? '',
+          divId: userData.divisionId ?? "",
+          subjId: userData.studentId ?? '',
+          acadId: userData.academicId ?? '',
         ));
         emit(state.copyWith(
             homeWorkReportResponse: ResponseClassify.SUCCESS(data)));
@@ -61,10 +61,10 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: userData.classId,
-          divId: userData.divisionId,
-          subjId: userData.studentId,
-          acadId: userData.academicId,
+          classId: userData.classId ?? '',
+          divId: userData.divisionId ?? '',
+          subjId: userData.studentId ?? '',
+          acadId: userData.academicId ?? "",
         ));
         emit(state.copyWith(
             homeWorkReportResponse: ResponseClassify.SUCCESS(data)));

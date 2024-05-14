@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -17,8 +19,18 @@ class NewsBoardDetailScreen extends StatelessWidget {
       appBar: commonAppbar(title: newsDetails.newsTitle ?? ""),
       endDrawer: DrawerWidget(),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('VIEW ATTACHMENT'),
+        elevation: 2,
+        onPressed: () {
+          prettyPrint('pdf data ${newsDetails.content}');
+          PDFView(
+            filePath: newsDetails.content,
+          );
+        },
+        label: const Text('View Attachment'),
+        extendedIconLabelSpacing: 20,
+
+        // shape: Border.all(color: Colors.white, style: BorderStyle.solid),
+        icon: const Icon(Icons.keyboard_arrow_down_outlined),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: newsDetailBody(context),
@@ -77,6 +89,7 @@ class NewsBoardDetailScreen extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         image: DecorationImage(
+          fit: BoxFit.cover,
           image: CachedNetworkImageProvider(img),
         ),
       ),

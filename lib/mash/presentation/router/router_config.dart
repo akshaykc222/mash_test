@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
@@ -34,6 +35,9 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscr
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import '../../../core/usecase.dart';
+import '../../../di/injector.dart';
+import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/lessonPlanner/insert_week_plan_screen.dart';
@@ -56,6 +60,39 @@ class AppRouteManager {
       BuildContext context, GoRouterState state) {
     return HomeScreen(
       currentIndex: int.parse(state.pathParameters['type']!),
+    );
+  }
+
+  static Widget navigateByUserType(
+      {required Widget staff, required Widget parent, required student}) {
+    var getUser = getIt<GetUserInfoUseCase>();
+
+    return FutureBuilder(
+      future: getUser.call(NoParams()),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          var user = snapshot.data;
+          if (user == null) {
+            return const LoginScreen();
+          } else {
+            prettyPrint('user type is ${user.userType}');
+            switch (getUserType(user.userType)) {
+              case UserTypes.staff:
+                return staff;
+              case UserTypes.student:
+                return student;
+              case UserTypes.parent:
+                return parent;
+              default:
+                return const SizedBox();
+            }
+          }
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 

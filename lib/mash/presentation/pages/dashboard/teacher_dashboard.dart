@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/widget/dashboard_common_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/widgets/schedule_item.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
-
-void main() {
-  runApp(const MaterialApp(
-    home: TeacherDashboard(),
-  ));
-}
 
 class TeacherDashboard extends StatefulWidget {
   const TeacherDashboard({super.key});
@@ -24,7 +19,10 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
     return Scaffold(
       // drawer: DrawerWidget(),
       body: CustomScrollView(
-        slivers: [_header(), _body()],
+        slivers: [
+          _header(),
+          _body(),
+        ],
       ),
     );
   }
@@ -45,44 +43,50 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
       ]));
   Widget _basicDetails() {
     //to build
-    return Column(
-      children: [
-        spacer20,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "AKSHAY K.C",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.headText),
-            ),
-          ],
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0),
-          child: Divider(),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Employee Id  - ",
-              style: TextStyle(fontSize: 12, color: AppColors.textColorNew),
-            ),
-            Text("00045",
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          spacer20,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "AKSHAY K.C",
                 style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 18,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.textColorNew))
-          ],
-        ),
-        SizedBox(
-          height: SizeUtility(context).height * 0.06,
-        ),
-        _buildSchedules()
-      ],
+                    color: AppColors.headText),
+              ),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50.0),
+            child: Divider(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Employee Id  - ",
+                style: TextStyle(fontSize: 12, color: AppColors.textColorNew),
+              ),
+              Text("00045",
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textColorNew))
+            ],
+          ),
+          SizedBox(
+            height: SizeUtility(context).height * 0.06,
+          ),
+          _buildSchedules(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: DashboardCommonLastWidget(),
+          ),
+        ],
+      ),
     );
   }
 

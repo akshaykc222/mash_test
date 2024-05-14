@@ -31,7 +31,7 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
       if (userdata != null) {
         final data = await getNewsBoardUseCase.call(
           NewsBoardRequest(
-            pCompId: userdata.compId,
+            pCompId: userdata.compId ?? "",
             pUserType: userdata.userType,
             pOffset: '0',
             pLimit: '7',

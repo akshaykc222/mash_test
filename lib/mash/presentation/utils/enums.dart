@@ -17,3 +17,21 @@ enum ChatType {
   personal,
   group,
 }
+
+enum UserTypes { staff, student, parent }
+
+UserTypes getUserType(String userType) {
+  switch (userType) {
+    case "2":
+      return UserTypes.student;
+
+    case "3":
+      return UserTypes.parent;
+
+    case "5":
+      return UserTypes.staff;
+
+    default:
+      return UserTypes.student;
+  }
+}

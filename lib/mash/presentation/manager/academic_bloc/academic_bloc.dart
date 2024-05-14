@@ -52,7 +52,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getClassInforUseCase.call(
           AcademicAndCompIdRequest(
-            pAcademicId: userdata.academicId,
+            pAcademicId: userdata.academicId ?? '',
             pCompID: userdata.compId,
           ),
         );
@@ -76,7 +76,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getAcademicSubjectUseCase.call(
           ClassAndCompIdRequest(
-            classId: userdata.classId,
+            classId: userdata.classId ?? "",
             compId: userdata.compId,
           ),
         );
@@ -101,7 +101,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getDivisionDetailsUseCase.call(
           ClassAndCompIdRequest(
-            classId: userdata.classId,
+            classId: userdata.classId ?? '',
             compId: userdata.compId,
           ),
         );
@@ -148,9 +148,10 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       final userdata = await getUserInfoUseCase.call(NoParams());
       if (userdata != null) {
         final data = await getSyllabusTermsUseCase.call(SyllabusTermsRequest(
-            compId: userdata.compId,
-            acadId: userdata.academicId,
-            classId: userdata.classId));
+          compId: userdata.compId,
+          acadId: userdata.academicId ?? '',
+          classId: userdata.classId ?? '',
+        ));
         emit(state.copyWith(syllabusTerms: ResponseClassify.SUCCESS(data)));
       } else {
         emit(state.copyWith(
