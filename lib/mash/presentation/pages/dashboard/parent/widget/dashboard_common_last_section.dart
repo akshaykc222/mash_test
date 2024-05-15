@@ -41,6 +41,7 @@ class DashboardCommonLastWidget extends StatelessWidget {
           children: [
             Text(
               AppStrings.newsAndArticles,
+              style: _titleStyle(),
             ),
             Text(
               AppStrings.viewAll,
