@@ -2,9 +2,11 @@ import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
+import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
 
 //auth model
 
@@ -136,3 +138,34 @@ NoticePopUpModel tNoticePopUpModel = const NoticePopUpModel(
   docFile: 'sample_document.pdf',
   ext: 'pdf',
 );
+
+/*
+Drawer menu item
+*/
+//--> news board
+const tNewsBoardModel = NewsBoardModel(
+  compId: 'compId',
+  content: 'content',
+  ext: 'ext',
+  coverPage: 'coverPage',
+  createdBy: 'createdBy',
+  description: 'description',
+  newsId: 'newsId',
+  newsDate: 'newsDate',
+  newsTitle: 'newsTitle',
+  userType: 'userType',
+  allS: 'allS',
+  alumni: 'alumni',
+  parent: 'parent',
+  staff: 'staff',
+  student: 'student',
+  category: 'category',
+  newStatus: 'newStatus',
+);
+//-->news board request
+final tNewsBoardRequest = NewsBoardRequest(
+    pCompId: 'pCompId',
+    pUserType: 'usertype',
+    pSearchKey: 'pSearchKey',
+    pOffset: 'pOffset',
+    pLimit: 'pLimit');

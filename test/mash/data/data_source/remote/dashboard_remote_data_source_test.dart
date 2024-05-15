@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/custom_exception.dart';
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
@@ -12,7 +11,7 @@ import '../../../fixture/fixtures_readers.dart';
 import '../../../helpers/test_helpers.mocks.dart';
 
 void main() {
-  late ApiProvider mockApiProvider;
+  late MockApiProvider mockApiProvider;
   late DashBoardRemoteDataSourceImpl dashBoardRemoteDataSourceImpl;
   setUp(() {
     mockApiProvider = MockApiProvider();

@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/domain/entities/timeTable/time_table_data_item_model.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
@@ -15,6 +15,7 @@ class TimeTableScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       endDrawer: DrawerWidget(),
       appBar: commonAppbar(title: 'TIMETABLES'),
@@ -77,7 +78,9 @@ class TimeTableScreen extends StatelessWidget {
                   flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: SvgPicture.asset(data.asset,),
+                    child: SvgPicture.asset(
+                      data.asset,
+                    ),
                   ),
                 ),
                 Expanded(

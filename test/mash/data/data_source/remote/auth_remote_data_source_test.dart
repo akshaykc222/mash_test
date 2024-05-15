@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
@@ -10,7 +9,7 @@ import '../../../fixture/fixtures_readers.dart';
 import '../../../helpers/test_helpers.mocks.dart';
 
 void main() {
-  late ApiProvider mockApiProvider;
+  late MockApiProvider mockApiProvider;
   late AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
 
   setUp(() {

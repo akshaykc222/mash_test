@@ -18,16 +18,11 @@ class DrawerMenuItemsRemoteDataSourceImpl
   DrawerMenuItemsRemoteDataSourceImpl({required this.apiProvider});
   @override
   Future<List<NewsBoardModel?>> getNewsBoard(NewsBoardRequest params) async {
-    try {
-      final data =
-          await apiProvider.post(AppRemoteRoutes.newsBoard, params.toJson());
-      print(data);
-      final List<dynamic> datalist = data['resTable'];
-      final res = datalist.map((e) => NewsBoardModel.fromJson(e)).toList();
-      return res;
-    } catch (e) {
-      prettyPrint(e.toString());
-      throw Exception(e);
-    }
+    final data =
+        await apiProvider.post(AppRemoteRoutes.newsBoard, params.toJson());
+
+    final List<dynamic> datalist = data['resTable'];
+    final res = datalist.map((e) => NewsBoardModel.fromJson(e)).toList();
+    return res;
   }
 }

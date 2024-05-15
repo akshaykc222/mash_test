@@ -11,7 +11,7 @@ class StudentProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         // padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Card(
