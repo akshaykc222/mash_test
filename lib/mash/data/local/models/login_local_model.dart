@@ -123,7 +123,7 @@ class LoginLocalModel extends LoginResTableEntity {
       studentId: entity.studentId ?? '',
       admissionNo: entity.admissionNo ?? '',
       studentName: entity.studentName ?? '',
-      compId: entity.compId ?? '',
+      compId: entity.compId,
       roleId: entity.roleId ?? '',
       activeStatus: entity.activeStatus ?? '',
       pwdChangeStatus: entity.pwdChangeStatus ?? '',

@@ -56,7 +56,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
             pCompID: userdata.compId,
           ),
         );
-        emit(state.copyWith(classDetails: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(classDetails: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             classDetails: ResponseClassify.error('User data is null')));
@@ -80,7 +80,8 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
             compId: userdata.compId,
           ),
         );
-        emit(state.copyWith(academicSubjects: ResponseClassify.SUCCESS(data)));
+        emit(
+            state.copyWith(academicSubjects: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             academicSubjects: ResponseClassify.error('User data is null')));
@@ -105,7 +106,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
             compId: userdata.compId,
           ),
         );
-        emit(state.copyWith(divisionDetails: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(divisionDetails: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             divisionDetails: ResponseClassify.error('User data is null')));
@@ -129,7 +130,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
           userType: userdata.userType,
           termId: event.termId,
         ));
-        emit(state.copyWith(syllabus: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(syllabus: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             syllabus: ResponseClassify.error('User data is null')));
@@ -152,7 +153,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
           acadId: userdata.academicId ?? '',
           classId: userdata.classId ?? '',
         ));
-        emit(state.copyWith(syllabusTerms: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(syllabusTerms: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             syllabusTerms: ResponseClassify.error('User data is null')));

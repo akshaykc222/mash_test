@@ -27,14 +27,8 @@ class CustomIconButton extends StatelessWidget {
       ),
       onPressed: onTap,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          icon != null
-              ? assetFromSvg(
-                  icon!,
-                  color: AppColors.primaryColor,
-                )
-              : const SizedBox(),
           spacerWidth10,
           Text(
             name,
@@ -45,13 +39,16 @@ class CustomIconButton extends StatelessWidget {
             ),
           ),
           icon == null
-              ? Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryColor,
-                    size: 16,
-                  ),
+              ? Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColors.primaryColor,
+                  size: 16,
+                )
+              : const SizedBox(),
+          icon != null
+              ? assetFromSvg(
+                  icon!,
+                  color: AppColors.black,
                 )
               : const SizedBox(),
         ],

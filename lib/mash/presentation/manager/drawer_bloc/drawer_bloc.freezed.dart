@@ -19,32 +19,38 @@ mixin _$DrawerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNewsBoard,
+    required TResult Function(String fileName) pdfDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNewsBoard,
+    TResult? Function(String fileName)? pdfDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNewsBoard,
+    TResult Function(String fileName)? pdfDownload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNewsBoard value) getNewsBoard,
+    required TResult Function(_PdfDownload value) pdfDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNewsBoard value)? getNewsBoard,
+    TResult? Function(_PdfDownload value)? pdfDownload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNewsBoard value)? getNewsBoard,
+    TResult Function(_PdfDownload value)? pdfDownload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNewsBoard,
+    required TResult Function(String fileName) pdfDownload,
   }) {
     return getNewsBoard();
   }
@@ -115,6 +122,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNewsBoard,
+    TResult? Function(String fileName)? pdfDownload,
   }) {
     return getNewsBoard?.call();
   }
@@ -123,6 +131,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNewsBoard,
+    TResult Function(String fileName)? pdfDownload,
     required TResult orElse(),
   }) {
     if (getNewsBoard != null) {
@@ -135,6 +144,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNewsBoard value) getNewsBoard,
+    required TResult Function(_PdfDownload value) pdfDownload,
   }) {
     return getNewsBoard(this);
   }
@@ -143,6 +153,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNewsBoard value)? getNewsBoard,
+    TResult? Function(_PdfDownload value)? pdfDownload,
   }) {
     return getNewsBoard?.call(this);
   }
@@ -151,6 +162,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNewsBoard value)? getNewsBoard,
+    TResult Function(_PdfDownload value)? pdfDownload,
     required TResult orElse(),
   }) {
     if (getNewsBoard != null) {
@@ -165,9 +177,146 @@ abstract class _GetNewsBoard implements DrawerEvent {
 }
 
 /// @nodoc
+abstract class _$$PdfDownloadImplCopyWith<$Res> {
+  factory _$$PdfDownloadImplCopyWith(
+          _$PdfDownloadImpl value, $Res Function(_$PdfDownloadImpl) then) =
+      __$$PdfDownloadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String fileName});
+}
+
+/// @nodoc
+class __$$PdfDownloadImplCopyWithImpl<$Res>
+    extends _$DrawerEventCopyWithImpl<$Res, _$PdfDownloadImpl>
+    implements _$$PdfDownloadImplCopyWith<$Res> {
+  __$$PdfDownloadImplCopyWithImpl(
+      _$PdfDownloadImpl _value, $Res Function(_$PdfDownloadImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileName = null,
+  }) {
+    return _then(_$PdfDownloadImpl(
+      null == fileName
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PdfDownloadImpl implements _PdfDownload {
+  const _$PdfDownloadImpl(this.fileName);
+
+  @override
+  final String fileName;
+
+  @override
+  String toString() {
+    return 'DrawerEvent.pdfDownload(fileName: $fileName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PdfDownloadImpl &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fileName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PdfDownloadImplCopyWith<_$PdfDownloadImpl> get copyWith =>
+      __$$PdfDownloadImplCopyWithImpl<_$PdfDownloadImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNewsBoard,
+    required TResult Function(String fileName) pdfDownload,
+  }) {
+    return pdfDownload(fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNewsBoard,
+    TResult? Function(String fileName)? pdfDownload,
+  }) {
+    return pdfDownload?.call(fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNewsBoard,
+    TResult Function(String fileName)? pdfDownload,
+    required TResult orElse(),
+  }) {
+    if (pdfDownload != null) {
+      return pdfDownload(fileName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetNewsBoard value) getNewsBoard,
+    required TResult Function(_PdfDownload value) pdfDownload,
+  }) {
+    return pdfDownload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetNewsBoard value)? getNewsBoard,
+    TResult? Function(_PdfDownload value)? pdfDownload,
+  }) {
+    return pdfDownload?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetNewsBoard value)? getNewsBoard,
+    TResult Function(_PdfDownload value)? pdfDownload,
+    required TResult orElse(),
+  }) {
+    if (pdfDownload != null) {
+      return pdfDownload(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PdfDownload implements DrawerEvent {
+  const factory _PdfDownload(final String fileName) = _$PdfDownloadImpl;
+
+  String get fileName;
+  @JsonKey(ignore: true)
+  _$$PdfDownloadImplCopyWith<_$PdfDownloadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DrawerState {
   ResponseClassify<List<NewsBoardEntity?>> get newsBoardResponse =>
       throw _privateConstructorUsedError;
+  ResponseClassify<String> get pdfDownLoadResponse =>
+      throw _privateConstructorUsedError;
+  int get pdfDownloadProgressState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DrawerStateCopyWith<DrawerState> get copyWith =>
@@ -180,7 +329,10 @@ abstract class $DrawerStateCopyWith<$Res> {
           DrawerState value, $Res Function(DrawerState) then) =
       _$DrawerStateCopyWithImpl<$Res, DrawerState>;
   @useResult
-  $Res call({ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse});
+  $Res call(
+      {ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse,
+      ResponseClassify<String> pdfDownLoadResponse,
+      int pdfDownloadProgressState});
 }
 
 /// @nodoc
@@ -197,12 +349,22 @@ class _$DrawerStateCopyWithImpl<$Res, $Val extends DrawerState>
   @override
   $Res call({
     Object? newsBoardResponse = null,
+    Object? pdfDownLoadResponse = null,
+    Object? pdfDownloadProgressState = null,
   }) {
     return _then(_value.copyWith(
       newsBoardResponse: null == newsBoardResponse
           ? _value.newsBoardResponse
           : newsBoardResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<NewsBoardEntity?>>,
+      pdfDownLoadResponse: null == pdfDownLoadResponse
+          ? _value.pdfDownLoadResponse
+          : pdfDownLoadResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
+      pdfDownloadProgressState: null == pdfDownloadProgressState
+          ? _value.pdfDownloadProgressState
+          : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -215,7 +377,10 @@ abstract class _$$DrawerStateImplCopyWith<$Res>
       __$$DrawerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse});
+  $Res call(
+      {ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse,
+      ResponseClassify<String> pdfDownLoadResponse,
+      int pdfDownloadProgressState});
 }
 
 /// @nodoc
@@ -230,12 +395,22 @@ class __$$DrawerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newsBoardResponse = null,
+    Object? pdfDownLoadResponse = null,
+    Object? pdfDownloadProgressState = null,
   }) {
     return _then(_$DrawerStateImpl(
       newsBoardResponse: null == newsBoardResponse
           ? _value.newsBoardResponse
           : newsBoardResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<NewsBoardEntity?>>,
+      pdfDownLoadResponse: null == pdfDownLoadResponse
+          ? _value.pdfDownLoadResponse
+          : pdfDownLoadResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
+      pdfDownloadProgressState: null == pdfDownloadProgressState
+          ? _value.pdfDownloadProgressState
+          : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -243,14 +418,21 @@ class __$$DrawerStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DrawerStateImpl implements _DrawerState {
-  const _$DrawerStateImpl({required this.newsBoardResponse});
+  const _$DrawerStateImpl(
+      {required this.newsBoardResponse,
+      required this.pdfDownLoadResponse,
+      required this.pdfDownloadProgressState});
 
   @override
   final ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse;
+  @override
+  final ResponseClassify<String> pdfDownLoadResponse;
+  @override
+  final int pdfDownloadProgressState;
 
   @override
   String toString() {
-    return 'DrawerState(newsBoardResponse: $newsBoardResponse)';
+    return 'DrawerState(newsBoardResponse: $newsBoardResponse, pdfDownLoadResponse: $pdfDownLoadResponse, pdfDownloadProgressState: $pdfDownloadProgressState)';
   }
 
   @override
@@ -259,11 +441,17 @@ class _$DrawerStateImpl implements _DrawerState {
         (other.runtimeType == runtimeType &&
             other is _$DrawerStateImpl &&
             (identical(other.newsBoardResponse, newsBoardResponse) ||
-                other.newsBoardResponse == newsBoardResponse));
+                other.newsBoardResponse == newsBoardResponse) &&
+            (identical(other.pdfDownLoadResponse, pdfDownLoadResponse) ||
+                other.pdfDownLoadResponse == pdfDownLoadResponse) &&
+            (identical(
+                    other.pdfDownloadProgressState, pdfDownloadProgressState) ||
+                other.pdfDownloadProgressState == pdfDownloadProgressState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newsBoardResponse);
+  int get hashCode => Object.hash(runtimeType, newsBoardResponse,
+      pdfDownLoadResponse, pdfDownloadProgressState);
 
   @JsonKey(ignore: true)
   @override
@@ -275,10 +463,16 @@ class _$DrawerStateImpl implements _DrawerState {
 abstract class _DrawerState implements DrawerState {
   const factory _DrawerState(
       {required final ResponseClassify<List<NewsBoardEntity?>>
-          newsBoardResponse}) = _$DrawerStateImpl;
+          newsBoardResponse,
+      required final ResponseClassify<String> pdfDownLoadResponse,
+      required final int pdfDownloadProgressState}) = _$DrawerStateImpl;
 
   @override
   ResponseClassify<List<NewsBoardEntity?>> get newsBoardResponse;
+  @override
+  ResponseClassify<String> get pdfDownLoadResponse;
+  @override
+  int get pdfDownloadProgressState;
   @override
   @JsonKey(ignore: true)
   _$$DrawerStateImplCopyWith<_$DrawerStateImpl> get copyWith =>

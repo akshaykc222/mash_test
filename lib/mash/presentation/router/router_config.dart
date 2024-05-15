@@ -17,6 +17,7 @@ import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
@@ -329,6 +330,13 @@ class AppRouteManager {
       name: AppPages.idCardRequestScreen,
       path: AppPages.idCardRequestScreen,
       builder: (context, state) => const IdCardRequestScreen(),
+    ),
+    GoRoute(
+      name: AppPages.pdfViewScreen,
+      path: AppPages.pdfViewScreen,
+      builder: (context, state) => PdfVieweScreen(
+        path: state.extra as String,
+      ),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

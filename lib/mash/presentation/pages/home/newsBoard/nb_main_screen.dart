@@ -37,54 +37,55 @@ class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
   newsBoardBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-      height: size.height,
-      width: size.width,
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return newsCard(index, context);
-          },
-          separatorBuilder: (context, index) {
-            return spacer10;
-          },
-          itemCount: 2),
-    );
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+        height: size.height,
+        width: size.width,
+        child: BlocBuilder<DrawerBloc, DrawerState>(builder: (context, state) {
+          return ListView.separated(
+              itemBuilder: (context, index) {
+                return newsCard(
+                  index,
+                  state,
+                  context,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return spacer10;
+              },
+              itemCount: state.newsBoardResponse.data?.length ?? 0);
+        }));
   }
 
-  newsCard(int index, BuildContext context) {
-    return BlocBuilder<DrawerBloc, DrawerState>(
-      builder: (context, state) {
-        final data = state.newsBoardResponse.data?[index];
-        return GestureDetector(
-          onTap: () => GoRouter.of(context).pushNamed(
-              AppPages.newsBoardDetailScreen,
-              extra: data as NewsBoardEntity),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: AppColors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 1,
-                    blurRadius: 9,
-                    offset: const Offset(0, 0),
-                  )
-                ]),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                title(data?.newsTitle ?? ""),
-                description(data?.description ?? ""),
-                dateAndDetailRow(
-                  data?.newsDate ?? "",
-                )
-              ],
-            ),
-          ),
-        );
-      },
+  newsCard(int index, DrawerState state, BuildContext context) {
+    final data = state.newsBoardResponse.data?[index];
+    return GestureDetector(
+      onTap: () => GoRouter.of(context).pushNamed(
+          AppPages.newsBoardDetailScreen,
+          extra: data as NewsBoardEntity),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppColors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 1,
+                blurRadius: 9,
+                offset: const Offset(0, 0),
+              )
+            ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            title(data?.newsTitle ?? ""),
+            description(data?.description ?? ""),
+            dateAndDetailRow(
+              data?.newsDate ?? "",
+            )
+          ],
+        ),
+      ),
     );
   }
 

@@ -58,7 +58,6 @@ class AppPages {
   static const suggestionMainScreen = '/suggestionMainScreen';
   static const suggestionScreen = '/suggestionScreen';
 
-
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
@@ -68,7 +67,7 @@ class AppPages {
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';
   static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
 
- //lesson planner
+  //lesson planner
   static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
   static const insertYearPlanScreen = '/insertYearPlanScreen';
   static const viewYearPlanScreen = '/viewYearPlanScreen';
@@ -79,7 +78,5 @@ class AppPages {
   static const feedbackScreen = '/feedbackScreen';
   static const idCardRequestScreen = '/idCardRequestScreen';
 
-
-
-
+  static const pdfViewScreen = '/pdfViewScreen';
 }

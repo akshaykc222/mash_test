@@ -34,7 +34,7 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
       final data = await getNoticeBoardPopUp.call(NoticePopUpRequest(
           pCompId: userdata?.compId ?? "", noticeId: userdata?.classId ?? ""));
       emit(state.copyWith(
-        noticeResponseData: ResponseClassify.SUCCESS(data),
+        noticeResponseData: ResponseClassify.completed(data),
       ));
     } catch (e) {
       emit(state.copyWith(
@@ -53,7 +53,7 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
         usertype: userdata?.userType ?? "",
       ));
       emit(state.copyWith(
-        noticeResponseData: ResponseClassify.SUCCESS(data),
+        noticeResponseData: ResponseClassify.completed(data),
       ));
     } catch (e) {
       emit(state.copyWith(

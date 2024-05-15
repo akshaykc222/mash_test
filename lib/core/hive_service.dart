@@ -1,9 +1,7 @@
 import 'dart:developer';
 
-import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mash/core/pretty_printer.dart';
 
 @LazySingleton()
 class HiveService {
@@ -30,8 +28,7 @@ class HiveService {
         // prettyPrint(msg: "item exits $item");
       } else {
         // prettyPrint(msg: "item added $item");
-        final res = await openBox.add(item);
-        prettyPrint('box res ${res.val}');
+        await openBox.add(item);
       }
     }
   }

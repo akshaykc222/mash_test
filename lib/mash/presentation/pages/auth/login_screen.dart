@@ -12,7 +12,6 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_size.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
-import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';

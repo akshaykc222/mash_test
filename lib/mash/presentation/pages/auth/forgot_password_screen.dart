@@ -55,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+    MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(

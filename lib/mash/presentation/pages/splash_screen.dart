@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
         await HiveService().getBox<String>(boxName: LocalStorageNames.token);
     log(token.values.toString());
     if (token.isNotEmpty) {
-      context.goNamed(AppPages.home);
+      context.goNamed(AppPages.newsBoardMainScreen);
     } else {
       context.goNamed(AppPages.login);
     }

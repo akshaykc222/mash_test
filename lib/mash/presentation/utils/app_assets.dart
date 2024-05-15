@@ -12,9 +12,7 @@ class AppAssets {
   static const libImageAcademic = 'assets/images/academic.svg';
   static const libImageNonAcademic = 'assets/images/non_academic.svg';
   static const libImageResearch = 'assets/images/research.svg';
-  static const libImageUserActivity =
-      'assets/images/user_activity.svg';
-
+  static const libImageUserActivity = 'assets/images/user_activity.svg';
 
   static const homeworkImage = 'assets/images/homework.svg';
   static const notesImage = 'assets/images/notes.svg';
@@ -22,7 +20,6 @@ class AppAssets {
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
-
 
   //timeTable
   static const dailyTimeTable = 'assets/images/ai_daily.svg';
@@ -74,7 +71,6 @@ class AppAssets {
   static const mageethSchoolLogo = 'assets/images/schoolnew.png';
   static const supportLottie = 'assets/lottie/mash_support.json';
 
-
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
   static const libraryTabIcon = 'assets/icons/library_tab.svg';
@@ -85,8 +81,8 @@ class AppAssets {
   static const password = 'assets/icons/password.svg';
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
+  static const downloadIcon = 'assets/icons/download.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
-
 
   static var tcApply = "";
 
