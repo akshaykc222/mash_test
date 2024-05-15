@@ -87,6 +87,8 @@ class AppAssets {
   static const uploadIcon = 'assets/icons/upload.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
 
+  static const noData = 'assets/images/no_data.svg';
+
 
   static var tcApply = "";
 

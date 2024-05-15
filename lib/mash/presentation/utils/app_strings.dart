@@ -118,6 +118,33 @@ class AppStrings {
   static const String remarks = 'Remarks';
   static const String enterRemarks = 'Enter Remarks..';
 
+  // Exam
+  static const String examLinks = 'EXAM LINKS';
+  static const String toBeRegistered = 'TO BE REGISTERED';
+  static const String registered = 'REGISTERED';
+  static const String examDetails = 'EXAM DETAILS';
+  static const String viewPdf = 'VIEW PDF';
+  static const String lastDateToApply = 'Last Date To Apply';
+  static const String compExamDate = 'Competitive Exam Date';
+  static const String registerHere = 'REGISTER HERE';
+  static const String rateNow = 'Rate Now';
+  static const String rating = 'Rating';
+  static const String attendingExam = 'Attending Exam ?';
+  static const String appliedDate = 'Applied Date';
+
+
+
+  //fees and payments
+  static const String feesAndPaymentScreen = 'FEES & PAYMENT';
+  static const String pending = 'PENDING';
+  static const String paid = 'PAID';
+  static const String paidAmount = 'Paid Amount';
+  static const String transactionHistory = 'TRANSACTION HISTORY';
+  static const String viewReceipt = 'View Receipt';
+  static const String paidBy = 'Paid By,';
+  static const String noDataFound = 'NO DATA FOUND';
+  static const String payNow = 'PAY NOW';
+
 
   static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',

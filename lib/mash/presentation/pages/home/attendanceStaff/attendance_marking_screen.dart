@@ -61,6 +61,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
         children: [
           titleText(AppStrings.academicYear),
           CommonSmallButton(
+            color: AppColors.primaryColor,
               onPress: () {},
               title: AppStrings.academicYearDynamic,
               prefixIcon: Icons.calendar_month),

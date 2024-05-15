@@ -78,8 +78,8 @@ class AppPages {
 
   static const feedbackScreen = '/feedbackScreen';
   static const idCardRequestScreen = '/idCardRequestScreen';
-
-
-
-
+  static const competitiveExamScreen = '/competitiveExamScreen';
+  static const examDetailScreen = '/examDetailScreen';
+  static const feesAndPaymentScreen = '/feesAndPaymentScreen';
+  static const paymentHistoryScreen = '/paymentHistoryScreen';
 }
