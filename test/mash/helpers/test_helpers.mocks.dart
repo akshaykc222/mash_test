@@ -22,19 +22,29 @@ import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
     as _i14;
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart'
     as _i16;
+import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart'
+    as _i25;
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart'
     as _i5;
+import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart'
+    as _i26;
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart'
     as _i17;
 import 'package:mash/mash/data/remote/models/request/login_request.dart'
     as _i12;
+import 'package:mash/mash/data/remote/models/request/news_board_request.dart'
+    as _i24;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i4;
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart'
     as _i19;
+import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart'
+    as _i23;
 import 'package:mash/mash/domain/repositories/auth_repository.dart' as _i11;
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart'
     as _i18;
+import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart'
+    as _i22;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -592,4 +602,48 @@ class MockDashBoardLocalDataSource extends _i1.Mock
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
+}
+
+/// A class which mocks [DrawerMenuItemsRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDrawerMenuItemsRepository extends _i1.Mock
+    implements _i22.DrawerMenuItemsRepository {
+  MockDrawerMenuItemsRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<List<_i23.NewsBoardEntity?>> getNewsBoard(
+          _i24.NewsBoardRequest? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNewsBoard,
+          [params],
+        ),
+        returnValue: _i6.Future<List<_i23.NewsBoardEntity?>>.value(
+            <_i23.NewsBoardEntity?>[]),
+      ) as _i6.Future<List<_i23.NewsBoardEntity?>>);
+}
+
+/// A class which mocks [DrawerMenuItemsRemoteDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDrawerMenuItemsRemoteDataSource extends _i1.Mock
+    implements _i25.DrawerMenuItemsRemoteDataSource {
+  MockDrawerMenuItemsRemoteDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i6.Future<List<_i26.NewsBoardModel?>> getNewsBoard(
+          _i24.NewsBoardRequest? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNewsBoard,
+          [params],
+        ),
+        returnValue: _i6.Future<List<_i26.NewsBoardModel?>>.value(
+            <_i26.NewsBoardModel?>[]),
+      ) as _i6.Future<List<_i26.NewsBoardModel?>>);
 }

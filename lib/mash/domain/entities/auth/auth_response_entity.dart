@@ -39,23 +39,23 @@ class LoginResTableEntity extends Equatable {
     required this.userType,
   });
 
-  final String studentId;
-  final String admissionNo;
-  final String studentName;
+  final String? studentId;
+  final String? admissionNo;
+  final String? studentName;
   final String compId;
-  final String roleId;
-  final String activeStatus;
+  final String? roleId;
+  final String? activeStatus;
   final String? pwdChangeStatus;
-  final String profilePhoto;
-  final String eMail;
-  final String mobile;
-  final String parentId;
-  final String academicId;
+  final String? profilePhoto;
+  final String? eMail;
+  final String? mobile;
+  final String? parentId;
+  final String? academicId;
   final String? academicYear;
-  final String usrId;
-  final String divisionId;
-  final String classId;
-  final String medium;
+  final String? usrId;
+  final String? divisionId;
+  final String? classId;
+  final String? medium;
   final String userType;
 
   @override

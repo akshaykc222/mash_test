@@ -1,9 +1,5 @@
-
-
 import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/image_view_widget.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -35,19 +31,26 @@ class PostCard extends StatelessWidget {
             leading: CircleAvatar(
               backgroundImage: CachedNetworkImageProvider(profileImage),
             ),
-            title: Text(name,style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),
+            title: Text(
+              name,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+            ),
             subtitle: Row(
               children: [
                 Text(postedTime),
                 spacerWidth6,
-                Icon(Icons.language,size: 13,)
+                Icon(
+                  Icons.language,
+                  size: 13,
+                )
               ],
             ),
           ),
           GestureDetector(
-            onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FullScreenImagePage(
-              imageUrl: postImage,
-            ) )),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => FullScreenImagePage(
+                      imageUrl: postImage,
+                    ))),
             /*child: CachedNetworkImage(
               fit: BoxFit.cover,
               width: double.infinity,
@@ -86,18 +89,18 @@ class PostCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Future<Size> getImageSize(String url) async {
-    Completer<Size> completer = Completer();
-    Image image = Image.network(url);
-    image.image.resolve(ImageConfiguration()).addListener(
-      ImageStreamListener((ImageInfo info, bool _) {
-        completer.complete(Size(
-          info.image.width.toDouble(),
-          info.image.height.toDouble(),
-        ));
-      }),
-    );
-    return completer.future;
-  }
+Future<Size> getImageSize(String url) async {
+  Completer<Size> completer = Completer();
+  Image image = Image.network(url);
+  image.image.resolve(ImageConfiguration()).addListener(
+    ImageStreamListener((ImageInfo info, bool _) {
+      completer.complete(Size(
+        info.image.width.toDouble(),
+        info.image.height.toDouble(),
+      ));
+    }),
+  );
+  return completer.future;
 }
