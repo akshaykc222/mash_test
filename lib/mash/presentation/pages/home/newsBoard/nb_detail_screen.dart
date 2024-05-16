@@ -1,13 +1,14 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
-import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -33,12 +34,14 @@ class NewsBoardDetailScreen extends StatelessWidget {
         color: AppColors.white,
         child: BlocConsumer<DrawerBloc, DrawerState>(
           bloc: BlocProvider.of<DrawerBloc>(context),
+          listenWhen: (previous, current) {
+            print('listened');
+            return current.pdfDownLoadResponse.status == Status.COMPLETED &&
+                previous.pdfDownLoadResponse.status != Status.COMPLETED;
+          },
           listener: (context, state) {
-            if (state.pdfDownLoadResponse.status == Status.COMPLETED) {
-              final path = state.pdfDownLoadResponse.data;
-              GoRouter.of(context)
-                  .pushNamed(AppPages.pdfViewScreen, extra: path);
-            }
+            GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
+                extra: state.pdfDownLoadResponse.data);
           },
           builder: (context, state) => Column(
             mainAxisAlignment: MainAxisAlignment.center,

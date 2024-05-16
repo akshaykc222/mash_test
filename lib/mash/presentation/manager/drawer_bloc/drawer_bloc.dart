@@ -93,7 +93,6 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
             pdfDownloadProgressState: 0,
             pdfDownLoadResponse: ResponseClassify.completed(file.path),
           ));
-          prettyPrint('after emit ${state.pdfDownLoadResponse.data}');
         }
       }
     } on Exception catch (err) {
