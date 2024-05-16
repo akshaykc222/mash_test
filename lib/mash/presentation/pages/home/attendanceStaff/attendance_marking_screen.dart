@@ -43,7 +43,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: commonAppbar(title: AppStrings.attendaceMarking),
+      appBar: commonAppbar(title: AppStrings.attendanceMarking),
       endDrawer: DrawerWidget(),
       body: attendanceMarkingBody(context),
     );

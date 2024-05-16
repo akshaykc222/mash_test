@@ -49,7 +49,6 @@ class AppStrings {
   static const String wordOfTheDay = 'Word Of The Day';
   static const String newsAndArticles = 'News & Articles';
   static const String selectProfile = 'Select Profile';
-  static const String timeTable = 'Time Table';
   static const String notes = 'Notes';
   static const String addNote = 'Add Note';
   static const String createNote = 'Create Note';
@@ -59,8 +58,18 @@ class AppStrings {
   static const String select = 'select';
   static const String appType = '1';
 
+  //time table
+  static const String timeTable = 'Time Table';
+  static const String examTimeTable = 'EXAM TIMETABLE';
+
+
+  //library
+  static const String physicalLibrary = 'PHYSICAL LIBRARY';
+  static const String filter = 'FILTER';
+
+
   //AttendanceMarking
-  static const String attendaceMarking = 'ATTENDANCE MARKING';
+  static const String attendanceMarking = 'ATTENDANCE MARKING';
   static const String academicYear = 'Academic Year';
   static const String academicYearDynamic = '2023-2024';
   static const String classTitle = 'Class';
@@ -117,6 +126,13 @@ class AppStrings {
   static const String requestType = 'Select Request Type';
   static const String remarks = 'Remarks';
   static const String enterRemarks = 'Enter Remarks..';
+
+  //vehicle tracker
+  static const String vehicleTracker = 'SCHOOL BUS TRACKER';
+  static const String time = 'TIME';
+  static const String distance = 'DISTANCE';
+  static const String info = 'INFO';
+  static const String transIncharge = 'TRANSPORTATION INCHARGE';
 
   // Exam
   static const String examLinks = 'EXAM LINKS';

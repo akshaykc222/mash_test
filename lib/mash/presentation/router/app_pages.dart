@@ -25,6 +25,13 @@ class AppPages {
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
 
+
+  //school bus tracker
+  static const vehicleTracker = '/schoolBusTrackerScreen';
+
+  //library
+  static const physicalLibraryScreen = '/physicalLibraryScreen';
+
   // support
   static const supportScreen = '/supportScreen';
 
@@ -53,6 +60,7 @@ class AppPages {
   //timeTable
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
+  static const examTimetableScreen = '/examTimetableScreen';
 
   //suggestion
   static const suggestionMainScreen = '/suggestionMainScreen';

@@ -31,6 +31,7 @@ import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart'
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
@@ -43,10 +44,12 @@ import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_m
 import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_screen.dart';
 import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/exam_timetable_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
+import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import '../../../core/usecase.dart';
@@ -77,7 +80,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.feesAndPaymentScreen, routes: [
+
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
     var getUser = getIt<GetUserInfoUseCase>();
@@ -111,7 +114,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.vehicleTracker, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -356,6 +359,18 @@ class AppRouteManager {
       name: AppPages.paymentHistoryScreen,
       path: AppPages.paymentHistoryScreen,
       builder: (context, state) => const PaymentHistoryScreen(),
+    ),GoRoute(
+      name: AppPages.examTimetableScreen,
+      path: AppPages.examTimetableScreen,
+      builder: (context, state) => const ExamTimeTableScreen(),
+    ),GoRoute(
+      name: AppPages.physicalLibraryScreen,
+      path: AppPages.physicalLibraryScreen,
+      builder: (context, state) => const PhysicalLibraryMainScreen(),
+    ),GoRoute(
+      name: AppPages.vehicleTracker,
+      path: AppPages.vehicleTracker,
+      builder: (context, state) => const VehicleTrackerMainScreen(),
     ),GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,
