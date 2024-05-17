@@ -6,8 +6,9 @@ class AcademicState with _$AcademicState {
     required ResponseClassify classDetails,
     required ResponseClassify divisionDetails,
     required ResponseClassify academicSubjects,
-    required ResponseClassify syllabusTerms,
-    required ResponseClassify syllabus,
+    required ResponseClassify<List<SyllabusTermEntity?>> syllabusTerms,
+    required ResponseClassify<List<SyllabusEntity?>> syllabus,
+    required int selectedTermIndex,
   }) = _AcademicState;
   factory AcademicState.initial() => AcademicState(
         classDetails: ResponseClassify.initial(),
@@ -15,5 +16,6 @@ class AcademicState with _$AcademicState {
         academicSubjects: ResponseClassify.initial(),
         syllabusTerms: ResponseClassify.initial(),
         syllabus: ResponseClassify.initial(),
+        selectedTermIndex: 0,
       );
 }

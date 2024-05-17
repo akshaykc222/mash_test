@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/custom_exception.dart';
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';

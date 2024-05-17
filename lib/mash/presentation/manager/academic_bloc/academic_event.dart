@@ -7,4 +7,6 @@ class AcademicEvent with _$AcademicEvent {
   const factory AcademicEvent.getDivisionDetails() = _GetDevisionDetails;
   const factory AcademicEvent.getSyllabus(String termId) = _GetSyllabus;
   const factory AcademicEvent.getSyllabusTerms() = _GetSyllabusTerms;
+  const factory AcademicEvent.changeSyllabusTermIndex(int index) =
+      _ChangeSyllabusTermIndex;
 }

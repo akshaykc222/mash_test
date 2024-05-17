@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/academic/academic_subjects_model.dart';
 import 'package:mash/mash/data/remote/models/academic/class_details_model.dart';
 import 'package:mash/mash/data/remote/models/academic/division_details_model.dart';
@@ -60,11 +62,16 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
 
   @override
   Future<List<SyllabusModel>> getSyllabus(SyllabusRequest params) async {
-    final data =
-        await apiProvider.post(AppRemoteRoutes.syllabus, params.toJson());
-    final List<dynamic> dataList = data['resTable'];
+    try {
+      final data =
+          await apiProvider.post(AppRemoteRoutes.syllabus, params.toJson());
+      final List<dynamic> dataList = data['resTable'];
 
-    return dataList.map((e) => SyllabusModel.fromJson(e)).toList();
+      return dataList.map((e) => SyllabusModel.fromJson(e)).toList();
+    } on Exception catch (e) {
+      prettyPrint('errror on data source $e');
+      throw Exception(e);
+    }
   }
 
   @override

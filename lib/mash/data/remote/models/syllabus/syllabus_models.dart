@@ -11,7 +11,8 @@ class SyllabusModel extends SyllabusEntity {
     final String subjectId = json['SUBJECT_ID'] ?? '';
     final String subjectName = json['SUB_NAME'] ?? '';
     final String chapterIdString = json['CHAPTER_ID'] ?? '';
-    final String chapterNameString = json['CHAPTER_NM'] ?? '';
+    final List<String> chapterNameString =
+        List<String>.from(json['CHAPTER_NM']).map((e) => e).toList();
 
     return SyllabusModel(
       subjectId: subjectId,

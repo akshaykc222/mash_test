@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
@@ -35,7 +32,6 @@ class NewsBoardDetailScreen extends StatelessWidget {
         child: BlocConsumer<DrawerBloc, DrawerState>(
           bloc: BlocProvider.of<DrawerBloc>(context),
           listenWhen: (previous, current) {
-            print('listened');
             return current.pdfDownLoadResponse.status == Status.COMPLETED &&
                 previous.pdfDownLoadResponse.status != Status.COMPLETED;
           },

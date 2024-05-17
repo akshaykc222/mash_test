@@ -4,7 +4,7 @@ class SyllabusEntity extends Equatable {
   final String? subjectId;
   final String? subjectName;
   final String? chapterIds;
-  final String? chapterNames;
+  final List<String> chapterNames;
 
   const SyllabusEntity({
     required this.subjectId,

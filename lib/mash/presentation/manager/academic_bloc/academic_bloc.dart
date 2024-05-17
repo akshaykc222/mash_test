@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -13,6 +15,8 @@ import 'package:mash/mash/domain/use_cases/academic/get_syllabus_terms_use_case.
 import 'package:mash/mash/domain/use_cases/academic/get_syllabus_use_case.dart';
 
 import '../../../../core/usecase.dart';
+import '../../../domain/entities/syllabus/syllabus_entity.dart';
+import '../../../domain/entities/syllabus/syllabus_term_entity.dart';
 import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'academic_bloc.freezed.dart';
@@ -40,6 +44,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     on<_GetDevisionDetails>(_getDivisionDetails);
     on<_GetSyllabus>(_getSyllabus);
     on<_GetSyllabusTerms>(_getSyllabusTerms);
+    on<_ChangeSyllabusTermIndex>(_changeSyllabusTermIndex);
   }
 
   _getClassDetails(
@@ -163,5 +168,10 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       emit(state.copyWith(syllabusTerms: ResponseClassify.error(e.toString())));
       prettyPrint(e.toString());
     }
+  }
+
+  _changeSyllabusTermIndex(
+      _ChangeSyllabusTermIndex event, Emitter<AcademicState> emit) {
+    emit(state.copyWith(selectedTermIndex: event.index));
   }
 }

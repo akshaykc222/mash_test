@@ -164,8 +164,9 @@ const tNewsBoardModel = NewsBoardModel(
 );
 //-->news board request
 final tNewsBoardRequest = NewsBoardRequest(
-    pCompId: 'pCompId',
-    pUserType: 'usertype',
-    pSearchKey: 'pSearchKey',
-    pOffset: 'pOffset',
-    pLimit: 'pLimit');
+  pCompId: 'pCompId',
+  pUserType: 'usertype',
+  pSearchKey: 'pSearchKey',
+  pOffset: 'pOffset',
+  pLimit: 'pLimit',
+);

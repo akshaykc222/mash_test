@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
@@ -38,7 +39,13 @@ class AcademicRepositoryImpl implements AcademicRepository {
 
   @override
   Future<List<SyllabusEntity?>> getSyllabus(SyllabusRequest params) async {
-    return await academicRemoteDataSource.getSyllabus(params);
+    try {
+      final result = await academicRemoteDataSource.getSyllabus(params);
+      prettyPrint(result.toString());
+      return result;
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   @override

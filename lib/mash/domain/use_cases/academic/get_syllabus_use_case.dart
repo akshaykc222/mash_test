@@ -13,6 +13,7 @@ class GetSyllabusUseCase
   GetSyllabusUseCase({required this.academicRepository});
   @override
   Future<List<SyllabusEntity?>> call(SyllabusRequest params) async {
-    return await academicRepository.getSyllabus(params);
+    final result = await academicRepository.getSyllabus(params);
+    return result;
   }
 }
