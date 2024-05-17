@@ -44,6 +44,8 @@ import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_m
 import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_screen.dart';
 import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
+import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_rating_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/exam_timetable_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -114,7 +116,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.vehicleTracker, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -371,6 +373,14 @@ class AppRouteManager {
       name: AppPages.vehicleTracker,
       path: AppPages.vehicleTracker,
       builder: (context, state) => const VehicleTrackerMainScreen(),
+    ),GoRoute(
+      name: AppPages.teacherRatingListScreen,
+      path: AppPages.teacherRatingListScreen,
+      builder: (context, state) => const TeacherListScreen(),
+    ),GoRoute(
+      name: AppPages.teacherRatingScreen,
+      path: AppPages.teacherRatingScreen,
+      builder: (context, state) => const TeacherRatingScreen(),
     ),GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,

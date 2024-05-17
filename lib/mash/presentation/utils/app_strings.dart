@@ -134,6 +134,11 @@ class AppStrings {
   static const String info = 'INFO';
   static const String transIncharge = 'TRANSPORTATION INCHARGE';
 
+  //teacher list
+  static const String teacherList = 'TEACHERS LIST';
+  static const String  teacherRating = 'TEACHER RATING';
+  static const String enterRemarkTitle = 'Enter Remarks';
+
   // Exam
   static const String examLinks = 'EXAM LINKS';
   static const String toBeRegistered = 'TO BE REGISTERED';

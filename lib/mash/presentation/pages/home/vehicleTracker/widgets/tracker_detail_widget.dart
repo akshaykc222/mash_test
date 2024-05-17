@@ -15,10 +15,6 @@ class TrackerDetailWidget extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: AppColors.purpleLight.withOpacity(0.7),
-        boxShadow: [BoxShadow(
-          color: Colors.grey.withOpacity(0.8),
-          blurRadius: 5.0,
-        ),],
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(

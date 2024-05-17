@@ -14,12 +14,13 @@ class AppPages {
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const userActivity = '/userActivityScreen';
 
-  //quiz
-  static const quizOnBoardScreen = '/quizOnBoardScreen';
-  static const quizGetReadyScreen = '/quizGetReadyScreen';
+
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
+  //quiz
+  static const quizOnBoardScreen = '/quizOnBoardScreen';
+  static const quizGetReadyScreen = '/quizGetReadyScreen';
   static const quizQuestionPage = '/quizQuestionScreen';
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
@@ -66,7 +67,7 @@ class AppPages {
   static const suggestionMainScreen = '/suggestionMainScreen';
   static const suggestionScreen = '/suggestionScreen';
 
-
+  //home work
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
@@ -83,6 +84,11 @@ class AppPages {
   static const viewYearPlanListScreen = '/viewYearPlanListScreen';
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
+
+  //teacher
+  static const teacherRatingListScreen = '/teacherRatingListScreen';
+  static const teacherRatingScreen = '/teacherRatingScreen';
+
 
   static const feedbackScreen = '/feedbackScreen';
   static const idCardRequestScreen = '/idCardRequestScreen';
