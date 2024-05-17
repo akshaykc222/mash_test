@@ -9,10 +9,21 @@ import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/attendanceStaff/class_attendance_mark_screen.dart';
+import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_exam_screen.dart';
+import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/fee_and_payment_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
 import 'package:mash/mash/presentation/pages/home/idCardRequest/id_card_request_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_week_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_year_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/lesson_planner_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_week_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_screen.dart';
+import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
@@ -21,6 +32,7 @@ import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
@@ -29,11 +41,18 @@ import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dar
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_profile.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_ranking_screen.dart';
+import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_box_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/suggestionBox/suggestion_screen.dart';
+import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_screen.dart';
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
+import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
+import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_rating_screen.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/exam_timetable_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
+import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import '../../../core/usecase.dart';
@@ -63,6 +82,7 @@ class AppRouteManager {
       currentIndex: int.parse(state.pathParameters['type']!),
     );
   }
+
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
@@ -97,7 +117,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -330,6 +350,46 @@ class AppRouteManager {
       name: AppPages.idCardRequestScreen,
       path: AppPages.idCardRequestScreen,
       builder: (context, state) => const IdCardRequestScreen(),
+    ),GoRoute(
+      name: AppPages.competitiveExamScreen,
+      path: AppPages.competitiveExamScreen,
+      builder: (context, state) => const CompetitiveExamScreen(),
+    ),GoRoute(
+      name: AppPages.feesAndPaymentScreen,
+      path: AppPages.feesAndPaymentScreen,
+      builder: (context, state) => const FeesAndPaymentMainScreen(),
+    ),GoRoute(
+      name: AppPages.paymentHistoryScreen,
+      path: AppPages.paymentHistoryScreen,
+      builder: (context, state) => const PaymentHistoryScreen(),
+    ),GoRoute(
+      name: AppPages.examTimetableScreen,
+      path: AppPages.examTimetableScreen,
+      builder: (context, state) => const ExamTimeTableScreen(),
+    ),GoRoute(
+      name: AppPages.physicalLibraryScreen,
+      path: AppPages.physicalLibraryScreen,
+      builder: (context, state) => const PhysicalLibraryMainScreen(),
+    ),GoRoute(
+      name: AppPages.vehicleTracker,
+      path: AppPages.vehicleTracker,
+      builder: (context, state) => const VehicleTrackerMainScreen(),
+    ),GoRoute(
+      name: AppPages.teacherRatingListScreen,
+      path: AppPages.teacherRatingListScreen,
+      builder: (context, state) => const TeacherListScreen(),
+    ),GoRoute(
+      name: AppPages.teacherRatingScreen,
+      path: AppPages.teacherRatingScreen,
+      builder: (context, state) => const TeacherRatingScreen(),
+    ),GoRoute(
+      name: AppPages.examDetailScreen,
+      path: AppPages.examDetailScreen,
+      builder: (context, state) {
+        if(state.extra != null){
+          return ExamDetailScreen(isRegistered: state.extra as bool);
+        }
+        return SizedBox();},
     ),
     GoRoute(
       name: AppPages.pdfViewScreen,

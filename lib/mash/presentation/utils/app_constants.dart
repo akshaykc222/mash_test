@@ -8,6 +8,7 @@ import 'app_colors.dart';
 
 class AppConstants {
   static const appName = "MASH";
+  static const ApiKey = 'AIzaSyC31l-Cu9WVeWEgnVHRCE_Ltp8jSURAgRw';
 }
 
 //height
