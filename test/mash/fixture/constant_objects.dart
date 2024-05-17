@@ -1,5 +1,6 @@
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
+import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart';
@@ -7,6 +8,7 @@ import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/models/request/login_request.dart';
 import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
+import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 
 //auth model
 
@@ -169,4 +171,23 @@ final tNewsBoardRequest = NewsBoardRequest(
   pSearchKey: 'pSearchKey',
   pOffset: 'pOffset',
   pLimit: 'pLimit',
+);
+
+/*
+Academics
+*/
+
+//-->>syllabus terms
+const tSyllabusTermsModel = SyllabusTermModel(
+  termId: 'termId',
+  termName: 'termName',
+  fromDate: 'fromDate',
+  toDate: 'toDate',
+);
+//-->>syllabusTerms request
+
+final tSyllabusTermsRequest = SyllabusTermsRequest(
+  compId: '200001',
+  acadId: '87',
+  classId: '152',
 );

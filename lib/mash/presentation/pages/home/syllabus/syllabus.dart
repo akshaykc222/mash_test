@@ -53,17 +53,17 @@ class _SyllabusScreenState extends State<SyllabusScreen> {
           );
         },
         builder: (context, state) {
-          return state.syllabus.status == Status.LOADING
-              ? const Loader()
-              : Column(
-                  children: [
-                    _selectTermTitle(),
-                    spacer10,
-                    _termsField(state),
-                    spacer10,
-                    _syllabusList(state)
-                  ],
-                );
+          return Column(
+            children: [
+              _selectTermTitle(),
+              spacer10,
+              _termsField(state),
+              spacer10,
+              state.syllabus.status == Status.LOADING
+                  ? const Loader()
+                  : _syllabusList(state),
+            ],
+          );
         },
       ),
     );
@@ -118,11 +118,10 @@ class _SyllabusScreenState extends State<SyllabusScreen> {
     final subNameList =
         state.syllabus.data?.map((e) => e?.chapterNames).toList();
     return Expanded(
-      flex: 1,
       child: ListView.separated(
           shrinkWrap: true,
           separatorBuilder: (context, index) {
-            return spacer10;
+            return spacer20;
           },
           itemCount: titleList?.length ?? 0,
           itemBuilder: (context, index) {
@@ -138,54 +137,68 @@ class _SyllabusScreenState extends State<SyllabusScreen> {
       {required int itemCount,
       required String title,
       required List<String> items}) {
-    return SizedBox(
-      height: itemCount * 54 + 50,
-      child: Column(
-        children: [
-          Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
-              )),
-          spacer10,
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: AppColors.primaryColor.withOpacity(0.07),
-              border: Border.all(
-                color: AppColors.white,
-              ),
-            ),
-            child: ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(4),
-              itemBuilder: (context, index) {
-                return Container(
-                    padding: const EdgeInsets.only(left: 15),
-                    height: 50,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(items[index]),
-                    ));
-              },
-              separatorBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Divider(
-                    height: 1,
-                    color: AppColors.white,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8).copyWith(top: 10),
+      decoration: BoxDecoration(
+        color: AppColors.grey200.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: SizedBox(
+        height: itemCount * 54 + 50,
+        child: Column(
+          children: [
+            Align(
+                alignment: Alignment.center,
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-              },
-              itemCount: itemCount,
-            ),
-          )
-        ],
+                )),
+            spacer10,
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColors.primaryColor.withOpacity(0.1),
+                border: Border.all(
+                  color: AppColors.white,
+                ),
+              ),
+              child: ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(4),
+                itemBuilder: (context, index) {
+                  return Container(
+                      padding: const EdgeInsets.only(left: 15),
+                      height: 50,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          items[index],
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.greyText,
+                          ),
+                        ),
+                      ));
+                },
+                separatorBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Divider(
+                      height: 1,
+                      color: AppColors.white,
+                    ),
+                  );
+                },
+                itemCount: itemCount,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

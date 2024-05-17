@@ -13,7 +13,7 @@ void main() {
     expect(tAuthModel, isA<AuthResponseEntity>());
   });
 
-  group('form json and to json', () {
+  group('from json and to json', () {
     test('''Should successfully deserialize a JSON map into a AuthUserModel
           object and ensure that the resulting 
           object matches the expected tAuthUserModel''', () async {

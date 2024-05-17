@@ -32,7 +32,7 @@ void main() {
           .called(1);
     });
     test(
-      'should throw Fetch Data Exception if local data source fails',
+      'should throw Fetch Data Exception if remote data source fails',
       () async {
         // Arrange
         when(mockDrawerMenuItemsRemoteDataSource

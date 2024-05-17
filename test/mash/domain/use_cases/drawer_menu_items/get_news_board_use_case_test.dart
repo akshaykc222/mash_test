@@ -34,7 +34,7 @@ void main() {
   test('should throw fetch exception when repository call fails', () async {
     //Arrange
     final request = tNewsBoardRequest;
-    when(mockDrawerMenuItemsRepository.getNewsBoard(tNewsBoardRequest))
+    when(mockDrawerMenuItemsRepository.getNewsBoard(request))
         .thenThrow(FetchDataException());
 
     //Act
