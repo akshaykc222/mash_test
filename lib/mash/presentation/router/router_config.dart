@@ -30,12 +30,12 @@ import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dar
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
@@ -55,21 +55,12 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
-import '../pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import '../pages/home/home_screen.dart';
-import '../pages/home/lessonPlanner/insert_week_plan_screen.dart';
-import '../pages/home/lessonPlanner/insert_year_plan_screen.dart';
-import '../pages/home/lessonPlanner/lesson_planner_main_screen.dart';
-import '../pages/home/lessonPlanner/view_week_plan_screen.dart';
-import '../pages/home/lessonPlanner/view_year_plan_screen.dart';
-import '../pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
-import '../pages/home/suggestionBox/suggestion_box_main_screen.dart';
-import '../pages/home/suggestionBox/suggestion_screen.dart';
-import '../pages/home/supportScreen/mash_support_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
 

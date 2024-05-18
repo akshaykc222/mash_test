@@ -50,7 +50,7 @@ class FeesAndPaymentsTabs extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.8),
                         blurRadius: 5.0,
                       ),],
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))
+                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 15,),
                   child: Row(
