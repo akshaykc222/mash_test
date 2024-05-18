@@ -26,18 +26,24 @@ class TeacherListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Container(
+    return SizedBox(
       height: size.height,
       width: size.width,
       child: Container(
         margin: const EdgeInsets.only(top: 8.0),
         child: ListView.builder(
-            itemBuilder: (context,index){
-              return  TeacherCardWidget(onTap: ()=> GoRouter.of(context).pushNamed(AppPages.teacherRatingScreen),imageUrl: 'https://placehold.co/600x400.png', teacherName: 'SindhuSindhu', subjectName: 'MUSIC', rating: '4.5',);
+            itemBuilder: (context, index) {
+              return TeacherCardWidget(
+                onTap: () => GoRouter.of(context)
+                    .pushNamed(AppPages.teacherRatingScreen),
+                imageUrl: 'https://placehold.co/600x400.png',
+                teacherName: 'SindhuSindhu',
+                subjectName: 'MUSIC',
+                rating: '4.5',
+              );
             },
             itemCount: 10),
       ),
     );
   }
 }
-
