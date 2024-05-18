@@ -100,6 +100,9 @@ class ChatTile extends StatelessWidget {
       case '2':
         message.pinMessage = true;
         chatBloc.add(ChatEvent.updateMessage(model: message));
+        break;
+      default:
+        break;
     }
   }
 }
