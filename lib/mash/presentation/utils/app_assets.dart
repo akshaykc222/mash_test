@@ -20,6 +20,7 @@ class AppAssets {
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
+  static const noData = 'assets/images/no_data.svg';
 
   //timeTable
   static const dailyTimeTable = 'assets/images/ai_daily.svg';

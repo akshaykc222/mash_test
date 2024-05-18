@@ -14,16 +14,24 @@ class AppPages {
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const userActivity = '/userActivityScreen';
 
-  //quiz
-  static const quizOnBoardScreen = '/quizOnBoardScreen';
-  static const quizGetReadyScreen = '/quizGetReadyScreen';
+
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
+  //quiz
+  static const quizOnBoardScreen = '/quizOnBoardScreen';
+  static const quizGetReadyScreen = '/quizGetReadyScreen';
   static const quizQuestionPage = '/quizQuestionScreen';
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
+
+
+  //school bus tracker
+  static const vehicleTracker = '/schoolBusTrackerScreen';
+
+  //library
+  static const physicalLibraryScreen = '/physicalLibraryScreen';
 
   // support
   static const supportScreen = '/supportScreen';
@@ -53,11 +61,13 @@ class AppPages {
   //timeTable
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
+  static const examTimetableScreen = '/examTimetableScreen';
 
   //suggestion
   static const suggestionMainScreen = '/suggestionMainScreen';
   static const suggestionScreen = '/suggestionScreen';
 
+  //home work
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
@@ -67,7 +77,7 @@ class AppPages {
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';
   static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
 
-  //lesson planner
+ //lesson planner
   static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
   static const insertYearPlanScreen = '/insertYearPlanScreen';
   static const viewYearPlanScreen = '/viewYearPlanScreen';
@@ -75,8 +85,18 @@ class AppPages {
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
 
+  //teacher
+  static const teacherRatingListScreen = '/teacherRatingListScreen';
+  static const teacherRatingScreen = '/teacherRatingScreen';
+
+  // pdf view screen
+  static const pdfViewScreen = '/pdfViewScreen';
+
+
   static const feedbackScreen = '/feedbackScreen';
   static const idCardRequestScreen = '/idCardRequestScreen';
-
-  static const pdfViewScreen = '/pdfViewScreen';
+  static const competitiveExamScreen = '/competitiveExamScreen';
+  static const examDetailScreen = '/examDetailScreen';
+  static const feesAndPaymentScreen = '/feesAndPaymentScreen';
+  static const paymentHistoryScreen = '/paymentHistoryScreen';
 }
