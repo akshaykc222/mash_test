@@ -6,7 +6,11 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../../core/pretty_printer.dart';
 import '../../../../firebase_options.dart';
@@ -49,29 +53,60 @@ class _NewChatState extends State<NewChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'New Chat',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
       body: SafeArea(
         top: true,
         child: ListView(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
           children: [
             GestureDetector(
               onTap: () {
                 GoRouter.of(context).pushReplacementNamed(AppPages.createGroup);
               },
-              child: const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 8.0),
-                    child: Icon(
-                      Icons.add,
-                      size: 25,
-                    ),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.greyClr200,
                   ),
-                  Text(
-                    "Create Group",
-                    style: TextStyle(fontSize: 20),
-                  )
-                ],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        height: 30,
+                        width: 30,
+                        child: assetFromSvg(AppAssets.group),
+                      ),
+                      spacerWidth10,
+                      Text(
+                        "Create Group",
+                        style: TextStyle(
+                          fontSize: SizeConfig.textSize(18),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             ),
             spacer20,
@@ -79,9 +114,13 @@ class _NewChatState extends State<NewChat> {
               padding: EdgeInsets.only(left: 5.0),
               child: Text(
                 "Start a new chat",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                ),
               ),
             ),
+            spacer10,
             userTypeSelectionChat(context: context),
             _usersList()
           ],
@@ -116,6 +155,7 @@ class _NewChatState extends State<NewChat> {
                         chatBloc.add(ChatEvent.addChatRooms(
                             chatRoomName: users[index].studentName,
                             isGroupChat: false,
+                            icon: users[index].profilePhoto,
                             context: context));
                       },
                     );

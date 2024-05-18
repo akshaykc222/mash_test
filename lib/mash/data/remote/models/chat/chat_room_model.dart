@@ -8,7 +8,7 @@ class ChatRoomModel extends Equatable {
   List<String>? admins;
   bool isGroupChat;
   String? owner;
-  final String? icon;
+  String? icon;
   final String? lastMessage;
 
   ChatRoomModel({

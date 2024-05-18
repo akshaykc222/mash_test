@@ -15,6 +15,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 
@@ -44,9 +45,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final ValueNotifier<ChatType> _selectedItem =
-      ValueNotifier(ChatType.personal);
-
   late ChatBloc chatBloc;
   @override
   void initState() {
@@ -58,38 +56,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: ValueListenableBuilder(
-          valueListenable: _selectedItem,
-          builder: (context, data, child) {
-            return BottomNavigationBar(
-              elevation: 10,
-              currentIndex: data.index,
-              selectedFontSize: 14,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              selectedItemColor: AppColors.primaryColor,
-              onTap: (item) {
-                _selectedItem.value = ChatType.values[item];
-              },
-              items: ChatType.values
-                  .map((e) => BottomNavigationBarItem(
-                      label: e.name,
-                      icon: e == ChatType.personal
-                          ? SvgPicture.asset(
-                              AppAssets.messages,
-                              colorFilter: data == ChatType.personal
-                                  ? ColorFilter.mode(
-                                      AppColors.primaryColor, BlendMode.srcIn)
-                                  : null,
-                            )
-                          : SvgPicture.asset(AppAssets.groups,
-                              colorFilter: data == ChatType.group
-                                  ? ColorFilter.mode(
-                                      AppColors.primaryColor, BlendMode.srcIn)
-                                  : null)))
-                  .toList(),
-            );
-          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           GoRouter.of(context).pushNamed(AppPages.newChat);
@@ -101,13 +67,15 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                "Chats",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0)
+                  .copyWith(top: 30),
+              child: const Text(
+                "Messages",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
             ),
+            spacer10,
             BlocBuilder<ChatBloc, ChatState>(
               builder: (context, state) {
                 return Expanded(
@@ -241,11 +209,10 @@ class _UserChatTileState extends State<UserChatTile> {
                     ),
                   ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
                   width: SizeUtility(context).width * 0.15,
                   height: SizeUtility(context).width * 0.15,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(22),
                       color: AppColors.primaryColor.withOpacity(0.5),
                       image: DecorationImage(
                           onError: (
@@ -314,10 +281,6 @@ class _UserChatTileState extends State<UserChatTile> {
                       }),
                 ))
               ],
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50.0),
-              child: Divider(),
             ),
           ],
         ),

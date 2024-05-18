@@ -55,9 +55,10 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
           return AnimatedSharedButton(
             onTap: () {
               chatBloc.add(ChatEvent.addChatRooms(
-                  chatRoomName: _groupNameController.text,
-                  context: context,
-                  isGroupChat: true));
+                chatRoomName: _groupNameController.text,
+                context: context,
+                isGroupChat: true,
+              ));
             },
             title: const Text(
               "Create",

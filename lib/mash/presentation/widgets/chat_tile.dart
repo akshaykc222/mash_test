@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 
 class ChatTile extends StatelessWidget {
@@ -27,15 +28,27 @@ class ChatTile extends StatelessWidget {
                   : Alignment.topRight),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: message.senderId == currentUser.usrId
+                        ? const Radius.circular(0.0)
+                        : const Radius.circular(16.0),
+                    bottomRight: message.senderId == currentUser.usrId
+                        ? const Radius.circular(16.0)
+                        : const Radius.circular(0),
+                    topLeft: const Radius.circular(16.0),
+                    topRight: const Radius.circular(16.0),
+                  ),
                   color: (message.senderId == currentUser.usrId
                       ? Colors.grey.shade200
-                      : Colors.blue[200]),
+                      : AppColors.primaryColor.withOpacity(0.1)),
                 ),
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   message.text,
-                  style: const TextStyle(fontSize: 15),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

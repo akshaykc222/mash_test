@@ -81,7 +81,9 @@ class FirebaseDatabaseMethods {
     prettyPrint("Chat Room Id $chatRoomId");
     return FirebaseFirestore.instance
         .collection("${ChatDbNames.chatRooms}/$chatRoomId/messages")
-        .orderBy('timestamp', descending: true)
+        .orderBy(
+          'timestamp',
+        )
         .snapshots()
         .map((event) {
       return event.docs.map((e) => ChatMessageModel.fromMap(e.data())).toList();

@@ -8,14 +8,18 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
+
+  //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
+  static const userActivity = '/userActivityScreen';
+
+  static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
+  static const noteScreen = '/noteDetailsScreen';
 
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';
-  static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
-  static const noteScreen = '/noteDetailsScreen';
 
   static const quizQuestionPage = '/quizQuestionScreen';
   static const quizCompletedScreen = '/quizCompletedScreen';
@@ -49,6 +53,12 @@ class AppPages {
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
 
+  //suggestion
+  static const suggestionMainScreen = '/suggestionMainScreen';
+  static const suggestionScreen = '/suggestionScreen';
+
+  //home work
+
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
@@ -58,16 +68,13 @@ class AppPages {
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';
   static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
 
- //lesson planner
+  //lesson planner
   static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
   static const insertYearPlanScreen = '/insertYearPlanScreen';
   static const viewYearPlanScreen = '/viewYearPlanScreen';
   static const viewYearPlanListScreen = '/viewYearPlanListScreen';
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
-
-
-
 
   //chats
   static const chatsListScreen = "/chatListScreen";

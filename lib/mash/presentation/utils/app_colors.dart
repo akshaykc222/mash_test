@@ -34,6 +34,7 @@ class AppColors {
   static Color quizhead = HexColor.fromHex('#F5309C');
   static Color violet100 = HexColor.fromHex('#8800FF');
   static Color grey400 = HexColor.fromHex('#F0EAE9');
+  static Color greyClr400 = Colors.grey.shade400;
   static Color textOrangeColor = HexColor.fromHex('#FF6A4D');
   static Color green100 = HexColor.fromHex('#21AD00');
   static Color blue100 = HexColor.fromHex('#009BDE');

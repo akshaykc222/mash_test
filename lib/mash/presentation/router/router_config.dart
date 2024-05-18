@@ -34,8 +34,12 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../../../core/usecase.dart';
+import '../../../di/injector.dart';
+import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/create_group.dart';
 import '../pages/chat/message_screen.dart';
+import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -51,7 +55,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  // static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
   static Future<Widget> navigateByUserType(
       {required Widget staff, required Widget parent, required student}) async {
     var getUser = getIt<GetUserInfoUseCase>();

@@ -28,5 +28,6 @@ class ChatEvent with _$ChatEvent {
   const factory ChatEvent.addChatRooms(
       {required String chatRoomName,
       @Default(true) bool? isGroupChat,
+      String? icon,
       required BuildContext context}) = _AddRooms;
 }
