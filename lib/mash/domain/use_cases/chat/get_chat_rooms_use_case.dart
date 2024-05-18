@@ -4,6 +4,7 @@ import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/domain/repositories/chat_repository.dart';
 
 @singleton
+@injectable
 class GetChatRoomsUseCase extends StreamUseCase<List<ChatRoomModel>, NoParams> {
   final ChatRepository repository;
 

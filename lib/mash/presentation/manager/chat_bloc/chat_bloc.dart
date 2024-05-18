@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
@@ -13,10 +15,14 @@ import 'package:mash/mash/domain/use_cases/chat/get_chat_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/get_group_members_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/get_users_use_case.dart';
 import 'package:mash/mash/domain/use_cases/chat/send_message_use_case.dart';
+import 'package:mash/mash/domain/use_cases/chat/update_message_use_case.dart';
+import 'package:mash/mash/domain/use_cases/chat/update_room_use_case.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/auth/auth_response_entity.dart';
+import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'chat_bloc.freezed.dart';
 part 'chat_event.dart';
@@ -32,7 +38,26 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<_AddRooms>(_createChatRoom);
     on<_SendMessage>(_sendMessage);
     on<_GetMessages>(_getMessage);
+    on<_GetUsers>(_getUsers);
     on<_GetMembersOfGroup>(_getMembersOfGroup);
+    on<_SelectMessage>(_selectMessage);
+    on<_UpdateMessage>(_updateMessage);
+  }
+  _updateMessage(_UpdateMessage event, emit) {
+    // updateMessageUseCase.call(params)
+  }
+  _selectMessage(_SelectMessage event, emit) {
+    // List<ChatMessageModel> selUsers = state.selectedMessagesByUser.toList();
+
+    HapticFeedback.selectionClick();
+    emit(state.copyWith(selectedMessagesByUser: event.message));
+  }
+
+  _getUsers(_GetUsers event, emit) {
+    emit(state.copyWith(
+      selectedType: event.selectedUserType,
+      getUsers: getUsersUseCase.call("${event.selectedUserType.index + 1}"),
+    ));
   }
 
   _getMembersOfGroup(_GetMembersOfGroup event, emit) async {
@@ -51,17 +76,20 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   _getMessage(_GetMessages event, emit) {
     var userChats = getUserChatsUseCase.call(event.room.id);
+
     emit(state.copyWith(
-        selectedChatRoomMessages: userChats, selectedChatRoom: event.room));
+        selectedChatRoomMessages: userChats,
+        selectedChatRoom: event.room,
+        selectedMessagesByUser: null));
   }
 
   _sendMessage(_SendMessage event, emit) {
     sendMessageUseCase.call(event.message);
   }
 
-  _createChatRoom(_AddRooms event, emit) {
+  _createChatRoom(_AddRooms event, emit) async {
     ChatRoomModel? selectedChatRoom = state.copyWith().selectedChatRoom;
-    selectedChatRoom?.isGroupChat = true;
+    selectedChatRoom?.isGroupChat = event.isGroupChat ?? false;
     selectedChatRoom?.name = event.chatRoomName;
 
     ///validating data's
@@ -79,12 +107,19 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       try {
         emit(state.copyWith(
             addGroupResponse: ResponseClassify.completed(
-                createChatRoomUseCase.call(selectedChatRoom!))));
-      } catch (e) {
+                await createChatRoomUseCase.call(selectedChatRoom!))));
+        GoRouter.of(event.context).goNamed(AppPages.messageScreen,
+            extra: state.addGroupResponse?.data);
+      } catch (e, stacktrace) {
         prettyPrint(e.toString());
+        print(stacktrace);
         emit(state.copyWith(
             addGroupResponse: ResponseClassify.error(e.toString())));
       }
+    }
+    if (state.addGroupResponse?.status == Status.ERROR) {
+      ScaffoldMessenger.of(event.context).showSnackBar(
+          SnackBar(content: Text(state.addGroupResponse?.error ?? "")));
     }
   }
 
@@ -123,11 +158,20 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         selectedType: event.selectedUser));
   }
 
-  _getRooms(_GetRooms event, emit) {
+  _getRooms(_GetRooms event, emit) async {
+    // if (state.getChatRooms != null) {
+    LoginResTableEntity? user;
+    if (state.currentUser == null) {
+      user = await getCurrentUser.call(NoParams());
+    } else {
+      user = state.currentUser;
+    }
     emit(state.copyWith(
+        currentUser: user,
         getChatRooms: getChatRoomsUseCase.call(NoParams()),
         selectedType: null,
         selectedChatRoom: null));
+    // }
   }
 
   _createGroupInit(_CreateGroupInit event, emit) {
@@ -150,6 +194,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final getUsersUseCase = getIt<GetUsersUseCase>();
   final sendMessageUseCase = getIt<SendMessageUserCase>();
   final getGroupMembersDetails = getIt<GetUserMembersUseCase>();
+  final getCurrentUser = getIt<GetUserInfoUseCase>();
+  final updateMessageUseCase = getIt<UpdateMessageUseCase>();
+  final updateRoomUseCase = getIt<UpdateRoomUseCase>();
 
   static ChatBloc get(context) => BlocProvider.of(context);
 }

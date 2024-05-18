@@ -5,10 +5,9 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
-import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
+import 'package:mash/mash/presentation/widgets/user_typ_selection.dart';
 
 import '../../../../di/injector.dart';
 import '../../../../firebase_options.dart';
@@ -51,12 +50,14 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BlocConsumer<ChatBloc, ChatState>(
+      bottomNavigationBar: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           return AnimatedSharedButton(
             onTap: () {
               chatBloc.add(ChatEvent.addChatRooms(
-                  chatRoomName: _groupNameController.text, context: context));
+                  chatRoomName: _groupNameController.text,
+                  context: context,
+                  isGroupChat: true));
             },
             title: const Text(
               "Create",
@@ -65,26 +66,6 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
             ),
             isLoading: state.addGroupResponse?.status == Status.LOADING,
           );
-        },
-        listener: (BuildContext context, ChatState state) {
-          switch (state.addGroupResponse?.status) {
-            case null:
-              break;
-            case Status.COMPLETED:
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Group created ")));
-              break;
-            case Status.ERROR:
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.addGroupResponse?.error ?? "")));
-              break;
-            case Status.LOADING:
-            // TODO: Handle this case.
-            case Status.INITIAL:
-            // TODO: Handle this case.
-            case Status.SUCCESS:
-            // TODO: Handle this case.
-          }
         },
       ),
       body: SafeArea(
@@ -120,40 +101,7 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                   )),
-              BlocBuilder<ChatBloc, ChatState>(
-                builder: (context, state) {
-                  return Row(
-                    children: [
-                      ...UserTypes.values.map((e) => Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                chatBloc.add(ChatEvent.changeUserFilter(
-                                    selectedUser: e));
-                              },
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 5, vertical: 5),
-                                decoration: BoxDecoration(
-                                    color: state.selectedType == e
-                                        ? AppColors.green
-                                        : AppColors.primaryColor
-                                            .withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Center(
-                                  child: Text(
-                                    e.name.toUpperCase(),
-                                    style: const TextStyle(fontSize: 16),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ))
-                    ],
-                  );
-                },
-              ),
+              userTypeSelectionChat(context: context),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
@@ -162,47 +110,48 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
                   suffix: const Icon(Icons.search),
                 ),
               ),
-              BlocBuilder<ChatBloc, ChatState>(
-                builder: (context, state) {
-                  prettyPrint("Rebuilding ${state.selectedChatRoom}");
-                  return Expanded(
-                      child: StreamBuilder<List<LoginResTableEntity>>(
-                    stream: state.getUsers,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return const Center(child: Text('No data found...'));
-                      } else {
-                        List<LoginResTableEntity> users = snapshot.data ?? [];
-                        return ListView.builder(
-                          itemCount: users.length,
-                          itemBuilder: (context, index) {
-                            return UserChatTile(
-                              haveSelection: true,
-                              user: users[index],
-                              isAdmin: state.selectedChatRoom?.admins
-                                      ?.contains(users[index].usrId) ==
-                                  true,
-                              selected: state.selectedChatRoom?.members
-                                      ?.contains(users[index].usrId) ==
-                                  true,
-                              onTap: () {
-                                chatBloc.add(
-                                    ChatEvent.selectUser(user: users[index]));
-                              },
-                            );
-                          },
-                        );
-                      }
-                    },
-                  ));
-                },
-              )
+              _userList()
             ],
           ),
         ),
       ),
     );
   }
+
+  _userList() => BlocBuilder<ChatBloc, ChatState>(
+        builder: (context, state) {
+          prettyPrint("Rebuilding ${state.selectedChatRoom}");
+          return Expanded(
+              child: StreamBuilder<List<LoginResTableEntity>>(
+            stream: state.getUsers,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return const Center(child: Text('No data found...'));
+              } else {
+                List<LoginResTableEntity> users = snapshot.data ?? [];
+                return ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (context, index) {
+                    return UserChatTile(
+                      haveSelection: true,
+                      user: users[index],
+                      isAdmin: state.selectedChatRoom?.admins
+                              ?.contains(users[index].usrId) ==
+                          true,
+                      selected: state.selectedChatRoom?.members
+                              ?.contains(users[index].usrId) ==
+                          true,
+                      onTap: () {
+                        chatBloc.add(ChatEvent.selectUser(user: users[index]));
+                      },
+                    );
+                  },
+                );
+              }
+            },
+          ));
+        },
+      );
 }

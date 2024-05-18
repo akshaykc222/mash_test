@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/message_details.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
@@ -13,11 +16,11 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
+import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
-import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_get_ready_screen.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/quiz_onboarding.dart';
@@ -31,6 +34,8 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../pages/chat/create_group.dart';
+import '../pages/chat/message_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -47,6 +52,28 @@ class AppRouteManager {
   }
 
   static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static Future<Widget> navigateByUserType(
+      {required Widget staff, required Widget parent, required student}) async {
+    var getUser = getIt<GetUserInfoUseCase>();
+    var user = await getUser.call(NoParams());
+    if (user == null) {
+      return const LoginScreen();
+    } else {
+      switch (getUserType(user.userType)) {
+        case UserTypes.staff:
+          return staff;
+        case UserTypes.student:
+          return student;
+        case UserTypes.parent:
+          return parent;
+        default:
+          return const SizedBox();
+      }
+    }
+  }
+
+  static GoRouter router =
+      GoRouter(initialLocation: AppPages.chatsListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -210,6 +237,42 @@ class AppRouteManager {
       name: AppPages.weeklyTimetableScreen,
       path: AppPages.weeklyTimetableScreen,
       builder: (context, state) => const WeeklyTimeTable(),
+    ),
+
+    ///chats
+    GoRoute(
+      name: AppPages.chatsListScreen,
+      path: AppPages.chatsListScreen,
+      builder: (context, state) => const ChatScreen(),
+    ),
+    GoRoute(
+      name: AppPages.createGroup,
+      path: AppPages.createGroup,
+      builder: (context, state) => const GroupAddScreen(),
+    ),
+    GoRoute(
+      name: AppPages.groupDetails,
+      path: AppPages.groupDetails,
+      builder: (context, state) => const MessageDetails(),
+    ),
+    GoRoute(
+      name: AppPages.messageScreen,
+      path: AppPages.messageScreen,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return MessagesScreen(
+            model: state.extra as ChatRoomModel,
+          );
+        }
+        return const Placeholder();
+      },
+    ),
+    GoRoute(
+      name: AppPages.newChat,
+      path: AppPages.newChat,
+      builder: (context, state) {
+        return const NewChat();
+      },
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

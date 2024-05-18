@@ -8,6 +8,7 @@ import 'package:mash/mash/presentation/pages/home/library/library_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/time_table_main_screen.dart';
 // import 'package:mash/mash/presentation/pages/h/ome/timeTable/time_table.screen.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
+
 import '../../manager/cubit/bottom_navigation_cubit.dart';
 import '../../utils/app_theme.dart';
 
@@ -30,6 +31,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Widget getWidget = await  AppRouteManager.navigateByUserType(staff: staff, parent: parent, student: student)
     const screens = [
       ParentDashBoard(),
       TimeTableScreen(),

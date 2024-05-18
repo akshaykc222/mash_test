@@ -5,13 +5,13 @@ import 'package:mash/mash/domain/repositories/chat_repository.dart';
 
 @injectable
 @singleton
-class AddChatRoomUseCase extends UseCase<ChatRoomModel, ChatRoomModel> {
+class UpdateRoomUseCase extends UseCase<void, ChatRoomModel> {
   final ChatRepository repository;
 
-  AddChatRoomUseCase(this.repository);
+  UpdateRoomUseCase(this.repository);
 
   @override
-  Future<ChatRoomModel> call(ChatRoomModel params) {
-    return repository.addChatRoom(params);
+  Future<void> call(ChatRoomModel params) {
+    return repository.updateRoom(params);
   }
 }

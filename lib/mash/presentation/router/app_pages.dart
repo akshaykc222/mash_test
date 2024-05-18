@@ -8,11 +8,8 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
-
-  //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
-  static const userActivity = '/userActivityScreen';
 
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
@@ -24,9 +21,6 @@ class AppPages {
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
-
-  // support
-  static const supportScreen = '/supportScreen';
 
   //leave
   static const leaveScreen = '/leaveScreen';
@@ -51,13 +45,9 @@ class AppPages {
   static const noticeBoardDetailScreen = '/noticeDetailScreen';
 
   //timeTable
+
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
-
-  //suggestion
-  static const suggestionMainScreen = '/suggestionMainScreen';
-  static const suggestionScreen = '/suggestionScreen';
-
 
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
@@ -79,4 +69,10 @@ class AppPages {
 
 
 
+  //chats
+  static const chatsListScreen = "/chatListScreen";
+  static const messageScreen = "/messageScreen";
+  static const createGroup = "/createGroup";
+  static const groupDetails = "/groupDetails";
+  static const newChat = "/newChat";
 }

@@ -69,6 +69,7 @@ class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
     ]);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
+    print(periods.map((e) => e.toJson()));
     super.initState();
   }
 
@@ -351,4 +352,16 @@ class PeriodModel {
             "if is period is true don't enter day"),
         assert(isPeriod == true || day != null,
             "if not a period day must be entered ");
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'isPeriod': isPeriod,
+      'startTime': startTime.toIso8601String(),
+      'endTime': endTime.toIso8601String(),
+      'day': day?.name,
+      'teacher': teacher,
+      'isBreak': isBreak,
+    };
+  }
 }

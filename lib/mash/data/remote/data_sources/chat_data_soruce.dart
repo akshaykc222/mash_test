@@ -2,19 +2,23 @@ import 'dart:async';
 
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/firebase_database.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 
+import '../../../../core/custom_exception.dart';
 import '../../../../core/hive_service.dart';
 import '../models/chat/chat_message_model.dart';
 
 abstract class ChatDataSource {
-  Future<void> addChatRoom(ChatRoomModel chatRoom);
+  Future<ChatRoomModel> addChatRoom(ChatRoomModel chatRoom);
   Future<void> sendMessage(ChatMessageModel chatRoom);
   Stream<List<ChatRoomModel>> getChatRooms();
+  Future<void> updateRoom(ChatRoomModel room);
+  Future<void> updateMessage(ChatMessageModel message);
   Stream<List<ChatMessageModel>> getChatRoomMessages(String chatRoomId);
   Stream<List<LoginResTableEntity>> getUsers(String role);
   Future<List<LoginResTableEntity>> getUsersOfGroups(List<String> members);
@@ -29,8 +33,24 @@ class ChatDataSourceImpl extends ChatDataSource {
   ChatDataSourceImpl(this.firebaseDatabase, this.hiveService);
 
   @override
-  Future<void> addChatRoom(ChatRoomModel chatRoom) async {
-    await firebaseDatabase.addChatRoom(chatRoom.toMap(), chatRoom.id);
+  Future<ChatRoomModel> addChatRoom(ChatRoomModel chatRoom) async {
+    prettyPrint(" init ${chatRoom.members.toString()}");
+    List<LoginLocalModel> user =
+        await hiveService.getBoxes<LoginLocalModel>(LocalStorageNames.userInfo);
+    if (user.isEmpty) {
+      throw UnauthorisedException();
+    }
+
+    chatRoom.owner = user.first.usrId;
+    // if (!(chatRoom.members!.contains(chatRoom.owner) == true)) {
+    chatRoom.members?.add(chatRoom.owner ?? "");
+    prettyPrint(chatRoom.members.toString());
+    // }
+
+    chatRoom.members?.removeWhere((element) => element == "");
+    return await firebaseDatabase.addChatRoom(
+      chatRoom,
+    );
   }
 
   @override
@@ -50,16 +70,18 @@ class ChatDataSourceImpl extends ChatDataSource {
     hiveService
         .getBoxes<LoginLocalModel>(LocalStorageNames.userInfo)
         .then((user) {
-      // if (user.isEmpty) {
-      // controller
-      //     .addError(UnauthorisedException("User not found in local db"));
-      // } else {
-      firebaseDatabase.getUserChats("MGS1000152").listen((chats) {
-        controller.add(chats);
-      }, onError: (error) {
-        controller.addError(error);
-      });
-      // }
+      prettyPrint("user $user");
+      if (user.isEmpty) {
+        controller
+            .addError(UnauthorisedException("User not found in local db"));
+      } else {
+        prettyPrint("getting chats of ${user.first.usrId}");
+        firebaseDatabase.getUserChats(user.first.usrId).listen((chats) {
+          controller.add(chats);
+        }, onError: (error) {
+          controller.addError(error);
+        });
+      }
     }).catchError((error) {
       controller.addError(error);
     });
@@ -77,5 +99,15 @@ class ChatDataSourceImpl extends ChatDataSource {
       List<String> members) async {
     final data = await firebaseDatabase.getMembers(members);
     return data.docs.map((e) => LoginResTableModel.fromJson(e.data())).toList();
+  }
+
+  @override
+  Future<void> updateMessage(ChatMessageModel message) {
+    return firebaseDatabase.updateMessage(message);
+  }
+
+  @override
+  Future<void> updateRoom(ChatRoomModel room) {
+    return firebaseDatabase.updateRoom(room);
   }
 }
