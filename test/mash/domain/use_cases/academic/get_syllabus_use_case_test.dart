@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/core/custom_exception.dart';
-import 'package:mash/mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_syllabus_use_case.dart';
 import 'package:mockito/mockito.dart';
 
@@ -50,6 +49,7 @@ void main() {
 
     // Act
     final result = await getSyllabusUseCase.call(tSyllabusRequest);
+
     // Assert
     expect(result, []);
   });

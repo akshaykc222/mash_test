@@ -84,6 +84,7 @@ class AppAssets {
   static const uploadIcon = 'assets/icons/upload.svg';
   static const downloadIcon = 'assets/icons/download.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
+  static const noticeIcon = 'assets/icons/notice.svg';
 
   static var tcApply = "";
 

@@ -74,7 +74,6 @@ class AppRouteManager {
     );
   }
 
-
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
     var getUser = getIt<GetUserInfoUseCase>();
@@ -108,7 +107,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -341,46 +340,56 @@ class AppRouteManager {
       name: AppPages.idCardRequestScreen,
       path: AppPages.idCardRequestScreen,
       builder: (context, state) => const IdCardRequestScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.competitiveExamScreen,
       path: AppPages.competitiveExamScreen,
       builder: (context, state) => const CompetitiveExamScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
       builder: (context, state) => const FeesAndPaymentMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.paymentHistoryScreen,
       path: AppPages.paymentHistoryScreen,
       builder: (context, state) => const PaymentHistoryScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.examTimetableScreen,
       path: AppPages.examTimetableScreen,
       builder: (context, state) => const ExamTimeTableScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.physicalLibraryScreen,
       path: AppPages.physicalLibraryScreen,
       builder: (context, state) => const PhysicalLibraryMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.vehicleTracker,
       path: AppPages.vehicleTracker,
       builder: (context, state) => const VehicleTrackerMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.teacherRatingListScreen,
       path: AppPages.teacherRatingListScreen,
       builder: (context, state) => const TeacherListScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.teacherRatingScreen,
       path: AppPages.teacherRatingScreen,
       builder: (context, state) => const TeacherRatingScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,
       builder: (context, state) {
-        if(state.extra != null){
+        if (state.extra != null) {
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
-        return SizedBox();},
+        return SizedBox();
+      },
     ),
     GoRoute(
       name: AppPages.pdfViewScreen,
