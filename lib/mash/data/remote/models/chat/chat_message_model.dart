@@ -1,15 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-class ChatMessageModel {
+class ChatMessageModel extends Equatable {
   final String id;
   final String roomId;
   final String senderId;
   final String text;
   final DateTime timestamp;
   final List<String>? seenUsers;
-  final bool? pinMessage;
-  final String? hasReply;
-  final bool? star;
+  bool? pinMessage;
+  String? hasReply;
+  bool? star;
 
   ChatMessageModel({
     required this.id,
@@ -50,4 +51,8 @@ class ChatMessageModel {
       'roomId': roomId
     };
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id, text, timestamp];
 }

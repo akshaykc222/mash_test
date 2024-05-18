@@ -30,34 +30,36 @@ import '../mash/data/remote/data_sources/dashboard_remote_data_source.dart'
 import '../mash/data/remote/data_sources/notice_remote_data_source.dart'
     as _i16;
 import '../mash/data/repositories/academic_repository_impl.dart' as _i18;
-import '../mash/data/repositories/auth_repository_impl.dart' as _i33;
+import '../mash/data/repositories/auth_repository_impl.dart' as _i35;
 import '../mash/data/repositories/chat_repository_impl.dart' as _i10;
-import '../mash/data/repositories/dash_board_repository_impl.dart' as _i31;
-import '../mash/data/repositories/notice_repository_impl.dart' as _i29;
+import '../mash/data/repositories/dash_board_repository_impl.dart' as _i33;
+import '../mash/data/repositories/notice_repository_impl.dart' as _i31;
 import '../mash/domain/repositories/academic_repository.dart' as _i17;
-import '../mash/domain/repositories/auth_repository.dart' as _i32;
+import '../mash/domain/repositories/auth_repository.dart' as _i34;
 import '../mash/domain/repositories/chat_repository.dart' as _i9;
-import '../mash/domain/repositories/dash_board_repository.dart' as _i30;
-import '../mash/domain/repositories/notice_repository.dart' as _i28;
+import '../mash/domain/repositories/dash_board_repository.dart' as _i32;
+import '../mash/domain/repositories/notice_repository.dart' as _i30;
 import '../mash/domain/use_cases/academic/get_class_details_usecase.dart'
-    as _i27;
-import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i40;
-import '../mash/domain/use_cases/auth/login_use_case.dart' as _i38;
-import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i41;
-import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i39;
+    as _i29;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i42;
+import '../mash/domain/use_cases/auth/login_use_case.dart' as _i40;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i43;
+import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i41;
 import '../mash/domain/use_cases/chat/add_chat_room_use_case.dart' as _i23;
 import '../mash/domain/use_cases/chat/get_chat_rooms_use_case.dart' as _i21;
 import '../mash/domain/use_cases/chat/get_chat_use_case.dart' as _i24;
 import '../mash/domain/use_cases/chat/get_group_members_use_case.dart' as _i25;
 import '../mash/domain/use_cases/chat/get_users_use_case.dart' as _i26;
 import '../mash/domain/use_cases/chat/send_message_use_case.dart' as _i22;
+import '../mash/domain/use_cases/chat/update_message_use_case.dart' as _i27;
+import '../mash/domain/use_cases/chat/update_room_use_case.dart' as _i28;
 import '../mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart'
-    as _i34;
-import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i35;
+    as _i36;
+import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i37;
 import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
 import '../mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart'
-    as _i36;
-import '../mash/presentation/manager/notice_bloc/notice_bloc.dart' as _i37;
+    as _i38;
+import '../mash/presentation/manager/notice_bloc/notice_bloc.dart' as _i39;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -114,36 +116,40 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i25.GetUserMembersUseCase(gh<_i9.ChatRepository>()));
     gh.factory<_i26.GetUsersUseCase>(
         () => _i26.GetUsersUseCase(gh<_i9.ChatRepository>()));
-    gh.factory<_i27.GetClassInforUseCase>(
-        () => _i27.GetClassInforUseCase(gh<_i17.AcademicRepostory>()));
-    gh.lazySingleton<_i28.NoticeRepository>(() => _i29.NoticeRepositoryImple(
+    gh.factory<_i27.UpdateMessageUseCase>(
+        () => _i27.UpdateMessageUseCase(gh<_i9.ChatRepository>()));
+    gh.factory<_i28.UpdateRoomUseCase>(
+        () => _i28.UpdateRoomUseCase(gh<_i9.ChatRepository>()));
+    gh.factory<_i29.GetClassInforUseCase>(
+        () => _i29.GetClassInforUseCase(gh<_i17.AcademicRepostory>()));
+    gh.lazySingleton<_i30.NoticeRepository>(() => _i31.NoticeRepositoryImple(
         noticeRemoteDataSource: gh<_i16.NoticeRemoteDataSource>()));
-    gh.lazySingleton<_i30.DashBoardRepository>(() => _i31.DashBoardRepoImpl(
+    gh.lazySingleton<_i32.DashBoardRepository>(() => _i33.DashBoardRepoImpl(
           gh<_i11.DashBoardRemoteDataSource>(),
           gh<_i13.ConnectionChecker>(),
           gh<_i19.DashBoardLocalDataSource>(),
         ));
-    gh.lazySingleton<_i32.AuthRepository>(() => _i33.AuthRepositoryImpl(
+    gh.lazySingleton<_i34.AuthRepository>(() => _i35.AuthRepositoryImpl(
           gh<_i13.ConnectionChecker>(),
           authRemoteDataSource: gh<_i15.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i12.AuthLocalDataSource>(),
         ));
-    gh.factory<_i34.FetchWordThoughtUseCase>(
-        () => _i34.FetchWordThoughtUseCase(gh<_i30.DashBoardRepository>()));
-    gh.factory<_i35.GetNoticeBoardPopUp>(
-        () => _i35.GetNoticeBoardPopUp(gh<_i28.NoticeRepository>()));
-    gh.factory<_i36.DashboardBloc>(
-        () => _i36.DashboardBloc(gh<_i34.FetchWordThoughtUseCase>()));
-    gh.factory<_i37.NoticeBloc>(
-        () => _i37.NoticeBloc(gh<_i35.GetNoticeBoardPopUp>()));
-    gh.factory<_i38.LoginUseCase>(
-        () => _i38.LoginUseCase(gh<_i32.AuthRepository>()));
-    gh.singleton<_i39.SignOutUseCase>(
-        () => _i39.SignOutUseCase(gh<_i32.AuthRepository>()));
-    gh.lazySingleton<_i40.GetUserInfoUseCase>(
-        () => _i40.GetUserInfoUseCase(gh<_i32.AuthRepository>()));
-    gh.lazySingleton<_i41.SaveUserInfoUseCase>(
-        () => _i41.SaveUserInfoUseCase(gh<_i32.AuthRepository>()));
+    gh.factory<_i36.FetchWordThoughtUseCase>(
+        () => _i36.FetchWordThoughtUseCase(gh<_i32.DashBoardRepository>()));
+    gh.factory<_i37.GetNoticeBoardPopUp>(
+        () => _i37.GetNoticeBoardPopUp(gh<_i30.NoticeRepository>()));
+    gh.factory<_i38.DashboardBloc>(
+        () => _i38.DashboardBloc(gh<_i36.FetchWordThoughtUseCase>()));
+    gh.factory<_i39.NoticeBloc>(
+        () => _i39.NoticeBloc(gh<_i37.GetNoticeBoardPopUp>()));
+    gh.factory<_i40.LoginUseCase>(
+        () => _i40.LoginUseCase(gh<_i34.AuthRepository>()));
+    gh.singleton<_i41.SignOutUseCase>(
+        () => _i41.SignOutUseCase(gh<_i34.AuthRepository>()));
+    gh.lazySingleton<_i42.GetUserInfoUseCase>(
+        () => _i42.GetUserInfoUseCase(gh<_i34.AuthRepository>()));
+    gh.lazySingleton<_i43.SaveUserInfoUseCase>(
+        () => _i43.SaveUserInfoUseCase(gh<_i34.AuthRepository>()));
     return this;
   }
 }

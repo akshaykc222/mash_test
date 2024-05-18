@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
@@ -90,7 +91,10 @@ class _ChatScreenState extends State<ChatScreen> {
             );
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          GoRouter.of(context).pushNamed(AppPages.newChat);
+        },
+        child: const Icon(LineIcons.facebookMessenger),
       ),
       body: SafeArea(
         top: true,
@@ -119,33 +123,37 @@ class _ChatScreenState extends State<ChatScreen> {
                               'No data found... ${snapshot.error.toString()}'));
                     } else {
                       List<ChatRoomModel> chats = snapshot.data ?? [];
-                      return ListView.builder(
-                        itemCount: chats.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
-                            child: ListTile(
-                              onTap: () {
-                                GoRouter.of(context).pushNamed(
-                                    AppPages.messageScreen,
-                                    extra: chats[index]);
+                      return chats.isEmpty
+                          ? const Center(
+                              child: Text("No Chats..."),
+                            )
+                          : ListView.builder(
+                              itemCount: chats.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: ListTile(
+                                    onTap: () {
+                                      GoRouter.of(context).pushNamed(
+                                          AppPages.messageScreen,
+                                          extra: chats[index]);
+                                    },
+                                    leading: Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      width: SizeUtility(context).width * 0.15,
+                                      height: SizeUtility(context).width * 0.15,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.primaryColor
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
+                                    title: Text(chats[index].name),
+                                  ),
+                                );
                               },
-                              leading: Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                width: SizeUtility(context).width * 0.15,
-                                height: SizeUtility(context).width * 0.15,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      AppColors.primaryColor.withOpacity(0.5),
-                                ),
-                              ),
-                              title: Text(chats[index].name),
-                            ),
-                          );
-                        },
-                      );
+                            );
                     }
                   },
                 ));
@@ -273,7 +281,7 @@ class _UserChatTileState extends State<UserChatTile> {
                               ),
                             ),
                             if (getUserType(widget.user.userType) ==
-                                    UserTypes.student &&
+                                    UserTypes.staff &&
                                 widget.isFromList != true)
                               GestureDetector(
                                 onTap: () {

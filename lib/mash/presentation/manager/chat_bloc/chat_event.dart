@@ -4,6 +4,13 @@ part of 'chat_bloc.dart';
 class ChatEvent with _$ChatEvent {
   const factory ChatEvent.started() = _Started;
   const factory ChatEvent.getChatRooms() = _GetRooms;
+  const factory ChatEvent.updateRoom({required ChatRoomModel model}) =
+      _UpdateRoom;
+  const factory ChatEvent.updateMessage({required ChatMessageModel model}) =
+      _UpdateMessage;
+  const factory ChatEvent.selectMessage({required ChatMessageModel message}) =
+      _SelectMessage;
+
   const factory ChatEvent.getUsers({required UserTypes selectedUserType}) =
       _GetUsers;
   const factory ChatEvent.getMembersOfGroup() = _GetMembersOfGroup;
@@ -20,5 +27,6 @@ class ChatEvent with _$ChatEvent {
       _ChangeUserFilter;
   const factory ChatEvent.addChatRooms(
       {required String chatRoomName,
+      @Default(true) bool? isGroupChat,
       required BuildContext context}) = _AddRooms;
 }

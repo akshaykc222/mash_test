@@ -11,7 +11,6 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import '../../../../core/pretty_printer.dart';
 import '../../../../firebase_options.dart';
 import '../../../domain/entities/auth/auth_response_entity.dart';
-import '../../utils/enums.dart';
 import '../../widgets/user_typ_selection.dart';
 import 'chat_screen.dart';
 
@@ -43,7 +42,7 @@ class _NewChatState extends State<NewChat> {
   @override
   void initState() {
     chatBloc = ChatBloc.get(context);
-    chatBloc.add(const ChatEvent.getUsers(selectedUserType: UserTypes.student));
+    chatBloc.add(const ChatEvent.createGroupInit());
     super.initState();
   }
 
@@ -55,32 +54,32 @@ class _NewChatState extends State<NewChat> {
         child: ListView(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Icon(
-                    Icons.add,
-                    size: 25,
+            GestureDetector(
+              onTap: () {
+                GoRouter.of(context).pushReplacementNamed(AppPages.createGroup);
+              },
+              child: const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: Icon(
+                      Icons.add,
+                      size: 25,
+                    ),
                   ),
-                ),
-                Text(
-                  "Create Group",
-                  style: TextStyle(fontSize: 20),
-                )
-              ],
+                  Text(
+                    "Create Group",
+                    style: TextStyle(fontSize: 20),
+                  )
+                ],
+              ),
             ),
             spacer20,
-            InkWell(
-              onTap: () {
-                GoRouter.of(context).pushNamed(AppPages.createGroup);
-              },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "Start a new chat",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+            const Padding(
+              padding: EdgeInsets.only(left: 5.0),
+              child: Text(
+                "Start a new chat",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
             userTypeSelectionChat(context: context),
@@ -112,14 +111,12 @@ class _NewChatState extends State<NewChat> {
                       haveSelection: true,
                       user: users[index],
                       isFromList: true,
-                      isAdmin: state.selectedChatRoom?.admins
-                              ?.contains(users[index].usrId) ==
-                          true,
-                      selected: state.selectedChatRoom?.members
-                              ?.contains(users[index].usrId) ==
-                          true,
                       onTap: () {
                         chatBloc.add(ChatEvent.selectUser(user: users[index]));
+                        chatBloc.add(ChatEvent.addChatRooms(
+                            chatRoomName: users[index].studentName,
+                            isGroupChat: false,
+                            context: context));
                       },
                     );
                   },

@@ -7,27 +7,32 @@ class ChatRoomModel extends Equatable {
   List<String>? members;
   List<String>? admins;
   bool isGroupChat;
+  String? owner;
   final String? icon;
+  final String? lastMessage;
 
   ChatRoomModel({
     required this.id,
     required this.name,
     this.icon,
     this.admins,
+    this.owner,
+    this.lastMessage,
     this.members,
     required this.isGroupChat,
   });
 
-  factory ChatRoomModel.fromMap(QueryDocumentSnapshot<Map<String, dynamic>> e) {
-    var map = e.data();
+  factory ChatRoomModel.fromMap(DocumentSnapshot<Map<String, dynamic>> e) {
+    var map = e.data() as Map<String, dynamic>;
     return ChatRoomModel(
-      id: e.id,
-      name: map['name'] ?? '',
-      icon: map['icon'],
-      members: List<String>.from(map['members'] ?? []),
-      isGroupChat: map['isGroupChat'] ?? false,
-      admins: List<String>.from(map['admins'] ?? []),
-    );
+        id: e.id,
+        name: map['name'] ?? '',
+        icon: map['icon'],
+        owner: map['owner'],
+        members: List<String>.from(map['members'] ?? []),
+        isGroupChat: map['isGroupChat'] ?? false,
+        admins: List<String>.from(map['admins'] ?? []),
+        lastMessage: map['lastMessage']);
   }
 
   Map<String, dynamic> toMap() {
@@ -37,11 +42,12 @@ class ChatRoomModel extends Equatable {
       'members': members,
       'isGroupChat': isGroupChat,
       'admins': admins,
-      'icon': icon
+      'owner': owner,
+      'icon': icon,
+      'lastMessage': lastMessage
     };
   }
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [id, admins?.length, members?.length];
+  List<Object?> get props => [name, id, owner];
 }

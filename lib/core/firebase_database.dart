@@ -54,12 +54,27 @@ class FirebaseDatabaseMethods {
         .get();
   }
 
-  Future<void> addChatRoom(chatRoom, chatRoomId) async {
-    FirebaseFirestore.instance
+  Future<ChatRoomModel> addChatRoom(
+    ChatRoomModel chatRoom,
+  ) async {
+    var check = await FirebaseFirestore.instance
         .collection(ChatDbNames.chatRooms)
-        .doc()
-        .set(chatRoom)
-        .catchError((e) {});
+        .where("isGroupChat", isEqualTo: false)
+        .where("owner", isEqualTo: chatRoom.owner)
+        .where("members", arrayContains: chatRoom.members)
+        .get();
+
+    if (check.size > 0) {
+      return ChatRoomModel.fromMap(check.docs.first);
+    } else {
+      DocumentReference docRef =
+          FirebaseFirestore.instance.collection(ChatDbNames.chatRooms).doc();
+
+      docRef.set(chatRoom.toMap());
+      var d = (await docRef.get()) as DocumentSnapshot<Map<String, dynamic>>;
+
+      return ChatRoomModel.fromMap(d);
+    }
   }
 
   Stream<List<ChatMessageModel>> getChats(String chatRoomId) {
@@ -79,6 +94,22 @@ class FirebaseDatabaseMethods {
         .collection(ChatDbNames.users)
         .where("USR_ID", whereIn: members)
         .get();
+  }
+
+  Future<void> updateMessage(ChatMessageModel message) async {
+    FirebaseFirestore.instance
+        .collection(ChatDbNames.chatRooms)
+        .doc(message.roomId)
+        .collection(ChatDbNames.chats)
+        .doc(message.id)
+        .set(message.toMap());
+  }
+
+  Future<void> updateRoom(ChatRoomModel room) async {
+    FirebaseFirestore.instance
+        .collection(ChatDbNames.chatRooms)
+        .doc(room.id)
+        .set(room.toMap());
   }
 
   Future<void> addMessage(String chatRoomId, chatMessageData) async {

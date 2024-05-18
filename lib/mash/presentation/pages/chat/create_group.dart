@@ -50,12 +50,14 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BlocConsumer<ChatBloc, ChatState>(
+      bottomNavigationBar: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
           return AnimatedSharedButton(
             onTap: () {
               chatBloc.add(ChatEvent.addChatRooms(
-                  chatRoomName: _groupNameController.text, context: context));
+                  chatRoomName: _groupNameController.text,
+                  context: context,
+                  isGroupChat: true));
             },
             title: const Text(
               "Create",
@@ -64,26 +66,6 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
             ),
             isLoading: state.addGroupResponse?.status == Status.LOADING,
           );
-        },
-        listener: (BuildContext context, ChatState state) {
-          switch (state.addGroupResponse?.status) {
-            case null:
-              break;
-            case Status.COMPLETED:
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Group created ")));
-              break;
-            case Status.ERROR:
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.addGroupResponse?.error ?? "")));
-              break;
-            case Status.LOADING:
-            // TODO: Handle this case.
-            case Status.INITIAL:
-            // TODO: Handle this case.
-            case Status.SUCCESS:
-            // TODO: Handle this case.
-          }
         },
       ),
       body: SafeArea(

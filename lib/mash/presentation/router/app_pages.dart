@@ -59,4 +59,5 @@ class AppPages {
   static const messageScreen = "/messageScreen";
   static const createGroup = "/createGroup";
   static const groupDetails = "/groupDetails";
+  static const newChat = "/newChat";
 }

@@ -13,7 +13,7 @@ class ChatRepositoryImpl extends ChatRepository {
   ChatRepositoryImpl(this.dataSource);
 
   @override
-  Future<void> addChatRoom(ChatRoomModel roomModel) {
+  Future<ChatRoomModel> addChatRoom(ChatRoomModel roomModel) {
     return dataSource.addChatRoom(roomModel);
   }
 
@@ -40,5 +40,15 @@ class ChatRepositoryImpl extends ChatRepository {
   @override
   Future<List<LoginResTableEntity>> getUsersOfGroups(List<String> members) {
     return dataSource.getUsersOfGroups(members);
+  }
+
+  @override
+  Future<void> updateMessage(ChatMessageModel message) {
+    return dataSource.updateMessage(message);
+  }
+
+  @override
+  Future<void> updateRoom(ChatRoomModel room) {
+    return dataSource.updateRoom(room);
   }
 }

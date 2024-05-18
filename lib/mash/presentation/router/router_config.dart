@@ -10,6 +10,7 @@ import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
 import 'package:mash/mash/presentation/pages/chat/message_details.dart';
+import 'package:mash/mash/presentation/pages/chat/new_chat.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
@@ -269,6 +270,13 @@ class AppRouteManager {
           );
         }
         return const Placeholder();
+      },
+    ),
+    GoRoute(
+      name: AppPages.newChat,
+      path: AppPages.newChat,
+      builder: (context, state) {
+        return const NewChat();
       },
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)

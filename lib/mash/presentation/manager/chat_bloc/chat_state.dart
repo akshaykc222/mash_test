@@ -8,7 +8,9 @@ class ChatState with _$ChatState {
       Stream<List<ChatMessageModel>>? selectedChatRoomMessages,
       Stream<List<LoginResTableEntity>>? getUsers,
       Stream<List<ChatRoomModel>>? getChatRooms,
-      ResponseClassify<void>? addGroupResponse,
+      LoginResTableEntity? currentUser,
+      ChatMessageModel? selectedMessagesByUser,
+      ResponseClassify<ChatRoomModel>? addGroupResponse,
       UserTypes? selectedType}) = _ChatState;
   factory ChatState.initial() => const ChatState();
   factory ChatState.addGroupInit() => ChatState(
