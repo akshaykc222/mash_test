@@ -60,4 +60,42 @@ void main() {
           throwsA(isA<FetchDataException>()));
     });
   });
+  group('getSyllabus', () {
+    test('should perform a POST request to the correct url', () async {
+      // Arrange
+      const expectedUrl = AppRemoteRoutes.syllabus;
+      final Map<String, dynamic> syllabusTermJson =
+          json.decode(fixture('academic/syllabus/syllabus_response.json'));
+      final fakeResponse = {
+        "statusCode": 200,
+        "statusMessage": "SUCCESS",
+        "resTable": [
+          syllabusTermJson,
+        ]
+      };
+
+      when(mockApiProvider.post(expectedUrl, tSyllabusRequest.toJson()))
+          .thenAnswer((_) async => fakeResponse);
+
+      // Act
+      final result =
+          await academicRemoteDataSourceImpl.getSyllabus(tSyllabusRequest);
+
+      // Assert
+      expect(result, [tSyllabusModel]);
+    });
+
+    test('should throw a FetchDataException on non-200 status code', () async {
+      // Arrange
+      const expectedUrl = AppRemoteRoutes.syllabus;
+      when(mockApiProvider.post(expectedUrl, tSyllabusRequest.toJson()))
+          .thenThrow(Exception('test error found'));
+
+      // Act
+      final call = academicRemoteDataSourceImpl.getSyllabus;
+
+      // Assert
+      expect(() => call(tSyllabusRequest), throwsA(isA<Exception>()));
+    });
+  });
 }

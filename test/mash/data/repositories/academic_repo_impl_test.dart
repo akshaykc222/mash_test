@@ -57,4 +57,41 @@ void main() {
       expect(result, []);
     });
   });
+  group('getSyllabus', () {
+    test(
+        'should return syllabus response when the remote data source is successful',
+        () async {
+      // Arrange
+      when(mockAcademicRemoteDataSource.getSyllabus(tSyllabusRequest))
+          .thenAnswer((_) async => [tSyllabusModel]);
+      // Act
+      final result = await academicRepositoryImpl.getSyllabus(tSyllabusRequest);
+      // Assert
+      expect(result, [tSyllabusModel]);
+      verify(mockAcademicRemoteDataSource.getSyllabus(tSyllabusRequest))
+          .called(1);
+    });
+
+    test('should throw FetchDataException if remote data source fails',
+        () async {
+      // Arrange
+      when(mockAcademicRemoteDataSource.getSyllabus(tSyllabusRequest))
+          .thenThrow(Exception('Failed to fetch data'));
+      // Act and Assert
+      expect(
+        () async => await academicRepositoryImpl.getSyllabus(tSyllabusRequest),
+        throwsA(isA<Exception>()),
+      );
+    });
+
+    test('should throw Exception if response is empty', () async {
+      // Arrange
+      when(mockAcademicRemoteDataSource.getSyllabus(tSyllabusRequest))
+          .thenAnswer((_) async => []);
+      // Act
+      final result = await academicRepositoryImpl.getSyllabus(tSyllabusRequest);
+      // Assert
+      expect(result, []);
+    });
+  });
 }
