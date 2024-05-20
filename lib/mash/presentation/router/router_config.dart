@@ -59,6 +59,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
+import '../pages/home/facility/facility_main_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -67,13 +68,13 @@ import '../utils/enums.dart';
 class AppRouteManager {
   static home([CustomBottomNavigationItems? type]) =>
       '/${type?.index ?? ':type'}';
+
   static Widget _homePageRouteBuilder(
       BuildContext context, GoRouterState state) {
     return HomeScreen(
       currentIndex: int.parse(state.pathParameters['type']!),
     );
   }
-
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
@@ -108,7 +109,8 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
+  static GoRouter router =
+      GoRouter(initialLocation: AppPages.facility, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -341,46 +343,61 @@ class AppRouteManager {
       name: AppPages.idCardRequestScreen,
       path: AppPages.idCardRequestScreen,
       builder: (context, state) => const IdCardRequestScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.competitiveExamScreen,
       path: AppPages.competitiveExamScreen,
       builder: (context, state) => const CompetitiveExamScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
       builder: (context, state) => const FeesAndPaymentMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.paymentHistoryScreen,
       path: AppPages.paymentHistoryScreen,
       builder: (context, state) => const PaymentHistoryScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.examTimetableScreen,
       path: AppPages.examTimetableScreen,
       builder: (context, state) => const ExamTimeTableScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.physicalLibraryScreen,
       path: AppPages.physicalLibraryScreen,
       builder: (context, state) => const PhysicalLibraryMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.vehicleTracker,
       path: AppPages.vehicleTracker,
       builder: (context, state) => const VehicleTrackerMainScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.teacherRatingListScreen,
       path: AppPages.teacherRatingListScreen,
       builder: (context, state) => const TeacherListScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.teacherRatingScreen,
       path: AppPages.teacherRatingScreen,
       builder: (context, state) => const TeacherRatingScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
+      name: AppPages.facility,
+      path: AppPages.facility,
+      builder: (context, state) => const FacilityMainScreen(),
+    ),
+    GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,
       builder: (context, state) {
-        if(state.extra != null){
+        if (state.extra != null) {
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
-        return const SizedBox();},
+        return const SizedBox();
+      },
     ),
     GoRoute(
       name: AppPages.pdfViewScreen,

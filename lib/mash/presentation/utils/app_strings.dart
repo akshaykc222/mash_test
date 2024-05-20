@@ -138,8 +138,20 @@ class AppStrings {
   static const String teacherRating = 'TEACHER RATING';
   static const String enterRemarkTitle = 'Enter Remarks';
 
-  //transportation
-  static const String transportation = 'TRANSPORTATION';
+  //facility
+  static const String facility = 'FACILITIES';
+  static const description = 'Description';
+  static const subscribe = 'Subscribe';
+  static const transportation = 'TRANSPORTATION';
+  static const selectPickupPlace = 'Select Pickup Place';
+  static const selectDropPlace = 'Select Drop Place';
+  static const selectStopName = 'Select Stop Name';
+  static const checkAmount = 'Check Amount';
+  static const amount = 'Amount';
+  static const cancel = 'CANCEL';
+  static const add = 'ADD';
+  static const explore = 'EXPLORE';
+  static const active = 'ACTIVE';
 
   // Exam
   static const String examLinks = 'EXAM LINKS';
