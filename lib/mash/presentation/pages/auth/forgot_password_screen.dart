@@ -168,7 +168,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             fixedSize: const Size(double.infinity, 50)),
         onPressed: () => GoRouter.of(context).pushNamed(AppPages.otpScreen),
         child: const Text(
-          AppStrings.sendotp,
+          AppStrings.sendOtp,
         ));
   }
 

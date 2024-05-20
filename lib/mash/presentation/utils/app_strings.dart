@@ -1,18 +1,18 @@
 class AppStrings {
   static const String schedulesForClass = "SCHEDULES FOR THE CLASS";
   static const String viewAll = "View All";
-  static const String attendenceReport = "ATTENDENCE REPORT";
+  static const String attendanceReport = "ATTENDENCE REPORT";
   static const String tabBarTitleAcademic = "ACADEMIC";
   static const String tabBarTitleNonAcademic = "NON-ACADEMICS";
-  static const String addOnScreenTItle = "ADD ONS";
+  static const String addOnScreenTitle = "ADD ONS";
   static const String viewCalendar = 'View Calendar';
   static const String addOnExplore = 'Explore';
-  static const String perfomance = 'Perfomance';
+  static const String performance = 'Performance';
   static const String forgotPassword = 'Forgot Password ?';
   static const String backToLogin = 'Back to login?';
   static const String poweredBy = 'Powered By';
   static const String resetPassword = 'Reset Your Password.';
-  static const String sendotp = 'SEND OTP';
+  static const String sendOtp = 'SEND OTP';
   static const String userId = 'User Id';
   static const String registeredPhoneNumber = 'Registered Phone Number';
   static const String enter4DigitOtp = 'Enter 4 Digit OTP';
@@ -62,11 +62,9 @@ class AppStrings {
   static const String timeTable = 'Time Table';
   static const String examTimeTable = 'EXAM TIMETABLE';
 
-
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';
   static const String filter = 'FILTER';
-
 
   //AttendanceMarking
   static const String attendanceMarking = 'ATTENDANCE MARKING';
@@ -117,7 +115,8 @@ class AppStrings {
   static const String contactUs = 'CONTACT US';
   static const String feedbackForm = 'FEEDBACK FORM';
   static const String selectModule = 'Select Module';
-  static const String howSatisfied = 'How Satisfied are you with our Modules ?'                                   ;
+  static const String howSatisfied = 'How Satisfied are you with our Modules ?';
+
   static const String howToImprove = 'How can we improve your Experience ?';
   static const String suggestFeedback = 'Suggest Your Feedback..';
   static const String idCardRequest = 'ID CARD REQUEST';
@@ -136,8 +135,11 @@ class AppStrings {
 
   //teacher list
   static const String teacherList = 'TEACHERS LIST';
-  static const String  teacherRating = 'TEACHER RATING';
+  static const String teacherRating = 'TEACHER RATING';
   static const String enterRemarkTitle = 'Enter Remarks';
+
+  //transportation
+  static const String transportation = 'TRANSPORTATION';
 
   // Exam
   static const String examLinks = 'EXAM LINKS';
@@ -153,8 +155,6 @@ class AppStrings {
   static const String attendingExam = 'Attending Exam ?';
   static const String appliedDate = 'Applied Date';
 
-
-
   //fees and payments
   static const String feesAndPaymentScreen = 'FEES & PAYMENT';
   static const String pending = 'PENDING';
@@ -165,7 +165,6 @@ class AppStrings {
   static const String paidBy = 'Paid By,';
   static const String noDataFound = 'NO DATA FOUND';
   static const String payNow = 'PAY NOW';
-
 
   static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',

@@ -42,7 +42,7 @@ class _AddOnScreenState extends State<AddOnScreen> with SingleTickerProviderStat
       drawer: DrawerWidget(),
       appBar:  AppBar(
         centerTitle: true,
-        title: const Text(AppStrings.addOnScreenTItle),
+        title: const Text(AppStrings.addOnScreenTitle),
         bottom: TabBar(
           indicator: const UnderlineTabIndicator(
               borderSide: BorderSide(width: 2.0,color: Colors.purple),

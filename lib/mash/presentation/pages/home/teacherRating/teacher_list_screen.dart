@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/teacher_card_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
@@ -26,7 +25,7 @@ class TeacherListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Container(
+    return SizedBox(
       height: size.height,
       width: size.width,
       child: Container(

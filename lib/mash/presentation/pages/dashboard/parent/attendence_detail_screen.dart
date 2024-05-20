@@ -31,7 +31,7 @@ class AttendenceDetailScreen extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       title: Text(
-        AppStrings.attendenceReport,
+        AppStrings.attendanceReport,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 16,

@@ -14,7 +14,7 @@ class ParentDashboardLastSection extends StatefulWidget {
       ParentDashboardLastSectionState();
 }
 
-class ParentDashboardLastSectionState
+class ParentDashboardLastSectionStatetransporta
     extends State<ParentDashboardLastSection> {
   late final ValueNotifier<String> performanceValue;
 
@@ -55,7 +55,7 @@ class ParentDashboardLastSectionState
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(AppStrings.perfomance, style: _titleStyle()),
+        Text(AppStrings.performance, style: _titleStyle()),
         const Spacer(),
         TextButton(
           onPressed: () => _showPerformanceSelection(),

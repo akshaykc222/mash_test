@@ -380,7 +380,7 @@ class AppRouteManager {
         if(state.extra != null){
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
-        return SizedBox();},
+        return const SizedBox();},
     ),
     GoRoute(
       name: AppPages.pdfViewScreen,
