@@ -23,7 +23,7 @@ Widget userTypeSelectionChat({required BuildContext context}) {
                       border: Border.all(
                         color: state.selectedType == e
                             ? AppColors.primaryColor
-                            : AppColors.greyClr400,
+                            : AppColors.primaryColor.withOpacity(0.2),
                       ),
                       color: state.selectedType == e
                           ? AppColors.primaryColor

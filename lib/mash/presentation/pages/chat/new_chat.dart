@@ -89,7 +89,7 @@ class _NewChatState extends State<NewChat> {
                       Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: AppColors.greyClr200,
                           shape: BoxShape.circle,
                         ),
                         height: 30,

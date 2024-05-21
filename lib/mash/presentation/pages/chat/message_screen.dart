@@ -10,6 +10,7 @@ import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 import 'package:uuid/uuid.dart';
@@ -107,13 +108,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
               },
             ),
           ),
-          Container(
-            color: AppColors.redIndication,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              child: _sendMessageField(),
-            ),
-          ),
+          _sendMessageField(),
         ],
       ),
     );
@@ -121,11 +116,9 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   Widget _sendMessageField() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
+      color: AppColors.grey200.withOpacity(0.1),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -133,33 +126,36 @@ class _MessagesScreenState extends State<MessagesScreen> {
             onTap: () {},
             child: _attachMendIcon(),
           ),
-          const SizedBox(width: 15),
+          spacerWidth15,
           Expanded(
             child: TextField(
               controller: _messageController,
-              maxLines: null, // Allows unlimited lines
+              minLines: 1,
+              maxLines: 7,
               decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 hintText: "Write message...",
-                hintStyle: const TextStyle(color: Colors.black54),
+                hintStyle: TextStyle(color: AppColors.grey400),
                 filled: true,
                 fillColor: AppColors.primaryColor.withOpacity(0.08),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(60),
+                  borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
           ),
-          const SizedBox(width: 15),
+          spacerWidth15,
           GestureDetector(
             onTap: () {
               addMessage(_messageController.text);
               _messageController.clear();
             },
             child: Container(
-              padding: const EdgeInsets.all(6),
-              height: 40,
-              width: 40,
+              padding: const EdgeInsets.all(8),
+              height: SizeConfig.height(35),
+              width: SizeConfig.height(35),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.primaryColor,
@@ -178,7 +174,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget _attachMendIcon() {
     return assetFromSvg(
       AppAssets.attachmentIcon,
-      color: AppColors.grey600,
+      color: AppColors.black,
       // height: 2,
     );
   }
