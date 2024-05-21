@@ -59,5 +59,5 @@ class LoginResTableEntity extends Equatable {
   final String userType;
 
   @override
-  List<Object?> get props => [studentId];
+  List<Object?> get props => [usrId];
 }

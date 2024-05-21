@@ -1,9 +1,12 @@
 import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mash/core/firebase_database.dart';
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mockito/mockito.dart';
+
 import '../../../fixture/constant_objects.dart';
 import '../../../fixture/fixtures_readers.dart';
 import '../../../helpers/test_helpers.mocks.dart';
@@ -11,10 +14,14 @@ import '../../../helpers/test_helpers.mocks.dart';
 void main() {
   late MockApiProvider mockApiProvider;
   late AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
-
+  late FirebaseDatabaseMethods firebaseDatabaseMethods;
   setUp(() {
     mockApiProvider = MockApiProvider();
-    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(mockApiProvider);
+    firebaseDatabaseMethods = MockFirebaseDatabaseMethods();
+    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(
+      mockApiProvider,
+      firebaseDatabaseMethods,
+    );
   });
 
   group('Auth Repository Data Source', () {

@@ -86,6 +86,9 @@ class AppAssets {
   static const bulbIcon = 'assets/icons/bulb.svg';
   static const noticeIcon = 'assets/icons/notice.svg';
 
+  static const group = 'assets/icons/group.svg';
+  static const chatMessageSendIcon = 'assets/icons/send.svg';
+  static const attachmentIcon = 'assets/icons/attachment.svg';
   static var tcApply = "";
 
   static var tcCancel = "";
@@ -93,4 +96,5 @@ class AppAssets {
   static String messages = "";
 
   static String groups = "";
+  static String tickLottie = "assets/lottie/tick_animation.json";
 }

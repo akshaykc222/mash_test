@@ -24,4 +24,5 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getSyllabusTerms";
   static const newsBoard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNewsBoardView";
+  static const roleMenu = "UATRESTAPI/MashFlutterRestAPI/api/user/getMenu";
 }

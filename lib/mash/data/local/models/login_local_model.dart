@@ -32,7 +32,7 @@ class LoginLocalModel extends LoginResTableEntity {
 
   @override
   @HiveField(6)
-  final String pwdChangeStatus;
+  final String? pwdChangeStatus;
 
   @override
   @HiveField(7)
@@ -56,7 +56,7 @@ class LoginLocalModel extends LoginResTableEntity {
 
   @override
   @HiveField(12)
-  final String academicYear;
+  final String? academicYear;
 
   @override
   @HiveField(13)

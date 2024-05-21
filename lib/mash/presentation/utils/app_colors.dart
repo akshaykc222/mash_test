@@ -15,6 +15,7 @@ class AppColors {
   static Color white = HexColor.fromHex('#FFFFFFFF');
   static Color gradientItem = HexColor.fromHex('#A8FED9');
   static Color primaryColor = HexColor.fromHex('#A45EE5');
+  static Color selPrimaryColor = HexColor.fromHex('#7FFF00');
   static Color secondaryColor = HexColor.fromHex('#7F00FF');
   static Color backgroundColor = HexColor.fromHex('#FFFFFFFF');
   static Color backgroundDarkColor = HexColor.fromHex('#FAFAFA');
@@ -33,6 +34,7 @@ class AppColors {
   static Color quizhead = HexColor.fromHex('#F5309C');
   static Color violet100 = HexColor.fromHex('#8800FF');
   static Color grey400 = HexColor.fromHex('#F0EAE9');
+  static Color greyClr400 = Colors.grey.shade400;
   static Color textOrangeColor = HexColor.fromHex('#FF6A4D');
   static Color green100 = HexColor.fromHex('#21AD00');
   static Color blue100 = HexColor.fromHex('#009BDE');

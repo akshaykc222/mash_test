@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/presentation/manager/academic_bloc/academic_bloc.dart';
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
 import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
@@ -29,6 +30,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<DashboardBloc>()),
         BlocProvider(create: (_) => getIt<DrawerBloc>()),
         BlocProvider(create: (_) => getIt<AcademicBloc>()),
+        BlocProvider(create: (_) => getIt<ChatBloc>()),
         BlocProvider(create: (_) => BottomNavigationCubit()),
       ],
       child: MaterialApp.router(
