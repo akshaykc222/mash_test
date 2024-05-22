@@ -8,8 +8,8 @@ class RoleMenuModel extends RoleMenuEntity {
 
   factory RoleMenuModel.fromjson(Map<String, dynamic> map) {
     return RoleMenuModel(
-      menuName: map['menuName'] as String,
-      icon: map['icon'] as String,
+      menuName: map['MENU_NAME'] as String,
+      icon: map['ICON'] as String,
     );
   }
 }

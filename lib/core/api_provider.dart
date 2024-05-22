@@ -62,7 +62,7 @@ class ApiProvider {
         endPoint,
         data: body,
       );
-      prettyPrint("request url : ${response.realUri}");
+      prettyPrint("request url : ${response.data}");
       final Map<String, dynamic> responseData = classifyResponse(response);
 
       return responseData;
