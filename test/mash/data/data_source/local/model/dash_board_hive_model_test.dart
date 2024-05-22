@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
-import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import '../../../../fixture/constant_objects.dart';
 

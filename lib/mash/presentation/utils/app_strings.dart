@@ -1,18 +1,18 @@
 class AppStrings {
   static const String schedulesForClass = "SCHEDULES FOR THE CLASS";
   static const String viewAll = "View All";
-  static const String attendenceReport = "ATTENDENCE REPORT";
+  static const String attendanceReport = "ATTENDENCE REPORT";
   static const String tabBarTitleAcademic = "ACADEMIC";
   static const String tabBarTitleNonAcademic = "NON-ACADEMICS";
-  static const String addOnScreenTItle = "ADD ONS";
+  static const String addOnScreenTitle = "ADD ONS";
   static const String viewCalendar = 'View Calendar';
   static const String addOnExplore = 'Explore';
-  static const String perfomance = 'Perfomance';
+  static const String performance = 'Performance';
   static const String forgotPassword = 'Forgot Password ?';
   static const String backToLogin = 'Back to login?';
   static const String poweredBy = 'Powered By';
   static const String resetPassword = 'Reset Your Password.';
-  static const String sendotp = 'SEND OTP';
+  static const String sendOtp = 'SEND OTP';
   static const String userId = 'User Id';
   static const String registeredPhoneNumber = 'Registered Phone Number';
   static const String enter4DigitOtp = 'Enter 4 Digit OTP';
@@ -49,7 +49,6 @@ class AppStrings {
   static const String wordOfTheDay = 'Word Of The Day';
   static const String newsAndArticles = 'News & Articles';
   static const String selectProfile = 'Select Profile';
-  static const String timeTable = 'Time Table';
   static const String notes = 'Notes';
   static const String addNote = 'Add Note';
   static const String createNote = 'Create Note';
@@ -59,8 +58,16 @@ class AppStrings {
   static const String select = 'select';
   static const String appType = '1';
 
+  //time table
+  static const String timeTable = 'Time Table';
+  static const String examTimeTable = 'EXAM TIMETABLE';
+
+  //library
+  static const String physicalLibrary = 'PHYSICAL LIBRARY';
+  static const String filter = 'FILTER';
+
   //AttendanceMarking
-  static const String attendaceMarking = 'ATTENDANCE MARKING';
+  static const String attendanceMarking = 'ATTENDANCE MARKING';
   static const String academicYear = 'Academic Year';
   static const String academicYearDynamic = '2023-2024';
   static const String classTitle = 'Class';
@@ -106,7 +113,70 @@ class AppStrings {
   static const String mashSupport = 'MASH SUPPORT';
   static const String userActivity = 'USER ACTIVITY';
   static const String contactUs = 'CONTACT US';
+  static const String feedbackForm = 'FEEDBACK FORM';
+  static const String selectModule = 'Select Module';
+  static const String howSatisfied = 'How Satisfied are you with our Modules ?';
 
+  static const String howToImprove = 'How can we improve your Experience ?';
+  static const String suggestFeedback = 'Suggest Your Feedback..';
+  static const String idCardRequest = 'ID CARD REQUEST';
+  static const String studentName = 'Student Name';
+  static const String request = 'Request';
+  static const String requestType = 'Select Request Type';
+  static const String remarks = 'Remarks';
+  static const String enterRemarks = 'Enter Remarks..';
+
+  //vehicle tracker
+  static const String vehicleTracker = 'SCHOOL BUS TRACKER';
+  static const String time = 'TIME';
+  static const String distance = 'DISTANCE';
+  static const String info = 'INFO';
+  static const String transIncharge = 'TRANSPORTATION INCHARGE';
+
+  //teacher list
+  static const String teacherList = 'TEACHERS LIST';
+  static const String teacherRating = 'TEACHER RATING';
+  static const String enterRemarkTitle = 'Enter Remarks';
+
+  //facility
+  static const String facility = 'FACILITIES';
+  static const description = 'Description';
+  static const subscribe = 'Subscribe';
+  static const transportation = 'TRANSPORTATION';
+  static const selectPickupPlace = 'Select Pickup Place';
+  static const selectDropPlace = 'Select Drop Place';
+  static const selectStopName = 'Select Stop Name';
+  static const checkAmount = 'Check Amount';
+  static const amount = 'Amount';
+  static const cancel = 'CANCEL';
+  static const add = 'ADD';
+  static const explore = 'EXPLORE';
+  static const active = 'ACTIVE';
+
+  // Exam
+  static const String examLinks = 'EXAM LINKS';
+  static const String toBeRegistered = 'TO BE REGISTERED';
+  static const String registered = 'REGISTERED';
+  static const String examDetails = 'EXAM DETAILS';
+  static const String viewPdf = 'VIEW PDF';
+  static const String lastDateToApply = 'Last Date To Apply';
+  static const String compExamDate = 'Competitive Exam Date';
+  static const String registerHere = 'REGISTER HERE';
+  static const String rateNow = 'Rate Now';
+  static const String rating = 'Rating';
+  static const String attendingExam = 'Attending Exam ?';
+  static const String appliedDate = 'Applied Date';
+
+  //fees and payments
+  static const String feesAndPaymentScreen = 'FEES & PAYMENT';
+  static const String pending = 'PENDING';
+  static const String paid = 'PAID';
+  static const String paidAmount = 'Paid Amount';
+  static const String transactionHistory = 'TRANSACTION HISTORY';
+  static const String viewReceipt = 'View Receipt';
+  static const String paidBy = 'Paid By,';
+  static const String noDataFound = 'NO DATA FOUND';
+  static const String payNow = 'PAY NOW';
 
   static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',

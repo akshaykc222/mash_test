@@ -21,6 +21,9 @@ mixin _$AcademicEvent {
     required TResult Function() getClassDetails,
     required TResult Function() getAcademicSubjects,
     required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +31,9 @@ mixin _$AcademicEvent {
     TResult? Function()? getClassDetails,
     TResult? Function()? getAcademicSubjects,
     TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +41,9 @@ mixin _$AcademicEvent {
     TResult Function()? getClassDetails,
     TResult Function()? getAcademicSubjects,
     TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +52,10 @@ mixin _$AcademicEvent {
     required TResult Function(_GetClassDetails value) getClassDetails,
     required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
     required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +63,9 @@ mixin _$AcademicEvent {
     TResult? Function(_GetClassDetails value)? getClassDetails,
     TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +73,9 @@ mixin _$AcademicEvent {
     TResult Function(_GetClassDetails value)? getClassDetails,
     TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +140,9 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     required TResult Function() getClassDetails,
     required TResult Function() getAcademicSubjects,
     required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
   }) {
     return getClassDetails();
   }
@@ -131,6 +153,9 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult? Function()? getClassDetails,
     TResult? Function()? getAcademicSubjects,
     TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
   }) {
     return getClassDetails?.call();
   }
@@ -141,6 +166,9 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult Function()? getClassDetails,
     TResult Function()? getAcademicSubjects,
     TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -155,6 +183,10 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     required TResult Function(_GetClassDetails value) getClassDetails,
     required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
     required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
   }) {
     return getClassDetails(this);
   }
@@ -165,6 +197,9 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult? Function(_GetClassDetails value)? getClassDetails,
     TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
   }) {
     return getClassDetails?.call(this);
   }
@@ -175,6 +210,9 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult Function(_GetClassDetails value)? getClassDetails,
     TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -230,6 +268,9 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     required TResult Function() getClassDetails,
     required TResult Function() getAcademicSubjects,
     required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
   }) {
     return getAcademicSubjects();
   }
@@ -240,6 +281,9 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult? Function()? getClassDetails,
     TResult? Function()? getAcademicSubjects,
     TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
   }) {
     return getAcademicSubjects?.call();
   }
@@ -250,6 +294,9 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult Function()? getClassDetails,
     TResult Function()? getAcademicSubjects,
     TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getAcademicSubjects != null) {
@@ -264,6 +311,10 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     required TResult Function(_GetClassDetails value) getClassDetails,
     required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
     required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
   }) {
     return getAcademicSubjects(this);
   }
@@ -274,6 +325,9 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult? Function(_GetClassDetails value)? getClassDetails,
     TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
   }) {
     return getAcademicSubjects?.call(this);
   }
@@ -284,6 +338,9 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult Function(_GetClassDetails value)? getClassDetails,
     TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getAcademicSubjects != null) {
@@ -338,6 +395,9 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     required TResult Function() getClassDetails,
     required TResult Function() getAcademicSubjects,
     required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
   }) {
     return getDivisionDetails();
   }
@@ -348,6 +408,9 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult? Function()? getClassDetails,
     TResult? Function()? getAcademicSubjects,
     TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
   }) {
     return getDivisionDetails?.call();
   }
@@ -358,6 +421,9 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult Function()? getClassDetails,
     TResult Function()? getAcademicSubjects,
     TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getDivisionDetails != null) {
@@ -372,6 +438,10 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     required TResult Function(_GetClassDetails value) getClassDetails,
     required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
     required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
   }) {
     return getDivisionDetails(this);
   }
@@ -382,6 +452,9 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult? Function(_GetClassDetails value)? getClassDetails,
     TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
   }) {
     return getDivisionDetails?.call(this);
   }
@@ -392,6 +465,9 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult Function(_GetClassDetails value)? getClassDetails,
     TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
     TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     required TResult orElse(),
   }) {
     if (getDivisionDetails != null) {
@@ -406,6 +482,453 @@ abstract class _GetDevisionDetails implements AcademicEvent {
 }
 
 /// @nodoc
+abstract class _$$GetSyllabusImplCopyWith<$Res> {
+  factory _$$GetSyllabusImplCopyWith(
+          _$GetSyllabusImpl value, $Res Function(_$GetSyllabusImpl) then) =
+      __$$GetSyllabusImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String termId});
+}
+
+/// @nodoc
+class __$$GetSyllabusImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$GetSyllabusImpl>
+    implements _$$GetSyllabusImplCopyWith<$Res> {
+  __$$GetSyllabusImplCopyWithImpl(
+      _$GetSyllabusImpl _value, $Res Function(_$GetSyllabusImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? termId = null,
+  }) {
+    return _then(_$GetSyllabusImpl(
+      null == termId
+          ? _value.termId
+          : termId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSyllabusImpl implements _GetSyllabus {
+  const _$GetSyllabusImpl(this.termId);
+
+  @override
+  final String termId;
+
+  @override
+  String toString() {
+    return 'AcademicEvent.getSyllabus(termId: $termId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSyllabusImpl &&
+            (identical(other.termId, termId) || other.termId == termId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, termId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSyllabusImplCopyWith<_$GetSyllabusImpl> get copyWith =>
+      __$$GetSyllabusImplCopyWithImpl<_$GetSyllabusImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
+  }) {
+    return getSyllabus(termId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
+  }) {
+    return getSyllabus?.call(termId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (getSyllabus != null) {
+      return getSyllabus(termId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
+  }) {
+    return getSyllabus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+  }) {
+    return getSyllabus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (getSyllabus != null) {
+      return getSyllabus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetSyllabus implements AcademicEvent {
+  const factory _GetSyllabus(final String termId) = _$GetSyllabusImpl;
+
+  String get termId;
+  @JsonKey(ignore: true)
+  _$$GetSyllabusImplCopyWith<_$GetSyllabusImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetSyllabusTermsImplCopyWith<$Res> {
+  factory _$$GetSyllabusTermsImplCopyWith(_$GetSyllabusTermsImpl value,
+          $Res Function(_$GetSyllabusTermsImpl) then) =
+      __$$GetSyllabusTermsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetSyllabusTermsImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$GetSyllabusTermsImpl>
+    implements _$$GetSyllabusTermsImplCopyWith<$Res> {
+  __$$GetSyllabusTermsImplCopyWithImpl(_$GetSyllabusTermsImpl _value,
+      $Res Function(_$GetSyllabusTermsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
+  const _$GetSyllabusTermsImpl();
+
+  @override
+  String toString() {
+    return 'AcademicEvent.getSyllabusTerms()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetSyllabusTermsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
+  }) {
+    return getSyllabusTerms();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
+  }) {
+    return getSyllabusTerms?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (getSyllabusTerms != null) {
+      return getSyllabusTerms();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
+  }) {
+    return getSyllabusTerms(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+  }) {
+    return getSyllabusTerms?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (getSyllabusTerms != null) {
+      return getSyllabusTerms(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetSyllabusTerms implements AcademicEvent {
+  const factory _GetSyllabusTerms() = _$GetSyllabusTermsImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangeSyllabusTermIndexImplCopyWith<$Res> {
+  factory _$$ChangeSyllabusTermIndexImplCopyWith(
+          _$ChangeSyllabusTermIndexImpl value,
+          $Res Function(_$ChangeSyllabusTermIndexImpl) then) =
+      __$$ChangeSyllabusTermIndexImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$ChangeSyllabusTermIndexImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$ChangeSyllabusTermIndexImpl>
+    implements _$$ChangeSyllabusTermIndexImplCopyWith<$Res> {
+  __$$ChangeSyllabusTermIndexImplCopyWithImpl(
+      _$ChangeSyllabusTermIndexImpl _value,
+      $Res Function(_$ChangeSyllabusTermIndexImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$ChangeSyllabusTermIndexImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
+  const _$ChangeSyllabusTermIndexImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'AcademicEvent.changeSyllabusTermIndex(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSyllabusTermIndexImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSyllabusTermIndexImplCopyWith<_$ChangeSyllabusTermIndexImpl>
+      get copyWith => __$$ChangeSyllabusTermIndexImplCopyWithImpl<
+          _$ChangeSyllabusTermIndexImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
+  }) {
+    return changeSyllabusTermIndex(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
+  }) {
+    return changeSyllabusTermIndex?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (changeSyllabusTermIndex != null) {
+      return changeSyllabusTermIndex(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
+  }) {
+    return changeSyllabusTermIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+  }) {
+    return changeSyllabusTermIndex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+    required TResult orElse(),
+  }) {
+    if (changeSyllabusTermIndex != null) {
+      return changeSyllabusTermIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSyllabusTermIndex implements AcademicEvent {
+  const factory _ChangeSyllabusTermIndex(final int index) =
+      _$ChangeSyllabusTermIndexImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$ChangeSyllabusTermIndexImplCopyWith<_$ChangeSyllabusTermIndexImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AcademicState {
   ResponseClassify<dynamic> get classDetails =>
       throw _privateConstructorUsedError;
@@ -413,6 +936,11 @@ mixin _$AcademicState {
       throw _privateConstructorUsedError;
   ResponseClassify<dynamic> get academicSubjects =>
       throw _privateConstructorUsedError;
+  ResponseClassify<List<SyllabusTermEntity?>> get syllabusTerms =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<List<SyllabusEntity?>> get syllabus =>
+      throw _privateConstructorUsedError;
+  int get selectedTermIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AcademicStateCopyWith<AcademicState> get copyWith =>
@@ -428,7 +956,10 @@ abstract class $AcademicStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<dynamic> classDetails,
       ResponseClassify<dynamic> divisionDetails,
-      ResponseClassify<dynamic> academicSubjects});
+      ResponseClassify<dynamic> academicSubjects,
+      ResponseClassify<List<SyllabusTermEntity?>> syllabusTerms,
+      ResponseClassify<List<SyllabusEntity?>> syllabus,
+      int selectedTermIndex});
 }
 
 /// @nodoc
@@ -447,6 +978,9 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
     Object? classDetails = null,
     Object? divisionDetails = null,
     Object? academicSubjects = null,
+    Object? syllabusTerms = null,
+    Object? syllabus = null,
+    Object? selectedTermIndex = null,
   }) {
     return _then(_value.copyWith(
       classDetails: null == classDetails
@@ -461,6 +995,18 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
           ? _value.academicSubjects
           : academicSubjects // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<dynamic>,
+      syllabusTerms: null == syllabusTerms
+          ? _value.syllabusTerms
+          : syllabusTerms // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<SyllabusTermEntity?>>,
+      syllabus: null == syllabus
+          ? _value.syllabus
+          : syllabus // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<SyllabusEntity?>>,
+      selectedTermIndex: null == selectedTermIndex
+          ? _value.selectedTermIndex
+          : selectedTermIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -476,7 +1022,10 @@ abstract class _$$AcademicStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<dynamic> classDetails,
       ResponseClassify<dynamic> divisionDetails,
-      ResponseClassify<dynamic> academicSubjects});
+      ResponseClassify<dynamic> academicSubjects,
+      ResponseClassify<List<SyllabusTermEntity?>> syllabusTerms,
+      ResponseClassify<List<SyllabusEntity?>> syllabus,
+      int selectedTermIndex});
 }
 
 /// @nodoc
@@ -493,6 +1042,9 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
     Object? classDetails = null,
     Object? divisionDetails = null,
     Object? academicSubjects = null,
+    Object? syllabusTerms = null,
+    Object? syllabus = null,
+    Object? selectedTermIndex = null,
   }) {
     return _then(_$AcademicStateImpl(
       classDetails: null == classDetails
@@ -507,6 +1059,18 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
           ? _value.academicSubjects
           : academicSubjects // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<dynamic>,
+      syllabusTerms: null == syllabusTerms
+          ? _value.syllabusTerms
+          : syllabusTerms // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<SyllabusTermEntity?>>,
+      syllabus: null == syllabus
+          ? _value.syllabus
+          : syllabus // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<SyllabusEntity?>>,
+      selectedTermIndex: null == selectedTermIndex
+          ? _value.selectedTermIndex
+          : selectedTermIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -517,7 +1081,10 @@ class _$AcademicStateImpl implements _AcademicState {
   const _$AcademicStateImpl(
       {required this.classDetails,
       required this.divisionDetails,
-      required this.academicSubjects});
+      required this.academicSubjects,
+      required this.syllabusTerms,
+      required this.syllabus,
+      required this.selectedTermIndex});
 
   @override
   final ResponseClassify<dynamic> classDetails;
@@ -525,10 +1092,16 @@ class _$AcademicStateImpl implements _AcademicState {
   final ResponseClassify<dynamic> divisionDetails;
   @override
   final ResponseClassify<dynamic> academicSubjects;
+  @override
+  final ResponseClassify<List<SyllabusTermEntity?>> syllabusTerms;
+  @override
+  final ResponseClassify<List<SyllabusEntity?>> syllabus;
+  @override
+  final int selectedTermIndex;
 
   @override
   String toString() {
-    return 'AcademicState(classDetails: $classDetails, divisionDetails: $divisionDetails, academicSubjects: $academicSubjects)';
+    return 'AcademicState(classDetails: $classDetails, divisionDetails: $divisionDetails, academicSubjects: $academicSubjects, syllabusTerms: $syllabusTerms, syllabus: $syllabus, selectedTermIndex: $selectedTermIndex)';
   }
 
   @override
@@ -541,12 +1114,18 @@ class _$AcademicStateImpl implements _AcademicState {
             (identical(other.divisionDetails, divisionDetails) ||
                 other.divisionDetails == divisionDetails) &&
             (identical(other.academicSubjects, academicSubjects) ||
-                other.academicSubjects == academicSubjects));
+                other.academicSubjects == academicSubjects) &&
+            (identical(other.syllabusTerms, syllabusTerms) ||
+                other.syllabusTerms == syllabusTerms) &&
+            (identical(other.syllabus, syllabus) ||
+                other.syllabus == syllabus) &&
+            (identical(other.selectedTermIndex, selectedTermIndex) ||
+                other.selectedTermIndex == selectedTermIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, classDetails, divisionDetails, academicSubjects);
+  int get hashCode => Object.hash(runtimeType, classDetails, divisionDetails,
+      academicSubjects, syllabusTerms, syllabus, selectedTermIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -557,10 +1136,12 @@ class _$AcademicStateImpl implements _AcademicState {
 
 abstract class _AcademicState implements AcademicState {
   const factory _AcademicState(
-          {required final ResponseClassify<dynamic> classDetails,
-          required final ResponseClassify<dynamic> divisionDetails,
-          required final ResponseClassify<dynamic> academicSubjects}) =
-      _$AcademicStateImpl;
+      {required final ResponseClassify<dynamic> classDetails,
+      required final ResponseClassify<dynamic> divisionDetails,
+      required final ResponseClassify<dynamic> academicSubjects,
+      required final ResponseClassify<List<SyllabusTermEntity?>> syllabusTerms,
+      required final ResponseClassify<List<SyllabusEntity?>> syllabus,
+      required final int selectedTermIndex}) = _$AcademicStateImpl;
 
   @override
   ResponseClassify<dynamic> get classDetails;
@@ -568,6 +1149,12 @@ abstract class _AcademicState implements AcademicState {
   ResponseClassify<dynamic> get divisionDetails;
   @override
   ResponseClassify<dynamic> get academicSubjects;
+  @override
+  ResponseClassify<List<SyllabusTermEntity?>> get syllabusTerms;
+  @override
+  ResponseClassify<List<SyllabusEntity?>> get syllabus;
+  @override
+  int get selectedTermIndex;
   @override
   @JsonKey(ignore: true)
   _$$AcademicStateImplCopyWith<_$AcademicStateImpl> get copyWith =>

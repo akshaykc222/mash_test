@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -217,7 +216,7 @@ class _UserChatTileState extends State<UserChatTile> {
                             ee,
                           ) {},
                           image: CachedNetworkImageProvider(
-                              widget.user.profilePhoto))),
+                              widget.user.profilePhoto ?? ''))),
                 ),
                 Expanded(
                     child: Padding(
@@ -233,7 +232,7 @@ class _UserChatTileState extends State<UserChatTile> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.user.studentName,
+                                    widget.user.studentName ?? "",
                                     style: TextStyle(
                                         color: AppColors.black,
                                         fontWeight: FontWeight.bold),
@@ -250,7 +249,7 @@ class _UserChatTileState extends State<UserChatTile> {
                               GestureDetector(
                                 onTap: () {
                                   chatBloc.add(ChatEvent.addAdmins(
-                                      userId: widget.user.usrId));
+                                      userId: widget.user.usrId ?? ''));
                                 },
                                 child: ValueListenableBuilder(
                                   builder: (context, data, child) {

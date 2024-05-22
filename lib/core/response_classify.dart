@@ -7,8 +7,6 @@ class ResponseClassify<T> {
   ResponseClassify.initial() : status = Status.INITIAL;
   ResponseClassify.completed(this.data) : status = Status.COMPLETED;
 
-  ResponseClassify.SUCCESS(this.data) : status = Status.SUCCESS;
-
   ResponseClassify.error(this.error) : status = Status.ERROR;
 
   @override
@@ -17,4 +15,9 @@ class ResponseClassify<T> {
   }
 }
 
-enum Status { LOADING, COMPLETED, ERROR, INITIAL, SUCCESS }
+enum Status {
+  LOADING,
+  COMPLETED,
+  ERROR,
+  INITIAL,
+}

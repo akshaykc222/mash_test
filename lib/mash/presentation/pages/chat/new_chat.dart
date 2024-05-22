@@ -153,7 +153,7 @@ class _NewChatState extends State<NewChat> {
                       onTap: () {
                         chatBloc.add(ChatEvent.selectUser(user: users[index]));
                         chatBloc.add(ChatEvent.addChatRooms(
-                            chatRoomName: users[index].studentName,
+                            chatRoomName: users[index].studentName ?? "",
                             isGroupChat: false,
                             icon: users[index].profilePhoto,
                             context: context));

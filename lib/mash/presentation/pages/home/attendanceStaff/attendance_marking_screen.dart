@@ -43,7 +43,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: commonAppbar(title: AppStrings.attendaceMarking),
+      appBar: commonAppbar(title: AppStrings.attendanceMarking),
       endDrawer: DrawerWidget(),
       body: attendanceMarkingBody(context),
     );
@@ -61,6 +61,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
         children: [
           titleText(AppStrings.academicYear),
           CommonSmallButton(
+            color: AppColors.primaryColor,
               onPress: () {},
               title: AppStrings.academicYearDynamic,
               prefixIcon: Icons.calendar_month),

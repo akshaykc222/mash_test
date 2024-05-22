@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -19,27 +17,30 @@ class InsertWeekPlanScreen extends StatefulWidget {
 }
 
 class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
-
   final TextEditingController _classController = TextEditingController();
   final TextEditingController _divisionController = TextEditingController();
   final TextEditingController _subjectController = TextEditingController();
   final TextEditingController _chaptersController = TextEditingController();
-  final TextEditingController _chapterRemarksController = TextEditingController();
+  final TextEditingController _chapterRemarksController =
+      TextEditingController();
   final TextEditingController _fromDateController = TextEditingController();
   final TextEditingController _toDateController = TextEditingController();
-  final TextEditingController _learningObjectsController = TextEditingController();
+  final TextEditingController _learningObjectsController =
+      TextEditingController();
   final TextEditingController _contentsController = TextEditingController();
   final TextEditingController _teachingAidsController = TextEditingController();
   final TextEditingController _classWorkController = TextEditingController();
   final TextEditingController _homeWorkController = TextEditingController();
-  final TextEditingController _learningOutcomesController = TextEditingController();
+  final TextEditingController _learningOutcomesController =
+      TextEditingController();
   final TextEditingController _overallController = TextEditingController();
   final TextEditingController _totalPeriodsController = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
 
   final List<String> _selectedItems = [];
-  final ValueNotifier<List<String>> _selectedItemsNotifier = ValueNotifier<List<String>>([]);
+  final ValueNotifier<List<String>> _selectedItemsNotifier =
+      ValueNotifier<List<String>>([]);
 
   final List<String> _bottomSheetItems = [
     'Item 1',
@@ -65,7 +66,7 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
         // height: size.height,
         width: size.width,
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child:Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             titleText(AppStrings.selectClass),
@@ -78,8 +79,8 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
             ),
             titleText(AppStrings.selectDivision),
             CommonGestureDetector(
-              onTap: () =>
-                  _openMultipleOptionsBottomSheet(context, _divisionController, options,AppStrings.selectDivision),
+              onTap: () => _openMultipleOptionsBottomSheet(context,
+                  _divisionController, options, AppStrings.selectDivision),
               textController: _divisionController,
               hintText: 'Select Division',
               icon: Icons.arrow_drop_down_circle_sharp,
@@ -94,8 +95,8 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
             ),
             titleText(AppStrings.chapters),
             CommonGestureDetector(
-              onTap: () =>
-                  _openMultipleOptionsBottomSheet(context, _chaptersController, options,AppStrings.chapters),
+              onTap: () => _openMultipleOptionsBottomSheet(
+                  context, _chaptersController, options, AppStrings.chapters),
               textController: _chaptersController,
               hintText: 'Select Chapters',
               icon: Icons.arrow_drop_down_circle_sharp,
@@ -103,7 +104,9 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
             titleText(AppStrings.chapterRemarks),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enterChapterRemarks,controller: _chapterRemarksController,),
+              title: AppStrings.enterChapterRemarks,
+              controller: _chapterRemarksController,
+            ),
             spacer10,
             titleText(AppStrings.fromDate),
             dateSelection(_fromDateController),
@@ -112,37 +115,60 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
             titleText(AppStrings.learningObjects),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.learningObjects,controller: _learningObjectsController,),
+              title: AppStrings.enter + AppStrings.learningObjects,
+              controller: _learningObjectsController,
+            ),
             titleText(AppStrings.contents),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.contents,controller: _contentsController,),
+              title: AppStrings.enter + AppStrings.contents,
+              controller: _contentsController,
+            ),
             titleText(AppStrings.teachingAids),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.teachingAids,controller: _teachingAidsController,),
+              title: AppStrings.enter + AppStrings.teachingAids,
+              controller: _teachingAidsController,
+            ),
             titleText(AppStrings.classWorks),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.classWorks,controller: _classWorkController,),
+              title: AppStrings.enter + AppStrings.classWorks,
+              controller: _classWorkController,
+            ),
             titleText(AppStrings.homeWorks),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.homeWorks,controller: _homeWorkController,),
+              title: AppStrings.enter + AppStrings.homeWorks,
+              controller: _homeWorkController,
+            ),
             titleText(AppStrings.learningOutComes),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.learningOutComes,controller: _learningOutcomesController,),
+              title: AppStrings.enter + AppStrings.learningOutComes,
+              controller: _learningOutcomesController,
+            ),
             titleText(AppStrings.overallRemarks),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enter+AppStrings.overallRemarks,controller: _overallController,),
+              title: AppStrings.enter + AppStrings.overallRemarks,
+              controller: _overallController,
+            ),
             titleText(AppStrings.totalPeriods),
             CommonTextField(
               lines: 1,
-              title: AppStrings.enter+AppStrings.totalPeriods,controller: _totalPeriodsController,),
+              title: AppStrings.enter + AppStrings.totalPeriods,
+              controller: _totalPeriodsController,
+            ),
             spacer30,
-            AnimatedSharedButton(onTap: (){}, title: Text(AppStrings.submitCapital,style: TextStyle(color: AppColors.white,fontWeight: FontWeight.w600),), isLoading: false),
+            AnimatedSharedButton(
+                onTap: () {},
+                title: Text(
+                  AppStrings.submitCapital,
+                  style: TextStyle(
+                      color: AppColors.white, fontWeight: FontWeight.w600),
+                ),
+                isLoading: false),
             spacer30
           ],
         ),
@@ -162,7 +188,7 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
 
   dateSelection(TextEditingController controller) {
     return GestureDetector(
-      onTap: ()=> _selectDate(context,controller),
+      onTap: () => _selectDate(context, controller),
       child: Container(
         width: double.infinity,
         // padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -182,14 +208,17 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
                         child: TextFormField(
                           controller: controller,
                           enabled: false,
-                          style:  TextStyle(color: AppColors.black),
+                          style: TextStyle(color: AppColors.black),
                           decoration: const InputDecoration(
                             hintText: 'Select a date',
                             border: InputBorder.none,
                           ),
                         ),
                       ),
-                      Icon(Icons.edit_calendar,color: AppColors.primaryColor,),
+                      Icon(
+                        Icons.edit_calendar,
+                        color: AppColors.primaryColor,
+                      ),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -200,10 +229,11 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
     );
   }
 
-  Future<void> _selectDate(BuildContext context,TextEditingController controller) async {
+  Future<void> _selectDate(
+      BuildContext context, TextEditingController controller) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
+      initialDate: _selectedDate,
       firstDate: DateTime(1900),
       lastDate: DateTime(2050),
     );
@@ -214,7 +244,6 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
       });
     }
   }
-
 
   void _openOptionsBottomSheet(
       BuildContext context, TextEditingController controller, List optionList) {
@@ -255,63 +284,64 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
     );
   }
 
-  void _openMultipleOptionsBottomSheet(
-      BuildContext context, TextEditingController controller, List optionList,String title) {
+  void _openMultipleOptionsBottomSheet(BuildContext context,
+      TextEditingController controller, List optionList, String title) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
-        return StatefulBuilder(
-            builder: (context,StateSetter state) {
-              return Container(
-                decoration: BoxDecoration(
-                    border: Border.all(width: 10, color: Colors.grey),
-                    borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(16), topLeft: Radius.circular(16))),
-                height: SizeConfig.height(optionList.length * 90).toDouble(),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: Text(
-                        title,
-                        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-                      ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: _bottomSheetItems.length,
-                        itemBuilder: (context, index) {
-                          final item = _bottomSheetItems[index];
-                          return CheckboxListTile(
-                            title: Text(item),
-                            value: _selectedItemsNotifier.value.contains(item),
-                            onChanged: (bool? value) {
-                              state((){
-                                if (value!) {
-                                  _selectedItems.add(item);
-                                } else {
-                                  _selectedItems.remove(item);
-                                }
-                                _selectedItemsNotifier.value = List.from(_selectedItems);
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    spacer20,
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.text = _selectedItemsNotifier.value.join(', ');
-                        Navigator.pop(context);
-                      },
-                      child: const Text(AppStrings.submit),
-                    ),
-                  ],
+        return StatefulBuilder(builder: (context, StateSetter state) {
+          return Container(
+            decoration: BoxDecoration(
+                border: Border.all(width: 10, color: Colors.grey),
+                borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(16),
+                    topLeft: Radius.circular(16))),
+            height: SizeConfig.height(optionList.length * 90).toDouble(),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 18),
+                  ),
                 ),
-              );
-            }
-        );
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _bottomSheetItems.length,
+                    itemBuilder: (context, index) {
+                      final item = _bottomSheetItems[index];
+                      return CheckboxListTile(
+                        title: Text(item),
+                        value: _selectedItemsNotifier.value.contains(item),
+                        onChanged: (bool? value) {
+                          state(() {
+                            if (value!) {
+                              _selectedItems.add(item);
+                            } else {
+                              _selectedItems.remove(item);
+                            }
+                            _selectedItemsNotifier.value =
+                                List.from(_selectedItems);
+                          });
+                        },
+                      );
+                    },
+                  ),
+                ),
+                spacer20,
+                ElevatedButton(
+                  onPressed: () {
+                    controller.text = _selectedItemsNotifier.value.join(', ');
+                    Navigator.pop(context);
+                  },
+                  child: const Text(AppStrings.submit),
+                ),
+              ],
+            ),
+          );
+        });
       },
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
-import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../fixture/constant_objects.dart';

@@ -38,8 +38,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       final userCredential = await firebaseAuth.signInAnonymously();
 
       ///checking in  firestore weather the user data exist or not in firestore database
-      QuerySnapshot<Map<String, dynamic>> checkExisting =
-          await firebaseDatabase.getUserInfo(userModel.resTable.first.usrId);
+      QuerySnapshot<Map<String, dynamic>> checkExisting = await firebaseDatabase
+          .getUserInfo(userModel.resTable.first.usrId ?? '');
       var fcmToken = await FirebaseMessaging.instance.getToken();
       if (checkExisting.docs.isEmpty) {
         var userDataJson =

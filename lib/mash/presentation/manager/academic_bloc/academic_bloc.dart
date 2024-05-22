@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -5,11 +7,16 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_subject_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_division_details_use_case.dart';
+import 'package:mash/mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart';
+import 'package:mash/mash/domain/use_cases/academic/get_syllabus_use_case.dart';
 
 import '../../../../core/usecase.dart';
+import '../../../domain/entities/syllabus/syllabus_entity.dart';
+import '../../../domain/entities/syllabus/syllabus_term_entity.dart';
 import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'academic_bloc.freezed.dart';
@@ -22,15 +29,22 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   final GetUserInfoUseCase getUserInfoUseCase;
   final GetAcademicSubjectUseCase getAcademicSubjectUseCase;
   final GetDivisionDetailsUseCase getDivisionDetailsUseCase;
+  final GetSyllabusUseCase getSyllabusUseCase;
+  final GetSyllabusTermsUseCase getSyllabusTermsUseCase;
   AcademicBloc(
     this.getDivisionDetailsUseCase, {
     required this.getClassInforUseCase,
     required this.getUserInfoUseCase,
     required this.getAcademicSubjectUseCase,
+    required this.getSyllabusUseCase,
+    required this.getSyllabusTermsUseCase,
   }) : super(AcademicState.initial()) {
     on<_GetClassDetails>(_getClassDetails);
     on<_GetAcademicSubjects>(_getAcademicSubjects);
     on<_GetDevisionDetails>(_getDivisionDetails);
+    on<_GetSyllabus>(_getSyllabus);
+    on<_GetSyllabusTerms>(_getSyllabusTerms);
+    on<_ChangeSyllabusTermIndex>(_changeSyllabusTermIndex);
   }
 
   _getClassDetails(
@@ -43,11 +57,11 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getClassInforUseCase.call(
           AcademicAndCompIdRequest(
-            pAcademicId: userdata.academicId,
+            pAcademicId: userdata.academicId ?? '',
             pCompID: userdata.compId,
           ),
         );
-        emit(state.copyWith(classDetails: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(classDetails: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             classDetails: ResponseClassify.error('User data is null')));
@@ -67,11 +81,12 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getAcademicSubjectUseCase.call(
           ClassAndCompIdRequest(
-            classId: userdata.classId,
+            classId: userdata.classId ?? "",
             compId: userdata.compId,
           ),
         );
-        emit(state.copyWith(academicSubjects: ResponseClassify.SUCCESS(data)));
+        emit(
+            state.copyWith(academicSubjects: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             academicSubjects: ResponseClassify.error('User data is null')));
@@ -92,11 +107,11 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
       if (userdata != null) {
         final data = await getDivisionDetailsUseCase.call(
           ClassAndCompIdRequest(
-            classId: userdata.classId,
+            classId: userdata.classId ?? '',
             compId: userdata.compId,
           ),
         );
-        emit(state.copyWith(divisionDetails: ResponseClassify.SUCCESS(data)));
+        emit(state.copyWith(divisionDetails: ResponseClassify.completed(data)));
       } else {
         emit(state.copyWith(
             divisionDetails: ResponseClassify.error('User data is null')));
@@ -107,5 +122,56 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
           divisionDetails: ResponseClassify.error(e.toString())));
       prettyPrint(e.toString());
     }
+  }
+
+  _getSyllabus(_GetSyllabus event, Emitter<AcademicState> emit) async {
+    emit(state.copyWith(syllabus: ResponseClassify.loading()));
+    try {
+      final userdata = await getUserInfoUseCase.call(NoParams());
+      if (userdata != null) {
+        final data = await getSyllabusUseCase.call(SyllabusRequest(
+          compId: userdata.compId,
+          acadId: userdata.academicId,
+          userType: userdata.userType,
+          termId: event.termId,
+        ));
+        emit(state.copyWith(syllabus: ResponseClassify.completed(data)));
+      } else {
+        emit(state.copyWith(
+            syllabus: ResponseClassify.error('User data is null')));
+        prettyPrint('User data is null');
+      }
+    } catch (e) {
+      emit(state.copyWith(syllabus: ResponseClassify.error(e.toString())));
+      prettyPrint(e.toString());
+    }
+  }
+
+  _getSyllabusTerms(
+      _GetSyllabusTerms event, Emitter<AcademicState> emit) async {
+    emit(state.copyWith(syllabusTerms: ResponseClassify.loading()));
+    try {
+      final userdata = await getUserInfoUseCase.call(NoParams());
+      if (userdata != null) {
+        final data = await getSyllabusTermsUseCase.call(SyllabusTermsRequest(
+          compId: userdata.compId,
+          acadId: userdata.academicId ?? '',
+          classId: userdata.classId ?? '',
+        ));
+        emit(state.copyWith(syllabusTerms: ResponseClassify.completed(data)));
+      } else {
+        emit(state.copyWith(
+            syllabusTerms: ResponseClassify.error('User data is null')));
+        prettyPrint('User data is null');
+      }
+    } catch (e) {
+      emit(state.copyWith(syllabusTerms: ResponseClassify.error(e.toString())));
+      prettyPrint(e.toString());
+    }
+  }
+
+  _changeSyllabusTermIndex(
+      _ChangeSyllabusTermIndex event, Emitter<AcademicState> emit) {
+    emit(state.copyWith(selectedTermIndex: event.index));
   }
 }

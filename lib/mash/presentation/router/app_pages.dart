@@ -17,14 +17,25 @@ class AppPages {
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
+  //facility
+  static const facility = '/facilityMainScreen';
+
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';
-
   static const quizQuestionPage = '/quizQuestionScreen';
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
+
+  //school bus tracker
+  static const vehicleTracker = '/schoolBusTrackerScreen';
+
+  //library
+  static const physicalLibraryScreen = '/physicalLibraryScreen';
+
+  // support
+  static const supportScreen = '/supportScreen';
 
   //leave
   static const leaveScreen = '/leaveScreen';
@@ -52,13 +63,13 @@ class AppPages {
 
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
+  static const examTimetableScreen = '/examTimetableScreen';
 
   //suggestion
   static const suggestionMainScreen = '/suggestionMainScreen';
   static const suggestionScreen = '/suggestionScreen';
 
   //home work
-
   static const homeWorksViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
@@ -76,6 +87,19 @@ class AppPages {
   static const insertWeekPlanScreen = '/insertWeekPlanScreen';
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
 
+  //teacher
+  static const teacherRatingListScreen = '/teacherRatingListScreen';
+  static const teacherRatingScreen = '/teacherRatingScreen';
+
+  // pdf view screen
+  static const pdfViewScreen = '/pdfViewScreen';
+
+  static const feedbackScreen = '/feedbackScreen';
+  static const idCardRequestScreen = '/idCardRequestScreen';
+  static const competitiveExamScreen = '/competitiveExamScreen';
+  static const examDetailScreen = '/examDetailScreen';
+  static const feesAndPaymentScreen = '/feesAndPaymentScreen';
+  static const paymentHistoryScreen = '/paymentHistoryScreen';
   //chats
   static const chatsListScreen = "/chatListScreen";
   static const messageScreen = "/messageScreen";

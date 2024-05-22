@@ -150,7 +150,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     if (users.contains(event.user.usrId) == true) {
       users.remove(event.user.usrId);
     } else {
-      users.add(event.user.usrId);
+      users.add(event.user.usrId ?? "");
     }
     selectedChatRoom?.members = users;
 

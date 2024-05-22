@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../../core/pretty_printer.dart';
@@ -29,8 +30,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
     return Stack(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width,
-          height: 77,
+          width: SizeUtility(context).width,
+          height: SizeUtility(context).height / 14,
           decoration: BoxDecoration(color: AppColors.white, boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),

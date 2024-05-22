@@ -20,6 +20,7 @@ class AppAssets {
   static const onBoard1 = 'assets/images/onboard_1.png';
   static const onBoard2 = 'assets/images/onboard_2.png';
   static const onBoard3 = 'assets/images/onboard_3.png';
+  static const noData = 'assets/images/no_data.svg';
 
   //timeTable
   static const dailyTimeTable = 'assets/images/ai_daily.svg';
@@ -81,7 +82,10 @@ class AppAssets {
   static const password = 'assets/icons/password.svg';
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
+  static const downloadIcon = 'assets/icons/download.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
+  static const noticeIcon = 'assets/icons/notice.svg';
+
   static const group = 'assets/icons/group.svg';
   static const chatMessageSendIcon = 'assets/icons/send.svg';
   static const attachmentIcon = 'assets/icons/attachment.svg';

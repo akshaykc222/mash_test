@@ -1,7 +1,3 @@
-
-
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -32,13 +28,14 @@ class FullScreenImagePage extends StatelessWidget {
               top: 30,
               right: 30,
               child: IconButton(
-                icon: const Icon(Icons.close,color: Colors.white,),
-                onPressed: ()=>Navigator.pop(context),
+                icon: const Icon(
+                  Icons.close,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.pop(context),
               ))
         ],
       ),
     );
   }
-
-
 }

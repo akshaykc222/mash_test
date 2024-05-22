@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -15,14 +14,13 @@ class ViewWeekPlanScreen extends StatefulWidget {
 }
 
 class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
-
   final TextEditingController _fromDateController = TextEditingController();
   final TextEditingController _toDateController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: commonAppbar(title: AppStrings.viewWeekPlans),
       endDrawer: DrawerWidget(),
       body: viewWeekPlanBody(context),
@@ -43,7 +41,14 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
           titleText(AppStrings.toDate),
           dateSelection(_toDateController),
           spacer40,
-          AnimatedSharedButton(onTap: (){}, title: const Text(AppStrings.view,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),), isLoading: false)
+          AnimatedSharedButton(
+              onTap: () {},
+              title: const Text(
+                AppStrings.view,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+              isLoading: false)
         ],
       ),
     );
@@ -61,7 +66,7 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
 
   dateSelection(TextEditingController controller) {
     return GestureDetector(
-      onTap: ()=> _selectDate(context,controller),
+      onTap: () => _selectDate(context, controller),
       child: SizedBox(
         width: double.infinity,
         child: Card(
@@ -80,14 +85,17 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
                         child: TextFormField(
                           controller: controller,
                           enabled: false,
-                          style:  TextStyle(color: AppColors.black),
+                          style: TextStyle(color: AppColors.black),
                           decoration: const InputDecoration(
                             hintText: 'Select a date',
                             border: InputBorder.none,
                           ),
                         ),
                       ),
-                      Icon(Icons.edit_calendar,color: AppColors.primaryColor,),
+                      Icon(
+                        Icons.edit_calendar,
+                        color: AppColors.primaryColor,
+                      ),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -98,11 +106,11 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
     );
   }
 
-
-  Future<void> _selectDate(BuildContext context,TextEditingController controller) async {
+  Future<void> _selectDate(
+      BuildContext context, TextEditingController controller) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
+      initialDate: _selectedDate,
       firstDate: DateTime(1900),
       lastDate: DateTime(2050),
     );
@@ -113,5 +121,4 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
       });
     }
   }
-
 }

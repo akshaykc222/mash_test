@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/hive_service.dart';
@@ -6,7 +5,7 @@ import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -20,13 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _init() async {
-    final token =
-        await HiveService().getBox<String>(boxName: LocalStorageNames.token);
-    log(token.values.toString());
-    if (token.isNotEmpty) {
-      context.goNamed(AppPages.chatsListScreen);
-    } else {
-      context.goNamed(AppPages.login);
+    try {
+      final token =
+          await HiveService().getBox<String>(boxName: LocalStorageNames.token);
+      if (token.isNotEmpty) {
+        context.goNamed(AppPages.home);
+      } else {
+        context.goNamed(AppPages.login);
+      }
+    } catch (e) {
+      print('Error in SplashScreen: $e');
     }
   }
 
@@ -36,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           "Splash screen",
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
     );

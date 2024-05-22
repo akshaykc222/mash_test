@@ -1,8 +1,12 @@
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
 import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
+import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
+import 'package:mash/mash/domain/entities/syllabus/syllabus_entity.dart';
+import 'package:mash/mash/domain/entities/syllabus/syllabus_term_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
 import '../../domain/entities/academic/division_details_entity.dart';
@@ -31,5 +35,22 @@ class AcademicRepositoryImpl implements AcademicRepository {
   Future<List<DivisionEntityDetailsEnitity?>> getDivisionDetails(
       ClassAndCompIdRequest params) async {
     return await academicRemoteDataSource.getDivisionDetails(params);
+  }
+
+  @override
+  Future<List<SyllabusEntity?>> getSyllabus(SyllabusRequest params) async {
+    try {
+      final result = await academicRemoteDataSource.getSyllabus(params);
+      prettyPrint(result.toString());
+      return result;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<List<SyllabusTermEntity?>> getSyllabusTerms(
+      SyllabusTermsRequest params) async {
+    return await academicRemoteDataSource.getSyllabusTerms(params);
   }
 }

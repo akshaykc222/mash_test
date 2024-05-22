@@ -55,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+    MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
@@ -168,7 +168,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             fixedSize: const Size(double.infinity, 50)),
         onPressed: () => GoRouter.of(context).pushNamed(AppPages.otpScreen),
         child: const Text(
-          AppStrings.sendotp,
+          AppStrings.sendOtp,
         ));
   }
 

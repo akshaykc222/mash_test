@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/widgets/oultinedContainerWidget.dart';
+import 'package:mash/mash/presentation/widgets/oultined_container_widget.dart';
 
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';

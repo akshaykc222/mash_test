@@ -1,17 +1,15 @@
-
-
 import 'package:flutter/material.dart';
 
 class MyCheckbox extends StatefulWidget {
   final ValueNotifier<bool> notifier;
 
-  MyCheckbox({required this.notifier});
+  const MyCheckbox({super.key, required this.notifier});
 
   @override
-  _MyCheckboxState createState() => _MyCheckboxState();
+  MyCheckboxState createState() => MyCheckboxState();
 }
 
-class _MyCheckboxState extends State<MyCheckbox> {
+class MyCheckboxState extends State<MyCheckbox> {
   @override
   void initState() {
     super.initState();
@@ -37,7 +35,9 @@ class _MyCheckboxState extends State<MyCheckbox> {
       child: Container(
         padding: const EdgeInsets.all(8),
         child: Icon(
-          widget.notifier.value ? Icons.check_box : Icons.check_box_outline_blank,
+          widget.notifier.value
+              ? Icons.check_box
+              : Icons.check_box_outline_blank,
           size: 27,
           color: widget.notifier.value ? Colors.purple : Colors.grey,
         ),

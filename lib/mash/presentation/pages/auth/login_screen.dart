@@ -12,21 +12,11 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_size.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
-import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner: false,
-    home: const LoginScreen(),
-  ));
-}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -55,7 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state.loginResponse?.status == Status.COMPLETED) {
+        if (state.loginResponse?.status == Status.COMPLETED &&
+            state.loginResponse?.data?.token != '') {
           GoRouter.of(context).pushNamed(AppPages.home);
         } else if (state.loginResponse?.status == Status.ERROR) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -209,13 +200,17 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () async {
               // if (state.loginResponse.status == Status.INITIAL) {
               if (_formKey.currentState?.validate() == true) {
-                BlocProvider.of<AuthBloc>(context).add(AuthEvent.login(
+                BlocProvider.of<AuthBloc>(context).add(
+                  AuthEvent.login(
                     context: context,
                     loginRequest: LoginRequest(
-                        userId: _userNameController.text,
-                        password: _passwordController.text,
-                        deviceId: androidInfo?.id ?? '',
-                        appType: AppStrings.appType)));
+                      userId: _userNameController.text,
+                      password: _passwordController.text,
+                      deviceId: androidInfo?.id ?? "",
+                      appType: AppStrings.appType,
+                    ),
+                  ),
+                );
               }
 
               // }
