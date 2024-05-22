@@ -71,7 +71,7 @@ AppBar chatAppBarNew(BuildContext context, {Function? ontTap}) {
   return AppBar(
     elevation: 0,
     automaticallyImplyLeading: false,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.black,
     flexibleSpace: SafeArea(
       child: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
@@ -81,16 +81,15 @@ AppBar chatAppBarNew(BuildContext context, {Function? ontTap}) {
               children: <Widget>[
                 IconButton(
                   onPressed: () {
-                    if(context.canPop()){
+                    if (context.canPop()) {
                       context.pop(context);
-                    }else{
+                    } else {
                       context.goNamed(AppPages.chatsListScreen);
                     }
-
                   },
                   icon: const Icon(
                     Icons.arrow_back,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(
@@ -112,7 +111,10 @@ AppBar chatAppBarNew(BuildContext context, {Function? ontTap}) {
                       Text(
                         state.selectedChatRoom?.name ?? "",
                         style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                       const SizedBox(
                         height: 6,

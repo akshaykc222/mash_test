@@ -19,7 +19,7 @@ void configureDependencies() {
 
   getIt.init();
   Hive.registerAdapter(WordThoughtsHiveModelAdapter());
-  Hive.registerAdapter(ThoughtTableModelAdapter());
+  Hive.registerAdapter(ThoughtTableHiveModelAdapter());
   Hive.registerAdapter(LoginLocalModelAdapter());
-  Hive.registerAdapter(WordTableModelAdapter());
+  Hive.registerAdapter(WordTableHiveModelAdapter());
 }

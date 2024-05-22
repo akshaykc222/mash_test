@@ -5,7 +5,10 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
+import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/user_typ_selection.dart';
 
@@ -52,67 +55,58 @@ class _GroupAddScreenState extends State<GroupAddScreen> {
     return Scaffold(
       bottomNavigationBar: BlocBuilder<ChatBloc, ChatState>(
         builder: (context, state) {
-          return AnimatedSharedButton(
-            onTap: () {
-              chatBloc.add(ChatEvent.addChatRooms(
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: AnimatedSharedButton(
+              onTap: () {
+                chatBloc.add(ChatEvent.addChatRooms(
                   chatRoomName: _groupNameController.text,
                   context: context,
-                  isGroupChat: true));
-            },
-            title: const Text(
-              "Create",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  isGroupChat: true,
+                ));
+              },
+              title: const Text(
+                "Create",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              isLoading: state.addGroupResponse?.status == Status.LOADING,
             ),
-            isLoading: state.addGroupResponse?.status == Status.LOADING,
           );
         },
       ),
-      body: SafeArea(
-        top: true,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            children: [
-              const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Create Group",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                    ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CommonTextField(
-                  title: "Group Name",
-                  controller: _groupNameController,
-                ),
-              ),
-              const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Select Members",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                    ),
-                  )),
-              userTypeSelectionChat(context: context),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
-                child: CommonTextField(
-                  title: "Search",
-                  suffix: const Icon(Icons.search),
-                ),
-              ),
-              _userList()
-            ],
-          ),
+      appBar: commonAppbar(
+        title: "Create Group",
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Group Name',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            spacer10,
+            ChatTextField(
+              title: "Group Name",
+              controller: _groupNameController,
+            ),
+            spacer20,
+            const Text(
+              "Select Members",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            spacer10,
+            userTypeSelectionChat(context: context),
+            spacer20,
+            ChatTextField(
+              title: "Search",
+              suffix: const Icon(Icons.search),
+            ),
+            spacer10,
+            _userList()
+          ],
         ),
       ),
     );

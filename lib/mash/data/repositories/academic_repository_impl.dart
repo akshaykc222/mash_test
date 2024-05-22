@@ -1,20 +1,35 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
+import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
+import '../../domain/entities/academic/division_details_entity.dart';
 import '../remote/models/request/academic_comp_id_request.dart';
 
-@LazySingleton(as: AcademicRepostory)
+@LazySingleton(as: AcademicRepository)
 @injectable
-class AcademicRepositoryImple implements AcademicRepostory {
+class AcademicRepositoryImpl implements AcademicRepository {
   final AcademicRemoteDataSource academicRemoteDataSource;
 
-  AcademicRepositoryImple(this.academicRemoteDataSource);
+  AcademicRepositoryImpl(this.academicRemoteDataSource);
 
   @override
   Future<List<ClassDetailsEntity?>> getClassDetails(
-      WordThoughtRequest params) async {
+      AcademicAndCompIdRequest params) async {
     return await academicRemoteDataSource.getClassDetails(params);
+  }
+
+  @override
+  Future<List<AcademicSubjectEntity>> getAcademicSubjects(
+      ClassAndCompIdRequest params) async {
+    return await academicRemoteDataSource.getAcademicSubjects(params);
+  }
+
+  @override
+  Future<List<DivisionEntityDetailsEnitity?>> getDivisionDetails(
+      ClassAndCompIdRequest params) async {
+    return await academicRemoteDataSource.getDivisionDetails(params);
   }
 }

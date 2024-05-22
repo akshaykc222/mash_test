@@ -1,10 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
+import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../data/remote/models/chat/chat_message_model.dart';
@@ -86,74 +94,88 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: true,
-      child: Scaffold(
-        appBar: chatAppBarNew(context, ontTap: () {
-          GoRouter.of(context).pushNamed(AppPages.groupDetails);
-        }),
-        resizeToAvoidBottomInset: true,
-        bottomSheet: Container(
-          padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-          height: 60,
-          width: double.infinity,
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                child: TextFormField(
-                  controller: _messageController,
-                  keyboardType: TextInputType.multiline,
-                  decoration: const InputDecoration(
-                      hintText: "Write message...",
-                      hintStyle: TextStyle(color: Colors.black54),
-                      border: InputBorder.none),
-                ),
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-              FloatingActionButton(
-                onPressed: () {
-                  addMessage(_messageController.text);
-                  _messageController.clear();
-                },
-                backgroundColor: Colors.blue,
-                elevation: 0,
-                child: const Icon(
-                  Icons.send,
-                  color: Colors.white,
-                  size: 18,
-                ),
-              ),
-            ],
+    return Scaffold(
+      appBar: chatAppBarNew(context, ontTap: () {
+        GoRouter.of(context).pushNamed(AppPages.groupDetails);
+      }),
+      resizeToAvoidBottomInset: true,
+      body: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<ChatBloc, ChatState>(
+              builder: (context, state) {
+                return _chatMessages();
+              },
+            ),
           ),
-        ),
-        body: BlocBuilder<ChatBloc, ChatState>(
-          builder: (context, state) {
-            return _chatMessages();
-          },
-        ),
+          _sendMessageField(),
+        ],
       ),
+    );
+  }
+
+  Widget _sendMessageField() {
+    return Container(
+      color: AppColors.grey200.withOpacity(0.1),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: () {},
+            child: _attachMendIcon(),
+          ),
+          spacerWidth15,
+          Expanded(
+            child: TextField(
+              controller: _messageController,
+              minLines: 1,
+              maxLines: 7,
+              decoration: InputDecoration(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                hintText: "Write message...",
+                hintStyle: TextStyle(color: AppColors.grey400),
+                filled: true,
+                fillColor: AppColors.primaryColor.withOpacity(0.08),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ),
+          spacerWidth15,
+          GestureDetector(
+            onTap: () {
+              addMessage(_messageController.text);
+              _messageController.clear();
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              height: SizeConfig.height(35),
+              width: SizeConfig.height(35),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryColor,
+              ),
+              child: assetFromSvg(
+                AppAssets.chatMessageSendIcon,
+                color: AppColors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _attachMendIcon() {
+    return assetFromSvg(
+      AppAssets.attachmentIcon,
+      color: AppColors.black,
+      // height: 2,
     );
   }
 }

@@ -15,15 +15,25 @@ part 'dashboard_event.dart';
 part 'dashboard_state.dart';
 part 'dashboard_bloc.freezed.dart';
 
+/// BLoC responsible for managing the state related to the dashboard.
 @injectable
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final FetchWordThoughtUseCase fetchWordThoughtUseCase;
+
+  /// Constructs a [DashboardBloc] instance.
+  ///
+  /// [fetchWordThoughtUseCase]: Use case for fetching word and thought of the day.
   DashboardBloc(this.fetchWordThoughtUseCase)
       : super(DashboardState.initial()) {
     on<_FetchWordAndThoughtOftheDayEvent>(_fetchWordAndThoughtOftheDayEvent);
   }
 
-  _fetchWordAndThoughtOftheDayEvent(_FetchWordAndThoughtOftheDayEvent event,
+  /// Handles the [_FetchWordAndThoughtOftheDayEvent] event by fetching the word and thought of the day.
+  ///
+  /// [event]: The event triggering the fetch operation.
+  /// [emit]: The emitter to emit new states.
+  void _fetchWordAndThoughtOftheDayEvent(
+      _FetchWordAndThoughtOftheDayEvent event,
       Emitter<DashboardState> emit) async {
     emit(state.copyWith(wordThoughtResponse: ResponseClassify.loading()));
     try {
@@ -32,8 +42,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
           state.copyWith(wordThoughtResponse: ResponseClassify.completed(res)));
     } on UnauthorisedException catch (e) {
       emit(state.copyWith(
-          wordThoughtResponse: ResponseClassify.error("$e Un authorized")));
-      handleUnAuthorizedError(event.context);
+          wordThoughtResponse: ResponseClassify.error("$e Unauthorized")));
+      if (event.context.mounted) handleUnAuthorizedError(event.context);
     } catch (e) {
       prettyPrint(e.toString());
     }

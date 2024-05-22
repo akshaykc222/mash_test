@@ -16,23 +16,24 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
-  WordThoughtRequest get params => throw _privateConstructorUsedError;
+  AcademicAndCompIdRequest get params => throw _privateConstructorUsedError;
   BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordThoughtRequest params, BuildContext context)
+    required TResult Function(
+            AcademicAndCompIdRequest params, BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordThoughtRequest params, BuildContext context)?
+    TResult? Function(AcademicAndCompIdRequest params, BuildContext context)?
         fetchWordAndThoughtOftheDayEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordThoughtRequest params, BuildContext context)?
+    TResult Function(AcademicAndCompIdRequest params, BuildContext context)?
         fetchWordAndThoughtOftheDayEvent,
     required TResult orElse(),
   }) =>
@@ -68,7 +69,7 @@ abstract class $DashboardEventCopyWith<$Res> {
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
   @useResult
-  $Res call({WordThoughtRequest params, BuildContext context});
+  $Res call({AcademicAndCompIdRequest params, BuildContext context});
 }
 
 /// @nodoc
@@ -91,7 +92,7 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
       params: null == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
-              as WordThoughtRequest,
+              as AcademicAndCompIdRequest,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -109,7 +110,7 @@ abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res>
       __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WordThoughtRequest params, BuildContext context});
+  $Res call({AcademicAndCompIdRequest params, BuildContext context});
 }
 
 /// @nodoc
@@ -132,7 +133,7 @@ class __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>
       null == params
           ? _value.params
           : params // ignore: cast_nullable_to_non_nullable
-              as WordThoughtRequest,
+              as AcademicAndCompIdRequest,
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -148,7 +149,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   const _$FetchWordAndThoughtOftheDayEventImpl(this.params, this.context);
 
   @override
-  final WordThoughtRequest params;
+  final AcademicAndCompIdRequest params;
   @override
   final BuildContext context;
 
@@ -180,7 +181,8 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(WordThoughtRequest params, BuildContext context)
+    required TResult Function(
+            AcademicAndCompIdRequest params, BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent(params, context);
@@ -189,7 +191,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(WordThoughtRequest params, BuildContext context)?
+    TResult? Function(AcademicAndCompIdRequest params, BuildContext context)?
         fetchWordAndThoughtOftheDayEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(params, context);
@@ -198,7 +200,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(WordThoughtRequest params, BuildContext context)?
+    TResult Function(AcademicAndCompIdRequest params, BuildContext context)?
         fetchWordAndThoughtOftheDayEvent,
     required TResult orElse(),
   }) {
@@ -242,11 +244,11 @@ class _$FetchWordAndThoughtOftheDayEventImpl
 
 abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
   const factory _FetchWordAndThoughtOftheDayEvent(
-          final WordThoughtRequest params, final BuildContext context) =
+          final AcademicAndCompIdRequest params, final BuildContext context) =
       _$FetchWordAndThoughtOftheDayEventImpl;
 
   @override
-  WordThoughtRequest get params;
+  AcademicAndCompIdRequest get params;
   @override
   BuildContext get context;
   @override

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/hive_service.dart';
@@ -25,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
         await HiveService().getBox<String>(boxName: LocalStorageNames.token);
     log(token.values.toString());
     if (token.isNotEmpty) {
-      context.goNamed(AppPages.home);
+      context.goNamed(AppPages.chatsListScreen);
     } else {
       context.goNamed(AppPages.login);
     }

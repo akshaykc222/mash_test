@@ -72,6 +72,9 @@ const spacerWidth6 = SizedBox(
 const spacerWidth10 = SizedBox(
   width: 10,
 );
+const spacerWidth15 = SizedBox(
+  width: 15,
+);
 const spacerWidth20 = SizedBox(
   width: 20,
 );

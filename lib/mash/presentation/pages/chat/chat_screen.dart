@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
@@ -15,6 +15,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 
@@ -44,9 +45,6 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final ValueNotifier<ChatType> _selectedItem =
-      ValueNotifier(ChatType.personal);
-
   late ChatBloc chatBloc;
   @override
   void initState() {
@@ -58,110 +56,77 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: ValueListenableBuilder(
-          valueListenable: _selectedItem,
-          builder: (context, data, child) {
-            return BottomNavigationBar(
-              elevation: 10,
-              currentIndex: data.index,
-              selectedFontSize: 14,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              selectedItemColor: AppColors.primaryColor,
-              onTap: (item) {
-                _selectedItem.value = ChatType.values[item];
-              },
-              items: ChatType.values
-                  .map((e) => BottomNavigationBarItem(
-                      label: e.name,
-                      icon: e == ChatType.personal
-                          ? SvgPicture.asset(
-                              AppAssets.messages,
-                              colorFilter: data == ChatType.personal
-                                  ? ColorFilter.mode(
-                                      AppColors.primaryColor, BlendMode.srcIn)
-                                  : null,
-                            )
-                          : SvgPicture.asset(AppAssets.groups,
-                              colorFilter: data == ChatType.group
-                                  ? ColorFilter.mode(
-                                      AppColors.primaryColor, BlendMode.srcIn)
-                                  : null)))
-                  .toList(),
-            );
-          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           GoRouter.of(context).pushNamed(AppPages.newChat);
         },
         child: const Icon(LineIcons.facebookMessenger),
       ),
-      body: SafeArea(
-        top: true,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Text(
-                "Chats",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 30.0).copyWith(top: 40),
+            child: const Text(
+              "Messages",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            BlocBuilder<ChatBloc, ChatState>(
-              builder: (context, state) {
-                return Expanded(
-                    child: StreamBuilder<List<ChatRoomModel>>(
-                  stream: state.getChatRooms,
-                  builder: (context, snapshot) {
-                    prettyPrint("snap shot :${snapshot.data?.length}");
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(
-                          child: Text(
-                              'No data found... ${snapshot.error.toString()}'));
-                    } else {
-                      List<ChatRoomModel> chats = snapshot.data ?? [];
-                      return chats.isEmpty
-                          ? const Center(
-                              child: Text("No Chats..."),
-                            )
-                          : ListView.builder(
-                              itemCount: chats.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: ListTile(
-                                    onTap: () {
-                                      GoRouter.of(context).pushNamed(
-                                          AppPages.messageScreen,
-                                          extra: chats[index]);
-                                    },
-                                    leading: Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 20),
-                                      width: SizeUtility(context).width * 0.15,
-                                      height: SizeUtility(context).width * 0.15,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: AppColors.primaryColor
-                                            .withOpacity(0.5),
-                                      ),
+          ),
+          BlocBuilder<ChatBloc, ChatState>(
+            builder: (context, state) {
+              return Expanded(
+                  child: StreamBuilder<List<ChatRoomModel>>(
+                stream: state.getChatRooms,
+                builder: (context, snapshot) {
+                  prettyPrint("snap shot :${snapshot.data?.length}");
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child:
+                          Text('No data found... ${snapshot.error.toString()}'),
+                    );
+                  } else {
+                    List<ChatRoomModel> chats = snapshot.data ?? [];
+                    return chats.isEmpty
+                        ? const Center(
+                            child: Text("No Chats..."),
+                          )
+                        : ListView.builder(
+                            itemCount: chats.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: ListTile(
+                                  onTap: () {
+                                    GoRouter.of(context).pushNamed(
+                                        AppPages.messageScreen,
+                                        extra: chats[index]);
+                                  },
+                                  leading: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    width: SizeUtility(context).width * 0.15,
+                                    height: SizeUtility(context).width * 0.15,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(22),
+                                      color: AppColors.primaryColor
+                                          .withOpacity(0.5),
                                     ),
-                                    title: Text(chats[index].name),
                                   ),
-                                );
-                              },
-                            );
-                    }
-                  },
-                ));
-              },
-            )
-            // ...List.generate(10, (index) => const UserChatTile())
-          ],
-        ),
+                                  title: Text(chats[index].name),
+                                ),
+                              );
+                            },
+                          );
+                  }
+                },
+              ));
+            },
+          )
+          // ...List.generate(10, (index) => const UserChatTile())
+        ],
       ),
     );
   }
@@ -241,11 +206,10 @@ class _UserChatTileState extends State<UserChatTile> {
                     ),
                   ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
                   width: SizeUtility(context).width * 0.15,
                   height: SizeUtility(context).width * 0.15,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(22),
                       color: AppColors.primaryColor.withOpacity(0.5),
                       image: DecorationImage(
                           onError: (
@@ -306,18 +270,30 @@ class _UserChatTileState extends State<UserChatTile> {
                                   valueListenable: _isAdmin,
                                 ),
                               ),
-                            if (snapshot)
-                              Lottie.asset(AppAssets.tickLottie,
-                                  repeat: false, width: 40, height: 40)
+                            Container(
+                              child: snapshot
+                                  ? Lottie.asset(
+                                      AppAssets.tickLottie,
+                                      repeat: false,
+                                      width: 40,
+                                      height: 40,
+                                    )
+                                  : Container(
+                                      width: 20,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: AppColors.primaryColor),
+                                        color: AppColors.white,
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
+                            )
                           ],
                         );
                       }),
                 ))
               ],
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50.0),
-              child: Divider(),
             ),
           ],
         ),

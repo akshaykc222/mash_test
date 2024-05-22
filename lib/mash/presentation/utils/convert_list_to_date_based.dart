@@ -24,7 +24,7 @@ List<ChatWithDateEntity> getChatItems(List<ChatMessageModel> items) {
     chats.sort((a, b) => a.timestamp.compareTo(b.timestamp));
     widgets.add(ChatWithDateEntity(title: date, messages: chats.toList()));
   }
-  widgets.sort((a, b) => a.title.compareTo(b.title));
+  widgets.sort((a, b) => b.title.compareTo(a.title));
 
   return widgets;
 }

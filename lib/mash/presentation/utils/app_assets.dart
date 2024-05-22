@@ -58,6 +58,19 @@ class AppAssets {
 
   static const tekieImg = 'assets/images/tekie_img.png';
 
+  // suggestion
+  static const suggestionImage = 'assets/images/app_image_suggestion.svg';
+  static const responseImage = 'assets/images/app_image_response.svg';
+
+  //lesson plannner
+  static const lessonInsert = 'assets/images/lesson_insert.svg';
+  static const lessonView = 'assets/images/lesson_view.svg';
+  static const lessonStatus = 'assets/images/lesson_status.svg';
+
+  // support
+  static const mageethSchoolLogo = 'assets/images/schoolnew.png';
+  static const supportLottie = 'assets/lottie/mash_support.json';
+
   // Icons
   static const homeTabIcon = 'assets/icons/home_tab.svg';
   static const libraryTabIcon = 'assets/icons/library_tab.svg';
@@ -69,7 +82,9 @@ class AppAssets {
   static const addNote = 'assets/icons/add_note.svg';
   static const uploadIcon = 'assets/icons/upload.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
-
+  static const group = 'assets/icons/group.svg';
+  static const chatMessageSendIcon = 'assets/icons/send.svg';
+  static const attachmentIcon = 'assets/icons/attachment.svg';
   static var tcApply = "";
 
   static var tcCancel = "";

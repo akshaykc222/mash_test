@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
@@ -28,6 +29,7 @@ part 'chat_bloc.freezed.dart';
 part 'chat_event.dart';
 part 'chat_state.dart';
 
+@injectable
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(ChatState.initial()) {
     on<_CreateGroupInit>(_createGroupInit);
@@ -90,6 +92,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   _createChatRoom(_AddRooms event, emit) async {
     ChatRoomModel? selectedChatRoom = state.copyWith().selectedChatRoom;
     selectedChatRoom?.isGroupChat = event.isGroupChat ?? false;
+    if (event.isGroupChat == false) {
+      selectedChatRoom?.icon = event.icon;
+    }
     selectedChatRoom?.name = event.chatRoomName;
 
     ///validating data's

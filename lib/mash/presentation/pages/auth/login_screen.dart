@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _userNameController = TextEditingController();
   final _passwordController = TextEditingController();
-  late AndroidDeviceInfo androidInfo;
+  AndroidDeviceInfo? androidInfo;
   _init() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     androidInfo = await deviceInfo.androidInfo;
@@ -214,7 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     loginRequest: LoginRequest(
                         userId: _userNameController.text,
                         password: _passwordController.text,
-                        deviceId: androidInfo.id,
+                        deviceId: androidInfo?.id ?? '',
                         appType: AppStrings.appType)));
               }
 
@@ -236,6 +236,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return CommonTextField(
         title: 'User Id',
         controller: _userNameController,
+        isCaps: true,
         validator: (val) {
           if (val.isEmpty) {
             return AppStrings.kUserNameInvalidError;
@@ -294,7 +295,8 @@ class TextFieldWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isPassword,
-      decoration: InputDecoration(
+      decoration
+      : InputDecoration(
         prefixIcon: Icon(icon),
         hintText: hintText,
         suffixIcon: isPassword ? const Icon(Icons.remove_red_eye_outlined): null,

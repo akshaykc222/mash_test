@@ -1,16 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/usecase.dart';
-import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
 import 'package:mash/mash/presentation/pages/chat/message_details.dart';
-import 'package:mash/mash/presentation/pages/chat/new_chat.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
@@ -39,9 +34,12 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
+import '../../../core/usecase.dart';
+import '../../../di/injector.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/create_group.dart';
 import '../pages/chat/message_screen.dart';
+import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -57,6 +55,7 @@ class AppRouteManager {
     );
   }
 
+  // static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
   static Future<Widget> navigateByUserType(
       {required Widget staff, required Widget parent, required student}) async {
     var getUser = getIt<GetUserInfoUseCase>();
