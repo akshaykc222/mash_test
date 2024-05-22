@@ -17,6 +17,9 @@ class AppPages {
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
+  //facility
+  static const facility = '/facilityMainScreen';
+
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
   static const quizGetReadyScreen = '/quizGetReadyScreen';

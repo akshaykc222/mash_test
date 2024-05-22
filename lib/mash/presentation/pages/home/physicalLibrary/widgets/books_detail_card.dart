@@ -44,7 +44,7 @@ class BookDetailCard extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return CustomDialog();
+                    return const CustomDialog();
                   },
                 );
               }, title: 'VIEW'),
