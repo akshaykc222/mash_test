@@ -225,10 +225,15 @@ class MockApiProvider extends _i1.Mock implements _i9.ApiProvider {
   }
 
   @override
-  _i8.Future<Map<String, dynamic>> get(String? endPoint) => (super.noSuchMethod(
+  _i8.Future<Map<String, dynamic>> get(
+    String? endPoint, {
+    Map<String, dynamic>? body,
+  }) =>
+      (super.noSuchMethod(
         Invocation.method(
           #get,
           [endPoint],
+          {#body: body},
         ),
         returnValue:
             _i8.Future<Map<String, dynamic>>.value(<String, dynamic>{}),

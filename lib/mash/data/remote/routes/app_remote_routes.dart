@@ -8,4 +8,9 @@ class AppRemoteRoutes {
   static const classDetails =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
   // static const
+
+  ///profile urls
+
+  static const getSiblings =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentsSiblings";
 }

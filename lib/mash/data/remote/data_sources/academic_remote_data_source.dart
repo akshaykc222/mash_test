@@ -5,6 +5,7 @@ import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 
 import '../models/request/academic_comp_id_request.dart';
 
+@factoryMethod
 abstract interface class AcademicRemoteDataSource {
   Future<List<ClassDetailsModel?>> getClassDetails(WordThoughtRequest params);
 }
