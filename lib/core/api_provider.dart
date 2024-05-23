@@ -53,14 +53,16 @@ class ApiProvider {
     }
   }
 
-  Future<Map<String, dynamic>> get(String endPoint) async {
+  Future<Map<String, dynamic>> get(String endPoint,
+      {Map<String, dynamic>? body}) async {
     try {
       await addToken();
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.get(
         endPoint,
+        data: body,
       );
-      prettyPrint("request url : ${response.realUri}");
+      prettyPrint("request url : ${response.data}");
       final Map<String, dynamic> responseData = classifyResponse(response);
 
       return responseData;

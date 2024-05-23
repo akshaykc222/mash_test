@@ -16,25 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
-  AcademicAndCompIdRequest get params => throw _privateConstructorUsedError;
   BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            AcademicAndCompIdRequest params, BuildContext context)
+    required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AcademicAndCompIdRequest params, BuildContext context)?
-        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AcademicAndCompIdRequest params, BuildContext context)?
-        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,7 +65,7 @@ abstract class $DashboardEventCopyWith<$Res> {
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
   @useResult
-  $Res call({AcademicAndCompIdRequest params, BuildContext context});
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -85,14 +81,9 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? params = null,
     Object? context = null,
   }) {
     return _then(_value.copyWith(
-      params: null == params
-          ? _value.params
-          : params // ignore: cast_nullable_to_non_nullable
-              as AcademicAndCompIdRequest,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -110,7 +101,7 @@ abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res>
       __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AcademicAndCompIdRequest params, BuildContext context});
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -126,14 +117,9 @@ class __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? params = null,
     Object? context = null,
   }) {
     return _then(_$FetchWordAndThoughtOftheDayEventImpl(
-      null == params
-          ? _value.params
-          : params // ignore: cast_nullable_to_non_nullable
-              as AcademicAndCompIdRequest,
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -146,16 +132,14 @@ class __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>
 
 class _$FetchWordAndThoughtOftheDayEventImpl
     implements _FetchWordAndThoughtOftheDayEvent {
-  const _$FetchWordAndThoughtOftheDayEventImpl(this.params, this.context);
+  const _$FetchWordAndThoughtOftheDayEventImpl(this.context);
 
-  @override
-  final AcademicAndCompIdRequest params;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DashboardEvent.fetchWordAndThoughtOftheDayEvent(params: $params, context: $context)';
+    return 'DashboardEvent.fetchWordAndThoughtOftheDayEvent(context: $context)';
   }
 
   @override
@@ -163,12 +147,11 @@ class _$FetchWordAndThoughtOftheDayEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchWordAndThoughtOftheDayEventImpl &&
-            (identical(other.params, params) || other.params == params) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, params, context);
+  int get hashCode => Object.hash(runtimeType, context);
 
   @JsonKey(ignore: true)
   @override
@@ -181,31 +164,28 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            AcademicAndCompIdRequest params, BuildContext context)
+    required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
   }) {
-    return fetchWordAndThoughtOftheDayEvent(params, context);
+    return fetchWordAndThoughtOftheDayEvent(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AcademicAndCompIdRequest params, BuildContext context)?
-        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
   }) {
-    return fetchWordAndThoughtOftheDayEvent?.call(params, context);
+    return fetchWordAndThoughtOftheDayEvent?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AcademicAndCompIdRequest params, BuildContext context)?
-        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
-      return fetchWordAndThoughtOftheDayEvent(params, context);
+      return fetchWordAndThoughtOftheDayEvent(context);
     }
     return orElse();
   }
@@ -243,12 +223,9 @@ class _$FetchWordAndThoughtOftheDayEventImpl
 }
 
 abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
-  const factory _FetchWordAndThoughtOftheDayEvent(
-          final AcademicAndCompIdRequest params, final BuildContext context) =
+  const factory _FetchWordAndThoughtOftheDayEvent(final BuildContext context) =
       _$FetchWordAndThoughtOftheDayEventImpl;
 
-  @override
-  AcademicAndCompIdRequest get params;
   @override
   BuildContext get context;
   @override

@@ -17,7 +17,7 @@ class _CompetitiveExamScreenState extends State<CompetitiveExamScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-     length: 2,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -41,28 +41,42 @@ class ExamBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  TabBarView(
+    return TabBarView(
       children: [
         Center(
-          child: ListView.separated(
-            separatorBuilder: (context,index){
-              return spacer7;
-            },
-              itemCount:15,
-              itemBuilder: (context,index){
-            return  ExamLinkCard(isRegistered: false, title: 'ONLINE APTITUDE TEST', date: '24/06/2023', onPress: ()=>GoRouter.of(context).pushNamed(AppPages.examDetailScreen,extra: false),);
-          })
-        ),
+            child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return spacer7;
+                },
+                itemCount: 15,
+                itemBuilder: (context, index) {
+                  return ExamLinkCard(
+                    isRegistered: false,
+                    title: 'ONLINE APTITUDE TEST',
+                    date: '24/06/2023',
+                    onPress: () => GoRouter.of(context).pushNamed(
+                      AppPages.examDetailScreen,
+                      extra: false,
+                    ),
+                  );
+                })),
         Center(
-          child: ListView.separated(
-              separatorBuilder: (context,index){
-                return spacer7;
-              },
-              itemCount:15,
-              itemBuilder: (context,index){
-                return ExamLinkCard(isRegistered: true, title: 'ONLINE APTITUDE TEST', date: '24/06/2023', onPress: ()=> GoRouter.of(context).pushNamed(AppPages.examDetailScreen,extra: true),);
-              })
-        ),
+            child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return spacer7;
+                },
+                itemCount: 15,
+                itemBuilder: (context, index) {
+                  return ExamLinkCard(
+                    isRegistered: true,
+                    title: 'ONLINE APTITUDE TEST',
+                    date: '24/06/2023',
+                    onPress: () => GoRouter.of(context).pushNamed(
+                      AppPages.examDetailScreen,
+                      extra: true,
+                    ),
+                  );
+                })),
       ],
     );
   }

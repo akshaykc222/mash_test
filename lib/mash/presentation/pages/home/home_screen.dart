@@ -45,8 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //Widget getWidget = await  AppRouteManager.navigateByUserType(staff: staff, parent: parent, student: student)
     return Scaffold(
-        bottomNavigationBar: const BottomNavigationBarScreen(),
-        body: _screens[widget.currentIndex]);
+      bottomNavigationBar: const BottomNavigationBarScreen(),
+      body: _screens[widget.currentIndex],
+    );
   }
 }

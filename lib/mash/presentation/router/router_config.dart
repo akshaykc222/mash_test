@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/pretty_printer.dart';
-import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
+import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
+import 'package:mash/mash/presentation/pages/chat/message_details.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
@@ -58,8 +59,14 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
+import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
-import '../pages/home/facility/facility_main_screen.dart';
+import '../../../core/usecase.dart';
+import '../../../di/injector.dart';
+import '../../domain/use_cases/auth/get_user_info_use_case.dart';
+import '../pages/chat/create_group.dart';
+import '../pages/chat/message_screen.dart';
+import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -68,13 +75,14 @@ import '../utils/enums.dart';
 class AppRouteManager {
   static home([CustomBottomNavigationItems? type]) =>
       '/${type?.index ?? ':type'}';
-
   static Widget _homePageRouteBuilder(
       BuildContext context, GoRouterState state) {
     return HomeScreen(
       currentIndex: int.parse(state.pathParameters['type']!),
     );
   }
+
+  // static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
@@ -88,7 +96,6 @@ class AppRouteManager {
           if (user == null) {
             return const LoginScreen();
           } else {
-            prettyPrint('user type is ${user.userType}');
             switch (getUserType(user.userType)) {
               case UserTypes.staff:
                 return staff;
@@ -109,8 +116,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router =
-      GoRouter(initialLocation: AppPages.facility, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -385,18 +391,13 @@ class AppRouteManager {
       builder: (context, state) => const TeacherRatingScreen(),
     ),
     GoRoute(
-      name: AppPages.facility,
-      path: AppPages.facility,
-      builder: (context, state) => const FacilityMainScreen(),
-    ),
-    GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,
       builder: (context, state) {
         if (state.extra != null) {
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
-        return const SizedBox();
+        return SizedBox();
       },
     ),
     GoRoute(

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/home/vehicleTracker/widgets/tracker_detail_widget.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';

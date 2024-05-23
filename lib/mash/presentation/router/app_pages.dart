@@ -14,7 +14,6 @@ class AppPages {
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const userActivity = '/userActivityScreen';
 
-
   static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
@@ -28,7 +27,6 @@ class AppPages {
   static const quizCompletedScreen = '/quizCompletedScreen';
   static const quizProfileScreen = '/quizProfileScreen';
   static const quizRankingScreen = '/quizRankingScreen';
-
 
   //school bus tracker
   static const vehicleTracker = '/schoolBusTrackerScreen';
@@ -62,6 +60,7 @@ class AppPages {
   static const noticeBoardDetailScreen = '/noticeDetailScreen';
 
   //timeTable
+
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
   static const examTimetableScreen = '/examTimetableScreen';
@@ -80,7 +79,7 @@ class AppPages {
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';
   static const classAttendanceMarkingScreen = '/classAttendanceMarkingScreen';
 
- //lesson planner
+  //lesson planner
   static const lessonPlannerMainScreen = '/lessonPlannerMainScreen';
   static const insertYearPlanScreen = '/insertYearPlanScreen';
   static const viewYearPlanScreen = '/viewYearPlanScreen';
@@ -95,11 +94,16 @@ class AppPages {
   // pdf view screen
   static const pdfViewScreen = '/pdfViewScreen';
 
-
   static const feedbackScreen = '/feedbackScreen';
   static const idCardRequestScreen = '/idCardRequestScreen';
   static const competitiveExamScreen = '/competitiveExamScreen';
   static const examDetailScreen = '/examDetailScreen';
   static const feesAndPaymentScreen = '/feesAndPaymentScreen';
   static const paymentHistoryScreen = '/paymentHistoryScreen';
+  //chats
+  static const chatsListScreen = "/chatListScreen";
+  static const messageScreen = "/messageScreen";
+  static const createGroup = "/createGroup";
+  static const groupDetails = "/groupDetails";
+  static const newChat = "/newChat";
 }

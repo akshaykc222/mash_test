@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       final token =
           await HiveService().getBox<String>(boxName: LocalStorageNames.token);
       if (token.isNotEmpty) {
-        context.goNamed(AppPages.syllabusScreen);
+        context.goNamed(AppPages.home);
       } else {
         context.goNamed(AppPages.login);
       }
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           "Splash screen",
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
     );

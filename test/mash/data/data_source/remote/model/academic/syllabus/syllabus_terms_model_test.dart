@@ -15,7 +15,7 @@ void main() {
     test(
         '''Should successfully deserialize a JSON map into a syllabusterms model
           object and ensure that the resulting 
-          object matches the expected TsyllabusModel''', () {
+          object matches the expected TsyllabuTermsModel''', () {
       //Arrange
       final Map<String, dynamic> jsonMap = json
           .decode(fixture('academic/syllabus/syllabus_terms_response.json'));
@@ -27,7 +27,7 @@ void main() {
       expect(result, equals(tSyllabusTermsModel));
     });
     test(
-        'should return a json map of syllabus request containing a proper data',
+        'should return a json map of syllabusTerms request containing a proper data',
         () {
       //Arrange
       final result = tSyllabusTermsRequest.toJson();
@@ -38,7 +38,7 @@ void main() {
         "P_ACAD_ID": '87',
         "P_CLASS_ID": '152'
       };
-      //
+      //Assert
       expect(result, expectedJsonMap);
     });
   });

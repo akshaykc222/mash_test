@@ -5,6 +5,8 @@
     <uses-feature
         android:name="android.hardware.location.gps"
         android:required="false" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="mash"
         android:name="${applicationName}"

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/widget/dashboard_common_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/subject_perfomance_widget.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
@@ -46,6 +47,7 @@ class ParentDashboardLastSectionState
             ),
           ),
           spacer40,
+          const DashboardCommonLastWidget()
         ],
       ),
     );
