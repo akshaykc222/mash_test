@@ -1,12 +1,18 @@
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 
 class StudentModel extends StudentEntity {
-  const StudentModel({required super.userId, required super.studentName});
+  const StudentModel(
+      {required super.userId,
+      required super.studentName,
+      required super.divisionName,
+      required super.profilePhoto});
 
   factory StudentModel.fromJson(Map<String, dynamic> json) {
     return StudentModel(
       userId: json['USR_ID'] as String,
       studentName: json['STUDENT_NM'] as String,
+      divisionName: json['DIVISION_NAME'],
+      profilePhoto: json['PROFILE_PHOTO'],
     );
   }
 

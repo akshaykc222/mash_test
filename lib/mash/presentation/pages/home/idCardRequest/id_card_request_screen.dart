@@ -1,13 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
@@ -20,11 +18,10 @@ class IdCardRequestScreen extends StatefulWidget {
 }
 
 class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
-
   final TextEditingController _requestController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: commonAppbar(title: AppStrings.idCardRequest),
       endDrawer: DrawerWidget(),
       body: idRequestBody(context),
@@ -47,25 +44,22 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
     var size = MediaQuery.sizeOf(context);
     return Container(
       height: size.height,
-      width:  size.width,
+      width: size.width,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titleText(AppStrings.studentName),
-          StudentProfileWidget(
-            onTap: () async {
-              _showModelSheet(context);
-            },
-          ),
+          HelperClasses.getSelectedStudent(context),
           titleText(AppStrings.request),
           CommonGestureDetector(
-              onTap: ()=>_openOptionsBottomSheet(
-                  context, _requestController, options, AppStrings.selectModule), icon: Icons.arrow_drop_down_circle, textController: _requestController, hintText: AppStrings.requestType),
+              onTap: () => _openOptionsBottomSheet(context, _requestController,
+                  options, AppStrings.selectModule),
+              icon: Icons.arrow_drop_down_circle,
+              textController: _requestController,
+              hintText: AppStrings.requestType),
           titleText(AppStrings.remarks),
-          CommonTextField(
-            lines: 4,
-              title: AppStrings.enterRemarks),
+          CommonTextField(lines: 4, title: AppStrings.enterRemarks),
           spacer30,
           AnimatedSharedButton(
               onTap: () {},
@@ -77,7 +71,6 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
               isLoading: false)
         ],
       ),
-
     );
   }
 
@@ -88,22 +81,6 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
         title,
         style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       ),
-    );
-  }
-
-  Future<void> _showModelSheet(BuildContext context) {
-    return commonBottomSheet(
-      context,
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return StudentProfileWidget(
-              onTap: () {},
-            );
-          },
-          separatorBuilder: (context, index) => spacer10,
-          itemCount: 3),
-      title: AppStrings.selectProfile,
-      height: 0.55,
     );
   }
 

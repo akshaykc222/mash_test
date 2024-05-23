@@ -1,14 +1,16 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/data/remote/models/request/get_user_details_request.dart';
+import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/get_siblings_use_case.dart';
 
 import '../../../domain/entities/profile/student_entity.dart';
+import '../../../domain/use_cases/profile/get_user_details_use_case.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';
@@ -19,8 +21,27 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(ProfileState.initial()) {
     on<_GetSiblings>(_getSiblings);
     on<_SelectSibling>(_selectSibling);
+    on<_GetUserDetails>(_getUserDetail);
   }
-  _selectSibling(_SelectSibling event, emit) {
+  _getUserDetail(_GetUserDetails event, emit) async {
+    emit(state.copyWith(getUserDetail: ResponseClassify.loading()));
+    try {
+      emit(state.copyWith(
+          getUserDetail: ResponseClassify.completed(
+              await getUserDetailUseCase.call(event.request))));
+    } catch (e) {
+      emit(state.copyWith(getUserDetail: ResponseClassify.error(e)));
+    }
+  }
+
+  _selectSibling(_SelectSibling event, emit) async {
+    var getLoginDetails = await getLoginInfoUseCase.call(NoParams());
+    add(ProfileEvent.getUserDetails(
+        request: GetUserDetailsRequest(
+            userId: event.student.userId,
+            compId: getLoginDetails?.compId ?? "",
+            academicId: getLoginDetails?.academicId ?? "",
+            userType: "2")));
     emit(state.copyWith(selectedSibling: event.student));
   }
 
@@ -46,4 +67,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   final getSiblingsUseCase = getIt<GetSiblingsUseCase>();
   final getLoginInfoUseCase = getIt<GetUserInfoUseCase>();
+  final getUserDetailUseCase = getIt<GetUserDetailsUseCase>();
+
+  //instance
+  static ProfileBloc get(context) => BlocProvider.of(context);
 }

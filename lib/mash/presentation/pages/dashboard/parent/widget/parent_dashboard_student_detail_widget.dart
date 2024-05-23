@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
+import 'package:mash/mash/presentation/manager/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/oultined_container_widget.dart';
+import 'package:mash/mash/presentation/widgets/shimmers/home_shimmer.dart';
 
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';
@@ -14,30 +21,47 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        spacer30,
-        _buildInfoRow(),
-        spacer7,
-        _buildDivider(context),
-        spacer10,
-        _buildContactRow(context),
-        spacer10,
-        _buildProgressWidgets(context),
-        spacer50,
-      ],
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listenWhen: (previous, current) =>
+          previous.getUserDetail?.status != current.getUserDetail?.status,
+      listener: (context, state) {
+        if (state.getUserDetail?.status == Status.ERROR) {
+          handleErrorUi(context: context, error: state.getUserDetail?.error);
+        }
+      },
+      buildWhen: (previous, current) =>
+          previous.getUserDetail?.status != current.getUserDetail?.status,
+      builder: (context, state) {
+        return state.getUserDetail?.status == Status.LOADING
+            ? const ShimmerHome()
+            : state.getUserDetail?.status == Status.COMPLETED
+                ? Column(
+                    children: [
+                      spacer30,
+                      _buildInfoRow(state.getUserDetail!.data!),
+                      spacer7,
+                      _buildDivider(context),
+                      spacer10,
+                      _buildContactRow(context, state.getUserDetail!.data!),
+                      spacer10,
+                      _buildProgressWidgets(context),
+                      spacer50,
+                    ],
+                  )
+                : HelperClasses.errorWidget(context);
+      },
     );
   }
 
-  Widget _buildInfoRow() {
+  Widget _buildInfoRow(StudentDetailEntity student) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildInfoItem('Class Teacher', 'Rajani Rajan'),
-          _buildInfoItem('Roll No', '0394', isEnd: true),
+          _buildInfoItem('Class Teacher', student.classTeacherId),
+          _buildInfoItem('Roll No', student.roleId, isEnd: true),
         ],
       ),
     );
@@ -89,16 +113,20 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildContactRow(BuildContext context) {
+  Widget _buildContactRow(BuildContext context, StudentDetailEntity student) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          const Icon(Icons.call_outlined),
+          Icon(Icons.call_outlined),
           const SizedBox(width: 20),
-          const Icon(Icons.chat_bubble_outline),
+          GestureDetector(
+              onTap: () {
+                GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
+              },
+              child: const Icon(Icons.chat_bubble_outline)),
           const Spacer(),
-          _buildInfoItem('Class', 'LKG A', isEnd: true)
+          _buildInfoItem('Class', student.classId, isEnd: true)
         ],
       ),
     );

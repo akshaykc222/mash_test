@@ -31,8 +31,8 @@ mixin _$ChatEvent {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) =>
       throw _privateConstructorUsedError;
@@ -51,8 +51,8 @@ mixin _$ChatEvent {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,8 +71,8 @@ mixin _$ChatEvent {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) =>
@@ -202,8 +202,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return started();
@@ -225,8 +225,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return started?.call();
@@ -248,8 +248,8 @@ class _$StartedImpl implements _Started {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -382,8 +382,8 @@ class _$GetRoomsImpl implements _GetRooms {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return getChatRooms();
@@ -405,8 +405,8 @@ class _$GetRoomsImpl implements _GetRooms {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return getChatRooms?.call();
@@ -428,8 +428,8 @@ class _$GetRoomsImpl implements _GetRooms {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -588,8 +588,8 @@ class _$UpdateRoomImpl implements _UpdateRoom {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return updateRoom(model);
@@ -611,8 +611,8 @@ class _$UpdateRoomImpl implements _UpdateRoom {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return updateRoom?.call(model);
@@ -634,8 +634,8 @@ class _$UpdateRoomImpl implements _UpdateRoom {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -800,8 +800,8 @@ class _$UpdateMessageImpl implements _UpdateMessage {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return updateMessage(model);
@@ -823,8 +823,8 @@ class _$UpdateMessageImpl implements _UpdateMessage {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return updateMessage?.call(model);
@@ -846,8 +846,8 @@ class _$UpdateMessageImpl implements _UpdateMessage {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -1012,8 +1012,8 @@ class _$SelectMessageImpl implements _SelectMessage {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return selectMessage(message);
@@ -1035,8 +1035,8 @@ class _$SelectMessageImpl implements _SelectMessage {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return selectMessage?.call(message);
@@ -1058,8 +1058,8 @@ class _$SelectMessageImpl implements _SelectMessage {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -1225,8 +1225,8 @@ class _$GetUsersImpl implements _GetUsers {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return getUsers(selectedUserType);
@@ -1248,8 +1248,8 @@ class _$GetUsersImpl implements _GetUsers {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return getUsers?.call(selectedUserType);
@@ -1271,8 +1271,8 @@ class _$GetUsersImpl implements _GetUsers {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -1411,8 +1411,8 @@ class _$GetMembersOfGroupImpl implements _GetMembersOfGroup {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return getMembersOfGroup();
@@ -1434,8 +1434,8 @@ class _$GetMembersOfGroupImpl implements _GetMembersOfGroup {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return getMembersOfGroup?.call();
@@ -1457,8 +1457,8 @@ class _$GetMembersOfGroupImpl implements _GetMembersOfGroup {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -1591,8 +1591,8 @@ class _$CreateGroupInitImpl implements _CreateGroupInit {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return createGroupInit();
@@ -1614,8 +1614,8 @@ class _$CreateGroupInitImpl implements _CreateGroupInit {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return createGroupInit?.call();
@@ -1637,8 +1637,8 @@ class _$CreateGroupInitImpl implements _CreateGroupInit {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -1797,8 +1797,8 @@ class _$GetMessagesImpl implements _GetMessages {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return getMessages(room);
@@ -1820,8 +1820,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return getMessages?.call(room);
@@ -1843,8 +1843,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -2009,8 +2009,8 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return sendMessage(message);
@@ -2032,8 +2032,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return sendMessage?.call(message);
@@ -2055,8 +2055,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -2221,8 +2221,8 @@ class _$AddAdminsImpl implements _AddAdmins {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return addAdmins(userId);
@@ -2244,8 +2244,8 @@ class _$AddAdminsImpl implements _AddAdmins {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return addAdmins?.call(userId);
@@ -2267,8 +2267,8 @@ class _$AddAdminsImpl implements _AddAdmins {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -2432,8 +2432,8 @@ class _$SelectUserImpl implements _SelectUser {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return selectUser(user);
@@ -2455,8 +2455,8 @@ class _$SelectUserImpl implements _SelectUser {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return selectUser?.call(user);
@@ -2478,8 +2478,8 @@ class _$SelectUserImpl implements _SelectUser {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -2646,8 +2646,8 @@ class _$ChangeUserFilterImpl implements _ChangeUserFilter {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
     return changeUserFilter(selectedUser);
@@ -2669,8 +2669,8 @@ class _$ChangeUserFilterImpl implements _ChangeUserFilter {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
     return changeUserFilter?.call(selectedUser);
@@ -2692,8 +2692,8 @@ class _$ChangeUserFilterImpl implements _ChangeUserFilter {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
@@ -2787,7 +2787,11 @@ abstract class _$$AddRoomsImplCopyWith<$Res> {
           _$AddRoomsImpl value, $Res Function(_$AddRoomsImpl) then) =
       __$$AddRoomsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String chatRoomName, bool? isGroupChat, BuildContext context});
+  $Res call(
+      {String chatRoomName,
+      bool? isGroupChat,
+      String? icon,
+      BuildContext context});
 }
 
 /// @nodoc
@@ -2803,6 +2807,7 @@ class __$$AddRoomsImplCopyWithImpl<$Res>
   $Res call({
     Object? chatRoomName = null,
     Object? isGroupChat = freezed,
+    Object? icon = freezed,
     Object? context = null,
   }) {
     return _then(_$AddRoomsImpl(
@@ -2814,6 +2819,10 @@ class __$$AddRoomsImplCopyWithImpl<$Res>
           ? _value.isGroupChat
           : isGroupChat // ignore: cast_nullable_to_non_nullable
               as bool?,
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String?,
       context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -2828,6 +2837,7 @@ class _$AddRoomsImpl implements _AddRooms {
   const _$AddRoomsImpl(
       {required this.chatRoomName,
       this.isGroupChat = true,
+      this.icon,
       required this.context});
 
   @override
@@ -2836,11 +2846,13 @@ class _$AddRoomsImpl implements _AddRooms {
   @JsonKey()
   final bool? isGroupChat;
   @override
+  final String? icon;
+  @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'ChatEvent.addChatRooms(chatRoomName: $chatRoomName, isGroupChat: $isGroupChat, context: $context)';
+    return 'ChatEvent.addChatRooms(chatRoomName: $chatRoomName, isGroupChat: $isGroupChat, icon: $icon, context: $context)';
   }
 
   @override
@@ -2852,12 +2864,13 @@ class _$AddRoomsImpl implements _AddRooms {
                 other.chatRoomName == chatRoomName) &&
             (identical(other.isGroupChat, isGroupChat) ||
                 other.isGroupChat == isGroupChat) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, chatRoomName, isGroupChat, context);
+      Object.hash(runtimeType, chatRoomName, isGroupChat, icon, context);
 
   @JsonKey(ignore: true)
   @override
@@ -2881,11 +2894,11 @@ class _$AddRoomsImpl implements _AddRooms {
     required TResult Function(String userId) addAdmins,
     required TResult Function(LoginResTableEntity user) selectUser,
     required TResult Function(UserTypes selectedUser) changeUserFilter,
-    required TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)
+    required TResult Function(String chatRoomName, bool? isGroupChat,
+            String? icon, BuildContext context)
         addChatRooms,
   }) {
-    return addChatRooms(chatRoomName, isGroupChat, context);
+    return addChatRooms(chatRoomName, isGroupChat, icon, context);
   }
 
   @override
@@ -2904,11 +2917,11 @@ class _$AddRoomsImpl implements _AddRooms {
     TResult? Function(String userId)? addAdmins,
     TResult? Function(LoginResTableEntity user)? selectUser,
     TResult? Function(UserTypes selectedUser)? changeUserFilter,
-    TResult? Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult? Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
   }) {
-    return addChatRooms?.call(chatRoomName, isGroupChat, context);
+    return addChatRooms?.call(chatRoomName, isGroupChat, icon, context);
   }
 
   @override
@@ -2927,13 +2940,13 @@ class _$AddRoomsImpl implements _AddRooms {
     TResult Function(String userId)? addAdmins,
     TResult Function(LoginResTableEntity user)? selectUser,
     TResult Function(UserTypes selectedUser)? changeUserFilter,
-    TResult Function(
-            String chatRoomName, bool? isGroupChat, BuildContext context)?
+    TResult Function(String chatRoomName, bool? isGroupChat, String? icon,
+            BuildContext context)?
         addChatRooms,
     required TResult orElse(),
   }) {
     if (addChatRooms != null) {
-      return addChatRooms(chatRoomName, isGroupChat, context);
+      return addChatRooms(chatRoomName, isGroupChat, icon, context);
     }
     return orElse();
   }
@@ -3010,10 +3023,12 @@ abstract class _AddRooms implements ChatEvent {
   const factory _AddRooms(
       {required final String chatRoomName,
       final bool? isGroupChat,
+      final String? icon,
       required final BuildContext context}) = _$AddRoomsImpl;
 
   String get chatRoomName;
   bool? get isGroupChat;
+  String? get icon;
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$AddRoomsImplCopyWith<_$AddRoomsImpl> get copyWith =>

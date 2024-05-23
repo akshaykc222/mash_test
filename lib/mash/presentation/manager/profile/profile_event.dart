@@ -6,4 +6,6 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.selectSibling({required StudentEntity student}) =
       _SelectSibling;
   const factory ProfileEvent.getSiblings() = _GetSiblings;
+  const factory ProfileEvent.getUserDetails(
+      {required GetUserDetailsRequest request}) = _GetUserDetails;
 }
