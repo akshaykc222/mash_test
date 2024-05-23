@@ -21,8 +21,8 @@ class HomeWorkRemoteDataSourceImpl implements HomeWorkNotesRemoteDataSource {
   @override
   Future<List<HomeWorkReportModel>> getHomeWorkReports(
       HomeWorkReportRequest params) async {
-    final data = await apiProvider.post(
-        AppRemoteRoutes.homeWorkReports, params.toJson());
+    final data = await apiProvider.get(AppRemoteRoutes.homeWorkReports,
+        body: params.toJson());
     final List<dynamic> datalist = data['resTable'];
     return datalist.map((e) => HomeWorkReportModel.fromJson(e)).toList();
   }
@@ -30,8 +30,8 @@ class HomeWorkRemoteDataSourceImpl implements HomeWorkNotesRemoteDataSource {
   @override
   Future<List<NotesReportModel?>> getNoteReports(
       HomeWorkReportRequest params) async {
-    final data =
-        await apiProvider.post(AppRemoteRoutes.notesReports, params.toJson());
+    final data = await apiProvider.get(AppRemoteRoutes.notesReports,
+        body: params.toJson());
     final List<dynamic> datalist = data['resTable'];
     return datalist.map((e) => NotesReportModel.fromJson(e)).toList();
   }

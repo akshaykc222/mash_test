@@ -15,7 +15,7 @@ class HomeWorkScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'HOMEWORK/NOTES'),
       body: homeWorkBody(context),
     );

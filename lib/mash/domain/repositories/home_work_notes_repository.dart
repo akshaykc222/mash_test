@@ -4,7 +4,7 @@ import 'package:mash/mash/domain/entities/home_work/home_work_entity.dart';
 import '../entities/notes/notes_report_model.dart';
 
 abstract interface class HomeWorkNotesRepository {
-  Future<List<HomeWorkReportsEntity?>> getHomeWorkReports(
+  Future<List<HomeWorkReportsEntity>> getHomeWorkReports(
       HomeWorkReportRequest params);
   Future<List<NotesReportEntity?>> getNoteReports(HomeWorkReportRequest params);
 }

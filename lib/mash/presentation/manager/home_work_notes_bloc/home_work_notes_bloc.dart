@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -7,6 +8,8 @@ import 'package:mash/mash/data/remote/models/request/home_work_report_request.da
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart';
+
+import '../../../domain/entities/home_work/home_work_entity.dart';
 
 part 'home_work_notes_event.dart';
 part 'home_work_notes_state.dart';
@@ -50,7 +53,7 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
 
   _getNotesWorkReport(
       _GetNotesWorkReport event, Emitter<HomeWorkNotesState> emit) async {
-    emit(state.copyWith(homeWorkReportResponse: ResponseClassify.loading()));
+    emit(state.copyWith(noteWorkReportResponse: ResponseClassify.loading()));
     try {
       final userData = await getUserInfoUseCase.call(NoParams());
       if (userData != null) {
@@ -64,11 +67,14 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           acadId: userData.academicId ?? "",
         ));
         emit(state.copyWith(
-            homeWorkReportResponse: ResponseClassify.completed(data)));
+            noteWorkReportResponse: ResponseClassify.completed(data)));
       }
     } catch (e) {
       emit(state.copyWith(
-          homeWorkReportResponse: ResponseClassify.error(e.toString())));
+          noteWorkReportResponse: ResponseClassify.error(e.toString())));
     }
   }
+
+  static HomeWorkNotesBloc get(BuildContext context) =>
+      BlocProvider.of(context);
 }

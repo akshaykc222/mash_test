@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.loginResponse?.status == Status.COMPLETED &&
-            state.loginResponse?.data?.token != '') {
+            state.loginResponse?.data?.token.isNotEmpty == true) {
           GoRouter.of(context).pushNamed(AppPages.home);
         } else if (state.loginResponse?.status == Status.ERROR) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -198,21 +198,21 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (context, state) {
         return AnimatedSharedButton(
             onTap: () async {
-              if (state.loginResponse?.status != Status.LOADING) {
-                if (_formKey.currentState?.validate() == true) {
-                  BlocProvider.of<AuthBloc>(context).add(
-                    AuthEvent.login(
-                      context: context,
-                      loginRequest: LoginRequest(
-                        userId: _userNameController.text,
-                        password: _passwordController.text,
-                        deviceId: androidInfo?.id ?? "",
-                        appType: AppStrings.appType,
-                      ),
+              // if (state.loginResponse?.status == Status.INITIAL) {
+              if (_formKey.currentState?.validate() == true) {
+                BlocProvider.of<AuthBloc>(context).add(
+                  AuthEvent.login(
+                    context: context,
+                    loginRequest: LoginRequest(
+                      userId: _userNameController.text,
+                      password: _passwordController.text,
+                      deviceId: androidInfo?.id ?? "",
+                      appType: AppStrings.appType,
                     ),
-                  );
-                }
+                  ),
+                );
               }
+              // }
             },
             title: Text(
               "Sign in",

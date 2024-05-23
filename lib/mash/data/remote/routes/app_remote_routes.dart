@@ -7,12 +7,20 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticePopUp";
   static const classDetails =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
+  // static const
+
+  ///profile urls
+
+  static const getSiblings =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentsSiblings";
+  static const getUserDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getUserDetails";
   static const noticeAll =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticeAll";
   static const academicSubjects =
       'UATRESTAPI/MashFlutterRestAPI/api/user/getAcademicsubjects';
   static const homeWorkReports =
-      'UATRESTAPI/MashFlutterRestAPI/api/user/homeworkReport';
+      'UATRESTAPI/MashFlutterRestAPI/api/user/getHomeWorkReport';
   static const notesReports =
       "UATRESTAPI/MashFlutterRestAPI/api/user/notesReport";
   static const divisionDetails =

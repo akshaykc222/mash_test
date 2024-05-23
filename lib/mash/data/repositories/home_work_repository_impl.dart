@@ -14,7 +14,7 @@ class HomeWorkNotesReportRepositoryImpl implements HomeWorkNotesRepository {
     required this.homeWorkNotesRemoteDataSource,
   });
   @override
-  Future<List<HomeWorkReportsEntity?>> getHomeWorkReports(
+  Future<List<HomeWorkReportsEntity>> getHomeWorkReports(
       HomeWorkReportRequest params) async {
     return homeWorkNotesRemoteDataSource.getHomeWorkReports(params);
   }

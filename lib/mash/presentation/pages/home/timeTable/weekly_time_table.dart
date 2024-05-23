@@ -76,6 +76,16 @@ class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
   final ValueNotifier<PeriodModel?> _selectedItem = ValueNotifier(null);
 
   @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(

@@ -1,9 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/presentation/manager/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/widgets/shimmers/shimmer_box.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
@@ -44,9 +50,21 @@ class ParentDashBoard extends StatelessWidget {
         spacerWidth20,
       ],
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset(
-          'assets/images/student_dummy.png',
-          fit: BoxFit.cover,
+        background: BlocBuilder<ProfileBloc, ProfileState>(
+          buildWhen: (previous, current) {
+            return previous.getUserDetail?.status !=
+                current.getUserDetail?.status;
+          },
+          builder: (context, state) {
+            return state.getUserDetail?.status == Status.LOADING
+                ? const ShimmerBox()
+                : CachedNetworkImage(
+                    errorWidget: (context, url, error) =>
+                        HelperClasses.errorWidget(context),
+                    imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
+                    fit: BoxFit.cover,
+                  );
+          },
         ),
       ),
     );
