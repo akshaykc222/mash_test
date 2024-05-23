@@ -19,7 +19,6 @@ class DashboardCommonLastWidget extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DashboardBloc>(context).add(
         DashboardEvent.fetchWordAndThoughtOftheDayEvent(
-          AcademicAndCompIdRequest(pAcademicId: '87', pCompID: '200001'),
           context,
         ),
       );

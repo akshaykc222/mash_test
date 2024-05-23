@@ -46,8 +46,7 @@ class DashBoardRepoImpl implements DashBoardRepository {
   }
 
   @override
-  Future<List<RoleMenuEntity>> getRolemenuItems(RoleMenuRequest params) {
-    // TODO: implement getRolemenuItems
-    throw UnimplementedError();
+  Future<List<RoleMenuEntity>> getRolemenuItems(RoleMenuRequest params) async {
+    return await dashBoardDataSource.getRolemenuItems(params);
   }
 }

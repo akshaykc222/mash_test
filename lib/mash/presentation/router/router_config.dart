@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -88,7 +87,6 @@ class AppRouteManager {
           if (user == null) {
             return const LoginScreen();
           } else {
-            prettyPrint("USER TYPE ${getUserType(user.userType)}");
             switch (getUserType(user.userType)) {
               case UserTypes.staff:
                 return staff;
@@ -382,10 +380,6 @@ class AppRouteManager {
       name: AppPages.teacherRatingScreen,
       path: AppPages.teacherRatingScreen,
       builder: (context, state) => const TeacherRatingScreen(),
-    ),
-    GoRoute(
-      path: AppPages.facility,
-      builder: (context, state) => const FacilityMainScreen(),
     ),
     GoRoute(
       name: AppPages.examDetailScreen,

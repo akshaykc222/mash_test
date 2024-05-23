@@ -20,18 +20,21 @@ mixin _$DrawerEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getNewsBoard,
     required TResult Function(String fileName) pdfDownload,
+    required TResult Function() getRoleMenuEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNewsBoard,
     TResult? Function(String fileName)? pdfDownload,
+    TResult? Function()? getRoleMenuEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNewsBoard,
     TResult Function(String fileName)? pdfDownload,
+    TResult Function()? getRoleMenuEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$DrawerEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNewsBoard value) getNewsBoard,
     required TResult Function(_PdfDownload value) pdfDownload,
+    required TResult Function(_GetRoleMenuEvent value) getRoleMenuEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNewsBoard value)? getNewsBoard,
     TResult? Function(_PdfDownload value)? pdfDownload,
+    TResult? Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNewsBoard value)? getNewsBoard,
     TResult Function(_PdfDownload value)? pdfDownload,
+    TResult Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult when<TResult extends Object?>({
     required TResult Function() getNewsBoard,
     required TResult Function(String fileName) pdfDownload,
+    required TResult Function() getRoleMenuEvent,
   }) {
     return getNewsBoard();
   }
@@ -123,6 +130,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNewsBoard,
     TResult? Function(String fileName)? pdfDownload,
+    TResult? Function()? getRoleMenuEvent,
   }) {
     return getNewsBoard?.call();
   }
@@ -132,6 +140,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNewsBoard,
     TResult Function(String fileName)? pdfDownload,
+    TResult Function()? getRoleMenuEvent,
     required TResult orElse(),
   }) {
     if (getNewsBoard != null) {
@@ -145,6 +154,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNewsBoard value) getNewsBoard,
     required TResult Function(_PdfDownload value) pdfDownload,
+    required TResult Function(_GetRoleMenuEvent value) getRoleMenuEvent,
   }) {
     return getNewsBoard(this);
   }
@@ -154,6 +164,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNewsBoard value)? getNewsBoard,
     TResult? Function(_PdfDownload value)? pdfDownload,
+    TResult? Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
   }) {
     return getNewsBoard?.call(this);
   }
@@ -163,6 +174,7 @@ class _$GetNewsBoardImpl implements _GetNewsBoard {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNewsBoard value)? getNewsBoard,
     TResult Function(_PdfDownload value)? pdfDownload,
+    TResult Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
     required TResult orElse(),
   }) {
     if (getNewsBoard != null) {
@@ -243,6 +255,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult when<TResult extends Object?>({
     required TResult Function() getNewsBoard,
     required TResult Function(String fileName) pdfDownload,
+    required TResult Function() getRoleMenuEvent,
   }) {
     return pdfDownload(fileName);
   }
@@ -252,6 +265,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNewsBoard,
     TResult? Function(String fileName)? pdfDownload,
+    TResult? Function()? getRoleMenuEvent,
   }) {
     return pdfDownload?.call(fileName);
   }
@@ -261,6 +275,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNewsBoard,
     TResult Function(String fileName)? pdfDownload,
+    TResult Function()? getRoleMenuEvent,
     required TResult orElse(),
   }) {
     if (pdfDownload != null) {
@@ -274,6 +289,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNewsBoard value) getNewsBoard,
     required TResult Function(_PdfDownload value) pdfDownload,
+    required TResult Function(_GetRoleMenuEvent value) getRoleMenuEvent,
   }) {
     return pdfDownload(this);
   }
@@ -283,6 +299,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNewsBoard value)? getNewsBoard,
     TResult? Function(_PdfDownload value)? pdfDownload,
+    TResult? Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
   }) {
     return pdfDownload?.call(this);
   }
@@ -292,6 +309,7 @@ class _$PdfDownloadImpl implements _PdfDownload {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNewsBoard value)? getNewsBoard,
     TResult Function(_PdfDownload value)? pdfDownload,
+    TResult Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
     required TResult orElse(),
   }) {
     if (pdfDownload != null) {
@@ -311,10 +329,120 @@ abstract class _PdfDownload implements DrawerEvent {
 }
 
 /// @nodoc
+abstract class _$$GetRoleMenuEventImplCopyWith<$Res> {
+  factory _$$GetRoleMenuEventImplCopyWith(_$GetRoleMenuEventImpl value,
+          $Res Function(_$GetRoleMenuEventImpl) then) =
+      __$$GetRoleMenuEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetRoleMenuEventImplCopyWithImpl<$Res>
+    extends _$DrawerEventCopyWithImpl<$Res, _$GetRoleMenuEventImpl>
+    implements _$$GetRoleMenuEventImplCopyWith<$Res> {
+  __$$GetRoleMenuEventImplCopyWithImpl(_$GetRoleMenuEventImpl _value,
+      $Res Function(_$GetRoleMenuEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetRoleMenuEventImpl implements _GetRoleMenuEvent {
+  const _$GetRoleMenuEventImpl();
+
+  @override
+  String toString() {
+    return 'DrawerEvent.getRoleMenuEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetRoleMenuEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNewsBoard,
+    required TResult Function(String fileName) pdfDownload,
+    required TResult Function() getRoleMenuEvent,
+  }) {
+    return getRoleMenuEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNewsBoard,
+    TResult? Function(String fileName)? pdfDownload,
+    TResult? Function()? getRoleMenuEvent,
+  }) {
+    return getRoleMenuEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNewsBoard,
+    TResult Function(String fileName)? pdfDownload,
+    TResult Function()? getRoleMenuEvent,
+    required TResult orElse(),
+  }) {
+    if (getRoleMenuEvent != null) {
+      return getRoleMenuEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetNewsBoard value) getNewsBoard,
+    required TResult Function(_PdfDownload value) pdfDownload,
+    required TResult Function(_GetRoleMenuEvent value) getRoleMenuEvent,
+  }) {
+    return getRoleMenuEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetNewsBoard value)? getNewsBoard,
+    TResult? Function(_PdfDownload value)? pdfDownload,
+    TResult? Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
+  }) {
+    return getRoleMenuEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetNewsBoard value)? getNewsBoard,
+    TResult Function(_PdfDownload value)? pdfDownload,
+    TResult Function(_GetRoleMenuEvent value)? getRoleMenuEvent,
+    required TResult orElse(),
+  }) {
+    if (getRoleMenuEvent != null) {
+      return getRoleMenuEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetRoleMenuEvent implements DrawerEvent {
+  const factory _GetRoleMenuEvent() = _$GetRoleMenuEventImpl;
+}
+
+/// @nodoc
 mixin _$DrawerState {
   ResponseClassify<List<NewsBoardEntity?>> get newsBoardResponse =>
       throw _privateConstructorUsedError;
   ResponseClassify<String> get pdfDownLoadResponse =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<List<RoleMenuEntity>> get roleMenuResponse =>
       throw _privateConstructorUsedError;
   int get pdfDownloadProgressState => throw _privateConstructorUsedError;
 
@@ -332,6 +460,7 @@ abstract class $DrawerStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse,
       ResponseClassify<String> pdfDownLoadResponse,
+      ResponseClassify<List<RoleMenuEntity>> roleMenuResponse,
       int pdfDownloadProgressState});
 }
 
@@ -350,6 +479,7 @@ class _$DrawerStateCopyWithImpl<$Res, $Val extends DrawerState>
   $Res call({
     Object? newsBoardResponse = null,
     Object? pdfDownLoadResponse = null,
+    Object? roleMenuResponse = null,
     Object? pdfDownloadProgressState = null,
   }) {
     return _then(_value.copyWith(
@@ -361,6 +491,10 @@ class _$DrawerStateCopyWithImpl<$Res, $Val extends DrawerState>
           ? _value.pdfDownLoadResponse
           : pdfDownLoadResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
+      roleMenuResponse: null == roleMenuResponse
+          ? _value.roleMenuResponse
+          : roleMenuResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<RoleMenuEntity>>,
       pdfDownloadProgressState: null == pdfDownloadProgressState
           ? _value.pdfDownloadProgressState
           : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
@@ -380,6 +514,7 @@ abstract class _$$DrawerStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<NewsBoardEntity?>> newsBoardResponse,
       ResponseClassify<String> pdfDownLoadResponse,
+      ResponseClassify<List<RoleMenuEntity>> roleMenuResponse,
       int pdfDownloadProgressState});
 }
 
@@ -396,6 +531,7 @@ class __$$DrawerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? newsBoardResponse = null,
     Object? pdfDownLoadResponse = null,
+    Object? roleMenuResponse = null,
     Object? pdfDownloadProgressState = null,
   }) {
     return _then(_$DrawerStateImpl(
@@ -407,6 +543,10 @@ class __$$DrawerStateImplCopyWithImpl<$Res>
           ? _value.pdfDownLoadResponse
           : pdfDownLoadResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
+      roleMenuResponse: null == roleMenuResponse
+          ? _value.roleMenuResponse
+          : roleMenuResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<RoleMenuEntity>>,
       pdfDownloadProgressState: null == pdfDownloadProgressState
           ? _value.pdfDownloadProgressState
           : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
@@ -421,6 +561,7 @@ class _$DrawerStateImpl implements _DrawerState {
   const _$DrawerStateImpl(
       {required this.newsBoardResponse,
       required this.pdfDownLoadResponse,
+      required this.roleMenuResponse,
       required this.pdfDownloadProgressState});
 
   @override
@@ -428,11 +569,13 @@ class _$DrawerStateImpl implements _DrawerState {
   @override
   final ResponseClassify<String> pdfDownLoadResponse;
   @override
+  final ResponseClassify<List<RoleMenuEntity>> roleMenuResponse;
+  @override
   final int pdfDownloadProgressState;
 
   @override
   String toString() {
-    return 'DrawerState(newsBoardResponse: $newsBoardResponse, pdfDownLoadResponse: $pdfDownLoadResponse, pdfDownloadProgressState: $pdfDownloadProgressState)';
+    return 'DrawerState(newsBoardResponse: $newsBoardResponse, pdfDownLoadResponse: $pdfDownLoadResponse, roleMenuResponse: $roleMenuResponse, pdfDownloadProgressState: $pdfDownloadProgressState)';
   }
 
   @override
@@ -444,6 +587,8 @@ class _$DrawerStateImpl implements _DrawerState {
                 other.newsBoardResponse == newsBoardResponse) &&
             (identical(other.pdfDownLoadResponse, pdfDownLoadResponse) ||
                 other.pdfDownLoadResponse == pdfDownLoadResponse) &&
+            (identical(other.roleMenuResponse, roleMenuResponse) ||
+                other.roleMenuResponse == roleMenuResponse) &&
             (identical(
                     other.pdfDownloadProgressState, pdfDownloadProgressState) ||
                 other.pdfDownloadProgressState == pdfDownloadProgressState));
@@ -451,7 +596,7 @@ class _$DrawerStateImpl implements _DrawerState {
 
   @override
   int get hashCode => Object.hash(runtimeType, newsBoardResponse,
-      pdfDownLoadResponse, pdfDownloadProgressState);
+      pdfDownLoadResponse, roleMenuResponse, pdfDownloadProgressState);
 
   @JsonKey(ignore: true)
   @override
@@ -465,12 +610,15 @@ abstract class _DrawerState implements DrawerState {
       {required final ResponseClassify<List<NewsBoardEntity?>>
           newsBoardResponse,
       required final ResponseClassify<String> pdfDownLoadResponse,
+      required final ResponseClassify<List<RoleMenuEntity>> roleMenuResponse,
       required final int pdfDownloadProgressState}) = _$DrawerStateImpl;
 
   @override
   ResponseClassify<List<NewsBoardEntity?>> get newsBoardResponse;
   @override
   ResponseClassify<String> get pdfDownLoadResponse;
+  @override
+  ResponseClassify<List<RoleMenuEntity>> get roleMenuResponse;
   @override
   int get pdfDownloadProgressState;
   @override

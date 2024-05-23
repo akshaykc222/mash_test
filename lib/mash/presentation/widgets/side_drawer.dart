@@ -1,96 +1,98 @@
-
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
-class DrawerWidget extends StatelessWidget {
-  final List<DrawerItem> drawerItems = [
-    DrawerItem(icon: Icons.home, name: 'Home'),
-    DrawerItem(icon: Icons.settings, name: 'Settings'),
-    DrawerItem(icon: Icons.notifications, name: 'Notifications'),
-    DrawerItem(icon: Icons.person, name: 'Profile'),DrawerItem(icon: Icons.home, name: 'Home'),
-    DrawerItem(icon: Icons.settings, name: 'Settings'),
-    DrawerItem(icon: Icons.notifications, name: 'Notifications'),
-    DrawerItem(icon: Icons.person, name: 'Profile'),DrawerItem(icon: Icons.home, name: 'Home'),
-    DrawerItem(icon: Icons.settings, name: 'Settings'),
-    DrawerItem(icon: Icons.notifications, name: 'Notifications'),
-    DrawerItem(icon: Icons.person, name: 'Profile'),DrawerItem(icon: Icons.home, name: 'Home'),
-    DrawerItem(icon: Icons.settings, name: 'Settings'),
-    DrawerItem(icon: Icons.notifications, name: 'Notifications'),
-    DrawerItem(icon: Icons.person, name: 'Profile'),DrawerItem(icon: Icons.home, name: 'Home'),
-    DrawerItem(icon: Icons.settings, name: 'Settings'),
-    DrawerItem(icon: Icons.notifications, name: 'Notifications'),
-    DrawerItem(icon: Icons.person, name: 'Profile'),
-  ];
+class DrawerWidget extends StatefulWidget {
+  const DrawerWidget({super.key});
 
-   DrawerWidget({super.key});
+  @override
+  State<DrawerWidget> createState() => _DrawerWidgetState();
+}
+
+class _DrawerWidgetState extends State<DrawerWidget> {
+  @override
+  void initState() {
+    BlocProvider.of<DrawerBloc>(context)
+        .add(const DrawerEvent.getRoleMenuEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Drawer(
-      // backgroundColor: Colors.white,
       width: size.width,
       child: Column(
         children: [
           Expanded(
             flex: 1,
             child: AppBar(
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false, // Remove default back button
-              actions: <Widget>[
+              backgroundColor: AppColors.transparent,
+              automaticallyImplyLeading: false,
+              actions: [
                 IconButton(
-                  icon: const Icon(Icons.close,size: 35,),
+                  icon: const Icon(
+                    Icons.close,
+                    size: 35,
+                  ),
                   onPressed: () {
-                    Navigator.pop(context); // Close drawer
+                    context.pop();
                   },
                 ),
                 spacerWidth20
               ],
             ),
           ),
-          Expanded(
-            flex: 7,
-            child: GridView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: drawerItems.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-                childAspectRatio: 1.5,
-              ),
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  elevation: 3,
-                  child: InkWell(
-                    onTap: () {
-                      // Handle item tap
-                      Navigator.pop(context); // Close drawer
-                      // You can add navigation logic here
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(drawerItems[index].icon,color: Colors.purple,),
-                        spacer10,
-                        Text(drawerItems[index].name,style: const TextStyle(color: Colors.purple),),
-                      ],
-                    ),
+          BlocBuilder<DrawerBloc, DrawerState>(
+            builder: (context, state) {
+              final data = state.roleMenuResponse.data ?? [];
+
+              return Expanded(
+                flex: 7,
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  itemCount: data.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                    childAspectRatio: 1.5,
                   ),
-                );
-              },
-            ),
-          ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      elevation: 3,
+                      child: InkWell(
+                        onTap: () {
+                          // You might want to replace `context.pop()` with `Navigator.pop(context)`
+                          Navigator.pop(context);
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: data[index].icon,
+                              height: 35,
+                            ),
+                            spacer10,
+                            Text(
+                              data[index].menuName,
+                              style: const TextStyle(color: Colors.purple),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            },
+          )
         ],
       ),
     );
   }
-}
-
-class DrawerItem {
-  final IconData icon;
-  final String name;
-
-  DrawerItem({required this.icon, required this.name});
 }

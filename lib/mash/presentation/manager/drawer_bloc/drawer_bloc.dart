@@ -11,9 +11,13 @@ import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.da
 import 'package:mash/mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../../core/custom_exception.dart';
 import '../../../../core/pretty_printer.dart';
 import '../../../../core/usecase.dart';
+import '../../../data/remote/models/request/role_menu_request.dart';
+import '../../../domain/entities/dashboard/role_menu_entity.dart';
 import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
+import '../../../domain/use_cases/dashboard/get_role_menu_usecase.dart';
 
 part 'drawer_event.dart';
 part 'drawer_state.dart';
@@ -23,16 +27,20 @@ part 'drawer_bloc.freezed.dart';
 class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
   final GetNewsBoardUseCase getNewsBoardUseCase;
   final GetUserInfoUseCase getUserInfoUseCase;
-  DrawerBloc(this.getNewsBoardUseCase, this.getUserInfoUseCase)
+  final GetRoleMenuUsecase getRoleMenuUsecase;
+
+  DrawerBloc(this.getNewsBoardUseCase, this.getUserInfoUseCase,
+      this.getRoleMenuUsecase)
       : super(DrawerState.initial()) {
     on<DrawerEvent>(_getNewsBoard);
+    on<_GetRoleMenuEvent>(_getRoleMenutEvent);
     on<_PdfDownload>(_pdfDownload);
   }
 
   _getNewsBoard(DrawerEvent event, Emitter<DrawerState> emit) async {
     emit(state.copyWith(newsBoardResponse: ResponseClassify.loading()));
     try {
-      final userdata = await getUserInfoUseCase.call(NoParams());
+      final userdata = await _getUserInformation();
       prettyPrint('user details --------------- ${userdata?.academicId}');
       if (userdata != null) {
         final data = await getNewsBoardUseCase.call(
@@ -55,6 +63,26 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
     } catch (e) {
       emit(state.copyWith(
           newsBoardResponse: ResponseClassify.error(e.toString())));
+      prettyPrint(e.toString());
+    }
+  }
+
+  Future<void> _getRoleMenutEvent(
+      _GetRoleMenuEvent event, Emitter<DrawerState> emit) async {
+    emit(state.copyWith(roleMenuResponse: ResponseClassify.loading()));
+    try {
+      final user = await _getUserInformation();
+
+      final res = await getRoleMenuUsecase.call(RoleMenuRequest(
+          compId: user?.compId ?? "",
+          userType: user?.userType ?? '',
+          userId: user?.usrId ?? "",
+          roleId: user?.roleId ?? ''));
+      emit(state.copyWith(roleMenuResponse: ResponseClassify.completed(res)));
+    } on UnauthorisedException catch (e) {
+      emit(state.copyWith(
+          roleMenuResponse: ResponseClassify.error("$e Unauthorized")));
+    } catch (e) {
       prettyPrint(e.toString());
     }
   }
@@ -101,5 +129,9 @@ class DrawerBloc extends Bloc<DrawerEvent, DrawerState> {
         pdfDownLoadResponse: ResponseClassify.error(err.toString()),
       ));
     }
+  }
+
+  _getUserInformation() async {
+    return await getUserInfoUseCase.call(NoParams());
   }
 }
