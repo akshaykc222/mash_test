@@ -1,7 +1,7 @@
 class AppStrings {
   static const String schedulesForClass = "SCHEDULES FOR THE CLASS";
   static const String viewAll = "View All";
-  static const String attendanceReport = "ATTENDENCE REPORT";
+  static const String attendanceReport = "ATTENDANCE REPORT";
   static const String tabBarTitleAcademic = "ACADEMIC";
   static const String tabBarTitleNonAcademic = "NON-ACADEMICS";
   static const String addOnScreenTitle = "ADD ONS";
@@ -30,7 +30,7 @@ class AppStrings {
       "You earn points as you play and\ncan watch the scores of other\nConsentence real time";
   static const String onBoard2Title = "Learn more in\ngame mode";
   static const String onBoard2Desc =
-      "Immerse yourself in knowledge of\nleranship in game mode where\neducation meets entertainments";
+      "Immerse yourself in knowledge of\nlearnship in game mode where\neducation meets entertainments";
   static const String onBoard3Title = "Get interesting facts\nabout Quiz";
   static const String onBoard3Desc =
       'Discover intriguing facts in our\nQuiz where knowledge meets\nexcitements !';
