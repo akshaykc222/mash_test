@@ -58,6 +58,7 @@ import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
+import '../pages/home/facility/facility_main_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -66,14 +67,13 @@ import '../utils/enums.dart';
 class AppRouteManager {
   static home([CustomBottomNavigationItems? type]) =>
       '/${type?.index ?? ':type'}';
+
   static Widget _homePageRouteBuilder(
       BuildContext context, GoRouterState state) {
     return HomeScreen(
       currentIndex: int.parse(state.pathParameters['type']!),
     );
   }
-
-  // static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
@@ -388,6 +388,8 @@ class AppRouteManager {
         if (state.extra != null) {
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
+
+        return SizedBox();
         return const SizedBox();
       },
     ),

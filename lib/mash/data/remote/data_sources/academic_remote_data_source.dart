@@ -12,6 +12,7 @@ import '../../../domain/entities/academic/syllabus_request.dart';
 import '../models/request/academic_comp_id_request.dart';
 import '../models/request/academic_subjects_request.dart';
 
+@factoryMethod
 abstract interface class AcademicRemoteDataSource {
   Future<List<ClassDetailsModel?>> getClassDetails(
       AcademicAndCompIdRequest params);

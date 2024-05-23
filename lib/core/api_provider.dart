@@ -57,12 +57,13 @@ class ApiProvider {
       {Map<String, dynamic>? body}) async {
     try {
       await addToken();
+
       prettyPrint(_dio.options.headers.toString());
       final Response response = await _dio.get(
         endPoint,
         data: body,
       );
-      prettyPrint("request url : ${response.data}");
+      prettyPrint("request url [GET]: ${response.realUri} $response");
       final Map<String, dynamic> responseData = classifyResponse(response);
 
       return responseData;

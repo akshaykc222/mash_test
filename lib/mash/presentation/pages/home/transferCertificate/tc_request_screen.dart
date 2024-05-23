@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
 class TransferRequestScreen extends StatefulWidget {
@@ -112,11 +110,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titles('Student Name'),
-          StudentProfileWidget(
-            onTap: () async {
-              _showModelSheet(context);
-            },
-          ),
+          HelperClasses.getSelectedStudent(context),
           titles('Expected Date'),
           dateSelection(),
           titles('Reason for Applying TC'),
@@ -125,22 +119,6 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
           applyButton()
         ],
       ),
-    );
-  }
-
-  Future<void> _showModelSheet(BuildContext context) {
-    return commonBottomSheet(
-      context,
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return StudentProfileWidget(
-              onTap: () {},
-            );
-          },
-          separatorBuilder: (context, index) => spacer10,
-          itemCount: 3),
-      title: AppStrings.selectProfile,
-      height: 0.55,
     );
   }
 

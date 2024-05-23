@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../router/app_pages.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_strings.dart';
+import '../../../utils/helper_classes.dart';
 import '../homeWork/widgets/home_work_field.dart';
 
 class NoteScreen extends StatelessWidget {
@@ -37,16 +36,7 @@ class NoteScreen extends StatelessWidget {
   _body(BuildContext context) {
     return Column(
       children: [
-        StudentProfileWidget(
-          onTap: () {
-            commonBottomSheet(
-              context,
-              child: Container(),
-              title: AppStrings.selectProfile,
-              height: 0.55,
-            );
-          },
-        ),
+        HelperClasses.getSelectedStudent(context),
         spacer20,
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
