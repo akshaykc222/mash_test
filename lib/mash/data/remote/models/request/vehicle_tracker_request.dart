@@ -1,17 +1,14 @@
-class TeacherRatingRequest {
+class VehicleTrackerRequest {
   final String companyId;
-  final String  userType;
 
-  TeacherRatingRequest({
+  VehicleTrackerRequest({
     required this.companyId,
-    required this.userType,
   });
 
 
   Map<String, dynamic> toJson() {
     return {
       'P_COMP_ID': companyId,
-      'P_USER_TYPE': userType,
     };
   }
 }

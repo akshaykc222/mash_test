@@ -107,7 +107,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,

@@ -5,6 +5,7 @@ import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
+import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 
@@ -28,6 +29,7 @@ class MashApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<DashboardBloc>()),
+        BlocProvider(create: (context) => getIt<TeacherBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),
