@@ -417,7 +417,7 @@ abstract class _GetNotesWorkReport implements HomeWorkNotesEvent {
 
 /// @nodoc
 mixin _$HomeWorkNotesState {
-  ResponseClassify<dynamic> get homeWorkReportResponse =>
+  ResponseClassify<List<HomeWorkReportsEntity>> get homeWorkReportResponse =>
       throw _privateConstructorUsedError;
   ResponseClassify<dynamic> get noteWorkReportResponse =>
       throw _privateConstructorUsedError;
@@ -434,7 +434,7 @@ abstract class $HomeWorkNotesStateCopyWith<$Res> {
       _$HomeWorkNotesStateCopyWithImpl<$Res, HomeWorkNotesState>;
   @useResult
   $Res call(
-      {ResponseClassify<dynamic> homeWorkReportResponse,
+      {ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse,
       ResponseClassify<dynamic> noteWorkReportResponse});
 }
 
@@ -458,7 +458,7 @@ class _$HomeWorkNotesStateCopyWithImpl<$Res, $Val extends HomeWorkNotesState>
       homeWorkReportResponse: null == homeWorkReportResponse
           ? _value.homeWorkReportResponse
           : homeWorkReportResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<dynamic>,
+              as ResponseClassify<List<HomeWorkReportsEntity>>,
       noteWorkReportResponse: null == noteWorkReportResponse
           ? _value.noteWorkReportResponse
           : noteWorkReportResponse // ignore: cast_nullable_to_non_nullable
@@ -476,7 +476,7 @@ abstract class _$$HomeWorkNotesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ResponseClassify<dynamic> homeWorkReportResponse,
+      {ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse,
       ResponseClassify<dynamic> noteWorkReportResponse});
 }
 
@@ -498,7 +498,7 @@ class __$$HomeWorkNotesStateImplCopyWithImpl<$Res>
       homeWorkReportResponse: null == homeWorkReportResponse
           ? _value.homeWorkReportResponse
           : homeWorkReportResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<dynamic>,
+              as ResponseClassify<List<HomeWorkReportsEntity>>,
       noteWorkReportResponse: null == noteWorkReportResponse
           ? _value.noteWorkReportResponse
           : noteWorkReportResponse // ignore: cast_nullable_to_non_nullable
@@ -515,7 +515,7 @@ class _$HomeWorkNotesStateImpl implements _HomeWorkNotesState {
       required this.noteWorkReportResponse});
 
   @override
-  final ResponseClassify<dynamic> homeWorkReportResponse;
+  final ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse;
   @override
   final ResponseClassify<dynamic> noteWorkReportResponse;
 
@@ -549,12 +549,13 @@ class _$HomeWorkNotesStateImpl implements _HomeWorkNotesState {
 
 abstract class _HomeWorkNotesState implements HomeWorkNotesState {
   const factory _HomeWorkNotesState(
-          {required final ResponseClassify<dynamic> homeWorkReportResponse,
+          {required final ResponseClassify<List<HomeWorkReportsEntity>>
+              homeWorkReportResponse,
           required final ResponseClassify<dynamic> noteWorkReportResponse}) =
       _$HomeWorkNotesStateImpl;
 
   @override
-  ResponseClassify<dynamic> get homeWorkReportResponse;
+  ResponseClassify<List<HomeWorkReportsEntity>> get homeWorkReportResponse;
   @override
   ResponseClassify<dynamic> get noteWorkReportResponse;
   @override

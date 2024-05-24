@@ -17,7 +17,7 @@ class HomeWorkSelectDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: AppStrings.selectDetails),
       body: _buildBody(context),
     );

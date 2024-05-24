@@ -61,7 +61,7 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
-            onTap: () => widget.onTap(),
+            onTap: widget.isLoading == true ? null : () => widget.onTap(),
             child: Container(
                 width: MediaQuery.sizeOf(context).width,
                 height: 50,

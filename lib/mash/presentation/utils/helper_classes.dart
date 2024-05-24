@@ -6,7 +6,7 @@ import '../../../core/response_classify.dart';
 import '../manager/profile/profile_bloc.dart';
 import '../pages/dashboard/parent/widget/student_profile_widget.dart';
 import '../widgets/common_bottom_sheet.dart';
-import '../widgets/shimmers/StudentSwitchShimmer.dart';
+import '../widgets/shimmers/custom_shimmer_widget.dart';
 import 'app_constants.dart';
 import 'app_strings.dart';
 
@@ -57,7 +57,9 @@ class HelperClasses {
       },
       builder: (context, state) {
         return state.getSiblings?.status == Status.LOADING
-            ? const StudentSwitchShimmer()
+            ? const CustomShimmerWidget(
+                height: 60,
+              )
             : state.selectedSibling == null
                 ? const SizedBox()
                 : StudentProfileWidget(

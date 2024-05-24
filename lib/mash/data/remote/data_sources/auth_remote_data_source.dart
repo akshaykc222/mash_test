@@ -33,42 +33,42 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final data =
         await apiProvider.post(AppRemoteRoutes.login, request.toJson());
     var userModel = AuthResponseModel.fromJson(data);
-    try {
-      ////signInAnonymously in firebase to access  firestore database
-      final userCredential = await firebaseAuth.signInAnonymously();
+    // try {
+    //   ////signInAnonymously in firebase to access  firestore database
+    //   final userCredential = await firebaseAuth.signInAnonymously();
 
-      ///checking in  firestore weather the user data exist or not in firestore database
-      QuerySnapshot<Map<String, dynamic>> checkExisting = await firebaseDatabase
-          .getUserInfo(userModel.resTable.first.usrId ?? '');
-      var fcmToken = await FirebaseMessaging.instance.getToken();
-      if (checkExisting.docs.isEmpty) {
-        var userDataJson =
-            LoginResTableModel.fromEntity(userModel.resTable.first).toJson();
+    //   ///checking in  firestore weather the user data exist or not in firestore database
+    //   QuerySnapshot<Map<String, dynamic>> checkExisting = await firebaseDatabase
+    //       .getUserInfo(userModel.resTable.first.usrId ?? '');
+    //   var fcmToken = await FirebaseMessaging.instance.getToken();
+    //   if (checkExisting.docs.isEmpty) {
+    //     var userDataJson =
+    //         LoginResTableModel.fromEntity(userModel.resTable.first).toJson();
 
-        ///updating fcm token in user data
-        userDataJson['fcm_token'] = fcmToken;
-        await firebaseDatabase.addUserInfo(userDataJson);
-      } else {
-        String id = checkExisting.docs.first.id;
+    //     ///updating fcm token in user data
+    //     userDataJson['fcm_token'] = fcmToken;
+    //     await firebaseDatabase.addUserInfo(userDataJson);
+    //   } else {
+    //     String id = checkExisting.docs.first.id;
 
-        ///updating fcm token in user data
-        await firebaseDatabase
-            .updateUserInfo(id: id, data: {'fcm_token': fcmToken});
-      }
-    } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case "invalid-custom-token":
-          throw BadRequestException(
-              "The supplied token is not a Firebase custom auth token.");
+    //     ///updating fcm token in user data
+    //     await firebaseDatabase
+    //         .updateUserInfo(id: id, data: {'fcm_token': fcmToken});
+    //   }
+    // } on FirebaseAuthException catch (e) {
+    //   switch (e.code) {
+    //     case "invalid-custom-token":
+    //       throw BadRequestException(
+    //           "The supplied token is not a Firebase custom auth token.");
 
-        case "custom-token-mismatch":
-          throw BadRequestException(
-              "The supplied token is for a different Firebase project.");
+    //     case "custom-token-mismatch":
+    //       throw BadRequestException(
+    //           "The supplied token is for a different Firebase project.");
 
-        default:
-          throw BadRequestException(e.toString());
-      }
-    }
+    //     default:
+    //       throw BadRequestException(e.toString());
+    //   }
+    // }
 
     prettyPrint(data.toString());
     return userModel;

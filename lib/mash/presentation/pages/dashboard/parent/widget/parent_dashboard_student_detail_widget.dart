@@ -60,7 +60,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildInfoItem('Class Teacher', student.classTeacherId),
+          _buildInfoItem('Class Teacher', student.classTeacher),
           _buildInfoItem('Roll No', student.roleId, isEnd: true),
         ],
       ),
@@ -118,7 +118,7 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          Icon(Icons.call_outlined),
+          const Icon(Icons.call_outlined),
           const SizedBox(width: 20),
           GestureDetector(
               onTap: () {
@@ -126,7 +126,9 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
               },
               child: const Icon(Icons.chat_bubble_outline)),
           const Spacer(),
-          _buildInfoItem('Class', student.classId, isEnd: true)
+          _buildInfoItem(
+              'Class', '${student.className} ${student.divisionName}',
+              isEnd: true)
         ],
       ),
     );

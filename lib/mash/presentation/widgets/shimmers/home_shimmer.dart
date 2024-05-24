@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'StudentSwitchShimmer.dart';
+import 'custom_shimmer_widget.dart';
 
 class ShimmerHome extends StatelessWidget {
   const ShimmerHome({super.key});
@@ -21,7 +21,7 @@ class ShimmerHome extends StatelessWidget {
               // Container with 1/3 of screen height
 
               const SizedBox(height: 20),
-              const StudentSwitchShimmer(),
+              const CustomShimmerWidget(height: 60),
               // Simulating small text details
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),

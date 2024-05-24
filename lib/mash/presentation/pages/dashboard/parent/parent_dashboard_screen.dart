@@ -19,7 +19,7 @@ class ParentDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       body: CustomScrollView(
         slivers: [
           _header(),

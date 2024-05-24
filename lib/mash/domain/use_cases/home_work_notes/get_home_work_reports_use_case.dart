@@ -7,14 +7,13 @@ import 'package:mash/mash/domain/entities/home_work/home_work_entity.dart';
 @lazySingleton
 @injectable
 class HomeWorkReportsUseCase
-    implements UseCase<List<HomeWorkReportsEntity?>, HomeWorkReportRequest> {
+    implements UseCase<List<HomeWorkReportsEntity>, HomeWorkReportRequest> {
   final HomeWorkNotesRepository homeWorkNotesRepository;
 
   HomeWorkReportsUseCase({required this.homeWorkNotesRepository});
 
   @override
-  Future<List<HomeWorkReportsEntity?>> call(
-      HomeWorkReportRequest params) async {
+  Future<List<HomeWorkReportsEntity>> call(HomeWorkReportRequest params) async {
     return await homeWorkNotesRepository.getHomeWorkReports(params);
   }
 }

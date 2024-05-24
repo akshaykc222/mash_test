@@ -9,7 +9,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 
 import '../../../../utils/app_colors.dart';
-import '../../../../widgets/shimmers/StudentSwitchShimmer.dart';
+import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 
 class StudentProfileWidget extends StatelessWidget {
   final bool? isOnList;
@@ -34,7 +34,7 @@ class StudentProfileWidget extends StatelessWidget {
       },
       builder: (context, state) {
         return state.getSiblings?.status == Status.LOADING
-            ? const StudentSwitchShimmer()
+            ? const CustomShimmerWidget(height: 60)
             : GestureDetector(
                 onTap: onTap,
                 child: Container(
