@@ -108,7 +108,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -403,6 +403,7 @@ class AppRouteManager {
         }
 
         return SizedBox();
+        return const SizedBox();
       },
     ),
     GoRoute(

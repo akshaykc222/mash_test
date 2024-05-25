@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
+<<<<<<< HEAD
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/manager/cubit/pdf_download/pdf_download_cubit.dart';
+=======
+import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
+import 'package:mash/mash/presentation/manager/home_work_notes_bloc/home_work_notes_bloc.dart';
+import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
+import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
+>>>>>>> 1a22894c555853c94ecfd96d2f84906fba341f63
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 
@@ -30,6 +39,7 @@ class MashApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<DashboardBloc>()),
+        BlocProvider(create: (context) => getIt<TeacherBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),

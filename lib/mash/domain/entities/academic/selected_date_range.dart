@@ -3,4 +3,5 @@ class SelectedRange {
   String? toDate;
 
   SelectedRange(this.fromDate, this.toDate);
+  SelectedRange copyWith({})
 }
