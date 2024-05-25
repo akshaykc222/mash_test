@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../data/remote/models/request/academic_comp_id_request.dart';
 import '../../../../../domain/entities/dashboard/word_thought_entity.dart';
-import '../../../../manager/dashboard_bloc/dashboard_bloc.dart';
+import '../../../../manager/bloc/dashboard_bloc/dashboard_bloc.dart';
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';

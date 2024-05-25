@@ -29,7 +29,7 @@ class TimeTableScreen extends StatelessWidget {
           title: 'DAILY\nTIMETABLE',
           asset: AppAssets.dailyTimeTable,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
+            // GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
           }),
       TimeTableWidgetModel(
           title: 'WEEKLY\nTIMETABLE',

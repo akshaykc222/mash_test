@@ -5,10 +5,14 @@ import '../../../../utils/app_constants.dart';
 import '../../../../utils/size_config.dart';
 
 class CustomHomeWorkField extends StatelessWidget {
+  final String title;
   final String name;
   final VoidCallback onTap;
   const CustomHomeWorkField(
-      {super.key, required this.name, required this.onTap});
+      {super.key,
+      required this.name,
+      required this.onTap,
+      required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class CustomHomeWorkField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          name,
+          title,
           style: TextStyle(
             fontSize: SizeConfig.textSize(16),
             fontWeight: FontWeight.bold,

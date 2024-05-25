@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/academic_bloc/academic_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
@@ -28,7 +28,7 @@ class _SyllabusScreenState extends State<SyllabusScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'SYLLABUS'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: syllabusBody(),
     );
   }

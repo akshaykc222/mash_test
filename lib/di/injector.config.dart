@@ -60,10 +60,10 @@ import '../mash/domain/use_cases/academic/get_division_details_use_case.dart'
 import '../mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart'
     as _i34;
 import '../mash/domain/use_cases/academic/get_syllabus_use_case.dart' as _i35;
-import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i61;
-import '../mash/domain/use_cases/auth/login_use_case.dart' as _i62;
-import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i63;
-import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i60;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i62;
+import '../mash/domain/use_cases/auth/login_use_case.dart' as _i63;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i64;
+import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i61;
 import '../mash/domain/use_cases/chat/add_chat_room_use_case.dart' as _i40;
 import '../mash/domain/use_cases/chat/get_chat_rooms_use_case.dart' as _i38;
 import '../mash/domain/use_cases/chat/get_chat_use_case.dart' as _i41;
@@ -79,23 +79,26 @@ import '../mash/domain/use_cases/drawer_menu_items_repository/get_news_board_use
     as _i36;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
     as _i57;
+import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
+    as _i59;
 import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
     as _i58;
-import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i59;
+import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i60;
 import '../mash/domain/use_cases/notice/notice_all_usecase.dart' as _i54;
 import '../mash/domain/use_cases/profile/get_siblings_use_case.dart' as _i19;
 import '../mash/domain/use_cases/profile/get_user_details_use_case.dart'
     as _i20;
-import '../mash/presentation/manager/academic_bloc/academic_bloc.dart' as _i66;
-import '../mash/presentation/manager/auth_bloc/auth_bloc.dart' as _i3;
-import '../mash/presentation/manager/chat_bloc/chat_bloc.dart' as _i4;
-import '../mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart'
-    as _i68;
-import '../mash/presentation/manager/drawer_bloc/drawer_bloc.dart' as _i67;
-import '../mash/presentation/manager/home_work_notes_bloc/home_work_notes_bloc.dart'
-    as _i65;
-import '../mash/presentation/manager/notice_bloc/notice_bloc.dart' as _i64;
-import '../mash/presentation/manager/profile/profile_bloc.dart' as _i5;
+import '../mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart'
+    as _i67;
+import '../mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart' as _i3;
+import '../mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart' as _i4;
+import '../mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart'
+    as _i69;
+import '../mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart' as _i68;
+import '../mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart'
+    as _i66;
+import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart' as _i65;
+import '../mash/presentation/manager/bloc/profile/profile_bloc.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -217,41 +220,44 @@ extension GetItInjectableX on _i1.GetIt {
             homeWorkNotesRepository: gh<_i46.HomeWorkNotesRepository>()));
     gh.lazySingleton<_i58.NotesReportsUseCase>(() => _i58.NotesReportsUseCase(
         homeWorkNotesRepository: gh<_i46.HomeWorkNotesRepository>()));
-    gh.factory<_i59.GetNoticeBoardPopUp>(
-        () => _i59.GetNoticeBoardPopUp(gh<_i52.NoticeRepository>()));
-    gh.singleton<_i60.SignOutUseCase>(
-        () => _i60.SignOutUseCase(gh<_i50.AuthRepository>()));
-    gh.lazySingleton<_i61.GetUserInfoUseCase>(
-        () => _i61.GetUserInfoUseCase(gh<_i50.AuthRepository>()));
-    gh.lazySingleton<_i62.LoginUseCase>(
-        () => _i62.LoginUseCase(gh<_i50.AuthRepository>()));
-    gh.lazySingleton<_i63.SaveUserInfoUseCase>(
-        () => _i63.SaveUserInfoUseCase(gh<_i50.AuthRepository>()));
-    gh.factory<_i64.NoticeBloc>(() => _i64.NoticeBloc(
-          gh<_i59.GetNoticeBoardPopUp>(),
+    gh.lazySingleton<_i59.GetNoteReportDetails>(() => _i59.GetNoteReportDetails(
+        homeWorkNotesRepository: gh<_i46.HomeWorkNotesRepository>()));
+    gh.factory<_i60.GetNoticeBoardPopUp>(
+        () => _i60.GetNoticeBoardPopUp(gh<_i52.NoticeRepository>()));
+    gh.singleton<_i61.SignOutUseCase>(
+        () => _i61.SignOutUseCase(gh<_i50.AuthRepository>()));
+    gh.lazySingleton<_i62.GetUserInfoUseCase>(
+        () => _i62.GetUserInfoUseCase(gh<_i50.AuthRepository>()));
+    gh.lazySingleton<_i63.LoginUseCase>(
+        () => _i63.LoginUseCase(gh<_i50.AuthRepository>()));
+    gh.lazySingleton<_i64.SaveUserInfoUseCase>(
+        () => _i64.SaveUserInfoUseCase(gh<_i50.AuthRepository>()));
+    gh.factory<_i65.NoticeBloc>(() => _i65.NoticeBloc(
+          gh<_i60.GetNoticeBoardPopUp>(),
           gh<_i54.GetAllNoticeUseCase>(),
         ));
-    gh.factory<_i65.HomeWorkNotesBloc>(() => _i65.HomeWorkNotesBloc(
+    gh.factory<_i66.HomeWorkNotesBloc>(() => _i66.HomeWorkNotesBloc(
           gh<_i57.HomeWorkReportsUseCase>(),
-          gh<_i61.GetUserInfoUseCase>(),
+          gh<_i62.GetUserInfoUseCase>(),
           gh<_i58.NotesReportsUseCase>(),
+          gh<_i59.GetNoteReportDetails>(),
         ));
-    gh.factory<_i66.AcademicBloc>(() => _i66.AcademicBloc(
+    gh.factory<_i67.AcademicBloc>(() => _i67.AcademicBloc(
           gh<_i23.GetDivisionDetailsUseCase>(),
           getClassInforUseCase: gh<_i37.GetClassInforUseCase>(),
-          getUserInfoUseCase: gh<_i61.GetUserInfoUseCase>(),
+          getUserInfoUseCase: gh<_i62.GetUserInfoUseCase>(),
           getAcademicSubjectUseCase: gh<_i22.GetAcademicSubjectUseCase>(),
           getSyllabusUseCase: gh<_i35.GetSyllabusUseCase>(),
           getSyllabusTermsUseCase: gh<_i34.GetSyllabusTermsUseCase>(),
         ));
-    gh.factory<_i67.DrawerBloc>(() => _i67.DrawerBloc(
+    gh.factory<_i68.DrawerBloc>(() => _i68.DrawerBloc(
           gh<_i36.GetNewsBoardUseCase>(),
-          gh<_i61.GetUserInfoUseCase>(),
+          gh<_i62.GetUserInfoUseCase>(),
           gh<_i56.GetRoleMenuUsecase>(),
         ));
-    gh.factory<_i68.DashboardBloc>(() => _i68.DashboardBloc(
+    gh.factory<_i69.DashboardBloc>(() => _i69.DashboardBloc(
           gh<_i55.FetchWordThoughtUseCase>(),
-          gh<_i61.GetUserInfoUseCase>(),
+          gh<_i62.GetUserInfoUseCase>(),
         ));
     return this;
   }

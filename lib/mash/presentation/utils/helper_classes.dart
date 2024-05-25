@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
+import 'package:mash/mash/presentation/utils/app_assets.dart';
 
 import '../../../core/response_classify.dart';
-import '../manager/profile/profile_bloc.dart';
+import '../manager/bloc/profile/profile_bloc.dart';
 import '../pages/dashboard/parent/widget/student_profile_widget.dart';
 import '../widgets/common_bottom_sheet.dart';
 import '../widgets/shimmers/custom_shimmer_widget.dart';
@@ -69,6 +71,12 @@ class HelperClasses {
                     entity: state.selectedSibling!,
                   );
       },
+    );
+  }
+
+  static Widget emptyDataWidget() {
+    return Center(
+      child: Lottie.asset(AppAssets.noDataLottie, height: 300),
     );
   }
 

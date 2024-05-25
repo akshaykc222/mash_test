@@ -17,7 +17,10 @@ enum ChatType {
   personal,
   group,
 }
-
+enum HomeWorkAndNoteScreenType{
+  homeworkScreen,
+  noteScreen,
+}
 enum UserTypes { staff, student, parent }
 
 UserTypes getUserType(String userType) {

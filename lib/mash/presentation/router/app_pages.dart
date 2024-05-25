@@ -14,7 +14,7 @@ class AppPages {
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const userActivity = '/userActivityScreen';
 
-  static const homeWorkDetailsScreen = '/homeWorkDetailsScreen';
+  static const homeWorkAndNotesDateSelectionScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';
 
   //facility
@@ -70,10 +70,13 @@ class AppPages {
   static const suggestionScreen = '/suggestionScreen';
 
   //home work
-  static const homeWorksViewScreen = '/homeWorksViewScreen';
+  static const homeWorksAndNoteViewScreen = '/homeWorksViewScreen';
   static const homeWorksViewDetailsScreen = '/homeWorksViewDetailsScreen';
+
+  //note
   static const noteAddTeacherScreen = '/noteAddTeacherScreen';
   static const addNotScreen = '/addNotScreen';
+  static const noteViewDetails = '/noteViewDetails';
 
   //attendance marking
   static const attendanceMarkingScreen = '/attendanceMarkingScreen';

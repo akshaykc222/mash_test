@@ -5,12 +5,13 @@ class HomeWorkReportsEntity extends Equatable {
   final String? document;
   final String? workType;
   final String? workId;
-
+  final String? createdDate;
   final String? submitDate;
   final String? lateStatus;
   final String? viewStatus;
 
-  const HomeWorkReportsEntity({
+  const HomeWorkReportsEntity(
+     {required this.createdDate,
     required this.description,
     required this.document,
     required this.workType,

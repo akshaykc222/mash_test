@@ -1,6 +1,3 @@
-
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
@@ -14,11 +11,11 @@ class NoticeBoardDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: commonAppbar(title: 'NOTICE DETAIL'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){}, label: const Text('VIEW ATTACHMENT')),
+          onPressed: () {}, label: const Text('VIEW ATTACHMENT')),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: noticeDetailBody(context),
     );
@@ -27,7 +24,7 @@ class NoticeBoardDetailScreen extends StatelessWidget {
   noticeDetailBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Container(
-      padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
+      padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
       height: size.height,
       width: size.width,
       child: Column(
@@ -39,25 +36,35 @@ class NoticeBoardDetailScreen extends StatelessWidget {
           spacer20,
           date('18/02/2024'),
           spacer20,
-          description('In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available')
+          description(
+              'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available')
         ],
       ),
     );
   }
 
-
   title(title) {
-    return Text(title,style: TextStyle(fontSize: SizeConfig.textSize(20),fontWeight: FontWeight.w600),);
+    return Text(
+      title,
+      style: TextStyle(
+          fontSize: SizeConfig.textSize(20), fontWeight: FontWeight.w600),
+    );
   }
 
-  date(date){
-    return Text(date,style: TextStyle(fontSize: SizeConfig.textSize(17),color: AppColors.grey600),);
+  date(date) {
+    return Text(
+      date,
+      style: TextStyle(
+          fontSize: SizeConfig.textSize(17), color: AppColors.grey600),
+    );
   }
 
   description(desc) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Text(desc,),
+      child: Text(
+        desc,
+      ),
     );
   }
 
@@ -68,10 +75,7 @@ class NoticeBoardDetailScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           image: const DecorationImage(
               image: CachedNetworkImageProvider(
-                  'https://img.freepik.com/premium-photo/ecosystem-water-drop-nature-background-earth-day-campaign_839035-100466.jpg'
-              )
-          )
-      ),
+                  'https://img.freepik.com/premium-photo/ecosystem-water-drop-nature-background-earth-day-campaign_839035-100466.jpg'))),
     );
   }
 }

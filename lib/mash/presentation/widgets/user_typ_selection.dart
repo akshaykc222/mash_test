@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../manager/chat_bloc/chat_bloc.dart';
+import '../manager/bloc/chat_bloc/chat_bloc.dart';
 import '../utils/app_colors.dart';
 import '../utils/enums.dart';
 

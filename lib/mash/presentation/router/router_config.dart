@@ -13,8 +13,10 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_s
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/fee_and_payment_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
-import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_view.dart';
-import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_details_widget.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/note_view_detais_screen.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_and_notes_details.dart';
 import 'package:mash/mash/presentation/pages/home/idCardRequest/id_card_request_screen.dart';
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_week_plan_screen.dart';
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_year_plan_screen.dart';
@@ -27,7 +29,6 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
-import 'package:mash/mash/presentation/pages/home/notes/note_screen.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.dart';
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
@@ -57,8 +58,8 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
+import '../../domain/entities/home_work/home_work_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
-import '../pages/home/facility/facility_main_screen.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -178,9 +179,18 @@ class AppRouteManager {
       builder: (context, state) => const QuizQuestionPage(),
     ),
     GoRoute(
-      path: AppPages.homeWorkDetailsScreen,
-      name: AppPages.homeWorkDetailsScreen,
-      builder: (context, state) => const HomeWorkSelectDetailsWidget(),
+      path: AppPages.homeWorkAndNotesDateSelectionScreen,
+      name: AppPages.homeWorkAndNotesDateSelectionScreen,
+      builder: (context, state) => HomeWorkAndNoteSelectDetailsScreen(
+        screenType: state.extra as HomeWorkAndNoteScreenType,
+      ),
+    ),
+    GoRoute(
+      path: AppPages.homeWorksViewDetailsScreen,
+      name: AppPages.homeWorksViewDetailsScreen,
+      builder: (context, state) => HomeWorkViewDetailsScreen(
+        entity: state.extra as HomeWorkReportsEntity,
+      ),
     ),
     GoRoute(
       path: AppPages.quizCompletedScreen,
@@ -193,14 +203,11 @@ class AppRouteManager {
       builder: (context, state) => LeaveScreen(),
     ),
     GoRoute(
-      name: AppPages.homeWorksViewScreen,
-      path: AppPages.homeWorksViewScreen,
-      builder: (context, state) => const HomeworksView(),
-    ),
-    GoRoute(
-      name: AppPages.noteScreen,
-      path: AppPages.noteScreen,
-      builder: (context, state) => const NoteScreen(),
+      name: AppPages.homeWorksAndNoteViewScreen,
+      path: AppPages.homeWorksAndNoteViewScreen,
+      builder: (context, state) => HomeworksAndNoteView(
+        screenType: state.extra as HomeWorkAndNoteScreenType,
+      ),
     ),
     GoRoute(
       path: AppPages.quizProfileScreen,
@@ -226,6 +233,12 @@ class AppRouteManager {
       path: AppPages.tcMainScreen,
       name: AppPages.tcMainScreen,
       builder: (context, state) => const TransferCertificateMainScreen(),
+    ),
+    GoRoute(
+      name: AppPages.noteViewDetails,
+      path: AppPages.noteViewDetails,
+      builder: (context, state) =>
+          NoteViewDetailsScreen(id: state.extra as String),
     ),
     GoRoute(
       name: AppPages.noteAddTeacherScreen,

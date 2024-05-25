@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -44,8 +43,8 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
   @override
   Future<List<AcademicSubjectModel>> getAcademicSubjects(
       ClassAndCompIdRequest params) async {
-    final data = await apiProvider.post(
-        AppRemoteRoutes.academicSubjects, params.toJson());
+    final data = await apiProvider.get(AppRemoteRoutes.academicSubjects,
+        body: params.toJson());
     final List<dynamic> dataList = data['resTable'];
 
     return dataList.map((e) => AcademicSubjectModel.fromJson(e)).toList();
@@ -54,8 +53,8 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
   @override
   Future<List<DivisionDetailsModel?>> getDivisionDetails(
       ClassAndCompIdRequest params) async {
-    final data = await apiProvider.post(
-        AppRemoteRoutes.divisionDetails, params.toJson());
+    final data = await apiProvider.get(AppRemoteRoutes.divisionDetails,
+        body: params.toJson());
     final List<dynamic> dataList = data['resTable'];
 
     return dataList.map((e) => DivisionDetailsModel.fromJson(e)).toList();
@@ -64,8 +63,8 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
   @override
   Future<List<SyllabusModel>> getSyllabus(SyllabusRequest params) async {
     try {
-      final data =
-          await apiProvider.post(AppRemoteRoutes.syllabus, params.toJson());
+      final data = await apiProvider.get(AppRemoteRoutes.syllabus,
+          body: params.toJson());
       final List<dynamic> dataList = data['resTable'];
 
       return dataList.map((e) => SyllabusModel.fromJson(e)).toList();
