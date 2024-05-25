@@ -1,7 +1,6 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
-  static const teacherRatingList = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
   static const wordAndThougthofTheDay =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getWordThought";
   static const noticePopUp =
@@ -37,5 +36,10 @@ class AppRemoteRoutes {
 
   // vehicle tracker url
   static const vehicleTrackerStops = "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
+
+  // teacher url
+  static const teacherRatingList = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
+  static const teacherRatingQuestions = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
+
 
 }

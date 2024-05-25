@@ -4,4 +4,5 @@ part of 'teacher_bloc.dart';
 class TeacherEvent with _$TeacherEvent {
   const factory TeacherEvent.started() = _Started;
   const factory TeacherEvent.getRatings() = _GetRatings;
+  const factory TeacherEvent.getRatingQuestions() = _GetRatingQuestions;
 }
