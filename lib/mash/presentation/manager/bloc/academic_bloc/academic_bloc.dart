@@ -12,6 +12,7 @@ import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.da
 import 'package:mash/mash/domain/use_cases/academic/get_division_details_use_case.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_syllabus_use_case.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 import '../../../../../core/usecase.dart';
 import '../../../../domain/entities/academic/academic_subject_entity.dart';
@@ -179,20 +180,27 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   }
 
   _selectSubjectEvent(_SelectSubjectEvent event, Emitter<AcademicState> emit) {
-    emit(state.copyWith(selectedSubject: event.subject));
+    emit(state.copyWith(
+        selectedSubject: event.subject, selectedSubjectId: event.subjectId));
+    prettyPrint(state.selectedSubjectId);
   }
 
   _selectDateRange(_SelectDateRange event, Emitter<AcademicState> emit) {
     try {
       final date = DateFormat('dd/MM/yyyy').format(event.date).toString();
-      prettyPrint(date);
-      final data = {event.dateType: date};
-      final updatedRange = SelectedRange();
-
-      prettyPrint(updatedRange.toString());
-      emit(state.copyWith(selectedRange: updatedRange));
+      final _selectedDate = SelectedRange(
+          state.selectedRange?.fromDate, state.selectedRange?.toDate);
+      if (event.dateType == AppStrings.fromDate) {
+        emit(state.copyWith(
+            selectedRange: _selectedDate.copyWith(fromDate: date)));
+      } else {
+        emit(state.copyWith(
+            selectedRange: _selectedDate.copyWith(toDate: date)));
+      }
     } catch (e) {
       prettyPrint('[error]==== $e');
     }
   }
+
+  static AcademicBloc get(context) => BlocProvider.of(context);
 }

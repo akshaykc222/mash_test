@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class NotesReportDetailsEntity extends Equatable {
-  final List<NotesDetailsResTable1Entity> restable1;
-  final List<NotesDetailsResTable2Entity> resTable2;
+  final List<NotesDetailsResTable1Entity>? restable1;
+  final List<NotesDetailsResTable2Entity>? resTable2;
 
   const NotesReportDetailsEntity(
       {required this.restable1, required this.resTable2});
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [restable1, resTable2];
 }
 
 class NotesDetailsResTable1Entity extends Equatable {

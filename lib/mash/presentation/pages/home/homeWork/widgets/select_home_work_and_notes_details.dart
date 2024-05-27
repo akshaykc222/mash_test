@@ -15,6 +15,7 @@ import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
+import '../../../../../../di/injector.dart';
 import '../../../../manager/bloc/academic_bloc/academic_bloc.dart';
 import '../../../../utils/enums.dart';
 
@@ -35,9 +36,9 @@ class _HomeWorkAndNoteSelectDetailsScreenState
     extends State<HomeWorkAndNoteSelectDetailsScreen> {
   @override
   void initState() {
-    BlocProvider.of<AcademicBloc>(context)
-        .add(const AcademicEvent.getAcademicSubjects());
     super.initState();
+
+    AcademicBloc.get(context).add(const AcademicEvent.getAcademicSubjects());
   }
 
   @override
@@ -67,8 +68,8 @@ class _HomeWorkAndNoteSelectDetailsScreenState
             spacer10,
             BlocBuilder<AcademicBloc, AcademicState>(
               builder: (context, state) {
-                final fromDate = state.selectedRange[AppStrings.fromDate];
-                final toDate = state.selectedRange[AppStrings.toDate];
+                final fromDate = state.selectedRange?.fromDate;
+                final toDate = state.selectedRange?.toDate;
                 return Row(
                   children: [
                     Expanded(
@@ -113,16 +114,19 @@ class _HomeWorkAndNoteSelectDetailsScreenState
   }
 
   void _selectDate(BuildContext context, String dateType) async {
-    DateTime? selectedData = await showDatePicker(
+    DateTime? selectedDate = await showDatePicker(
       context: context,
       firstDate: DateTime.now().subtract(const Duration(days: 2000)),
       lastDate: DateTime.now(),
-      currentDate: DateTime.now(),
+      initialDate: DateTime.now(),
     );
-    if (selectedData != null) {
+    if (selectedDate != null) {
       BlocProvider.of<AcademicBloc>(context).add(
-          AcademicEvent.selectDateRangeEvent(
-              date: selectedData, dateType: dateType));
+        AcademicEvent.selectDateRangeEvent(
+          date: selectedDate,
+          dateType: dateType,
+        ),
+      );
     }
   }
 
@@ -136,34 +140,42 @@ class _HomeWorkAndNoteSelectDetailsScreenState
           if (data == null || state.academicSubjects.status == Status.LOADING) {
             return const Loader();
           } else {
-            return data.isEmpty
-                ? HelperClasses.emptyDataWidget()
-                : ListView.builder(
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        onTap: () {
-                          BlocProvider.of<AcademicBloc>(context).add(
-                              AcademicEvent.selectSubjectEvent(
-                                  data[index]?.subName ?? ''));
-                          context.pop();
-                        },
-                        title: Text(
-                          data[index]?.subName ?? "",
-                          style: TextStyle(
-                            fontSize: SizeConfig.textSize(16),
-                            height: 1.2,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 16,
-                          color: AppColors.blackOverlay,
+            List<String> subNames = [AppStrings.allSubjects];
+            subNames.addAll(data.map((e) => e?.subName ?? ""));
+
+            if (data.isEmpty) {
+              return HelperClasses.emptyDataWidget();
+            } else {
+              return ListView.builder(
+                itemCount: subNames.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      BlocProvider.of<AcademicBloc>(context).add(
+                        AcademicEvent.selectSubjectEvent(
+                          subNames[index],
+                          index > 0 ? data[index - 1]?.subjectId ?? "" : "0",
                         ),
                       );
+                      context.pop();
                     },
+                    title: Text(
+                      subNames[index],
+                      style: TextStyle(
+                        fontSize: SizeConfig.textSize(16),
+                        height: 1.2,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      size: 16,
+                      color: AppColors.blackOverlay,
+                    ),
                   );
+                },
+              );
+            }
           }
         },
       ),

@@ -11,6 +11,7 @@ import 'package:mash/mash/data/remote/models/request/home_work_report_request.da
 import 'package:mash/mash/domain/entities/notes/notes_details_entity.dart';
 import 'package:mash/mash/domain/entities/notes/notes_report_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
+import 'package:mash/mash/domain/use_cases/home_work_notes/get_home_work_report_details_use_case.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart';
@@ -27,12 +28,18 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
   final GetUserInfoUseCase getUserInfoUseCase;
   final NotesReportsUseCase notesReportsUseCase;
   final GetNoteReportDetails getNoteReportDetails;
-  HomeWorkNotesBloc(this.homeWorkReportsUseCase, this.getUserInfoUseCase,
-      this.notesReportsUseCase, this.getNoteReportDetails)
+  final GetHomeWorkDetails getHomeWorkDetails;
+  HomeWorkNotesBloc(
+      this.homeWorkReportsUseCase,
+      this.getUserInfoUseCase,
+      this.notesReportsUseCase,
+      this.getNoteReportDetails,
+      this.getHomeWorkDetails)
       : super(HomeWorkNotesState.initial()) {
     on<_GetHomeWorkReportEvent>(_getHomeWorkReport);
     on<_GetNotesWorkReport>(_getNotesWorkReport);
     on<_GetNoteReportDetails>(_getNoteReportDetails);
+    on<_GetHomeWorkDetails>(_getHomeWorkDetails);
   }
 
   _getHomeWorkReport(
@@ -42,13 +49,13 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
       final userData = await getUserInfoUseCase.call(NoParams());
       if (userData != null) {
         final data = await homeWorkReportsUseCase.call(HomeWorkReportRequest(
-          compId: "200001",
+          compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: '152',
-          divId: '224',
-          subjId: '0',
-          acadId: "87",
+          classId: userData.classId ?? "",
+          divId: userData.divisionId ?? '',
+          subjId: event.subId,
+          acadId: userData.academicId ?? "",
         ));
         emit(state.copyWith(
             homeWorkReportResponse: ResponseClassify.completed(data)));
@@ -71,7 +78,7 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           endDate: event.endDate,
           classId: '152',
           divId: '224',
-          subjId: '0',
+          subjId: event.subjectId,
           acadId: "87",
         ));
         emit(state.copyWith(
@@ -99,6 +106,26 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
     } catch (e) {
       emit(state.copyWith(
           noteReportDetailResponse: ResponseClassify.error(e.toString())));
+    }
+  }
+
+  _getHomeWorkDetails(
+      _GetHomeWorkDetails event, Emitter<HomeWorkNotesState> emit) async {
+    emit(state.copyWith(
+        homeWorkReportDetailResponse: ResponseClassify.loading()));
+    try {
+      final userData = await getUserInfoUseCase.call(NoParams());
+      if (userData != null) {
+        final data = await getHomeWorkDetails
+            .call(HomeWorkDetailsParams(userData.compId, event.workId));
+        emit(state.copyWith(
+            homeWorkReportDetailResponse: ResponseClassify.completed(data)));
+        prettyPrint(data.toString());
+      }
+    } catch (e, stack) {
+      prettyPrint('error on bloc $e stack race $stack');
+      emit(state.copyWith(
+          homeWorkReportDetailResponse: ResponseClassify.error(e.toString())));
     }
   }
 

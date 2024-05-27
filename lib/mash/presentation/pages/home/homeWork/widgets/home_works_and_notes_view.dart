@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/domain/entities/notes/notes_report_entity.dart';
+import 'package:mash/mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
@@ -28,12 +29,19 @@ class HomeworksAndNoteView extends StatefulWidget {
 class _HomeworksAndNoteViewState extends State<HomeworksAndNoteView> {
   @override
   void initState() {
+    final academicState = context.read<AcademicBloc>().state;
+
     final bloc = HomeWorkNotesBloc.get(context);
     final event = widget.screenType == HomeWorkAndNoteScreenType.homeworkScreen
-        ? const HomeWorkNotesEvent.getHomeWorkReportEvent(
-            startDate: '', endDate: '')
-        : const HomeWorkNotesEvent.getNotesWorkReport(
-            startDate: '', endDate: '');
+        ? HomeWorkNotesEvent.getHomeWorkReportEvent(
+            subId: academicState.selectedSubjectId,
+            startDate: academicState.selectedRange?.fromDate ?? "",
+            endDate: academicState.selectedRange?.toDate ?? '',
+          )
+        : HomeWorkNotesEvent.getNotesWorkReport(
+            startDate: academicState.selectedRange?.fromDate ?? "",
+            endDate: academicState.selectedRange?.toDate ?? '',
+            subjectId: academicState.selectedSubjectId);
     bloc.add(event);
 
     super.initState();
@@ -96,9 +104,8 @@ class _HomeworksAndNoteViewState extends State<HomeworksAndNoteView> {
                                 submissionDate: item?.submitDate ?? "",
                                 onTap: () {
                                   context.pushNamed(
-                                    AppPages.homeWorksViewDetailsScreen,
-                                    extra: item,
-                                  );
+                                      AppPages.homeWorksViewDetailsScreen,
+                                      extra: item?.workId);
                                 },
                               )
                             : NotesTile(

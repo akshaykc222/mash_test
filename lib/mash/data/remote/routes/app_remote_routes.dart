@@ -23,7 +23,8 @@ class AppRemoteRoutes {
   //home work
   static const homeWorkReports =
       'UATRESTAPI/MashFlutterRestAPI/api/user/getHomeWorkReport';
-
+  static const homeWorkDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getHomeworkDetails";
   //notes
   static const notesReports =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNotesReport";
@@ -41,11 +42,12 @@ class AppRemoteRoutes {
   static const roleMenu = "UATRESTAPI/MashFlutterRestAPI/api/user/getMenu";
 
   // vehicle tracker url
-  static const vehicleTrackerStops = "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
+  static const vehicleTrackerStops =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
 
   // teacher url
-  static const teacherRatingList = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
-  static const teacherRatingQuestions = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
-
-
+  static const teacherRatingList =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
+  static const teacherRatingQuestions =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
 }

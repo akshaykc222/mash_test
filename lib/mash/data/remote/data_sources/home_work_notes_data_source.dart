@@ -13,6 +13,8 @@ abstract interface class HomeWorkNotesRemoteDataSource {
   Future<List<NotesReportEntity>> getNoteReports(HomeWorkReportRequest params);
   Future<NotesReportDetailsModel> getNotesReportsDetails(
       {required String noteId, required String compId});
+  Future<NotesReportDetailsModel> getHomeWorkReportsDetails(
+      {required String workId, required String compId});
 }
 
 @LazySingleton(as: HomeWorkNotesRemoteDataSource)
@@ -44,6 +46,14 @@ class HomeWorkRemoteDataSourceImpl implements HomeWorkNotesRemoteDataSource {
       {required String noteId, required String compId}) async {
     final data = await apiProvider.get(AppRemoteRoutes.notesDetails,
         body: {'P_NOTE_ID': noteId, 'P_COMP_ID': compId});
+    return NotesReportDetailsModel.fromJson(data);
+  }
+
+  @override
+  Future<NotesReportDetailsModel> getHomeWorkReportsDetails(
+      {required String workId, required String compId}) async {
+    final data = await apiProvider.get(AppRemoteRoutes.homeWorkDetails,
+        body: {'P_WORK_ID': workId, 'P_COMP_ID': compId});
     return NotesReportDetailsModel.fromJson(data);
   }
 }

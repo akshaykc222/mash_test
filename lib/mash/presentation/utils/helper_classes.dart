@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -77,6 +78,21 @@ class HelperClasses {
   static Widget emptyDataWidget() {
     return Center(
       child: Lottie.asset(AppAssets.noDataLottie, height: 300),
+    );
+  }
+
+  static cachedNetworkImage(
+      {required String imageUrl,
+      double? height,
+      double? width,
+      BoxFit boxFit = BoxFit.cover}) {
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      height: height,
+      width: width,
+      fit: boxFit,
+      // placeholder: (context, url) => CircularProgressIndicator(),
+      errorWidget: (context, url, error) => const Icon(Icons.error_outline),
     );
   }
 

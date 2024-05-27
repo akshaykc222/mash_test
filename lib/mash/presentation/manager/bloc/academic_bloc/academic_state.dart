@@ -10,6 +10,7 @@ class AcademicState with _$AcademicState {
     required ResponseClassify<List<SyllabusEntity?>> syllabus,
     required int selectedTermIndex,
     required String selectedSubject,
+    required String selectedSubjectId,
     required SelectedRange? selectedRange,
   }) = _AcademicState;
   factory AcademicState.initial() => AcademicState(
@@ -21,5 +22,6 @@ class AcademicState with _$AcademicState {
         selectedTermIndex: 0,
         selectedSubject: '',
         selectedRange: null,
+        selectedSubjectId: '',
       );
 }

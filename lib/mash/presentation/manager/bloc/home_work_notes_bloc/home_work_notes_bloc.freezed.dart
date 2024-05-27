@@ -18,25 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeWorkNotesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(String startDate, String endDate, String subId)
         getHomeWorkReportEvent,
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(
+            String startDate, String endDate, String subjectId)
         getNotesWorkReport,
     required TResult Function(String noteId) getNoteReportDetails,
+    required TResult Function(String workId) getHomeWorkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult? Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult? Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult? Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult? Function(String noteId)? getNoteReportDetails,
+    TResult? Function(String workId)? getHomeWorkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult Function(String noteId)? getNoteReportDetails,
+    TResult Function(String workId)? getHomeWorkDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +54,7 @@ mixin _$HomeWorkNotesEvent {
         getHomeWorkReportEvent,
     required TResult Function(_GetNotesWorkReport value) getNotesWorkReport,
     required TResult Function(_GetNoteReportDetails value) getNoteReportDetails,
+    required TResult Function(_GetHomeWorkDetails value) getHomeWorkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +62,7 @@ mixin _$HomeWorkNotesEvent {
     TResult? Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult? Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult? Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult? Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +70,7 @@ mixin _$HomeWorkNotesEvent {
     TResult Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,7 +101,7 @@ abstract class _$$GetHomeWorkReportEventImplCopyWith<$Res> {
           $Res Function(_$GetHomeWorkReportEventImpl) then) =
       __$$GetHomeWorkReportEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String startDate, String endDate});
+  $Res call({String startDate, String endDate, String subId});
 }
 
 /// @nodoc
@@ -107,6 +118,7 @@ class __$$GetHomeWorkReportEventImplCopyWithImpl<$Res>
   $Res call({
     Object? startDate = null,
     Object? endDate = null,
+    Object? subId = null,
   }) {
     return _then(_$GetHomeWorkReportEventImpl(
       startDate: null == startDate
@@ -117,6 +129,10 @@ class __$$GetHomeWorkReportEventImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as String,
+      subId: null == subId
+          ? _value.subId
+          : subId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -125,16 +141,18 @@ class __$$GetHomeWorkReportEventImplCopyWithImpl<$Res>
 
 class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
   const _$GetHomeWorkReportEventImpl(
-      {required this.startDate, required this.endDate});
+      {required this.startDate, required this.endDate, required this.subId});
 
   @override
   final String startDate;
   @override
   final String endDate;
+  @override
+  final String subId;
 
   @override
   String toString() {
-    return 'HomeWorkNotesEvent.getHomeWorkReportEvent(startDate: $startDate, endDate: $endDate)';
+    return 'HomeWorkNotesEvent.getHomeWorkReportEvent(startDate: $startDate, endDate: $endDate, subId: $subId)';
   }
 
   @override
@@ -144,11 +162,12 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
             other is _$GetHomeWorkReportEventImpl &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+            (identical(other.endDate, endDate) || other.endDate == endDate) &&
+            (identical(other.subId, subId) || other.subId == subId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate);
+  int get hashCode => Object.hash(runtimeType, startDate, endDate, subId);
 
   @JsonKey(ignore: true)
   @override
@@ -160,35 +179,43 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(String startDate, String endDate, String subId)
         getHomeWorkReportEvent,
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(
+            String startDate, String endDate, String subjectId)
         getNotesWorkReport,
     required TResult Function(String noteId) getNoteReportDetails,
+    required TResult Function(String workId) getHomeWorkDetails,
   }) {
-    return getHomeWorkReportEvent(startDate, endDate);
+    return getHomeWorkReportEvent(startDate, endDate, subId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult? Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult? Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult? Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult? Function(String noteId)? getNoteReportDetails,
+    TResult? Function(String workId)? getHomeWorkDetails,
   }) {
-    return getHomeWorkReportEvent?.call(startDate, endDate);
+    return getHomeWorkReportEvent?.call(startDate, endDate, subId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult Function(String noteId)? getNoteReportDetails,
+    TResult Function(String workId)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getHomeWorkReportEvent != null) {
-      return getHomeWorkReportEvent(startDate, endDate);
+      return getHomeWorkReportEvent(startDate, endDate, subId);
     }
     return orElse();
   }
@@ -200,6 +227,7 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
         getHomeWorkReportEvent,
     required TResult Function(_GetNotesWorkReport value) getNotesWorkReport,
     required TResult Function(_GetNoteReportDetails value) getNoteReportDetails,
+    required TResult Function(_GetHomeWorkDetails value) getHomeWorkDetails,
   }) {
     return getHomeWorkReportEvent(this);
   }
@@ -210,6 +238,7 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
     TResult? Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult? Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult? Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult? Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
   }) {
     return getHomeWorkReportEvent?.call(this);
   }
@@ -220,6 +249,7 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
     TResult Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getHomeWorkReportEvent != null) {
@@ -232,10 +262,12 @@ class _$GetHomeWorkReportEventImpl implements _GetHomeWorkReportEvent {
 abstract class _GetHomeWorkReportEvent implements HomeWorkNotesEvent {
   const factory _GetHomeWorkReportEvent(
       {required final String startDate,
-      required final String endDate}) = _$GetHomeWorkReportEventImpl;
+      required final String endDate,
+      required final String subId}) = _$GetHomeWorkReportEventImpl;
 
   String get startDate;
   String get endDate;
+  String get subId;
   @JsonKey(ignore: true)
   _$$GetHomeWorkReportEventImplCopyWith<_$GetHomeWorkReportEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -247,7 +279,7 @@ abstract class _$$GetNotesWorkReportImplCopyWith<$Res> {
           $Res Function(_$GetNotesWorkReportImpl) then) =
       __$$GetNotesWorkReportImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String startDate, String endDate});
+  $Res call({String startDate, String endDate, String subjectId});
 }
 
 /// @nodoc
@@ -263,6 +295,7 @@ class __$$GetNotesWorkReportImplCopyWithImpl<$Res>
   $Res call({
     Object? startDate = null,
     Object? endDate = null,
+    Object? subjectId = null,
   }) {
     return _then(_$GetNotesWorkReportImpl(
       startDate: null == startDate
@@ -273,6 +306,10 @@ class __$$GetNotesWorkReportImplCopyWithImpl<$Res>
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as String,
+      subjectId: null == subjectId
+          ? _value.subjectId
+          : subjectId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -281,16 +318,20 @@ class __$$GetNotesWorkReportImplCopyWithImpl<$Res>
 
 class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
   const _$GetNotesWorkReportImpl(
-      {required this.startDate, required this.endDate});
+      {required this.startDate,
+      required this.endDate,
+      required this.subjectId});
 
   @override
   final String startDate;
   @override
   final String endDate;
+  @override
+  final String subjectId;
 
   @override
   String toString() {
-    return 'HomeWorkNotesEvent.getNotesWorkReport(startDate: $startDate, endDate: $endDate)';
+    return 'HomeWorkNotesEvent.getNotesWorkReport(startDate: $startDate, endDate: $endDate, subjectId: $subjectId)';
   }
 
   @override
@@ -300,11 +341,13 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
             other is _$GetNotesWorkReportImpl &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+            (identical(other.endDate, endDate) || other.endDate == endDate) &&
+            (identical(other.subjectId, subjectId) ||
+                other.subjectId == subjectId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate);
+  int get hashCode => Object.hash(runtimeType, startDate, endDate, subjectId);
 
   @JsonKey(ignore: true)
   @override
@@ -316,35 +359,43 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(String startDate, String endDate, String subId)
         getHomeWorkReportEvent,
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(
+            String startDate, String endDate, String subjectId)
         getNotesWorkReport,
     required TResult Function(String noteId) getNoteReportDetails,
+    required TResult Function(String workId) getHomeWorkDetails,
   }) {
-    return getNotesWorkReport(startDate, endDate);
+    return getNotesWorkReport(startDate, endDate, subjectId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult? Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult? Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult? Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult? Function(String noteId)? getNoteReportDetails,
+    TResult? Function(String workId)? getHomeWorkDetails,
   }) {
-    return getNotesWorkReport?.call(startDate, endDate);
+    return getNotesWorkReport?.call(startDate, endDate, subjectId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult Function(String noteId)? getNoteReportDetails,
+    TResult Function(String workId)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getNotesWorkReport != null) {
-      return getNotesWorkReport(startDate, endDate);
+      return getNotesWorkReport(startDate, endDate, subjectId);
     }
     return orElse();
   }
@@ -356,6 +407,7 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
         getHomeWorkReportEvent,
     required TResult Function(_GetNotesWorkReport value) getNotesWorkReport,
     required TResult Function(_GetNoteReportDetails value) getNoteReportDetails,
+    required TResult Function(_GetHomeWorkDetails value) getHomeWorkDetails,
   }) {
     return getNotesWorkReport(this);
   }
@@ -366,6 +418,7 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
     TResult? Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult? Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult? Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult? Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
   }) {
     return getNotesWorkReport?.call(this);
   }
@@ -376,6 +429,7 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
     TResult Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getNotesWorkReport != null) {
@@ -388,10 +442,12 @@ class _$GetNotesWorkReportImpl implements _GetNotesWorkReport {
 abstract class _GetNotesWorkReport implements HomeWorkNotesEvent {
   const factory _GetNotesWorkReport(
       {required final String startDate,
-      required final String endDate}) = _$GetNotesWorkReportImpl;
+      required final String endDate,
+      required final String subjectId}) = _$GetNotesWorkReportImpl;
 
   String get startDate;
   String get endDate;
+  String get subjectId;
   @JsonKey(ignore: true)
   _$$GetNotesWorkReportImplCopyWith<_$GetNotesWorkReportImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -463,11 +519,13 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(String startDate, String endDate, String subId)
         getHomeWorkReportEvent,
-    required TResult Function(String startDate, String endDate)
+    required TResult Function(
+            String startDate, String endDate, String subjectId)
         getNotesWorkReport,
     required TResult Function(String noteId) getNoteReportDetails,
+    required TResult Function(String workId) getHomeWorkDetails,
   }) {
     return getNoteReportDetails(noteId);
   }
@@ -475,9 +533,12 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult? Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult? Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult? Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult? Function(String noteId)? getNoteReportDetails,
+    TResult? Function(String workId)? getHomeWorkDetails,
   }) {
     return getNoteReportDetails?.call(noteId);
   }
@@ -485,9 +546,12 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String startDate, String endDate)? getHomeWorkReportEvent,
-    TResult Function(String startDate, String endDate)? getNotesWorkReport,
+    TResult Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
     TResult Function(String noteId)? getNoteReportDetails,
+    TResult Function(String workId)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getNoteReportDetails != null) {
@@ -503,6 +567,7 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
         getHomeWorkReportEvent,
     required TResult Function(_GetNotesWorkReport value) getNotesWorkReport,
     required TResult Function(_GetNoteReportDetails value) getNoteReportDetails,
+    required TResult Function(_GetHomeWorkDetails value) getHomeWorkDetails,
   }) {
     return getNoteReportDetails(this);
   }
@@ -513,6 +578,7 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
     TResult? Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult? Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult? Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult? Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
   }) {
     return getNoteReportDetails?.call(this);
   }
@@ -523,6 +589,7 @@ class _$GetNoteReportDetailsImpl implements _GetNoteReportDetails {
     TResult Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
     TResult Function(_GetNotesWorkReport value)? getNotesWorkReport,
     TResult Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
     required TResult orElse(),
   }) {
     if (getNoteReportDetails != null) {
@@ -543,12 +610,169 @@ abstract class _GetNoteReportDetails implements HomeWorkNotesEvent {
 }
 
 /// @nodoc
+abstract class _$$GetHomeWorkDetailsImplCopyWith<$Res> {
+  factory _$$GetHomeWorkDetailsImplCopyWith(_$GetHomeWorkDetailsImpl value,
+          $Res Function(_$GetHomeWorkDetailsImpl) then) =
+      __$$GetHomeWorkDetailsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String workId});
+}
+
+/// @nodoc
+class __$$GetHomeWorkDetailsImplCopyWithImpl<$Res>
+    extends _$HomeWorkNotesEventCopyWithImpl<$Res, _$GetHomeWorkDetailsImpl>
+    implements _$$GetHomeWorkDetailsImplCopyWith<$Res> {
+  __$$GetHomeWorkDetailsImplCopyWithImpl(_$GetHomeWorkDetailsImpl _value,
+      $Res Function(_$GetHomeWorkDetailsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? workId = null,
+  }) {
+    return _then(_$GetHomeWorkDetailsImpl(
+      workId: null == workId
+          ? _value.workId
+          : workId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetHomeWorkDetailsImpl implements _GetHomeWorkDetails {
+  const _$GetHomeWorkDetailsImpl({required this.workId});
+
+  @override
+  final String workId;
+
+  @override
+  String toString() {
+    return 'HomeWorkNotesEvent.getHomeWorkDetails(workId: $workId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetHomeWorkDetailsImpl &&
+            (identical(other.workId, workId) || other.workId == workId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, workId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetHomeWorkDetailsImplCopyWith<_$GetHomeWorkDetailsImpl> get copyWith =>
+      __$$GetHomeWorkDetailsImplCopyWithImpl<_$GetHomeWorkDetailsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String startDate, String endDate, String subId)
+        getHomeWorkReportEvent,
+    required TResult Function(
+            String startDate, String endDate, String subjectId)
+        getNotesWorkReport,
+    required TResult Function(String noteId) getNoteReportDetails,
+    required TResult Function(String workId) getHomeWorkDetails,
+  }) {
+    return getHomeWorkDetails(workId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult? Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
+    TResult? Function(String noteId)? getNoteReportDetails,
+    TResult? Function(String workId)? getHomeWorkDetails,
+  }) {
+    return getHomeWorkDetails?.call(workId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String startDate, String endDate, String subId)?
+        getHomeWorkReportEvent,
+    TResult Function(String startDate, String endDate, String subjectId)?
+        getNotesWorkReport,
+    TResult Function(String noteId)? getNoteReportDetails,
+    TResult Function(String workId)? getHomeWorkDetails,
+    required TResult orElse(),
+  }) {
+    if (getHomeWorkDetails != null) {
+      return getHomeWorkDetails(workId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetHomeWorkReportEvent value)
+        getHomeWorkReportEvent,
+    required TResult Function(_GetNotesWorkReport value) getNotesWorkReport,
+    required TResult Function(_GetNoteReportDetails value) getNoteReportDetails,
+    required TResult Function(_GetHomeWorkDetails value) getHomeWorkDetails,
+  }) {
+    return getHomeWorkDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
+    TResult? Function(_GetNotesWorkReport value)? getNotesWorkReport,
+    TResult? Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult? Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
+  }) {
+    return getHomeWorkDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetHomeWorkReportEvent value)? getHomeWorkReportEvent,
+    TResult Function(_GetNotesWorkReport value)? getNotesWorkReport,
+    TResult Function(_GetNoteReportDetails value)? getNoteReportDetails,
+    TResult Function(_GetHomeWorkDetails value)? getHomeWorkDetails,
+    required TResult orElse(),
+  }) {
+    if (getHomeWorkDetails != null) {
+      return getHomeWorkDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetHomeWorkDetails implements HomeWorkNotesEvent {
+  const factory _GetHomeWorkDetails({required final String workId}) =
+      _$GetHomeWorkDetailsImpl;
+
+  String get workId;
+  @JsonKey(ignore: true)
+  _$$GetHomeWorkDetailsImplCopyWith<_$GetHomeWorkDetailsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeWorkNotesState {
   ResponseClassify<List<HomeWorkReportsEntity>> get homeWorkReportResponse =>
       throw _privateConstructorUsedError;
   ResponseClassify<List<NotesReportEntity>> get noteWorkReportResponse =>
       throw _privateConstructorUsedError;
   ResponseClassify<NotesReportDetailsEntity> get noteReportDetailResponse =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<NotesReportDetailsEntity> get homeWorkReportDetailResponse =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -565,7 +789,8 @@ abstract class $HomeWorkNotesStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse,
       ResponseClassify<List<NotesReportEntity>> noteWorkReportResponse,
-      ResponseClassify<NotesReportDetailsEntity> noteReportDetailResponse});
+      ResponseClassify<NotesReportDetailsEntity> noteReportDetailResponse,
+      ResponseClassify<NotesReportDetailsEntity> homeWorkReportDetailResponse});
 }
 
 /// @nodoc
@@ -584,6 +809,7 @@ class _$HomeWorkNotesStateCopyWithImpl<$Res, $Val extends HomeWorkNotesState>
     Object? homeWorkReportResponse = null,
     Object? noteWorkReportResponse = null,
     Object? noteReportDetailResponse = null,
+    Object? homeWorkReportDetailResponse = null,
   }) {
     return _then(_value.copyWith(
       homeWorkReportResponse: null == homeWorkReportResponse
@@ -597,6 +823,10 @@ class _$HomeWorkNotesStateCopyWithImpl<$Res, $Val extends HomeWorkNotesState>
       noteReportDetailResponse: null == noteReportDetailResponse
           ? _value.noteReportDetailResponse
           : noteReportDetailResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<NotesReportDetailsEntity>,
+      homeWorkReportDetailResponse: null == homeWorkReportDetailResponse
+          ? _value.homeWorkReportDetailResponse
+          : homeWorkReportDetailResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<NotesReportDetailsEntity>,
     ) as $Val);
   }
@@ -613,7 +843,8 @@ abstract class _$$HomeWorkNotesStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse,
       ResponseClassify<List<NotesReportEntity>> noteWorkReportResponse,
-      ResponseClassify<NotesReportDetailsEntity> noteReportDetailResponse});
+      ResponseClassify<NotesReportDetailsEntity> noteReportDetailResponse,
+      ResponseClassify<NotesReportDetailsEntity> homeWorkReportDetailResponse});
 }
 
 /// @nodoc
@@ -630,6 +861,7 @@ class __$$HomeWorkNotesStateImplCopyWithImpl<$Res>
     Object? homeWorkReportResponse = null,
     Object? noteWorkReportResponse = null,
     Object? noteReportDetailResponse = null,
+    Object? homeWorkReportDetailResponse = null,
   }) {
     return _then(_$HomeWorkNotesStateImpl(
       homeWorkReportResponse: null == homeWorkReportResponse
@@ -644,6 +876,10 @@ class __$$HomeWorkNotesStateImplCopyWithImpl<$Res>
           ? _value.noteReportDetailResponse
           : noteReportDetailResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<NotesReportDetailsEntity>,
+      homeWorkReportDetailResponse: null == homeWorkReportDetailResponse
+          ? _value.homeWorkReportDetailResponse
+          : homeWorkReportDetailResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<NotesReportDetailsEntity>,
     ));
   }
 }
@@ -654,7 +890,8 @@ class _$HomeWorkNotesStateImpl implements _HomeWorkNotesState {
   const _$HomeWorkNotesStateImpl(
       {required this.homeWorkReportResponse,
       required this.noteWorkReportResponse,
-      required this.noteReportDetailResponse});
+      required this.noteReportDetailResponse,
+      required this.homeWorkReportDetailResponse});
 
   @override
   final ResponseClassify<List<HomeWorkReportsEntity>> homeWorkReportResponse;
@@ -662,10 +899,12 @@ class _$HomeWorkNotesStateImpl implements _HomeWorkNotesState {
   final ResponseClassify<List<NotesReportEntity>> noteWorkReportResponse;
   @override
   final ResponseClassify<NotesReportDetailsEntity> noteReportDetailResponse;
+  @override
+  final ResponseClassify<NotesReportDetailsEntity> homeWorkReportDetailResponse;
 
   @override
   String toString() {
-    return 'HomeWorkNotesState(homeWorkReportResponse: $homeWorkReportResponse, noteWorkReportResponse: $noteWorkReportResponse, noteReportDetailResponse: $noteReportDetailResponse)';
+    return 'HomeWorkNotesState(homeWorkReportResponse: $homeWorkReportResponse, noteWorkReportResponse: $noteWorkReportResponse, noteReportDetailResponse: $noteReportDetailResponse, homeWorkReportDetailResponse: $homeWorkReportDetailResponse)';
   }
 
   @override
@@ -679,12 +918,20 @@ class _$HomeWorkNotesStateImpl implements _HomeWorkNotesState {
                 other.noteWorkReportResponse == noteWorkReportResponse) &&
             (identical(
                     other.noteReportDetailResponse, noteReportDetailResponse) ||
-                other.noteReportDetailResponse == noteReportDetailResponse));
+                other.noteReportDetailResponse == noteReportDetailResponse) &&
+            (identical(other.homeWorkReportDetailResponse,
+                    homeWorkReportDetailResponse) ||
+                other.homeWorkReportDetailResponse ==
+                    homeWorkReportDetailResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, homeWorkReportResponse,
-      noteWorkReportResponse, noteReportDetailResponse);
+  int get hashCode => Object.hash(
+      runtimeType,
+      homeWorkReportResponse,
+      noteWorkReportResponse,
+      noteReportDetailResponse,
+      homeWorkReportDetailResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -701,7 +948,9 @@ abstract class _HomeWorkNotesState implements HomeWorkNotesState {
       required final ResponseClassify<List<NotesReportEntity>>
           noteWorkReportResponse,
       required final ResponseClassify<NotesReportDetailsEntity>
-          noteReportDetailResponse}) = _$HomeWorkNotesStateImpl;
+          noteReportDetailResponse,
+      required final ResponseClassify<NotesReportDetailsEntity>
+          homeWorkReportDetailResponse}) = _$HomeWorkNotesStateImpl;
 
   @override
   ResponseClassify<List<HomeWorkReportsEntity>> get homeWorkReportResponse;
@@ -709,6 +958,8 @@ abstract class _HomeWorkNotesState implements HomeWorkNotesState {
   ResponseClassify<List<NotesReportEntity>> get noteWorkReportResponse;
   @override
   ResponseClassify<NotesReportDetailsEntity> get noteReportDetailResponse;
+  @override
+  ResponseClassify<NotesReportDetailsEntity> get homeWorkReportDetailResponse;
   @override
   @JsonKey(ignore: true)
   _$$HomeWorkNotesStateImplCopyWith<_$HomeWorkNotesStateImpl> get copyWith =>

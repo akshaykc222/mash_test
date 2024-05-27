@@ -57,7 +57,7 @@ class AppStrings {
   static const String documentUploadText = 'If any documents upload here';
   static const String select = 'select';
   static const String appType = '1';
-
+  static const String allSubjects = 'All Subjects';
   //time table
   static const String timeTable = 'Time Table';
   static const String examTimeTable = 'EXAM TIMETABLE';

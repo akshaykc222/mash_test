@@ -108,7 +108,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -189,7 +189,7 @@ class AppRouteManager {
       path: AppPages.homeWorksViewDetailsScreen,
       name: AppPages.homeWorksViewDetailsScreen,
       builder: (context, state) => HomeWorkViewDetailsScreen(
-        entity: state.extra as HomeWorkReportsEntity,
+        id: state.extra as String,
       ),
     ),
     GoRoute(
