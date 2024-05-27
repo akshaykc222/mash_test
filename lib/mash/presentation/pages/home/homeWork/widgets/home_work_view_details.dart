@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
@@ -14,6 +14,8 @@ import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
 import '../../../../../domain/entities/notes/notes_details_entity.dart';
 import '../../../../../domain/entities/profile/student_detail_entity.dart';
+import '../../../../manager/cubit/pdf_download/pdf_download_cubit.dart';
+import '../../../../router/app_pages.dart';
 
 class HomeWorkViewDetailsScreen extends StatefulWidget {
   final String id;
@@ -41,20 +43,30 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
       appBar: commonAppbar(title: AppStrings.details),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: BlocBuilder<HomeWorkNotesBloc, HomeWorkNotesState>(
-          builder: (context, state) {
-            final data = state.homeWorkReportDetailResponse;
-            if (data.status == Status.LOADING ||
-                data.data == null && data.status != Status.ERROR) {
-              return const Loader();
-            } else if (data.data?.restable1?.isEmpty == true ||
-                data.data?.restable1 == null && data.data?.resTable2 == null) {
-              return HelperClasses.emptyDataWidget();
-            } else {
-              final entity = data.data?.restable1?.first;
-              return _buildDetails(entity, data.data?.resTable2?.first, user);
-            }
+        child: BlocListener<PdfDownloadCubit, PdfDownloadState>(
+          listenWhen: (previous, current) =>
+              previous.pdfDownloadResponse.status != Status.COMPLETED &&
+              current.pdfDownloadResponse.status == Status.COMPLETED,
+          listener: (context, state) {
+            GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
+                extra: state.pdfDownloadResponse.data);
           },
+          child: BlocBuilder<HomeWorkNotesBloc, HomeWorkNotesState>(
+            builder: (context, state) {
+              final data = state.homeWorkReportDetailResponse;
+              if (data.status == Status.LOADING ||
+                  data.data == null && data.status != Status.ERROR) {
+                return const Loader();
+              } else if (data.data?.restable1?.isEmpty == true ||
+                  data.data?.restable1 == null &&
+                      data.data?.resTable2 == null) {
+                return HelperClasses.emptyDataWidget();
+              } else {
+                final entity = data.data?.restable1?.first;
+                return _buildDetails(entity, data.data?.resTable2?.first, user);
+              }
+            },
+          ),
         ),
       ),
     );
@@ -123,6 +135,11 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
         ),
         spacer20,
         ListTile(
+          onTap: () {
+            context
+                .read<PdfDownloadCubit>()
+                .downloadPdf(table2?.document ?? "");
+          },
           title: Text(
             table2?.document ?? "",
             style: const TextStyle(

@@ -9,6 +9,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/shimmer_box.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
@@ -57,12 +58,12 @@ class ParentDashBoard extends StatelessWidget {
           },
           builder: (context, state) {
             return state.getUserDetail?.status == Status.LOADING
-                ? const ShimmerBox()
-                : CachedNetworkImage(
-                    errorWidget: (context, url, error) =>
-                        HelperClasses.errorWidget(context),
+                ? const CustomShimmerWidget(
+                    height: 200,
+                  )
+                : HelperClasses.cachedNetworkImage(
+                    height: 200,
                     imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
-                    fit: BoxFit.cover,
                   );
           },
         ),

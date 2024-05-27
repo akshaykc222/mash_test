@@ -8,6 +8,7 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/oultined_container_widget.dart';
+import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/home_shimmer.dart';
 
 import '../../../../router/app_pages.dart';

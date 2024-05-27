@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'custom_shimmer_widget.dart';
@@ -10,80 +12,77 @@ class ShimmerHome extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get the screen height
 
-    return Scaffold(
-      body: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Container with 1/3 of screen height
-
-              const SizedBox(height: 20),
-              const CustomShimmerWidget(height: 60),
-              // Simulating small text details
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(10, (index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 20,
-                          width: double.infinity,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(10, (index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 20,
-                          width: double.infinity,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(10, (index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 20,
-                          width: double.infinity,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        spacer20,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomShimmerWidget(
+              height: 7,
+              borderRadius: 4,
+              width: SizeUtility(context).width / 6,
+            ),
+            CustomShimmerWidget(
+              height: 7,
+              borderRadius: 4,
+              width: SizeUtility(context).width / 6,
+            ),
+          ],
         ),
-      ),
+        spacer10,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomShimmerWidget(
+              height: 10,
+              width: SizeUtility(context).width / 3,
+              borderRadius: 4,
+            ),
+            CustomShimmerWidget(
+              height: 10,
+              width: SizeUtility(context).width / 3,
+              borderRadius: 4,
+            ),
+          ],
+        ),
+        spacer10,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Row(
+              children: [
+                CustomShimmerWidget(
+                  height: 25,
+                  width: 25,
+                  borderRadius: 8,
+                ),
+                CustomShimmerWidget(
+                  height: 25,
+                  width: 25,
+                  borderRadius: 8,
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CustomShimmerWidget(
+                  height: 7,
+                  width: SizeUtility(context).width / 5,
+                  borderRadius: 8,
+                ),
+                CustomShimmerWidget(
+                  height: 7,
+                  width: SizeUtility(context).width / 9,
+                  borderRadius: 8,
+                ),
+              ],
+            ),
+          ],
+        )
+      ],
     );
   }
 }

@@ -54,7 +54,7 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           endDate: event.endDate,
           classId: userData.classId ?? "",
           divId: userData.divisionId ?? '',
-          subjId: event.subId,
+          subjId: event.subId.isEmpty ? "0" : event.subId,
           acadId: userData.academicId ?? "",
         ));
         emit(state.copyWith(
@@ -78,7 +78,7 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           endDate: event.endDate,
           classId: '152',
           divId: '224',
-          subjId: event.subjectId,
+          subjId: event.subjectId.isEmpty ? "0" : event.subjectId,
           acadId: "87",
         ));
         emit(state.copyWith(
