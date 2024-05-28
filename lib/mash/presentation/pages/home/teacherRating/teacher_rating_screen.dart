@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -13,6 +12,7 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
+import '../../../manager/bloc/teacher_bloc/teacher_bloc.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class TeacherRatingScreen extends StatelessWidget {

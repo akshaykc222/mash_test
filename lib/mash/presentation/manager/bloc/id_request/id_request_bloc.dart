@@ -4,14 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/data/remote/models/request/transfer_request_type_request.dart';
+import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
+import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/id_request/id_request_type_usecase.dart';
 
-import '../../../../core/response_classify.dart';
-import '../../../../core/usecase.dart';
-import '../../../data/remote/models/request/transfer_request_type_request.dart';
-import '../../../domain/entities/id_module/id_request_entity.dart';
-import '../../../domain/use_cases/auth/get_user_info_use_case.dart';
+
 
 part 'id_request_event.dart';
 part 'id_request_state.dart';

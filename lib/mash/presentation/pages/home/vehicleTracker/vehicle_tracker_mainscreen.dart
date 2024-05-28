@@ -11,7 +11,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
-import '../../../manager/vehicle_tracker_bloc/veihcle_tracker_stops_bloc.dart';
+import '../../../manager/bloc/vehicle_tracker_bloc/veihcle_tracker_stops_bloc.dart';
 import '../../../utils/app_colors.dart';
 import '../../../widgets/drawer_widget.dart';
 

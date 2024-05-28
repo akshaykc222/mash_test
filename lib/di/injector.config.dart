@@ -88,13 +88,13 @@ import '../mash/domain/use_cases/dashboard/get_role_menu_usecase.dart' as _i71;
 import '../mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart'
     as _i46;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_report_details_use_case.dart'
-    as _i75;
+    as _i73;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
     as _i72;
 import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
-    as _i74;
+    as _i75;
 import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
-    as _i73;
+    as _i74;
 import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
     as _i69;
 import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i76;
@@ -117,10 +117,12 @@ import '../mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart'
 import '../mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart' as _i83;
 import '../mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart'
     as _i84;
+import '../mash/presentation/manager/bloc/id_request/id_request_bloc.dart'
+    as _i6;
 import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart' as _i81;
 import '../mash/presentation/manager/bloc/profile/profile_bloc.dart' as _i5;
-import '../mash/presentation/manager/id_request/id_request_bloc.dart' as _i7;
-import '../mash/presentation/manager/teacher_bloc/teacher_bloc.dart' as _i6;
+import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'
+    as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -136,8 +138,8 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i3.AuthBloc>(() => _i3.AuthBloc());
     gh.factory<_i4.ChatBloc>(() => _i4.ChatBloc());
     gh.factory<_i5.ProfileBloc>(() => _i5.ProfileBloc());
-    gh.factory<_i6.TeacherBloc>(() => _i6.TeacherBloc());
-    gh.factory<_i7.IdRequestBloc>(() => _i7.IdRequestBloc());
+    gh.factory<_i6.IdRequestBloc>(() => _i6.IdRequestBloc());
+    gh.factory<_i7.TeacherBloc>(() => _i7.TeacherBloc());
     gh.singleton<_i8.ApiProvider>(() => _i8.ApiProvider());
     gh.singleton<_i9.FirebaseDatabaseMethods>(
         () => _i9.FirebaseDatabaseMethods());
@@ -263,11 +265,11 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i72.HomeWorkReportsUseCase>(() =>
         _i72.HomeWorkReportsUseCase(
             homeWorkNotesRepository: gh<_i60.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i73.NotesReportsUseCase>(() => _i73.NotesReportsUseCase(
+    gh.lazySingleton<_i73.GetHomeWorkDetails>(() => _i73.GetHomeWorkDetails(
         homeWorkNotesRepository: gh<_i60.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i74.GetNoteReportDetails>(() => _i74.GetNoteReportDetails(
+    gh.lazySingleton<_i74.NotesReportsUseCase>(() => _i74.NotesReportsUseCase(
         homeWorkNotesRepository: gh<_i60.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i75.GetHomeWorkDetails>(() => _i75.GetHomeWorkDetails(
+    gh.lazySingleton<_i75.GetNoteReportDetails>(() => _i75.GetNoteReportDetails(
         homeWorkNotesRepository: gh<_i60.HomeWorkNotesRepository>()));
     gh.factory<_i76.GetNoticeBoardPopUp>(
         () => _i76.GetNoticeBoardPopUp(gh<_i66.NoticeRepository>()));
@@ -299,9 +301,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i84.HomeWorkNotesBloc>(() => _i84.HomeWorkNotesBloc(
           gh<_i72.HomeWorkReportsUseCase>(),
           gh<_i78.GetUserInfoUseCase>(),
-          gh<_i73.NotesReportsUseCase>(),
-          gh<_i74.GetNoteReportDetails>(),
-          gh<_i75.GetHomeWorkDetails>(),
+          gh<_i74.NotesReportsUseCase>(),
+          gh<_i75.GetNoteReportDetails>(),
+          gh<_i73.GetHomeWorkDetails>(),
         ));
     gh.factory<_i85.DashboardBloc>(() => _i85.DashboardBloc(
           gh<_i70.FetchWordThoughtUseCase>(),

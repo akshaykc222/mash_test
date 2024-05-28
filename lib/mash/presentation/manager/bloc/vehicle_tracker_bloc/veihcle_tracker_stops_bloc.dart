@@ -11,7 +11,7 @@ import 'package:mash/mash/domain/entities/vehicle_tracker/vehicle_tracker_entity
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart';
 
-import '../../../../core/usecase.dart';
+import '../../../../../core/usecase.dart';
 
 part 'veihcle_tracker_stops_event.dart';
 part 'veihcle_tracker_stops_state.dart';
