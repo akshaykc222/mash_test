@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/teacher_rating_request.dart';
 import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/teacher_card_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -31,7 +30,7 @@ class TeacherListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    TeacherBloc.get(context).add(TeacherEvent.getRatings());
+    TeacherBloc.get(context).add(const TeacherEvent.getRatings());
     return SizedBox(
       height: size.height,
       width: size.width,

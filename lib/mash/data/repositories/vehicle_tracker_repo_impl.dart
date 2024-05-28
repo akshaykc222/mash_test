@@ -6,10 +6,10 @@ import 'package:mash/mash/domain/repositories/vehicle_tracker_repository.dart';
 
 @LazySingleton(as: VehicleTrackerRepository)
 @injectable
-class vehicleTrackerRepoImpl extends VehicleTrackerRepository{
+class VehicleTrackerRepoImpl extends VehicleTrackerRepository{
   final VehicleTrackerDataSource dataSource;
 
-  vehicleTrackerRepoImpl(this.dataSource);
+  VehicleTrackerRepoImpl(this.dataSource);
 
 
   @override
