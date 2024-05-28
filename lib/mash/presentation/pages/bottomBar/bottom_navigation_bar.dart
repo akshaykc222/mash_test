@@ -7,7 +7,7 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../../core/pretty_printer.dart';
-import '../../manager/cubit/bottom_navigation_cubit.dart';
+import '../../manager/cubit/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import '../../router/router_config.dart';
 import '../../utils/enums.dart';
 

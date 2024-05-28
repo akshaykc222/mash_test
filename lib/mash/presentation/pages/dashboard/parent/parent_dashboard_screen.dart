@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/profile/profile_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';

@@ -20,4 +20,5 @@ enum Status {
   COMPLETED,
   ERROR,
   INITIAL,
+  initial,
 }

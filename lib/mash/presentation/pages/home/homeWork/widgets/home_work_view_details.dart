@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
+import '../../../../../domain/entities/home_work/home_work_entity.dart';
+
 class HomeWorkViewDetailsScreen extends StatelessWidget {
-  const HomeWorkViewDetailsScreen({super.key});
+  final HomeWorkReportsEntity entity;
+
+  const HomeWorkViewDetailsScreen({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<ProfileBloc>().state.getUserDetail?.data;
+
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.details),
       body: Padding(
@@ -23,13 +31,13 @@ class HomeWorkViewDetailsScreen extends StatelessWidget {
                 _buildDetailRow(
                   context,
                   label: 'Subject',
-                  value: 'Sensorial',
+                  value: entity.description ?? "",
                 ),
                 _buildDetailRow(
                   isEnd: true,
                   context,
                   label: 'Submission Date',
-                  value: '10/10/2023',
+                  value: entity.submitDate ?? '',
                 ),
               ],
             ),
@@ -40,13 +48,13 @@ class HomeWorkViewDetailsScreen extends StatelessWidget {
                 _buildDetailRow(
                   context,
                   label: 'Class',
-                  value: '1 B',
+                  value: '${user?.className} ${user?.divisionName}',
                 ),
                 _buildDetailRow(
                   isEnd: true,
                   context,
                   label: 'Type',
-                  value: 'Project',
+                  value: entity.workType ?? "",
                 ),
               ],
             ),

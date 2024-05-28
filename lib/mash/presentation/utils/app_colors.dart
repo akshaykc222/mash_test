@@ -108,7 +108,7 @@ class AppColors {
   static Color lemonShade = HexColor.fromHex('#F7BC34');
   static Color greyBg = HexColor.fromHex('#808080');
   static Color labelYellow = HexColor.fromHex('#FFFF4D');
-  static Color redIndication = HexColor.fromHex('#FF000D');
+  static Color redColor = HexColor.fromHex('#FF000D');
   static Color card1 = HexColor.fromHex('#D9F5F8');
   static Color card2 = HexColor.fromHex('#FFEDD9');
   static Color card3 = HexColor.fromHex('#ECEAFF');

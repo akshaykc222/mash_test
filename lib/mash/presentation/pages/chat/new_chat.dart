@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:mash/di/injector.dart';
-import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';

@@ -15,7 +15,7 @@ import 'package:mash/mash/domain/repositories/auth_repository.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
-import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mockito/annotations.dart';
 
 @GenerateMocks(

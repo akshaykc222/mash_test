@@ -97,4 +97,5 @@ class AppAssets {
 
   static String groups = "";
   static String tickLottie = "assets/lottie/tick_animation.json";
+  static String noDataLottie = "assets/lottie/nodata.json";
 }

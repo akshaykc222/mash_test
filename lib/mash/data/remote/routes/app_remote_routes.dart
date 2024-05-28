@@ -19,14 +19,20 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticeAll";
   static const academicSubjects =
       'UATRESTAPI/MashFlutterRestAPI/api/user/getAcademicsubjects';
+
+  //home work
   static const homeWorkReports =
       'UATRESTAPI/MashFlutterRestAPI/api/user/getHomeWorkReport';
+
+  //notes
   static const notesReports =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/notesReport";
-  static const divisionDetails =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/getDivisionDetails";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getNotesReport";
   static const notesDetails =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNotesDetails";
+
+  static const divisionDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDivisionDetails";
+
   static const syllabus = "UATRESTAPI/MashFlutterRestAPI/api/user/getSyllabus";
   static const syllabusTerms =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getSyllabusTerms";
