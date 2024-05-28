@@ -9,7 +9,7 @@ import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
-import '../../../manager/drawer_bloc/drawer_bloc.dart';
+import '../../../manager/bloc/drawer_bloc/drawer_bloc.dart';
 
 class NewsBoardMainScreen extends StatefulWidget {
   const NewsBoardMainScreen({super.key});

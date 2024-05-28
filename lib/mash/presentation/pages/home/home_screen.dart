@@ -4,7 +4,7 @@ import 'package:mash/mash/presentation/pages/bottomBar/bottom_navigation_bar.dar
 import 'package:mash/mash/presentation/pages/dashboard/parent/parent_dashboard_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/teacher_dashboard.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
-import 'package:mash/mash/presentation/pages/home/homeWork/home_work_screen.dart';
+import 'package:mash/mash/presentation/pages/home/homeWork/home_work_notes_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/library_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/time_table_main_screen.dart';
 // import 'package:mash/mash/presentation/pages/h/ome/timeTable/time_table.screen.dart';
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     _screens.addAll([
       const TimeTableScreen(),
-      const HomeWorkScreen(),
+      const HomeWorkNotesScreen(),
       const LibraryScreen(),
       const AddOnScreen()
     ]);

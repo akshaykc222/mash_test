@@ -97,7 +97,7 @@ import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart' as _i9;
 import 'package:mash/mash/domain/use_cases/auth/save_user_info_use_case.dart'
     as _i10;
 import 'package:mash/mash/domain/use_cases/auth/sign_out_use_case.dart' as _i12;
-import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart'
+import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart'
     as _i13;
 import 'package:mockito/mockito.dart' as _i1;
 

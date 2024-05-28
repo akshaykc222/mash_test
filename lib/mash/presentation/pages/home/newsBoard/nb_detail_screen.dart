@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
-import 'package:mash/mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
@@ -15,6 +15,8 @@ import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
+import '../../../manager/cubit/pdf_download/pdf_download_cubit.dart';
+
 class NewsBoardDetailScreen extends StatelessWidget {
   final NewsBoardEntity newsDetails;
   const NewsBoardDetailScreen({super.key, required this.newsDetails});
@@ -23,21 +25,20 @@ class NewsBoardDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: newsDetails.newsTitle ?? ""),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: newsDetailBody(context),
       bottomSheet: Container(
         height: SizeUtility(context).height / 8,
         width: double.infinity,
         color: AppColors.white,
-        child: BlocConsumer<DrawerBloc, DrawerState>(
-          bloc: BlocProvider.of<DrawerBloc>(context),
+        child: BlocConsumer<PdfDownloadCubit, PdfDownloadState>(
           listenWhen: (previous, current) {
-            return current.pdfDownLoadResponse.status == Status.COMPLETED &&
-                previous.pdfDownLoadResponse.status != Status.COMPLETED;
+            return current.pdfDownloadResponse.status == Status.COMPLETED &&
+                previous.pdfDownloadResponse.status != Status.COMPLETED;
           },
           listener: (context, state) {
             GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
-                extra: state.pdfDownLoadResponse.data);
+                extra: state.pdfDownloadResponse.data);
           },
           builder: (context, state) => Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,10 +57,8 @@ class NewsBoardDetailScreen extends StatelessWidget {
                 icon: AppAssets.downloadIcon,
                 name: 'View Attachment',
                 onTap: () {
-                  BlocProvider.of<DrawerBloc>(context).add(
-                    const DrawerEvent.pdfDownload(
-                        'https://www.clickdimensions.com/links/TestPDFfile.pdf'),
-                  );
+                  BlocProvider.of<PdfDownloadCubit>(context).downloadPdf(
+                      'https://www.clickdimensions.com/links/TestPDFfile.pdf');
                 },
               )
             ],

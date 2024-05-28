@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
-import '../manager/chat_bloc/chat_bloc.dart';
+import '../manager/bloc/chat_bloc/chat_bloc.dart';
 
 PreferredSize chapAppBar(BuildContext context, {Function? ontTap}) {
   return PreferredSize(

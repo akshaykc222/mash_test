@@ -5,12 +5,14 @@ class StudentEntity extends Equatable {
   final String studentName;
   final String divisionName;
   final String profilePhoto;
+  final String className;
 
   const StudentEntity({
     required this.divisionName,
     required this.profilePhoto,
     required this.userId,
     required this.studentName,
+    required this.className,
   });
 
   @override

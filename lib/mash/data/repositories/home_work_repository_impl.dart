@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/home_work_notes_data_source.dart';
-import 'package:mash/mash/domain/entities/notes/notes_report_model.dart';
+import 'package:mash/mash/domain/entities/notes/notes_details_entity.dart';
+import 'package:mash/mash/domain/entities/notes/notes_report_entity.dart';
 import 'package:mash/mash/domain/repositories/home_work_notes_repository.dart';
 import 'package:mash/mash/data/remote/models/request/home_work_report_request.dart';
 import 'package:mash/mash/domain/entities/home_work/home_work_entity.dart';
@@ -16,12 +17,19 @@ class HomeWorkNotesReportRepositoryImpl implements HomeWorkNotesRepository {
   @override
   Future<List<HomeWorkReportsEntity>> getHomeWorkReports(
       HomeWorkReportRequest params) async {
-    return homeWorkNotesRemoteDataSource.getHomeWorkReports(params);
+    return await homeWorkNotesRemoteDataSource.getHomeWorkReports(params);
   }
 
   @override
-  Future<List<NotesReportEntity?>> getNoteReports(
+  Future<List<NotesReportEntity>> getNoteReports(
       HomeWorkReportRequest params) async {
-    return homeWorkNotesRemoteDataSource.getNoteReports(params);
+    return await homeWorkNotesRemoteDataSource.getNoteReports(params);
+  }
+
+  @override
+  Future<NotesReportDetailsEntity> getNotesReportsDetails(
+      {required String noteId, required String compId}) async {
+    return await homeWorkNotesRemoteDataSource.getNotesReportsDetails(
+        noteId: noteId, compId: compId);
   }
 }

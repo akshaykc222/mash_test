@@ -5,7 +5,8 @@ class StudentModel extends StudentEntity {
       {required super.userId,
       required super.studentName,
       required super.divisionName,
-      required super.profilePhoto});
+      required super.profilePhoto,
+      required super.className});
 
   factory StudentModel.fromJson(Map<String, dynamic> json) {
     return StudentModel(
@@ -13,6 +14,7 @@ class StudentModel extends StudentEntity {
       studentName: json['STUDENT_NM'] as String,
       divisionName: json['DIVISION_NAME'],
       profilePhoto: json['PROFILE_PHOTO'],
+      className: json['CLASS_NAME'],
     );
   }
 

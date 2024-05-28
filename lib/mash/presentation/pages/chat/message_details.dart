@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/pages/chat/chat_screen.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
@@ -25,7 +25,8 @@ class _MessageDetailsState extends State<MessageDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: chapAppBar(context),
+    return Scaffold(
+      appBar: chapAppBar(context),
       body: Column(
         children: [
           spacer20,
