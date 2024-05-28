@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 
@@ -14,8 +16,6 @@ class DrawerWidget extends StatefulWidget {
 class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   void initState() {
-    BlocProvider.of<DrawerBloc>(context)
-        .add(const DrawerEvent.getRoleMenuEvent());
     super.initState();
   }
 
@@ -56,13 +56,20 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     childAspectRatio: 1.2,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: [
-                        Card(
-                          shape: const CircleBorder(),
-                          elevation: 3,
-                          child: InkWell(
-                            onTap: () {},
+                    return GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        prettyPrint(
+                            '/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}');
+
+                        context.pushNamed(
+                            "/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}");
+                      },
+                      child: Column(
+                        children: [
+                          Card(
+                            shape: const CircleBorder(),
+                            elevation: 3,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: CachedNetworkImage(
@@ -71,17 +78,17 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          data[index].menuName,
-                          style: TextStyle(
-                            color: AppColors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                          const SizedBox(height: 10),
+                          Text(
+                            data[index].menuName,
+                            style: TextStyle(
+                              color: AppColors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),

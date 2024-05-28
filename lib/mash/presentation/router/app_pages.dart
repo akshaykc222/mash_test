@@ -52,7 +52,7 @@ class AppPages {
   static const tcRequestScreen = '/tcRequestScreen';
 
   //newsBoard
-  static const newsBoardMainScreen = '/newsBoardMainScreen';
+  static const newsBoardMainScreen = '/news_board';
   static const newsBoardDetailScreen = '/newsDetailScreen';
 
   //noticeBoard
