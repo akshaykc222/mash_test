@@ -1,14 +1,12 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
- import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 import '../../../../domain/entities/menu_card_model/menu_card_model.dart';
 
@@ -49,7 +47,8 @@ class LessonPlannerMainScreen extends StatelessWidget {
           asset: AppAssets.lessonView,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.viewWeekPlansScreen);
-          }),MenuCardItemModel(
+          }),
+      MenuCardItemModel(
           title: AppStrings.status,
           asset: AppAssets.lessonStatus,
           onTap: () {
@@ -67,7 +66,6 @@ class LessonPlannerMainScreen extends StatelessWidget {
           }),
     );
   }
-
 
   lessonPlannerCard(MenuCardItemModel data, BuildContext context) {
     return Padding(

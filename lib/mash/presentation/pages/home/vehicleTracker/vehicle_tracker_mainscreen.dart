@@ -7,13 +7,13 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 import '../../../manager/vehicle_tracker_bloc/veihcle_tracker_stops_bloc.dart';
 import '../../../utils/app_colors.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class VehicleTrackerMainScreen extends StatelessWidget {
   const VehicleTrackerMainScreen({super.key});
@@ -30,7 +30,6 @@ class VehicleTrackerMainScreen extends StatelessWidget {
 
 class VehicleTrackerBody extends StatefulWidget {
   const VehicleTrackerBody({super.key});
-
 
   @override
   State<VehicleTrackerBody> createState() => _VehicleTrackerBodyState();
@@ -89,7 +88,7 @@ class _VehicleTrackerBodyState extends State<VehicleTrackerBody> {
               GoogleMap(
                 padding: EdgeInsets.only(bottom: 80),
                 initialCameraPosition:
-                const CameraPosition(target: sourceLocation, zoom: 14.5),
+                    const CameraPosition(target: sourceLocation, zoom: 14.5),
                 onMapCreated: (GoogleMapController controller) {
                   _mapController.complete(controller);
                 },
@@ -116,19 +115,19 @@ class _VehicleTrackerBodyState extends State<VehicleTrackerBody> {
                     children: [
                       Expanded(
                           child: TrackerDetailWidget(
-                            detail: '17' ' ' 'Min',
-                            descTitle: AppStrings.time,
-                          )),
+                        detail: '17' ' ' 'Min',
+                        descTitle: AppStrings.time,
+                      )),
                       Expanded(
                           child: TrackerDetailWidget(
-                            detail: '8.0' ' ' 'KM',
-                            descTitle: AppStrings.distance,
-                          )),
+                        detail: '8.0' ' ' 'KM',
+                        descTitle: AppStrings.distance,
+                      )),
                       Expanded(
                           child: TrackerDetailWidget(
-                            detail: '\u24D8',
-                            descTitle: AppStrings.info,
-                          )),
+                        detail: '\u24D8',
+                        descTitle: AppStrings.info,
+                      )),
                     ],
                   ),
                 ),

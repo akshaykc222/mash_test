@@ -10,9 +10,10 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
-import 'package:mash/mash/presentation/widgets/shimmers/shimmer_box.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {
   const ParentDashBoard({super.key});

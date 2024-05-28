@@ -1,9 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
@@ -15,9 +12,8 @@ import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
-import '../../../../domain/entities/teacher_rating/teacher_rating.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class TeacherRatingScreen extends StatelessWidget {
   const TeacherRatingScreen({super.key});
@@ -128,14 +124,16 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                       borderRadius: BorderRadius.circular(15)),
                   child: BlocConsumer<TeacherBloc, TeacherState>(
                     listener: (context, state) {
-                      if (state.getTeacherRatingQuestions?.status == Status.ERROR) {
+                      if (state.getTeacherRatingQuestions?.status ==
+                          Status.ERROR) {
                         handleErrorUi(
                             context: context,
                             error: state.getTeacherRatingQuestions?.error);
                       }
                     },
                     builder: (context, state) {
-                      return state.getTeacherRatingQuestions?.status == Status.LOADING
+                      return state.getTeacherRatingQuestions?.status ==
+                              Status.LOADING
                           ? const Center(
                               child: SizedBox(
                                 height: 60,
@@ -143,19 +141,23 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                                 child: CircularProgressIndicator(),
                               ),
                             )
-                          :state.getTeacherRatingQuestions?.status != Status.ERROR ?   ListView.builder(
-                              controller: _scrollController,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount:
-                                  state.getTeacherRatingQuestions?.data?.length ?? 0,
-                              itemBuilder: (context, index) {
-                                return QuestionWidget(
-                                  index: index + 1,
-                                  rating:
-                                      state.getTeacherRatingQuestions!.data![index],
-                                );
-                              }): const SizedBox();
+                          : state.getTeacherRatingQuestions?.status !=
+                                  Status.ERROR
+                              ? ListView.builder(
+                                  controller: _scrollController,
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  itemCount: state.getTeacherRatingQuestions
+                                          ?.data?.length ??
+                                      0,
+                                  itemBuilder: (context, index) {
+                                    return QuestionWidget(
+                                      index: index + 1,
+                                      rating: state.getTeacherRatingQuestions!
+                                          .data![index],
+                                    );
+                                  })
+                              : const SizedBox();
                     },
                   ),
                 ),

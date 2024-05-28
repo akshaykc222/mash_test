@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({super.key});
@@ -23,27 +21,22 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+    var size = MediaQuery.of(context).size;
     return Drawer(
       width: size.width,
       child: Column(
         children: [
-          Expanded(
-            flex: 1,
-            child: AppBar(
-              backgroundColor: AppColors.transparent,
-              automaticallyImplyLeading: false,
-              actions: [
+          Container(
+            padding: const EdgeInsets.only(top: 20, left: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    size: 35,
-                  ),
+                  icon: const Icon(Icons.close),
                   onPressed: () {
-                    context.pop();
+                    Navigator.of(context).pop();
                   },
                 ),
-                spacerWidth20
               ],
             ),
           ),
@@ -52,45 +45,49 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               final data = state.roleMenuResponse.data ?? [];
 
               return Expanded(
-                flex: 7,
                 child: GridView.builder(
+                  shrinkWrap: true,
                   padding: const EdgeInsets.all(8.0),
                   itemCount: data.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 8.0,
                     mainAxisSpacing: 8.0,
-                    childAspectRatio: 1.5,
+                    childAspectRatio: 1.2,
                   ),
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 3,
-                      child: InkWell(
-                        onTap: () {
-                          // You might want to replace `context.pop()` with `Navigator.pop(context)`
-                          Navigator.pop(context);
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CachedNetworkImage(
-                              imageUrl: data[index].icon,
-                              height: 35,
+                    return Column(
+                      children: [
+                        Card(
+                          shape: const CircleBorder(),
+                          elevation: 3,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CachedNetworkImage(
+                                imageUrl: data[index].icon,
+                                height: 35,
+                              ),
                             ),
-                            spacer10,
-                            Text(
-                              data[index].menuName,
-                              style: const TextStyle(color: Colors.purple),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 10),
+                        Text(
+                          data[index].menuName,
+                          style: TextStyle(
+                            color: AppColors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     );
                   },
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

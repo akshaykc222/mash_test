@@ -12,7 +12,7 @@ import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import '../../../../../../core/response_classify.dart';
 import '../../../../utils/app_colors.dart';
 import 'home_work_view_card_widget.dart';

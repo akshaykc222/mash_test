@@ -9,7 +9,8 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class TeacherListScreen extends StatelessWidget {
   const TeacherListScreen({super.key});
@@ -38,29 +39,36 @@ class TeacherListBody extends StatelessWidget {
         margin: const EdgeInsets.only(top: 8.0),
         child: BlocConsumer<TeacherBloc, TeacherState>(
           builder: (context, state) {
-            return state.getTeacherRating?.status == Status.LOADING ? const Center(
-              child: SizedBox(
-                height: 60,
-                width: 60,
-                child: CircularProgressIndicator(),),
-            ) : ListView.builder(
-                itemBuilder: (context, index) {
-                  return TeacherCardWidget(
-                    onTap: () =>
-                        GoRouter.of(context)
+            return state.getTeacherRating?.status == Status.LOADING
+                ? const Center(
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : ListView.builder(
+                    itemBuilder: (context, index) {
+                      return TeacherCardWidget(
+                        onTap: () => GoRouter.of(context)
                             .pushNamed(AppPages.teacherRatingScreen),
-                    imageUrl:  state.getTeacherRating!.data![index].docName,
-                    teacherName: state.getTeacherRating!.data![index].fullName,
-                    subjectName: state.getTeacherRating!.data![index].subName,
-                    rating: state.getTeacherRating!.data![index].rating.toString(),
-                  );
-                },
-                itemCount: state.getTeacherRating?.data?.length);
-          }, listener: (BuildContext context, TeacherState state) {
-            if(state.getTeacherRating?.status == Status.ERROR ){
-              handleErrorUi(context: context, error: state.getTeacherRating?.error);
+                        imageUrl: state.getTeacherRating!.data![index].docName,
+                        teacherName:
+                            state.getTeacherRating!.data![index].fullName,
+                        subjectName:
+                            state.getTeacherRating!.data![index].subName,
+                        rating: state.getTeacherRating!.data![index].rating
+                            .toString(),
+                      );
+                    },
+                    itemCount: state.getTeacherRating?.data?.length);
+          },
+          listener: (BuildContext context, TeacherState state) {
+            if (state.getTeacherRating?.status == Status.ERROR) {
+              handleErrorUi(
+                  context: context, error: state.getTeacherRating?.error);
             }
-        },
+          },
         ),
       ),
     );

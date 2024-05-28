@@ -6,7 +6,8 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({super.key});
@@ -57,8 +58,6 @@ class LibraryScreen extends StatelessWidget {
           }),
     );
   }
-
-
 
   libraryCard(LibraryItemModel data, BuildContext context) {
     return Padding(

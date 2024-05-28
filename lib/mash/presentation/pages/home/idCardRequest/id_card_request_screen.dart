@@ -8,7 +8,7 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class IdCardRequestScreen extends StatefulWidget {
   const IdCardRequestScreen({super.key});

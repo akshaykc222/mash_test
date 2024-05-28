@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -10,7 +9,7 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/buttons/common_small_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class AttendanceMarkingScreen extends StatefulWidget {
   const AttendanceMarkingScreen({super.key});
@@ -61,7 +60,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
         children: [
           titleText(AppStrings.academicYear),
           CommonSmallButton(
-            color: AppColors.primaryColor,
+              color: AppColors.primaryColor,
               onPress: () {},
               title: AppStrings.academicYearDynamic,
               prefixIcon: Icons.calendar_month),
@@ -83,8 +82,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
           ),
           titleText(AppStrings.date),
           CommonGestureDetector(
-            onTap: ()=>
-               _selectDate(context),
+            onTap: () => _selectDate(context),
             textController: _dateController,
             hintText: 'Select Date',
             icon: Icons.calendar_month,
@@ -92,7 +90,14 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
           titleText(AppStrings.selectType),
           toggleButtons(),
           spacer30,
-          AnimatedSharedButton(onTap: ()=>GoRouter.of(context).pushNamed(AppPages.classAttendanceMarkingScreen), title: const Text(AppStrings.next,style: TextStyle(color: Colors.white),), isLoading: false)
+          AnimatedSharedButton(
+              onTap: () => GoRouter.of(context)
+                  .pushNamed(AppPages.classAttendanceMarkingScreen),
+              title: const Text(
+                AppStrings.next,
+                style: TextStyle(color: Colors.white),
+              ),
+              isLoading: false)
         ],
       ),
     );
@@ -163,51 +168,70 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
   }
 
   toggleButtons() {
-      return SizedBox(
-        height: SizeConfig.height(50),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: ValueListenableBuilder<bool>(
-                valueListenable: firstButtonState,
-                builder: (context, isFirstButtonSelected, _) {
-                  return GestureDetector(
-                    onTap: () {
-                      selectButton(1);
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: isFirstButtonSelected ? AppColors.primaryColor : Colors.grey.shade200,
-                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15))
-                        ),
-                        child:  Center(child: Text('IN',style: TextStyle(color: isFirstButtonSelected ? AppColors.white: AppColors.black),))),
-                  );
-                },
-              ),
+    return SizedBox(
+      height: SizeConfig.height(50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: ValueListenableBuilder<bool>(
+              valueListenable: firstButtonState,
+              builder: (context, isFirstButtonSelected, _) {
+                return GestureDetector(
+                  onTap: () {
+                    selectButton(1);
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: isFirstButtonSelected
+                              ? AppColors.primaryColor
+                              : Colors.grey.shade200,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15))),
+                      child: Center(
+                          child: Text(
+                        'IN',
+                        style: TextStyle(
+                            color: isFirstButtonSelected
+                                ? AppColors.white
+                                : AppColors.black),
+                      ))),
+                );
+              },
             ),
-            const VerticalDivider(width: 2,),
-            Expanded(
-              child: ValueListenableBuilder<bool>(
-                valueListenable: secondButtonState,
-                builder: (context, isSecondButtonSelected, _) {
-                  return GestureDetector(
-                    onTap: () {
-                      selectButton(2);
-                    },
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: isSecondButtonSelected? AppColors.primaryColor : Colors.grey.shade200,
-                            borderRadius: const BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15))
-                        ),
-                        child: Center(child: Text('OUT',style: TextStyle(color: isSecondButtonSelected ? AppColors.white: AppColors.black)))),
-                  );
-                },
-              ),
+          ),
+          const VerticalDivider(
+            width: 2,
+          ),
+          Expanded(
+            child: ValueListenableBuilder<bool>(
+              valueListenable: secondButtonState,
+              builder: (context, isSecondButtonSelected, _) {
+                return GestureDetector(
+                  onTap: () {
+                    selectButton(2);
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: isSecondButtonSelected
+                              ? AppColors.primaryColor
+                              : Colors.grey.shade200,
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15))),
+                      child: Center(
+                          child: Text('OUT',
+                              style: TextStyle(
+                                  color: isSecondButtonSelected
+                                      ? AppColors.white
+                                      : AppColors.black)))),
+                );
+              },
             ),
-          ],
-        ),
-      );
-    }
-
+          ),
+        ],
+      ),
+    );
+  }
 }

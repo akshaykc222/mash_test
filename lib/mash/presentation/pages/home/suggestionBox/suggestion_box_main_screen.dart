@@ -6,14 +6,15 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class SuggestionMainScreen extends StatelessWidget {
   const SuggestionMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: commonAppbar(title: 'SUGGESTION BOX'),
       endDrawer: DrawerWidget(),
       body: suggestionBody(context),
@@ -26,7 +27,7 @@ class SuggestionMainScreen extends StatelessWidget {
           title: 'SUGGESTION/COMPLAINTS',
           asset: AppAssets.suggestionImage,
           onTap: () {
-             GoRouter.of(context).pushNamed(AppPages.suggestionScreen);
+            GoRouter.of(context).pushNamed(AppPages.suggestionScreen);
           }),
       SuggestionItemModel(
           title: 'RESPONSE',
@@ -50,7 +51,6 @@ class SuggestionMainScreen extends StatelessWidget {
       ),
     );
   }
-
 
   suggestionCard(SuggestionItemModel data, BuildContext context) {
     return Padding(

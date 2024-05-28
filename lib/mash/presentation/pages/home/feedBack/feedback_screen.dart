@@ -7,7 +7,7 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:flutter_emoji_feedback/flutter_emoji_feedback.dart';
 
 class FeedbackScreen extends StatefulWidget {

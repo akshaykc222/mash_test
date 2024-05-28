@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -10,7 +8,7 @@ import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class ViewYearPlanScreen extends StatefulWidget {
   const ViewYearPlanScreen({super.key});
@@ -20,13 +18,10 @@ class ViewYearPlanScreen extends StatefulWidget {
 }
 
 class _ViewYearPlanScreenState extends State<ViewYearPlanScreen> {
-
   final TextEditingController _academicYearController = TextEditingController();
   final TextEditingController _classController = TextEditingController();
   final TextEditingController _divisionController = TextEditingController();
   final TextEditingController _subjectController = TextEditingController();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +44,8 @@ class _ViewYearPlanScreenState extends State<ViewYearPlanScreen> {
         children: [
           titleText(AppStrings.academicYear),
           CommonGestureDetector(
-            onTap: () =>
-                _openOptionsBottomSheet(context, _academicYearController, options),
+            onTap: () => _openOptionsBottomSheet(
+                context, _academicYearController, options),
             textController: _academicYearController,
             hintText: 'Select Academic Year',
             icon: Icons.arrow_drop_down_circle_sharp,
@@ -70,7 +65,8 @@ class _ViewYearPlanScreenState extends State<ViewYearPlanScreen> {
             textController: _divisionController,
             hintText: 'Select Division',
             icon: Icons.arrow_drop_down_circle_sharp,
-          ),titleText(AppStrings.selectSubject),
+          ),
+          titleText(AppStrings.selectSubject),
           CommonGestureDetector(
             onTap: () =>
                 _openOptionsBottomSheet(context, _subjectController, options),
@@ -81,7 +77,15 @@ class _ViewYearPlanScreenState extends State<ViewYearPlanScreen> {
           spacer30,
           Align(
             alignment: Alignment.center,
-            child: AnimatedSharedButton(onTap: ()=> GoRouter.of(context).pushNamed(AppPages.viewYearPlanListScreen), title: Text('VIEW',style: TextStyle(fontSize: 18,color: AppColors.white),), isLoading: false,),
+            child: AnimatedSharedButton(
+              onTap: () => GoRouter.of(context)
+                  .pushNamed(AppPages.viewYearPlanListScreen),
+              title: Text(
+                'VIEW',
+                style: TextStyle(fontSize: 18, color: AppColors.white),
+              ),
+              isLoading: false,
+            ),
           )
         ],
       ),

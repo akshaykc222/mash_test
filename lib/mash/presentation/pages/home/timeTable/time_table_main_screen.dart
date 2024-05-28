@@ -6,9 +6,9 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
 import '../../../router/app_pages.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class TimeTableScreen extends StatelessWidget {
   const TimeTableScreen({super.key});
@@ -17,7 +17,7 @@ class TimeTableScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'TIMETABLES'),
       body: timetableBody(context),
     );

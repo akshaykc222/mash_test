@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -7,7 +5,8 @@ import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class SuggestionScreen extends StatefulWidget {
   const SuggestionScreen({super.key});
@@ -17,7 +16,6 @@ class SuggestionScreen extends StatefulWidget {
 }
 
 class _SuggestionScreenState extends State<SuggestionScreen> {
-
   final ValueNotifier<bool> firstButtonState = ValueNotifier<bool>(false);
   final ValueNotifier<bool> secondButtonState = ValueNotifier<bool>(false);
 
@@ -39,7 +37,7 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'SUGGESTION BOX'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: suggestionBody(context),
     );
   }
@@ -74,14 +72,15 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
 
   titleText(title) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-    child: Text(title,style: const TextStyle(fontSize: 15),),
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 15),
+      ),
     );
   }
 
-
-
-  buttons(){
+  buttons() {
     return SizedBox(
       height: SizeConfig.height(50),
       child: Row(
@@ -97,15 +96,27 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                        color: isFirstButtonSelected ? AppColors.primaryColor : Colors.grey.shade200,
-                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(15),bottomLeft: Radius.circular(15))
-                      ),
-                      child:  Center(child: Text('COMPLAINT',style: TextStyle(color: isFirstButtonSelected ? AppColors.white: AppColors.black),))),
+                          color: isFirstButtonSelected
+                              ? AppColors.primaryColor
+                              : Colors.grey.shade200,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15))),
+                      child: Center(
+                          child: Text(
+                        'COMPLAINT',
+                        style: TextStyle(
+                            color: isFirstButtonSelected
+                                ? AppColors.white
+                                : AppColors.black),
+                      ))),
                 );
               },
             ),
           ),
-          const VerticalDivider(width: 2,),
+          const VerticalDivider(
+            width: 2,
+          ),
           Expanded(
             child: ValueListenableBuilder<bool>(
               valueListenable: secondButtonState,
@@ -116,10 +127,18 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
                   },
                   child: Container(
                       decoration: BoxDecoration(
-                        color: isSecondButtonSelected? AppColors.primaryColor : Colors.grey.shade200,
-                        borderRadius: const BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15))
-                      ),
-                      child: Center(child: Text('SUGGESTION',style: TextStyle(color: isSecondButtonSelected ? AppColors.white: AppColors.black)))),
+                          color: isSecondButtonSelected
+                              ? AppColors.primaryColor
+                              : Colors.grey.shade200,
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15))),
+                      child: Center(
+                          child: Text('SUGGESTION',
+                              style: TextStyle(
+                                  color: isSecondButtonSelected
+                                      ? AppColors.white
+                                      : AppColors.black)))),
                 );
               },
             ),
@@ -134,7 +153,8 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
       height: SizeConfig.height(60),
       child: CommonTextField(
         controller: enquiryController,
-        title: 'To',),
+        title: 'To',
+      ),
     );
   }
 
@@ -143,7 +163,9 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
       height: SizeConfig.height(60),
       child: CommonTextField(
         controller: subjectController,
-        title: 'Enter Subject',lines: 3,),
+        title: 'Enter Subject',
+        lines: 3,
+      ),
     );
   }
 
@@ -152,21 +174,25 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
       height: SizeConfig.height(60),
       child: CommonTextField(
         controller: descriptionController,
-        title: 'Enter Description',lines: 3,),
+        title: 'Enter Description',
+        lines: 3,
+      ),
     );
   }
 
   uploadFileButton() {
     return Container(
       height: SizeConfig.height(50),
-      width:  SizeConfig.width(150),
+      width: SizeConfig.width(150),
       decoration: BoxDecoration(
         color: Colors.purple.shade100,
         borderRadius: BorderRadius.circular(36),
-      boxShadow:  [BoxShadow(
-          color: Colors.grey.withOpacity(0.8),
-          blurRadius: 5.0,
-        ),],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.8),
+            blurRadius: 5.0,
+          ),
+        ],
       ),
       child: const Center(
         child: Row(
@@ -182,6 +208,12 @@ class _SuggestionScreenState extends State<SuggestionScreen> {
   }
 
   submitButton() {
-    return AnimatedSharedButton(onTap: (){}, title: Text('SUBMIT',style: TextStyle(color: AppColors.white),), isLoading: false);
+    return AnimatedSharedButton(
+        onTap: () {},
+        title: Text(
+          'SUBMIT',
+          style: TextStyle(color: AppColors.white),
+        ),
+        isLoading: false);
   }
 }

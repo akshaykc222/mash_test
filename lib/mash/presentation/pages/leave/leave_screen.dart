@@ -7,7 +7,8 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/widgets/animated_widget.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../widgets/drawer_widget.dart';
 
 class LeaveScreen extends StatelessWidget {
   LeaveScreen({super.key});

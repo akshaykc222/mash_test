@@ -3,10 +3,10 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/widgets/regie
 import 'package:mash/mash/presentation/pages/home/competitiveExams/widgets/unregisterd_exam_body.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class ExamDetailScreen extends StatelessWidget {
-  const ExamDetailScreen({super.key,required this.isRegistered});
+  const ExamDetailScreen({super.key, required this.isRegistered});
 
   final bool isRegistered;
 
@@ -15,8 +15,7 @@ class ExamDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.examDetails),
       endDrawer: DrawerWidget(),
-      body: isRegistered? RegisteredExamDetailBody() : ExamDetailBody(),
+      body: isRegistered ? RegisteredExamDetailBody() : ExamDetailBody(),
     );
   }
 }
-

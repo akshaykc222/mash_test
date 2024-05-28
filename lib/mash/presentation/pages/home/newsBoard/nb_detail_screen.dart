@@ -13,9 +13,9 @@ import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
 import '../../../manager/cubit/pdf_download/pdf_download_cubit.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class NewsBoardDetailScreen extends StatelessWidget {
   final NewsBoardEntity newsDetails;
