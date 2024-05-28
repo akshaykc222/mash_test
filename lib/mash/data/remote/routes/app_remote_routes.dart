@@ -41,5 +41,6 @@ class AppRemoteRoutes {
   static const teacherRatingList = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
   static const teacherRatingQuestions = "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
 
-
+  // id module
+  static const idRequestType = "UATRESTAPI/MashFlutterRestAPI/api/user/getRequestType";
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
+import 'package:mash/mash/presentation/manager/id_request/id_request_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -10,6 +13,9 @@ import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
+import '../../../../../core/response_classify.dart';
+import '../../../utils/handle_error.dart';
+
 class IdCardRequestScreen extends StatefulWidget {
   const IdCardRequestScreen({super.key});
 
@@ -19,6 +25,7 @@ class IdCardRequestScreen extends StatefulWidget {
 
 class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   final TextEditingController _requestController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +36,8 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   }
 
   idRequestBody(BuildContext context) {
+    IdRequestBloc.get(context).add(
+        const IdRequestEvent.getTransferRequestEvent());
     List<String> options = [
       'option 1',
       'option 2',
@@ -52,12 +61,22 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
           titleText(AppStrings.studentName),
           HelperClasses.getSelectedStudent(context),
           titleText(AppStrings.request),
-          CommonGestureDetector(
-              onTap: () => _openOptionsBottomSheet(context, _requestController,
-                  options, AppStrings.selectModule),
-              icon: Icons.arrow_drop_down_circle,
-              textController: _requestController,
-              hintText: AppStrings.requestType),
+          BlocConsumer<IdRequestBloc, IdRequestState>(
+            listener: (context, state) {
+              if(state.getIdRequestType?.status == Status.ERROR ){
+                handleErrorUi(context: context, error: state.getIdRequestType?.error);
+              }
+            },
+            builder: (context, state) {
+              return CommonGestureDetector(
+                  onTap: () =>
+                      _openOptionsBottomSheet(context, _requestController,
+                          AppStrings.selectModule,state.getIdRequestType!.data!),
+                  icon: Icons.arrow_drop_down_circle,
+                  textController: _requestController,
+                  hintText: AppStrings.requestType);
+            },
+          ),
           titleText(AppStrings.remarks),
           CommonTextField(lines: 4, title: AppStrings.enterRemarks),
           spacer30,
@@ -85,7 +104,7 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   }
 
   void _openOptionsBottomSheet(BuildContext context,
-      TextEditingController controller, List optionList, String sheetTitle) {
+      TextEditingController controller, String sheetTitle,List<IdRequestEntity> requestTypes) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
@@ -94,7 +113,7 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
               border: Border.all(width: 10, color: Colors.grey),
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(16), topLeft: Radius.circular(16))),
-          height: SizeConfig.height(optionList.length * 90).toDouble(),
+          height: SizeConfig.height(requestTypes.length * 90).toDouble(),
           child: Column(
             children: [
               Padding(
@@ -107,12 +126,12 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
               ),
               Expanded(
                   child: ListView.builder(
-                      itemCount: optionList.length,
+                      itemCount: requestTypes.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(optionList[index]),
+                          title: Text(requestTypes[index].request),
                           onTap: () {
-                            controller.text = optionList[index];
+                            controller.text = requestTypes[index].request;
                             Navigator.of(context).pop();
                           },
                         );
