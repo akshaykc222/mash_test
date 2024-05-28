@@ -59,6 +59,7 @@ import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/entities/home_work/home_work_entity.dart';
+import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
@@ -393,7 +394,12 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.teacherRatingScreen,
       path: AppPages.teacherRatingScreen,
-      builder: (context, state) => const TeacherRatingScreen(),
+      builder: (context, state) {
+        if(state.extra != null){
+          return  TeacherRatingScreen(entity: state.extra as TeacherRatingEntity,);
+        }
+        return const SizedBox();
+      },
     ),
     GoRoute(
       name: AppPages.examDetailScreen,

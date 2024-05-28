@@ -50,7 +50,7 @@ class TeacherListBody extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return TeacherCardWidget(
                         onTap: () => GoRouter.of(context)
-                            .pushNamed(AppPages.teacherRatingScreen),
+                            .pushNamed(AppPages.teacherRatingScreen,extra: state.getTeacherRating!.data![index]),
                         imageUrl: state.getTeacherRating!.data![index].docName,
                         teacherName:
                             state.getTeacherRating!.data![index].fullName,
