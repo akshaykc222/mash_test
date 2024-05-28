@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -59,11 +60,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     return GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        prettyPrint(
-                            '/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}');
-
-                        context.pushNamed(
-                            "/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}");
+                        try {
+                          prettyPrint(
+                              '/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}');
+                          GoRouter.of(context).pushNamed(
+                              "/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}");
+                        } catch (e) {
+                          GoRouter.of(context).pushNamed(AppPages.comingSoon);
+                        }
                       },
                       child: Column(
                         children: [

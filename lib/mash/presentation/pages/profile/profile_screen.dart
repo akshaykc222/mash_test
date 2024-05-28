@@ -2,17 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../utils/app_theme.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner: false,
-    home: const ProfileScreen(),
-  ));
-}
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -137,7 +126,8 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               TextButton(
                   onPressed: () {},

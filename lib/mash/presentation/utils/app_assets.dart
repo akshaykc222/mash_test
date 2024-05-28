@@ -96,6 +96,10 @@ class AppAssets {
   static String messages = "";
 
   static String groups = "";
+
+  //lotties         -               -              -               -                  -                -
+
   static String tickLottie = "assets/lottie/tick_animation.json";
   static String noDataLottie = "assets/lottie/nodata.json";
+  static String comingSoonLottie = "assets/lottie/coming_soon.json";
 }

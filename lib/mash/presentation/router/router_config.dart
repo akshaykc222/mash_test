@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
+import 'package:mash/mash/presentation/pages/coming_soon_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/class_attendance_mark_screen.dart';
 import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_exam_screen.dart';
 import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/home/facility/facility_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/fee_and_payment_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
@@ -53,13 +57,19 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscr
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
 import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
+import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-
+import 'package:mash/mash/presentation/utils/app_assets.dart';
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
+import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
-import '../../domain/entities/home_work/home_work_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
+import '../pages/chat/chat_screen.dart';
+import '../pages/chat/create_group.dart';
+import '../pages/chat/message_details.dart';
+import '../pages/chat/message_screen.dart';
+import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -108,8 +118,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router =
-      GoRouter(initialLocation: AppPages.teacherRatingListScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -118,14 +127,41 @@ class AppRouteManager {
       ),
     ),
     GoRoute(
+      path: AppPages.comingSoon,
+      name: AppPages.comingSoon,
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: ComingSoon(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
+      },
+    ),
+    GoRoute(
       path: AppPages.splash,
       name: AppPages.splash,
-      builder: (context, state) => const SplashScreen(),
+      builder: (context, state) => SplashScreen(),
     ),
     GoRoute(
       path: AppPages.login,
       name: AppPages.login,
-      builder: (context, state) => const LoginScreen(),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: const LoginScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
+      },
     ),
     GoRoute(
       path: AppPages.forgotPassword,
@@ -396,6 +432,16 @@ class AppRouteManager {
       builder: (context, state) => const TeacherRatingScreen(),
     ),
     GoRoute(
+      path: AppPages.profileScreen,
+      name: AppPages.profileScreen,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: AppPages.facility,
+      name: AppPages.facility,
+      builder: (context, state) => const FacilityMainScreen(),
+    ),
+    GoRoute(
       name: AppPages.examDetailScreen,
       path: AppPages.examDetailScreen,
       builder: (context, state) {
@@ -403,7 +449,6 @@ class AppRouteManager {
           return ExamDetailScreen(isRegistered: state.extra as bool);
         }
 
-        return SizedBox();
         return const SizedBox();
       },
     ),
@@ -414,6 +459,65 @@ class AppRouteManager {
         path: state.extra as String,
       ),
     ),
+    GoRoute(
+      name: AppPages.chatsListScreen,
+      path: AppPages.chatsListScreen,
+      builder: (context, state) => const ChatScreen(),
+    ),
+    GoRoute(
+      name: AppPages.createGroup,
+      path: AppPages.createGroup,
+      builder: (context, state) => const GroupAddScreen(),
+    ),
+    GoRoute(
+      name: AppPages.groupDetails,
+      path: AppPages.groupDetails,
+      builder: (context, state) => const MessageDetails(),
+    ),
+    GoRoute(
+      name: AppPages.messageScreen,
+      path: AppPages.messageScreen,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return MessagesScreen(
+            model: state.extra as ChatRoomModel,
+          );
+        }
+        return const Placeholder();
+      },
+    ),
+    GoRoute(
+      name: AppPages.newChat,
+      path: AppPages.newChat,
+      builder: (context, state) {
+        return const NewChat();
+      },
+    ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
+}
+
+class FadeRoute extends PageRouteBuilder {
+  final Widget? page;
+  final Widget? route;
+
+  FadeRoute({this.page, this.route})
+      : super(
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page!,
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) =>
+              FadeTransition(
+            opacity: animation,
+            child: route,
+          ),
+        );
 }

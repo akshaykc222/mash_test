@@ -77,8 +77,8 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
   @override
   Future<List<SyllabusTermModel?>> getSyllabusTerms(
       SyllabusTermsRequest params) async {
-    final data =
-        await apiProvider.post(AppRemoteRoutes.syllabusTerms, params.toJson());
+    final data = await apiProvider.get(AppRemoteRoutes.syllabusTerms,
+        body: params.toJson());
     final List<dynamic> dataList = data['resTable'];
 
     return dataList.map((e) => SyllabusTermModel.fromJson(e)).toList();
