@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
-import 'package:mash/mash/presentation/manager/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/oultined_container_widget.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/home_shimmer.dart';
 
+import '../../../../manager/profile_bloc/profile_bloc.dart';
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/enums.dart';

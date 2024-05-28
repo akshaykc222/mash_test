@@ -7,9 +7,12 @@ import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 
+import '../models/request/update_profile_request.dart';
+
 abstract class ProfileDataSource {
   Future<List<StudentEntity>> getSiblings(String compId);
   Future<StudentDetailEntity> getUserDetails(GetUserDetailsRequest request);
+  Future<void> updateProfile(UpdateProfileRequest request);
 }
 
 @LazySingleton(as: ProfileDataSource)
@@ -35,5 +38,10 @@ class ProfileDataSourceImpl extends ProfileDataSource {
     final student = List<StudentDetailEntity>.from(
         data['resTable'].map((e) => StudentDetailModel.fromJson(e)));
     return student.first;
+  }
+
+  @override
+  Future<void> updateProfile(UpdateProfileRequest request) async {
+    await apiProvider.post(AppRemoteRoutes.updateProfile, request.toJson());
   }
 }

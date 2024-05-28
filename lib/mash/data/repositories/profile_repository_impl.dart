@@ -5,6 +5,8 @@ import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 import 'package:mash/mash/domain/repositories/profile_repository.dart';
 
+import '../remote/models/request/update_profile_request.dart';
+
 @LazySingleton(as: ProfileRepository)
 @injectable
 class ProfileRepositoryImpl extends ProfileRepository {
@@ -20,5 +22,10 @@ class ProfileRepositoryImpl extends ProfileRepository {
   @override
   Future<StudentDetailEntity> getUserDetails(GetUserDetailsRequest request) {
     return profileDataSource.getUserDetails(request);
+  }
+
+  @override
+  Future<void> updateProfile(UpdateProfileRequest request) {
+    return profileDataSource.updateProfile(request);
   }
 }

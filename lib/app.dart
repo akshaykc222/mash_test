@@ -12,7 +12,7 @@ import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'mash/presentation/manager/academic_bloc/academic_bloc.dart';
 import 'mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
-import 'mash/presentation/manager/profile/profile_bloc.dart';
+import 'mash/presentation/manager/profile_bloc/profile_bloc.dart';
 import 'mash/presentation/router/router_config.dart';
 import 'mash/presentation/utils/size_config.dart';
 

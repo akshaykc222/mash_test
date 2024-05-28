@@ -1,6 +1,10 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
+  static const digitalLibrary =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibraryAll";
+  static const updateProfile =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/updateStudentProfile";
   static const wordAndThougthofTheDay =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getWordThought";
   static const noticePopUp =
