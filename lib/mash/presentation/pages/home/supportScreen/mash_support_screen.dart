@@ -6,8 +6,9 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class MashSupportScreen extends StatelessWidget {
   const MashSupportScreen({super.key});
@@ -16,7 +17,7 @@ class MashSupportScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.mashSupport),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: supportBody(context),
     );
   }
@@ -28,11 +29,16 @@ class MashSupportScreen extends StatelessWidget {
       width: size.width,
       child: Column(
         children: [
-          Lottie.asset(AppAssets.supportLottie,height: SizeConfig.height(330),),
+          Lottie.asset(
+            AppAssets.supportLottie,
+            height: SizeConfig.height(330),
+          ),
           contactUs(),
           spacer10,
-          card(()=>_launchCaller("+91-9567864991"), 'PHONE NUMBER', "+91-9567864991", Icons.call),
-          card(()=>_sendEmail("techsupportmageet@mash-edu.com"), 'EMAIL', "techsupportmageet@mash-edu.com", Icons.alternate_email),
+          card(() => _launchCaller("+91-9567864991"), 'PHONE NUMBER',
+              "+91-9567864991", Icons.call),
+          card(() => _sendEmail("techsupportmageet@mash-edu.com"), 'EMAIL',
+              "techsupportmageet@mash-edu.com", Icons.alternate_email),
           spacer20,
           mageethLogo()
         ],
@@ -65,7 +71,7 @@ class MashSupportScreen extends StatelessWidget {
   }
 
   _launchCaller(number) async {
-     var url = "tel:$number";
+    var url = "tel:$number";
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -73,24 +79,23 @@ class MashSupportScreen extends StatelessWidget {
     }
   }
 
-  void _sendEmail(email){
+  void _sendEmail(email) {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
       path: email,
-      queryParameters: {
-        'subject': 'Support Enquiry',
-        'body': ''
-      },
+      queryParameters: {'subject': 'Support Enquiry', 'body': ''},
     );
     launchUrl(emailLaunchUri);
   }
 
-  card(onTap, title, subTitle,icon) {
+  card(onTap, title, subTitle, icon) {
     return InkWell(
         onTap: onTap,
         child: Container(
           width: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 20,),
+          margin: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
           child: Card(
               elevation: 2,
               surfaceTintColor: AppColors.primaryColor,
@@ -100,7 +105,11 @@ class MashSupportScreen extends StatelessWidget {
                     vertical: 5,
                   ),
                   child: ListTile(
-                    leading: Icon(icon,size: 50,color: AppColors.primaryColor,),
+                    leading: Icon(
+                      icon,
+                      size: 50,
+                      color: AppColors.primaryColor,
+                    ),
                     title: listTileTitle(title),
                     subtitle: listTileSubTitle(subTitle),
                   ))),

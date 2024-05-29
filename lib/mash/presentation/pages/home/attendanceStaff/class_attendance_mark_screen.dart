@@ -5,7 +5,7 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class ClassAttendanceMarkingScreen extends StatefulWidget {
   const ClassAttendanceMarkingScreen({super.key});
@@ -17,8 +17,6 @@ class ClassAttendanceMarkingScreen extends StatefulWidget {
 
 class _ClassAttendanceMarkingScreenState
     extends State<ClassAttendanceMarkingScreen> {
-
-
   @override
   void initState() {
     super.initState();
@@ -234,17 +232,26 @@ class _ClassAttendanceMarkingScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             spacer20,
-            const Center(child: Text('CONFIRM ATTENDANCE',style: TextStyle(fontSize: 18),)),
+            const Center(
+                child: Text(
+              'CONFIRM ATTENDANCE',
+              style: TextStyle(fontSize: 18),
+            )),
             spacer10,
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
               ),
               child: attendanceTypes(),
             ),
             spacer10,
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Text(AppStrings.nameOfAbsentees, style: TextStyle(fontSize: 17),),
+              child: Text(
+                AppStrings.nameOfAbsentees,
+                style: TextStyle(fontSize: 17),
+              ),
             ),
             Expanded(
               child: ListView.builder(
@@ -258,37 +265,42 @@ class _ClassAttendanceMarkingScreenState
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child:  Divider(height: 2,color: AppColors.primaryColor,),
+              child: Divider(
+                height: 2,
+                color: AppColors.primaryColor,
+              ),
             ),
             spacer10,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder()
-                  ),
+                  style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   child: const Row(
                     children: [
-                      Icon(Icons.close,size: 15,),
+                      Icon(
+                        Icons.close,
+                        size: 15,
+                      ),
                       spacerWidth4,
                       Text('CANCEL'),
                     ],
                   ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder()
-                  ),
+                  style: ElevatedButton.styleFrom(shape: const StadiumBorder()),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                   child: const Row(
                     children: [
-                      Icon(Icons.check,size: 15,),
+                      Icon(
+                        Icons.check,
+                        size: 15,
+                      ),
                       spacerWidth4,
                       Text('SUBMIT'),
                     ],

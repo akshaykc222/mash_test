@@ -32,4 +32,11 @@ class HomeWorkNotesReportRepositoryImpl implements HomeWorkNotesRepository {
     return await homeWorkNotesRemoteDataSource.getNotesReportsDetails(
         noteId: noteId, compId: compId);
   }
+
+  @override
+  Future<NotesReportDetailsEntity> getHomeWorkReportsDetails(
+      {required String workId, required String compId}) async {
+    return await homeWorkNotesRemoteDataSource.getHomeWorkReportsDetails(
+        workId: workId, compId: compId);
+  }
 }

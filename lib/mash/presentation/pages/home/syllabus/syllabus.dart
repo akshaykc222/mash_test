@@ -7,7 +7,8 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class SyllabusScreen extends StatefulWidget {
   const SyllabusScreen({super.key});

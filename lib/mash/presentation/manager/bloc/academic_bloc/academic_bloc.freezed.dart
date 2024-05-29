@@ -24,7 +24,8 @@ mixin _$AcademicEvent {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) =>
@@ -37,7 +38,7 @@ mixin _$AcademicEvent {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,7 +50,7 @@ mixin _$AcademicEvent {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) =>
@@ -156,7 +157,8 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -172,7 +174,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return getClassDetails?.call();
@@ -187,7 +189,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -297,7 +299,8 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -313,7 +316,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return getAcademicSubjects?.call();
@@ -328,7 +331,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -437,7 +440,8 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -453,7 +457,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return getDivisionDetails?.call();
@@ -468,7 +472,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -603,7 +607,8 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -619,7 +624,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return getSyllabus?.call(termId);
@@ -634,7 +639,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -748,7 +753,8 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -764,7 +770,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return getSyllabusTerms?.call();
@@ -779,7 +785,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -917,7 +923,8 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -933,7 +940,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return changeSyllabusTermIndex?.call(index);
@@ -948,7 +955,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -1025,7 +1032,7 @@ abstract class _$$SelectSubjectEventImplCopyWith<$Res> {
           $Res Function(_$SelectSubjectEventImpl) then) =
       __$$SelectSubjectEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String subject});
+  $Res call({String subject, String subjectId});
 }
 
 /// @nodoc
@@ -1040,11 +1047,16 @@ class __$$SelectSubjectEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? subject = null,
+    Object? subjectId = null,
   }) {
     return _then(_$SelectSubjectEventImpl(
       null == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == subjectId
+          ? _value.subjectId
+          : subjectId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1053,14 +1065,16 @@ class __$$SelectSubjectEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
-  const _$SelectSubjectEventImpl(this.subject);
+  const _$SelectSubjectEventImpl(this.subject, this.subjectId);
 
   @override
   final String subject;
+  @override
+  final String subjectId;
 
   @override
   String toString() {
-    return 'AcademicEvent.selectSubjectEvent(subject: $subject)';
+    return 'AcademicEvent.selectSubjectEvent(subject: $subject, subjectId: $subjectId)';
   }
 
   @override
@@ -1068,11 +1082,13 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectSubjectEventImpl &&
-            (identical(other.subject, subject) || other.subject == subject));
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.subjectId, subjectId) ||
+                other.subjectId == subjectId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, subject);
+  int get hashCode => Object.hash(runtimeType, subject, subjectId);
 
   @JsonKey(ignore: true)
   @override
@@ -1090,11 +1106,12 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
-    return selectSubjectEvent(subject);
+    return selectSubjectEvent(subject, subjectId);
   }
 
   @override
@@ -1106,10 +1123,10 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
-    return selectSubjectEvent?.call(subject);
+    return selectSubjectEvent?.call(subject, subjectId);
   }
 
   @override
@@ -1121,12 +1138,12 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
     if (selectSubjectEvent != null) {
-      return selectSubjectEvent(subject);
+      return selectSubjectEvent(subject, subjectId);
     }
     return orElse();
   }
@@ -1183,10 +1200,11 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
 }
 
 abstract class _SelectSubjectEvent implements AcademicEvent {
-  const factory _SelectSubjectEvent(final String subject) =
-      _$SelectSubjectEventImpl;
+  const factory _SelectSubjectEvent(
+      final String subject, final String subjectId) = _$SelectSubjectEventImpl;
 
   String get subject;
+  String get subjectId;
   @JsonKey(ignore: true)
   _$$SelectSubjectEventImplCopyWith<_$SelectSubjectEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1272,7 +1290,8 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     required TResult Function(String termId) getSyllabus,
     required TResult Function() getSyllabusTerms,
     required TResult Function(int index) changeSyllabusTermIndex,
-    required TResult Function(String subject) selectSubjectEvent,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
   }) {
@@ -1288,7 +1307,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult? Function(String termId)? getSyllabus,
     TResult? Function()? getSyllabusTerms,
     TResult? Function(int index)? changeSyllabusTermIndex,
-    TResult? Function(String subject)? selectSubjectEvent,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
   }) {
     return selectDateRangeEvent?.call(date, dateType);
@@ -1303,7 +1322,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult Function(String termId)? getSyllabus,
     TResult Function()? getSyllabusTerms,
     TResult Function(int index)? changeSyllabusTermIndex,
-    TResult Function(String subject)? selectSubjectEvent,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
     required TResult orElse(),
   }) {
@@ -1390,6 +1409,7 @@ mixin _$AcademicState {
       throw _privateConstructorUsedError;
   int get selectedTermIndex => throw _privateConstructorUsedError;
   String get selectedSubject => throw _privateConstructorUsedError;
+  String get selectedSubjectId => throw _privateConstructorUsedError;
   SelectedRange? get selectedRange => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1411,6 +1431,7 @@ abstract class $AcademicStateCopyWith<$Res> {
       ResponseClassify<List<SyllabusEntity?>> syllabus,
       int selectedTermIndex,
       String selectedSubject,
+      String selectedSubjectId,
       SelectedRange? selectedRange});
 }
 
@@ -1434,6 +1455,7 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
     Object? syllabus = null,
     Object? selectedTermIndex = null,
     Object? selectedSubject = null,
+    Object? selectedSubjectId = null,
     Object? selectedRange = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1465,6 +1487,10 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
           ? _value.selectedSubject
           : selectedSubject // ignore: cast_nullable_to_non_nullable
               as String,
+      selectedSubjectId: null == selectedSubjectId
+          ? _value.selectedSubjectId
+          : selectedSubjectId // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedRange: freezed == selectedRange
           ? _value.selectedRange
           : selectedRange // ignore: cast_nullable_to_non_nullable
@@ -1489,6 +1515,7 @@ abstract class _$$AcademicStateImplCopyWith<$Res>
       ResponseClassify<List<SyllabusEntity?>> syllabus,
       int selectedTermIndex,
       String selectedSubject,
+      String selectedSubjectId,
       SelectedRange? selectedRange});
 }
 
@@ -1510,6 +1537,7 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
     Object? syllabus = null,
     Object? selectedTermIndex = null,
     Object? selectedSubject = null,
+    Object? selectedSubjectId = null,
     Object? selectedRange = freezed,
   }) {
     return _then(_$AcademicStateImpl(
@@ -1541,6 +1569,10 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
           ? _value.selectedSubject
           : selectedSubject // ignore: cast_nullable_to_non_nullable
               as String,
+      selectedSubjectId: null == selectedSubjectId
+          ? _value.selectedSubjectId
+          : selectedSubjectId // ignore: cast_nullable_to_non_nullable
+              as String,
       selectedRange: freezed == selectedRange
           ? _value.selectedRange
           : selectedRange // ignore: cast_nullable_to_non_nullable
@@ -1560,6 +1592,7 @@ class _$AcademicStateImpl implements _AcademicState {
       required this.syllabus,
       required this.selectedTermIndex,
       required this.selectedSubject,
+      required this.selectedSubjectId,
       required this.selectedRange});
 
   @override
@@ -1577,11 +1610,13 @@ class _$AcademicStateImpl implements _AcademicState {
   @override
   final String selectedSubject;
   @override
+  final String selectedSubjectId;
+  @override
   final SelectedRange? selectedRange;
 
   @override
   String toString() {
-    return 'AcademicState(classDetails: $classDetails, divisionDetails: $divisionDetails, academicSubjects: $academicSubjects, syllabusTerms: $syllabusTerms, syllabus: $syllabus, selectedTermIndex: $selectedTermIndex, selectedSubject: $selectedSubject, selectedRange: $selectedRange)';
+    return 'AcademicState(classDetails: $classDetails, divisionDetails: $divisionDetails, academicSubjects: $academicSubjects, syllabusTerms: $syllabusTerms, syllabus: $syllabus, selectedTermIndex: $selectedTermIndex, selectedSubject: $selectedSubject, selectedSubjectId: $selectedSubjectId, selectedRange: $selectedRange)';
   }
 
   @override
@@ -1603,6 +1638,8 @@ class _$AcademicStateImpl implements _AcademicState {
                 other.selectedTermIndex == selectedTermIndex) &&
             (identical(other.selectedSubject, selectedSubject) ||
                 other.selectedSubject == selectedSubject) &&
+            (identical(other.selectedSubjectId, selectedSubjectId) ||
+                other.selectedSubjectId == selectedSubjectId) &&
             (identical(other.selectedRange, selectedRange) ||
                 other.selectedRange == selectedRange));
   }
@@ -1617,6 +1654,7 @@ class _$AcademicStateImpl implements _AcademicState {
       syllabus,
       selectedTermIndex,
       selectedSubject,
+      selectedSubjectId,
       selectedRange);
 
   @JsonKey(ignore: true)
@@ -1636,6 +1674,7 @@ abstract class _AcademicState implements AcademicState {
       required final ResponseClassify<List<SyllabusEntity?>> syllabus,
       required final int selectedTermIndex,
       required final String selectedSubject,
+      required final String selectedSubjectId,
       required final SelectedRange? selectedRange}) = _$AcademicStateImpl;
 
   @override
@@ -1652,6 +1691,8 @@ abstract class _AcademicState implements AcademicState {
   int get selectedTermIndex;
   @override
   String get selectedSubject;
+  @override
+  String get selectedSubjectId;
   @override
   SelectedRange? get selectedRange;
   @override

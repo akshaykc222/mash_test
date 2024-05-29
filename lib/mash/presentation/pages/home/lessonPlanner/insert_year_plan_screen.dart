@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -8,7 +6,7 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class InsertYearPlanScreen extends StatefulWidget {
   const InsertYearPlanScreen({super.key});
@@ -25,7 +23,8 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
   final TextEditingController _termController = TextEditingController();
   final TextEditingController _monthController = TextEditingController();
   final TextEditingController _chaptersController = TextEditingController();
-  final TextEditingController _chapterRemarksController = TextEditingController();
+  final TextEditingController _chapterRemarksController =
+      TextEditingController();
 
   final List<String> _bottomSheetItems = [
     'Item 1',
@@ -35,12 +34,12 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
   ];
 
   List<String> _selectedItems = [];
-  ValueNotifier<List<String>> _selectedItemsNotifier = ValueNotifier<List<String>>([]);
-
+  ValueNotifier<List<String>> _selectedItemsNotifier =
+      ValueNotifier<List<String>>([]);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: commonAppbar(title: AppStrings.yearlyWise),
       endDrawer: DrawerWidget(),
       body: yearPlanBody(context),
@@ -58,10 +57,10 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              titleText(AppStrings.academicYear),
+            titleText(AppStrings.academicYear),
             CommonGestureDetector(
-              onTap: () =>
-                  _openOptionsBottomSheet(context, _academicYearController, options),
+              onTap: () => _openOptionsBottomSheet(
+                  context, _academicYearController, options),
               textController: _academicYearController,
               hintText: 'Select Academic Year',
               icon: Icons.arrow_drop_down_circle_sharp,
@@ -76,8 +75,8 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
             ),
             titleText(AppStrings.selectDivision),
             CommonGestureDetector(
-              onTap: () =>
-                  _openMultipleOptionsBottomSheet(context, _divisionController, options,AppStrings.selectDivision),
+              onTap: () => _openMultipleOptionsBottomSheet(context,
+                  _divisionController, options, AppStrings.selectDivision),
               textController: _divisionController,
               hintText: 'Select Division',
               icon: Icons.arrow_drop_down_circle_sharp,
@@ -108,8 +107,8 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
             ),
             titleText(AppStrings.chapters),
             CommonGestureDetector(
-              onTap: () =>
-                  _openMultipleOptionsBottomSheet(context, _chaptersController, options,AppStrings.chapters),
+              onTap: () => _openMultipleOptionsBottomSheet(
+                  context, _chaptersController, options, AppStrings.chapters),
               textController: _chaptersController,
               hintText: 'Select Chapters',
               icon: Icons.arrow_drop_down_circle_sharp,
@@ -117,9 +116,12 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
             titleText(AppStrings.chapterRemarks),
             CommonTextField(
               lines: 3,
-              title: AppStrings.enterChapterRemarks,controller: _chapterRemarksController,),
+              title: AppStrings.enterChapterRemarks,
+              controller: _chapterRemarksController,
+            ),
             spacer20,
-            AnimatedSharedButton(onTap: (){}, title: Text('REQUEST'), isLoading: false),
+            AnimatedSharedButton(
+                onTap: () {}, title: Text('REQUEST'), isLoading: false),
             spacer20
           ],
         ),
@@ -176,63 +178,64 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
     );
   }
 
-  void _openMultipleOptionsBottomSheet(
-      BuildContext context, TextEditingController controller, List optionList,String title) {
+  void _openMultipleOptionsBottomSheet(BuildContext context,
+      TextEditingController controller, List optionList, String title) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
-        return StatefulBuilder(
-          builder: (context,StateSetter state) {
-            return Container(
-              decoration: BoxDecoration(
-                  border: Border.all(width: 10, color: Colors.grey),
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(16), topLeft: Radius.circular(16))),
-              height: SizeConfig.height(optionList.length * 90).toDouble(),
-              child: Column(
-                children: [
-                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Text(
-                      title,
-                      style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-                    ),
+        return StatefulBuilder(builder: (context, StateSetter state) {
+          return Container(
+            decoration: BoxDecoration(
+                border: Border.all(width: 10, color: Colors.grey),
+                borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(16),
+                    topLeft: Radius.circular(16))),
+            height: SizeConfig.height(optionList.length * 90).toDouble(),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 18),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: _bottomSheetItems.length,
-                      itemBuilder: (context, index) {
-                        final item = _bottomSheetItems[index];
-                        return CheckboxListTile(
-                          title: Text(item),
-                          value: _selectedItemsNotifier.value.contains(item),
-                          onChanged: (bool? value) {
-                            state((){
-                              if (value!) {
-                                _selectedItems.add(item);
-                              } else {
-                                _selectedItems.remove(item);
-                              }
-                              _selectedItemsNotifier.value = List.from(_selectedItems);
-                            });
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  spacer20,
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.text = _selectedItemsNotifier.value.join(', ');
-                      Navigator.pop(context);
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _bottomSheetItems.length,
+                    itemBuilder: (context, index) {
+                      final item = _bottomSheetItems[index];
+                      return CheckboxListTile(
+                        title: Text(item),
+                        value: _selectedItemsNotifier.value.contains(item),
+                        onChanged: (bool? value) {
+                          state(() {
+                            if (value!) {
+                              _selectedItems.add(item);
+                            } else {
+                              _selectedItems.remove(item);
+                            }
+                            _selectedItemsNotifier.value =
+                                List.from(_selectedItems);
+                          });
+                        },
+                      );
                     },
-                    child: const Text(AppStrings.submit),
                   ),
-                ],
-              ),
-            );
-          }
-        );
+                ),
+                spacer20,
+                ElevatedButton(
+                  onPressed: () {
+                    controller.text = _selectedItemsNotifier.value.join(', ');
+                    Navigator.pop(context);
+                  },
+                  child: const Text(AppStrings.submit),
+                ),
+              ],
+            ),
+          );
+        });
       },
     );
   }

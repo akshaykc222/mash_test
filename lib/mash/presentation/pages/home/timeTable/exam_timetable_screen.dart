@@ -5,7 +5,8 @@ import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class ExamTimeTableScreen extends StatefulWidget {
   const ExamTimeTableScreen({super.key});
@@ -167,7 +168,10 @@ class _SyllabusBodyState extends State<SyllabusBody> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Divider(height: 2,color: AppColors.primaryColor,),
+                  child: Divider(
+                    height: 2,
+                    color: AppColors.primaryColor,
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -196,7 +200,7 @@ class _SyllabusBodyState extends State<SyllabusBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Expanded(
-                        flex:1,
+                        flex: 1,
                         child: Text(
                           'Exam Portions - ',
                           style: TextStyle(

@@ -4,7 +4,6 @@ import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 
 class ChatTile extends StatelessWidget {

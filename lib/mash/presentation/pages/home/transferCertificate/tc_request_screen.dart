@@ -5,7 +5,8 @@ import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class TransferRequestScreen extends StatefulWidget {
   const TransferRequestScreen({super.key});
@@ -95,7 +96,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'TC REQUEST'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: tcRequestBody(context),
     );
   }

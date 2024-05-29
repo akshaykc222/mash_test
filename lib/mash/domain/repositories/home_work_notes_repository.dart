@@ -10,4 +10,6 @@ abstract interface class HomeWorkNotesRepository {
   Future<List<NotesReportEntity>> getNoteReports(HomeWorkReportRequest params);
   Future<NotesReportDetailsEntity> getNotesReportsDetails(
       {required String noteId, required String compId});
+  Future<NotesReportDetailsEntity> getHomeWorkReportsDetails(
+      {required String workId, required String compId});
 }

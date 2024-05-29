@@ -57,7 +57,7 @@ class NoteViewDetailsScreenState extends State<NoteViewDetailsScreen> {
             if (state.noteReportDetailResponse.status == Status.LOADING ||
                 data == null) {
               return const Loader();
-            } else if (data.restable1.isEmpty) {
+            } else if (data.restable1?.isEmpty == true) {
               return HelperClasses.emptyDataWidget();
             } else {
               return Padding(

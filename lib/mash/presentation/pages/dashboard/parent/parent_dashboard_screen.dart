@@ -1,19 +1,20 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/widgets/shimmers/shimmer_box.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
+
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
-import '../../../manager/profile_bloc/profile_bloc.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {
   const ParentDashBoard({super.key});
@@ -24,7 +25,7 @@ class ParentDashBoard extends StatelessWidget {
       drawer: const DrawerWidget(),
       body: CustomScrollView(
         slivers: [
-          _header(),
+          _header(context),
           _body(context),
         ],
       ),
@@ -42,13 +43,21 @@ class ParentDashBoard extends StatelessWidget {
     );
   }
 
-  Widget _header() {
+  Widget _header(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 200.0,
       actions: [
-        _appBarIconWidget(AppAssets.noticeIcon),
+        _appBarIconWidget(
+          AppAssets.noticeIcon,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.noticeBoardMainScreen);
+          },
+        ),
         spacerWidth10,
-        _appBarIconWidget(AppAssets.notificationIcon),
+        _appBarIconWidget(
+          AppAssets.notificationIcon,
+          onTap: () {},
+        ),
         spacerWidth20,
       ],
       flexibleSpace: FlexibleSpaceBar(
@@ -59,24 +68,28 @@ class ParentDashBoard extends StatelessWidget {
           },
           builder: (context, state) {
             return state.getUserDetail?.status == Status.LOADING
-                ? const ShimmerBox()
-                : CachedNetworkImage(
-                    errorWidget: (context, url, error) =>
-                        HelperClasses.errorWidget(context),
-                    imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
-                    fit: BoxFit.cover,
-                  );
+                ? const CustomShimmerWidget(
+              height: 200,
+            )
+                : HelperClasses.cachedNetworkImage(
+              height: 200,
+              imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
+            );
           },
         ),
       ),
     );
   }
 
-  Widget _appBarIconWidget(String img) {
-    return CircleAvatar(
-      radius: 15,
-      backgroundColor: AppColors.black.withOpacity(0.4),
-      child: assetFromSvg(img, height: 20, color: AppColors.white),
+  Widget _appBarIconWidget(String img, {required VoidCallback onTap}) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: onTap,
+      child: CircleAvatar(
+        radius: 15,
+        backgroundColor: AppColors.black.withOpacity(0.4),
+        child: assetFromSvg(img, height: 20, color: AppColors.white),
+      ),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/widgets/exam_
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class CompetitiveExamScreen extends StatefulWidget {
   const CompetitiveExamScreen({super.key});

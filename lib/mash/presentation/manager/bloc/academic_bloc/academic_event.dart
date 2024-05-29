@@ -9,8 +9,10 @@ class AcademicEvent with _$AcademicEvent {
   const factory AcademicEvent.getSyllabusTerms() = _GetSyllabusTerms;
   const factory AcademicEvent.changeSyllabusTermIndex(int index) =
       _ChangeSyllabusTermIndex;
-  const factory AcademicEvent.selectSubjectEvent(String subject) =
-      _SelectSubjectEvent;
+  const factory AcademicEvent.selectSubjectEvent(
+    String subject,
+    String subjectId,
+  ) = _SelectSubjectEvent;
   const factory AcademicEvent.selectDateRangeEvent(
       {required DateTime date, required String dateType}) = _SelectDateRange;
 }

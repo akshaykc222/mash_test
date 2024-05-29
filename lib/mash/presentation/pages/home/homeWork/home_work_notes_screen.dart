@@ -6,7 +6,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 import '../../../router/app_pages.dart';
 

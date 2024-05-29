@@ -8,21 +8,17 @@ import 'package:mash/mash/presentation/manager/bloc/dashboard_bloc/dashboard_blo
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/manager/cubit/pdf_download/pdf_download_cubit.dart';
-
+=======
 import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/manager/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/manager/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
-
+>>>>>>> 1a22894c555853c94ecfd96d2f84906fba341f63
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
 
-import 'mash/presentation/manager/academic_bloc/academic_bloc.dart';
-import 'mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
-import 'mash/presentation/manager/drawer_bloc/drawer_bloc.dart';
-import 'mash/presentation/manager/profile_bloc/profile_bloc.dart';
 import 'mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'mash/presentation/manager/cubit/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import 'mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
@@ -49,7 +45,9 @@ class MashApp extends StatelessWidget {
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),
         BlocProvider(create: (_) => getIt<NoticeBloc>()),
         BlocProvider(create: (_) => getIt<DashboardBloc>()),
-        BlocProvider(create: (_) => getIt<DrawerBloc>()),
+        BlocProvider(
+            create: (_) =>
+                getIt<DrawerBloc>()..add(const DrawerEvent.getRoleMenuEvent())),
         BlocProvider(create: (_) => getIt<AcademicBloc>()),
         BlocProvider(create: (_) => getIt<HomeWorkNotesBloc>()),
         BlocProvider(create: (_) => getIt<ChatBloc>()),

@@ -1,16 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class FeesAndPaymentMainScreen extends StatelessWidget {
   const FeesAndPaymentMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  DefaultTabController(
+    return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(

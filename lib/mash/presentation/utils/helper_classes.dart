@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 
 import '../../../core/response_classify.dart';
 import '../manager/profile_bloc/profile_bloc.dart';
@@ -62,6 +64,8 @@ class HelperClasses {
         return state.getSiblings?.status == Status.LOADING
             ? const CustomShimmerWidget(
                 height: 60,
+                borderRadius: 6,
+                marginVertical: 20,
               )
             : state.selectedSibling == null
                 ? const SizedBox()
@@ -78,6 +82,21 @@ class HelperClasses {
   static Widget emptyDataWidget() {
     return Center(
       child: Lottie.asset(AppAssets.noDataLottie, height: 300),
+    );
+  }
+
+  static cachedNetworkImage(
+      {required String imageUrl,
+      double? height,
+      double? width,
+      BoxFit boxFit = BoxFit.cover}) {
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      height: height,
+      width: width,
+      fit: boxFit,
+      // placeholder: (context, url) => CircularProgressIndicator(),
+      errorWidget: (context, url, error) => const Icon(Icons.error_outline),
     );
   }
 

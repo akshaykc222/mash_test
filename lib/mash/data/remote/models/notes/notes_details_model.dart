@@ -6,12 +6,10 @@ class NotesReportDetailsModel extends NotesReportDetailsEntity {
 
   factory NotesReportDetailsModel.fromJson(Map<String, dynamic> json) {
     return NotesReportDetailsModel(
-      restable1: (json['resTable1'] as List<dynamic>)
-          .map((e) => NotesDetailsRestable1Model.fromJson(e))
-          .toList(),
-      resTable2: (json['resTable2'] as List<dynamic>)
-          .map((e) => NotesDetailsResTable2Model.fromJson(e))
-          .toList(),
+      restable1: List<NotesDetailsRestable1Model>.from(
+          json['resTable1'].map((x) => NotesDetailsRestable1Model.fromJson(x))),
+      resTable2: List<NotesDetailsResTable2Model>.from(
+          json['resTable2'].map((x) => NotesDetailsResTable2Model.fromJson(x))),
     );
   }
 }

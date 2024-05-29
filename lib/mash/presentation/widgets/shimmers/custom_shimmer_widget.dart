@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomShimmerWidget extends StatelessWidget {
   final double? height;
   final double? width;
-  const CustomShimmerWidget({super.key, required this.height, this.width});
+  final double? borderRadius;
+  final double? marginVertical;
+  const CustomShimmerWidget({
+    super.key,
+    required this.height,
+    this.width,
+    this.borderRadius,
+    this.marginVertical,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[100]!,
+      baseColor: AppColors.greyClr300,
+      highlightColor: AppColors.greyClr100,
       child: Container(
         height: height,
         width: width ?? double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const Card(
-          elevation: 2,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 8,
-            ),
-            child: Row(
-              children: [],
-            ),
-          ),
+        margin: EdgeInsets.symmetric(
+            vertical: 4, horizontal: marginVertical ?? 0.0),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
         ),
       ),
     );
