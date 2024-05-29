@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
+import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_api_entity.dart';
+import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -13,23 +16,27 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
+import '../../../../data/remote/models/request/teacher_post_rating_request.dart';
+import '../../../manager/bloc/teacher_bloc/teacher_bloc.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class TeacherRatingScreen extends StatelessWidget {
-  const TeacherRatingScreen({super.key});
+  final TeacherRatingEntity entity;
+  const TeacherRatingScreen({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.teacherRating),
       endDrawer: const DrawerWidget(),
-      body: TeacherRatingBody(),
+      body: TeacherRatingBody(entity: entity),
     );
   }
 }
 
 class TeacherRatingBody extends StatefulWidget {
-  TeacherRatingBody({super.key});
+  final TeacherRatingEntity entity;
+  const TeacherRatingBody({super.key, required this.entity});
 
   @override
   State<TeacherRatingBody> createState() => _TeacherRatingBodyState();
@@ -39,12 +46,17 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
   final ScrollController _scrollController = ScrollController();
 
   final TextEditingController _remarksController = TextEditingController();
+  late TeacherBloc _teacherBloc;
+  @override
+  void initState() {
+    _teacherBloc = TeacherBloc.get(context)
+      ..add(const TeacherEvent.clearTeacherRatingList())
+      ..add(const TeacherEvent.getRatingQuestions());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TeacherBloc.get(context).add(TeacherEvent.getRatingQuestions());
-    int rating = 0;
-    int itemCount = 10;
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -76,25 +88,25 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            'KRISHNAPRIYA K U',
+                            widget.entity.fullName,
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(18),
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            'MUSIC',
+                            widget.entity.subName,
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            '+91 - 9967545534',
+                            "widget.entity.",
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            'krishnapriya@gmail.com',
+                            "widget.entity.",
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
@@ -129,6 +141,14 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                         handleErrorUi(
                             context: context,
                             error: state.getTeacherRatingQuestions?.error);
+                      } else if (state.postTeacherRating?.status ==
+                          Status.ERROR) {
+                        handleErrorUi(
+                            context: context,
+                            error: state.getTeacherRatingQuestions?.error);
+                      } else if (state.postTeacherRating?.status ==
+                          Status.COMPLETED) {
+                        context.goNamed(AppPages.teacherRatingListScreen);
                       }
                     },
                     builder: (context, state) {
@@ -146,7 +166,7 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                               ? ListView.builder(
                                   controller: _scrollController,
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: state.getTeacherRatingQuestions
                                           ?.data?.length ??
                                       0,
@@ -181,16 +201,33 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
               controller: _remarksController,
             ),
             spacer30,
-            AnimatedSharedButton(
-                onTap: () {
-                  // prettyPrint(ratingList.map((e) => e.toJson()).toString());
-                },
-                title: Text(
-                  AppStrings.submitCapital,
-                  style: TextStyle(
-                      color: AppColors.white, fontWeight: FontWeight.w600),
-                ),
-                isLoading: false),
+            BlocBuilder<TeacherBloc, TeacherState>(
+              buildWhen: (previous, current) =>
+                  previous.postTeacherRating?.status !=
+                  current.postTeacherRating?.status,
+              builder: (context, state) {
+                return AnimatedSharedButton(
+                    onTap: () {
+                      var ratings = _teacherBloc
+                          .state.getTeacherRatingQuestions!.data
+                          ?.map((e) => RatedQuestion(
+                              question: e.qnsId, rating: e.rating))
+                          .toList();
+                      _teacherBloc.add(TeacherEvent.postTeacherRating(
+                          teacherId: widget.entity.teacher,
+                          subId: widget.entity.subject,
+                          ratedQuestions: ratings ?? []));
+                      // prettyPrint(ratingList.map((e) => e.toJson()).toString());
+                    },
+                    title: Text(
+                      AppStrings.submitCapital,
+                      style: TextStyle(
+                          color: AppColors.white, fontWeight: FontWeight.w600),
+                    ),
+                    isLoading:
+                        state.postTeacherRating?.status == Status.LOADING);
+              },
+            ),
             spacer40
           ],
         ),

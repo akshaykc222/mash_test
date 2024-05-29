@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
-import 'package:mash/mash/presentation/manager/id_request/id_request_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart';
 
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
 import 'package:mash/mash/presentation/utils/app_theme.dart';
@@ -14,8 +16,7 @@ import 'mash/presentation/manager/cubit/bottom_navigation_cubit/bottom_navigatio
 import 'mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'mash/presentation/manager/cubit/pdf_download/pdf_download_cubit.dart';
-import 'mash/presentation/manager/id_request/id_request_bloc.dart';
-import 'mash/presentation/manager/teacher_bloc/teacher_bloc.dart';
+
 import 'mash/presentation/router/router_config.dart';
 import 'mash/presentation/utils/size_config.dart';
 
