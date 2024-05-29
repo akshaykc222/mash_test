@@ -10,6 +10,8 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
 
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
@@ -22,7 +24,7 @@ class ParentDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerWidget(),
+      drawer: DrawerWidget(),
       body: CustomScrollView(
         slivers: [
           _header(context),
@@ -45,6 +47,8 @@ class ParentDashBoard extends StatelessWidget {
 
   Widget _header(BuildContext context) {
     return SliverAppBar(
+      foregroundColor: AppColors.white,
+      pinned: true,
       expandedHeight: 200.0,
       actions: [
         _appBarIconWidget(
@@ -71,9 +75,29 @@ class ParentDashBoard extends StatelessWidget {
                 ? const CustomShimmerWidget(
                     height: 200,
                   )
-                : HelperClasses.cachedNetworkImage(
-                    height: 200,
-                    imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
+                : Container(
+                    decoration: BoxDecoration(
+                      gradient: AppColors.primaryLinearGradient,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: SizeConfig.height(80),
+                          left: SizeConfig.height(20)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                              child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: HelperClasses.cachedNetworkImage(
+                              height: 200,
+                              imageUrl:
+                                  state.getUserDetail?.data?.profilePhoto ?? "",
+                            ),
+                          ))
+                        ],
+                      ),
+                    ),
                   );
           },
         ),
