@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/coming_soon_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
@@ -59,12 +57,10 @@ import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/utils/app_assets.dart';
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
-import '../../domain/entities/home_work/home_work_entity.dart';
 import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/chat_screen.dart';

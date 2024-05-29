@@ -67,7 +67,7 @@ class SplashScreenState extends State<SplashScreen>
 
   double _opacity = 0;
   bool _value = true;
-  double _opacity2 = 1;
+  double _opacity2 = 0.8;
 
   Future<String> _init() async {
     try {

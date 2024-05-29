@@ -64,6 +64,7 @@ class HelperClasses {
             ? const CustomShimmerWidget(
                 height: 60,
                 borderRadius: 6,
+                marginVertical: 20,
               )
             : state.selectedSibling == null
                 ? const SizedBox()

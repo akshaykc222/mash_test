@@ -33,7 +33,8 @@ class StudentProfileWidget extends StatelessWidget {
         return false;
       },
       builder: (context, state) {
-        return state.getSiblings?.status == Status.LOADING
+        return state.getSiblings?.status == Status.LOADING ||
+                state.getSiblings?.status == Status.initial
             ? const CustomShimmerWidget(height: 60)
             : GestureDetector(
                 onTap: onTap,

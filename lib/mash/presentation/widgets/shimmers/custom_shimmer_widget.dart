@@ -6,11 +6,13 @@ class CustomShimmerWidget extends StatelessWidget {
   final double? height;
   final double? width;
   final double? borderRadius;
+  final double? marginVertical;
   const CustomShimmerWidget({
     super.key,
     required this.height,
     this.width,
     this.borderRadius,
+    this.marginVertical,
   });
 
   @override
@@ -21,7 +23,8 @@ class CustomShimmerWidget extends StatelessWidget {
       child: Container(
         height: height,
         width: width ?? double.infinity,
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+        margin: EdgeInsets.symmetric(
+            vertical: 4, horizontal: marginVertical ?? 0.0),
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(borderRadius ?? 0),
