@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_student_detail_widget.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
@@ -26,7 +28,9 @@ class ParentDashboardTopSection extends StatelessWidget {
 
   Widget _viewCalenderBtn(BuildContext context) {
     return CustomIconButton(
-      onTap: () {},
+      onTap: () {
+        context.push(AppPages.dashboardCalendar);
+      },
       icon: AppAssets.timeTableIcon,
       name: AppStrings.viewCalendar,
     );

@@ -9,6 +9,9 @@ class AppPages {
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
   static const profileScreen = '/profile';
+
+  //dashboard
+  static const dashboardCalendar = '/dashboardCalendar';
   //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';

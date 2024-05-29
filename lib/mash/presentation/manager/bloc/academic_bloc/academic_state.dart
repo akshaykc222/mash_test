@@ -11,7 +11,7 @@ class AcademicState with _$AcademicState {
     required int selectedTermIndex,
     required String selectedSubject,
     required String selectedSubjectId,
-    required SelectedRange? selectedRange,
+    required SelectedRangeModel? selectedRange,
   }) = _AcademicState;
   factory AcademicState.initial() => AcademicState(
         classDetails: ResponseClassify.initial(),
