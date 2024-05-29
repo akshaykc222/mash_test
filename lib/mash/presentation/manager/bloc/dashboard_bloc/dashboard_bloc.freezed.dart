@@ -394,10 +394,8 @@ abstract class _GetDigitalLibrary implements DashboardEvent {
 
 /// @nodoc
 mixin _$DashboardState {
-  ResponseClassify<WordThoughtsEntity>? get wordThoughtResponse =>
-      throw _privateConstructorUsedError;
-  ResponseClassify<List<DigitalLibraryEntity>>? get getDigitalLibrary =>
-      throw _privateConstructorUsedError;
+  dynamic get wordThoughtResponse => throw _privateConstructorUsedError;
+  dynamic get getDigitalLibrary => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DashboardStateCopyWith<DashboardState> get copyWith =>
@@ -410,9 +408,7 @@ abstract class $DashboardStateCopyWith<$Res> {
           DashboardState value, $Res Function(DashboardState) then) =
       _$DashboardStateCopyWithImpl<$Res, DashboardState>;
   @useResult
-  $Res call(
-      {ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary});
+  $Res call({dynamic wordThoughtResponse, dynamic getDigitalLibrary});
 }
 
 /// @nodoc
@@ -435,11 +431,11 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
       wordThoughtResponse: freezed == wordThoughtResponse
           ? _value.wordThoughtResponse
           : wordThoughtResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<WordThoughtsEntity>?,
+              as dynamic,
       getDigitalLibrary: freezed == getDigitalLibrary
           ? _value.getDigitalLibrary
           : getDigitalLibrary // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<DigitalLibraryEntity>>?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -452,9 +448,7 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
       __$$DashboardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary});
+  $Res call({dynamic wordThoughtResponse, dynamic getDigitalLibrary});
 }
 
 /// @nodoc
@@ -473,13 +467,11 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
   }) {
     return _then(_$DashboardStateImpl(
       wordThoughtResponse: freezed == wordThoughtResponse
-          ? _value.wordThoughtResponse
-          : wordThoughtResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<WordThoughtsEntity>?,
+          ? _value.wordThoughtResponse!
+          : wordThoughtResponse,
       getDigitalLibrary: freezed == getDigitalLibrary
-          ? _value.getDigitalLibrary
-          : getDigitalLibrary // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<DigitalLibraryEntity>>?,
+          ? _value.getDigitalLibrary!
+          : getDigitalLibrary,
     ));
   }
 }
@@ -491,9 +483,9 @@ class _$DashboardStateImpl implements _DashboardState {
       {required this.wordThoughtResponse, this.getDigitalLibrary});
 
   @override
-  final ResponseClassify<WordThoughtsEntity>? wordThoughtResponse;
+  final dynamic wordThoughtResponse;
   @override
-  final ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary;
+  final dynamic getDigitalLibrary;
 
   @override
   String toString() {
@@ -505,15 +497,17 @@ class _$DashboardStateImpl implements _DashboardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DashboardStateImpl &&
-            (identical(other.wordThoughtResponse, wordThoughtResponse) ||
-                other.wordThoughtResponse == wordThoughtResponse) &&
-            (identical(other.getDigitalLibrary, getDigitalLibrary) ||
-                other.getDigitalLibrary == getDigitalLibrary));
+            const DeepCollectionEquality()
+                .equals(other.wordThoughtResponse, wordThoughtResponse) &&
+            const DeepCollectionEquality()
+                .equals(other.getDigitalLibrary, getDigitalLibrary));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, wordThoughtResponse, getDigitalLibrary);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(wordThoughtResponse),
+      const DeepCollectionEquality().hash(getDigitalLibrary));
 
   @JsonKey(ignore: true)
   @override
@@ -525,14 +519,13 @@ class _$DashboardStateImpl implements _DashboardState {
 
 abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
-      {required final ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      final ResponseClassify<List<DigitalLibraryEntity>>?
-          getDigitalLibrary}) = _$DashboardStateImpl;
+      {required final dynamic wordThoughtResponse,
+      final dynamic getDigitalLibrary}) = _$DashboardStateImpl;
 
   @override
-  ResponseClassify<WordThoughtsEntity>? get wordThoughtResponse;
+  dynamic get wordThoughtResponse;
   @override
-  ResponseClassify<List<DigitalLibraryEntity>>? get getDigitalLibrary;
+  dynamic get getDigitalLibrary;
   @override
   @JsonKey(ignore: true)
   _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>

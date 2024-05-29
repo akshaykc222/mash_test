@@ -552,66 +552,49 @@ class MockApiProvider extends _i1.Mock implements _i18.ApiProvider {
   }
 
   @override
-  _i17.Future<Map<String, dynamic>> get(
+  dynamic get(
     String? endPoint, {
     Map<String, dynamic>? body,
   }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #get,
-          [endPoint],
-          {#body: body},
-        ),
-        returnValue:
-            _i17.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i17.Future<Map<String, dynamic>>);
+      super.noSuchMethod(Invocation.method(
+        #get,
+        [endPoint],
+        {#body: body},
+      ));
 
   @override
-  _i17.Future<Map<String, dynamic>> delete(String? endPoint) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #delete,
-          [endPoint],
-        ),
-        returnValue:
-            _i17.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i17.Future<Map<String, dynamic>>);
+  dynamic delete(String? endPoint) => super.noSuchMethod(Invocation.method(
+        #delete,
+        [endPoint],
+      ));
 
   @override
-  _i17.Future<Map<String, dynamic>> post(
+  dynamic post(
     String? endPoint,
     Map<String, dynamic>? body, {
     _i19.FormData? formBody,
   }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #post,
-          [
-            endPoint,
-            body,
-          ],
-          {#formBody: formBody},
-        ),
-        returnValue:
-            _i17.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i17.Future<Map<String, dynamic>>);
+      super.noSuchMethod(Invocation.method(
+        #post,
+        [
+          endPoint,
+          body,
+        ],
+        {#formBody: formBody},
+      ));
 
   @override
-  _i17.Future<Map<String, dynamic>> put(
+  dynamic put(
     String? endPoint,
     Map<String, dynamic>? body,
   ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #put,
-          [
-            endPoint,
-            body,
-          ],
-        ),
-        returnValue:
-            _i17.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i17.Future<Map<String, dynamic>>);
+      super.noSuchMethod(Invocation.method(
+        #put,
+        [
+          endPoint,
+          body,
+        ],
+      ));
 
   @override
   Map<String, dynamic> classifyResponse(_i19.Response<dynamic>? response) =>
