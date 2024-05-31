@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/data/remote/request/login_request.dart';
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';

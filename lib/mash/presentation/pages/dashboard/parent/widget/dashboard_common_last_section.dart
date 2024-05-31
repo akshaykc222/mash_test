@@ -141,7 +141,7 @@ class DashboardCommonLastWidget extends StatelessWidget {
                   final isWord = data!.resTable1!.length > index;
                   int tempIndex = 0;
                   if (!isWord) {
-                    tempIndex = index - data.resTable1!.length;
+                    tempIndex = (index - data.resTable1!.length).toInt();
                   }
                   return !isWord
                       ? wordImageWidget(

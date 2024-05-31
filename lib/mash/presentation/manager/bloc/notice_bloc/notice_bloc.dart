@@ -4,12 +4,12 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
-import 'package:mash/mash/data/remote/models/request/notice_all_request.dart';
+import 'package:mash/mash/data/remote/request/notice_all_request.dart';
 import 'package:mash/mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart';
 import 'package:mash/mash/domain/use_cases/notice/notice_all_usecase.dart';
 
 import '../../../../../di/injector.dart';
-import '../../../../data/remote/models/request/notice_pop_up_request.dart';
+import '../../../../data/remote/request/notice_pop_up_request.dart';
 import '../../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'notice_event.dart';

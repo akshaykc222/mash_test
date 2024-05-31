@@ -1,11 +1,14 @@
 part of 'veihcle_tracker_stops_bloc.dart';
 
 @freezed
-class VeihcleTrackerStopsState with _$VeihcleTrackerStopsState {
+class VehicleTrackerStopsState with _$VehicleTrackerStopsState {
+  const factory VehicleTrackerStopsState({
+    StudentRouteEntity? getTrackerStops,
+    Set<Polyline>? polyLines,
+    VehicleLocationEntity? getBusLiveLocation,
+    @Default(false) bool isLoading,
+  }) = _VehicleTrackerStopsState;
 
-  const factory VeihcleTrackerStopsState({
-    ResponseClassify<List<VehicleTrackerEntity>>? getTrackerStops,Set<Polyline>? polyLines,
-  }) = _VeihcleTrackerStopsState;
-
-  factory VeihcleTrackerStopsState.initial() => const VeihcleTrackerStopsState();
+  factory VehicleTrackerStopsState.initial() =>
+      const VehicleTrackerStopsState();
 }

@@ -5,10 +5,12 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
-import 'package:mash/mash/data/remote/models/request/get_user_details_request.dart';
+import 'package:mash/mash/data/remote/request/get_user_details_request.dart';
+import 'package:mash/mash/data/remote/request/update_profile_request.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/get_siblings_use_case.dart';
+import 'package:mash/mash/domain/use_cases/profile/update_profile_use_case.dart';
 
 import '../../../../domain/entities/profile/student_entity.dart';
 import '../../../../domain/use_cases/profile/get_user_details_use_case.dart';
@@ -69,6 +71,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ///use case
 
   final getSiblingsUseCase = getIt<GetSiblingsUseCase>();
+  final updateProfileUseCase = getIt<UpdateProfileUseCase>();
   final getLoginInfoUseCase = getIt<GetUserInfoUseCase>();
   final getUserDetailUseCase = getIt<GetUserDetailsUseCase>();
 

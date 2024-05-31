@@ -1,8 +1,10 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/connection_checker.dart';
 import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/models/request/role_menu_request.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/digital_library_request.dart';
+import 'package:mash/mash/data/remote/request/role_menu_request.dart';
+import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart';
 import 'package:mash/mash/domain/entities/dashboard/role_menu_entity.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
@@ -48,5 +50,11 @@ class DashBoardRepoImpl implements DashBoardRepository {
   @override
   Future<List<RoleMenuEntity>> getRolemenuItems(RoleMenuRequest params) async {
     return await dashBoardDataSource.getRolemenuItems(params);
+  }
+
+  @override
+  Future<List<DigitalLibraryEntity>> getDigitalLibrary(
+      DigitalLibraryRequest request) {
+    return dashBoardDataSource.getDigitalLibrary(request);
   }
 }

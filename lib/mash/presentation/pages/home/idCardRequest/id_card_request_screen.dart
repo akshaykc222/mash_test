@@ -59,7 +59,7 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titleText(AppStrings.studentName),
-          HelperClasses.getSelectedStudent(context),
+          HelperClasses.getSelectedStudent(context,false),
           titleText(AppStrings.request),
           BlocConsumer<IdRequestBloc, IdRequestState>(
             listener: (context, state) {

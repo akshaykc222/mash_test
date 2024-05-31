@@ -58,6 +58,7 @@ import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
@@ -117,7 +118,8 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router =
+      GoRouter(initialLocation: AppPages.examTimetableScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,

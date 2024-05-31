@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 
 import '../../../core/response_classify.dart';
-import '../manager/bloc/profile/profile_bloc.dart';
+import '../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../pages/dashboard/parent/widget/student_profile_widget.dart';
 import '../widgets/common_bottom_sheet.dart';
 import '../widgets/shimmers/custom_shimmer_widget.dart';
@@ -47,7 +47,7 @@ class HelperClasses {
     );
   }
 
-  static Widget getSelectedStudent(BuildContext context) {
+  static Widget getSelectedStudent(BuildContext context,bool dontPadd) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       buildWhen: (previous, current) {
         if (previous.selectedSibling != current.selectedSibling) {
@@ -72,6 +72,7 @@ class HelperClasses {
                       HelperClasses.showStudentSwitchDialog(context);
                     },
                     entity: state.selectedSibling!,
+          dontPadd: dontPadd,
                   );
       },
     );

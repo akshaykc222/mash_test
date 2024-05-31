@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
-import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
@@ -10,7 +10,7 @@ import 'package:mash/mash/domain/entities/syllabus/syllabus_term_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
 import '../../domain/entities/academic/division_details_entity.dart';
-import '../remote/models/request/academic_comp_id_request.dart';
+import '../remote/request/academic_comp_id_request.dart';
 
 @LazySingleton(as: AcademicRepository)
 @injectable

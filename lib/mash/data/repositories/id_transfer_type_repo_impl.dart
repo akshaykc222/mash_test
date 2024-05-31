@@ -3,7 +3,8 @@
 
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/id_request_datasource.dart';
-import 'package:mash/mash/data/remote/models/request/transfer_request_type_request.dart';
+import 'package:mash/mash/data/remote/request/post_id_request.dart';
+import 'package:mash/mash/data/remote/request/transfer_request_type_request.dart';
 import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
 
 
@@ -21,5 +22,13 @@ class IdRequestTypeRepoImpl extends IdRequestRepository{
   Future<List<IdRequestEntity>> getIdRequestType(IdRequest request) {
     return dataSource.getIdRequestType(request);
   }
+
+  @override
+  Future<void> postidRequest(PostIdRequest request) {
+
+    throw UnimplementedError();
+  }
+
+
 
 }

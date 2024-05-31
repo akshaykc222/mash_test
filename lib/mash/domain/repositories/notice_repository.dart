@@ -1,6 +1,6 @@
-import 'package:mash/mash/data/remote/models/request/notice_all_request.dart';
+import 'package:mash/mash/data/remote/request/notice_all_request.dart';
 
-import '../../data/remote/models/request/notice_pop_up_request.dart';
+import '../../data/remote/request/notice_pop_up_request.dart';
 import '../entities/notice/notice_all_entity.dart';
 import '../entities/notice/notice_pop_up_entity.dart';
 

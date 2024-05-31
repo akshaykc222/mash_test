@@ -1,6 +1,12 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
+  static const baseUrlVendor = "https://app.avlview.com/";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
+  static const getVehicleLocation = "api/getvehiclecurrentlocation";
+  static const digitalLibrary =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibraryAll";
+  static const updateProfile =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/updateStudentProfile";
   static const wordAndThougthofTheDay =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getWordThought";
   static const noticePopUp =
@@ -50,9 +56,18 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
   static const teacherRatingQuestions =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
-  static const teacherRatingInsert =  "UATRESTAPI/MashFlutterRestAPI/api/user/insertTeacher_Ratings";
+  static const teacherRatingInsert =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/insertTeacher_Ratings";
 
   // id module
   static const idRequestType =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getRequestType";
+  static const idRequestPost =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/insertRfidSubmitRequest";
+
+  // offline exam
+  static const offlineExamTerms =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
+  static const offlineExamTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getOfflineTimeTableList";
 }

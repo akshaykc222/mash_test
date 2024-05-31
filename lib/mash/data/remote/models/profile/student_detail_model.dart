@@ -90,6 +90,49 @@ class StudentDetailModel extends StudentDetailEntity {
         totalHolidays: json['TOTAL_HODIDAYS']);
   }
 
+  factory StudentDetailModel.fromEntity(StudentDetailEntity json) {
+    return StudentDetailModel(
+      userType: json.userType,
+      academicId: json.academicId,
+      usrId: json.usrId,
+      studentId: json.studentId,
+      admissionNo: json.admissionNo,
+      studentName: json.studentName,
+      rollNo: json.rollNo,
+      compId: json.compId,
+      roleId: json.roleId,
+      activeStatus: json.activeStatus,
+      profilePhoto: json.profilePhoto,
+      email: json.email,
+      mobile: json.mobile,
+      parentId: json.parentId,
+      classId: json.classId,
+      className: json.className,
+      divisionId: json.divisionId,
+      divisionName: json.divisionName,
+      medium: json.medium,
+      classTeacherId: json.classTeacherId,
+      classTeacher: json.classTeacher,
+      dob: json.dob,
+      motherName: json.motherName,
+      fatherName: json.fatherName,
+      fatherMobile: json.fatherMobile,
+      motherMobile: json.motherMobile,
+      fatherEmail: json.fatherEmail,
+      motherEmail: json.motherEmail,
+      perAddress1: json.perAddress1,
+      localGuardianName: json.localGuardianName,
+      callFromTime: json.callFromTime,
+      callToTime: json.callToTime,
+      isCall: json.isCall,
+      totWorkingDays: json.totWorkingDays,
+      totalPresent: json.totalPresent,
+      totalAbsent: json.totalAbsent,
+      halfDays: json.halfDays,
+      attPercen: json.attPercen,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'USER_TYPE': userType,

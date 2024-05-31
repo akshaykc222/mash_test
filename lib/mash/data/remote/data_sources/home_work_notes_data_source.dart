@@ -3,9 +3,9 @@ import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/models/home_work/home_work_model.dart';
 import 'package:mash/mash/data/remote/models/notes/notes_details_model.dart';
 import 'package:mash/mash/data/remote/models/notes/notes_report_model.dart';
+import 'package:mash/mash/data/remote/request/home_work_report_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import '../../../domain/entities/notes/notes_report_entity.dart';
-import '../models/request/home_work_report_request.dart';
 
 abstract interface class HomeWorkNotesRemoteDataSource {
   Future<List<HomeWorkReportModel>> getHomeWorkReports(

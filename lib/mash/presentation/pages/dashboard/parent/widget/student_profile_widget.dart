@@ -4,21 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 
+import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 
 class StudentProfileWidget extends StatelessWidget {
   final bool? isOnList;
   final StudentEntity entity;
+  final bool? dontPadd;
 
   final VoidCallback onTap;
 
   const StudentProfileWidget(
-      {super.key, required this.onTap, this.isOnList, required this.entity});
+      {super.key, required this.onTap, this.isOnList, required this.entity,this.dontPadd=true});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class StudentProfileWidget extends StatelessWidget {
                 onTap: onTap,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding:  EdgeInsets.symmetric( horizontal: dontPadd == true ? 0: 20),
                   child: Card(
                     elevation: 2,
                     surfaceTintColor: AppColors.primaryColor,

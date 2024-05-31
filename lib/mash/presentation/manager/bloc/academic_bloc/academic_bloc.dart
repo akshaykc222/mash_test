@@ -1,12 +1,12 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
+// import 'package:mash/mash/domain/entities/academic/selected_date_range_model.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_subject_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.dart';
@@ -50,7 +50,6 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     on<_ChangeSyllabusTermIndex>(_changeSyllabusTermIndex);
     on<_SelectSubjectEvent>(_selectSubjectEvent);
     on<_SelectDateRange>(_selectDateRange);
-    on<_DisposeEvent>(_disposeEvent);
   }
 
   _getClassDetails(
@@ -190,14 +189,14 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   _selectDateRange(_SelectDateRange event, Emitter<AcademicState> emit) {
     try {
       final date = DateFormat('dd/MM/yyyy').format(event.date).toString();
-      final selectedDate = SelectedRangeModel(
+      final _selectedDate = SelectedRangeModel(
           state.selectedRange?.fromDate, state.selectedRange?.toDate);
       if (event.dateType == AppStrings.fromDate) {
         emit(state.copyWith(
-            selectedRange: selectedDate.copyWith(fromDate: date)));
+            selectedRange: _selectedDate.copyWith(fromDate: date)));
       } else {
         emit(state.copyWith(
-            selectedRange: selectedDate.copyWith(toDate: date)));
+            selectedRange: _selectedDate.copyWith(toDate: date)));
       }
     } catch (e) {
       prettyPrint('[error]==== $e');

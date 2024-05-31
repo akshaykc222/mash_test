@@ -3,7 +3,7 @@ import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/domain/entities/notice/notice_pop_up_entity.dart';
 import 'package:mash/mash/domain/repositories/notice_repository.dart';
 
-import '../../../data/remote/models/request/notice_pop_up_request.dart';
+import '../../../data/remote/request/notice_pop_up_request.dart';
 
 @injectable
 class GetNoticeBoardPopUp

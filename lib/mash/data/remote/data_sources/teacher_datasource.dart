@@ -1,9 +1,9 @@
 
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
-import 'package:mash/mash/data/remote/models/request/teacher_post_rating_request.dart';
-import 'package:mash/mash/data/remote/models/request/teacher_rating_questions_request.dart';
-import 'package:mash/mash/data/remote/models/request/teacher_rating_request.dart';
+import 'package:mash/mash/data/remote/request/teacher_post_rating_request.dart';
+import 'package:mash/mash/data/remote/request/teacher_rating_questions_request.dart';
+import 'package:mash/mash/data/remote/request/teacher_rating_request.dart';
 import 'package:mash/mash/data/remote/models/teacherRating/teacher_rating_model.dart';
 import 'package:mash/mash/data/remote/models/teacherRating/teacher_rating_questions.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
