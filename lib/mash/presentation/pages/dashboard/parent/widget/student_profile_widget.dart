@@ -6,6 +6,7 @@ import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 
 import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_colors.dart';
@@ -66,8 +67,8 @@ class StudentProfileWidget extends StatelessWidget {
                                     CircleAvatar(
                                       radius: 25,
                                       backgroundImage:
-                                          CachedNetworkImageProvider(
-                                              entity.profilePhoto),
+                                          HelperClasses.cachedNetworkImageProvider(
+                                         imageUrl: entity.profilePhoto),
                                     ),
                                     const SizedBox(width: 10),
                                     Flexible(

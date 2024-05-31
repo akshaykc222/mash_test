@@ -99,7 +99,15 @@ class HelperClasses {
       // placeholder: (context, url) => CircularProgressIndicator(),
       errorWidget: (context, url, error) => const Icon(Icons.error_outline),
     );
-  }
 
+  }
+  static cachedNetworkImageProvider(
+      {required String imageUrl,
+        double? height,
+        double? width,
+        BoxFit boxFit = BoxFit.cover}) {
+    return  CachedNetworkImageProvider(
+        imageUrl,
+    );}
   static Widget errorWidget(BuildContext context) => const SizedBox();
 }
