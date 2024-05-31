@@ -69,13 +69,13 @@ class OfflineExamTimeTableBloc
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
       var siblingInfo = await getSiblingsUseCase.call(loginInfo?.compId ?? '');
-      // var response = await getOfflineExamTimeTableUseCase.call(ExamTimeTableRequest(companyId: loginInfo?.compId ?? '', pAcademicId: loginInfo?.academicId ?? '', pKidId:siblingInfo[0].userId ?? '', termId:event.termId));
-      var response = await getOfflineExamTimeTableUseCase.call(
+       var response = await getOfflineExamTimeTableUseCase.call(ExamTimeTableRequest(companyId: loginInfo?.compId ?? '', pAcademicId: loginInfo?.academicId ?? '', pKidId:siblingInfo[0].userId ?? '', termId:event.termId));
+      /*var response = await getOfflineExamTimeTableUseCase.call(
           ExamTimeTableRequest(
               companyId: '200001',
               pAcademicId: '87',
               pKidId: 'MGS1000152',
-              termId: "773"));
+              termId: "773"));*/
       emit(state.copyWith(
           getOfflineExamTimeTable: ResponseClassify.completed(response)));
     } catch (e) {

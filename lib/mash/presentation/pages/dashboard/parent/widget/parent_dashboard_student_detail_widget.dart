@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 
 import '../../../../../../core/response_classify.dart';
 import '../../../../../domain/entities/profile/student_detail_entity.dart';
