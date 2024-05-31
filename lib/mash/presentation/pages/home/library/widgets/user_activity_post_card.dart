@@ -12,13 +12,13 @@ class PostCard extends StatelessWidget {
   final String description;
 
   const PostCard({
-    Key? key,
+    super.key,
     required this.profileImage,
     required this.name,
     required this.postedTime,
     required this.postImage,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class PostCard extends StatelessWidget {
               children: [
                 Text(postedTime),
                 spacerWidth6,
-                Icon(
+                const Icon(
                   Icons.language,
                   size: 13,
                 )
@@ -65,7 +65,7 @@ class PostCard extends StatelessWidget {
                     color: Colors.grey,
                   );
                 } else if (snapshot.hasError) {
-                  return Text('Error loading image');
+                  return const Text('Error loading image');
                 } else {
                   Size imageSize = snapshot.data!;
                   double aspectRatio = imageSize.width / imageSize.height;
@@ -82,7 +82,7 @@ class PostCard extends StatelessWidget {
           ),
           Text(
             description,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
           spacer10
         ],
@@ -94,7 +94,7 @@ class PostCard extends StatelessWidget {
 Future<Size> getImageSize(String url) async {
   Completer<Size> completer = Completer();
   Image image = Image.network(url);
-  image.image.resolve(ImageConfiguration()).addListener(
+  image.image.resolve(const ImageConfiguration()).addListener(
     ImageStreamListener((ImageInfo info, bool _) {
       completer.complete(Size(
         info.image.width.toDouble(),

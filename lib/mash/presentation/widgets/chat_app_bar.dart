@@ -130,7 +130,7 @@ AppBar chatAppBarNew(BuildContext context, {Function? ontTap}) {
                 if (ontTap != null)
                   InkWell(
                       onTap: () => ontTap(),
-                      child: Icon(
+                      child: const Icon(
                         Icons.settings,
                         color: Colors.black54,
                       )),

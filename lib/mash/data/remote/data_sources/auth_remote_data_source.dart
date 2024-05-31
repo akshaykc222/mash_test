@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
-import 'package:mash/core/custom_exception.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 

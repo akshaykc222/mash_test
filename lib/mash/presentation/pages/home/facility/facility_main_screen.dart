@@ -26,7 +26,7 @@ class FacilityMainScreen extends StatelessWidget {
             ],
           ),
         ),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: const FacilityTabs(),
       ),
     );

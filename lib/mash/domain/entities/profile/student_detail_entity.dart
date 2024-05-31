@@ -1,44 +1,44 @@
 import 'package:equatable/equatable.dart';
 
 class StudentDetailEntity extends Equatable {
-  final String userType;
-  final String academicId;
-  final String usrId;
-  final String studentId;
-  final String admissionNo;
-  final String studentName;
-  final String rollNo;
-  final String compId;
-  final String roleId;
-  final String activeStatus;
-  final String profilePhoto;
-  final String email;
-  final String mobile;
-  final String parentId;
-  final String classId;
-  final String className;
-  final String divisionId;
-  final String divisionName;
-  final String medium;
-  final String classTeacherId;
-  final String classTeacher;
-  final String dob;
-  final String motherName;
-  final String fatherName;
-  final String fatherMobile;
-  final String motherMobile;
-  final String fatherEmail;
-  final String motherEmail;
-  final String perAddress1;
-  final String localGuardianName;
-  final String callFromTime;
-  final String callToTime;
-  final String isCall;
-  final String totWorkingDays;
-  final String totalPresent;
-  final String totalAbsent;
-  final String halfDays;
-  final String attPercen;
+  final String? userType;
+  final String? academicId;
+  final String? usrId;
+  final String? studentId;
+  final String? admissionNo;
+  final String? studentName;
+  final String? rollNo;
+  final String? compId;
+  final String? roleId;
+  final String? activeStatus;
+  final String? profilePhoto;
+  final String? email;
+  final String? mobile;
+  final String? parentId;
+  final String? classId;
+  final String? className;
+  final String? divisionId;
+  final String? divisionName;
+  final String? medium;
+  final String? classTeacherId;
+  final String? classTeacher;
+  final String? dob;
+  final String? motherName;
+  final String? fatherName;
+  final String? fatherMobile;
+  final String? motherMobile;
+  final String? fatherEmail;
+  final String? motherEmail;
+  final String? perAddress1;
+  final String? localGuardianName;
+  final String? callFromTime;
+  final String? callToTime;
+  final String? isCall;
+  final String? totWorkingDays;
+  final String? totalPresent;
+  final String? totalAbsent;
+  final String? halfDays;
+  final String? attPercen;
 
   const StudentDetailEntity({
     required this.userType,
@@ -82,6 +82,5 @@ class StudentDetailEntity extends Equatable {
   });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [studentId];
 }

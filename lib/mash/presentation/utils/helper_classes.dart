@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
-import 'package:mash/mash/presentation/utils/size_utility.dart';
 
 import '../../../core/response_classify.dart';
 import '../manager/bloc/profile/profile_bloc.dart';

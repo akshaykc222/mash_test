@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../data/remote/models/request/academic_comp_id_request.dart';
 import '../../../../../domain/entities/dashboard/word_thought_entity.dart';
 import '../../../../manager/bloc/dashboard_bloc/dashboard_bloc.dart';
 import '../../../../utils/app_assets.dart';

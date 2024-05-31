@@ -12,7 +12,7 @@ class ViewYearlyPlanListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.viewYearDetails),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: viewYearDetails(context),
     );
   }

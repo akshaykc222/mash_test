@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
@@ -9,57 +8,83 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
-import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
-
+import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
-import '../../../widgets/drawer_widget.dart';
+import 'widget/parent_dashboard_student_detail_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {
   const ParentDashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       drawer: DrawerWidget(),
       body: CustomScrollView(
         slivers: [
-          _header(context),
-          _body(context),
+          _Header(),
+          _Body(),
         ],
       ),
     );
   }
+}
 
-  _body(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: Column(
+class _Body extends StatelessWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Stack(
         children: [
-          ParentDashboardTopSection(),
-          ParentDashboardLastSection(),
+          Container(
+            height: 20,
+            width: 400,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: AppColors.primaryColor,
+              ),
+              color: AppColors.primaryColor,
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(16),
+              ),
+            ),
+          ),
+          const Column(
+            children: [
+              spacer20,
+              ParentDashboardTopSection(),
+              ParentDashboardLastSection(),
+            ],
+          ),
         ],
       ),
     );
   }
+}
 
-  Widget _header(BuildContext context) {
+class _Header extends StatelessWidget {
+  const _Header();
+  @override
+  Widget build(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.white,
       pinned: true,
-      expandedHeight: 200.0,
+      expandedHeight: 210.0,
       actions: [
-        _appBarIconWidget(
-          AppAssets.noticeIcon,
+        _AppBarIconWidget(
+          img: AppAssets.noticeIcon,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.noticeBoardMainScreen);
           },
         ),
-        spacerWidth10,
-        _appBarIconWidget(
-          AppAssets.notificationIcon,
+        spacerWidth15,
+        _AppBarIconWidget(
+          img: AppAssets.notificationIcon,
           onTap: () {},
         ),
         spacerWidth20,
@@ -71,47 +96,53 @@ class ParentDashBoard extends StatelessWidget {
                 current.getUserDetail?.status;
           },
           builder: (context, state) {
-            return state.getUserDetail?.status == Status.LOADING
-                ? const CustomShimmerWidget(
-                    height: 200,
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                      gradient: AppColors.primaryLinearGradient,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                          top: SizeConfig.height(80),
-                          left: SizeConfig.height(20)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                              child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: HelperClasses.cachedNetworkImage(
-                              height: 200,
-                              imageUrl:
-                                  state.getUserDetail?.data?.profilePhoto ?? "",
-                            ),
-                          ))
-                        ],
-                      ),
-                    ),
-                  );
+            final user = state.getUserDetail?.data;
+            return Container(
+              width: SizeUtility(context).width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: const AssetImage(AppAssets.dashboardBg),
+                  opacity: 0.5,
+                  colorFilter: ColorFilter.mode(
+                    AppColors.primaryColor,
+                    BlendMode.multiply,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+                gradient: AppColors.primaryLinearGradient,
+              ),
+              child: StudenProfileWidget(
+                user: user,
+                state: state,
+              ),
+            );
           },
         ),
       ),
     );
   }
+}
 
-  Widget _appBarIconWidget(String img, {required VoidCallback onTap}) {
+class _AppBarIconWidget extends StatelessWidget {
+  final String img;
+  final VoidCallback onTap;
+
+  const _AppBarIconWidget({required this.img, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: onTap,
-      child: CircleAvatar(
-        radius: 15,
-        backgroundColor: AppColors.black.withOpacity(0.4),
+      child: Container(
+        padding: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+            color: AppColors.white.withOpacity(0.2),
+            shape: BoxShape.circle,
+            border: Border.all(
+              width: 0.3,
+              color: AppColors.white,
+            )),
         child: assetFromSvg(img, height: 20, color: AppColors.white),
       ),
     );

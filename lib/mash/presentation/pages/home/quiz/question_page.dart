@@ -66,7 +66,7 @@ class _QuizQuestionPageState extends State<QuizQuestionPage> {
   questionsBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Container(
-      decoration: BoxDecoration(gradient: AppColors.quizBgGradient),
+      decoration: const BoxDecoration(gradient: AppColors.quizBgGradient),
       height: size.height,
       width: size.width,
       child: Stack(

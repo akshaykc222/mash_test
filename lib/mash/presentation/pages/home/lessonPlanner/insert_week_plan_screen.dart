@@ -53,7 +53,7 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.insertWeekPlans),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: insertWeekPlanBody(context),
     );
   }
@@ -189,7 +189,7 @@ class _InsertWeekPlanScreenState extends State<InsertWeekPlanScreen> {
   dateSelection(TextEditingController controller) {
     return GestureDetector(
       onTap: () => _selectDate(context, controller),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         // padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Card(

@@ -10,7 +10,7 @@ class AcademicDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'DYNAMIC'),
       body: academicDetailBody(),
     );

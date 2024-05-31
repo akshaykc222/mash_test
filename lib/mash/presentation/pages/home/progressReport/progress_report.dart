@@ -19,7 +19,7 @@ class _ProgressReportState extends State<ProgressReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'PROGRESS REPORT'),
       body: progressReportBody(context),
     );

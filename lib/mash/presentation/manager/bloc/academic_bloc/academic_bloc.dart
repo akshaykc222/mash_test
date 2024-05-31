@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -191,14 +190,14 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   _selectDateRange(_SelectDateRange event, Emitter<AcademicState> emit) {
     try {
       final date = DateFormat('dd/MM/yyyy').format(event.date).toString();
-      final _selectedDate = SelectedRangeModel(
+      final selectedDate = SelectedRangeModel(
           state.selectedRange?.fromDate, state.selectedRange?.toDate);
       if (event.dateType == AppStrings.fromDate) {
         emit(state.copyWith(
-            selectedRange: _selectedDate.copyWith(fromDate: date)));
+            selectedRange: selectedDate.copyWith(fromDate: date)));
       } else {
         emit(state.copyWith(
-            selectedRange: _selectedDate.copyWith(toDate: date)));
+            selectedRange: selectedDate.copyWith(toDate: date)));
       }
     } catch (e) {
       prettyPrint('[error]==== $e');

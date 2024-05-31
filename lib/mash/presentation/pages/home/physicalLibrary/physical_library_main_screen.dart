@@ -17,7 +17,7 @@ class PhysicalLibraryMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.physicalLibrary),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: const PhysicalLibraryBody(),
     );
   }
@@ -136,7 +136,7 @@ class PhysicalLibraryBody extends StatelessWidget {
                   childAspectRatio: 0.8,
                 ),
                 itemBuilder: (context, index) {
-                  return BookDetailCard();
+                  return const BookDetailCard();
                 }),
           )
         ],

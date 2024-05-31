@@ -22,7 +22,7 @@ class VehicleTrackerMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.vehicleTracker),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: const VehicleTrackerBody(),
     );
   }
@@ -54,8 +54,9 @@ class _VehicleTrackerBodyState extends State<VehicleTrackerBody> {
             destinationLocation.latitude, destinationLocation.longitude));
 
     if (result.points.isNotEmpty) {
-      result.points.forEach((PointLatLng point) =>
-          polylineCoordinates.add(LatLng(point.latitude, point.longitude)));
+      for (var point in result.points) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      }
     }
   }
 
@@ -86,7 +87,7 @@ class _VehicleTrackerBodyState extends State<VehicleTrackerBody> {
           return Stack(
             children: [
               GoogleMap(
-                padding: EdgeInsets.only(bottom: 80),
+                padding: const EdgeInsets.only(bottom: 80),
                 initialCameraPosition:
                     const CameraPosition(target: sourceLocation, zoom: 14.5),
                 onMapCreated: (GoogleMapController controller) {

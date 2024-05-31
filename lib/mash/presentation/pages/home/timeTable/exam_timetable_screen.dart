@@ -22,7 +22,7 @@ class _ExamTimeTableScreenState extends State<ExamTimeTableScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.examTimeTable),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: const SyllabusBody(),
     );
   }

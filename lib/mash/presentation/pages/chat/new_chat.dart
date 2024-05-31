@@ -27,7 +27,7 @@ Future<void> main() async {
   configureDependencies();
   runApp(BlocProvider(
     create: (context) => ChatBloc(),
-    child: MaterialApp(
+    child: const MaterialApp(
       home: NewChat(),
     ),
   ));

@@ -22,7 +22,7 @@ class _ViewWeekPlanScreenState extends State<ViewWeekPlanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.viewWeekPlans),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: viewWeekPlanBody(context),
     );
   }

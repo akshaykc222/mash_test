@@ -14,8 +14,8 @@ class ExamDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.examDetails),
-      endDrawer: DrawerWidget(),
-      body: isRegistered ? RegisteredExamDetailBody() : ExamDetailBody(),
+      endDrawer: const DrawerWidget(),
+      body: isRegistered ? const RegisteredExamDetailBody() : ExamDetailBody(),
     );
   }
 }

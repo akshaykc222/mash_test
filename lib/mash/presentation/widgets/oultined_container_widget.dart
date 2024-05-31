@@ -6,19 +6,20 @@ class OutlinedContainerWidget extends StatelessWidget {
   final Widget child;
   final double height;
   final double width;
-  const OutlinedContainerWidget({
-    super.key,
-    required this.child,
-    required this.height,
-    required this.width,
-  });
+  final double? padding;
+  const OutlinedContainerWidget(
+      {super.key,
+      required this.child,
+      required this.height,
+      required this.width,
+      this.padding = 12});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(padding!),
       decoration: BoxDecoration(
         color: AppColors.greyClr200,
         shape: BoxShape.circle,
