@@ -6,10 +6,12 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/data/remote/request/post_id_request.dart';
 import 'package:mash/mash/data/remote/request/transfer_request_type_request.dart';
 import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/id_request/id_request_type_usecase.dart';
+import 'package:mash/mash/domain/use_cases/id_request/post_id_request.dart';
 
 
 
@@ -25,6 +27,7 @@ class IdRequestBloc extends Bloc<IdRequestEvent, IdRequestState> {
 
     });
      on<_GetIdRequest>(_getTransferRequestType);
+     on<_IdRequestPost>(_postIdRequest);
   }
 
    FutureOr<void> _getTransferRequestType(_GetIdRequest event, Emitter<IdRequestState> emit) async {
@@ -42,4 +45,16 @@ class IdRequestBloc extends Bloc<IdRequestEvent, IdRequestState> {
   final GetUserInfoUseCase getUserInfoUseCase = getIt<GetUserInfoUseCase>();
 
   static IdRequestBloc get(context) => BlocProvider.of(context);
+
+  Future<FutureOr<void>> _postIdRequest(event, Emitter<IdRequestState> emit) async {
+    emit(state.copyWith(postIdRequest: ResponseClassify.loading()));
+    try{
+      var loginInfo = await getUserInfoUseCase.call(NoParams());
+      // var response = await PostIdRequestUseCase.call(PostIdRequest(pUserId: pUserId, pReqId: pReqId, pCreatedBy: pCreatedBy, compId: compId, remarks: remarks));
+      // emit(state.copyWith(postIdRequest: ResponseClassify.completed(response)));
+    }catch(e){
+      emit(state.copyWith(postIdRequest: ResponseClassify.error(e)));
+    }
+  }
 }
+ 

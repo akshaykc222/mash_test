@@ -13,10 +13,10 @@ import '../../domain/repositories/id_request_repository.dart';
 
 @LazySingleton(as: IdRequestRepository)
 @injectable
-class IdRequestTypeRepoImpl extends IdRequestRepository{
+class IdRequestRepoImpl extends IdRequestRepository{
   final IdRequestTypeDataSource dataSource;
 
-  IdRequestTypeRepoImpl( this.dataSource);
+  IdRequestRepoImpl( this.dataSource);
 
   @override
   Future<List<IdRequestEntity>> getIdRequestType(IdRequest request) {
@@ -24,9 +24,8 @@ class IdRequestTypeRepoImpl extends IdRequestRepository{
   }
 
   @override
-  Future<void> postidRequest(PostIdRequest request) {
-
-    throw UnimplementedError();
+  Future<void> postIdRequest(PostIdRequest request) {
+    return dataSource.postIdRequest(request);
   }
 
 

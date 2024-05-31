@@ -20,18 +20,21 @@ mixin _$IdRequestEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getTransferRequestEvent,
+    required TResult Function() idPostRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getTransferRequestEvent,
+    TResult? Function()? idPostRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getTransferRequestEvent,
+    TResult Function()? idPostRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$IdRequestEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetIdRequest value) getTransferRequestEvent,
+    required TResult Function(_IdRequestPost value) idPostRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult? Function(_IdRequestPost value)? idPostRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult Function(_IdRequestPost value)? idPostRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getTransferRequestEvent,
+    required TResult Function() idPostRequest,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getTransferRequestEvent,
+    TResult? Function()? idPostRequest,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getTransferRequestEvent,
+    TResult Function()? idPostRequest,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetIdRequest value) getTransferRequestEvent,
+    required TResult Function(_IdRequestPost value) idPostRequest,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult? Function(_IdRequestPost value)? idPostRequest,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult Function(_IdRequestPost value)? idPostRequest,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +228,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getTransferRequestEvent,
+    required TResult Function() idPostRequest,
   }) {
     return getTransferRequestEvent();
   }
@@ -225,6 +238,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getTransferRequestEvent,
+    TResult? Function()? idPostRequest,
   }) {
     return getTransferRequestEvent?.call();
   }
@@ -234,6 +248,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getTransferRequestEvent,
+    TResult Function()? idPostRequest,
     required TResult orElse(),
   }) {
     if (getTransferRequestEvent != null) {
@@ -247,6 +262,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetIdRequest value) getTransferRequestEvent,
+    required TResult Function(_IdRequestPost value) idPostRequest,
   }) {
     return getTransferRequestEvent(this);
   }
@@ -256,6 +272,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult? Function(_IdRequestPost value)? idPostRequest,
   }) {
     return getTransferRequestEvent?.call(this);
   }
@@ -265,6 +282,7 @@ class _$GetIdRequestImpl implements _GetIdRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult Function(_IdRequestPost value)? idPostRequest,
     required TResult orElse(),
   }) {
     if (getTransferRequestEvent != null) {
@@ -279,8 +297,118 @@ abstract class _GetIdRequest implements IdRequestEvent {
 }
 
 /// @nodoc
+abstract class _$$IdRequestPostImplCopyWith<$Res> {
+  factory _$$IdRequestPostImplCopyWith(
+          _$IdRequestPostImpl value, $Res Function(_$IdRequestPostImpl) then) =
+      __$$IdRequestPostImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$IdRequestPostImplCopyWithImpl<$Res>
+    extends _$IdRequestEventCopyWithImpl<$Res, _$IdRequestPostImpl>
+    implements _$$IdRequestPostImplCopyWith<$Res> {
+  __$$IdRequestPostImplCopyWithImpl(
+      _$IdRequestPostImpl _value, $Res Function(_$IdRequestPostImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$IdRequestPostImpl implements _IdRequestPost {
+  const _$IdRequestPostImpl();
+
+  @override
+  String toString() {
+    return 'IdRequestEvent.idPostRequest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$IdRequestPostImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getTransferRequestEvent,
+    required TResult Function() idPostRequest,
+  }) {
+    return idPostRequest();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getTransferRequestEvent,
+    TResult? Function()? idPostRequest,
+  }) {
+    return idPostRequest?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getTransferRequestEvent,
+    TResult Function()? idPostRequest,
+    required TResult orElse(),
+  }) {
+    if (idPostRequest != null) {
+      return idPostRequest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetIdRequest value) getTransferRequestEvent,
+    required TResult Function(_IdRequestPost value) idPostRequest,
+  }) {
+    return idPostRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult? Function(_IdRequestPost value)? idPostRequest,
+  }) {
+    return idPostRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetIdRequest value)? getTransferRequestEvent,
+    TResult Function(_IdRequestPost value)? idPostRequest,
+    required TResult orElse(),
+  }) {
+    if (idPostRequest != null) {
+      return idPostRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IdRequestPost implements IdRequestEvent {
+  const factory _IdRequestPost() = _$IdRequestPostImpl;
+}
+
+/// @nodoc
 mixin _$IdRequestState {
   ResponseClassify<List<IdRequestEntity>>? get getIdRequestType =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<void>? get postIdRequest =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -294,7 +422,9 @@ abstract class $IdRequestStateCopyWith<$Res> {
           IdRequestState value, $Res Function(IdRequestState) then) =
       _$IdRequestStateCopyWithImpl<$Res, IdRequestState>;
   @useResult
-  $Res call({ResponseClassify<List<IdRequestEntity>>? getIdRequestType});
+  $Res call(
+      {ResponseClassify<List<IdRequestEntity>>? getIdRequestType,
+      ResponseClassify<void>? postIdRequest});
 }
 
 /// @nodoc
@@ -311,12 +441,17 @@ class _$IdRequestStateCopyWithImpl<$Res, $Val extends IdRequestState>
   @override
   $Res call({
     Object? getIdRequestType = freezed,
+    Object? postIdRequest = freezed,
   }) {
     return _then(_value.copyWith(
       getIdRequestType: freezed == getIdRequestType
           ? _value.getIdRequestType
           : getIdRequestType // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<IdRequestEntity>>?,
+      postIdRequest: freezed == postIdRequest
+          ? _value.postIdRequest
+          : postIdRequest // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
     ) as $Val);
   }
 }
@@ -329,7 +464,9 @@ abstract class _$$IdRequestStateImplCopyWith<$Res>
       __$$IdRequestStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<List<IdRequestEntity>>? getIdRequestType});
+  $Res call(
+      {ResponseClassify<List<IdRequestEntity>>? getIdRequestType,
+      ResponseClassify<void>? postIdRequest});
 }
 
 /// @nodoc
@@ -344,12 +481,17 @@ class __$$IdRequestStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? getIdRequestType = freezed,
+    Object? postIdRequest = freezed,
   }) {
     return _then(_$IdRequestStateImpl(
       getIdRequestType: freezed == getIdRequestType
           ? _value.getIdRequestType
           : getIdRequestType // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<IdRequestEntity>>?,
+      postIdRequest: freezed == postIdRequest
+          ? _value.postIdRequest
+          : postIdRequest // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
     ));
   }
 }
@@ -357,14 +499,16 @@ class __$$IdRequestStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$IdRequestStateImpl implements _IdRequestState {
-  const _$IdRequestStateImpl({this.getIdRequestType});
+  const _$IdRequestStateImpl({this.getIdRequestType, this.postIdRequest});
 
   @override
   final ResponseClassify<List<IdRequestEntity>>? getIdRequestType;
+  @override
+  final ResponseClassify<void>? postIdRequest;
 
   @override
   String toString() {
-    return 'IdRequestState(getIdRequestType: $getIdRequestType)';
+    return 'IdRequestState(getIdRequestType: $getIdRequestType, postIdRequest: $postIdRequest)';
   }
 
   @override
@@ -373,11 +517,13 @@ class _$IdRequestStateImpl implements _IdRequestState {
         (other.runtimeType == runtimeType &&
             other is _$IdRequestStateImpl &&
             (identical(other.getIdRequestType, getIdRequestType) ||
-                other.getIdRequestType == getIdRequestType));
+                other.getIdRequestType == getIdRequestType) &&
+            (identical(other.postIdRequest, postIdRequest) ||
+                other.postIdRequest == postIdRequest));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getIdRequestType);
+  int get hashCode => Object.hash(runtimeType, getIdRequestType, postIdRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -389,11 +535,13 @@ class _$IdRequestStateImpl implements _IdRequestState {
 
 abstract class _IdRequestState implements IdRequestState {
   const factory _IdRequestState(
-          {final ResponseClassify<List<IdRequestEntity>>? getIdRequestType}) =
-      _$IdRequestStateImpl;
+      {final ResponseClassify<List<IdRequestEntity>>? getIdRequestType,
+      final ResponseClassify<void>? postIdRequest}) = _$IdRequestStateImpl;
 
   @override
   ResponseClassify<List<IdRequestEntity>>? get getIdRequestType;
+  @override
+  ResponseClassify<void>? get postIdRequest;
   @override
   @JsonKey(ignore: true)
   _$$IdRequestStateImplCopyWith<_$IdRequestStateImpl> get copyWith =>
