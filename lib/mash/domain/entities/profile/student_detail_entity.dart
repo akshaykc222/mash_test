@@ -39,8 +39,13 @@ class StudentDetailEntity extends Equatable {
   final String? totalAbsent;
   final String? halfDays;
   final String? attPercen;
-
+  final String? totalEvents;
+  final String? strength;
+  final String? totalHolidays;
   const StudentDetailEntity({
+    required this.strength,
+    required this.totalHolidays,
+    required this.totalEvents,
     required this.userType,
     required this.academicId,
     required this.usrId,

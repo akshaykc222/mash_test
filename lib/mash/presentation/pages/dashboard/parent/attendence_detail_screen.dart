@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/animated_widget.dart';
 
-class AttendenceDetailScreen extends StatelessWidget {
-  final AttendanceData data = AttendanceData(
-    month: 'Jan',
-    yearlyHoliday: 18,
-    attendancePercentage: 94.0,
-    events: 61,
-    halfDayLeave: 5,
-    leave: 9,
-    present: 175,
-    workingDays: 186,
-  );
+class AttendenceDetailScreen extends StatefulWidget {
+  const AttendenceDetailScreen({super.key});
 
-  AttendenceDetailScreen({super.key});
+  @override
+  State<AttendenceDetailScreen> createState() => _AttendenceDetailScreenState();
+}
 
+class _AttendenceDetailScreenState extends State<AttendenceDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,18 +39,20 @@ class AttendenceDetailScreen extends StatelessWidget {
   }
 
   Widget _body(BuildContext context) {
-    return ListView(
-      children: [
-        _graphWidget(),
-        spacer40,
-        _graphDetailsWidget(),
-        spacer30,
-        _otherWidget(context),
-      ],
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) => ListView(
+        children: [
+          _graphWidget(state.getUserDetail!.data!),
+          spacer40,
+          _graphDetailsWidget(state.getUserDetail!.data!),
+          spacer30,
+          _otherWidget(context, state.getUserDetail!.data!),
+        ],
+      ),
     );
   }
 
-  Widget _otherWidget(BuildContext context) {
+  Widget _otherWidget(BuildContext context, StudentDetailEntity data) {
     return Wrap(
       children: [
         CustomAnimatedWidget(
@@ -79,11 +79,10 @@ class AttendenceDetailScreen extends StatelessWidget {
             crossAxisSpacing: 10,
           ),
           itemBuilder: (context, index) {
-            List<double> datas = [
-              data.events.toDouble(),
-              data.yearlyHoliday.toDouble(),
-              data.leave.toDouble(),
-              data.halfDayLeave.toDouble(),
+            List<String> datas = [
+              data.totalEvents.toString(),
+              data.totalHolidays.toString(),
+              data.strength.toString(),
             ];
             final names = [
               'Events',
@@ -105,7 +104,7 @@ class AttendenceDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _graphDetailsWidget() {
+  Widget _graphDetailsWidget(StudentDetailEntity data) {
     return Wrap(
       children: [
         GridView.builder(
@@ -126,11 +125,11 @@ class AttendenceDetailScreen extends StatelessWidget {
               AppColors.graphColor1,
               AppColors.graphColor4,
             ];
-            List<double> datas = [
-              data.workingDays.toDouble(),
-              data.present.toDouble(),
-              data.leave.toDouble(),
-              data.halfDayLeave.toDouble(),
+            List<String> datas = [
+              data.totWorkingDays.toString(),
+              data.totalPresent.toString(),
+              data.totalAbsent.toString(),
+              data.halfDays.toString(),
             ];
             final names = [
               // 'Workgin Days',
@@ -156,11 +155,11 @@ class AttendenceDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _graphWidget() {
+  Widget _graphWidget(StudentDetailEntity data) {
     return CustomAnimatedWidget(
       type: AnimationTypes.scaleAndFade,
       child: Container(
-        height: 260,
+        height: SizeConfig.height(260),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: const Color.fromARGB(207, 140, 240, 240).withOpacity(0.3),
@@ -175,25 +174,25 @@ class AttendenceDetailScreen extends StatelessWidget {
                   PieChartSectionData(
                     badgePositionPercentageOffset: 4.9,
                     color: AppColors.graphColor3,
-                    value: data.workingDays.toDouble(),
+                    value: double.parse(data.totWorkingDays?.toString() ?? ''),
                     title: '',
                     radius: 40,
                   ),
                   PieChartSectionData(
                     color: AppColors.graphColor2,
-                    value: data.present.toDouble(),
+                    value: double.parse(data.totalPresent?.toString() ?? ''),
                     title: '',
                     radius: 40,
                   ),
                   PieChartSectionData(
                     color: AppColors.graphColor1,
-                    value: data.leave.toDouble(),
+                    value: double.parse(data.totWorkingDays?.toString() ?? ''),
                     title: '',
                     radius: 40,
                   ),
                   PieChartSectionData(
                     color: AppColors.graphColor4,
-                    value: data.halfDayLeave.toDouble(),
+                    value: double.parse(data.halfDays.toString()),
                     title: '',
                     radius: 40,
                   ),
@@ -216,7 +215,7 @@ class AttendenceDetailScreen extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '${data.attendancePercentage}%',
+                    '${data.attPercen}%',
                     style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
@@ -231,7 +230,7 @@ class AttendenceDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _chartDetailsWidget(String name, double data, Color color,
+  Widget _chartDetailsWidget(String name, String data, Color color,
       [bool? isOther = false]) {
     return Padding(
       padding: const EdgeInsets.only(left: 18.0),
@@ -261,7 +260,7 @@ class AttendenceDetailScreen extends StatelessWidget {
                 ),
               ),
               Text(
-                data.toInt().toString(),
+                data,
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -273,26 +272,4 @@ class AttendenceDetailScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class AttendanceData {
-  final String month;
-  final int workingDays;
-  final int events;
-  final int present;
-  final int leave;
-  final int halfDayLeave;
-  final double attendancePercentage;
-  final int yearlyHoliday;
-
-  AttendanceData({
-    required this.yearlyHoliday,
-    required this.month,
-    required this.workingDays,
-    required this.events,
-    required this.present,
-    required this.leave,
-    required this.halfDayLeave,
-    required this.attendancePercentage,
-  });
 }
