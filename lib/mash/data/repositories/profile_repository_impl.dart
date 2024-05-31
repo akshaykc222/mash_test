@@ -1,11 +1,11 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/profile_data_source.dart';
-import 'package:mash/mash/data/remote/models/request/get_user_details_request.dart';
+import 'package:mash/mash/data/remote/request/get_user_details_request.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 import 'package:mash/mash/domain/repositories/profile_repository.dart';
 
-import '../remote/models/request/update_profile_request.dart';
+import '../remote/request/update_profile_request.dart';
 
 @LazySingleton(as: ProfileRepository)
 @injectable

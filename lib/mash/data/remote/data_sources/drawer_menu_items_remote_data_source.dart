@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart';
-import '../models/request/news_board_request.dart';
+import 'package:mash/mash/data/remote/request/news_board_request.dart';
 import '../routes/app_remote_routes.dart';
 
 abstract interface class DrawerMenuItemsRemoteDataSource {

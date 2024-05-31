@@ -2,11 +2,11 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_all_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
-import 'package:mash/mash/data/remote/models/request/notice_all_request.dart';
+import 'package:mash/mash/data/remote/request/notice_all_request.dart';
+import 'package:mash/mash/data/remote/request/notice_pop_up_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/notice/notice_all_entity.dart';
 
-import '../models/request/notice_pop_up_request.dart';
 
 abstract interface class NoticeRemoteDataSource {
   Future<List<NoticePopUpModel>> getNoticePopUp(NoticePopUpRequest params);

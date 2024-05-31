@@ -7,7 +7,7 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
-import 'package:mash/mash/data/remote/models/request/login_request.dart';
+import 'package:mash/mash/data/remote/request/login_request.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/save_user_info_use_case.dart';

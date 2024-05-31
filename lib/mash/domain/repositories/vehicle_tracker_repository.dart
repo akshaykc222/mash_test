@@ -1,4 +1,4 @@
-import 'package:mash/mash/data/remote/models/request/vehicle_tracker_request.dart';
+import 'package:mash/mash/data/remote/request/vehicle_tracker_request.dart';
 
 import '../entities/vehicle_tracker/student_routes_entity.dart';
 import '../entities/vehicle_tracker/vehicle_location_entity.dart';

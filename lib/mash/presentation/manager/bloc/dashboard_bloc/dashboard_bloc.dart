@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/usecase.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart';
@@ -12,7 +12,7 @@ import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/response_classify.dart';
 import '../../../../../di/injector.dart';
-import '../../../../data/remote/models/request/digital_library_request.dart';
+import '../../../../data/remote/request/digital_library_request.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';

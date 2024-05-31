@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/data/remote/request/teacher_post_rating_request.dart';
 import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -15,7 +16,6 @@ import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
-import '../../../../data/remote/models/request/teacher_post_rating_request.dart';
 import '../../../manager/bloc/teacher_bloc/teacher_bloc.dart';
 import '../../../widgets/drawer_widget.dart';
 

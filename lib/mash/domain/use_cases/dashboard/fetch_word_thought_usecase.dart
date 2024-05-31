@@ -3,7 +3,7 @@ import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 
-import '../../../data/remote/models/request/academic_comp_id_request.dart';
+import '../../../data/remote/request/academic_comp_id_request.dart';
 
 @injectable
 @lazySingleton
