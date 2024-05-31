@@ -14,11 +14,12 @@ import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 class StudentProfileWidget extends StatelessWidget {
   final bool? isOnList;
   final StudentEntity entity;
+  final bool? dontPadd;
 
   final VoidCallback onTap;
 
   const StudentProfileWidget(
-      {super.key, required this.onTap, this.isOnList, required this.entity});
+      {super.key, required this.onTap, this.isOnList, required this.entity,this.dontPadd=true});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class StudentProfileWidget extends StatelessWidget {
                 onTap: onTap,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding:  EdgeInsets.symmetric( horizontal: dontPadd == true ? 0: 20),
                   child: Card(
                     elevation: 2,
                     surfaceTintColor: AppColors.primaryColor,

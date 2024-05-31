@@ -111,7 +111,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titles('Student Name'),
-          HelperClasses.getSelectedStudent(context),
+          HelperClasses.getSelectedStudent(context,false),
           titles('Expected Date'),
           dateSelection(),
           titles('Reason for Applying TC'),

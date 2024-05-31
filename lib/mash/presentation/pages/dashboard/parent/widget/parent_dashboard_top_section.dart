@@ -17,7 +17,7 @@ class ParentDashboardTopSection extends StatelessWidget {
     return Column(
       children: [
         spacer20,
-        HelperClasses.getSelectedStudent(context),
+        HelperClasses.getSelectedStudent(context,false),
         const ParentDashboardStudentDetailWidget(),
         _viewCalenderBtn(context),
       ],

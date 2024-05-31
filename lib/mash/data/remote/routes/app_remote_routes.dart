@@ -55,4 +55,10 @@ class AppRemoteRoutes {
   // id module
   static const idRequestType =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getRequestType";
+
+  // offline exam
+  static const offlineExamTerms =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
+  static const offlineExamTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getOfflineTimeTableList";
 }

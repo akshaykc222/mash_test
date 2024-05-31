@@ -47,7 +47,7 @@ class HelperClasses {
     );
   }
 
-  static Widget getSelectedStudent(BuildContext context) {
+  static Widget getSelectedStudent(BuildContext context,bool dontPadd) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       buildWhen: (previous, current) {
         if (previous.selectedSibling != current.selectedSibling) {
@@ -70,6 +70,7 @@ class HelperClasses {
                       HelperClasses.showStudentSwitchDialog(context);
                     },
                     entity: state.selectedSibling!,
+          dontPadd: dontPadd,
                   );
       },
     );
