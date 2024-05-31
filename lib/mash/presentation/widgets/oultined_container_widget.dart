@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 
 import '../utils/app_colors.dart';
 
@@ -12,14 +13,14 @@ class OutlinedContainerWidget extends StatelessWidget {
       required this.child,
       required this.height,
       required this.width,
-      this.padding = 12});
+      this.padding = (12)});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
-      padding: EdgeInsets.all(padding!),
+      padding: EdgeInsets.all(SizeConfig.height(padding!)),
       decoration: BoxDecoration(
         color: AppColors.greyClr200,
         shape: BoxShape.circle,
