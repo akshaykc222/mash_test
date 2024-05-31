@@ -3,6 +3,7 @@ class SelectedRange {
   String? toDate;
 
   SelectedRange([this.fromDate, this.toDate]);
+  // SelectedRange copyWith({})
   SelectedRange copyWith({String? fromDate, String? toDate}) {
     return SelectedRange(
       fromDate ?? this.fromDate,

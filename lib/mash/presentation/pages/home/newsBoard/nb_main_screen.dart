@@ -28,32 +28,28 @@ class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'NEWS BOARD'),
       body: newsBoardBody(context),
     );
   }
 
   newsBoardBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
-    return Container(
-        padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-        height: size.height,
-        width: size.width,
-        child: BlocBuilder<DrawerBloc, DrawerState>(builder: (context, state) {
-          return ListView.separated(
-              itemBuilder: (context, index) {
-                return newsCard(
-                  index,
-                  state,
-                  context,
-                );
-              },
-              separatorBuilder: (context, index) {
-                return spacer10;
-              },
-              itemCount: state.newsBoardResponse.data?.length ?? 0);
-        }));
+    return BlocBuilder<DrawerBloc, DrawerState>(builder: (context, state) {
+      return ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          itemBuilder: (context, index) {
+            return newsCard(
+              index,
+              state,
+              context,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return spacer15;
+          },
+          itemCount: state.newsBoardResponse.data?.length ?? 0);
+    });
   }
 
   newsCard(int index, DrawerState state, BuildContext context) {
@@ -62,19 +58,7 @@ class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
       onTap: () => GoRouter.of(context).pushNamed(
           AppPages.newsBoardDetailScreen,
           extra: data as NewsBoardEntity),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 9,
-                offset: const Offset(0, 0),
-              )
-            ]),
+      child: primaryShadowContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -102,6 +86,10 @@ class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Text(
         desc,
+        style: TextStyle(
+          fontSize: SizeConfig.textSize(14),
+          color: AppColors.greyText,
+        ),
       ),
     );
   }
@@ -112,18 +100,25 @@ class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
       children: [
         Text(
           date,
-          style: TextStyle(color: AppColors.greyText),
+          style: TextStyle(
+            color: AppColors.greyText,
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+          ),
         ),
         Row(
           children: [
             Text(
               'Details',
-              style: TextStyle(color: AppColors.grey600),
+              style: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Icon(
               Icons.arrow_forward_ios_outlined,
               size: 13,
-              color: AppColors.grey600,
+              color: AppColors.primaryColor,
             )
           ],
         )

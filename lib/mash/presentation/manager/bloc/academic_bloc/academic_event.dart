@@ -15,4 +15,5 @@ class AcademicEvent with _$AcademicEvent {
   ) = _SelectSubjectEvent;
   const factory AcademicEvent.selectDateRangeEvent(
       {required DateTime date, required String dateType}) = _SelectDateRange;
+  const factory AcademicEvent.disposeEvent() = _DisposeEvent;
 }

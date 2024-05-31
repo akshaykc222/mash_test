@@ -13,7 +13,7 @@ class AddonDetailScreen extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       appBar: commonAppbar(title: 'Explore'),
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       body: addOnDetailBody(),
     );
   }

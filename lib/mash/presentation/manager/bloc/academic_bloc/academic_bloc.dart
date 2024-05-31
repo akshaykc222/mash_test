@@ -202,5 +202,13 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     }
   }
 
+  _disposeEvent(_DisposeEvent event, Emitter<AcademicState> emit) {
+    emit(state.copyWith(
+      selectedSubject: "",
+      selectedSubjectId: "",
+      selectedRange: null,
+    ));
+  }
+
   static AcademicBloc get(context) => BlocProvider.of(context);
 }

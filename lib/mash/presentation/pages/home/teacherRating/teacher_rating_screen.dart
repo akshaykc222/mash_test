@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_api_entity.dart';
-import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
@@ -28,8 +27,8 @@ class TeacherRatingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.teacherRating),
-      endDrawer: DrawerWidget(),
-      body: TeacherRatingBody(entity:entity),
+      endDrawer: const DrawerWidget(),
+      body: TeacherRatingBody(entity: entity),
     );
   }
 }
@@ -49,13 +48,14 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
   late TeacherBloc _teacherBloc;
   @override
   void initState() {
-    _teacherBloc =TeacherBloc.get(context)..add(const TeacherEvent.clearTeacherRatingList())..add(const TeacherEvent.getRatingQuestions());
+    _teacherBloc = TeacherBloc.get(context)
+      ..add(const TeacherEvent.clearTeacherRatingList())
+      ..add(const TeacherEvent.getRatingQuestions());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -140,14 +140,13 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                         handleErrorUi(
                             context: context,
                             error: state.getTeacherRatingQuestions?.error);
-                      }else if(state.postTeacherRating?.status ==
-                          Status.ERROR){
+                      } else if (state.postTeacherRating?.status ==
+                          Status.ERROR) {
                         handleErrorUi(
                             context: context,
                             error: state.getTeacherRatingQuestions?.error);
-                      }else if(state.postTeacherRating?.status ==
-                          Status.COMPLETED){
-                        
+                      } else if (state.postTeacherRating?.status ==
+                          Status.COMPLETED) {
                         context.goNamed(AppPages.teacherRatingListScreen);
                       }
                     },
@@ -202,23 +201,32 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
             ),
             spacer30,
             BlocBuilder<TeacherBloc, TeacherState>(
-              buildWhen: (previous, current) => previous.postTeacherRating?.status != current.postTeacherRating?.status,
-  builder: (context, state) {
-    return AnimatedSharedButton(
-                onTap: () {
-                  var ratings=_teacherBloc.state.getTeacherRatingQuestions!
-                      .data?.map((e) => RatedQuestion(question: e.qnsId,rating:e.rating )).toList();
-                  _teacherBloc.add(TeacherEvent.postTeacherRating(teacherId: widget.entity.teacher, subId: widget.entity.subject, ratedQuestions: ratings ?? []));
-                  // prettyPrint(ratingList.map((e) => e.toJson()).toString());
-                },
-                title: Text(
-                  AppStrings.submitCapital,
-                  style: TextStyle(
-                      color: AppColors.white, fontWeight: FontWeight.w600),
-                ),
-                isLoading: state.postTeacherRating?.status == Status.LOADING);
-  },
-),
+              buildWhen: (previous, current) =>
+                  previous.postTeacherRating?.status !=
+                  current.postTeacherRating?.status,
+              builder: (context, state) {
+                return AnimatedSharedButton(
+                    onTap: () {
+                      var ratings = _teacherBloc
+                          .state.getTeacherRatingQuestions!.data
+                          ?.map((e) => RatedQuestion(
+                              question: e.qnsId, rating: e.rating))
+                          .toList();
+                      _teacherBloc.add(TeacherEvent.postTeacherRating(
+                          teacherId: widget.entity.teacher,
+                          subId: widget.entity.subject,
+                          ratedQuestions: ratings ?? []));
+                      // prettyPrint(ratingList.map((e) => e.toJson()).toString());
+                    },
+                    title: Text(
+                      AppStrings.submitCapital,
+                      style: TextStyle(
+                          color: AppColors.white, fontWeight: FontWeight.w600),
+                    ),
+                    isLoading:
+                        state.postTeacherRating?.status == Status.LOADING);
+              },
+            ),
             spacer40
           ],
         ),

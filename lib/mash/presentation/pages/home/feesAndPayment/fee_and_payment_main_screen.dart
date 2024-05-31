@@ -21,7 +21,7 @@ class FeesAndPaymentMainScreen extends StatelessWidget {
             ],
           ),
         ),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: const FeesAndPaymentsTabs(),
       ),
     );

@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 
+import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 
@@ -34,7 +34,8 @@ class StudentProfileWidget extends StatelessWidget {
         return false;
       },
       builder: (context, state) {
-        return state.getSiblings?.status == Status.LOADING
+        return state.getSiblings?.status == Status.LOADING ||
+                state.getSiblings?.status == Status.initial
             ? const CustomShimmerWidget(height: 60)
             : GestureDetector(
                 onTap: onTap,

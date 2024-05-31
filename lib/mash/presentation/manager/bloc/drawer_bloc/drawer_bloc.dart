@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -9,7 +7,6 @@ import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/pretty_printer.dart';

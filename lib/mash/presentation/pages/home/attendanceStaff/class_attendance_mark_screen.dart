@@ -32,7 +32,7 @@ class _ClassAttendanceMarkingScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.dynamicClassName),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: classAttendanceBody(context),
     );
   }
@@ -202,7 +202,9 @@ class _ClassAttendanceMarkingScreenState
   void dispose() {
     selectedCount.dispose();
     unselectedCount.dispose();
-    isSelected.forEach((notifier) => notifier.dispose());
+    for (var notifier in isSelected) {
+      notifier.dispose();
+    }
     super.dispose();
   }
 

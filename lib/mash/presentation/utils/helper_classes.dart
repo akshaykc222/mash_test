@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 
 import '../../../core/response_classify.dart';
-import '../manager/bloc/profile/profile_bloc.dart';
+import '../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../pages/dashboard/parent/widget/student_profile_widget.dart';
 import '../widgets/common_bottom_sheet.dart';
 import '../widgets/shimmers/custom_shimmer_widget.dart';
@@ -62,6 +62,8 @@ class HelperClasses {
         return state.getSiblings?.status == Status.LOADING
             ? const CustomShimmerWidget(
                 height: 60,
+                borderRadius: 6,
+                marginVertical: 20,
               )
             : state.selectedSibling == null
                 ? const SizedBox()

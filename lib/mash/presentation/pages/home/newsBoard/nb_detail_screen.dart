@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
-import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';

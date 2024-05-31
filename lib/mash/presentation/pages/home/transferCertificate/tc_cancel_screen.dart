@@ -15,7 +15,7 @@ class TransferCancelScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'TC CANCEL'),
       body: tcCancelBody(context),
     );

@@ -33,15 +33,15 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
     'Item 4',
   ];
 
-  List<String> _selectedItems = [];
-  ValueNotifier<List<String>> _selectedItemsNotifier =
+  final List<String> _selectedItems = [];
+  final ValueNotifier<List<String>> _selectedItemsNotifier =
       ValueNotifier<List<String>>([]);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.yearlyWise),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: yearPlanBody(context),
     );
   }
@@ -121,7 +121,7 @@ class _InsertYearPlanScreenState extends State<InsertYearPlanScreen> {
             ),
             spacer20,
             AnimatedSharedButton(
-                onTap: () {}, title: Text('REQUEST'), isLoading: false),
+                onTap: () {}, title: const Text('REQUEST'), isLoading: false),
             spacer20
           ],
         ),

@@ -1,6 +1,11 @@
 import 'package:mash/mash/data/remote/models/request/vehicle_tracker_request.dart';
-import 'package:mash/mash/domain/entities/vehicle_tracker/vehicle_tracker_entity.dart';
 
-abstract class VehicleTrackerRepository{
-  Future<List<VehicleTrackerEntity>>  getStudentVehicleStops(VehicleTrackerRequest request);
+import '../entities/vehicle_tracker/student_routes_entity.dart';
+import '../entities/vehicle_tracker/vehicle_location_entity.dart';
+
+abstract class VehicleTrackerRepository {
+  Future<StudentRouteEntity> getStudentVehicleStops(
+      VehicleTrackerRequest request);
+
+  Future<VehicleLocationEntity> getCurrentLocation(String vehicleNo);
 }

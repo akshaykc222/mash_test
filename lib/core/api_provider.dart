@@ -5,6 +5,7 @@ import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:xml/xml.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
 import '../mash/data/remote/routes/local_storage_name.dart';
@@ -49,7 +50,10 @@ class ApiProvider {
 
     if (token.isNotEmpty) {
       prettyPrint('token ${token.first}');
-      _dio.options.headers.addAll({'Authorization': token.first});
+      _dio.options.headers.addAll({
+        'Authorization':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJNUFNTMTQxNyIsIm5iZiI6MTcxNjE4MDQzOCwiZXhwIjoxNzE4NzcyNDM4LCJpYXQiOjE3MTYxODA0Mzh9.sUGGGL9OvJRSu2aZFBH-cqjkALmVmq3z3E4jDqmIDD0'
+      });
     }
   }
 
@@ -58,7 +62,8 @@ class ApiProvider {
     try {
       await addToken();
 
-      prettyPrint(_dio.options.headers.toString());
+      prettyPrint(
+          "GETTING RESPONSE WITH HEADERS ${_dio.options.headers.toString()}");
       final Response response = await _dio.get(
         endPoint,
         data: body,
@@ -86,6 +91,40 @@ class ApiProvider {
     } on DioException catch (err) {
       prettyPrint(err.toString(), type: PrettyPrinterTypes.error);
       return {};
+    }
+  }
+
+  Future<String> postXml(String endPoint, XmlDocument xmlBody) async {
+    prettyPrint("on post call${xmlBody.toXmlString(pretty: true)}");
+
+    try {
+      // await addToken();
+
+      final Response response = await Dio(BaseOptions(
+        baseUrl: AppRemoteRoutes.baseUrlVendor,
+        headers: {
+          'Content-Type': 'application/xml',
+          'Accept': 'application/xml',
+        },
+      )).post(
+        endPoint,
+        data: xmlBody.toXmlString(),
+      );
+
+      prettyPrint("getting response${response.data}");
+
+      // Check the status code
+      if (response.statusCode == 200) {
+        final XmlDocument responseData = XmlDocument.parse(response.data);
+        prettyPrint(responseData.toXmlString(pretty: true));
+        return classifyXmlResponse(responseData);
+      } else {
+        throw BadRequestException(
+            "Request failed with status: ${response.statusCode}");
+      }
+    } on DioException catch (err) {
+      prettyPrint(err.toString());
+      throw FetchDataException("internetError");
     }
   }
 
@@ -177,4 +216,8 @@ class ApiProvider {
         );
     }
   }
+}
+
+String classifyXmlResponse(XmlDocument response) {
+  return response.toXmlString();
 }

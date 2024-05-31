@@ -8,7 +8,10 @@ class AppPages {
   static const addOnScreen = "/addOnscreen";
   static const addonDetailScreen = '/addonDetailScreen';
   static const home = '/home';
+  static const profileScreen = '/profile';
 
+  //dashboard
+  static const dashboardCalendar = '/dashboardCalendar';
   //library
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
@@ -18,7 +21,7 @@ class AppPages {
   static const noteScreen = '/noteDetailsScreen';
 
   //facility
-  static const facility = '/facilityMainScreen';
+  static const facility = '/facilities';
 
   //quiz
   static const quizOnBoardScreen = '/quizOnBoardScreen';
@@ -38,16 +41,16 @@ class AppPages {
   static const supportScreen = '/supportScreen';
 
   //leave
-  static const leaveScreen = '/leaveScreen';
+  static const leaveScreen = '/leave';
 
   //progressReport
-  static const progressReport = '/progressReport';
+  static const progressReport = '/progress_report';
 
   //syllabus
-  static const syllabusScreen = '/syllabusScreen';
+  static const syllabusScreen = '/syllabus';
 
   //tc
-  static const tcMainScreen = '/tcMainScreen';
+  static const tcMainScreen = '/tc';
   static const tcCancelScreen = '/tcCancelScreen';
   static const tcRequestScreen = '/tcRequestScreen';
 
@@ -56,7 +59,7 @@ class AppPages {
   static const newsBoardDetailScreen = '/newsDetailScreen';
 
   //noticeBoard
-  static const noticeBoardMainScreen = '/noticeBoardMainScreen';
+  static const noticeBoardMainScreen = '/notice_board';
   static const noticeBoardDetailScreen = '/noticeDetailScreen';
 
   //timeTable
@@ -66,7 +69,7 @@ class AppPages {
   static const examTimetableScreen = '/examTimetableScreen';
 
   //suggestion
-  static const suggestionMainScreen = '/suggestionMainScreen';
+  static const suggestionMainScreen = '/suggestion_box';
   static const suggestionScreen = '/suggestionScreen';
 
   //home work
@@ -91,22 +94,24 @@ class AppPages {
   static const viewWeekPlansScreen = '/viewWeekPlanScreen';
 
   //teacher
-  static const teacherRatingListScreen = '/teacherRatingListScreen';
+  static const teacherRatingListScreen = '/rate_your_teacher';
   static const teacherRatingScreen = '/teacherRatingScreen';
 
   // pdf view screen
   static const pdfViewScreen = '/pdfViewScreen';
 
-  static const feedbackScreen = '/feedbackScreen';
-  static const idCardRequestScreen = '/idCardRequestScreen';
-  static const competitiveExamScreen = '/competitiveExamScreen';
+  static const feedbackScreen = '/feedback';
+  static const idCardRequestScreen = '/id_card_request';
+  static const competitiveExamScreen = '/competitie_exam';
   static const examDetailScreen = '/examDetailScreen';
-  static const feesAndPaymentScreen = '/feesAndPaymentScreen';
+  static const feesAndPaymentScreen = '/fees_&_payments';
   static const paymentHistoryScreen = '/paymentHistoryScreen';
   //chats
-  static const chatsListScreen = "/chatListScreen";
+  static const chatsListScreen = "/chat_room";
   static const messageScreen = "/messageScreen";
   static const createGroup = "/createGroup";
   static const groupDetails = "/groupDetails";
   static const newChat = "/newChat";
+
+  static const comingSoon = '/comingSoon';
 }

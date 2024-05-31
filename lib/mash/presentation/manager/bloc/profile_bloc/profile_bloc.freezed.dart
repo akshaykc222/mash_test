@@ -21,6 +21,7 @@ mixin _$ProfileEvent {
     required TResult Function() started,
     required TResult Function(StudentEntity student) selectSibling,
     required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$ProfileEvent {
     TResult? Function()? started,
     TResult? Function(StudentEntity student)? selectSibling,
     TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$ProfileEvent {
     TResult Function()? started,
     TResult Function(StudentEntity student)? selectSibling,
     TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$ProfileEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_SelectSibling value) selectSibling,
     required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$ProfileEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectSibling value)? selectSibling,
     TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$ProfileEvent {
     TResult Function(_Started value)? started,
     TResult Function(_SelectSibling value)? selectSibling,
     TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
     required TResult orElse(),
   }) =>
@@ -127,6 +133,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(StudentEntity student) selectSibling,
     required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
   }) {
     return started();
@@ -138,6 +145,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(StudentEntity student)? selectSibling,
     TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
   }) {
     return started?.call();
@@ -149,6 +157,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(StudentEntity student)? selectSibling,
     TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -164,6 +173,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_SelectSibling value) selectSibling,
     required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
   }) {
     return started(this);
@@ -175,6 +185,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectSibling value)? selectSibling,
     TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
   }) {
     return started?.call(this);
@@ -186,6 +197,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_SelectSibling value)? selectSibling,
     TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -267,6 +279,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     required TResult Function() started,
     required TResult Function(StudentEntity student) selectSibling,
     required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
   }) {
     return selectSibling(student);
@@ -278,6 +291,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult? Function()? started,
     TResult? Function(StudentEntity student)? selectSibling,
     TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
   }) {
     return selectSibling?.call(student);
@@ -289,6 +303,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult Function()? started,
     TResult Function(StudentEntity student)? selectSibling,
     TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -304,6 +319,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     required TResult Function(_Started value) started,
     required TResult Function(_SelectSibling value) selectSibling,
     required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
   }) {
     return selectSibling(this);
@@ -315,6 +331,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectSibling value)? selectSibling,
     TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
   }) {
     return selectSibling?.call(this);
@@ -326,6 +343,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult Function(_Started value)? started,
     TResult Function(_SelectSibling value)? selectSibling,
     TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -387,6 +405,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     required TResult Function() started,
     required TResult Function(StudentEntity student) selectSibling,
     required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
   }) {
     return getSiblings();
@@ -398,6 +417,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult? Function()? started,
     TResult? Function(StudentEntity student)? selectSibling,
     TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
   }) {
     return getSiblings?.call();
@@ -409,6 +429,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult Function()? started,
     TResult Function(StudentEntity student)? selectSibling,
     TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -424,6 +445,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     required TResult Function(_Started value) started,
     required TResult Function(_SelectSibling value) selectSibling,
     required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
   }) {
     return getSiblings(this);
@@ -435,6 +457,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectSibling value)? selectSibling,
     TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
   }) {
     return getSiblings?.call(this);
@@ -446,6 +469,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult Function(_Started value)? started,
     TResult Function(_SelectSibling value)? selectSibling,
     TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -458,6 +482,158 @@ class _$GetSiblingsImpl implements _GetSiblings {
 
 abstract class _GetSiblings implements ProfileEvent {
   const factory _GetSiblings() = _$GetSiblingsImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateProfileImplCopyWith<$Res> {
+  factory _$$UpdateProfileImplCopyWith(
+          _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
+      __$$UpdateProfileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UpdateProfileRequest request});
+}
+
+/// @nodoc
+class __$$UpdateProfileImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UpdateProfileImpl>
+    implements _$$UpdateProfileImplCopyWith<$Res> {
+  __$$UpdateProfileImplCopyWithImpl(
+      _$UpdateProfileImpl _value, $Res Function(_$UpdateProfileImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? request = null,
+  }) {
+    return _then(_$UpdateProfileImpl(
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as UpdateProfileRequest,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateProfileImpl implements _UpdateProfile {
+  const _$UpdateProfileImpl({required this.request});
+
+  @override
+  final UpdateProfileRequest request;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.updateProfile(request: $request)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProfileImpl &&
+            (identical(other.request, request) || other.request == request));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, request);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
+      __$$UpdateProfileImplCopyWithImpl<_$UpdateProfileImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(StudentEntity student) selectSibling,
+    required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
+    required TResult Function(GetUserDetailsRequest request) getUserDetails,
+  }) {
+    return updateProfile(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(StudentEntity student)? selectSibling,
+    TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
+    TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+  }) {
+    return updateProfile?.call(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(StudentEntity student)? selectSibling,
+    TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
+    TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    required TResult orElse(),
+  }) {
+    if (updateProfile != null) {
+      return updateProfile(request);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SelectSibling value) selectSibling,
+    required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_GetUserDetails value) getUserDetails,
+  }) {
+    return updateProfile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SelectSibling value)? selectSibling,
+    TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_GetUserDetails value)? getUserDetails,
+  }) {
+    return updateProfile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SelectSibling value)? selectSibling,
+    TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_GetUserDetails value)? getUserDetails,
+    required TResult orElse(),
+  }) {
+    if (updateProfile != null) {
+      return updateProfile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateProfile implements ProfileEvent {
+  const factory _UpdateProfile({required final UpdateProfileRequest request}) =
+      _$UpdateProfileImpl;
+
+  UpdateProfileRequest get request;
+  @JsonKey(ignore: true)
+  _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -528,6 +704,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     required TResult Function() started,
     required TResult Function(StudentEntity student) selectSibling,
     required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
   }) {
     return getUserDetails(request);
@@ -539,6 +716,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult? Function()? started,
     TResult? Function(StudentEntity student)? selectSibling,
     TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
   }) {
     return getUserDetails?.call(request);
@@ -550,6 +728,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult Function()? started,
     TResult Function(StudentEntity student)? selectSibling,
     TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -565,6 +744,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     required TResult Function(_Started value) started,
     required TResult Function(_SelectSibling value) selectSibling,
     required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
   }) {
     return getUserDetails(this);
@@ -576,6 +756,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult? Function(_Started value)? started,
     TResult? Function(_SelectSibling value)? selectSibling,
     TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
   }) {
     return getUserDetails?.call(this);
@@ -587,6 +768,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult Function(_Started value)? started,
     TResult Function(_SelectSibling value)? selectSibling,
     TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
     required TResult orElse(),
   }) {
@@ -613,6 +795,8 @@ mixin _$ProfileState {
       throw _privateConstructorUsedError;
   ResponseClassify<StudentDetailEntity>? get getUserDetail =>
       throw _privateConstructorUsedError;
+  ResponseClassify<void>? get updateProfile =>
+      throw _privateConstructorUsedError;
   StudentEntity? get selectedSibling => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -629,6 +813,7 @@ abstract class $ProfileStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<StudentEntity>>? getSiblings,
       ResponseClassify<StudentDetailEntity>? getUserDetail,
+      ResponseClassify<void>? updateProfile,
       StudentEntity? selectedSibling});
 }
 
@@ -647,6 +832,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   $Res call({
     Object? getSiblings = freezed,
     Object? getUserDetail = freezed,
+    Object? updateProfile = freezed,
     Object? selectedSibling = freezed,
   }) {
     return _then(_value.copyWith(
@@ -658,6 +844,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.getUserDetail
           : getUserDetail // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<StudentDetailEntity>?,
+      updateProfile: freezed == updateProfile
+          ? _value.updateProfile
+          : updateProfile // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
       selectedSibling: freezed == selectedSibling
           ? _value.selectedSibling
           : selectedSibling // ignore: cast_nullable_to_non_nullable
@@ -677,6 +867,7 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<StudentEntity>>? getSiblings,
       ResponseClassify<StudentDetailEntity>? getUserDetail,
+      ResponseClassify<void>? updateProfile,
       StudentEntity? selectedSibling});
 }
 
@@ -693,6 +884,7 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getSiblings = freezed,
     Object? getUserDetail = freezed,
+    Object? updateProfile = freezed,
     Object? selectedSibling = freezed,
   }) {
     return _then(_$ProfileStateImpl(
@@ -704,6 +896,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.getUserDetail
           : getUserDetail // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<StudentDetailEntity>?,
+      updateProfile: freezed == updateProfile
+          ? _value.updateProfile
+          : updateProfile // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
       selectedSibling: freezed == selectedSibling
           ? _value.selectedSibling
           : selectedSibling // ignore: cast_nullable_to_non_nullable
@@ -716,18 +912,23 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
 
 class _$ProfileStateImpl implements _ProfileState {
   const _$ProfileStateImpl(
-      {this.getSiblings, this.getUserDetail, this.selectedSibling});
+      {this.getSiblings,
+      this.getUserDetail,
+      this.updateProfile,
+      this.selectedSibling});
 
   @override
   final ResponseClassify<List<StudentEntity>>? getSiblings;
   @override
   final ResponseClassify<StudentDetailEntity>? getUserDetail;
   @override
+  final ResponseClassify<void>? updateProfile;
+  @override
   final StudentEntity? selectedSibling;
 
   @override
   String toString() {
-    return 'ProfileState(getSiblings: $getSiblings, getUserDetail: $getUserDetail, selectedSibling: $selectedSibling)';
+    return 'ProfileState(getSiblings: $getSiblings, getUserDetail: $getUserDetail, updateProfile: $updateProfile, selectedSibling: $selectedSibling)';
   }
 
   @override
@@ -739,13 +940,15 @@ class _$ProfileStateImpl implements _ProfileState {
                 other.getSiblings == getSiblings) &&
             (identical(other.getUserDetail, getUserDetail) ||
                 other.getUserDetail == getUserDetail) &&
+            (identical(other.updateProfile, updateProfile) ||
+                other.updateProfile == updateProfile) &&
             (identical(other.selectedSibling, selectedSibling) ||
                 other.selectedSibling == selectedSibling));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, getSiblings, getUserDetail, selectedSibling);
+  int get hashCode => Object.hash(
+      runtimeType, getSiblings, getUserDetail, updateProfile, selectedSibling);
 
   @JsonKey(ignore: true)
   @override
@@ -758,12 +961,15 @@ abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {final ResponseClassify<List<StudentEntity>>? getSiblings,
       final ResponseClassify<StudentDetailEntity>? getUserDetail,
+      final ResponseClassify<void>? updateProfile,
       final StudentEntity? selectedSibling}) = _$ProfileStateImpl;
 
   @override
   ResponseClassify<List<StudentEntity>>? get getSiblings;
   @override
   ResponseClassify<StudentDetailEntity>? get getUserDetail;
+  @override
+  ResponseClassify<void>? get updateProfile;
   @override
   StudentEntity? get selectedSibling;
   @override

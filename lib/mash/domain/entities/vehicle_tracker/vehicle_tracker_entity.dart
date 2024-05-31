@@ -1,29 +1,31 @@
-
-
-
 import 'package:equatable/equatable.dart';
 
-class VehicleTrackerEntity extends Equatable{
-  String stopId;
-  String stops;
-  String routeCode;
-  double latitude;
-  double longitude;
+class VehicleTrackerEntity extends Equatable {
+  final String stopId;
+  final String stops;
+  final String routeCode;
+  final double latitude;
+  final String? categoryId;
+  final String? regNumber;
+  final double longitude;
+  final String? vehicleId;
 
-  VehicleTrackerEntity({
-    required this.stopId,
-    required this.stops,
-    required this.routeCode,
-    required this.latitude,
-    required this.longitude,
-  });
+  const VehicleTrackerEntity(
+      {required this.stopId,
+      required this.stops,
+      required this.routeCode,
+      required this.latitude,
+      required this.longitude,
+      this.regNumber,
+      this.vehicleId,
+      this.categoryId});
 
   @override
-  List<Object> get props =>  [
-    stopId,
-    stops,
-    routeCode,
-    latitude,
-    longitude,
-  ];
+  List<Object> get props => [
+        stopId,
+        stops,
+        routeCode,
+        latitude,
+        longitude,
+      ];
 }

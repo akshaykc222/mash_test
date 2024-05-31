@@ -29,7 +29,7 @@ class LeaveScreen extends StatelessWidget {
     return Scaffold(
       appBar: commonAppbar(title: 'LEAVE'),
       body: leaveBody(),
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
     );
   }
 

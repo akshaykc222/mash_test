@@ -8,7 +8,7 @@ import 'package:mash/mash/presentation/widgets/buttons/common_small_button.dart'
 
 
 class RegisteredExamDetailBody extends StatelessWidget {
-  RegisteredExamDetailBody({super.key});
+  const RegisteredExamDetailBody({super.key});
 
 
   @override

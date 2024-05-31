@@ -8,7 +8,7 @@ import 'app_colors.dart';
 
 class AppConstants {
   static const appName = "MASH";
-  static const ApiKey = 'AIzaSyC31l-Cu9WVeWEgnVHRCE_Ltp8jSURAgRw';
+  static const googleMapKey = 'AIzaSyC31l-Cu9WVeWEgnVHRCE_Ltp8jSURAgRw';
 }
 
 //height
@@ -198,4 +198,23 @@ handleError(BuildContext context, String error, Function action) {
               ],
             ),
           ));
+}
+
+primaryShadowContainer({required Widget child}) {
+  return Container(
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: AppColors.greyClr100,
+        border: Border.all(color: AppColors.white),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primaryColor.withOpacity(0.4),
+            offset: const Offset(2, 2),
+            blurRadius: 4,
+            spreadRadius: 1,
+          ),
+        ]),
+    child: child,
+  );
 }

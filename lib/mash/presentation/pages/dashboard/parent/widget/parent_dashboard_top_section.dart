@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_student_detail_widget.dart';
-import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
 import '../../../../utils/app_assets.dart';
+import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_strings.dart';
+import '../../../../utils/enums.dart';
+import '../../../../widgets/oultined_container_widget.dart';
+import '../../../home/widgets/progress_indicator_widget.dart';
 
 class ParentDashboardTopSection extends StatelessWidget {
   const ParentDashboardTopSection({
@@ -16,19 +20,129 @@ class ParentDashboardTopSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        spacer30,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _viewCalenderBtn(context),
+            ],
+          ),
+        ),
         spacer20,
         HelperClasses.getSelectedStudent(context,false),
         const ParentDashboardStudentDetailWidget(),
         _viewCalenderBtn(context),
+        _ProgressWidgets()
       ],
     );
   }
 
   Widget _viewCalenderBtn(BuildContext context) {
     return CustomIconButton(
-      onTap: () {},
+      onTap: () {
+        context.push(AppPages.dashboardCalendar);
+      },
       icon: AppAssets.timeTableIcon,
       name: AppStrings.viewCalendar,
+    );
+  }
+}
+
+class _ProgressWidgets extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      verticalDirection: VerticalDirection.down,
+      children: [
+        _AttendanceWidget(),
+        _GradeWidget(),
+      ],
+    );
+  }
+}
+
+class _AttendanceWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).pushNamed(AppPages.attendanceDetailScreen);
+      },
+      child: const OutlinedContainerWidget(
+        height: 170,
+        width: 170,
+        child: Stack(
+          children: [
+            SizedBox(
+              height: 170,
+              width: 170,
+              child: ProgressIndicatorWidget(
+                progressIndicatorType: ProgressIndicatorType.circular,
+                initialValue: 0.8,
+              ),
+            ),
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              right: 0,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 30),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'ATTENDANCE',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      '75%',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'View Details',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GradeWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedContainerWidget(
+      height: 91,
+      width: 91,
+      child: Center(
+        child: Text(
+          'A',
+          style: TextStyle(
+            fontSize: 40,
+            color: AppColors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -37,7 +37,7 @@ class _AddOnScreenState extends State<AddOnScreen>
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: const Text(AppStrings.addOnScreenTitle),

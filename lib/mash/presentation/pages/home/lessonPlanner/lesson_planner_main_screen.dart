@@ -16,7 +16,7 @@ class LessonPlannerMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'LESSON PLANNER'),
       body: lessonPlannerBody(context),
     );

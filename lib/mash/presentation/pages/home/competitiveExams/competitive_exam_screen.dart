@@ -29,7 +29,7 @@ class _CompetitiveExamScreenState extends State<CompetitiveExamScreen> {
             ],
           ),
         ),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: const ExamBody(),
       ),
     );

@@ -15,7 +15,7 @@ class LibraryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'LIBRARY'),
       body: libraryBody(context),
     );

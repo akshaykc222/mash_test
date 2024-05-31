@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,13 +72,13 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
       final userData = await getUserInfoUseCase.call(NoParams());
       if (userData != null) {
         final data = await notesReportsUseCase.call(HomeWorkReportRequest(
-          compId: "200001",
+          compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: '152',
-          divId: '224',
+          classId: userData.classId ?? "",
+          divId: userData.divisionId ?? '',
           subjId: event.subjectId.isEmpty ? "0" : event.subjectId,
-          acadId: "87",
+          acadId: userData.academicId ?? "",
         ));
         emit(state.copyWith(
             noteWorkReportResponse: ResponseClassify.completed(data)));

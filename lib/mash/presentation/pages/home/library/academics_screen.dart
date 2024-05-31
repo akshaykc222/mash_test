@@ -19,7 +19,7 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'ACADEMICS'),
       body: academicsBody(context),
     );

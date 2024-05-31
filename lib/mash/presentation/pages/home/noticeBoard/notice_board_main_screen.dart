@@ -15,7 +15,7 @@ class NoticeBoardMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'NOTICE BOARD'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: noticeBoardBody(context),
     );
   }
@@ -45,20 +45,8 @@ class NoticeBoardMainScreen extends StatelessWidget {
 
     return GestureDetector(
       onTap: () =>
-          GoRouter.of(context).pushNamed(AppPages.newsBoardDetailScreen),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 1,
-                blurRadius: 9,
-                offset: const Offset(0, 0),
-              )
-            ]),
+          GoRouter.of(context).pushNamed(AppPages.noticeBoardDetailScreen),
+      child: primaryShadowContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

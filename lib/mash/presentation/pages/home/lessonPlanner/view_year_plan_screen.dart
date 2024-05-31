@@ -27,7 +27,7 @@ class _ViewYearPlanScreenState extends State<ViewYearPlanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.viewYearPlanTitle),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: viewYearPlanBody(context),
     );
   }

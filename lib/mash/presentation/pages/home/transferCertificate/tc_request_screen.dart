@@ -40,7 +40,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
-        return Container(
+        return SizedBox(
           height: SizeConfig.height(300),
           child: Column(
             children: [

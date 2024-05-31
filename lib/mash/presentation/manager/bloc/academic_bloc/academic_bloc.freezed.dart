@@ -28,6 +28,7 @@ mixin _$AcademicEvent {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$AcademicEvent {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +54,7 @@ mixin _$AcademicEvent {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +69,7 @@ mixin _$AcademicEvent {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +82,7 @@ mixin _$AcademicEvent {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +95,7 @@ mixin _$AcademicEvent {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,6 +167,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return getClassDetails();
   }
@@ -176,6 +183,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return getClassDetails?.call();
   }
@@ -191,6 +199,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -211,6 +220,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getClassDetails(this);
   }
@@ -226,6 +236,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getClassDetails?.call(this);
   }
@@ -241,6 +252,7 @@ class _$GetClassDetailsImpl implements _GetClassDetails {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getClassDetails != null) {
@@ -303,6 +315,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return getAcademicSubjects();
   }
@@ -318,6 +331,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return getAcademicSubjects?.call();
   }
@@ -333,6 +347,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getAcademicSubjects != null) {
@@ -353,6 +368,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getAcademicSubjects(this);
   }
@@ -368,6 +384,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getAcademicSubjects?.call(this);
   }
@@ -383,6 +400,7 @@ class _$GetAcademicSubjectsImpl implements _GetAcademicSubjects {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getAcademicSubjects != null) {
@@ -444,6 +462,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return getDivisionDetails();
   }
@@ -459,6 +478,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return getDivisionDetails?.call();
   }
@@ -474,6 +494,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getDivisionDetails != null) {
@@ -494,6 +515,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getDivisionDetails(this);
   }
@@ -509,6 +531,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getDivisionDetails?.call(this);
   }
@@ -524,6 +547,7 @@ class _$GetDevisionDetailsImpl implements _GetDevisionDetails {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getDivisionDetails != null) {
@@ -611,6 +635,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return getSyllabus(termId);
   }
@@ -626,6 +651,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return getSyllabus?.call(termId);
   }
@@ -641,6 +667,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSyllabus != null) {
@@ -661,6 +688,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getSyllabus(this);
   }
@@ -676,6 +704,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getSyllabus?.call(this);
   }
@@ -691,6 +720,7 @@ class _$GetSyllabusImpl implements _GetSyllabus {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSyllabus != null) {
@@ -757,6 +787,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return getSyllabusTerms();
   }
@@ -772,6 +803,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return getSyllabusTerms?.call();
   }
@@ -787,6 +819,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSyllabusTerms != null) {
@@ -807,6 +840,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getSyllabusTerms(this);
   }
@@ -822,6 +856,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getSyllabusTerms?.call(this);
   }
@@ -837,6 +872,7 @@ class _$GetSyllabusTermsImpl implements _GetSyllabusTerms {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSyllabusTerms != null) {
@@ -927,6 +963,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return changeSyllabusTermIndex(index);
   }
@@ -942,6 +979,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return changeSyllabusTermIndex?.call(index);
   }
@@ -957,6 +995,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (changeSyllabusTermIndex != null) {
@@ -977,6 +1016,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return changeSyllabusTermIndex(this);
   }
@@ -992,6 +1032,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return changeSyllabusTermIndex?.call(this);
   }
@@ -1007,6 +1048,7 @@ class _$ChangeSyllabusTermIndexImpl implements _ChangeSyllabusTermIndex {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (changeSyllabusTermIndex != null) {
@@ -1110,6 +1152,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return selectSubjectEvent(subject, subjectId);
   }
@@ -1125,6 +1168,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return selectSubjectEvent?.call(subject, subjectId);
   }
@@ -1140,6 +1184,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectSubjectEvent != null) {
@@ -1160,6 +1205,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return selectSubjectEvent(this);
   }
@@ -1175,6 +1221,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return selectSubjectEvent?.call(this);
   }
@@ -1190,6 +1237,7 @@ class _$SelectSubjectEventImpl implements _SelectSubjectEvent {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectSubjectEvent != null) {
@@ -1294,6 +1342,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
         selectSubjectEvent,
     required TResult Function(DateTime date, String dateType)
         selectDateRangeEvent,
+    required TResult Function() disposeEvent,
   }) {
     return selectDateRangeEvent(date, dateType);
   }
@@ -1309,6 +1358,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult? Function(int index)? changeSyllabusTermIndex,
     TResult? Function(String subject, String subjectId)? selectSubjectEvent,
     TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
   }) {
     return selectDateRangeEvent?.call(date, dateType);
   }
@@ -1324,6 +1374,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult Function(int index)? changeSyllabusTermIndex,
     TResult Function(String subject, String subjectId)? selectSubjectEvent,
     TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectDateRangeEvent != null) {
@@ -1344,6 +1395,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
         changeSyllabusTermIndex,
     required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
     required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return selectDateRangeEvent(this);
   }
@@ -1359,6 +1411,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return selectDateRangeEvent?.call(this);
   }
@@ -1374,6 +1427,7 @@ class _$SelectDateRangeImpl implements _SelectDateRange {
     TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
     TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
     TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectDateRangeEvent != null) {
@@ -1396,6 +1450,153 @@ abstract class _SelectDateRange implements AcademicEvent {
 }
 
 /// @nodoc
+abstract class _$$DisposeEventImplCopyWith<$Res> {
+  factory _$$DisposeEventImplCopyWith(
+          _$DisposeEventImpl value, $Res Function(_$DisposeEventImpl) then) =
+      __$$DisposeEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisposeEventImplCopyWithImpl<$Res>
+    extends _$AcademicEventCopyWithImpl<$Res, _$DisposeEventImpl>
+    implements _$$DisposeEventImplCopyWith<$Res> {
+  __$$DisposeEventImplCopyWithImpl(
+      _$DisposeEventImpl _value, $Res Function(_$DisposeEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisposeEventImpl implements _DisposeEvent {
+  const _$DisposeEventImpl();
+
+  @override
+  String toString() {
+    return 'AcademicEvent.disposeEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DisposeEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getClassDetails,
+    required TResult Function() getAcademicSubjects,
+    required TResult Function() getDivisionDetails,
+    required TResult Function(String termId) getSyllabus,
+    required TResult Function() getSyllabusTerms,
+    required TResult Function(int index) changeSyllabusTermIndex,
+    required TResult Function(String subject, String subjectId)
+        selectSubjectEvent,
+    required TResult Function(DateTime date, String dateType)
+        selectDateRangeEvent,
+    required TResult Function() disposeEvent,
+  }) {
+    return disposeEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getClassDetails,
+    TResult? Function()? getAcademicSubjects,
+    TResult? Function()? getDivisionDetails,
+    TResult? Function(String termId)? getSyllabus,
+    TResult? Function()? getSyllabusTerms,
+    TResult? Function(int index)? changeSyllabusTermIndex,
+    TResult? Function(String subject, String subjectId)? selectSubjectEvent,
+    TResult? Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult? Function()? disposeEvent,
+  }) {
+    return disposeEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getClassDetails,
+    TResult Function()? getAcademicSubjects,
+    TResult Function()? getDivisionDetails,
+    TResult Function(String termId)? getSyllabus,
+    TResult Function()? getSyllabusTerms,
+    TResult Function(int index)? changeSyllabusTermIndex,
+    TResult Function(String subject, String subjectId)? selectSubjectEvent,
+    TResult Function(DateTime date, String dateType)? selectDateRangeEvent,
+    TResult Function()? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetClassDetails value) getClassDetails,
+    required TResult Function(_GetAcademicSubjects value) getAcademicSubjects,
+    required TResult Function(_GetDevisionDetails value) getDivisionDetails,
+    required TResult Function(_GetSyllabus value) getSyllabus,
+    required TResult Function(_GetSyllabusTerms value) getSyllabusTerms,
+    required TResult Function(_ChangeSyllabusTermIndex value)
+        changeSyllabusTermIndex,
+    required TResult Function(_SelectSubjectEvent value) selectSubjectEvent,
+    required TResult Function(_SelectDateRange value) selectDateRangeEvent,
+    required TResult Function(_DisposeEvent value) disposeEvent,
+  }) {
+    return disposeEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetClassDetails value)? getClassDetails,
+    TResult? Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult? Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult? Function(_GetSyllabus value)? getSyllabus,
+    TResult? Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult? Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+    TResult? Function(_SelectSubjectEvent value)? selectSubjectEvent,
+    TResult? Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
+  }) {
+    return disposeEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetClassDetails value)? getClassDetails,
+    TResult Function(_GetAcademicSubjects value)? getAcademicSubjects,
+    TResult Function(_GetDevisionDetails value)? getDivisionDetails,
+    TResult Function(_GetSyllabus value)? getSyllabus,
+    TResult Function(_GetSyllabusTerms value)? getSyllabusTerms,
+    TResult Function(_ChangeSyllabusTermIndex value)? changeSyllabusTermIndex,
+    TResult Function(_SelectSubjectEvent value)? selectSubjectEvent,
+    TResult Function(_SelectDateRange value)? selectDateRangeEvent,
+    TResult Function(_DisposeEvent value)? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisposeEvent implements AcademicEvent {
+  const factory _DisposeEvent() = _$DisposeEventImpl;
+}
+
+/// @nodoc
 mixin _$AcademicState {
   ResponseClassify<dynamic> get classDetails =>
       throw _privateConstructorUsedError;
@@ -1410,7 +1611,7 @@ mixin _$AcademicState {
   int get selectedTermIndex => throw _privateConstructorUsedError;
   String get selectedSubject => throw _privateConstructorUsedError;
   String get selectedSubjectId => throw _privateConstructorUsedError;
-  SelectedRange? get selectedRange => throw _privateConstructorUsedError;
+  SelectedRangeModel? get selectedRange => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AcademicStateCopyWith<AcademicState> get copyWith =>
@@ -1432,7 +1633,7 @@ abstract class $AcademicStateCopyWith<$Res> {
       int selectedTermIndex,
       String selectedSubject,
       String selectedSubjectId,
-      SelectedRange? selectedRange});
+      SelectedRangeModel? selectedRange});
 }
 
 /// @nodoc
@@ -1494,7 +1695,7 @@ class _$AcademicStateCopyWithImpl<$Res, $Val extends AcademicState>
       selectedRange: freezed == selectedRange
           ? _value.selectedRange
           : selectedRange // ignore: cast_nullable_to_non_nullable
-              as SelectedRange?,
+              as SelectedRangeModel?,
     ) as $Val);
   }
 }
@@ -1516,7 +1717,7 @@ abstract class _$$AcademicStateImplCopyWith<$Res>
       int selectedTermIndex,
       String selectedSubject,
       String selectedSubjectId,
-      SelectedRange? selectedRange});
+      SelectedRangeModel? selectedRange});
 }
 
 /// @nodoc
@@ -1576,7 +1777,7 @@ class __$$AcademicStateImplCopyWithImpl<$Res>
       selectedRange: freezed == selectedRange
           ? _value.selectedRange
           : selectedRange // ignore: cast_nullable_to_non_nullable
-              as SelectedRange?,
+              as SelectedRangeModel?,
     ));
   }
 }
@@ -1612,7 +1813,7 @@ class _$AcademicStateImpl implements _AcademicState {
   @override
   final String selectedSubjectId;
   @override
-  final SelectedRange? selectedRange;
+  final SelectedRangeModel? selectedRange;
 
   @override
   String toString() {
@@ -1675,7 +1876,7 @@ abstract class _AcademicState implements AcademicState {
       required final int selectedTermIndex,
       required final String selectedSubject,
       required final String selectedSubjectId,
-      required final SelectedRange? selectedRange}) = _$AcademicStateImpl;
+      required final SelectedRangeModel? selectedRange}) = _$AcademicStateImpl;
 
   @override
   ResponseClassify<dynamic> get classDetails;
@@ -1694,7 +1895,7 @@ abstract class _AcademicState implements AcademicState {
   @override
   String get selectedSubjectId;
   @override
-  SelectedRange? get selectedRange;
+  SelectedRangeModel? get selectedRange;
   @override
   @JsonKey(ignore: true)
   _$$AcademicStateImplCopyWith<_$AcademicStateImpl> get copyWith =>
