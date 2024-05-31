@@ -90,7 +90,7 @@ class StudentDetailModel extends StudentDetailEntity {
         totalHolidays: json['TOTAL_HODIDAYS']);
   }
 
-  factory StudentDetailModel.fromEntity(StudentDetailEntity json) {
+  /*factory StudentDetailModel.fromEntity(StudentDetailEntity json) {
     return StudentDetailModel(
       userType: json.userType,
       academicId: json.academicId,
@@ -130,8 +130,9 @@ class StudentDetailModel extends StudentDetailEntity {
       totalAbsent: json.totalAbsent,
       halfDays: json.halfDays,
       attPercen: json.attPercen,
+      strength:
     );
-  }
+  }*/
 
   Map<String, dynamic> toJson() {
     return {

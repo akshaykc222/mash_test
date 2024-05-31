@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';

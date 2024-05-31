@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 
 import '../../../../../../core/response_classify.dart';
 import '../../../../../domain/entities/profile/student_detail_entity.dart';
-import '../../../../manager/bloc/profile/profile_bloc.dart';
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
