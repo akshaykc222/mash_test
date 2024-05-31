@@ -6,6 +6,7 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+// import 'package:mash/mash/domain/entities/academic/selected_date_range_model.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_subject_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.dart';
@@ -16,7 +17,7 @@ import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 import '../../../../../core/usecase.dart';
 import '../../../../domain/entities/academic/academic_subject_entity.dart';
-import '../../../../domain/entities/academic/selected_date_range.dart';
+import '../../../../domain/entities/academic/selected_date_range_model.dart';
 import '../../../../domain/entities/syllabus/syllabus_entity.dart';
 import '../../../../domain/entities/syllabus/syllabus_term_entity.dart';
 import '../../../../domain/use_cases/auth/get_user_info_use_case.dart';
@@ -188,7 +189,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   _selectDateRange(_SelectDateRange event, Emitter<AcademicState> emit) {
     try {
       final date = DateFormat('dd/MM/yyyy').format(event.date).toString();
-      final _selectedDate = SelectedRange(
+      final _selectedDate = SelectedRangeModel(
           state.selectedRange?.fromDate, state.selectedRange?.toDate);
       if (event.dateType == AppStrings.fromDate) {
         emit(state.copyWith(

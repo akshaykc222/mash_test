@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_student_detail_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
@@ -8,6 +9,7 @@ import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../../utils/enums.dart';
+import '../../../../utils/helper_classes.dart';
 import '../../../../widgets/oultined_container_widget.dart';
 import '../../../home/widgets/progress_indicator_widget.dart';
 

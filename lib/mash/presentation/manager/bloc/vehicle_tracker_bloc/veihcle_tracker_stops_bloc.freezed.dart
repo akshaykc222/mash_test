@@ -105,12 +105,19 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'VehicleTrackerStopsEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'VehicleTrackerStopsEvent.started'));
   }
 
   @override
@@ -219,12 +226,19 @@ class __$$InitMapImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitMapImpl implements _InitMap {
+class _$InitMapImpl with DiagnosticableTreeMixin implements _InitMap {
   const _$InitMapImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'VehicleTrackerStopsEvent.initMap()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'VehicleTrackerStopsEvent.initMap'));
   }
 
   @override
@@ -333,12 +347,21 @@ class __$$GetBusLocationImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetBusLocationImpl implements _GetBusLocation {
+class _$GetBusLocationImpl
+    with DiagnosticableTreeMixin
+    implements _GetBusLocation {
   const _$GetBusLocationImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'VehicleTrackerStopsEvent.getBusLocation()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'VehicleTrackerStopsEvent.getBusLocation'));
   }
 
   @override
@@ -462,7 +485,7 @@ class __$$AddPolyLinesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddPolyLinesImpl implements _AddPolyLines {
+class _$AddPolyLinesImpl with DiagnosticableTreeMixin implements _AddPolyLines {
   const _$AddPolyLinesImpl({required final Set<Polyline> polyLine})
       : _polyLine = polyLine;
 
@@ -475,8 +498,17 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'VehicleTrackerStopsEvent.addPolyLines(polyLine: $polyLine)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'VehicleTrackerStopsEvent.addPolyLines'))
+      ..add(DiagnosticsProperty('polyLine', polyLine));
   }
 
   @override
@@ -705,7 +737,9 @@ class __$$VehicleTrackerStopsStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VehicleTrackerStopsStateImpl implements _VehicleTrackerStopsState {
+class _$VehicleTrackerStopsStateImpl
+    with DiagnosticableTreeMixin
+    implements _VehicleTrackerStopsState {
   const _$VehicleTrackerStopsStateImpl(
       {this.getTrackerStops,
       final Set<Polyline>? polyLines,
@@ -732,8 +766,19 @@ class _$VehicleTrackerStopsStateImpl implements _VehicleTrackerStopsState {
   final bool isLoading;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'VehicleTrackerStopsState(getTrackerStops: $getTrackerStops, polyLines: $polyLines, getBusLiveLocation: $getBusLiveLocation, isLoading: $isLoading)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'VehicleTrackerStopsState'))
+      ..add(DiagnosticsProperty('getTrackerStops', getTrackerStops))
+      ..add(DiagnosticsProperty('polyLines', polyLines))
+      ..add(DiagnosticsProperty('getBusLiveLocation', getBusLiveLocation))
+      ..add(DiagnosticsProperty('isLoading', isLoading));
   }
 
   @override
