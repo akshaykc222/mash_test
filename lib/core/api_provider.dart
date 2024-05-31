@@ -51,8 +51,7 @@ class ApiProvider {
     if (token.isNotEmpty) {
       prettyPrint('token ${token.first}');
       _dio.options.headers.addAll({
-        'Authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJNUFNTMTQxNyIsIm5iZiI6MTcxNjE4MDQzOCwiZXhwIjoxNzE4NzcyNDM4LCJpYXQiOjE3MTYxODA0Mzh9.sUGGGL9OvJRSu2aZFBH-cqjkALmVmq3z3E4jDqmIDD0'
+        'Authorization': token,
       });
     }
   }

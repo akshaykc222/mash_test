@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -12,6 +11,7 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
+import '../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import 'widget/parent_dashboard_student_detail_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {
@@ -74,7 +74,7 @@ class _Header extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.white,
       pinned: true,
-      expandedHeight: SizeUtility(context).height / 4.5,
+      expandedHeight: SizeUtility(context).height / 4,
       actions: [
         _AppBarIconWidget(
           img: AppAssets.noticeIcon,

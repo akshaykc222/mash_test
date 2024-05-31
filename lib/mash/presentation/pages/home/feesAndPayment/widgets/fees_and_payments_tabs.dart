@@ -1,6 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
+import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
+import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/data/remote/models/profile/student_detail_model.dart';
+import 'package:mash/mash/data/remote/models/profile/student_model.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
@@ -81,7 +91,9 @@ class FeesAndPaymentsTabs extends StatelessWidget {
                         ],
                       ),
                       CommonSmallButton(
-                          onPress: () {},
+                          onPress: () {
+                            _initPay();
+                          },
                           title: AppStrings.payNow,
                           prefixIcon: Icons.currency_rupee,
                           color: AppColors.primaryColor)
@@ -184,5 +196,25 @@ class FeesAndPaymentsTabs extends StatelessWidget {
     );
   }
 
-  _initPay() {}
+  _initPay() {
+    // try {
+    //   var session = CFSessionBuilder()
+    //       .setEnvironment(CFEnvironment.PRODUCTION)
+    //       .setOrderId("2182324434")
+    //       .setPaymentSessionId(
+    //           'session_V-m5e8CioGNK2Cj7WMsPTQfGc8mSARCGIDTvWLPJgB9fm9MUuT-TYbnUC652mVuF7M3hL2yVMaCudSJ4X1kzfFXw62sigDDnLtaTbkdpNoO6')
+    //       .build();
+    //   var cfWebCheckout =
+    //       CFWebCheckoutPaymentBuilder().setSession(session).build();
+    //   var cfpaymenteGateway = CFPaymentGatewayService();
+    //   cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {
+    //     prettyPrint('cashfree payment gate way response ${p0}');
+    //   });
+    //   cfpaymenteGateway.doPayment(cfWebCheckout);
+
+    //   return session;
+    // } on CFException catch (e) {
+    //   print(e.message);
+    // }
+  }
 }

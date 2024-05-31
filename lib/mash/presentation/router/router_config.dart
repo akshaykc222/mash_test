@@ -118,8 +118,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router =
-      GoRouter(initialLocation: AppPages.examTimetableScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,

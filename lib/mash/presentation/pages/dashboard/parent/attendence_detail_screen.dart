@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/animated_widget.dart';
+
+import '../../../manager/bloc/profile_bloc/profile_bloc.dart';
 
 class AttendenceDetailScreen extends StatefulWidget {
   const AttendenceDetailScreen({super.key});
