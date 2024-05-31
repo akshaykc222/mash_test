@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 
 import '../../../core/response_classify.dart';
@@ -59,6 +60,7 @@ class HelperClasses {
         return false;
       },
       builder: (context, state) {
+        prettyPrint(state.getSiblings.toString());
         return state.getSiblings?.status == Status.LOADING
             ? const CustomShimmerWidget(
                 height: 60,

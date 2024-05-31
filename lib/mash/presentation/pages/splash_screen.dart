@@ -76,7 +76,7 @@ class SplashScreenState extends State<SplashScreen>
       final token =
           await HiveService().getBox<String>(boxName: LocalStorageNames.token);
       if (token.isNotEmpty) {
-        return AppPages.vehicleTracker;
+        return AppPages.home;
       } else {
         return AppPages.login;
       }

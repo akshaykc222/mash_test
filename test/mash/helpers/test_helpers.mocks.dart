@@ -51,18 +51,15 @@ import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.da
     as _i15;
 import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart'
     as _i46;
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart'
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart'
     as _i32;
-import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart'
+import 'package:mash/mash/data/remote/request/academic_subjects_request.dart'
     as _i50;
-import 'package:mash/mash/data/remote/models/request/digital_library_request.dart'
+import 'package:mash/mash/data/remote/request/digital_library_request.dart'
     as _i36;
-import 'package:mash/mash/data/remote/models/request/login_request.dart'
-    as _i26;
-import 'package:mash/mash/data/remote/models/request/news_board_request.dart'
-    as _i44;
-import 'package:mash/mash/data/remote/models/request/role_menu_request.dart'
-    as _i34;
+import 'package:mash/mash/data/remote/request/login_request.dart' as _i26;
+import 'package:mash/mash/data/remote/request/news_board_request.dart' as _i44;
+import 'package:mash/mash/data/remote/request/role_menu_request.dart' as _i34;
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart'
     as _i49;
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart'

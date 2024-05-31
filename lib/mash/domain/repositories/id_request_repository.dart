@@ -8,5 +8,5 @@ import '../../data/remote/request/transfer_request_type_request.dart';
 
 abstract class IdRequestRepository{
   Future<List<IdRequestEntity>>  getIdRequestType(IdRequest request);
-  Future<void> postidRequest(PostIdRequest request);
+  Future<void> postIdRequest(PostIdRequest request);
 }

@@ -6,7 +6,6 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
-// import 'package:mash/mash/domain/entities/academic/selected_date_range_model.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_subject_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.dart';
