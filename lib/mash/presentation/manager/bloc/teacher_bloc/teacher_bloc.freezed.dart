@@ -21,6 +21,10 @@ mixin _$TeacherEvent {
     required TResult Function() started,
     required TResult Function() getRatings,
     required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +32,10 @@ mixin _$TeacherEvent {
     TResult? Function()? started,
     TResult? Function()? getRatings,
     TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +43,10 @@ mixin _$TeacherEvent {
     TResult Function()? started,
     TResult Function()? getRatings,
     TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +55,9 @@ mixin _$TeacherEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_GetRatings value) getRatings,
     required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +65,8 @@ mixin _$TeacherEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetRatings value)? getRatings,
     TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +74,8 @@ mixin _$TeacherEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetRatings value)? getRatings,
     TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +140,10 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function() getRatings,
     required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
   }) {
     return started();
   }
@@ -131,6 +154,10 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function()? getRatings,
     TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
   }) {
     return started?.call();
   }
@@ -141,6 +168,10 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function()? getRatings,
     TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +186,9 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_GetRatings value) getRatings,
     required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
   }) {
     return started(this);
   }
@@ -165,6 +199,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetRatings value)? getRatings,
     TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
   }) {
     return started?.call(this);
   }
@@ -175,6 +211,8 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetRatings value)? getRatings,
     TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -229,6 +267,10 @@ class _$GetRatingsImpl implements _GetRatings {
     required TResult Function() started,
     required TResult Function() getRatings,
     required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
   }) {
     return getRatings();
   }
@@ -239,6 +281,10 @@ class _$GetRatingsImpl implements _GetRatings {
     TResult? Function()? started,
     TResult? Function()? getRatings,
     TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
   }) {
     return getRatings?.call();
   }
@@ -249,6 +295,10 @@ class _$GetRatingsImpl implements _GetRatings {
     TResult Function()? started,
     TResult Function()? getRatings,
     TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
     required TResult orElse(),
   }) {
     if (getRatings != null) {
@@ -263,6 +313,9 @@ class _$GetRatingsImpl implements _GetRatings {
     required TResult Function(_Started value) started,
     required TResult Function(_GetRatings value) getRatings,
     required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
   }) {
     return getRatings(this);
   }
@@ -273,6 +326,8 @@ class _$GetRatingsImpl implements _GetRatings {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetRatings value)? getRatings,
     TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
   }) {
     return getRatings?.call(this);
   }
@@ -283,6 +338,8 @@ class _$GetRatingsImpl implements _GetRatings {
     TResult Function(_Started value)? started,
     TResult Function(_GetRatings value)? getRatings,
     TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
     required TResult orElse(),
   }) {
     if (getRatings != null) {
@@ -337,6 +394,10 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     required TResult Function() started,
     required TResult Function() getRatings,
     required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
   }) {
     return getRatingQuestions();
   }
@@ -347,6 +408,10 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     TResult? Function()? started,
     TResult? Function()? getRatings,
     TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
   }) {
     return getRatingQuestions?.call();
   }
@@ -357,6 +422,10 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     TResult Function()? started,
     TResult Function()? getRatings,
     TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
     required TResult orElse(),
   }) {
     if (getRatingQuestions != null) {
@@ -371,6 +440,9 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     required TResult Function(_Started value) started,
     required TResult Function(_GetRatings value) getRatings,
     required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
   }) {
     return getRatingQuestions(this);
   }
@@ -381,6 +453,8 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetRatings value)? getRatings,
     TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
   }) {
     return getRatingQuestions?.call(this);
   }
@@ -391,6 +465,8 @@ class _$GetRatingQuestionsImpl implements _GetRatingQuestions {
     TResult Function(_Started value)? started,
     TResult Function(_GetRatings value)? getRatings,
     TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
     required TResult orElse(),
   }) {
     if (getRatingQuestions != null) {
@@ -405,11 +481,351 @@ abstract class _GetRatingQuestions implements TeacherEvent {
 }
 
 /// @nodoc
+abstract class _$$ClearTeacherRatingsImplCopyWith<$Res> {
+  factory _$$ClearTeacherRatingsImplCopyWith(_$ClearTeacherRatingsImpl value,
+          $Res Function(_$ClearTeacherRatingsImpl) then) =
+      __$$ClearTeacherRatingsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearTeacherRatingsImplCopyWithImpl<$Res>
+    extends _$TeacherEventCopyWithImpl<$Res, _$ClearTeacherRatingsImpl>
+    implements _$$ClearTeacherRatingsImplCopyWith<$Res> {
+  __$$ClearTeacherRatingsImplCopyWithImpl(_$ClearTeacherRatingsImpl _value,
+      $Res Function(_$ClearTeacherRatingsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearTeacherRatingsImpl implements _ClearTeacherRatings {
+  const _$ClearTeacherRatingsImpl();
+
+  @override
+  String toString() {
+    return 'TeacherEvent.clearTeacherRatingList()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearTeacherRatingsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getRatings,
+    required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
+  }) {
+    return clearTeacherRatingList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getRatings,
+    TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
+  }) {
+    return clearTeacherRatingList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getRatings,
+    TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
+    required TResult orElse(),
+  }) {
+    if (clearTeacherRatingList != null) {
+      return clearTeacherRatingList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetRatings value) getRatings,
+    required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
+  }) {
+    return clearTeacherRatingList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetRatings value)? getRatings,
+    TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
+  }) {
+    return clearTeacherRatingList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetRatings value)? getRatings,
+    TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
+    required TResult orElse(),
+  }) {
+    if (clearTeacherRatingList != null) {
+      return clearTeacherRatingList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearTeacherRatings implements TeacherEvent {
+  const factory _ClearTeacherRatings() = _$ClearTeacherRatingsImpl;
+}
+
+/// @nodoc
+abstract class _$$PostTeacherRatingImplCopyWith<$Res> {
+  factory _$$PostTeacherRatingImplCopyWith(_$PostTeacherRatingImpl value,
+          $Res Function(_$PostTeacherRatingImpl) then) =
+      __$$PostTeacherRatingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String teacherId,
+      String subId,
+      String? remarks,
+      List<RatedQuestion> ratedQuestions});
+}
+
+/// @nodoc
+class __$$PostTeacherRatingImplCopyWithImpl<$Res>
+    extends _$TeacherEventCopyWithImpl<$Res, _$PostTeacherRatingImpl>
+    implements _$$PostTeacherRatingImplCopyWith<$Res> {
+  __$$PostTeacherRatingImplCopyWithImpl(_$PostTeacherRatingImpl _value,
+      $Res Function(_$PostTeacherRatingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? teacherId = null,
+    Object? subId = null,
+    Object? remarks = freezed,
+    Object? ratedQuestions = null,
+  }) {
+    return _then(_$PostTeacherRatingImpl(
+      teacherId: null == teacherId
+          ? _value.teacherId
+          : teacherId // ignore: cast_nullable_to_non_nullable
+              as String,
+      subId: null == subId
+          ? _value.subId
+          : subId // ignore: cast_nullable_to_non_nullable
+              as String,
+      remarks: freezed == remarks
+          ? _value.remarks
+          : remarks // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ratedQuestions: null == ratedQuestions
+          ? _value._ratedQuestions
+          : ratedQuestions // ignore: cast_nullable_to_non_nullable
+              as List<RatedQuestion>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostTeacherRatingImpl implements _PostTeacherRating {
+  const _$PostTeacherRatingImpl(
+      {required this.teacherId,
+      required this.subId,
+      this.remarks,
+      required final List<RatedQuestion> ratedQuestions})
+      : _ratedQuestions = ratedQuestions;
+
+  @override
+  final String teacherId;
+  @override
+  final String subId;
+  @override
+  final String? remarks;
+  final List<RatedQuestion> _ratedQuestions;
+  @override
+  List<RatedQuestion> get ratedQuestions {
+    if (_ratedQuestions is EqualUnmodifiableListView) return _ratedQuestions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ratedQuestions);
+  }
+
+  @override
+  String toString() {
+    return 'TeacherEvent.postTeacherRating(teacherId: $teacherId, subId: $subId, remarks: $remarks, ratedQuestions: $ratedQuestions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostTeacherRatingImpl &&
+            (identical(other.teacherId, teacherId) ||
+                other.teacherId == teacherId) &&
+            (identical(other.subId, subId) || other.subId == subId) &&
+            (identical(other.remarks, remarks) || other.remarks == remarks) &&
+            const DeepCollectionEquality()
+                .equals(other._ratedQuestions, _ratedQuestions));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, teacherId, subId, remarks,
+      const DeepCollectionEquality().hash(_ratedQuestions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostTeacherRatingImplCopyWith<_$PostTeacherRatingImpl> get copyWith =>
+      __$$PostTeacherRatingImplCopyWithImpl<_$PostTeacherRatingImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getRatings,
+    required TResult Function() getRatingQuestions,
+    required TResult Function() clearTeacherRatingList,
+    required TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)
+        postTeacherRating,
+  }) {
+    return postTeacherRating(teacherId, subId, remarks, ratedQuestions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getRatings,
+    TResult? Function()? getRatingQuestions,
+    TResult? Function()? clearTeacherRatingList,
+    TResult? Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
+  }) {
+    return postTeacherRating?.call(teacherId, subId, remarks, ratedQuestions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getRatings,
+    TResult Function()? getRatingQuestions,
+    TResult Function()? clearTeacherRatingList,
+    TResult Function(String teacherId, String subId, String? remarks,
+            List<RatedQuestion> ratedQuestions)?
+        postTeacherRating,
+    required TResult orElse(),
+  }) {
+    if (postTeacherRating != null) {
+      return postTeacherRating(teacherId, subId, remarks, ratedQuestions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetRatings value) getRatings,
+    required TResult Function(_GetRatingQuestions value) getRatingQuestions,
+    required TResult Function(_ClearTeacherRatings value)
+        clearTeacherRatingList,
+    required TResult Function(_PostTeacherRating value) postTeacherRating,
+  }) {
+    return postTeacherRating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetRatings value)? getRatings,
+    TResult? Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult? Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult? Function(_PostTeacherRating value)? postTeacherRating,
+  }) {
+    return postTeacherRating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetRatings value)? getRatings,
+    TResult Function(_GetRatingQuestions value)? getRatingQuestions,
+    TResult Function(_ClearTeacherRatings value)? clearTeacherRatingList,
+    TResult Function(_PostTeacherRating value)? postTeacherRating,
+    required TResult orElse(),
+  }) {
+    if (postTeacherRating != null) {
+      return postTeacherRating(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostTeacherRating implements TeacherEvent {
+  const factory _PostTeacherRating(
+          {required final String teacherId,
+          required final String subId,
+          final String? remarks,
+          required final List<RatedQuestion> ratedQuestions}) =
+      _$PostTeacherRatingImpl;
+
+  String get teacherId;
+  String get subId;
+  String? get remarks;
+  List<RatedQuestion> get ratedQuestions;
+  @JsonKey(ignore: true)
+  _$$PostTeacherRatingImplCopyWith<_$PostTeacherRatingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TeacherState {
   ResponseClassify<List<TeacherRatingEntity>>? get getTeacherRating =>
       throw _privateConstructorUsedError;
   ResponseClassify<List<TeacherRatingQuestionsEntity>>?
       get getTeacherRatingQuestions => throw _privateConstructorUsedError;
+  ResponseClassify<void>? get postTeacherRating =>
+      throw _privateConstructorUsedError;
+  List<RatedQuestion> get selectedTeacherRating =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TeacherStateCopyWith<TeacherState> get copyWith =>
@@ -425,7 +841,9 @@ abstract class $TeacherStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<TeacherRatingEntity>>? getTeacherRating,
       ResponseClassify<List<TeacherRatingQuestionsEntity>>?
-          getTeacherRatingQuestions});
+          getTeacherRatingQuestions,
+      ResponseClassify<void>? postTeacherRating,
+      List<RatedQuestion> selectedTeacherRating});
 }
 
 /// @nodoc
@@ -443,6 +861,8 @@ class _$TeacherStateCopyWithImpl<$Res, $Val extends TeacherState>
   $Res call({
     Object? getTeacherRating = freezed,
     Object? getTeacherRatingQuestions = freezed,
+    Object? postTeacherRating = freezed,
+    Object? selectedTeacherRating = null,
   }) {
     return _then(_value.copyWith(
       getTeacherRating: freezed == getTeacherRating
@@ -453,6 +873,14 @@ class _$TeacherStateCopyWithImpl<$Res, $Val extends TeacherState>
           ? _value.getTeacherRatingQuestions
           : getTeacherRatingQuestions // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<TeacherRatingQuestionsEntity>>?,
+      postTeacherRating: freezed == postTeacherRating
+          ? _value.postTeacherRating
+          : postTeacherRating // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
+      selectedTeacherRating: null == selectedTeacherRating
+          ? _value.selectedTeacherRating
+          : selectedTeacherRating // ignore: cast_nullable_to_non_nullable
+              as List<RatedQuestion>,
     ) as $Val);
   }
 }
@@ -468,7 +896,9 @@ abstract class _$$TeacherStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<TeacherRatingEntity>>? getTeacherRating,
       ResponseClassify<List<TeacherRatingQuestionsEntity>>?
-          getTeacherRatingQuestions});
+          getTeacherRatingQuestions,
+      ResponseClassify<void>? postTeacherRating,
+      List<RatedQuestion> selectedTeacherRating});
 }
 
 /// @nodoc
@@ -484,6 +914,8 @@ class __$$TeacherStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getTeacherRating = freezed,
     Object? getTeacherRatingQuestions = freezed,
+    Object? postTeacherRating = freezed,
+    Object? selectedTeacherRating = null,
   }) {
     return _then(_$TeacherStateImpl(
       getTeacherRating: freezed == getTeacherRating
@@ -494,6 +926,14 @@ class __$$TeacherStateImplCopyWithImpl<$Res>
           ? _value.getTeacherRatingQuestions
           : getTeacherRatingQuestions // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<TeacherRatingQuestionsEntity>>?,
+      postTeacherRating: freezed == postTeacherRating
+          ? _value.postTeacherRating
+          : postTeacherRating // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
+      selectedTeacherRating: null == selectedTeacherRating
+          ? _value._selectedTeacherRating
+          : selectedTeacherRating // ignore: cast_nullable_to_non_nullable
+              as List<RatedQuestion>,
     ));
   }
 }
@@ -502,17 +942,32 @@ class __$$TeacherStateImplCopyWithImpl<$Res>
 
 class _$TeacherStateImpl implements _TeacherState {
   const _$TeacherStateImpl(
-      {this.getTeacherRating, this.getTeacherRatingQuestions});
+      {this.getTeacherRating,
+      this.getTeacherRatingQuestions,
+      this.postTeacherRating,
+      final List<RatedQuestion> selectedTeacherRating = const []})
+      : _selectedTeacherRating = selectedTeacherRating;
 
   @override
   final ResponseClassify<List<TeacherRatingEntity>>? getTeacherRating;
   @override
   final ResponseClassify<List<TeacherRatingQuestionsEntity>>?
       getTeacherRatingQuestions;
+  @override
+  final ResponseClassify<void>? postTeacherRating;
+  final List<RatedQuestion> _selectedTeacherRating;
+  @override
+  @JsonKey()
+  List<RatedQuestion> get selectedTeacherRating {
+    if (_selectedTeacherRating is EqualUnmodifiableListView)
+      return _selectedTeacherRating;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedTeacherRating);
+  }
 
   @override
   String toString() {
-    return 'TeacherState(getTeacherRating: $getTeacherRating, getTeacherRatingQuestions: $getTeacherRatingQuestions)';
+    return 'TeacherState(getTeacherRating: $getTeacherRating, getTeacherRatingQuestions: $getTeacherRatingQuestions, postTeacherRating: $postTeacherRating, selectedTeacherRating: $selectedTeacherRating)';
   }
 
   @override
@@ -524,12 +979,20 @@ class _$TeacherStateImpl implements _TeacherState {
                 other.getTeacherRating == getTeacherRating) &&
             (identical(other.getTeacherRatingQuestions,
                     getTeacherRatingQuestions) ||
-                other.getTeacherRatingQuestions == getTeacherRatingQuestions));
+                other.getTeacherRatingQuestions == getTeacherRatingQuestions) &&
+            (identical(other.postTeacherRating, postTeacherRating) ||
+                other.postTeacherRating == postTeacherRating) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedTeacherRating, _selectedTeacherRating));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, getTeacherRating, getTeacherRatingQuestions);
+  int get hashCode => Object.hash(
+      runtimeType,
+      getTeacherRating,
+      getTeacherRatingQuestions,
+      postTeacherRating,
+      const DeepCollectionEquality().hash(_selectedTeacherRating));
 
   @JsonKey(ignore: true)
   @override
@@ -542,13 +1005,19 @@ abstract class _TeacherState implements TeacherState {
   const factory _TeacherState(
       {final ResponseClassify<List<TeacherRatingEntity>>? getTeacherRating,
       final ResponseClassify<List<TeacherRatingQuestionsEntity>>?
-          getTeacherRatingQuestions}) = _$TeacherStateImpl;
+          getTeacherRatingQuestions,
+      final ResponseClassify<void>? postTeacherRating,
+      final List<RatedQuestion> selectedTeacherRating}) = _$TeacherStateImpl;
 
   @override
   ResponseClassify<List<TeacherRatingEntity>>? get getTeacherRating;
   @override
   ResponseClassify<List<TeacherRatingQuestionsEntity>>?
       get getTeacherRatingQuestions;
+  @override
+  ResponseClassify<void>? get postTeacherRating;
+  @override
+  List<RatedQuestion> get selectedTeacherRating;
   @override
   @JsonKey(ignore: true)
   _$$TeacherStateImplCopyWith<_$TeacherStateImpl> get copyWith =>

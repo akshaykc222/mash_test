@@ -45,11 +45,13 @@
 //   }
 // }
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+
 import '../../../core/hive_service.dart';
 import '../../data/remote/routes/local_storage_name.dart';
 
@@ -74,7 +76,7 @@ class SplashScreenState extends State<SplashScreen>
       final token =
           await HiveService().getBox<String>(boxName: LocalStorageNames.token);
       if (token.isNotEmpty) {
-        return AppPages.home;
+        return AppPages.vehicleTracker;
       } else {
         return AppPages.login;
       }

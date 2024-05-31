@@ -7,7 +7,7 @@ import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 
-import '../../../../manager/profile_bloc/profile_bloc.dart';
+import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 

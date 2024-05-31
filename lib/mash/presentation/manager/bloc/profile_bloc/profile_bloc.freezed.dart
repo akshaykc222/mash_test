@@ -232,10 +232,10 @@ class __$$SelectSiblingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? student = freezed,
+    Object? student = null,
   }) {
     return _then(_$SelectSiblingImpl(
-      student: freezed == student
+      student: null == student
           ? _value.student
           : student // ignore: cast_nullable_to_non_nullable
               as StudentEntity,
@@ -261,12 +261,11 @@ class _$SelectSiblingImpl implements _SelectSibling {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectSiblingImpl &&
-            const DeepCollectionEquality().equals(other.student, student));
+            (identical(other.student, student) || other.student == student));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(student));
+  int get hashCode => Object.hash(runtimeType, student);
 
   @JsonKey(ignore: true)
   @override
@@ -943,13 +942,13 @@ class _$ProfileStateImpl implements _ProfileState {
                 other.getUserDetail == getUserDetail) &&
             (identical(other.updateProfile, updateProfile) ||
                 other.updateProfile == updateProfile) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedSibling, selectedSibling));
+            (identical(other.selectedSibling, selectedSibling) ||
+                other.selectedSibling == selectedSibling));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getSiblings, getUserDetail,
-      updateProfile, const DeepCollectionEquality().hash(selectedSibling));
+  int get hashCode => Object.hash(
+      runtimeType, getSiblings, getUserDetail, updateProfile, selectedSibling);
 
   @JsonKey(ignore: true)
   @override

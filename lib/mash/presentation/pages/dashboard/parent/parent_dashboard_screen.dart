@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
@@ -11,7 +11,6 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/shimmers/custom_shimmer_widget.dart';
-
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
 import '../../../widgets/drawer_widget.dart';
@@ -69,12 +68,12 @@ class ParentDashBoard extends StatelessWidget {
           builder: (context, state) {
             return state.getUserDetail?.status == Status.LOADING
                 ? const CustomShimmerWidget(
-              height: 200,
-            )
+                    height: 200,
+                  )
                 : HelperClasses.cachedNetworkImage(
-              height: 200,
-              imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
-            );
+                    height: 200,
+                    imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
+                  );
           },
         ),
       ),

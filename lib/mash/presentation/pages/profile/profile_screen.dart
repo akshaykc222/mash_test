@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
-import '../../manager/profile_bloc/profile_bloc.dart';
+import '../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../utils/app_theme.dart';
 
 void main() {

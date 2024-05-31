@@ -15,25 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$VeihcleTrackerStopsEvent {
+mixin _$VehicleTrackerStopsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getVehicleTrackerStop,
+    required TResult Function() initMap,
+    required TResult Function() getBusLocation,
     required TResult Function(Set<Polyline> polyLine) addPolyLines,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getVehicleTrackerStop,
+    TResult? Function()? initMap,
+    TResult? Function()? getBusLocation,
     TResult? Function(Set<Polyline> polyLine)? addPolyLines,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getVehicleTrackerStop,
+    TResult Function()? initMap,
+    TResult Function()? getBusLocation,
     TResult Function(Set<Polyline> polyLine)? addPolyLines,
     required TResult orElse(),
   }) =>
@@ -41,22 +44,24 @@ mixin _$VeihcleTrackerStopsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetVehicletrackerStop value)
-        getVehicleTrackerStop,
+    required TResult Function(_InitMap value) initMap,
+    required TResult Function(_GetBusLocation value) getBusLocation,
     required TResult Function(_AddPolyLines value) addPolyLines,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult? Function(_InitMap value)? initMap,
+    TResult? Function(_GetBusLocation value)? getBusLocation,
     TResult? Function(_AddPolyLines value)? addPolyLines,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult Function(_InitMap value)? initMap,
+    TResult Function(_GetBusLocation value)? getBusLocation,
     TResult Function(_AddPolyLines value)? addPolyLines,
     required TResult orElse(),
   }) =>
@@ -64,17 +69,17 @@ mixin _$VeihcleTrackerStopsEvent {
 }
 
 /// @nodoc
-abstract class $VeihcleTrackerStopsEventCopyWith<$Res> {
-  factory $VeihcleTrackerStopsEventCopyWith(VeihcleTrackerStopsEvent value,
-          $Res Function(VeihcleTrackerStopsEvent) then) =
-      _$VeihcleTrackerStopsEventCopyWithImpl<$Res, VeihcleTrackerStopsEvent>;
+abstract class $VehicleTrackerStopsEventCopyWith<$Res> {
+  factory $VehicleTrackerStopsEventCopyWith(VehicleTrackerStopsEvent value,
+          $Res Function(VehicleTrackerStopsEvent) then) =
+      _$VehicleTrackerStopsEventCopyWithImpl<$Res, VehicleTrackerStopsEvent>;
 }
 
 /// @nodoc
-class _$VeihcleTrackerStopsEventCopyWithImpl<$Res,
-        $Val extends VeihcleTrackerStopsEvent>
-    implements $VeihcleTrackerStopsEventCopyWith<$Res> {
-  _$VeihcleTrackerStopsEventCopyWithImpl(this._value, this._then);
+class _$VehicleTrackerStopsEventCopyWithImpl<$Res,
+        $Val extends VehicleTrackerStopsEvent>
+    implements $VehicleTrackerStopsEventCopyWith<$Res> {
+  _$VehicleTrackerStopsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,7 +96,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$VeihcleTrackerStopsEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$VehicleTrackerStopsEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -105,7 +110,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'VeihcleTrackerStopsEvent.started()';
+    return 'VehicleTrackerStopsEvent.started()';
   }
 
   @override
@@ -121,7 +126,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getVehicleTrackerStop,
+    required TResult Function() initMap,
+    required TResult Function() getBusLocation,
     required TResult Function(Set<Polyline> polyLine) addPolyLines,
   }) {
     return started();
@@ -131,7 +137,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getVehicleTrackerStop,
+    TResult? Function()? initMap,
+    TResult? Function()? getBusLocation,
     TResult? Function(Set<Polyline> polyLine)? addPolyLines,
   }) {
     return started?.call();
@@ -141,7 +148,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getVehicleTrackerStop,
+    TResult Function()? initMap,
+    TResult Function()? getBusLocation,
     TResult Function(Set<Polyline> polyLine)? addPolyLines,
     required TResult orElse(),
   }) {
@@ -155,8 +163,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetVehicletrackerStop value)
-        getVehicleTrackerStop,
+    required TResult Function(_InitMap value) initMap,
+    required TResult Function(_GetBusLocation value) getBusLocation,
     required TResult Function(_AddPolyLines value) addPolyLines,
   }) {
     return started(this);
@@ -166,7 +174,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult? Function(_InitMap value)? initMap,
+    TResult? Function(_GetBusLocation value)? getBusLocation,
     TResult? Function(_AddPolyLines value)? addPolyLines,
   }) {
     return started?.call(this);
@@ -176,7 +185,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult Function(_InitMap value)? initMap,
+    TResult Function(_GetBusLocation value)? getBusLocation,
     TResult Function(_AddPolyLines value)? addPolyLines,
     required TResult orElse(),
   }) {
@@ -187,43 +197,40 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements VeihcleTrackerStopsEvent {
+abstract class _Started implements VehicleTrackerStopsEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$GetVehicletrackerStopImplCopyWith<$Res> {
-  factory _$$GetVehicletrackerStopImplCopyWith(
-          _$GetVehicletrackerStopImpl value,
-          $Res Function(_$GetVehicletrackerStopImpl) then) =
-      __$$GetVehicletrackerStopImplCopyWithImpl<$Res>;
+abstract class _$$InitMapImplCopyWith<$Res> {
+  factory _$$InitMapImplCopyWith(
+          _$InitMapImpl value, $Res Function(_$InitMapImpl) then) =
+      __$$InitMapImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetVehicletrackerStopImplCopyWithImpl<$Res>
-    extends _$VeihcleTrackerStopsEventCopyWithImpl<$Res,
-        _$GetVehicletrackerStopImpl>
-    implements _$$GetVehicletrackerStopImplCopyWith<$Res> {
-  __$$GetVehicletrackerStopImplCopyWithImpl(_$GetVehicletrackerStopImpl _value,
-      $Res Function(_$GetVehicletrackerStopImpl) _then)
+class __$$InitMapImplCopyWithImpl<$Res>
+    extends _$VehicleTrackerStopsEventCopyWithImpl<$Res, _$InitMapImpl>
+    implements _$$InitMapImplCopyWith<$Res> {
+  __$$InitMapImplCopyWithImpl(
+      _$InitMapImpl _value, $Res Function(_$InitMapImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetVehicletrackerStopImpl implements _GetVehicletrackerStop {
-  const _$GetVehicletrackerStopImpl();
+class _$InitMapImpl implements _InitMap {
+  const _$InitMapImpl();
 
   @override
   String toString() {
-    return 'VeihcleTrackerStopsEvent.getVehicleTrackerStop()';
+    return 'VehicleTrackerStopsEvent.initMap()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetVehicletrackerStopImpl);
+        (other.runtimeType == runtimeType && other is _$InitMapImpl);
   }
 
   @override
@@ -233,32 +240,35 @@ class _$GetVehicletrackerStopImpl implements _GetVehicletrackerStop {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getVehicleTrackerStop,
+    required TResult Function() initMap,
+    required TResult Function() getBusLocation,
     required TResult Function(Set<Polyline> polyLine) addPolyLines,
   }) {
-    return getVehicleTrackerStop();
+    return initMap();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getVehicleTrackerStop,
+    TResult? Function()? initMap,
+    TResult? Function()? getBusLocation,
     TResult? Function(Set<Polyline> polyLine)? addPolyLines,
   }) {
-    return getVehicleTrackerStop?.call();
+    return initMap?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getVehicleTrackerStop,
+    TResult Function()? initMap,
+    TResult Function()? getBusLocation,
     TResult Function(Set<Polyline> polyLine)? addPolyLines,
     required TResult orElse(),
   }) {
-    if (getVehicleTrackerStop != null) {
-      return getVehicleTrackerStop();
+    if (initMap != null) {
+      return initMap();
     }
     return orElse();
   }
@@ -267,40 +277,156 @@ class _$GetVehicletrackerStopImpl implements _GetVehicletrackerStop {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetVehicletrackerStop value)
-        getVehicleTrackerStop,
+    required TResult Function(_InitMap value) initMap,
+    required TResult Function(_GetBusLocation value) getBusLocation,
     required TResult Function(_AddPolyLines value) addPolyLines,
   }) {
-    return getVehicleTrackerStop(this);
+    return initMap(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult? Function(_InitMap value)? initMap,
+    TResult? Function(_GetBusLocation value)? getBusLocation,
     TResult? Function(_AddPolyLines value)? addPolyLines,
   }) {
-    return getVehicleTrackerStop?.call(this);
+    return initMap?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult Function(_InitMap value)? initMap,
+    TResult Function(_GetBusLocation value)? getBusLocation,
     TResult Function(_AddPolyLines value)? addPolyLines,
     required TResult orElse(),
   }) {
-    if (getVehicleTrackerStop != null) {
-      return getVehicleTrackerStop(this);
+    if (initMap != null) {
+      return initMap(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetVehicletrackerStop implements VeihcleTrackerStopsEvent {
-  const factory _GetVehicletrackerStop() = _$GetVehicletrackerStopImpl;
+abstract class _InitMap implements VehicleTrackerStopsEvent {
+  const factory _InitMap() = _$InitMapImpl;
+}
+
+/// @nodoc
+abstract class _$$GetBusLocationImplCopyWith<$Res> {
+  factory _$$GetBusLocationImplCopyWith(_$GetBusLocationImpl value,
+          $Res Function(_$GetBusLocationImpl) then) =
+      __$$GetBusLocationImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetBusLocationImplCopyWithImpl<$Res>
+    extends _$VehicleTrackerStopsEventCopyWithImpl<$Res, _$GetBusLocationImpl>
+    implements _$$GetBusLocationImplCopyWith<$Res> {
+  __$$GetBusLocationImplCopyWithImpl(
+      _$GetBusLocationImpl _value, $Res Function(_$GetBusLocationImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetBusLocationImpl implements _GetBusLocation {
+  const _$GetBusLocationImpl();
+
+  @override
+  String toString() {
+    return 'VehicleTrackerStopsEvent.getBusLocation()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetBusLocationImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() initMap,
+    required TResult Function() getBusLocation,
+    required TResult Function(Set<Polyline> polyLine) addPolyLines,
+  }) {
+    return getBusLocation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? initMap,
+    TResult? Function()? getBusLocation,
+    TResult? Function(Set<Polyline> polyLine)? addPolyLines,
+  }) {
+    return getBusLocation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? initMap,
+    TResult Function()? getBusLocation,
+    TResult Function(Set<Polyline> polyLine)? addPolyLines,
+    required TResult orElse(),
+  }) {
+    if (getBusLocation != null) {
+      return getBusLocation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_InitMap value) initMap,
+    required TResult Function(_GetBusLocation value) getBusLocation,
+    required TResult Function(_AddPolyLines value) addPolyLines,
+  }) {
+    return getBusLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_InitMap value)? initMap,
+    TResult? Function(_GetBusLocation value)? getBusLocation,
+    TResult? Function(_AddPolyLines value)? addPolyLines,
+  }) {
+    return getBusLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_InitMap value)? initMap,
+    TResult Function(_GetBusLocation value)? getBusLocation,
+    TResult Function(_AddPolyLines value)? addPolyLines,
+    required TResult orElse(),
+  }) {
+    if (getBusLocation != null) {
+      return getBusLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetBusLocation implements VehicleTrackerStopsEvent {
+  const factory _GetBusLocation() = _$GetBusLocationImpl;
 }
 
 /// @nodoc
@@ -314,7 +440,7 @@ abstract class _$$AddPolyLinesImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$AddPolyLinesImplCopyWithImpl<$Res>
-    extends _$VeihcleTrackerStopsEventCopyWithImpl<$Res, _$AddPolyLinesImpl>
+    extends _$VehicleTrackerStopsEventCopyWithImpl<$Res, _$AddPolyLinesImpl>
     implements _$$AddPolyLinesImplCopyWith<$Res> {
   __$$AddPolyLinesImplCopyWithImpl(
       _$AddPolyLinesImpl _value, $Res Function(_$AddPolyLinesImpl) _then)
@@ -350,7 +476,7 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
 
   @override
   String toString() {
-    return 'VeihcleTrackerStopsEvent.addPolyLines(polyLine: $polyLine)';
+    return 'VehicleTrackerStopsEvent.addPolyLines(polyLine: $polyLine)';
   }
 
   @override
@@ -375,7 +501,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getVehicleTrackerStop,
+    required TResult Function() initMap,
+    required TResult Function() getBusLocation,
     required TResult Function(Set<Polyline> polyLine) addPolyLines,
   }) {
     return addPolyLines(polyLine);
@@ -385,7 +512,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getVehicleTrackerStop,
+    TResult? Function()? initMap,
+    TResult? Function()? getBusLocation,
     TResult? Function(Set<Polyline> polyLine)? addPolyLines,
   }) {
     return addPolyLines?.call(polyLine);
@@ -395,7 +523,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getVehicleTrackerStop,
+    TResult Function()? initMap,
+    TResult Function()? getBusLocation,
     TResult Function(Set<Polyline> polyLine)? addPolyLines,
     required TResult orElse(),
   }) {
@@ -409,8 +538,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_GetVehicletrackerStop value)
-        getVehicleTrackerStop,
+    required TResult Function(_InitMap value) initMap,
+    required TResult Function(_GetBusLocation value) getBusLocation,
     required TResult Function(_AddPolyLines value) addPolyLines,
   }) {
     return addPolyLines(this);
@@ -420,7 +549,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult? Function(_InitMap value)? initMap,
+    TResult? Function(_GetBusLocation value)? getBusLocation,
     TResult? Function(_AddPolyLines value)? addPolyLines,
   }) {
     return addPolyLines?.call(this);
@@ -430,7 +560,8 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_GetVehicletrackerStop value)? getVehicleTrackerStop,
+    TResult Function(_InitMap value)? initMap,
+    TResult Function(_GetBusLocation value)? getBusLocation,
     TResult Function(_AddPolyLines value)? addPolyLines,
     required TResult orElse(),
   }) {
@@ -441,7 +572,7 @@ class _$AddPolyLinesImpl implements _AddPolyLines {
   }
 }
 
-abstract class _AddPolyLines implements VeihcleTrackerStopsEvent {
+abstract class _AddPolyLines implements VehicleTrackerStopsEvent {
   const factory _AddPolyLines({required final Set<Polyline> polyLine}) =
       _$AddPolyLinesImpl;
 
@@ -452,32 +583,36 @@ abstract class _AddPolyLines implements VeihcleTrackerStopsEvent {
 }
 
 /// @nodoc
-mixin _$VeihcleTrackerStopsState {
-  ResponseClassify<List<VehicleTrackerEntity>>? get getTrackerStops =>
-      throw _privateConstructorUsedError;
+mixin _$VehicleTrackerStopsState {
+  StudentRouteEntity? get getTrackerStops => throw _privateConstructorUsedError;
   Set<Polyline>? get polyLines => throw _privateConstructorUsedError;
+  VehicleLocationEntity? get getBusLiveLocation =>
+      throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $VeihcleTrackerStopsStateCopyWith<VeihcleTrackerStopsState> get copyWith =>
+  $VehicleTrackerStopsStateCopyWith<VehicleTrackerStopsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $VeihcleTrackerStopsStateCopyWith<$Res> {
-  factory $VeihcleTrackerStopsStateCopyWith(VeihcleTrackerStopsState value,
-          $Res Function(VeihcleTrackerStopsState) then) =
-      _$VeihcleTrackerStopsStateCopyWithImpl<$Res, VeihcleTrackerStopsState>;
+abstract class $VehicleTrackerStopsStateCopyWith<$Res> {
+  factory $VehicleTrackerStopsStateCopyWith(VehicleTrackerStopsState value,
+          $Res Function(VehicleTrackerStopsState) then) =
+      _$VehicleTrackerStopsStateCopyWithImpl<$Res, VehicleTrackerStopsState>;
   @useResult
   $Res call(
-      {ResponseClassify<List<VehicleTrackerEntity>>? getTrackerStops,
-      Set<Polyline>? polyLines});
+      {StudentRouteEntity? getTrackerStops,
+      Set<Polyline>? polyLines,
+      VehicleLocationEntity? getBusLiveLocation,
+      bool isLoading});
 }
 
 /// @nodoc
-class _$VeihcleTrackerStopsStateCopyWithImpl<$Res,
-        $Val extends VeihcleTrackerStopsState>
-    implements $VeihcleTrackerStopsStateCopyWith<$Res> {
-  _$VeihcleTrackerStopsStateCopyWithImpl(this._value, this._then);
+class _$VehicleTrackerStopsStateCopyWithImpl<$Res,
+        $Val extends VehicleTrackerStopsState>
+    implements $VehicleTrackerStopsStateCopyWith<$Res> {
+  _$VehicleTrackerStopsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -489,42 +624,54 @@ class _$VeihcleTrackerStopsStateCopyWithImpl<$Res,
   $Res call({
     Object? getTrackerStops = freezed,
     Object? polyLines = freezed,
+    Object? getBusLiveLocation = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       getTrackerStops: freezed == getTrackerStops
           ? _value.getTrackerStops
           : getTrackerStops // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<VehicleTrackerEntity>>?,
+              as StudentRouteEntity?,
       polyLines: freezed == polyLines
           ? _value.polyLines
           : polyLines // ignore: cast_nullable_to_non_nullable
               as Set<Polyline>?,
+      getBusLiveLocation: freezed == getBusLiveLocation
+          ? _value.getBusLiveLocation
+          : getBusLiveLocation // ignore: cast_nullable_to_non_nullable
+              as VehicleLocationEntity?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$VeihcleTrackerStopsStateImplCopyWith<$Res>
-    implements $VeihcleTrackerStopsStateCopyWith<$Res> {
-  factory _$$VeihcleTrackerStopsStateImplCopyWith(
-          _$VeihcleTrackerStopsStateImpl value,
-          $Res Function(_$VeihcleTrackerStopsStateImpl) then) =
-      __$$VeihcleTrackerStopsStateImplCopyWithImpl<$Res>;
+abstract class _$$VehicleTrackerStopsStateImplCopyWith<$Res>
+    implements $VehicleTrackerStopsStateCopyWith<$Res> {
+  factory _$$VehicleTrackerStopsStateImplCopyWith(
+          _$VehicleTrackerStopsStateImpl value,
+          $Res Function(_$VehicleTrackerStopsStateImpl) then) =
+      __$$VehicleTrackerStopsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {ResponseClassify<List<VehicleTrackerEntity>>? getTrackerStops,
-      Set<Polyline>? polyLines});
+      {StudentRouteEntity? getTrackerStops,
+      Set<Polyline>? polyLines,
+      VehicleLocationEntity? getBusLiveLocation,
+      bool isLoading});
 }
 
 /// @nodoc
-class __$$VeihcleTrackerStopsStateImplCopyWithImpl<$Res>
-    extends _$VeihcleTrackerStopsStateCopyWithImpl<$Res,
-        _$VeihcleTrackerStopsStateImpl>
-    implements _$$VeihcleTrackerStopsStateImplCopyWith<$Res> {
-  __$$VeihcleTrackerStopsStateImplCopyWithImpl(
-      _$VeihcleTrackerStopsStateImpl _value,
-      $Res Function(_$VeihcleTrackerStopsStateImpl) _then)
+class __$$VehicleTrackerStopsStateImplCopyWithImpl<$Res>
+    extends _$VehicleTrackerStopsStateCopyWithImpl<$Res,
+        _$VehicleTrackerStopsStateImpl>
+    implements _$$VehicleTrackerStopsStateImplCopyWith<$Res> {
+  __$$VehicleTrackerStopsStateImplCopyWithImpl(
+      _$VehicleTrackerStopsStateImpl _value,
+      $Res Function(_$VehicleTrackerStopsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -532,29 +679,42 @@ class __$$VeihcleTrackerStopsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getTrackerStops = freezed,
     Object? polyLines = freezed,
+    Object? getBusLiveLocation = freezed,
+    Object? isLoading = null,
   }) {
-    return _then(_$VeihcleTrackerStopsStateImpl(
+    return _then(_$VehicleTrackerStopsStateImpl(
       getTrackerStops: freezed == getTrackerStops
           ? _value.getTrackerStops
           : getTrackerStops // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<VehicleTrackerEntity>>?,
+              as StudentRouteEntity?,
       polyLines: freezed == polyLines
           ? _value._polyLines
           : polyLines // ignore: cast_nullable_to_non_nullable
               as Set<Polyline>?,
+      getBusLiveLocation: freezed == getBusLiveLocation
+          ? _value.getBusLiveLocation
+          : getBusLiveLocation // ignore: cast_nullable_to_non_nullable
+              as VehicleLocationEntity?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$VeihcleTrackerStopsStateImpl implements _VeihcleTrackerStopsState {
-  const _$VeihcleTrackerStopsStateImpl(
-      {this.getTrackerStops, final Set<Polyline>? polyLines})
+class _$VehicleTrackerStopsStateImpl implements _VehicleTrackerStopsState {
+  const _$VehicleTrackerStopsStateImpl(
+      {this.getTrackerStops,
+      final Set<Polyline>? polyLines,
+      this.getBusLiveLocation,
+      this.isLoading = false})
       : _polyLines = polyLines;
 
   @override
-  final ResponseClassify<List<VehicleTrackerEntity>>? getTrackerStops;
+  final StudentRouteEntity? getTrackerStops;
   final Set<Polyline>? _polyLines;
   @override
   Set<Polyline>? get polyLines {
@@ -566,44 +726,64 @@ class _$VeihcleTrackerStopsStateImpl implements _VeihcleTrackerStopsState {
   }
 
   @override
+  final VehicleLocationEntity? getBusLiveLocation;
+  @override
+  @JsonKey()
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'VeihcleTrackerStopsState(getTrackerStops: $getTrackerStops, polyLines: $polyLines)';
+    return 'VehicleTrackerStopsState(getTrackerStops: $getTrackerStops, polyLines: $polyLines, getBusLiveLocation: $getBusLiveLocation, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VeihcleTrackerStopsStateImpl &&
+            other is _$VehicleTrackerStopsStateImpl &&
             (identical(other.getTrackerStops, getTrackerStops) ||
                 other.getTrackerStops == getTrackerStops) &&
             const DeepCollectionEquality()
-                .equals(other._polyLines, _polyLines));
+                .equals(other._polyLines, _polyLines) &&
+            (identical(other.getBusLiveLocation, getBusLiveLocation) ||
+                other.getBusLiveLocation == getBusLiveLocation) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getTrackerStops,
-      const DeepCollectionEquality().hash(_polyLines));
+  int get hashCode => Object.hash(
+      runtimeType,
+      getTrackerStops,
+      const DeepCollectionEquality().hash(_polyLines),
+      getBusLiveLocation,
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$VeihcleTrackerStopsStateImplCopyWith<_$VeihcleTrackerStopsStateImpl>
-      get copyWith => __$$VeihcleTrackerStopsStateImplCopyWithImpl<
-          _$VeihcleTrackerStopsStateImpl>(this, _$identity);
+  _$$VehicleTrackerStopsStateImplCopyWith<_$VehicleTrackerStopsStateImpl>
+      get copyWith => __$$VehicleTrackerStopsStateImplCopyWithImpl<
+          _$VehicleTrackerStopsStateImpl>(this, _$identity);
 }
 
-abstract class _VeihcleTrackerStopsState implements VeihcleTrackerStopsState {
-  const factory _VeihcleTrackerStopsState(
-      {final ResponseClassify<List<VehicleTrackerEntity>>? getTrackerStops,
-      final Set<Polyline>? polyLines}) = _$VeihcleTrackerStopsStateImpl;
+abstract class _VehicleTrackerStopsState implements VehicleTrackerStopsState {
+  const factory _VehicleTrackerStopsState(
+      {final StudentRouteEntity? getTrackerStops,
+      final Set<Polyline>? polyLines,
+      final VehicleLocationEntity? getBusLiveLocation,
+      final bool isLoading}) = _$VehicleTrackerStopsStateImpl;
 
   @override
-  ResponseClassify<List<VehicleTrackerEntity>>? get getTrackerStops;
+  StudentRouteEntity? get getTrackerStops;
   @override
   Set<Polyline>? get polyLines;
   @override
+  VehicleLocationEntity? get getBusLiveLocation;
+  @override
+  bool get isLoading;
+  @override
   @JsonKey(ignore: true)
-  _$$VeihcleTrackerStopsStateImplCopyWith<_$VeihcleTrackerStopsStateImpl>
+  _$$VehicleTrackerStopsStateImplCopyWith<_$VehicleTrackerStopsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

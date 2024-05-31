@@ -1,6 +1,8 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
+  static const baseUrlVendor = "https://app.avlview.com/";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
+  static const getVehicleLocation = "api/getvehiclecurrentlocation";
   static const digitalLibrary =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibraryAll";
   static const updateProfile =
@@ -54,7 +56,8 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
   static const teacherRatingQuestions =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacher_Rating_QuestionList";
-  static const teacherRatingInsert =  "UATRESTAPI/MashFlutterRestAPI/api/user/insertTeacher_Ratings";
+  static const teacherRatingInsert =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/insertTeacher_Ratings";
 
   // id module
   static const idRequestType =

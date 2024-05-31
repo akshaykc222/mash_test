@@ -11,8 +11,8 @@ import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/get_siblings_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/update_profile_use_case.dart';
 
-import '../../../domain/entities/profile/student_entity.dart';
-import '../../../domain/use_cases/profile/get_user_details_use_case.dart';
+import '../../../../domain/entities/profile/student_entity.dart';
+import '../../../../domain/use_cases/profile/get_user_details_use_case.dart';
 
 part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';

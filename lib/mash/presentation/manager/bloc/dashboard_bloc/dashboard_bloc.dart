@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,20 +10,16 @@ import 'package:mash/mash/data/remote/models/request/digital_library_request.dar
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart';
-import 'package:mash/mash/domain/use_cases/dashboard/get_role_menu_usecase.dart';
 
-import '../../../../core/custom_exception.dart';
-import '../../../../core/response_classify.dart';
-import '../../../domain/entities/dashboard/digital_library_entity.dart';
-import '../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
-import '../../utils/app_constants.dart';
-
+import '../../../../../core/custom_exception.dart';
+import '../../../../../core/response_classify.dart';
+import '../../../../domain/entities/dashboard/digital_library_entity.dart';
+import '../../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';
 
 part 'dashboard_bloc.freezed.dart';
 part 'dashboard_event.dart';
 part 'dashboard_state.dart';
-
 
 /// BLoC responsible for managing the state related to the dashboard.
 @injectable
