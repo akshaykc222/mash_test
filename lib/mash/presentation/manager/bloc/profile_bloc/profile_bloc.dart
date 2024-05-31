@@ -40,12 +40,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   _selectSibling(_SelectSibling event, emit) async {
     var getLoginDetails = await getLoginInfoUseCase.call(NoParams());
+
     add(ProfileEvent.getUserDetails(
         request: GetUserDetailsRequest(
-            userId: event.student.userId,
-            compId: getLoginDetails?.compId ?? "",
-            academicId: getLoginDetails?.academicId ?? "",
-            userType: "2")));
+      userId: event.student.userId,
+      compId: getLoginDetails?.compId ?? "",
+      academicId: getLoginDetails?.academicId ?? "",
+      userType: '2',
+    )));
     emit(state.copyWith(selectedSibling: event.student));
   }
 
@@ -56,6 +58,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       var loginData = await getLoginInfoUseCase.call(NoParams());
       prettyPrint('login data ${loginData?.studentName}');
       var getSiblings = await getSiblingsUseCase.call(loginData?.compId ?? "");
+      prettyPrint('get slibling s$getSiblings');
       if (getSiblings.isNotEmpty) {
         add(ProfileEvent.selectSibling(student: getSiblings.first));
       }

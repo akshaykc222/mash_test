@@ -12,6 +12,7 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
 
+import '../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import 'widget/parent_dashboard_student_detail_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {
@@ -74,7 +75,7 @@ class _Header extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.white,
       pinned: true,
-      expandedHeight: SizeUtility(context).height / 4.5,
+      expandedHeight: SizeUtility(context).height / 4,
       actions: [
         _AppBarIconWidget(
           img: AppAssets.noticeIcon,

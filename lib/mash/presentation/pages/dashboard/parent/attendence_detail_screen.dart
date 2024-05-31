@@ -9,6 +9,8 @@ import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/animated_widget.dart';
 
+import '../../../manager/bloc/profile_bloc/profile_bloc.dart';
+
 class AttendenceDetailScreen extends StatefulWidget {
   const AttendenceDetailScreen({super.key});
 

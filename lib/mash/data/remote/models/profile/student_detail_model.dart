@@ -92,6 +92,9 @@ class StudentDetailModel extends StudentDetailEntity {
 
   /*factory StudentDetailModel.fromEntity(StudentDetailEntity json) {
     return StudentDetailModel(
+      totalHolidays: json.totalHolidays,
+      strength: json.strength,
+      totalEvents: json.totalEvents,
       userType: json.userType,
       academicId: json.academicId,
       usrId: json.usrId,

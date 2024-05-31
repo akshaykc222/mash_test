@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 
 import '../../../../../../core/response_classify.dart';
 import '../../../../../domain/entities/profile/student_detail_entity.dart';
+import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
@@ -26,8 +29,11 @@ class StudenProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.width(SizeUtility(context).width / 24),
-      ).copyWith(top: SizeUtility(context).height / 9),
+        horizontal: SizeUtility(context).width / 24,
+      ).copyWith(
+          top: Platform.isIOS
+              ? SizeUtility(context).height / 9
+              : SizeUtility(context).height / 11),
       child: GestureDetector(
         onTap: () {
           // _isExpand.value = !_isExpand.value;

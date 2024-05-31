@@ -6,9 +6,10 @@ import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/models/request/login_request.dart';
-import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/login_request.dart';
+import 'package:mash/mash/data/remote/request/news_board_request.dart';
+
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 
 //auth model
