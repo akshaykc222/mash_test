@@ -13,7 +13,7 @@ class PaymentHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: AppStrings.transactionHistory),
       body: const TransactHistoryScreen(),
     );
@@ -123,13 +123,12 @@ class TransactHistoryScreen extends StatelessWidget {
                       ),
                     ),
                     spacer10,
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            AppStrings.paidBy +
-                                '\nDr.Renjith PR\n8756664733\nranjith@gmail.com',
+                            '${AppStrings.paidBy}\nDr.Renjith PR\n8756664733\nranjith@gmail.com',
                             style: TextStyle(fontSize: 16),
                           )),
                     ),

@@ -43,7 +43,7 @@ class _AttendanceMarkingScreenState extends State<AttendanceMarkingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.attendanceMarking),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: attendanceMarkingBody(context),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'custom_shimmer_widget.dart';
 

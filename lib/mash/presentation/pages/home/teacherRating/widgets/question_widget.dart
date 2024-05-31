@@ -1,12 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_emoji_feedback/flutter_emoji_feedback.dart';
-import 'package:mash/mash/data/remote/models/teacherRating/teacher_rating_questions.dart';
 import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_questions_entity.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 
-import '../../../../../domain/entities/teacher_rating/teacher_rating.dart';
 
 class QuestionWidget extends StatelessWidget {
 
@@ -24,7 +22,7 @@ class QuestionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${index} . ${rating.questions}",style: const TextStyle(fontWeight: FontWeight.w500),),
+          Text("$index . ${rating.questions}",style: const TextStyle(fontWeight: FontWeight.w500),),
           spacer10,
           EmojiFeedback(
             elementSize: 35,

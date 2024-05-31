@@ -29,7 +29,7 @@ class AppColors {
   static Color transparentLogin = HexColor.fromHex('#80000000');
   static Color green2 = HexColor.fromHex('#32CD30');
   static Color grey200 = HexColor.fromHex('#999999');
-   static Color greyClr100 = Colors.grey.shade100;
+  static Color greyClr100 = Colors.grey.shade100;
   static Color greyClr200 = Colors.grey.shade200;
   static Color greyClr300 = Colors.grey.shade300;
   static Color violet = HexColor.fromHex('#873FC6');
@@ -142,10 +142,15 @@ class AppColors {
       Color(0xfffe439e),
     ],
   );
-  static LinearGradient primaryLinearGradient = LinearGradient(colors: [
-    AppColors.primaryColor,
-    AppColors.primaryColor.withOpacity(0.5),
-  ]);
+  static LinearGradient primaryLinearGradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        // AppColors.primaryColor.withOpacity(0.5),
+
+        AppColors.primaryColor.withOpacity(0.9),
+        AppColors.primaryColor.withOpacity(0.7),
+      ]);
   static const LinearGradient quizRankListGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.topRight,

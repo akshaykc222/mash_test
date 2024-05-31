@@ -5,9 +5,11 @@ part 'dash_board_hive_model.g.dart';
 
 @HiveType(typeId: 1)
 class WordThoughtsHiveModel extends WordThoughtsEntity {
+  @override
   @HiveField(0)
   final int? statusCode;
 
+  @override
   @HiveField(1)
   final String? statusMessage;
 

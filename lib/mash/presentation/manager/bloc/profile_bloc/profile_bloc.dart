@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
@@ -31,7 +32,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       emit(state.copyWith(
           getUserDetail: ResponseClassify.completed(
               await getUserDetailUseCase.call(event.request))));
-    } catch (e) {
+    } catch (e, str) {
+      prettyPrint('error $e stack $str');
       emit(state.copyWith(getUserDetail: ResponseClassify.error(e)));
     }
   }
@@ -52,6 +54,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     try {
       var loginData = await getLoginInfoUseCase.call(NoParams());
+      prettyPrint('login data ${loginData?.studentName}');
       var getSiblings = await getSiblingsUseCase.call(loginData?.compId ?? "");
       if (getSiblings.isNotEmpty) {
         add(ProfileEvent.selectSibling(student: getSiblings.first));

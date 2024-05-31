@@ -9,6 +9,8 @@ class AppAssets {
   static const libImageUserActivity =
       'assets/images/app_image_user_activity.svg'; */
 
+//backgrounds
+  static const dashboardBg = 'assets/backgrounds/home_bg.jpg';
   static const libImageAcademic = 'assets/images/academic.svg';
   static const libImageNonAcademic = 'assets/images/non_academic.svg';
   static const libImageResearch = 'assets/images/research.svg';
@@ -85,11 +87,14 @@ class AppAssets {
   static const downloadIcon = 'assets/icons/download.svg';
   static const bulbIcon = 'assets/icons/bulb.svg';
   static const noticeIcon = 'assets/icons/notice.svg';
-
+  static const ratingIcon = 'assets/icons/rating.png';
   static const group = 'assets/icons/group.svg';
   static const chatMessageSendIcon = 'assets/icons/send.svg';
   static const attachmentIcon = 'assets/icons/attachment.svg';
+
   static var tcApply = "";
+  static const call = 'assets/icons/call.svg';
+  static const chat = 'assets/icons/chat.svg';
 
   static var tcCancel = "";
 

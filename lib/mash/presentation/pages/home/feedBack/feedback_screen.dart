@@ -25,7 +25,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.feedbackForm),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: feedbackBody(context),
     );
   }

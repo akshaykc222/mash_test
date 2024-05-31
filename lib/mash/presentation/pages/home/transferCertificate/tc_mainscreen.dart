@@ -13,7 +13,7 @@ class TransferCertificateMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'TRANSFER CERTIFICATE'),
       body: homeWorkBody(context),
     );

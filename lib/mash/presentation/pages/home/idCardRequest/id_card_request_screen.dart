@@ -30,7 +30,7 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.idCardRequest),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: idRequestBody(context),
     );
   }

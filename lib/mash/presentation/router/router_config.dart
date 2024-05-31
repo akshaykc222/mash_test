@@ -5,6 +5,7 @@ import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
 import 'package:mash/mash/presentation/pages/coming_soon_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/attendence_detail_screen.dart';
+import 'package:mash/mash/presentation/pages/dashboard/parent/widget/dashboard_calendar_view.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/add_on_screen.dart';
 import 'package:mash/mash/presentation/pages/home/addOn/addon_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/attendanceStaff/attendance_marking_screen.dart';
@@ -131,7 +132,7 @@ class AppRouteManager {
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           key: state.pageKey,
-          child: ComingSoon(),
+          child: const ComingSoon(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,
@@ -144,7 +145,7 @@ class AppRouteManager {
     GoRoute(
       path: AppPages.splash,
       name: AppPages.splash,
-      builder: (context, state) => SplashScreen(),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: AppPages.login,
@@ -208,6 +209,11 @@ class AppRouteManager {
       path: AppPages.quizGetReadyScreen,
       name: AppPages.quizGetReadyScreen,
       builder: (context, state) => const QuizGetReadyScreen(),
+    ),
+    GoRoute(
+      path: AppPages.dashboardCalendar,
+      name: AppPages.dashboardCalendar,
+      builder: (context, state) => const DashboardCalendarView(),
     ),
     GoRoute(
       path: AppPages.quizQuestionPage,

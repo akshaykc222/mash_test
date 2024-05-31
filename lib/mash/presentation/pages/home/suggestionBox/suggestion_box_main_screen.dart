@@ -16,7 +16,7 @@ class SuggestionMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'SUGGESTION BOX'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: suggestionBody(context),
     );
   }

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_api_entity.dart';
-import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/question_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';

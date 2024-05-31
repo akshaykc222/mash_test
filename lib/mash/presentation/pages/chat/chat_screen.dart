@@ -14,7 +14,6 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 

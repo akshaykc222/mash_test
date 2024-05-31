@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -202,6 +200,14 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     } catch (e) {
       prettyPrint('[error]==== $e');
     }
+  }
+
+  _disposeEvent(_DisposeEvent event, Emitter<AcademicState> emit) {
+    emit(state.copyWith(
+      selectedSubject: "",
+      selectedSubjectId: "",
+      selectedRange: null,
+    ));
   }
 
   static AcademicBloc get(context) => BlocProvider.of(context);

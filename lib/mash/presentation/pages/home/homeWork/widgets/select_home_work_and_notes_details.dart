@@ -36,8 +36,14 @@ class _HomeWorkAndNoteSelectDetailsScreenState
   @override
   void initState() {
     super.initState();
+    AcademicBloc.get(context).add(const AcademicEvent.disposeEvent());
 
     AcademicBloc.get(context).add(const AcademicEvent.getAcademicSubjects());
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
