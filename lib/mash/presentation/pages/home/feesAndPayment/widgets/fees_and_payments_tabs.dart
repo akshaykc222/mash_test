@@ -197,24 +197,24 @@ class FeesAndPaymentsTabs extends StatelessWidget {
   }
 
   _initPay() {
-    // try {
-    //   var session = CFSessionBuilder()
-    //       .setEnvironment(CFEnvironment.PRODUCTION)
-    //       .setOrderId("2182324434")
-    //       .setPaymentSessionId(
-    //           'session_V-m5e8CioGNK2Cj7WMsPTQfGc8mSARCGIDTvWLPJgB9fm9MUuT-TYbnUC652mVuF7M3hL2yVMaCudSJ4X1kzfFXw62sigDDnLtaTbkdpNoO6')
-    //       .build();
-    //   var cfWebCheckout =
-    //       CFWebCheckoutPaymentBuilder().setSession(session).build();
-    //   var cfpaymenteGateway = CFPaymentGatewayService();
-    //   cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {
-    //     prettyPrint('cashfree payment gate way response ${p0}');
-    //   });
-    //   cfpaymenteGateway.doPayment(cfWebCheckout);
+    try {
+      var session = CFSessionBuilder()
+          .setEnvironment(CFEnvironment.SANDBOX)
+          .setOrderId("order_1981952hEBqJ8LvCpSnHuKnlJD2xjsqjC")
+          .setPaymentSessionId(
+              'session_NuUQ3Ng9JWoyUj1crLh5gtVmifPMMjOINbjzUQca5tBxPTUszpoBW1pRipCW1lMmF4BzrhKX5uDbHNR59saGo4JdUhLetJb3uS-Jd-qdKcFJ')
+          .build();
+      var cfWebCheckout =
+          CFWebCheckoutPaymentBuilder().setSession(session).build();
+      var cfpaymenteGateway = CFPaymentGatewayService();
+      cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {
+        prettyPrint('cashfree payment gate way response ${p0.getMessage()}');
+      });
+      cfpaymenteGateway.doPayment(cfWebCheckout);
 
-    //   return session;
-    // } on CFException catch (e) {
-    //   print(e.message);
-    // }
+      return session;
+    } on CFException catch (e) {
+      print(e.message);
+    }
   }
 }
