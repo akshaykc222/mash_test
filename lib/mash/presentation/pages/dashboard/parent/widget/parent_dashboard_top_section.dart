@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile/profile_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
 import '../../../../utils/app_assets.dart';
@@ -68,15 +71,15 @@ class _AttendanceWidget extends StatelessWidget {
       onTap: () {
         GoRouter.of(context).pushNamed(AppPages.attendanceDetailScreen);
       },
-      child: const OutlinedContainerWidget(
-        height: 170,
-        width: 170,
+      child: OutlinedContainerWidget(
+        height: SizeConfig.height(170),
+        width: SizeConfig.width(170),
         child: Stack(
           children: [
             SizedBox(
-              height: 170,
-              width: 170,
-              child: ProgressIndicatorWidget(
+              height: SizeConfig.height(170),
+              width: SizeConfig.width(170),
+              child: const ProgressIndicatorWidget(
                 progressIndicatorType: ProgressIndicatorType.circular,
                 initialValue: 0.8,
               ),
@@ -87,7 +90,7 @@ class _AttendanceWidget extends StatelessWidget {
               bottom: 0,
               right: 0,
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
+                padding: EdgeInsets.symmetric(vertical: SizeConfig.height(30)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,21 +98,23 @@ class _AttendanceWidget extends StatelessWidget {
                     Text(
                       'ATTENDANCE',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: SizeConfig.textSize(12),
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Text(
-                      '75%',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                    BlocBuilder<ProfileBloc, ProfileState>(
+                      builder: (context, state) => Text(
+                        '${state.getUserDetail?.data?.attPercen}%',
+                        style: TextStyle(
+                          fontSize: SizeConfig.textSize(30),
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Text(
                       'View Details',
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: SizeConfig.textSize(11),
                         fontWeight: FontWeight.w400,
                       ),
                     ),

@@ -35,7 +35,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    context.pop();
                   },
                 ),
               ],

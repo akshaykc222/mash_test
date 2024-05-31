@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/response_classify.dart';
@@ -17,7 +14,7 @@ import '../../../../utils/size_utility.dart';
 import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 import '../../../../widgets/svg_asset_img.dart';
 
-ValueNotifier<bool> _isExpand = ValueNotifier<bool>(false);
+// final ValueNotifier<bool> _isExpand = ValueNotifier<bool>(false);
 
 class StudenProfileWidget extends StatelessWidget {
   final ProfileState state;
@@ -29,11 +26,11 @@ class StudenProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: SizeConfig.width(20),
-      ).copyWith(top: 80),
+        horizontal: SizeConfig.width(SizeUtility(context).width / 24),
+      ).copyWith(top: SizeUtility(context).height / 9),
       child: GestureDetector(
         onTap: () {
-          // _isExpand = ;
+          // _isExpand.value = !_isExpand.value;
           HelperClasses.showStudentSwitchDialog(context);
         },
         child: Column(
@@ -48,19 +45,13 @@ class StudenProfileWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _ProfileImage(state: state),
-                      const _RatingWidget(),
                     ],
                   ),
                   _UserInfo(user: user),
-                  ValueListenableBuilder(
-                    valueListenable: _isExpand,
-                    builder: (context, value, child) => Icon(
-                      _isExpand == true
-                          ? Icons.keyboard_arrow_up
-                          : Icons.keyboard_arrow_down,
-                      color: AppColors.white,
-                      size: 24,
-                    ),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    color: AppColors.white,
+                    size: SizeConfig.height(24),
                   ),
                 ],
               ),
@@ -68,32 +59,6 @@ class StudenProfileWidget extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _RatingWidget extends StatelessWidget {
-  const _RatingWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          AppAssets.ratingIcon,
-          height: 20,
-        ),
-        spacer4,
-        Text(
-          'Rating',
-          style: TextStyle(
-            fontSize: 14,
-            color: AppColors.white,
-            letterSpacing: 1.1,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
     );
   }
 }
@@ -106,8 +71,8 @@ class _ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      width: 70,
+      height: SizeConfig.height(70),
+      width: SizeConfig.height(70),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -120,7 +85,6 @@ class _ProfileImage extends StatelessWidget {
         child: state.getUserDetail?.status == Status.LOADING
             ? const CustomShimmerWidget(height: 50)
             : HelperClasses.cachedNetworkImage(
-                height: 200,
                 imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
               ),
       ),
@@ -141,13 +105,13 @@ class _UserInfo extends StatelessWidget {
         Text(
           user?.studentName ?? '',
           style: TextStyle(
-            fontSize: 17,
+            fontSize: SizeConfig.textSize(17),
             color: AppColors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          '${user?.className ?? 'empty'} ${user?.divisionName ?? ''}',
+          '${user?.className ?? ''} ${user?.divisionName ?? ''}',
           style: TextStyle(
             fontSize: SizeConfig.textSize(14),
             color: AppColors.white,
@@ -157,7 +121,8 @@ class _UserInfo extends StatelessWidget {
         spacer15,
         Container(
           width: SizeUtility(context).width / 1.8,
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+          padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.width(18), vertical: 5),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -218,8 +183,16 @@ class _ContactRow extends StatelessWidget {
             },
             child: const _IconWidget(img: AppAssets.chat),
           ),
-          const SizedBox(width: 10),
           const _IconWidget(img: AppAssets.call),
+          GestureDetector(
+            onTap: () {
+              GoRouter.of(context).pushNamed(AppPages.teacherRatingListScreen);
+            },
+            child: Image.asset(
+              AppAssets.ratingIcon,
+              height: 20,
+            ),
+          ),
         ],
       ),
     );

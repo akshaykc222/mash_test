@@ -41,7 +41,7 @@ class _Body extends StatelessWidget {
         children: [
           Container(
             height: 20,
-            width: 400,
+            width: SizeUtility(context).width,
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1,
@@ -74,7 +74,7 @@ class _Header extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.white,
       pinned: true,
-      expandedHeight: 210.0,
+      expandedHeight: SizeUtility(context).height / 4.5,
       actions: [
         _AppBarIconWidget(
           img: AppAssets.noticeIcon,
