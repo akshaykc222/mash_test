@@ -61,6 +61,9 @@ class AppStrings {
   //time table
   static const String timeTable = 'Time Table';
   static const String examTimeTable = 'EXAM TIMETABLE';
+  static const String dailyTimeTableTitle = 'DAILY \nTIMETABLE';
+  static const String weeklyTimeTableTitle = 'WEEKLY \nTIMETABLE';
+  static const String examTableTitle = 'EXAM \nTIMETABLE';
 
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';

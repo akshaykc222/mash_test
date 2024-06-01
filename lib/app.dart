@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
 import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
-import 'package:mash/mash/presentation/manager/bloc/offline_exam_time_table_bloc/offline_exam_time_table_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart';
 
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
@@ -10,6 +9,7 @@ import 'package:mash/mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/time_table_bloc/time_table_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/vehicle_tracker_bloc/veihcle_tracker_stops_bloc.dart';
 import 'package:mash/mash/presentation/manager/cubit/pdf_download/pdf_download_cubit.dart';
 // import 'package:mash/mash/presentation/manager/cubit/bottom_navigation_cubit.dart';
@@ -39,7 +39,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<TeacherBloc>()),
         BlocProvider(create: (context) => getIt<VehicleTrackerStopsBloc>()),
         BlocProvider(create: (context) => getIt<IdRequestBloc>()),
-        BlocProvider(create: (context) => getIt<OfflineExamTimeTableBloc>()),
+        BlocProvider(create: (context) => getIt<TimeTableBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),

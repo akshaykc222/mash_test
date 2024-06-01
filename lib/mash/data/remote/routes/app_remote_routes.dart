@@ -70,4 +70,10 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
   static const offlineExamTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getOfflineTimeTableList";
+
+
+  // time table
+  static const dailyTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
+
 }
