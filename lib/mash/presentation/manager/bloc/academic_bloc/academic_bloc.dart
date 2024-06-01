@@ -49,6 +49,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     on<_ChangeSyllabusTermIndex>(_changeSyllabusTermIndex);
     on<_SelectSubjectEvent>(_selectSubjectEvent);
     on<_SelectDateRange>(_selectDateRange);
+    on<_DisposeEvent>(_disposeEvent);
   }
 
   _getClassDetails(

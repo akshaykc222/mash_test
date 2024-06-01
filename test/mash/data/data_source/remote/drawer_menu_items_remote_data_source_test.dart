@@ -44,7 +44,7 @@ void main() {
       // Arrange
       const expectedUrl = AppRemoteRoutes.newsBoard;
 
-      when(mockApiProvider.post(expectedUrl, tNewsBoardRequest.toJson()))
+      when(mockApiProvider.get(expectedUrl, body: tNewsBoardRequest.toJson()))
           .thenThrow(FetchDataException('test error found'));
 
       // Act

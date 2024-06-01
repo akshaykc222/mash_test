@@ -32,6 +32,8 @@ import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.
     as _i31;
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart'
     as _i45;
+import 'package:mash/mash/data/remote/data_sources/home_remote_data_source.dart'
+    as _i64;
 import 'package:mash/mash/data/remote/models/academic/academic_subjects_model.dart'
     as _i57;
 import 'package:mash/mash/data/remote/models/academic/class_details_model.dart'
@@ -55,6 +57,7 @@ import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart'
     as _i32;
 import 'package:mash/mash/data/remote/request/academic_subjects_request.dart'
     as _i50;
+import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i63;
 import 'package:mash/mash/data/remote/request/digital_library_request.dart'
     as _i36;
 import 'package:mash/mash/data/remote/request/login_request.dart' as _i26;
@@ -68,6 +71,7 @@ import 'package:mash/mash/domain/entities/academic/division_details_entity.dart'
     as _i51;
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart'
     as _i53;
+import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart' as _i62;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i8;
 import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart'
@@ -88,6 +92,7 @@ import 'package:mash/mash/domain/repositories/dash_board_repository.dart'
     as _i37;
 import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart'
     as _i42;
+import 'package:mash/mash/domain/repositories/home_repository.dart' as _i61;
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart'
     as _i11;
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart' as _i9;
@@ -1557,4 +1562,45 @@ class MockAcademicRemoteDataSource extends _i1.Mock
         returnValue: _i17.Future<List<_i60.SyllabusTermModel?>>.value(
             <_i60.SyllabusTermModel?>[]),
       ) as _i17.Future<List<_i60.SyllabusTermModel?>>);
+}
+
+/// A class which mocks [HomeRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHomeRepository extends _i1.Mock implements _i61.HomeRepository {
+  MockHomeRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i17.Future<List<_i62.AddOnEntity>> getAddon(_i63.AddOnRequest? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAddon,
+          [params],
+        ),
+        returnValue:
+            _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
+      ) as _i17.Future<List<_i62.AddOnEntity>>);
+}
+
+/// A class which mocks [HomeRemoteDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHomeRemoteDataSource extends _i1.Mock
+    implements _i64.HomeRemoteDataSource {
+  MockHomeRemoteDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i17.Future<List<_i62.AddOnEntity>> getAddon(_i63.AddOnRequest? params) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAddon,
+          [params],
+        ),
+        returnValue:
+            _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
+      ) as _i17.Future<List<_i62.AddOnEntity>>);
 }

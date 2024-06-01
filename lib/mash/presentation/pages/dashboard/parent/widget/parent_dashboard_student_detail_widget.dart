@@ -35,6 +35,7 @@ class StudenProfileWidget extends StatelessWidget {
               ? SizeUtility(context).height / 9
               : SizeUtility(context).height / 11),
       child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
         onTap: () {
           // _isExpand.value = !_isExpand.value;
           HelperClasses.showStudentSwitchDialog(context);

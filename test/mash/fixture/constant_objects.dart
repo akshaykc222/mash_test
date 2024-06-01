@@ -2,11 +2,13 @@ import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart';
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart';
+import 'package:mash/mash/data/remote/models/add_on/add_on_model.dart';
 import 'package:mash/mash/data/remote/models/auth/auth_response_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
 import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.dart';
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/add_on_request.dart';
 import 'package:mash/mash/data/remote/request/login_request.dart';
 import 'package:mash/mash/data/remote/request/news_board_request.dart';
 
@@ -206,4 +208,21 @@ final tSyllabusRequest = SyllabusRequest(
   acadId: 'acadId',
   userType: 'userType',
   termId: 'termId',
+);
+
+//-->
+final tAddOnRequest = AddOnRequest(
+  compId: 'compId',
+  categoryId: 'categoryId',
+  categoryType: 'categoryType',
+);
+//-->
+const tAddOnModel = AddOnModel(
+  subCategoryId: '31',
+  subCategoryName: 'BETS INDIAN ABACUS',
+  categoryId: '1',
+  description: 'DESCRIPTION',
+  imgStatus: '1',
+  imgUrl: 'gbl_ntc_200002_MP357751_4_11_2023_16_5_11.png',
+  links: 'https://go.indianabacus.com/manapuram-school',
 );
