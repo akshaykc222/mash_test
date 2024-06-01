@@ -105,63 +105,67 @@ class _UserInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          user?.studentName ?? '',
-          style: TextStyle(
-            fontSize: SizeConfig.textSize(17),
-            color: AppColors.white,
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 3),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            user?.studentName ?? '',
+            style: TextStyle(
+              fontSize: SizeConfig.textSize(17),
+              color: AppColors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        Text(
-          '${user?.className ?? ''} ${user?.divisionName ?? ''}',
-          style: TextStyle(
-            fontSize: SizeConfig.textSize(14),
-            color: AppColors.white,
-            fontWeight: FontWeight.bold,
+          Text(
+            '${user?.className ?? ''} ${user?.divisionName ?? ''}',
+            style: TextStyle(
+              fontSize: SizeConfig.textSize(14),
+              color: AppColors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        spacer15,
-        Container(
-          width: SizeUtility(context).width / 1.8,
-          padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.width(18), vertical: 5),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 2,
-                spreadRadius: 2,
-                color: AppColors.purple200,
-              ),
-            ],
-            color: AppColors.primaryColor.withOpacity(0.4),
-            borderRadius: BorderRadius.circular(30),
+          spacer15,
+          Container(
+            width: SizeUtility(context).width / 1.8,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.width(18), vertical: 5),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  color: AppColors.purple200,
+                ),
+              ],
+              color: AppColors.primaryColor.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _UserInfoItem(
+                      label: user?.rollNo ?? "",
+                      subLabel: 'Roll NO',
+                    ),
+                    _UserInfoItem(
+                      label: user?.classTeacher ?? "",
+                      subLabel: 'Class Teacher',
+                    ),
+                  ],
+                ),
+                spacer10,
+                const _ContactRow(),
+                spacer4,
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _UserInfoItem(
-                    label: user?.rollNo ?? "",
-                    subLabel: 'Roll NO',
-                  ),
-                  _UserInfoItem(
-                    label: user?.classTeacher ?? "",
-                    subLabel: 'Class Teacher',
-                  ),
-                ],
-              ),
-              spacer10,
-              const _ContactRow(),
-              spacer4,
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

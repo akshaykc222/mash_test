@@ -75,7 +75,7 @@ class _Header extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.white,
       pinned: true,
-      expandedHeight: SizeUtility(context).height / 4,
+      expandedHeight: SizeUtility(context).height * 0.25,
       actions: [
         _AppBarIconWidget(
           img: AppAssets.noticeIcon,
