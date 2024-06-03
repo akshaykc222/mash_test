@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart';
@@ -9,6 +10,7 @@ import 'package:mash/mash/data/remote/models/drawer_menu_items/news_board_model.
 import 'package:mash/mash/data/remote/models/notice/notice_pop_up_model.dart';
 import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
 import 'package:mash/mash/data/remote/request/add_on_request.dart';
+import 'package:mash/mash/data/remote/request/feed_back_request.dart';
 import 'package:mash/mash/data/remote/request/login_request.dart';
 import 'package:mash/mash/data/remote/request/news_board_request.dart';
 
@@ -225,4 +227,14 @@ const tAddOnModel = AddOnModel(
   imgStatus: '1',
   imgUrl: 'gbl_ntc_200002_MP357751_4_11_2023_16_5_11.png',
   links: 'https://go.indianabacus.com/manapuram-school',
+);
+//-->
+final tFeedbackRequest = FeedbackRequest(
+  userId: 'userId',
+  mobOrWeb: 'mobOrWeb',
+  rating: 'rating',
+  userType: 'userType',
+  modulId: 'modulId',
+  compId: 'compId',
+  fbDescription: 'fbDescription',
 );

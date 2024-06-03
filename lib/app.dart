@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/offline_exam_time_table_bloc/offline_exam_time_table_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart';
@@ -18,7 +19,6 @@ import 'package:mash/mash/presentation/utils/app_theme.dart';
 import 'mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
 import 'mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
-import 'mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart';
 import 'mash/presentation/manager/cubit/bottom_navigation_cubit/bottom_navigation_cubit.dart';
 import 'mash/presentation/router/router_config.dart';
 import 'mash/presentation/utils/size_config.dart';
@@ -40,6 +40,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<VehicleTrackerStopsBloc>()),
         BlocProvider(create: (context) => getIt<IdRequestBloc>()),
         BlocProvider(create: (context) => getIt<OfflineExamTimeTableBloc>()),
+        BlocProvider(create: (context) => getIt<HomeBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),

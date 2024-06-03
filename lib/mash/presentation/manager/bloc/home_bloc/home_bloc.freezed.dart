@@ -19,32 +19,41 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAddOnEvent,
+    required TResult Function(String module, String description, String rating)
+        postFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAddOnEvent,
+    TResult? Function(String module, String description, String rating)?
+        postFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAddOnEvent,
+    TResult Function(String module, String description, String rating)?
+        postFeedback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAddOnEvent value) getAddOnEvent,
+    required TResult Function(_PostFeedback value) postFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult? Function(_PostFeedback value)? postFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult Function(_PostFeedback value)? postFeedback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +115,8 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAddOnEvent,
+    required TResult Function(String module, String description, String rating)
+        postFeedback,
   }) {
     return getAddOnEvent();
   }
@@ -114,6 +125,8 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAddOnEvent,
+    TResult? Function(String module, String description, String rating)?
+        postFeedback,
   }) {
     return getAddOnEvent?.call();
   }
@@ -122,6 +135,8 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAddOnEvent,
+    TResult Function(String module, String description, String rating)?
+        postFeedback,
     required TResult orElse(),
   }) {
     if (getAddOnEvent != null) {
@@ -134,6 +149,7 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAddOnEvent value) getAddOnEvent,
+    required TResult Function(_PostFeedback value) postFeedback,
   }) {
     return getAddOnEvent(this);
   }
@@ -142,6 +158,7 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult? Function(_PostFeedback value)? postFeedback,
   }) {
     return getAddOnEvent?.call(this);
   }
@@ -150,6 +167,7 @@ class _$GetAddOnEventImpl implements _GetAddOnEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult Function(_PostFeedback value)? postFeedback,
     required TResult orElse(),
   }) {
     if (getAddOnEvent != null) {
@@ -164,9 +182,169 @@ abstract class _GetAddOnEvent implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$PostFeedbackImplCopyWith<$Res> {
+  factory _$$PostFeedbackImplCopyWith(
+          _$PostFeedbackImpl value, $Res Function(_$PostFeedbackImpl) then) =
+      __$$PostFeedbackImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String module, String description, String rating});
+}
+
+/// @nodoc
+class __$$PostFeedbackImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$PostFeedbackImpl>
+    implements _$$PostFeedbackImplCopyWith<$Res> {
+  __$$PostFeedbackImplCopyWithImpl(
+      _$PostFeedbackImpl _value, $Res Function(_$PostFeedbackImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? module = null,
+    Object? description = null,
+    Object? rating = null,
+  }) {
+    return _then(_$PostFeedbackImpl(
+      module: null == module
+          ? _value.module
+          : module // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      rating: null == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostFeedbackImpl implements _PostFeedback {
+  const _$PostFeedbackImpl(
+      {required this.module, required this.description, required this.rating});
+
+  @override
+  final String module;
+  @override
+  final String description;
+  @override
+  final String rating;
+
+  @override
+  String toString() {
+    return 'HomeEvent.postFeedback(module: $module, description: $description, rating: $rating)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostFeedbackImpl &&
+            (identical(other.module, module) || other.module == module) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.rating, rating) || other.rating == rating));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, module, description, rating);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostFeedbackImplCopyWith<_$PostFeedbackImpl> get copyWith =>
+      __$$PostFeedbackImplCopyWithImpl<_$PostFeedbackImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAddOnEvent,
+    required TResult Function(String module, String description, String rating)
+        postFeedback,
+  }) {
+    return postFeedback(module, description, rating);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAddOnEvent,
+    TResult? Function(String module, String description, String rating)?
+        postFeedback,
+  }) {
+    return postFeedback?.call(module, description, rating);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAddOnEvent,
+    TResult Function(String module, String description, String rating)?
+        postFeedback,
+    required TResult orElse(),
+  }) {
+    if (postFeedback != null) {
+      return postFeedback(module, description, rating);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAddOnEvent value) getAddOnEvent,
+    required TResult Function(_PostFeedback value) postFeedback,
+  }) {
+    return postFeedback(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult? Function(_PostFeedback value)? postFeedback,
+  }) {
+    return postFeedback?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAddOnEvent value)? getAddOnEvent,
+    TResult Function(_PostFeedback value)? postFeedback,
+    required TResult orElse(),
+  }) {
+    if (postFeedback != null) {
+      return postFeedback(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostFeedback implements HomeEvent {
+  const factory _PostFeedback(
+      {required final String module,
+      required final String description,
+      required final String rating}) = _$PostFeedbackImpl;
+
+  String get module;
+  String get description;
+  String get rating;
+  @JsonKey(ignore: true)
+  _$$PostFeedbackImplCopyWith<_$PostFeedbackImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   ResponseClassify<List<AddOnEntity>> get addOnResponse =>
       throw _privateConstructorUsedError;
+  ResponseClassify<void> get postFeedback => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -178,7 +356,9 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({ResponseClassify<List<AddOnEntity>> addOnResponse});
+  $Res call(
+      {ResponseClassify<List<AddOnEntity>> addOnResponse,
+      ResponseClassify<void> postFeedback});
 }
 
 /// @nodoc
@@ -195,12 +375,17 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? addOnResponse = null,
+    Object? postFeedback = null,
   }) {
     return _then(_value.copyWith(
       addOnResponse: null == addOnResponse
           ? _value.addOnResponse
           : addOnResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<AddOnEntity>>,
+      postFeedback: null == postFeedback
+          ? _value.postFeedback
+          : postFeedback // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>,
     ) as $Val);
   }
 }
@@ -213,7 +398,9 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<List<AddOnEntity>> addOnResponse});
+  $Res call(
+      {ResponseClassify<List<AddOnEntity>> addOnResponse,
+      ResponseClassify<void> postFeedback});
 }
 
 /// @nodoc
@@ -228,12 +415,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? addOnResponse = null,
+    Object? postFeedback = null,
   }) {
     return _then(_$HomeStateImpl(
       addOnResponse: null == addOnResponse
           ? _value.addOnResponse
           : addOnResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<AddOnEntity>>,
+      postFeedback: null == postFeedback
+          ? _value.postFeedback
+          : postFeedback // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>,
     ));
   }
 }
@@ -241,14 +433,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({required this.addOnResponse});
+  const _$HomeStateImpl(
+      {required this.addOnResponse, required this.postFeedback});
 
   @override
   final ResponseClassify<List<AddOnEntity>> addOnResponse;
+  @override
+  final ResponseClassify<void> postFeedback;
 
   @override
   String toString() {
-    return 'HomeState(addOnResponse: $addOnResponse)';
+    return 'HomeState(addOnResponse: $addOnResponse, postFeedback: $postFeedback)';
   }
 
   @override
@@ -257,11 +452,13 @@ class _$HomeStateImpl implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
             (identical(other.addOnResponse, addOnResponse) ||
-                other.addOnResponse == addOnResponse));
+                other.addOnResponse == addOnResponse) &&
+            (identical(other.postFeedback, postFeedback) ||
+                other.postFeedback == postFeedback));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addOnResponse);
+  int get hashCode => Object.hash(runtimeType, addOnResponse, postFeedback);
 
   @JsonKey(ignore: true)
   @override
@@ -272,11 +469,13 @@ class _$HomeStateImpl implements _HomeState {
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-          {required final ResponseClassify<List<AddOnEntity>> addOnResponse}) =
-      _$HomeStateImpl;
+      {required final ResponseClassify<List<AddOnEntity>> addOnResponse,
+      required final ResponseClassify<void> postFeedback}) = _$HomeStateImpl;
 
   @override
   ResponseClassify<List<AddOnEntity>> get addOnResponse;
+  @override
+  ResponseClassify<void> get postFeedback;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

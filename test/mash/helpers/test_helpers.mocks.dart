@@ -33,7 +33,7 @@ import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart'
     as _i45;
 import 'package:mash/mash/data/remote/data_sources/home_remote_data_source.dart'
-    as _i64;
+    as _i65;
 import 'package:mash/mash/data/remote/models/academic/academic_subjects_model.dart'
     as _i57;
 import 'package:mash/mash/data/remote/models/academic/class_details_model.dart'
@@ -60,6 +60,7 @@ import 'package:mash/mash/data/remote/request/academic_subjects_request.dart'
 import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i63;
 import 'package:mash/mash/data/remote/request/digital_library_request.dart'
     as _i36;
+import 'package:mash/mash/data/remote/request/feed_back_request.dart' as _i64;
 import 'package:mash/mash/data/remote/request/login_request.dart' as _i26;
 import 'package:mash/mash/data/remote/request/news_board_request.dart' as _i44;
 import 'package:mash/mash/data/remote/request/role_menu_request.dart' as _i34;
@@ -1582,13 +1583,24 @@ class MockHomeRepository extends _i1.Mock implements _i61.HomeRepository {
         returnValue:
             _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
       ) as _i17.Future<List<_i62.AddOnEntity>>);
+
+  @override
+  _i17.Future<void> feedBackPost(_i64.FeedbackRequest? feedbackRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #feedBackPost,
+          [feedbackRequest],
+        ),
+        returnValue: _i17.Future<void>.value(),
+        returnValueForMissingStub: _i17.Future<void>.value(),
+      ) as _i17.Future<void>);
 }
 
 /// A class which mocks [HomeRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i64.HomeRemoteDataSource {
+    implements _i65.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -1603,4 +1615,15 @@ class MockHomeRemoteDataSource extends _i1.Mock
         returnValue:
             _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
       ) as _i17.Future<List<_i62.AddOnEntity>>);
+
+  @override
+  _i17.Future<void> feedBackPost(_i64.FeedbackRequest? feedbackRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #feedBackPost,
+          [feedbackRequest],
+        ),
+        returnValue: _i17.Future<void>.value(),
+        returnValueForMissingStub: _i17.Future<void>.value(),
+      ) as _i17.Future<void>);
 }
