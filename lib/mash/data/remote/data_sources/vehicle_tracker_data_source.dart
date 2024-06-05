@@ -34,7 +34,7 @@ class VehicleTrackerImpl extends VehicleTrackerDataSource {
   @override
   Future<VehicleLocationEntity> getCurrentLocation(String vehicleNo) async {
     final data = await apiProvider.postXml(
-        AppRemoteRoutes.vehicleTrackerStops, createXmlRequest(vehicleNo));
+        AppRemoteRoutes.vehicleVendor, createXmlRequest(vehicleNo));
 
     return VehicleLocationModel.fromXml(data);
   }

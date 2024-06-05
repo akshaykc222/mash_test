@@ -89,13 +89,13 @@ import '../mash/domain/use_cases/dashboard/get_role_menu_usecase.dart' as _i75;
 import '../mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart'
     as _i48;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_report_details_use_case.dart'
-    as _i79;
+    as _i77;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
     as _i76;
 import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
-    as _i78;
+    as _i79;
 import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
-    as _i77;
+    as _i78;
 import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
     as _i73;
 import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart' as _i80;
@@ -107,13 +107,13 @@ import '../mash/domain/use_cases/profile/update_profile_use_case.dart' as _i31;
 import '../mash/domain/use_cases/teacher/get_teacher_rating_usecase.dart'
     as _i49;
 import '../mash/domain/use_cases/teacher/post_teacher_rating_usecase.dart'
-    as _i51;
-import '../mash/domain/use_cases/teacher/teacher_rating_questions_usecase.dart'
     as _i50;
+import '../mash/domain/use_cases/teacher/teacher_rating_questions_usecase.dart'
+    as _i51;
 import '../mash/domain/use_cases/vehicle_tracker_stops/get_vehicle_current_location.dart'
-    as _i45;
-import '../mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart'
     as _i44;
+import '../mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart'
+    as _i45;
 import '../mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart'
     as _i86;
 import '../mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart' as _i3;
@@ -124,12 +124,12 @@ import '../mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart' as _i87;
 import '../mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart'
     as _i88;
 import '../mash/presentation/manager/bloc/id_request/id_request_bloc.dart'
-    as _i7;
+    as _i5;
 import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart' as _i85;
 import '../mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart'
-    as _i5;
-import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'
     as _i6;
+import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'
+    as _i7;
 import '../mash/presentation/manager/bloc/vehicle_tracker_bloc/veihcle_tracker_stops_bloc.dart'
     as _i11;
 
@@ -146,9 +146,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i3.AuthBloc>(() => _i3.AuthBloc());
     gh.factory<_i4.ChatBloc>(() => _i4.ChatBloc());
-    gh.factory<_i5.ProfileBloc>(() => _i5.ProfileBloc());
-    gh.factory<_i6.TeacherBloc>(() => _i6.TeacherBloc());
-    gh.factory<_i7.IdRequestBloc>(() => _i7.IdRequestBloc());
+    gh.factory<_i5.IdRequestBloc>(() => _i5.IdRequestBloc());
+    gh.factory<_i6.ProfileBloc>(() => _i6.ProfileBloc());
+    gh.factory<_i7.TeacherBloc>(() => _i7.TeacherBloc());
     gh.singleton<_i8.ApiProvider>(() => _i8.ApiProvider());
     gh.singleton<_i9.FirebaseDatabaseMethods>(
         () => _i9.FirebaseDatabaseMethods());
@@ -215,11 +215,11 @@ extension GetItInjectableX on _i1.GetIt {
         _i42.NoticeRemoteDataSourceImpl(apiProvider: gh<_i8.ApiProvider>()));
     gh.lazySingleton<_i43.DashBoardLocalDataSource>(() =>
         _i43.DashBoardLocalDataSourceImpl(hiveService: gh<_i10.HiveService>()));
-    gh.lazySingleton<_i44.GetVehicleTrackerStopsUseCase>(() =>
-        _i44.GetVehicleTrackerStopsUseCase(
+    gh.lazySingleton<_i44.GetVehicleCurrentLocation>(() =>
+        _i44.GetVehicleCurrentLocation(gh<_i14.VehicleTrackerRepository>()));
+    gh.lazySingleton<_i45.GetVehicleTrackerStopsUseCase>(() =>
+        _i45.GetVehicleTrackerStopsUseCase(
             gh<_i14.VehicleTrackerRepository>()));
-    gh.lazySingleton<_i45.GetVehicleCurrentLocation>(() =>
-        _i45.GetVehicleCurrentLocation(gh<_i14.VehicleTrackerRepository>()));
     gh.lazySingleton<_i46.GetSyllabusTermsUseCase>(() =>
         _i46.GetSyllabusTermsUseCase(
             academicRepository: gh<_i27.AcademicRepository>()));
@@ -229,10 +229,10 @@ extension GetItInjectableX on _i1.GetIt {
         drawerMenuItemsRepository: gh<_i35.DrawerMenuItemsRepository>()));
     gh.lazySingleton<_i49.GetTeacherRatingUseCase>(
         () => _i49.GetTeacherRatingUseCase(gh<_i18.TeacherRepository>()));
-    gh.lazySingleton<_i50.GetTeacherRatingQuestionsUseCase>(() =>
-        _i50.GetTeacherRatingQuestionsUseCase(gh<_i18.TeacherRepository>()));
-    gh.lazySingleton<_i51.PostTeacherRatingUseCase>(
-        () => _i51.PostTeacherRatingUseCase(gh<_i18.TeacherRepository>()));
+    gh.lazySingleton<_i50.PostTeacherRatingUseCase>(
+        () => _i50.PostTeacherRatingUseCase(gh<_i18.TeacherRepository>()));
+    gh.lazySingleton<_i51.GetTeacherRatingQuestionsUseCase>(() =>
+        _i51.GetTeacherRatingQuestionsUseCase(gh<_i18.TeacherRepository>()));
     gh.factory<_i52.GetClassInforUseCase>(
         () => _i52.GetClassInforUseCase(gh<_i27.AcademicRepository>()));
     gh.singleton<_i53.GetChatRoomsUseCase>(
@@ -282,11 +282,11 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i76.HomeWorkReportsUseCase>(() =>
         _i76.HomeWorkReportsUseCase(
             homeWorkNotesRepository: gh<_i63.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i77.NotesReportsUseCase>(() => _i77.NotesReportsUseCase(
+    gh.lazySingleton<_i77.GetHomeWorkDetails>(() => _i77.GetHomeWorkDetails(
         homeWorkNotesRepository: gh<_i63.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i78.GetNoteReportDetails>(() => _i78.GetNoteReportDetails(
+    gh.lazySingleton<_i78.NotesReportsUseCase>(() => _i78.NotesReportsUseCase(
         homeWorkNotesRepository: gh<_i63.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i79.GetHomeWorkDetails>(() => _i79.GetHomeWorkDetails(
+    gh.lazySingleton<_i79.GetNoteReportDetails>(() => _i79.GetNoteReportDetails(
         homeWorkNotesRepository: gh<_i63.HomeWorkNotesRepository>()));
     gh.factory<_i80.GetNoticeBoardPopUp>(
         () => _i80.GetNoticeBoardPopUp(gh<_i69.NoticeRepository>()));
@@ -318,9 +318,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i88.HomeWorkNotesBloc>(() => _i88.HomeWorkNotesBloc(
           gh<_i76.HomeWorkReportsUseCase>(),
           gh<_i82.GetUserInfoUseCase>(),
-          gh<_i77.NotesReportsUseCase>(),
-          gh<_i78.GetNoteReportDetails>(),
-          gh<_i79.GetHomeWorkDetails>(),
+          gh<_i78.NotesReportsUseCase>(),
+          gh<_i79.GetNoteReportDetails>(),
+          gh<_i77.GetHomeWorkDetails>(),
         ));
     gh.factory<_i89.DashboardBloc>(() => _i89.DashboardBloc(
           gh<_i74.FetchWordThoughtUseCase>(),

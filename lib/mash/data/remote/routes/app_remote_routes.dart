@@ -50,7 +50,7 @@ class AppRemoteRoutes {
   // vehicle tracker url
   static const vehicleTrackerStops =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
-
+  static const vehicleVendor = "api/getvehiclecurrentlocation";
   // teacher url
   static const teacherRatingList =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";

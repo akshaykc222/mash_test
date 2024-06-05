@@ -20,7 +20,7 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const DrawerWidget(),
-      appBar: commonAppbar(title: 'ACADEMICS'),
+      appBar: commonAppbar(title: 'ACADEMICS', searchFunction: (str) {}),
       body: academicsBody(context),
     );
   }

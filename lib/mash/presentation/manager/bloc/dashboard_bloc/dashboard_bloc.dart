@@ -11,6 +11,10 @@ import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.
 
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/response_classify.dart';
+import '../../../../../di/injector.dart';
+import '../../../../data/remote/models/request/digital_library_request.dart';
+import '../../../../domain/entities/dashboard/digital_library_entity.dart';
+import '../../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';
 
 part 'dashboard_bloc.freezed.dart';

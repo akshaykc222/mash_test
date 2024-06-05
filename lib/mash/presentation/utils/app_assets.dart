@@ -107,4 +107,10 @@ class AppAssets {
   static String tickLottie = "assets/lottie/tick_animation.json";
   static String noDataLottie = "assets/lottie/nodata.json";
   static String comingSoonLottie = "assets/lottie/coming_soon.json";
+
+  //vehicle tracker
+
+  static String bus = "assets/icons/school-bus.png";
+  static String busStopActive = "assets/icons/bus-stop.png";
+  static String busStop = "assets/icons/bus-stop-s.png";
 }

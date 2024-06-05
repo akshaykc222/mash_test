@@ -60,8 +60,8 @@ class ParentDashboardStudentDetailWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildInfoItem('Class Teacher', student.classTeacher),
-          _buildInfoItem('Roll No', student.roleId, isEnd: true),
+          _buildInfoItem('Class Teacher', student.classTeacher ?? ""),
+          _buildInfoItem('Roll No', student.roleId ?? "", isEnd: true),
         ],
       ),
     );
