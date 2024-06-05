@@ -1,6 +1,4 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -10,7 +8,6 @@ import 'package:mash/mash/data/remote/request/add_on_request.dart';
 import 'package:mash/mash/data/remote/request/feed_back_request.dart';
 import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart';
 import 'package:mash/mash/domain/use_cases/home/post_feed_use_case.dart';
-import 'package:mash/mash/domain/use_cases/profile/get_user_details_use_case.dart';
 
 import '../../../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../../../../domain/use_cases/home/get_add_on_usecase.dart';

@@ -85,7 +85,7 @@ class HelperClasses {
 
   static Widget emptyDataWidget() {
     return Center(
-      child: Lottie.asset(AppAssets.noDataLottie, height: 300),
+      child: Lottie.asset(AppAssets.noDataLottie, height: 100),
     );
   }
 

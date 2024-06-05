@@ -75,4 +75,8 @@ class AppRemoteRoutes {
   static const addON = "UATRESTAPI/MashFlutterRestAPI//api/user/getAddOn";
   static const feedBackPost =
       "UATRESTAPI/MashFlutterRestAPI/api/user/InsertFeedback";
+
+  //payment
+  static const paymentDashboard =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentDashboard";
 }

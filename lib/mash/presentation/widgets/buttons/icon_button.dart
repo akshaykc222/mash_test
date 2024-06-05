@@ -10,20 +10,22 @@ class CustomIconButton extends StatelessWidget {
   final String? icon;
   final VoidCallback onTap;
   final double? width;
+  final Color? color;
   const CustomIconButton(
       {super.key,
       required this.name,
       this.icon,
       required this.onTap,
-      this.width});
+      this.width,
+      this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(SizeUtility(context).width / 2, 45),
+        fixedSize: Size(SizeUtility(context).width / 1.6, 45),
         elevation: 2,
-        backgroundColor: AppColors.white,
+        backgroundColor: color,
       ),
       onPressed: onTap,
       child: Row(
@@ -34,8 +36,10 @@ class CustomIconButton extends StatelessWidget {
             name,
             style: TextStyle(
               fontSize: 16,
-              color: AppColors.black,
-              fontWeight: FontWeight.w400,
+              color: color == Colors.white
+                  ? AppColors.primaryColor
+                  : AppColors.black,
+              fontWeight: FontWeight.w500,
             ),
           ),
           icon == null
@@ -48,7 +52,9 @@ class CustomIconButton extends StatelessWidget {
           icon != null
               ? assetFromSvg(
                   icon!,
-                  color: AppColors.black,
+                  color: color == Colors.white
+                      ? AppColors.primaryColor
+                      : AppColors.black,
                 )
               : const SizedBox(),
         ],
