@@ -49,6 +49,7 @@ import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_scr
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_rating_screen.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/daily_time_table_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/exam_timetable_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -480,6 +481,10 @@ class AppRouteManager {
       name: AppPages.createGroup,
       path: AppPages.createGroup,
       builder: (context, state) => const GroupAddScreen(),
+    ),GoRoute(
+      name: AppPages.dailyTimetableScreen,
+      path: AppPages.dailyTimetableScreen,
+      builder: (context, state) => const DailyTimeTableScreen(),
     ),
     GoRoute(
       name: AppPages.groupDetails,

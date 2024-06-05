@@ -51,7 +51,6 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
   void initState() {
     TimeTableBloc.get(context).add(
         const TimeTableEvent.getOfflineExamTerms());
-
     super.initState();
   }
 
@@ -247,25 +246,25 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
                               fontSize: 18, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      // Expanded(
-                      //   flex: 2,
-                      //   child: SizedBox(
-                      //     height: itemCount * 40,
-                      //     child: ListView.builder(
-                      //         physics: const NeverScrollableScrollPhysics(),
-                      //         shrinkWrap: true,
-                      //         itemBuilder: (context, index) {
-                      //           return Container(
-                      //               padding: const EdgeInsets.only(left: 15),
-                      //               height: 40,
-                      //               child: Align(
-                      //                 alignment: Alignment.centerLeft,
-                      //                 child: Text(items[index]),
-                      //               ));
-                      //         },
-                      //         itemCount: itemCount,),
-                      //   ),
-                      // ),
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(
+                          height: itemCount * 40,
+                          child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    height: 40,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(items[index]),
+                                    ));
+                              },
+                              itemCount: items.length,),
+                        ),
+                      ),
                     ],
                   ),
                 ),

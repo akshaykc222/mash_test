@@ -23,6 +23,8 @@ class AppStrings {
   static const String submitCapital = 'SUBMIT';
   static const String viewWeekPlans = 'VIEW WEEK PLAN';
   static const String view = 'VIEW';
+  static const String teacher = 'Teacher';
+
 
   //quiz
   static const String onBoard1Title = "Let’s Start the Game";
@@ -44,6 +46,7 @@ class AppStrings {
   static const String fromDate = 'From Date';
   static const String toDate = 'To Date';
   static const String homeWorks = "Home Works";
+  static const String homeWorksCapital = "HOMEWORKS";
   static const String details = 'Details';
   static const String homeWorkDetails = 'Home Work Details';
   static const String wordOfTheDay = 'Word Of The Day';
@@ -64,6 +67,8 @@ class AppStrings {
   static const String dailyTimeTableTitle = 'DAILY \nTIMETABLE';
   static const String weeklyTimeTableTitle = 'WEEKLY \nTIMETABLE';
   static const String examTableTitle = 'EXAM \nTIMETABLE';
+  static const String dailyTimeTable = 'DAILY TIMETABLE';
+
 
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';

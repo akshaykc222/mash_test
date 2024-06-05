@@ -20,7 +20,7 @@ class OfflineExamTimeTableModel extends OfflineExamTimeTableEntity{
       term: json['TERM'],
       startTime: json['START_TIME'],
       endTime: json['END_TIME'],
-      portions: json['PORTIONS'],
+      portions: List<String>.from(json['PORTIONS']),
     );
   }
 

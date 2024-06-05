@@ -17,7 +17,7 @@ class NoteAddingTeacherScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Column(
           children: [
-            HorizontalCalendarWidget(),
+            // HorizontalCalendarWidget(),
             spacer20,
             ScheduleItem(),
           ],

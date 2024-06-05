@@ -67,6 +67,7 @@ class AppPages {
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
   static const examTimetableScreen = '/examTimetableScreen';
+  static const dailyTimetableScreen = '/dailyTimetableScreen';
 
   //suggestion
   static const suggestionMainScreen = '/suggestion_box';
