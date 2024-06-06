@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/utils/size_utility.dart';
+import 'package:mash/mash/presentation/widgets/buttons/default_button.dart';
 
 import '../../../../../../core/response_classify.dart';
-import '../../../../manager/bloc/bloc/payment_bloc.dart';
+import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/loader.dart';
 import '../../../../widgets/buttons/animted_button.dart';
+import 'payment_bottom_pay_widget.dart';
 
 class PendingPaymentTabbarWidget extends StatefulWidget {
   const PendingPaymentTabbarWidget({super.key});
@@ -25,96 +28,145 @@ class _PendingPaymentTabbarWidgetState
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: BlocBuilder<PaymentBloc, PaymentState>(
-            builder: (context, state) {
-              if (state.paymentDashboardResponse.status == Status.LOADING) {
-                return const Loader();
-              } else if (state.paymentDashboardResponse.data?.isEmpty ?? true) {
-                return HelperClasses.emptyDataWidget();
-              } else {
-                return ListView.separated(
-                  padding: EdgeInsets.zero,
-                  separatorBuilder: (context, index) {
-                    return spacer7;
-                  },
-                  itemCount: state.paymentDashboardResponse.data?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final data = state.paymentDashboardResponse.data![index];
-                    return PaidWidget(
-                        onTap: () {
-                          BlocProvider.of<PaymentBloc>(context).add(
-                              PaymentEvent.selectedItemIndex(
-                                  index: state.selectedItemIndex == index
-                                      ? null
-                                      : index));
-                        },
-                        onChanged: (_) {
-                          BlocProvider.of<PaymentBloc>(context).add(
-                              PaymentEvent.selectPaymentsCheckboxEvent(
-                                  data.feeTrackId!));
-                        },
-                        isChecked: state.selectedCheckboxItems!
-                                .contains(data.feeTrackId) ||
-                            data.isDue == '1',
-                        isSelected: state.selectedItemIndex == index,
-                        isPending: true,
-                        entity: data,
-                        date: 'Due date',
-                        amount: 'Due amount');
-                  },
-                );
-              }
-            },
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10)
-              .copyWith(top: 5, bottom: 4),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppColors.greyClr200),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.greyText,
-                    ),
-                  ),
-                  const Text(':'),
-                  const Text(
-                    '₹ 28950',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              spacer10,
-              AnimatedSharedButton(
-                isLoading: false,
-                onTap: () {},
-                title: Text(
-                  'Pay Now',
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            ],
-          ),
-        )
+        Expanded(child: _buildPaymentList(context)),
+        const PaymentBottomWidget(),
       ],
+    );
+  }
+
+  Widget _buildPaymentList(BuildContext context) {
+    return BlocBuilder<PaymentBloc, PaymentState>(
+      builder: (context, state) {
+        if (state.paymentDashboardResponse.status == Status.LOADING) {
+          return const Loader();
+        } else if (state.paymentDashboardResponse.data?.isEmpty ?? true) {
+          return HelperClasses.emptyDataWidget();
+        } else {
+          final duePayments = state.paymentDashboardResponse.data!
+              .where((data) => data.isDue == '1')
+              .toList();
+          final upcomingPayments = state.paymentDashboardResponse.data!
+              .where((data) => data.isDue == '0')
+              .toList();
+
+          return PaymentListView(
+            duePayments: duePayments,
+            upcomingPayments: upcomingPayments,
+            state: state,
+          );
+        }
+      },
+    );
+  }
+}
+
+class PaymentListView extends StatelessWidget {
+  final List<dynamic> duePayments;
+  final List<dynamic> upcomingPayments;
+  final PaymentState state;
+
+  const PaymentListView({
+    super.key,
+    required this.duePayments,
+    required this.upcomingPayments,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final itemCount = duePayments.length + upcomingPayments.length + 1;
+
+    return ListView.separated(
+      padding: EdgeInsets.zero,
+      separatorBuilder: (context, index) => spacer7,
+      itemCount: itemCount,
+      itemBuilder: (context, index) {
+        if (index < duePayments.length) {
+          return PaymentItem(
+            data: duePayments[index],
+            isSelected: state.selectedItemIndex == index,
+            isChecked: state.selectedCheckboxItems!
+                    .contains(duePayments[index].feeTrackId) ||
+                duePayments[index].isDue == '1',
+            index: index,
+            state: state,
+          );
+        } else if (upcomingPayments.isEmpty) {
+          return const SizedBox();
+        } else if (index == duePayments.length) {
+          return const UpcomingPaymentsHeader();
+        } else {
+          final upcomingIndex = index - duePayments.length - 1;
+          return PaymentItem(
+            data: upcomingPayments[upcomingIndex],
+            isSelected: state.selectedItemIndex == upcomingIndex,
+            isChecked: state.selectedCheckboxItems!
+                .contains(upcomingPayments[upcomingIndex].feeTrackId),
+            index: upcomingIndex,
+            state: state,
+          );
+        }
+      },
+    );
+  }
+}
+
+class PaymentItem extends StatelessWidget {
+  final dynamic data;
+  final bool isSelected;
+  final bool isChecked;
+  final int index;
+  final PaymentState state;
+
+  const PaymentItem({
+    super.key,
+    required this.data,
+    required this.isSelected,
+    required this.isChecked,
+    required this.index,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PaidWidget(
+      onTap: () {
+        BlocProvider.of<PaymentBloc>(context).add(
+          PaymentEvent.selectedItemIndex(
+            index: state.selectedItemIndex == index ? null : index,
+          ),
+        );
+      },
+      onChanged: (_) {
+        BlocProvider.of<PaymentBloc>(context).add(
+          PaymentEvent.selectPaymentsCheckboxEvent(data.feeTrackId!),
+        );
+      },
+      isChecked: isChecked,
+      isSelected: isSelected,
+      isPending: true,
+      entity: data,
+      date: 'Due date',
+      amount: 'Due amount',
+    );
+  }
+}
+
+class UpcomingPaymentsHeader extends StatelessWidget {
+  const UpcomingPaymentsHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        'Upcoming Payments',
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: AppColors.primaryColor,
+        ),
+      ),
     );
   }
 }

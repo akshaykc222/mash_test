@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
-import 'package:mash/mash/presentation/manager/bloc/bloc/payment_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/offline_exam_time_table_bloc/offline_exam_time_table_bloc.dart';

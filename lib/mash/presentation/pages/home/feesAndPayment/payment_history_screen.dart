@@ -1,27 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/widgets/buttons/common_icon_button.dart';
 import 'package:mash/mash/presentation/widgets/buttons/common_small_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 
 class PaymentHistoryScreen extends StatelessWidget {
-  const PaymentHistoryScreen({super.key});
+  final String trackId;
+  const PaymentHistoryScreen({super.key, required this.trackId});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: AppStrings.transactionHistory),
-      body: const TransactHistoryScreen(),
+      body: const TransactHistoryItems(),
     );
   }
 }
 
-class TransactHistoryScreen extends StatelessWidget {
-  const TransactHistoryScreen({super.key});
+class TransactHistoryItems extends StatefulWidget {
+  const TransactHistoryItems({super.key});
+
+  @override
+  State<TransactHistoryItems> createState() => _TransactHistoryItemsState();
+}
+
+class _TransactHistoryItemsState extends State<TransactHistoryItems> {
+  @override
+  void initState() {
+    BlocProvider.of<PaymentBloc>(context).add(PaymentEvent.getPaymentDashboard(
+        paymentStatusType: PaymentStatusType.transaction,
+        userId: context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ??
+            ""));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

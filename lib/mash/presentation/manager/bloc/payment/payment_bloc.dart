@@ -36,16 +36,36 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       log('event of status ---------------------- ${event.paymentStatusType}');
       final data =
           await getPaymentDashboardUsecase.call(PaymentDashboardRequest(
-        trackId: '0',
+        trackId: event.paymentStatusType == PaymentStatusType.paid ||
+                event.paymentStatusType == PaymentStatusType.pending
+            ? ''
+            : event.trackId ?? '',
         companyId: userInfo?.compId ?? "",
         studentId: 'MGS1000685',
         academicId: userInfo?.academicId ?? '',
-        actionId: '1',
-        completionStatus:
-            event.paymentStatusType == PaymentStatusType.paid ? '1' : '0',
+        actionId: event.paymentStatusType == PaymentStatusType.transaction
+            ? '2'
+            : '1',
+        completionStatus: event.paymentStatusType == PaymentStatusType.paid ||
+                event.paymentStatusType == PaymentStatusType.transaction
+            ? '1'
+            : '0',
       ));
+      final Set<String> dueId = Set.from(data.map((e) => e.feeTrackId));
+      int totalAmount = 0;
+      for (var i in data) {
+        if (i.isDue == '1') {
+          prettyPrint('total amount $totalAmount');
+          totalAmount = totalAmount + int.parse(i.feeAmountBalance.toString());
+        }
+      }
       emit(state.copyWith(
-          paymentDashboardResponse: ResponseClassify.completed(data)));
+        paymentDashboardResponse: ResponseClassify.completed(data),
+        selectedCheckboxItems: dueId,
+        totalAmount: totalAmount.toString(),
+      ));
+      prettyPrint(
+          'initial state adding id to set ${state.selectedCheckboxItems}');
     } catch (e) {
       emit(state.copyWith(paymentDashboardResponse: ResponseClassify.error(e)));
     }
@@ -57,13 +77,13 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
   _selectPaymentsCheckboxEvent(
       _SelectPaymentsCheckboxEvent event, Emitter<PaymentState> emit) {
-    final Set<String> _currentSet = Set.from(state.selectedCheckboxItems ?? {});
-    if (_currentSet.contains(event.id)) {
-      _currentSet.remove(event.id);
+    final Set<String> currentSet = Set.from(state.selectedCheckboxItems ?? {});
+    if (currentSet.contains(event.id)) {
+      currentSet.remove(event.id);
     } else {
-      _currentSet.add(event.id);
+      currentSet.add(event.id);
     }
-    emit(state.copyWith(selectedCheckboxItems: _currentSet));
-    prettyPrint('updated set');
+    emit(state.copyWith(selectedCheckboxItems: currentSet));
+    prettyPrint('updated set ${state.selectedCheckboxItems}');
   }
 }

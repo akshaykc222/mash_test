@@ -19,7 +19,7 @@ mixin _$PaymentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            PaymentStatusType paymentStatusType, String userId)
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
@@ -27,7 +27,8 @@ mixin _$PaymentEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
@@ -35,7 +36,8 @@ mixin _$PaymentEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
@@ -93,7 +95,8 @@ abstract class _$$GetPaymentDashboardImplCopyWith<$Res> {
           $Res Function(_$GetPaymentDashboardImpl) then) =
       __$$GetPaymentDashboardImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PaymentStatusType paymentStatusType, String userId});
+  $Res call(
+      {PaymentStatusType paymentStatusType, String userId, String? trackId});
 }
 
 /// @nodoc
@@ -109,6 +112,7 @@ class __$$GetPaymentDashboardImplCopyWithImpl<$Res>
   $Res call({
     Object? paymentStatusType = null,
     Object? userId = null,
+    Object? trackId = freezed,
   }) {
     return _then(_$GetPaymentDashboardImpl(
       paymentStatusType: null == paymentStatusType
@@ -119,6 +123,10 @@ class __$$GetPaymentDashboardImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      trackId: freezed == trackId
+          ? _value.trackId
+          : trackId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,16 +135,18 @@ class __$$GetPaymentDashboardImplCopyWithImpl<$Res>
 
 class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
   const _$GetPaymentDashboardImpl(
-      {required this.paymentStatusType, required this.userId});
+      {required this.paymentStatusType, required this.userId, this.trackId});
 
   @override
   final PaymentStatusType paymentStatusType;
   @override
   final String userId;
+  @override
+  final String? trackId;
 
   @override
   String toString() {
-    return 'PaymentEvent.getPaymentDashboard(paymentStatusType: $paymentStatusType, userId: $userId)';
+    return 'PaymentEvent.getPaymentDashboard(paymentStatusType: $paymentStatusType, userId: $userId, trackId: $trackId)';
   }
 
   @override
@@ -146,11 +156,13 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             other is _$GetPaymentDashboardImpl &&
             (identical(other.paymentStatusType, paymentStatusType) ||
                 other.paymentStatusType == paymentStatusType) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.trackId, trackId) || other.trackId == trackId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, paymentStatusType, userId);
+  int get hashCode =>
+      Object.hash(runtimeType, paymentStatusType, userId, trackId);
 
   @JsonKey(ignore: true)
   @override
@@ -163,36 +175,38 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            PaymentStatusType paymentStatusType, String userId)
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
   }) {
-    return getPaymentDashboard(paymentStatusType, userId);
+    return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
   }) {
-    return getPaymentDashboard?.call(paymentStatusType, userId);
+    return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
-      return getPaymentDashboard(paymentStatusType, userId);
+      return getPaymentDashboard(paymentStatusType, userId, trackId);
     }
     return orElse();
   }
@@ -238,10 +252,12 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
 abstract class _GetPaymentDashboard implements PaymentEvent {
   const factory _GetPaymentDashboard(
       {required final PaymentStatusType paymentStatusType,
-      required final String userId}) = _$GetPaymentDashboardImpl;
+      required final String userId,
+      final String? trackId}) = _$GetPaymentDashboardImpl;
 
   PaymentStatusType get paymentStatusType;
   String get userId;
+  String? get trackId;
   @JsonKey(ignore: true)
   _$$GetPaymentDashboardImplCopyWith<_$GetPaymentDashboardImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -316,7 +332,7 @@ class _$SelectPaymentsCheckboxEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            PaymentStatusType paymentStatusType, String userId)
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
@@ -327,7 +343,8 @@ class _$SelectPaymentsCheckboxEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
@@ -338,7 +355,8 @@ class _$SelectPaymentsCheckboxEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
@@ -464,7 +482,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            PaymentStatusType paymentStatusType, String userId)
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
@@ -475,7 +493,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
@@ -486,7 +505,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PaymentStatusType paymentStatusType, String userId)?
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
@@ -552,6 +572,7 @@ mixin _$PaymentState {
       throw _privateConstructorUsedError;
   int? get selectedItemIndex => throw _privateConstructorUsedError;
   Set<String>? get selectedCheckboxItems => throw _privateConstructorUsedError;
+  String get totalAmount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -567,7 +588,8 @@ abstract class $PaymentStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<PaymentDashboardEntity>> paymentDashboardResponse,
       int? selectedItemIndex,
-      Set<String>? selectedCheckboxItems});
+      Set<String>? selectedCheckboxItems,
+      String totalAmount});
 }
 
 /// @nodoc
@@ -586,6 +608,7 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? paymentDashboardResponse = null,
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
+    Object? totalAmount = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -600,6 +623,10 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.selectedCheckboxItems
           : selectedCheckboxItems // ignore: cast_nullable_to_non_nullable
               as Set<String>?,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -615,7 +642,8 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<PaymentDashboardEntity>> paymentDashboardResponse,
       int? selectedItemIndex,
-      Set<String>? selectedCheckboxItems});
+      Set<String>? selectedCheckboxItems,
+      String totalAmount});
 }
 
 /// @nodoc
@@ -632,6 +660,7 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? paymentDashboardResponse = null,
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
+    Object? totalAmount = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -646,6 +675,10 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value._selectedCheckboxItems
           : selectedCheckboxItems // ignore: cast_nullable_to_non_nullable
               as Set<String>?,
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -656,7 +689,8 @@ class _$PaymentStateImpl implements _PaymentState {
   const _$PaymentStateImpl(
       {required this.paymentDashboardResponse,
       required this.selectedItemIndex,
-      required final Set<String>? selectedCheckboxItems})
+      required final Set<String>? selectedCheckboxItems,
+      required this.totalAmount})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -675,8 +709,11 @@ class _$PaymentStateImpl implements _PaymentState {
   }
 
   @override
+  final String totalAmount;
+
+  @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount)';
   }
 
   @override
@@ -690,7 +727,9 @@ class _$PaymentStateImpl implements _PaymentState {
             (identical(other.selectedItemIndex, selectedItemIndex) ||
                 other.selectedItemIndex == selectedItemIndex) &&
             const DeepCollectionEquality()
-                .equals(other._selectedCheckboxItems, _selectedCheckboxItems));
+                .equals(other._selectedCheckboxItems, _selectedCheckboxItems) &&
+            (identical(other.totalAmount, totalAmount) ||
+                other.totalAmount == totalAmount));
   }
 
   @override
@@ -698,7 +737,8 @@ class _$PaymentStateImpl implements _PaymentState {
       runtimeType,
       paymentDashboardResponse,
       selectedItemIndex,
-      const DeepCollectionEquality().hash(_selectedCheckboxItems));
+      const DeepCollectionEquality().hash(_selectedCheckboxItems),
+      totalAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -712,7 +752,8 @@ abstract class _PaymentState implements PaymentState {
       {required final ResponseClassify<List<PaymentDashboardEntity>>
           paymentDashboardResponse,
       required final int? selectedItemIndex,
-      required final Set<String>? selectedCheckboxItems}) = _$PaymentStateImpl;
+      required final Set<String>? selectedCheckboxItems,
+      required final String totalAmount}) = _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -720,6 +761,8 @@ abstract class _PaymentState implements PaymentState {
   int? get selectedItemIndex;
   @override
   Set<String>? get selectedCheckboxItems;
+  @override
+  String get totalAmount;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

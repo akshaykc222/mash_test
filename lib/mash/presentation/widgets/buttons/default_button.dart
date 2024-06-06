@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton({super.key,required this.onTap,required this.title});
+  const DefaultButton({super.key, required this.onTap, required this.title});
 
   final String title;
   final VoidCallback onTap;

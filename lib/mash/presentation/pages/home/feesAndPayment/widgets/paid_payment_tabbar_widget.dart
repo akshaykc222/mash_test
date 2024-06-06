@@ -6,7 +6,7 @@ import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_an
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/buttons/common_small_button.dart';
 
-import '../../../../manager/bloc/bloc/payment_bloc.dart';
+import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';

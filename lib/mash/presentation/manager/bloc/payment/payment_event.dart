@@ -5,6 +5,7 @@ class PaymentEvent with _$PaymentEvent {
   const factory PaymentEvent.getPaymentDashboard({
     required PaymentStatusType paymentStatusType,
     required String userId,
+    String? trackId,
   }) = _GetPaymentDashboard;
   const factory PaymentEvent.selectPaymentsCheckboxEvent(String id) =
       _SelectPaymentsCheckboxEvent;

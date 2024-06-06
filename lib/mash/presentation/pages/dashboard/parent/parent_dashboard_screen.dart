@@ -11,8 +11,6 @@ import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
-
-import '../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import 'widget/parent_dashboard_student_detail_widget.dart';
 
 class ParentDashBoard extends StatelessWidget {

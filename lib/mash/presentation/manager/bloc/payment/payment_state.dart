@@ -7,10 +7,12 @@ class PaymentState with _$PaymentState {
         paymentDashboardResponse,
     required int? selectedItemIndex,
     required Set<String>? selectedCheckboxItems,
+    required String totalAmount,
   }) = _PaymentState;
   factory PaymentState.initial() => PaymentState(
         paymentDashboardResponse: ResponseClassify.initial(),
         selectedItemIndex: null,
         selectedCheckboxItems: {},
+        totalAmount: '',
       );
 }

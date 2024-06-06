@@ -9,22 +9,22 @@ import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayser
 import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/paid_payment_tabbar_widget.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/pending_payment_tabbar_widget.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
-import 'package:mash/mash/presentation/widgets/buttons/common_icon_button.dart';
-import 'package:mash/mash/presentation/widgets/buttons/common_small_button.dart';
-import 'package:mash/mash/presentation/widgets/buttons/default_button.dart';
+
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
 
-import '../../../../manager/bloc/bloc/payment_bloc.dart';
+import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_strings.dart';
 import '../../../../utils/enums.dart';
@@ -45,6 +45,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabIndexChange);
+    fetchPaymentDashboard(PaymentStatusType.pending);
   }
 
   void _handleTabIndexChange() {
@@ -67,6 +68,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
+      initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -137,6 +139,7 @@ class PaidWidget extends StatelessWidget {
   final bool? isChecked;
   final VoidCallback onTap;
   final Function(bool?)? onChanged;
+
   const PaidWidget({
     super.key,
     required this.entity,
@@ -230,7 +233,7 @@ class PaidWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '\u20B9${date == 'Due date' ? entity.due : entity.feeAmountPaid}',
+                  '\u20B9${date == 'Due date' ? entity.feeAmountBalance : entity.feeAmountPaid}',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -249,14 +252,20 @@ class PaidWidget extends StatelessWidget {
                   ),
                 ),
                 spacerWidth10,
-                Icon(
-                  Icons.keyboard_arrow_right,
-                  size: 20,
-                  color: AppColors.primaryColor,
-                ),
+                isSelected
+                    ? Icon(
+                        Icons.keyboard_arrow_down,
+                        size: 20,
+                        color: AppColors.primaryColor,
+                      )
+                    : Icon(
+                        Icons.keyboard_arrow_right,
+                        size: 20,
+                        color: AppColors.primaryColor,
+                      ),
               ],
             ),
-            isSelected
+            isSelected && entity.feeAmountPaid != "0"
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -274,7 +283,10 @@ class PaidWidget extends StatelessWidget {
                         alignment: Alignment.center,
                         child: CustomIconButton(
                           name: 'Transaction History',
-                          onTap: onTap,
+                          onTap: () {
+                            GoRouter.of(context)
+                                .pushNamed(AppPages.transactionHistory);
+                          },
                           icon: AppAssets.transactionHistory,
                         ),
                       ),
@@ -324,7 +336,7 @@ class PaidWidget extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : SizedBox()
+                          : const SizedBox()
                     ],
                   )
                 : const SizedBox()

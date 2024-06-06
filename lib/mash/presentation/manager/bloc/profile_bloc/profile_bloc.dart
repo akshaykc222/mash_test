@@ -11,6 +11,7 @@ import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/get_siblings_use_case.dart';
 import 'package:mash/mash/domain/use_cases/profile/update_profile_use_case.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 
 import '../../../../domain/entities/profile/student_entity.dart';
 import '../../../../domain/use_cases/profile/get_user_details_use_case.dart';
@@ -52,22 +53,33 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   _getSiblings(_GetSiblings event, emit) async {
-    emit(state.copyWith(getSiblings: ResponseClassify.loading()));
+    var getLoginDetails = await getLoginInfoUseCase.call(NoParams());
 
-    try {
-      var loginData = await getLoginInfoUseCase.call(NoParams());
-      prettyPrint('login data ${loginData?.studentName}');
-      var getSiblings = await getSiblingsUseCase.call(loginData?.compId ?? "");
-      prettyPrint('get slibling s$getSiblings');
-      if (getSiblings.isNotEmpty) {
-        add(ProfileEvent.selectSibling(student: getSiblings.first));
+    if (getUserType(getLoginDetails?.userType ?? "") == UserTypes.student) {
+      add(ProfileEvent.getUserDetails(
+          request: GetUserDetailsRequest(
+        userId: getLoginDetails?.usrId ?? '',
+        compId: getLoginDetails?.compId ?? "",
+        academicId: getLoginDetails?.academicId ?? "",
+        userType: '2',
+      )));
+    } else {
+      emit(state.copyWith(getSiblings: ResponseClassify.loading()));
+
+      try {
+        prettyPrint('login data ${getLoginDetails?.studentName}');
+        var getSiblings =
+            await getSiblingsUseCase.call(getLoginDetails?.compId ?? "");
+        prettyPrint('get slibling s$getSiblings');
+        if (getSiblings.isNotEmpty) {
+          add(ProfileEvent.selectSibling(student: getSiblings.first));
+        }
+
+        emit(state.copyWith(
+            getSiblings: ResponseClassify.completed(getSiblings)));
+      } catch (e) {
+        emit(state.copyWith(getSiblings: ResponseClassify.error(e)));
       }
-
-      emit(
-          state.copyWith(getSiblings: ResponseClassify.completed(getSiblings)));
-    } catch (e) {
-      emit(state.copyWith(getSiblings: ResponseClassify.error(e)));
-      // handleError(event.context, error, (){GRo});
     }
   }
 

@@ -135,7 +135,6 @@ import '../mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_use
 import '../mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart'
     as _i104;
 import '../mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart' as _i3;
-import '../mash/presentation/manager/bloc/bloc/payment_bloc.dart' as _i101;
 import '../mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart' as _i4;
 import '../mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart'
     as _i107;
@@ -150,6 +149,7 @@ import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart'
     as _i102;
 import '../mash/presentation/manager/bloc/offline_exam_time_table_bloc/offline_exam_time_table_bloc.dart'
     as _i11;
+import '../mash/presentation/manager/bloc/payment/payment_bloc.dart' as _i101;
 import '../mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart'
     as _i6;
 import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'

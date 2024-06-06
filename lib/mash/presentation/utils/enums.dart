@@ -26,6 +26,7 @@ enum HomeWorkAndNoteScreenType {
 enum PaymentStatusType {
   paid,
   pending,
+  transaction,
 }
 
 enum UserTypes { staff, student, parent }
