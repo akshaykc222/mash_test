@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'offline_exam_time_table_bloc.dart';
+part of 'time_table_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OfflineExamTimeTableEvent {
+mixin _$TimeTableEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getOfflineExamTerms,
     required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String date) getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$OfflineExamTimeTableEvent {
     TResult? Function()? started,
     TResult? Function()? getOfflineExamTerms,
     TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String date)? getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$OfflineExamTimeTableEvent {
     TResult Function()? started,
     TResult Function()? getOfflineExamTerms,
     TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$OfflineExamTimeTableEvent {
     required TResult Function(_GetOfflineExamTerms value) getOfflineExamTerms,
     required TResult Function(_GetOfflineExamTimeTable value)
         getOfflineExamTimeTable,
+    required TResult Function(_GetDailyTimeTable value) getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$OfflineExamTimeTableEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult? Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult? Function(_GetDailyTimeTable value)? getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,23 +63,23 @@ mixin _$OfflineExamTimeTableEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult Function(_GetDailyTimeTable value)? getDailyTimeTable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OfflineExamTimeTableEventCopyWith<$Res> {
-  factory $OfflineExamTimeTableEventCopyWith(OfflineExamTimeTableEvent value,
-          $Res Function(OfflineExamTimeTableEvent) then) =
-      _$OfflineExamTimeTableEventCopyWithImpl<$Res, OfflineExamTimeTableEvent>;
+abstract class $TimeTableEventCopyWith<$Res> {
+  factory $TimeTableEventCopyWith(
+          TimeTableEvent value, $Res Function(TimeTableEvent) then) =
+      _$TimeTableEventCopyWithImpl<$Res, TimeTableEvent>;
 }
 
 /// @nodoc
-class _$OfflineExamTimeTableEventCopyWithImpl<$Res,
-        $Val extends OfflineExamTimeTableEvent>
-    implements $OfflineExamTimeTableEventCopyWith<$Res> {
-  _$OfflineExamTimeTableEventCopyWithImpl(this._value, this._then);
+class _$TimeTableEventCopyWithImpl<$Res, $Val extends TimeTableEvent>
+    implements $TimeTableEventCopyWith<$Res> {
+  _$TimeTableEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,7 +96,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$OfflineExamTimeTableEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$TimeTableEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -105,7 +110,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'OfflineExamTimeTableEvent.started()';
+    return 'TimeTableEvent.started()';
   }
 
   @override
@@ -123,6 +128,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function() getOfflineExamTerms,
     required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String date) getDailyTimeTable,
   }) {
     return started();
   }
@@ -133,6 +139,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function()? getOfflineExamTerms,
     TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String date)? getDailyTimeTable,
   }) {
     return started?.call();
   }
@@ -143,6 +150,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function()? getOfflineExamTerms,
     TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -158,6 +166,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetOfflineExamTerms value) getOfflineExamTerms,
     required TResult Function(_GetOfflineExamTimeTable value)
         getOfflineExamTimeTable,
+    required TResult Function(_GetDailyTimeTable value) getDailyTimeTable,
   }) {
     return started(this);
   }
@@ -168,6 +177,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult? Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult? Function(_GetDailyTimeTable value)? getDailyTimeTable,
   }) {
     return started?.call(this);
   }
@@ -178,6 +188,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult Function(_GetDailyTimeTable value)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -187,7 +198,7 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements OfflineExamTimeTableEvent {
+abstract class _Started implements TimeTableEvent {
   const factory _Started() = _$StartedImpl;
 }
 
@@ -200,8 +211,7 @@ abstract class _$$GetOfflineExamTermsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetOfflineExamTermsImplCopyWithImpl<$Res>
-    extends _$OfflineExamTimeTableEventCopyWithImpl<$Res,
-        _$GetOfflineExamTermsImpl>
+    extends _$TimeTableEventCopyWithImpl<$Res, _$GetOfflineExamTermsImpl>
     implements _$$GetOfflineExamTermsImplCopyWith<$Res> {
   __$$GetOfflineExamTermsImplCopyWithImpl(_$GetOfflineExamTermsImpl _value,
       $Res Function(_$GetOfflineExamTermsImpl) _then)
@@ -215,7 +225,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
 
   @override
   String toString() {
-    return 'OfflineExamTimeTableEvent.getOfflineExamTerms()';
+    return 'TimeTableEvent.getOfflineExamTerms()';
   }
 
   @override
@@ -234,6 +244,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     required TResult Function() started,
     required TResult Function() getOfflineExamTerms,
     required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String date) getDailyTimeTable,
   }) {
     return getOfflineExamTerms();
   }
@@ -244,6 +255,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     TResult? Function()? started,
     TResult? Function()? getOfflineExamTerms,
     TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String date)? getDailyTimeTable,
   }) {
     return getOfflineExamTerms?.call();
   }
@@ -254,6 +266,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     TResult Function()? started,
     TResult Function()? getOfflineExamTerms,
     TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTerms != null) {
@@ -269,6 +282,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     required TResult Function(_GetOfflineExamTerms value) getOfflineExamTerms,
     required TResult Function(_GetOfflineExamTimeTable value)
         getOfflineExamTimeTable,
+    required TResult Function(_GetDailyTimeTable value) getDailyTimeTable,
   }) {
     return getOfflineExamTerms(this);
   }
@@ -279,6 +293,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult? Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult? Function(_GetDailyTimeTable value)? getDailyTimeTable,
   }) {
     return getOfflineExamTerms?.call(this);
   }
@@ -289,6 +304,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
     TResult Function(_Started value)? started,
     TResult Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult Function(_GetDailyTimeTable value)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTerms != null) {
@@ -298,7 +314,7 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
   }
 }
 
-abstract class _GetOfflineExamTerms implements OfflineExamTimeTableEvent {
+abstract class _GetOfflineExamTerms implements TimeTableEvent {
   const factory _GetOfflineExamTerms() = _$GetOfflineExamTermsImpl;
 }
 
@@ -314,8 +330,7 @@ abstract class _$$GetOfflineExamTimeTableImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetOfflineExamTimeTableImplCopyWithImpl<$Res>
-    extends _$OfflineExamTimeTableEventCopyWithImpl<$Res,
-        _$GetOfflineExamTimeTableImpl>
+    extends _$TimeTableEventCopyWithImpl<$Res, _$GetOfflineExamTimeTableImpl>
     implements _$$GetOfflineExamTimeTableImplCopyWith<$Res> {
   __$$GetOfflineExamTimeTableImplCopyWithImpl(
       _$GetOfflineExamTimeTableImpl _value,
@@ -346,7 +361,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
 
   @override
   String toString() {
-    return 'OfflineExamTimeTableEvent.getOfflineExamTimeTable(termId: $termId)';
+    return 'TimeTableEvent.getOfflineExamTimeTable(termId: $termId)';
   }
 
   @override
@@ -373,6 +388,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     required TResult Function() started,
     required TResult Function() getOfflineExamTerms,
     required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String date) getDailyTimeTable,
   }) {
     return getOfflineExamTimeTable(termId);
   }
@@ -383,6 +399,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     TResult? Function()? started,
     TResult? Function()? getOfflineExamTerms,
     TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String date)? getDailyTimeTable,
   }) {
     return getOfflineExamTimeTable?.call(termId);
   }
@@ -393,6 +410,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     TResult Function()? started,
     TResult Function()? getOfflineExamTerms,
     TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTimeTable != null) {
@@ -408,6 +426,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     required TResult Function(_GetOfflineExamTerms value) getOfflineExamTerms,
     required TResult Function(_GetOfflineExamTimeTable value)
         getOfflineExamTimeTable,
+    required TResult Function(_GetDailyTimeTable value) getDailyTimeTable,
   }) {
     return getOfflineExamTimeTable(this);
   }
@@ -418,6 +437,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult? Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult? Function(_GetDailyTimeTable value)? getDailyTimeTable,
   }) {
     return getOfflineExamTimeTable?.call(this);
   }
@@ -428,6 +448,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     TResult Function(_Started value)? started,
     TResult Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
     TResult Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult Function(_GetDailyTimeTable value)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTimeTable != null) {
@@ -437,7 +458,7 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
   }
 }
 
-abstract class _GetOfflineExamTimeTable implements OfflineExamTimeTableEvent {
+abstract class _GetOfflineExamTimeTable implements TimeTableEvent {
   const factory _GetOfflineExamTimeTable({required final String termId}) =
       _$GetOfflineExamTimeTableImpl;
 
@@ -448,34 +469,184 @@ abstract class _GetOfflineExamTimeTable implements OfflineExamTimeTableEvent {
 }
 
 /// @nodoc
-mixin _$OfflineExamTimeTableState {
+abstract class _$$GetDailyTimeTableImplCopyWith<$Res> {
+  factory _$$GetDailyTimeTableImplCopyWith(_$GetDailyTimeTableImpl value,
+          $Res Function(_$GetDailyTimeTableImpl) then) =
+      __$$GetDailyTimeTableImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String date});
+}
+
+/// @nodoc
+class __$$GetDailyTimeTableImplCopyWithImpl<$Res>
+    extends _$TimeTableEventCopyWithImpl<$Res, _$GetDailyTimeTableImpl>
+    implements _$$GetDailyTimeTableImplCopyWith<$Res> {
+  __$$GetDailyTimeTableImplCopyWithImpl(_$GetDailyTimeTableImpl _value,
+      $Res Function(_$GetDailyTimeTableImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+  }) {
+    return _then(_$GetDailyTimeTableImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDailyTimeTableImpl implements _GetDailyTimeTable {
+  const _$GetDailyTimeTableImpl({required this.date});
+
+  @override
+  final String date;
+
+  @override
+  String toString() {
+    return 'TimeTableEvent.getDailyTimeTable(date: $date)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDailyTimeTableImpl &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, date);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDailyTimeTableImplCopyWith<_$GetDailyTimeTableImpl> get copyWith =>
+      __$$GetDailyTimeTableImplCopyWithImpl<_$GetDailyTimeTableImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getOfflineExamTerms,
+    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String date) getDailyTimeTable,
+  }) {
+    return getDailyTimeTable(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getOfflineExamTerms,
+    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String date)? getDailyTimeTable,
+  }) {
+    return getDailyTimeTable?.call(date);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getOfflineExamTerms,
+    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String date)? getDailyTimeTable,
+    required TResult orElse(),
+  }) {
+    if (getDailyTimeTable != null) {
+      return getDailyTimeTable(date);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetOfflineExamTerms value) getOfflineExamTerms,
+    required TResult Function(_GetOfflineExamTimeTable value)
+        getOfflineExamTimeTable,
+    required TResult Function(_GetDailyTimeTable value) getDailyTimeTable,
+  }) {
+    return getDailyTimeTable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
+    TResult? Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult? Function(_GetDailyTimeTable value)? getDailyTimeTable,
+  }) {
+    return getDailyTimeTable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetOfflineExamTerms value)? getOfflineExamTerms,
+    TResult Function(_GetOfflineExamTimeTable value)? getOfflineExamTimeTable,
+    TResult Function(_GetDailyTimeTable value)? getDailyTimeTable,
+    required TResult orElse(),
+  }) {
+    if (getDailyTimeTable != null) {
+      return getDailyTimeTable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDailyTimeTable implements TimeTableEvent {
+  const factory _GetDailyTimeTable({required final String date}) =
+      _$GetDailyTimeTableImpl;
+
+  String get date;
+  @JsonKey(ignore: true)
+  _$$GetDailyTimeTableImplCopyWith<_$GetDailyTimeTableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$TimeTableState {
   ResponseClassify<List<OfflineTimeTableTermEntity>>? get getOfflineExamTerms =>
       throw _privateConstructorUsedError;
   ResponseClassify<List<OfflineExamTimeTableEntity>>?
       get getOfflineExamTimeTable => throw _privateConstructorUsedError;
+  ResponseClassify<List<DailyTimeTableEntity>>? get getDailyTimeTable =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $OfflineExamTimeTableStateCopyWith<OfflineExamTimeTableState> get copyWith =>
+  $TimeTableStateCopyWith<TimeTableState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OfflineExamTimeTableStateCopyWith<$Res> {
-  factory $OfflineExamTimeTableStateCopyWith(OfflineExamTimeTableState value,
-          $Res Function(OfflineExamTimeTableState) then) =
-      _$OfflineExamTimeTableStateCopyWithImpl<$Res, OfflineExamTimeTableState>;
+abstract class $TimeTableStateCopyWith<$Res> {
+  factory $TimeTableStateCopyWith(
+          TimeTableState value, $Res Function(TimeTableState) then) =
+      _$TimeTableStateCopyWithImpl<$Res, TimeTableState>;
   @useResult
   $Res call(
       {ResponseClassify<List<OfflineTimeTableTermEntity>>? getOfflineExamTerms,
       ResponseClassify<List<OfflineExamTimeTableEntity>>?
-          getOfflineExamTimeTable});
+          getOfflineExamTimeTable,
+      ResponseClassify<List<DailyTimeTableEntity>>? getDailyTimeTable});
 }
 
 /// @nodoc
-class _$OfflineExamTimeTableStateCopyWithImpl<$Res,
-        $Val extends OfflineExamTimeTableState>
-    implements $OfflineExamTimeTableStateCopyWith<$Res> {
-  _$OfflineExamTimeTableStateCopyWithImpl(this._value, this._then);
+class _$TimeTableStateCopyWithImpl<$Res, $Val extends TimeTableState>
+    implements $TimeTableStateCopyWith<$Res> {
+  _$TimeTableStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -487,6 +658,7 @@ class _$OfflineExamTimeTableStateCopyWithImpl<$Res,
   $Res call({
     Object? getOfflineExamTerms = freezed,
     Object? getOfflineExamTimeTable = freezed,
+    Object? getDailyTimeTable = freezed,
   }) {
     return _then(_value.copyWith(
       getOfflineExamTerms: freezed == getOfflineExamTerms
@@ -497,13 +669,17 @@ class _$OfflineExamTimeTableStateCopyWithImpl<$Res,
           ? _value.getOfflineExamTimeTable
           : getOfflineExamTimeTable // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<OfflineExamTimeTableEntity>>?,
+      getDailyTimeTable: freezed == getDailyTimeTable
+          ? _value.getDailyTimeTable
+          : getDailyTimeTable // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<DailyTimeTableEntity>>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$OfflineExamTimeTableStateImplCopyWith<$Res>
-    implements $OfflineExamTimeTableStateCopyWith<$Res> {
+    implements $TimeTableStateCopyWith<$Res> {
   factory _$$OfflineExamTimeTableStateImplCopyWith(
           _$OfflineExamTimeTableStateImpl value,
           $Res Function(_$OfflineExamTimeTableStateImpl) then) =
@@ -513,13 +689,13 @@ abstract class _$$OfflineExamTimeTableStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<OfflineTimeTableTermEntity>>? getOfflineExamTerms,
       ResponseClassify<List<OfflineExamTimeTableEntity>>?
-          getOfflineExamTimeTable});
+          getOfflineExamTimeTable,
+      ResponseClassify<List<DailyTimeTableEntity>>? getDailyTimeTable});
 }
 
 /// @nodoc
 class __$$OfflineExamTimeTableStateImplCopyWithImpl<$Res>
-    extends _$OfflineExamTimeTableStateCopyWithImpl<$Res,
-        _$OfflineExamTimeTableStateImpl>
+    extends _$TimeTableStateCopyWithImpl<$Res, _$OfflineExamTimeTableStateImpl>
     implements _$$OfflineExamTimeTableStateImplCopyWith<$Res> {
   __$$OfflineExamTimeTableStateImplCopyWithImpl(
       _$OfflineExamTimeTableStateImpl _value,
@@ -531,6 +707,7 @@ class __$$OfflineExamTimeTableStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getOfflineExamTerms = freezed,
     Object? getOfflineExamTimeTable = freezed,
+    Object? getDailyTimeTable = freezed,
   }) {
     return _then(_$OfflineExamTimeTableStateImpl(
       getOfflineExamTerms: freezed == getOfflineExamTerms
@@ -541,6 +718,10 @@ class __$$OfflineExamTimeTableStateImplCopyWithImpl<$Res>
           ? _value.getOfflineExamTimeTable
           : getOfflineExamTimeTable // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<OfflineExamTimeTableEntity>>?,
+      getDailyTimeTable: freezed == getDailyTimeTable
+          ? _value.getDailyTimeTable
+          : getDailyTimeTable // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<DailyTimeTableEntity>>?,
     ));
   }
 }
@@ -550,17 +731,20 @@ class __$$OfflineExamTimeTableStateImplCopyWithImpl<$Res>
 class _$OfflineExamTimeTableStateImpl implements _OfflineExamTimeTableState {
   const _$OfflineExamTimeTableStateImpl(
       {required this.getOfflineExamTerms,
-      required this.getOfflineExamTimeTable});
+      required this.getOfflineExamTimeTable,
+      required this.getDailyTimeTable});
 
   @override
   final ResponseClassify<List<OfflineTimeTableTermEntity>>? getOfflineExamTerms;
   @override
   final ResponseClassify<List<OfflineExamTimeTableEntity>>?
       getOfflineExamTimeTable;
+  @override
+  final ResponseClassify<List<DailyTimeTableEntity>>? getDailyTimeTable;
 
   @override
   String toString() {
-    return 'OfflineExamTimeTableState(getOfflineExamTerms: $getOfflineExamTerms, getOfflineExamTimeTable: $getOfflineExamTimeTable)';
+    return 'TimeTableState(getOfflineExamTerms: $getOfflineExamTerms, getOfflineExamTimeTable: $getOfflineExamTimeTable, getDailyTimeTable: $getDailyTimeTable)';
   }
 
   @override
@@ -572,12 +756,14 @@ class _$OfflineExamTimeTableStateImpl implements _OfflineExamTimeTableState {
                 other.getOfflineExamTerms == getOfflineExamTerms) &&
             (identical(
                     other.getOfflineExamTimeTable, getOfflineExamTimeTable) ||
-                other.getOfflineExamTimeTable == getOfflineExamTimeTable));
+                other.getOfflineExamTimeTable == getOfflineExamTimeTable) &&
+            (identical(other.getDailyTimeTable, getDailyTimeTable) ||
+                other.getDailyTimeTable == getDailyTimeTable));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, getOfflineExamTerms, getOfflineExamTimeTable);
+  int get hashCode => Object.hash(runtimeType, getOfflineExamTerms,
+      getOfflineExamTimeTable, getDailyTimeTable);
 
   @JsonKey(ignore: true)
   @override
@@ -587,18 +773,22 @@ class _$OfflineExamTimeTableStateImpl implements _OfflineExamTimeTableState {
           _$OfflineExamTimeTableStateImpl>(this, _$identity);
 }
 
-abstract class _OfflineExamTimeTableState implements OfflineExamTimeTableState {
+abstract class _OfflineExamTimeTableState implements TimeTableState {
   const factory _OfflineExamTimeTableState(
       {required final ResponseClassify<List<OfflineTimeTableTermEntity>>?
           getOfflineExamTerms,
       required final ResponseClassify<List<OfflineExamTimeTableEntity>>?
-          getOfflineExamTimeTable}) = _$OfflineExamTimeTableStateImpl;
+          getOfflineExamTimeTable,
+      required final ResponseClassify<List<DailyTimeTableEntity>>?
+          getDailyTimeTable}) = _$OfflineExamTimeTableStateImpl;
 
   @override
   ResponseClassify<List<OfflineTimeTableTermEntity>>? get getOfflineExamTerms;
   @override
   ResponseClassify<List<OfflineExamTimeTableEntity>>?
       get getOfflineExamTimeTable;
+  @override
+  ResponseClassify<List<DailyTimeTableEntity>>? get getDailyTimeTable;
   @override
   @JsonKey(ignore: true)
   _$$OfflineExamTimeTableStateImplCopyWith<_$OfflineExamTimeTableStateImpl>

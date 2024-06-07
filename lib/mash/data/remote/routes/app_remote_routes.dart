@@ -79,4 +79,8 @@ class AppRemoteRoutes {
   //payment
   static const paymentDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentDashboard";
+
+  // time table
+  static const dailyTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
 }

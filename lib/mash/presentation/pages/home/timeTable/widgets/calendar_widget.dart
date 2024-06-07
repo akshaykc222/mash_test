@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/presentation/manager/bloc/time_table_bloc/time_table_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
-class HorizontalCalendarWidget extends StatefulWidget {
-   String date;
-   HorizontalCalendarWidget({super.key, required this.date});
+class TimeTableCalendarWidget extends StatefulWidget {
+  String date;
+  TimeTableCalendarWidget({super.key, required this.date});
 
   @override
-  State<HorizontalCalendarWidget> createState() =>
-      _HorizontalCalendarWidgetState();
+  State<TimeTableCalendarWidget> createState() =>
+      _TimeTableCalendarWidgetState();
 }
 
-class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
+class _TimeTableCalendarWidgetState extends State<TimeTableCalendarWidget> {
   List<DateTime> currentMonthList = List.empty();
   DateTime currentDateTime = DateTime.now();
   late ScrollController _scrollController;
@@ -57,6 +59,8 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
                 print('************ date *************');
                 print(widget.date);
               });
+              TimeTableBloc.get(context)
+                  .add(TimeTableEvent.getDailyTimeTable(date: widget.date));
             },
             child: Card(
               shadowColor: AppColors.primaryColor,
@@ -66,7 +70,7 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
                   : AppColors.white,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 1, horizontal: 25),
+                const EdgeInsets.symmetric(vertical: 1, horizontal: 25),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

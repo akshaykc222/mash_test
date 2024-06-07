@@ -8,7 +8,7 @@ class OfflineExamTimeTableEntity extends Equatable {
   final String term;
   final String startTime;
   final String endTime;
-  final String portions;
+  final List<String> portions;
 
   const OfflineExamTimeTableEntity({
     required this.examId,

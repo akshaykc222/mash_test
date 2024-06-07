@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/domain/entities/timeTable/time_table_data_item_model.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
@@ -26,22 +27,22 @@ class TimeTableScreen extends StatelessWidget {
   timetableBody(BuildContext context) {
     List<TimeTableWidgetModel> items = [
       TimeTableWidgetModel(
-          title: 'DAILY\nTIMETABLE',
+          title: AppStrings.dailyTimeTableTitle,
           asset: AppAssets.dailyTimeTable,
           onTap: () {
-            // GoRouter.of(context).pushNamed(AppPages.homeWorkDetailsScreen);
+             GoRouter.of(context).pushNamed(AppPages.dailyTimetableScreen);
           }),
       TimeTableWidgetModel(
-          title: 'WEEKLY\nTIMETABLE',
+          title: AppStrings.weeklyTimeTableTitle,
           asset: AppAssets.weekyTimeTable,
           onTap: () {
             GoRouter.of(context).pushNamed(AppPages.weeklyTimetableScreen);
           }),
       TimeTableWidgetModel(
-          title: 'EXAM\nTIMETABLE',
+          title: AppStrings.examTableTitle,
           asset: AppAssets.examTimeTable,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.noteScreen);
+            GoRouter.of(context).pushNamed(AppPages.examTimetableScreen);
           }),
     ];
 
@@ -67,7 +68,7 @@ class TimeTableScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.6),
+                  color: Colors.purple.withOpacity(0.6),
                   blurRadius: 5.0,
                 ),
               ],

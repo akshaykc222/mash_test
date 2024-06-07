@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/presentation/manager/bloc/offline_exam_time_table_bloc/offline_exam_time_table_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -12,6 +11,7 @@ import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 
 import '../../../../domain/entities/offline_time_table/offline_time_table_term_entity.dart';
+import '../../../manager/bloc/time_table_bloc/time_table_bloc.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class ExamTimeTableScreen extends StatefulWidget {
@@ -49,9 +49,8 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
 
   @override
   void initState() {
-    OfflineExamTimeTableBloc.get(context).add(
-        const OfflineExamTimeTableEvent.getOfflineExamTerms());
-
+    TimeTableBloc.get(context).add(
+        const TimeTableEvent.getOfflineExamTerms());
     super.initState();
   }
 
@@ -78,8 +77,8 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               )),
           spacer10,
-          BlocConsumer<OfflineExamTimeTableBloc, OfflineExamTimeTableState>(
-            listener: (BuildContext context, OfflineExamTimeTableState state) {
+          BlocConsumer<TimeTableBloc, TimeTableState>(
+            listener: (BuildContext context, TimeTableState state) {
               if (state.getOfflineExamTerms?.status == Status.ERROR) {
                 handleErrorUi(
                     context: context, error: state.getOfflineExamTerms?.error);
@@ -132,9 +131,9 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
                         return ListTile(
                           title: Text(optionList[index].sectionName),
                           onTap: () {
-                            var data = context.read<OfflineExamTimeTableBloc>().state;
-                            OfflineExamTimeTableBloc.get(context).add(
-                                OfflineExamTimeTableEvent.getOfflineExamTimeTable(termId: data.getOfflineExamTerms?.data?[index].termId ?? ''));
+                            var data = context.read<TimeTableBloc>().state;
+                            TimeTableBloc.get(context).add(
+                                TimeTableEvent.getOfflineExamTimeTable(termId: data.getOfflineExamTerms?.data?[index].termId ?? ''));
                             controller.text = optionList[index].sectionName;
                             Navigator.of(context).pop();
                           },
@@ -150,8 +149,8 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
   _syllabusList() {
     return Expanded(
       flex: 1,
-      child: BlocConsumer<OfflineExamTimeTableBloc, OfflineExamTimeTableState>(
-        listener: (BuildContext context, OfflineExamTimeTableState state) {
+      child: BlocConsumer<TimeTableBloc,TimeTableState>(
+        listener: (BuildContext context, TimeTableState state) {
           if (state.getOfflineExamTimeTable?.status == Status.ERROR) {
             handleErrorUi(
                 context: context, error: state.getOfflineExamTimeTable?.error);
@@ -247,25 +246,25 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
                               fontSize: 18, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      // Expanded(
-                      //   flex: 2,
-                      //   child: SizedBox(
-                      //     height: itemCount * 40,
-                      //     child: ListView.builder(
-                      //         physics: const NeverScrollableScrollPhysics(),
-                      //         shrinkWrap: true,
-                      //         itemBuilder: (context, index) {
-                      //           return Container(
-                      //               padding: const EdgeInsets.only(left: 15),
-                      //               height: 40,
-                      //               child: Align(
-                      //                 alignment: Alignment.centerLeft,
-                      //                 child: Text(items[index]),
-                      //               ));
-                      //         },
-                      //         itemCount: itemCount,),
-                      //   ),
-                      // ),
+                      Expanded(
+                        flex: 2,
+                        child: SizedBox(
+                          height: itemCount * 40,
+                          child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    height: 40,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(items[index]),
+                                    ));
+                              },
+                              itemCount: items.length,),
+                        ),
+                      ),
                     ],
                   ),
                 ),
