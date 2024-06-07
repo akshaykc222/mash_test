@@ -71,6 +71,17 @@ class AppRemoteRoutes {
   static const offlineExamTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getOfflineTimeTableList";
 
+  //home
+  static const addON = "UATRESTAPI/MashFlutterRestAPI//api/user/getAddOn";
+  static const feedBackPost =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/InsertFeedback";
+
+  //payment
+  static const paymentDashboard =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentDashboard";
+
+  static const paymentFinal =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPendingFinalAmount";
 
   // time table
   static const dailyTimeTable =

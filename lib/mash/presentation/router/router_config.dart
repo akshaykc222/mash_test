@@ -14,8 +14,9 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_e
 import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/facility/facility_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
-import 'package:mash/mash/presentation/pages/home/feesAndPayment/fee_and_payment_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/note_view_detais_screen.dart';
@@ -410,12 +411,23 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
-      builder: (context, state) => const FeesAndPaymentMainScreen(),
+      builder: (context, state) => const FeesAndPaymentsTabs(),
+    ),
+    // GoRoute(
+    //   name: AppPages.paymentHistoryScreen,
+    //   path: AppPages.paymentHistoryScreen,
+    //   builder: (context, state) => const PaymentHistoryScreen(),
+    // ),
+    GoRoute(
+      name: AppPages.transactionHistory,
+      path: AppPages.transactionHistory,
+      builder: (context, state) =>
+          PaymentHistoryScreen(trackId: state.extra as String),
     ),
     GoRoute(
-      name: AppPages.paymentHistoryScreen,
-      path: AppPages.paymentHistoryScreen,
-      builder: (context, state) => const PaymentHistoryScreen(),
+      path: AppPages.feesAndPaymentsConfirmation,
+      name: AppPages.feesAndPaymentsConfirmation,
+      builder: (context, state) => const PaymentConfirmationScreen(),
     ),
     GoRoute(
       name: AppPages.examTimetableScreen,

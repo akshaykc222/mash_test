@@ -76,13 +76,14 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
                           height: 50,
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                              color: AppColors.primaryColor,
-                              shape: _colorSizeAnimation.value == minSize
-                                  ? BoxShape.circle
-                                  : BoxShape.rectangle,
-                              borderRadius: _colorSizeAnimation.value == minSize
-                                  ? null
-                                  : BorderRadius.circular(80)),
+                            color: AppColors.primaryColor,
+                            shape: _colorSizeAnimation.value == minSize
+                                ? BoxShape.circle
+                                : BoxShape.rectangle,
+                            borderRadius: _colorSizeAnimation.value == minSize
+                                ? null
+                                : BorderRadius.circular(80),
+                          ),
                           child: _colorSizeAnimation.value == minSize
                               ? Center(
                                   child: CircularProgressIndicator(

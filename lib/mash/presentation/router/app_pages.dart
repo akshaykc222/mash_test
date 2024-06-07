@@ -106,8 +106,13 @@ class AppPages {
   static const idCardRequestScreen = '/id_card_request';
   static const competitiveExamScreen = '/competitie_exam';
   static const examDetailScreen = '/examDetailScreen';
+
+  //fees and payments
   static const feesAndPaymentScreen = '/fees_&_payments';
   static const paymentHistoryScreen = '/paymentHistoryScreen';
+  static const feesAndPaymentsConfirmation = '/feesAndPaymentConfirmation';
+  static const transactionHistory = '/transactionHistory';
+
   //chats
   static const chatsListScreen = "/chat_room";
   static const messageScreen = "/messageScreen";

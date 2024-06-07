@@ -15,7 +15,7 @@ class CommonTextField extends StatelessWidget {
   final Function(String)? validator;
   final bool? passwordField;
   final int? lines;
-
+  final bool? isOutlined;
   CommonTextField({
     super.key,
     required this.title,
@@ -29,6 +29,7 @@ class CommonTextField extends StatelessWidget {
     this.textInputType,
     this.passwordField,
     this.lines,
+    this.isOutlined,
     this.isCaps = false,
   });
 
@@ -57,8 +58,13 @@ class CommonTextField extends StatelessWidget {
           obscureText: passwordField == true ? showPassword : false,
           keyboardType: textInputType ?? TextInputType.text,
           maxLines: passwordField == true ? 1 : lines,
+          cursorHeight: 16,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.zero,
+            border: isOutlined == true
+                ? const OutlineInputBorder()
+                : const UnderlineInputBorder(),
+            contentPadding:
+                isOutlined == true ? const EdgeInsets.all(12) : EdgeInsets.zero,
             prefixIcon: prefix,
             suffixIcon: passwordField == true
                 ? IconButton(

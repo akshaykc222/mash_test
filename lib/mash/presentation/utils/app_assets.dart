@@ -91,6 +91,7 @@ class AppAssets {
   static const group = 'assets/icons/group.svg';
   static const chatMessageSendIcon = 'assets/icons/send.svg';
   static const attachmentIcon = 'assets/icons/attachment.svg';
+  static const transactionHistory = 'assets/icons/transaction_history.svg';
 
   static var tcApply = "";
   static const call = 'assets/icons/call.svg';

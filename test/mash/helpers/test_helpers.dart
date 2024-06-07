@@ -10,10 +10,12 @@ import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.d
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart';
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart';
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart';
+import 'package:mash/mash/data/remote/data_sources/home_remote_data_source.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 import 'package:mash/mash/domain/repositories/auth_repository.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart';
+import 'package:mash/mash/domain/repositories/home_repository.dart';
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart';
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mockito/annotations.dart';
@@ -47,6 +49,10 @@ import 'package:mockito/annotations.dart';
     //Academics
     AcademicRepository,
     AcademicRemoteDataSource,
+
+    //home
+    HomeRepository,
+    HomeRemoteDataSource,
   ],
 )
 void main() {}
