@@ -15,5 +15,6 @@ class PaymentEvent with _$PaymentEvent {
   const factory PaymentEvent.getPaymentFinalAmount({
     required String totalAmount,
     required String installmentId,
+    required String studentId,
   }) = _GetPaymentFinalAmount;
 }

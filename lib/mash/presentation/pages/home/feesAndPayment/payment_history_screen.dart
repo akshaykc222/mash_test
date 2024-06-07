@@ -43,8 +43,8 @@ class _TransactHistoryItemsState extends State<TransactHistoryItems> {
     BlocProvider.of<PaymentBloc>(context).add(PaymentEvent.getPaymentDashboard(
         paymentStatusType: PaymentStatusType.transaction,
         trackId: widget.trackId,
-        userId: context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ??
-            ""));
+        userId:
+            context.read<ProfileBloc>().state.selectedSibling?.userId ?? ""));
     super.initState();
   }
 

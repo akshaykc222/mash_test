@@ -422,7 +422,8 @@ class AppRouteManager {
     GoRoute(
       path: AppPages.feesAndPaymentsConfirmation,
       name: AppPages.feesAndPaymentsConfirmation,
-      builder: (context, state) => const PaymentConfirmationScreen(),
+      builder: (context, state) =>
+          PaymentConfirmationScreen(totalAmount: state.extra as String),
     ),
     GoRoute(
       name: AppPages.examTimetableScreen,
@@ -493,7 +494,8 @@ class AppRouteManager {
       name: AppPages.createGroup,
       path: AppPages.createGroup,
       builder: (context, state) => const GroupAddScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.dailyTimetableScreen,
       path: AppPages.dailyTimetableScreen,
       builder: (context, state) => const DailyTimeTableScreen(),

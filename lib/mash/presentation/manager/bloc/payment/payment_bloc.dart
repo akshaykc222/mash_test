@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -106,15 +107,17 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
   _getPaymentFinalAmount(
       _GetPaymentFinalAmount event, Emitter<PaymentState> emit) async {
-    emit(state.copyWith(getPaymentFinalAmount: ResponseClassify.loading()));
+    emit(state.copyWith(totalAmount: '0'));
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
 
       final data = await getPaymentFinalAmountUsecase.call(PaymentFinalRequest(
           pCompId: userInfo?.compId ?? '',
           pInstallmentId: event.installmentId,
-          pStudentId: userInfo?.usrId ?? '',
+          pStudentId: event.studentId,
           pTotalAmount: event.totalAmount));
+      emit(state.copyWith(totalAmount: data));
+      log('response ------------------$data');
     } catch (e) {
       prettyPrint(e.toString());
     }

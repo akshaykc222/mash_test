@@ -51,14 +51,14 @@ class CustomIconButton extends StatelessWidget {
                   size: 16,
                 )
               : const SizedBox(),
-          icon != null
-              ? assetFromSvg(
+          icon == null || icon == ""
+              ? const SizedBox()
+              : assetFromSvg(
                   icon!,
                   color: color == Colors.white
                       ? AppColors.primaryColor
                       : AppColors.primaryColor,
                 )
-              : const SizedBox(),
         ],
       ),
     );

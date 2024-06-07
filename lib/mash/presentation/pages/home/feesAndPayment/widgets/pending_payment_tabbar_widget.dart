@@ -25,7 +25,14 @@ class _PendingPaymentTabbarWidgetState
     return Column(
       children: [
         Expanded(child: _buildPaymentList(context)),
-        const PaymentBottomWidget(),
+        PaymentBottomWidget(
+          onTap: () async {
+            await showDialog(
+              context: context,
+              builder: (context) => const PaymentDialog(),
+            );
+          },
+        ),
       ],
     );
   }
