@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/domain/repositories/payment_repository.dart';
 
@@ -12,7 +13,12 @@ class PaymentRepoImpl implements PaymentRepository {
   PaymentRepoImpl({required this.paymentRemoteDataSource});
   @override
   Future<List<PaymentDashboardEntity>> getPaymentDashboard(
-      PaymentDashboardRequest params) async {
-    return await paymentRemoteDataSource.getPaymentDashboard(params);
+      PaymentDashboardRequest params) {
+    return paymentRemoteDataSource.getPaymentDashboard(params);
+  }
+
+  @override
+  Future<String> getPaymentFinal(PaymentFinalRequest params) {
+    return paymentRemoteDataSource.getPaymentFinal(params);
   }
 }

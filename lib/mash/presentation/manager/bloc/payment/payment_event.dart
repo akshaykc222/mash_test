@@ -12,4 +12,8 @@ class PaymentEvent with _$PaymentEvent {
   const factory PaymentEvent.selectedItemIndex({
     required int? index,
   }) = _SelectedItemIndex;
+  const factory PaymentEvent.getPaymentFinalAmount({
+    required String totalAmount,
+    required String installmentId,
+  }) = _GetPaymentFinalAmount;
 }

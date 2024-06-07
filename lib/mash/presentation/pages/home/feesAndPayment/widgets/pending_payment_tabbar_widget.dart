@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
-import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/widgets/buttons/default_button.dart';
 
 import '../../../../../../core/response_classify.dart';
 import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/loader.dart';
-import '../../../../widgets/buttons/animted_button.dart';
 import 'payment_bottom_pay_widget.dart';
 
 class PendingPaymentTabbarWidget extends StatefulWidget {

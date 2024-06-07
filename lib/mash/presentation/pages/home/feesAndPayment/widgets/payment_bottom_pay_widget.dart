@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 
 import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../router/app_pages.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../widgets/buttons/animted_button.dart';
-import '../../../../widgets/buttons/default_button.dart';
+import '../../../../widgets/buttons/icon_button.dart';
 
 class PaymentBottomWidget extends StatelessWidget {
   const PaymentBottomWidget({super.key});
@@ -135,9 +136,20 @@ class PaymentDialog extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child: PartialPaymentTextField(),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8),
-                child: SubmitButton(),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: CustomIconButton(
+                  color: AppColors.primaryColor.withOpacity(0.2),
+                  elevation: 0,
+                  icon: '',
+                  onTap: () {
+                    context.pop();
+
+                    GoRouter.of(context)
+                        .pushNamed(AppPages.feesAndPaymentsConfirmation);
+                  },
+                  name: 'Submit',
+                ),
               ),
             ],
           ),
@@ -147,12 +159,26 @@ class PaymentDialog extends StatelessWidget {
   }
 }
 
-class PartialPaymentTextField extends StatelessWidget {
+class PartialPaymentTextField extends StatefulWidget {
   const PartialPaymentTextField({super.key});
+
+  @override
+  State<PartialPaymentTextField> createState() =>
+      _PartialPaymentTextFieldState();
+}
+
+class _PartialPaymentTextFieldState extends State<PartialPaymentTextField> {
+  final TextEditingController _controller = TextEditingController();
+  @override
+  void initState() {
+    _controller.text = context.read<PaymentBloc>().state.totalAmount;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: _controller,
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -167,21 +193,6 @@ class PartialPaymentTextField extends StatelessWidget {
           borderSide: BorderSide(color: AppColors.primaryColor),
         ),
       ),
-    );
-  }
-}
-
-class SubmitButton extends StatelessWidget {
-  const SubmitButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultButton(
-      onTap: () {
-        context.pop();
-        GoRouter.of(context).pushNamed(AppPages.feesAndPaymentsConfirmation);
-      },
-      title: 'Submit',
     );
   }
 }

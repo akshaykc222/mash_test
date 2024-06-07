@@ -23,6 +23,8 @@ mixin _$PaymentEvent {
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(String totalAmount, String installmentId)
+        getPaymentFinalAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,8 @@ mixin _$PaymentEvent {
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +45,8 @@ mixin _$PaymentEvent {
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
+    TResult Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,6 +56,8 @@ mixin _$PaymentEvent {
     required TResult Function(_SelectPaymentsCheckboxEvent value)
         selectPaymentsCheckboxEvent,
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +66,7 @@ mixin _$PaymentEvent {
     TResult? Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +75,7 @@ mixin _$PaymentEvent {
     TResult Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +189,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(String totalAmount, String installmentId)
+        getPaymentFinalAmount,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -191,6 +203,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -203,6 +217,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
+    TResult Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -218,6 +234,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     required TResult Function(_SelectPaymentsCheckboxEvent value)
         selectPaymentsCheckboxEvent,
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
   }) {
     return getPaymentDashboard(this);
   }
@@ -229,6 +247,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult? Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
   }) {
     return getPaymentDashboard?.call(this);
   }
@@ -240,6 +259,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -336,6 +356,8 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(String totalAmount, String installmentId)
+        getPaymentFinalAmount,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -348,6 +370,8 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -360,6 +384,8 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
+    TResult Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -375,6 +401,8 @@ class _$SelectPaymentsCheckboxEventImpl
     required TResult Function(_SelectPaymentsCheckboxEvent value)
         selectPaymentsCheckboxEvent,
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
   }) {
     return selectPaymentsCheckboxEvent(this);
   }
@@ -386,6 +414,7 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult? Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
   }) {
     return selectPaymentsCheckboxEvent?.call(this);
   }
@@ -397,6 +426,7 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -486,6 +516,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentDashboard,
     required TResult Function(String id) selectPaymentsCheckboxEvent,
     required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(String totalAmount, String installmentId)
+        getPaymentFinalAmount,
   }) {
     return selectedItemIndex(index);
   }
@@ -498,6 +530,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentDashboard,
     TResult? Function(String id)? selectPaymentsCheckboxEvent,
     TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -510,6 +544,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentDashboard,
     TResult Function(String id)? selectPaymentsCheckboxEvent,
     TResult Function(int? index)? selectedItemIndex,
+    TResult Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -525,6 +561,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     required TResult Function(_SelectPaymentsCheckboxEvent value)
         selectPaymentsCheckboxEvent,
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
   }) {
     return selectedItemIndex(this);
   }
@@ -536,6 +574,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult? Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
   }) {
     return selectedItemIndex?.call(this);
   }
@@ -547,6 +586,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult Function(_SelectPaymentsCheckboxEvent value)?
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -567,12 +607,190 @@ abstract class _SelectedItemIndex implements PaymentEvent {
 }
 
 /// @nodoc
+abstract class _$$GetPaymentFinalAmountImplCopyWith<$Res> {
+  factory _$$GetPaymentFinalAmountImplCopyWith(
+          _$GetPaymentFinalAmountImpl value,
+          $Res Function(_$GetPaymentFinalAmountImpl) then) =
+      __$$GetPaymentFinalAmountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String totalAmount, String installmentId});
+}
+
+/// @nodoc
+class __$$GetPaymentFinalAmountImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res, _$GetPaymentFinalAmountImpl>
+    implements _$$GetPaymentFinalAmountImplCopyWith<$Res> {
+  __$$GetPaymentFinalAmountImplCopyWithImpl(_$GetPaymentFinalAmountImpl _value,
+      $Res Function(_$GetPaymentFinalAmountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? totalAmount = null,
+    Object? installmentId = null,
+  }) {
+    return _then(_$GetPaymentFinalAmountImpl(
+      totalAmount: null == totalAmount
+          ? _value.totalAmount
+          : totalAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      installmentId: null == installmentId
+          ? _value.installmentId
+          : installmentId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
+  const _$GetPaymentFinalAmountImpl(
+      {required this.totalAmount, required this.installmentId});
+
+  @override
+  final String totalAmount;
+  @override
+  final String installmentId;
+
+  @override
+  String toString() {
+    return 'PaymentEvent.getPaymentFinalAmount(totalAmount: $totalAmount, installmentId: $installmentId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPaymentFinalAmountImpl &&
+            (identical(other.totalAmount, totalAmount) ||
+                other.totalAmount == totalAmount) &&
+            (identical(other.installmentId, installmentId) ||
+                other.installmentId == installmentId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, totalAmount, installmentId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetPaymentFinalAmountImplCopyWith<_$GetPaymentFinalAmountImpl>
+      get copyWith => __$$GetPaymentFinalAmountImplCopyWithImpl<
+          _$GetPaymentFinalAmountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(String totalAmount, String installmentId)
+        getPaymentFinalAmount,
+  }) {
+    return getPaymentFinalAmount(totalAmount, installmentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
+  }) {
+    return getPaymentFinalAmount?.call(totalAmount, installmentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(String totalAmount, String installmentId)?
+        getPaymentFinalAmount,
+    required TResult orElse(),
+  }) {
+    if (getPaymentFinalAmount != null) {
+      return getPaymentFinalAmount(totalAmount, installmentId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+  }) {
+    return getPaymentFinalAmount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+  }) {
+    return getPaymentFinalAmount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    required TResult orElse(),
+  }) {
+    if (getPaymentFinalAmount != null) {
+      return getPaymentFinalAmount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPaymentFinalAmount implements PaymentEvent {
+  const factory _GetPaymentFinalAmount(
+      {required final String totalAmount,
+      required final String installmentId}) = _$GetPaymentFinalAmountImpl;
+
+  String get totalAmount;
+  String get installmentId;
+  @JsonKey(ignore: true)
+  _$$GetPaymentFinalAmountImplCopyWith<_$GetPaymentFinalAmountImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PaymentState {
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse =>
       throw _privateConstructorUsedError;
   int? get selectedItemIndex => throw _privateConstructorUsedError;
-  Set<String>? get selectedCheckboxItems => throw _privateConstructorUsedError;
+  Set<String?>? get selectedCheckboxItems => throw _privateConstructorUsedError;
   String get totalAmount => throw _privateConstructorUsedError;
+  ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<String> get getPaymentFinalAmount =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -588,8 +806,10 @@ abstract class $PaymentStateCopyWith<$Res> {
   $Res call(
       {ResponseClassify<List<PaymentDashboardEntity>> paymentDashboardResponse,
       int? selectedItemIndex,
-      Set<String>? selectedCheckboxItems,
-      String totalAmount});
+      Set<String?>? selectedCheckboxItems,
+      String totalAmount,
+      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
+      ResponseClassify<String> getPaymentFinalAmount});
 }
 
 /// @nodoc
@@ -609,6 +829,8 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
+    Object? paymentHistoryResponse = null,
+    Object? getPaymentFinalAmount = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -622,11 +844,19 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
       selectedCheckboxItems: freezed == selectedCheckboxItems
           ? _value.selectedCheckboxItems
           : selectedCheckboxItems // ignore: cast_nullable_to_non_nullable
-              as Set<String>?,
+              as Set<String?>?,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentHistoryResponse: null == paymentHistoryResponse
+          ? _value.paymentHistoryResponse
+          : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<PaymentDashboardEntity>>,
+      getPaymentFinalAmount: null == getPaymentFinalAmount
+          ? _value.getPaymentFinalAmount
+          : getPaymentFinalAmount // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
     ) as $Val);
   }
 }
@@ -642,8 +872,10 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
   $Res call(
       {ResponseClassify<List<PaymentDashboardEntity>> paymentDashboardResponse,
       int? selectedItemIndex,
-      Set<String>? selectedCheckboxItems,
-      String totalAmount});
+      Set<String?>? selectedCheckboxItems,
+      String totalAmount,
+      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
+      ResponseClassify<String> getPaymentFinalAmount});
 }
 
 /// @nodoc
@@ -661,6 +893,8 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
+    Object? paymentHistoryResponse = null,
+    Object? getPaymentFinalAmount = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -674,11 +908,19 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
       selectedCheckboxItems: freezed == selectedCheckboxItems
           ? _value._selectedCheckboxItems
           : selectedCheckboxItems // ignore: cast_nullable_to_non_nullable
-              as Set<String>?,
+              as Set<String?>?,
       totalAmount: null == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as String,
+      paymentHistoryResponse: null == paymentHistoryResponse
+          ? _value.paymentHistoryResponse
+          : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<PaymentDashboardEntity>>,
+      getPaymentFinalAmount: null == getPaymentFinalAmount
+          ? _value.getPaymentFinalAmount
+          : getPaymentFinalAmount // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
     ));
   }
 }
@@ -689,17 +931,19 @@ class _$PaymentStateImpl implements _PaymentState {
   const _$PaymentStateImpl(
       {required this.paymentDashboardResponse,
       required this.selectedItemIndex,
-      required final Set<String>? selectedCheckboxItems,
-      required this.totalAmount})
+      required final Set<String?>? selectedCheckboxItems,
+      required this.totalAmount,
+      required this.paymentHistoryResponse,
+      required this.getPaymentFinalAmount})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
   final ResponseClassify<List<PaymentDashboardEntity>> paymentDashboardResponse;
   @override
   final int? selectedItemIndex;
-  final Set<String>? _selectedCheckboxItems;
+  final Set<String?>? _selectedCheckboxItems;
   @override
-  Set<String>? get selectedCheckboxItems {
+  Set<String?>? get selectedCheckboxItems {
     final value = _selectedCheckboxItems;
     if (value == null) return null;
     if (_selectedCheckboxItems is EqualUnmodifiableSetView)
@@ -710,10 +954,14 @@ class _$PaymentStateImpl implements _PaymentState {
 
   @override
   final String totalAmount;
+  @override
+  final ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse;
+  @override
+  final ResponseClassify<String> getPaymentFinalAmount;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, getPaymentFinalAmount: $getPaymentFinalAmount)';
   }
 
   @override
@@ -729,7 +977,11 @@ class _$PaymentStateImpl implements _PaymentState {
             const DeepCollectionEquality()
                 .equals(other._selectedCheckboxItems, _selectedCheckboxItems) &&
             (identical(other.totalAmount, totalAmount) ||
-                other.totalAmount == totalAmount));
+                other.totalAmount == totalAmount) &&
+            (identical(other.paymentHistoryResponse, paymentHistoryResponse) ||
+                other.paymentHistoryResponse == paymentHistoryResponse) &&
+            (identical(other.getPaymentFinalAmount, getPaymentFinalAmount) ||
+                other.getPaymentFinalAmount == getPaymentFinalAmount));
   }
 
   @override
@@ -738,7 +990,9 @@ class _$PaymentStateImpl implements _PaymentState {
       paymentDashboardResponse,
       selectedItemIndex,
       const DeepCollectionEquality().hash(_selectedCheckboxItems),
-      totalAmount);
+      totalAmount,
+      paymentHistoryResponse,
+      getPaymentFinalAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -749,20 +1003,28 @@ class _$PaymentStateImpl implements _PaymentState {
 
 abstract class _PaymentState implements PaymentState {
   const factory _PaymentState(
-      {required final ResponseClassify<List<PaymentDashboardEntity>>
-          paymentDashboardResponse,
-      required final int? selectedItemIndex,
-      required final Set<String>? selectedCheckboxItems,
-      required final String totalAmount}) = _$PaymentStateImpl;
+          {required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentDashboardResponse,
+          required final int? selectedItemIndex,
+          required final Set<String?>? selectedCheckboxItems,
+          required final String totalAmount,
+          required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentHistoryResponse,
+          required final ResponseClassify<String> getPaymentFinalAmount}) =
+      _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
   @override
   int? get selectedItemIndex;
   @override
-  Set<String>? get selectedCheckboxItems;
+  Set<String?>? get selectedCheckboxItems;
   @override
   String get totalAmount;
+  @override
+  ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse;
+  @override
+  ResponseClassify<String> get getPaymentFinalAmount;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

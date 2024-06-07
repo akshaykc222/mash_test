@@ -11,10 +11,12 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback onTap;
   final double? width;
   final Color? color;
+  final double? elevation;
   const CustomIconButton(
       {super.key,
       required this.name,
       this.icon,
+      this.elevation,
       required this.onTap,
       this.width,
       this.color = Colors.white});
@@ -24,7 +26,7 @@ class CustomIconButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: Size(SizeUtility(context).width / 1.6, 45),
-        elevation: 2,
+        elevation: elevation,
         backgroundColor: color,
       ),
       onPressed: onTap,
@@ -38,8 +40,8 @@ class CustomIconButton extends StatelessWidget {
               fontSize: 16,
               color: color == Colors.white
                   ? AppColors.primaryColor
-                  : AppColors.black,
-              fontWeight: FontWeight.w500,
+                  : AppColors.primaryColor,
+              fontWeight: FontWeight.w600,
             ),
           ),
           icon == null
@@ -54,7 +56,7 @@ class CustomIconButton extends StatelessWidget {
                   icon!,
                   color: color == Colors.white
                       ? AppColors.primaryColor
-                      : AppColors.black,
+                      : AppColors.primaryColor,
                 )
               : const SizedBox(),
         ],

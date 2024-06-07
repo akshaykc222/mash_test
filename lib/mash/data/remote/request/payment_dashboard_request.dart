@@ -1,7 +1,7 @@
 class PaymentDashboardRequest {
   final String companyId;
   final String studentId;
-  final String trackId;
+  final int? trackId;
   final String academicId;
   final String completionStatus;
   final String actionId;

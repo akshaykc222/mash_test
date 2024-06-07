@@ -25,7 +25,6 @@ class AppStrings {
   static const String view = 'VIEW';
   static const String teacher = 'Teacher';
 
-
   //quiz
   static const String onBoard1Title = "Let’s Start the Game";
   static const String onBoard1Desc =
@@ -68,7 +67,6 @@ class AppStrings {
   static const String weeklyTimeTableTitle = 'WEEKLY \nTIMETABLE';
   static const String examTableTitle = 'EXAM \nTIMETABLE';
   static const String dailyTimeTable = 'DAILY TIMETABLE';
-
 
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';
@@ -179,6 +177,7 @@ class AppStrings {
   static const String feesAndPaymentScreen = 'FEES & PAYMENT';
   static const String pending = 'PENDING';
   static const String paid = 'PAID';
+  static const String paidAt = 'Paid At';
   static const String paidAmount = 'Paid Amount';
   static const String transactionHistory = 'TRANSACTION HISTORY';
   static const String viewReceipt = 'View Receipt';

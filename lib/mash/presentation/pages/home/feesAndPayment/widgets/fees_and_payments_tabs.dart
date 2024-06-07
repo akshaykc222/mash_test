@@ -1,8 +1,4 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
@@ -117,9 +113,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
       var cfWebCheckout =
           CFWebCheckoutPaymentBuilder().setSession(session).build();
       var cfpaymenteGateway = CFPaymentGatewayService();
-      cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {
-        prettyPrint('cashfree payment gate way response ${p0.getMessage()}');
-      });
+      cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {});
       cfpaymenteGateway.doPayment(cfWebCheckout);
 
       return session;
@@ -282,10 +276,13 @@ class PaidWidget extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: CustomIconButton(
+                          elevation: 0,
+                          color: AppColors.primaryColor.withOpacity(0.2),
                           name: 'Transaction History',
                           onTap: () {
-                            GoRouter.of(context)
-                                .pushNamed(AppPages.transactionHistory);
+                            GoRouter.of(context).pushNamed(
+                                AppPages.transactionHistory,
+                                extra: entity.feeTrackId);
                           },
                           icon: AppAssets.transactionHistory,
                         ),

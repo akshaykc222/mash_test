@@ -16,22 +16,41 @@ class PaymentDashboardEntity {
   final String? due;
   final String? isDue;
 
+  final String? totalAmount;
+  final String? paymentType;
+  final String? paidBy;
+  final String? referenceNo;
+  final String? receiptNo;
+  final String? phoneNo;
+  final String? emailId;
+  final String? historyTrackId;
+  final String? paidOn;
+
   PaymentDashboardEntity({
-    this.feeTrackId,
-    this.planName,
-    this.instalmentName,
-    this.feeHeadName,
-    this.academicId,
-    this.feeAmount,
-    this.feeAmountPaid,
-    this.feeAmountBalance,
-    this.payableAmount,
-    this.paidDate,
-    this.annualConcession,
-    this.fineAmount,
-    this.concessionAmount,
-    this.dueDate,
-    this.due,
-    this.isDue,
+    required this.totalAmount,
+    required this.paymentType,
+    required this.paidBy,
+    required this.referenceNo,
+    required this.receiptNo,
+    required this.phoneNo,
+    required this.emailId,
+    required this.historyTrackId,
+    required this.paidOn,
+    required this.feeTrackId,
+    required this.planName,
+    required this.instalmentName,
+    required this.feeHeadName,
+    required this.academicId,
+    required this.feeAmount,
+    required this.feeAmountPaid,
+    required this.feeAmountBalance,
+    required this.payableAmount,
+    required this.paidDate,
+    required this.annualConcession,
+    required this.fineAmount,
+    required this.concessionAmount,
+    required this.dueDate,
+    required this.due,
+    required this.isDue,
   });
 }

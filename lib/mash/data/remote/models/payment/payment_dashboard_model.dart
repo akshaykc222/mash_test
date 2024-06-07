@@ -17,7 +17,16 @@ class PaymentDashboardModel extends PaymentDashboardEntity {
       required super.concessionAmount,
       required super.dueDate,
       required super.due,
-      required super.isDue});
+      required super.isDue,
+      required super.totalAmount,
+      required super.paymentType,
+      required super.paidBy,
+      required super.referenceNo,
+      required super.receiptNo,
+      required super.phoneNo,
+      required super.emailId,
+      required super.historyTrackId,
+      required super.paidOn});
   factory PaymentDashboardModel.fromJson(Map<String, dynamic> json) {
     return PaymentDashboardModel(
       feeTrackId: json['FEE_TRACK_ID'],
@@ -36,6 +45,15 @@ class PaymentDashboardModel extends PaymentDashboardEntity {
       dueDate: json['DUE_DATE'],
       due: json['DUE'],
       isDue: json['IS_DUE'],
+      totalAmount: json['TOT_AMOUNT'],
+      paymentType: json['PAYMENT_TYPE'],
+      paidBy: json['PAID_BY'],
+      referenceNo: json['REFERENCE_NO'],
+      receiptNo: json['RECEIPT_NO'],
+      phoneNo: json['PHONE_NO'],
+      emailId: json['EMAIL_ID'],
+      historyTrackId: json['HISTORY_TRACK_ID'],
+      paidOn: json['PAID_ON'],
     );
   }
 }

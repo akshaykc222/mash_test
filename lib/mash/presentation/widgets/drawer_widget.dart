@@ -7,18 +7,8 @@ import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 
-class DrawerWidget extends StatefulWidget {
+class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
-
-  @override
-  State<DrawerWidget> createState() => _DrawerWidgetState();
-}
-
-class _DrawerWidgetState extends State<DrawerWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
