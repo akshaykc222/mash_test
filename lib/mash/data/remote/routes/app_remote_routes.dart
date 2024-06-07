@@ -76,4 +76,11 @@ class AppRemoteRoutes {
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
 
+ //  library
+ static const getPhysicalLibrary =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPlAllBooks";
+
+ static const getPhysicalLibraryRequiredData =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
+
 }

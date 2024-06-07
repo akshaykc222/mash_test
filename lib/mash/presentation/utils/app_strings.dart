@@ -73,6 +73,11 @@ class AppStrings {
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';
   static const String filter = 'FILTER';
+  static const String filterSmall = 'Filter';
+  static const String searchSmall = 'Search';
+  static const String author = 'Authors';
+  static const String languages = 'Languages';
+  static const String cancelSmall = 'Cancel';
 
   //AttendanceMarking
   static const String attendanceMarking = 'ATTENDANCE MARKING';

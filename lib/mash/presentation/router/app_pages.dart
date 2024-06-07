@@ -16,6 +16,7 @@ class AppPages {
   static const academicLibraryScreen = '/academicLibraryScreen';
   static const academicDetailLibraryScreen = '/academicDetailLibraryScreen';
   static const userActivity = '/userActivityScreen';
+  static const physicalLibraryFilter = '/libraryFilter';
 
   static const homeWorkAndNotesDateSelectionScreen = '/homeWorkDetailsScreen';
   static const noteScreen = '/noteDetailsScreen';

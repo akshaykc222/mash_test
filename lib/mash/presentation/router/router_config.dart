@@ -36,6 +36,7 @@ import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_filter_page.dart';
 import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
@@ -119,7 +120,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -266,6 +267,10 @@ class AppRouteManager {
       path: AppPages.progressReport,
       name: AppPages.progressReport,
       builder: (context, state) => const ProgressReport(),
+    ),GoRoute(
+      path: AppPages.physicalLibraryFilter,
+      name: AppPages.physicalLibraryFilter,
+      builder: (context, state) => const PhysicalLibraryFilterScreen(),
     ),
     GoRoute(
       path: AppPages.syllabusScreen,
