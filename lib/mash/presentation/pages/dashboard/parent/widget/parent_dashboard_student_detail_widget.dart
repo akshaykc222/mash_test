@@ -1,230 +1,253 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
-import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/handle_error.dart';
-import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/widgets/oultined_container_widget.dart';
-import 'package:mash/mash/presentation/widgets/shimmers/home_shimmer.dart';
 
+import '../../../../../../core/response_classify.dart';
+import '../../../../../domain/entities/profile/student_detail_entity.dart';
+import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../router/app_pages.dart';
+import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
-import '../../../../utils/enums.dart';
+import '../../../../utils/app_constants.dart';
+import '../../../../utils/helper_classes.dart';
+import '../../../../utils/size_config.dart';
 import '../../../../utils/size_utility.dart';
-import '../../../home/widgets/progress_indicator_widget.dart';
+import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
+import '../../../../widgets/svg_asset_img.dart';
 
-class ParentDashboardStudentDetailWidget extends StatelessWidget {
-  const ParentDashboardStudentDetailWidget({super.key});
+// final ValueNotifier<bool> _isExpand = ValueNotifier<bool>(false);
+
+class StudenProfileWidget extends StatelessWidget {
+  final ProfileState state;
+  final StudentDetailEntity? user;
+
+  const StudenProfileWidget({super.key, this.user, required this.state});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileBloc, ProfileState>(
-      listenWhen: (previous, current) =>
-          previous.getUserDetail?.status != current.getUserDetail?.status,
-      listener: (context, state) {
-        if (state.getUserDetail?.status == Status.ERROR) {
-          handleErrorUi(context: context, error: state.getUserDetail?.error);
-        }
-      },
-      buildWhen: (previous, current) =>
-          previous.getUserDetail?.status != current.getUserDetail?.status,
-      builder: (context, state) {
-        return state.getUserDetail?.status == Status.LOADING
-            ? const ShimmerHome()
-            : state.getUserDetail?.status == Status.COMPLETED
-                ? Column(
-                    children: [
-                      spacer30,
-                      _buildInfoRow(state.getUserDetail!.data!),
-                      spacer7,
-                      _buildDivider(context),
-                      spacer10,
-                      _buildContactRow(context, state.getUserDetail!.data!),
-                      spacer10,
-                      _buildProgressWidgets(context),
-                      spacer50,
-                    ],
-                  )
-                : HelperClasses.errorWidget(context);
-      },
-    );
-  }
-
-  Widget _buildInfoRow(StudentDetailEntity student) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildInfoItem('Class Teacher', student.classTeacher ?? ""),
-          _buildInfoItem('Roll No', student.roleId ?? "", isEnd: true),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoItem(String title, String value, {bool isEnd = false}) {
-    return Column(
-      crossAxisAlignment:
-          isEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          value,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDivider(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Container(
-          height: 1,
-          width: SizeUtility(context).width * 0.28,
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-          ),
-        ),
-        Container(
-          height: 1,
-          width: SizeUtility(context).width * 0.28,
-          decoration: BoxDecoration(
-            color: AppColors.primaryColor,
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _buildContactRow(BuildContext context, StudentDetailEntity student) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        children: [
-          const Icon(Icons.call_outlined),
-          const SizedBox(width: 20),
-          GestureDetector(
-              onTap: () {
-                GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
-              },
-              child: const Icon(Icons.chat_bubble_outline)),
-          const Spacer(),
-          _buildInfoItem(
-              'Class', '${student.className} ${student.divisionName}',
-              isEnd: true)
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProgressWidgets(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      verticalDirection: VerticalDirection.down,
-      children: [
-        _buildAttendanceWidget(context),
-        _buildGradeWidget(),
-      ],
-    );
-  }
-
-  Widget _buildAttendanceWidget(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        GoRouter.of(context).pushNamed(AppPages.attendanceDetailScreen);
-      },
-      child: const OutlinedContainerWidget(
-        height: 170,
-        width: 170,
-        child: Stack(
+      padding: EdgeInsets.symmetric(
+        horizontal: SizeUtility(context).width / 24,
+      ).copyWith(
+          top: Platform.isIOS
+              ? SizeUtility(context).height / 9
+              : SizeUtility(context).height / 11),
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          // _isExpand.value = !_isExpand.value;
+          HelperClasses.showStudentSwitchDialog(context);
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 170,
-              width: 170,
-              child: ProgressIndicatorWidget(
-                progressIndicatorType: ProgressIndicatorType.circular,
-                initialValue: 0.8,
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _ProfileImage(state: state),
+                    ],
+                  ),
+                  _UserInfo(user: user),
+                  Icon(
+                    Icons.keyboard_arrow_down,
+                    color: AppColors.white,
+                    size: SizeConfig.height(24),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              left: 0,
-              top: 0,
-              bottom: 0,
-              right: 0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'ATTENDENCE',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      '75%',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'View Details',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            )
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildGradeWidget() {
-    return OutlinedContainerWidget(
-      height: 91,
-      width: 91,
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
+class _ProfileImage extends StatelessWidget {
+  final ProfileState state;
+
+  const _ProfileImage({required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: SizeConfig.height(70),
+      width: SizeConfig.height(70),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: AppColors.white,
+          width: 1.5,
         ),
-        child: const Center(
-          child: Text(
-            'A',
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(60),
+        child: state.getUserDetail?.status == Status.LOADING
+            ? const CustomShimmerWidget(height: 50)
+            : HelperClasses.cachedNetworkImage(
+                imageUrl: state.getUserDetail?.data?.profilePhoto ?? "",
+              ),
+      ),
+    );
+  }
+}
+
+class _UserInfo extends StatelessWidget {
+  final StudentDetailEntity? user;
+
+  const _UserInfo({this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 3),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            user?.studentName ?? '',
             style: TextStyle(
-              fontSize: 40,
-              color: Colors.black,
+              fontSize: SizeConfig.textSize(17),
+              color: AppColors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
+          Text(
+            '${user?.className ?? ''} ${user?.divisionName ?? ''}',
+            style: TextStyle(
+              fontSize: SizeConfig.textSize(14),
+              color: AppColors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          spacer15,
+          Container(
+            width: SizeUtility(context).width / 1.8,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.width(18), vertical: 5),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  color: AppColors.purple200,
+                ),
+              ],
+              color: AppColors.primaryColor.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _UserInfoItem(
+                      label: user?.rollNo ?? "",
+                      subLabel: 'Roll NO',
+                    ),
+                    _UserInfoItem(
+                      label: user?.classTeacher ?? "",
+                      subLabel: 'Class Teacher',
+                    ),
+                  ],
+                ),
+                spacer10,
+                const _ContactRow(),
+                spacer4,
+              ],
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class _ContactRow extends StatelessWidget {
+  const _ContactRow();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.3,
+          color: AppColors.white,
+        ),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          GestureDetector(
+            onTap: () {
+              GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
+            },
+            child: const _IconWidget(img: AppAssets.chat),
+          ),
+          const _IconWidget(img: AppAssets.call),
+          GestureDetector(
+            onTap: () {
+              GoRouter.of(context).pushNamed(AppPages.teacherRatingListScreen);
+            },
+            child: Image.asset(
+              AppAssets.ratingIcon,
+              height: 20,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _IconWidget extends StatelessWidget {
+  final String img;
+
+  const _IconWidget({required this.img});
+
+  @override
+  Widget build(BuildContext context) {
+    return assetFromSvg(img, color: AppColors.white);
+  }
+}
+
+class _UserInfoItem extends StatelessWidget {
+  final String label;
+  final String subLabel;
+
+  const _UserInfoItem({required this.label, required this.subLabel});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: AppColors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          subLabel,
+          style: TextStyle(
+            fontSize: 12,
+            color: AppColors.greyClr300,
+          ),
+        ),
+      ],
     );
   }
 }

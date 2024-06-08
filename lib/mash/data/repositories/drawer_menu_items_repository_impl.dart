@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart';
-import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
+import 'package:mash/mash/data/remote/request/news_board_request.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 
 import '../../domain/repositories/drawer_menu_items_repository.dart';

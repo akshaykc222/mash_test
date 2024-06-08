@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/news_board_request.dart';
+import 'package:mash/mash/data/remote/request/news_board_request.dart';
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart';
 
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/pretty_printer.dart';
 import '../../../../../core/usecase.dart';
-import '../../../../data/remote/models/request/role_menu_request.dart';
+import '../../../../data/remote/request/role_menu_request.dart';
 import '../../../../domain/entities/dashboard/role_menu_entity.dart';
 import '../../../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../../../../domain/use_cases/dashboard/get_role_menu_usecase.dart';

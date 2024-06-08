@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/mash/data/remote/data_sources/vehicle_tracker_data_source.dart';
-import 'package:mash/mash/data/remote/models/request/vehicle_tracker_request.dart';
+import 'package:mash/mash/data/remote/request/vehicle_tracker_request.dart';
 import 'package:mash/mash/domain/entities/vehicle_tracker/vehicle_location_entity.dart';
 import 'package:mash/mash/domain/repositories/vehicle_tracker_repository.dart';
 

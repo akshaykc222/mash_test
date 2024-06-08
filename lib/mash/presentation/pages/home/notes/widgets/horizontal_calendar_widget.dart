@@ -5,7 +5,8 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 class HorizontalCalendarWidget extends StatefulWidget {
-  const HorizontalCalendarWidget({super.key});
+   String date;
+   HorizontalCalendarWidget({super.key, required this.date});
 
   @override
   State<HorizontalCalendarWidget> createState() =>
@@ -45,17 +46,22 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
         scrollDirection: Axis.horizontal,
         itemCount: currentMonthList.length,
         itemBuilder: (context, index) {
-          bool isSameday = currentMonthList[index].day == currentDateTime.day;
+          bool isSameDay = currentMonthList[index].day == currentDateTime.day;
           return GestureDetector(
             onTap: () {
               setState(() {
                 currentDateTime = currentMonthList[index];
+                var parsedDate = DateTime.parse(currentDateTime.toString());
+                String convertedDate =  DateFormat("dd-MM-yyyy").format(parsedDate);
+                widget.date = convertedDate;
+                print('************ date *************');
+                print(widget.date);
               });
             },
             child: Card(
               shadowColor: AppColors.primaryColor,
               elevation: 2,
-              color: isSameday
+              color: isSameDay
                   ? AppColors.purple200.withOpacity(0.7)
                   : AppColors.white,
               child: Padding(
@@ -69,7 +75,7 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: isSameday ? AppColors.white : AppColors.greyText,
+                        color: isSameDay ? AppColors.white : AppColors.greyText,
                       ),
                     ),
                     Text(
@@ -77,7 +83,7 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: isSameday ? AppColors.white : AppColors.black,
+                        color: isSameDay ? AppColors.white : AppColors.black,
                       ),
                     ),
                     Text(
@@ -85,7 +91,7 @@ class _HorizontalCalendarWidgetState extends State<HorizontalCalendarWidget> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: isSameday ? AppColors.white : AppColors.greyText,
+                        color: isSameDay ? AppColors.white : AppColors.greyText,
                       ),
                     ),
                   ],

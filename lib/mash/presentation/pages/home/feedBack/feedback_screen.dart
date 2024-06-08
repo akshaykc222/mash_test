@@ -1,7 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
@@ -9,6 +16,10 @@ import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
 import 'package:flutter_emoji_feedback/flutter_emoji_feedback.dart';
+
+import '../../../../../core/response_classify.dart';
+
+final ValueNotifier<int> rating = ValueNotifier(0);
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({super.key});
@@ -23,6 +34,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log('reeee builded');
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.feedbackForm),
       endDrawer: const DrawerWidget(),
@@ -71,7 +83,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               curve: Curves.easeIn,
               inactiveElementScale: .5,
               onChanged: (value) {
-                print(value);
+                rating.value = value;
               },
             ),
             spacer30,
@@ -82,14 +94,35 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               controller: _feedbackController,
             ),
             spacer30,
-            AnimatedSharedButton(
-                onTap: () {},
-                title: Text(
-                  AppStrings.submitCapital,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: AppColors.white),
-                ),
-                isLoading: false)
+            BlocListener<HomeBloc, HomeState>(
+              listener: (context, state) {
+                if (state.postFeedback.status == Status.COMPLETED) {
+                  HelperClasses.showSnackBar(
+                      msg: 'feedback successfully submited');
+                  context.pop();
+                }
+              },
+              child: ValueListenableBuilder(
+                  valueListenable: rating,
+                  builder: (context, value, child) {
+                    return AnimatedSharedButton(
+                        onTap: () {
+                          BlocProvider.of<HomeBloc>(context)
+                              .add(HomeEvent.postFeedback(
+                            module: _moduleController.text,
+                            description: _feedbackController.text,
+                            rating: value.toString(),
+                          ));
+                        },
+                        title: Text(
+                          AppStrings.submitCapital,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.white),
+                        ),
+                        isLoading: false);
+                  }),
+            )
           ],
         ),
       ),

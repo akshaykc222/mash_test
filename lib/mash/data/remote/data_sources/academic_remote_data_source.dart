@@ -6,6 +6,8 @@ import 'package:mash/mash/data/remote/models/academic/class_details_model.dart';
 import 'package:mash/mash/data/remote/models/academic/division_details_model.dart';
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart';
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 
@@ -19,7 +21,7 @@ import '../models/request/digital_library_request.dart';
 
 @factoryMethod
 abstract interface class AcademicRemoteDataSource {
-  Future<List<ClassDetailsModel>> getClassDetails(
+  Future<List<ClassDetailsModel?>> getClassDetails(
       AcademicAndCompIdRequest params);
   Future<List<AcademicSubjectModel>> getAcademicSubjects(
       ClassAndCompIdRequest params);

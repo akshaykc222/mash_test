@@ -23,6 +23,7 @@ class AppStrings {
   static const String submitCapital = 'SUBMIT';
   static const String viewWeekPlans = 'VIEW WEEK PLAN';
   static const String view = 'VIEW';
+  static const String teacher = 'Teacher';
 
   //quiz
   static const String onBoard1Title = "Let’s Start the Game";
@@ -44,6 +45,7 @@ class AppStrings {
   static const String fromDate = 'From Date';
   static const String toDate = 'To Date';
   static const String homeWorks = "Home Works";
+  static const String homeWorksCapital = "HOMEWORKS";
   static const String details = 'Details';
   static const String homeWorkDetails = 'Home Work Details';
   static const String wordOfTheDay = 'Word Of The Day';
@@ -61,10 +63,19 @@ class AppStrings {
   //time table
   static const String timeTable = 'Time Table';
   static const String examTimeTable = 'EXAM TIMETABLE';
+  static const String dailyTimeTableTitle = 'DAILY \nTIMETABLE';
+  static const String weeklyTimeTableTitle = 'WEEKLY \nTIMETABLE';
+  static const String examTableTitle = 'EXAM \nTIMETABLE';
+  static const String dailyTimeTable = 'DAILY TIMETABLE';
 
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';
   static const String filter = 'FILTER';
+  static const String filterSmall = 'Filter';
+  static const String searchSmall = 'Search';
+  static const String author = 'Authors';
+  static const String languages = 'Languages';
+  static const String cancelSmall = 'Cancel';
 
   //AttendanceMarking
   static const String attendanceMarking = 'ATTENDANCE MARKING';
@@ -171,6 +182,7 @@ class AppStrings {
   static const String feesAndPaymentScreen = 'FEES & PAYMENT';
   static const String pending = 'PENDING';
   static const String paid = 'PAID';
+  static const String paidAt = 'Paid At';
   static const String paidAmount = 'Paid Amount';
   static const String transactionHistory = 'TRANSACTION HISTORY';
   static const String viewReceipt = 'View Receipt';

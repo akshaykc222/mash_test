@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -25,6 +27,14 @@ class IdCardRequestScreen extends StatefulWidget {
 
 class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   final TextEditingController _requestController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController();
+
+  @override
+  void initState() {
+    IdRequestBloc.get(context).add(
+        const IdRequestEvent.getTransferRequestEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +46,6 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
   }
 
   idRequestBody(BuildContext context) {
-    IdRequestBloc.get(context).add(
-        const IdRequestEvent.getTransferRequestEvent());
-    List<String> options = [
-      'option 1',
-      'option 2',
-      'option 2',
-      'option 2',
-      'option 2',
-      'option 3',
-      'option 3',
-      'option 3',
-      'option 3',
-      'option 3'
-    ];
     var size = MediaQuery.sizeOf(context);
     return Container(
       height: size.height,
@@ -59,7 +55,7 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titleText(AppStrings.studentName),
-          HelperClasses.getSelectedStudent(context),
+          HelperClasses.getSelectedStudent(context,true),
           titleText(AppStrings.request),
           BlocConsumer<IdRequestBloc, IdRequestState>(
             listener: (context, state) {
@@ -78,16 +74,32 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
             },
           ),
           titleText(AppStrings.remarks),
-          CommonTextField(lines: 4, title: AppStrings.enterRemarks),
+          CommonTextField(
+              controller: _remarksController,
+              lines: 4, title: AppStrings.enterRemarks),
           spacer30,
-          AnimatedSharedButton(
-              onTap: () {},
+ 
+          BlocBuilder<IdRequestBloc, IdRequestState>(
+  builder: (context, state) {
+    return AnimatedSharedButton(
+              onTap: () {
+                var state = context.read<IdRequestBloc>().state;
+                var siblingInfo = context.read<ProfileBloc>().state.selectedSibling?.userId;
+                if(state.index == null){
+                  prettyPrint('Please select request type');
+                } else {
+                  IdRequestBloc.get(context).add(
+                      IdRequestEvent.idPostRequest(reqId: state.getIdRequestType!.data![state.index!].tabId, remarks: _remarksController.text, userId: siblingInfo.toString()));
+                }
+                              },
               title: Text(
                 AppStrings.submitCapital,
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: AppColors.white),
               ),
-              isLoading: false)
+              isLoading:state.postIdRequest?.status==Status.LOADING);
+  },
+)
         ],
       ),
     );
@@ -131,6 +143,8 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
                         return ListTile(
                           title: Text(requestTypes[index].request),
                           onTap: () {
+                            IdRequestBloc.get(context).add(
+                                 IdRequestEvent.selectRequestId(index: index));
                             controller.text = requestTypes[index].request;
                             Navigator.of(context).pop();
                           },

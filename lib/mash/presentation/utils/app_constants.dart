@@ -201,8 +201,13 @@ handleError(BuildContext context, String error, Function action) {
           ));
 }
 
-primaryShadowContainer({required Widget child}) {
+primaryShadowContainer(
+    {required Widget child,
+    double marginHorizontal = 0.0,
+    double marginVertical = 0.0}) {
   return Container(
+    margin: EdgeInsets.symmetric(
+        horizontal: marginHorizontal, vertical: marginVertical),
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),

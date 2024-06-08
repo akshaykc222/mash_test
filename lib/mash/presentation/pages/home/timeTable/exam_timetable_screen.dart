@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 
+import '../../../../domain/entities/offline_time_table/offline_time_table_term_entity.dart';
+import '../../../manager/bloc/time_table_bloc/time_table_bloc.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class ExamTimeTableScreen extends StatefulWidget {
@@ -18,30 +24,38 @@ class ExamTimeTableScreen extends StatefulWidget {
 class _ExamTimeTableScreenState extends State<ExamTimeTableScreen> {
   int selectedIndex = 0;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.examTimeTable),
       endDrawer: const DrawerWidget(),
-      body: const SyllabusBody(),
+      body: const OfflineExamTimeTableBody(),
     );
   }
 }
 
-class SyllabusBody extends StatefulWidget {
-  const SyllabusBody({super.key});
+class OfflineExamTimeTableBody extends StatefulWidget {
+  const OfflineExamTimeTableBody({super.key});
 
   @override
-  State<SyllabusBody> createState() => _SyllabusBodyState();
+  State<OfflineExamTimeTableBody> createState() =>
+      _OfflineExamTimeTableBodyState();
 }
 
-class _SyllabusBodyState extends State<SyllabusBody> {
+class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
   final TextEditingController _termController = TextEditingController();
   int selectedIndex = 0;
 
   @override
+  void initState() {
+    TimeTableBloc.get(context).add(
+        const TimeTableEvent.getOfflineExamTerms());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<String> options = ['option 1', 'option 2', 'option 3'];
     var size = MediaQuery.sizeOf(context);
     return Container(
       height: size.height,
@@ -52,16 +66,35 @@ class _SyllabusBodyState extends State<SyllabusBody> {
           const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Select Term',
+                'Select Student',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+              )),
+          HelperClasses.getSelectedStudent(context, true),
+          const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                AppStrings.selectTerm,
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               )),
           spacer10,
-          CommonGestureDetector(
-            onTap: () =>
-                _openOptionsBottomSheet(context, _termController, options),
-            textController: _termController,
-            hintText: AppStrings.selectTerm,
-            icon: Icons.arrow_drop_down_circle_sharp,
+          BlocConsumer<TimeTableBloc, TimeTableState>(
+            listener: (BuildContext context, TimeTableState state) {
+              if (state.getOfflineExamTerms?.status == Status.ERROR) {
+                handleErrorUi(
+                    context: context, error: state.getOfflineExamTerms?.error);
+              }
+            },
+            builder: (context, state) {
+              return CommonGestureDetector(
+                onTap: () {
+                  _openOptionsBottomSheet(context, _termController,
+                      state.getOfflineExamTerms?.data ?? []);
+                },
+                textController: _termController,
+                hintText: AppStrings.selectTerm,
+                icon: Icons.arrow_drop_down_circle_sharp,
+              );
+            },
           ),
           spacer10,
           _syllabusList()
@@ -70,8 +103,9 @@ class _SyllabusBodyState extends State<SyllabusBody> {
     );
   }
 
-  void _openOptionsBottomSheet(
-      BuildContext context, TextEditingController controller, List optionList) {
+  void _openOptionsBottomSheet(BuildContext context,
+      TextEditingController controller,
+      List<OfflineTimeTableTermEntity> optionList) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
@@ -92,12 +126,15 @@ class _SyllabusBodyState extends State<SyllabusBody> {
               ),
               Expanded(
                   child: ListView.builder(
-                      itemCount: optionList.length,
+                      itemCount: optionList.length ?? 0,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(optionList[index]),
+                          title: Text(optionList[index].sectionName),
                           onTap: () {
-                            controller.text = optionList[index];
+                            var data = context.read<TimeTableBloc>().state;
+                            TimeTableBloc.get(context).add(
+                                TimeTableEvent.getOfflineExamTimeTable(termId: data.getOfflineExamTerms?.data?[index].termId ?? ''));
+                            controller.text = optionList[index].sectionName;
                             Navigator.of(context).pop();
                           },
                         );
@@ -110,32 +147,34 @@ class _SyllabusBodyState extends State<SyllabusBody> {
   }
 
   _syllabusList() {
-    List itemList = [
-      ['names', 'demos', 'demo items names'],
-      [
-        'names',
-        'demos',
-      ],
-      ['names', 'demos', 'demo items names', 'name list'],
-      ['names', 'demos', 'demo items names'],
-    ];
-    List<String> subNameList = ['Malayalam', 'Hindi', 'English', 'Physics'];
     return Expanded(
       flex: 1,
-      child: ListView.separated(
-          shrinkWrap: true,
-          separatorBuilder: (context, index) {
-            return spacer10;
-          },
-          itemCount: subNameList.length,
-          itemBuilder: (context, index) {
-            return examTableCard(
-                itemList[index].length, subNameList[index], itemList[index]);
-          }),
+      child: BlocConsumer<TimeTableBloc,TimeTableState>(
+        listener: (BuildContext context, TimeTableState state) {
+          if (state.getOfflineExamTimeTable?.status == Status.ERROR) {
+            handleErrorUi(
+                context: context, error: state.getOfflineExamTimeTable?.error);
+          }
+        },
+        builder: (context, state) {
+          return ListView.separated(
+              shrinkWrap: true,
+              separatorBuilder: (context, index) {
+                return spacer10;
+              },
+              itemCount: state.getOfflineExamTimeTable?.data?.length ?? 0,
+              itemBuilder: (context, index) {
+                return examTableCard(
+                    state.getOfflineExamTimeTable?.data?.length ?? 0,
+                    state.getOfflineExamTimeTable?.data?[index].subjectName ?? '',
+                    state.getOfflineExamTimeTable?.data?[index].portions);
+              });
+        },
+      ),
     );
   }
 
-  examTableCard(int itemCount, itemName, items) {
+  examTableCard(int itemCount, String itemName,  items) {
     return SizedBox(
       child: Column(
         children: [
@@ -184,7 +223,7 @@ class _SyllabusBodyState extends State<SyllabusBody> {
                             fontSize: 18, fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        '24/05/2024 ',
+                        'hjgvgf',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -223,7 +262,7 @@ class _SyllabusBodyState extends State<SyllabusBody> {
                                       child: Text(items[index]),
                                     ));
                               },
-                              itemCount: itemCount),
+                              itemCount: items.length,),
                         ),
                       ),
                     ],

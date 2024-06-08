@@ -42,6 +42,7 @@ class ParentDashboardLastSectionState
           Align(
             alignment: Alignment.center,
             child: CustomIconButton(
+              elevation: 2,
               name: 'View Dashboard',
               onTap: () {},
             ),

@@ -6,6 +6,7 @@ import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 
 import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 import '../../../../utils/app_colors.dart';
@@ -14,11 +15,16 @@ import '../../../../widgets/shimmers/custom_shimmer_widget.dart';
 class StudentProfileWidget extends StatelessWidget {
   final bool? isOnList;
   final StudentEntity entity;
+  final bool? dontPadd;
 
   final VoidCallback onTap;
 
   const StudentProfileWidget(
-      {super.key, required this.onTap, this.isOnList, required this.entity});
+      {super.key,
+      required this.onTap,
+      this.isOnList,
+      required this.entity,
+      this.dontPadd = true});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,8 @@ class StudentProfileWidget extends StatelessWidget {
                 onTap: onTap,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: dontPadd == true ? 0 : 20),
                   child: Card(
                     elevation: 2,
                     surfaceTintColor: AppColors.primaryColor,
@@ -60,8 +67,8 @@ class StudentProfileWidget extends StatelessWidget {
                                     CircleAvatar(
                                       radius: 25,
                                       backgroundImage:
-                                          CachedNetworkImageProvider(
-                                              entity.profilePhoto),
+                                          HelperClasses.cachedNetworkImageProvider(
+                                         imageUrl: entity.profilePhoto),
                                     ),
                                     const SizedBox(width: 10),
                                     Flexible(
@@ -92,27 +99,33 @@ class StudentProfileWidget extends StatelessWidget {
                           ),
                           if (state.getSiblings?.data?.isNotEmpty == true &&
                               state.getSiblings!.data!.length > 1)
-                            for (int i = 0;
-                                i < (state.getSiblings?.data?.length ?? 0);
-                                i++)
-                              Positioned(
-                                right: 10.0 * i,
-                                top: 0,
-                                bottom: 0,
-                                child: _buildRoundedImage(),
-                              ),
-                          if (isOnList == true &&
-                              state.selectedSibling == entity)
+                            // for (int i = 0;
+                            //     i < (state.getSiblings?.data?.length ?? 0);
+                            //     i++)
+                            //   Positioned(
+                            //     right: 10.0 * i,
+                            //     top: 0,
+                            //     bottom: 0,
+                            //     child: _buildRoundedImage(),
+                            //   ),
+
                             Positioned(
-                              right: 10.0,
+                              right:
+                                  state.selectedSibling != entity ? 18 : 10.0,
                               top: 0,
                               bottom: 0,
-                              child: Lottie.asset(
-                                AppAssets.tickLottie,
-                                repeat: false,
-                                width: 40,
-                                height: 40,
-                              ),
+                              child: state.selectedSibling != entity
+                                  ? Icon(
+                                      Icons.circle_outlined,
+                                      color: AppColors.primaryColor,
+                                      size: 20,
+                                    )
+                                  : Lottie.asset(
+                                      AppAssets.tickLottie,
+                                      repeat: false,
+                                      width: 40,
+                                      height: 40,
+                                    ),
                             )
                         ],
                       ),

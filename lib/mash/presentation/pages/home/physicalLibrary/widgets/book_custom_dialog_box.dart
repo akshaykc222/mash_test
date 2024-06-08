@@ -2,10 +2,13 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mash/mash/domain/entities/library/physical_library_entity.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 class CustomDialog extends StatelessWidget {
-  const CustomDialog({super.key});
+  final PhysicalLibraryEntity entity;
+  const CustomDialog({super.key, re, required this.entity});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +22,10 @@ class CustomDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Book Author',
+             Text(
+              entity.authorName,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -31,7 +34,7 @@ class CustomDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: CachedNetworkImage(
-                imageUrl: "https://d3nn873nee648n.cloudfront.net/HomeImages/Concept-and-Ideas.jpg?w=248&fit=crop&auto=format",
+                imageUrl:entity.coverImg,
                 fit: BoxFit.cover,
                  // height: 200,
                  // width: 80,
@@ -40,49 +43,42 @@ class CustomDialog extends StatelessWidget {
               ),
             ),
             spacer20,
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(child: Text('Language')),
-                Text(' : '),
-                Expanded(child: Text('books')),
+                const Expanded(child: Text('Language')),
+                const Text(' : '),
+                Expanded(child: Text(entity.lang)),
               ],
-            ),const Row(
+            ),  Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(
-                    child: Text('Category')),
-                Text(' : '),
-                Expanded(
-                    child: Text('books')),
+                const Expanded(child: Text('Book Status')),
+                const Text(' : '),
+                Expanded(child: Text(entity.status == "0" ? 'Not Available' :'Available',style: TextStyle(
+                  color: entity.status == "0" ? AppColors.redColor : AppColors.green
+                ),)),
               ],
-            ),const Row(
+            ), Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(child: Text('Book Status')),
-                Text(' : '),
-                Expanded(child: Text('books')),
+                const Expanded(child: Text('Volume')),
+                const Text(' : '),
+                Expanded(child: Text(entity.volume)),
               ],
-            ),const Row(
+            ),  Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(child: Text('Volume')),
-                Text(' : '),
-                Expanded(child: Text('books')),
+                const Expanded(child: Text('Published Year')),
+                const Text(' : '),
+                Expanded(child: Text(entity.publishedDate)),
               ],
-            ),const Row(
+            ), Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Expanded(child: Text('Published Year')),
-                Text(' : '),
-                Expanded(child: Text('books')),
-              ],
-            ),const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(child: Text('Description')),
-                Text(' : '),
-                Expanded(child: Text('books')),
+                const Expanded(child: Text('Description')),
+                const Text(' : '),
+                Expanded(child: Text(entity.bookDescription)),
               ],
             ),
             spacer20,

@@ -2,12 +2,12 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/mash/data/remote/models/profile/student_detail_model.dart';
 import 'package:mash/mash/data/remote/models/profile/student_model.dart';
-import 'package:mash/mash/data/remote/models/request/get_user_details_request.dart';
+import 'package:mash/mash/data/remote/request/get_user_details_request.dart';
+import 'package:mash/mash/data/remote/request/update_profile_request.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/profile/student_detail_entity.dart';
 import 'package:mash/mash/domain/entities/profile/student_entity.dart';
 
-import '../models/request/update_profile_request.dart';
 
 abstract class ProfileDataSource {
   Future<List<StudentEntity>> getSiblings(String compId);

@@ -14,8 +14,9 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_e
 import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/facility/facility_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
-import 'package:mash/mash/presentation/pages/home/feesAndPayment/fee_and_payment_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/note_view_detais_screen.dart';
@@ -37,6 +38,7 @@ import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
+import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_filter_page.dart';
 import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
@@ -50,6 +52,7 @@ import 'package:mash/mash/presentation/pages/home/supportScreen/mash_support_scr
 import 'package:mash/mash/presentation/pages/home/syllabus/syllabus.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/teacherRating/teacher_rating_screen.dart';
+import 'package:mash/mash/presentation/pages/home/timeTable/daily_time_table_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/exam_timetable_screen.dart';
 import 'package:mash/mash/presentation/pages/home/timeTable/weekly_time_table.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_screen.dart';
@@ -120,7 +123,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -273,6 +276,10 @@ class AppRouteManager {
       path: AppPages.progressReport,
       name: AppPages.progressReport,
       builder: (context, state) => const ProgressReport(),
+    ),GoRoute(
+      path: AppPages.physicalLibraryFilter,
+      name: AppPages.physicalLibraryFilter,
+      builder: (context, state) => const PhysicalLibraryFilterScreen(),
     ),
     GoRoute(
       path: AppPages.syllabusScreen,
@@ -412,12 +419,24 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
-      builder: (context, state) => const FeesAndPaymentMainScreen(),
+      builder: (context, state) => const FeesAndPaymentsTabs(),
+    ),
+    // GoRoute(
+    //   name: AppPages.paymentHistoryScreen,
+    //   path: AppPages.paymentHistoryScreen,
+    //   builder: (context, state) => const PaymentHistoryScreen(),
+    // ),
+    GoRoute(
+      name: AppPages.transactionHistory,
+      path: AppPages.transactionHistory,
+      builder: (context, state) =>
+          PaymentHistoryScreen(trackId: state.extra as String),
     ),
     GoRoute(
-      name: AppPages.paymentHistoryScreen,
-      path: AppPages.paymentHistoryScreen,
-      builder: (context, state) => const PaymentHistoryScreen(),
+      path: AppPages.feesAndPaymentsConfirmation,
+      name: AppPages.feesAndPaymentsConfirmation,
+      builder: (context, state) =>
+          PaymentConfirmationScreen(totalAmount: state.extra as String),
     ),
     GoRoute(
       name: AppPages.examTimetableScreen,
@@ -488,6 +507,11 @@ class AppRouteManager {
       name: AppPages.createGroup,
       path: AppPages.createGroup,
       builder: (context, state) => const GroupAddScreen(),
+    ),
+    GoRoute(
+      name: AppPages.dailyTimetableScreen,
+      path: AppPages.dailyTimetableScreen,
+      builder: (context, state) => const DailyTimeTableScreen(),
     ),
     GoRoute(
       name: AppPages.groupDetails,

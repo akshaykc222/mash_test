@@ -12,7 +12,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
-import 'package:mash/mash/data/remote/models/request/vehicle_tracker_request.dart';
+import 'package:mash/mash/data/remote/request/vehicle_tracker_request.dart';
 import 'package:mash/mash/domain/entities/vehicle_tracker/student_routes_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart';

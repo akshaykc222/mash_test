@@ -4,8 +4,8 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/models/request/academic_subjects_request.dart';
+import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_subject_usecase.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_class_details_usecase.dart';
@@ -49,6 +49,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
     on<_ChangeSyllabusTermIndex>(_changeSyllabusTermIndex);
     on<_SelectSubjectEvent>(_selectSubjectEvent);
     on<_SelectDateRange>(_selectDateRange);
+    on<_DisposeEvent>(_disposeEvent);
   }
 
   _getClassDetails(

@@ -64,4 +64,36 @@ class AppRemoteRoutes {
   // id module
   static const idRequestType =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getRequestType";
+  static const idRequestPost =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/insertRfidSubmitRequest";
+
+  // offline exam
+  static const offlineExamTerms =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
+  static const offlineExamTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getOfflineTimeTableList";
+
+  //home
+  static const addON = "UATRESTAPI/MashFlutterRestAPI//api/user/getAddOn";
+  static const feedBackPost =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/InsertFeedback";
+
+  //payment
+  static const paymentDashboard =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentDashboard";
+
+  static const paymentFinal =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPendingFinalAmount";
+
+  // time table
+  static const dailyTimeTable =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
+
+ //  library
+ static const getPhysicalLibrary =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPlAllBooks";
+
+ static const getPhysicalLibraryRequiredData =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
+
 }

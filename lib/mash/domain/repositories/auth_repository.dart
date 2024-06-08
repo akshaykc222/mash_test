@@ -1,5 +1,5 @@
 import '../../data/local/models/login_local_model.dart';
-import '../../data/remote/models/request/login_request.dart';
+import '../../data/remote/request/login_request.dart';
 import '../entities/auth/auth_response_entity.dart';
 
 abstract interface class AuthRepository {

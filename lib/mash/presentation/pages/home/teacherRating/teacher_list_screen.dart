@@ -7,6 +7,7 @@ import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/teacher_
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
 import '../../../widgets/drawer_widget.dart';
@@ -39,13 +40,7 @@ class TeacherListBody extends StatelessWidget {
         child: BlocConsumer<TeacherBloc, TeacherState>(
           builder: (context, state) {
             return state.getTeacherRating?.status == Status.LOADING
-                ? const Center(
-                    child: SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
+                ? const Loader()
                 : ListView.builder(
                     itemBuilder: (context, index) {
                       return TeacherCardWidget(

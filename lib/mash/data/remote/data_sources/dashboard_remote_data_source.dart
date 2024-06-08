@@ -16,6 +16,7 @@ abstract class DashBoardRemoteDataSource {
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
       AcademicAndCompIdRequest wordThoughtRequest);
   Future<List<RoleMenuModel>> getRolemenuItems(RoleMenuRequest params);
+
 }
 
 /// Implementation of the [DashBoardRemoteDataSource] interface.
@@ -43,4 +44,5 @@ class DashBoardRemoteDataSourceImpl extends DashBoardRemoteDataSource {
     final result = dataList.map((e) => RoleMenuModel.fromjson(e)).toList();
     return result;
   }
+
 }

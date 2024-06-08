@@ -23,6 +23,13 @@ enum HomeWorkAndNoteScreenType {
   noteScreen,
 }
 
+enum PaymentStatusType {
+  paid,
+  pending,
+  transaction,
+}
+
+
 enum UserTypes { staff, student, parent }
 
 UserTypes getUserType(String userType) {

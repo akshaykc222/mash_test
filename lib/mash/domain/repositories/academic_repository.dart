@@ -16,7 +16,7 @@ import '../entities/dashboard/digital_library_entity.dart';
 abstract interface class AcademicRepository {
   /// Fetches class details based on parameters.
   //
-  Future<List<ClassDetailsEntity>> getClassDetails(
+  Future<List<ClassDetailsEntity?>> getClassDetails(
       AcademicAndCompIdRequest params);
   //
   /// Fetches academic subjects based on parameters.

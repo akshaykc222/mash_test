@@ -1,10 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 
 import '../../../core/response_classify.dart';
 import '../manager/bloc/profile_bloc/profile_bloc.dart';
@@ -48,7 +52,7 @@ class HelperClasses {
     );
   }
 
-  static Widget getSelectedStudent(BuildContext context) {
+  static Widget getSelectedStudent(BuildContext context, bool dontPadd) {
     return BlocBuilder<ProfileBloc, ProfileState>(
       buildWhen: (previous, current) {
         if (previous.selectedSibling != current.selectedSibling) {
@@ -60,6 +64,7 @@ class HelperClasses {
         return false;
       },
       builder: (context, state) {
+        prettyPrint(state.getSiblings.toString());
         return state.getSiblings?.status == Status.LOADING
             ? const CustomShimmerWidget(
                 height: 60,
@@ -80,7 +85,7 @@ class HelperClasses {
 
   static Widget emptyDataWidget() {
     return Center(
-      child: Lottie.asset(AppAssets.noDataLottie, height: 300),
+      child: Lottie.asset(AppAssets.noDataLottie, height: 100),
     );
   }
 
@@ -99,7 +104,26 @@ class HelperClasses {
     );
   }
 
+  static cachedNetworkImageProvider(
+      {required String imageUrl,
+      double? height,
+      double? width,
+      BoxFit boxFit = BoxFit.cover}) {
+    return CachedNetworkImageProvider(
+      imageUrl,
+    );
+  }
+
   static Widget errorWidget(BuildContext context) => const SizedBox();
+  static showSnackBar({required String msg, Color color = Colors.black}) =>
+      Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: color.withOpacity(0.7),
+        textColor: AppColors.white,
+        fontSize: SizeConfig.textSize(14),
+      );
 
   static Widget shimmerPlacerHolder() => const ShimmerPlaceholder();
   static Widget shimmerPlacerHolderList() => ListView.builder(
