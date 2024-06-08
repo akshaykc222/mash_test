@@ -121,7 +121,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -180,7 +180,7 @@ class AppRouteManager {
       path: AppPages.attendanceDetailScreen,
       name: AppPages.attendanceDetailScreen,
       builder: (context, state) {
-        return AttendenceDetailScreen();
+        return const AttendenceDetailScreen();
       },
     ),
     GoRoute(
@@ -268,7 +268,8 @@ class AppRouteManager {
       path: AppPages.progressReport,
       name: AppPages.progressReport,
       builder: (context, state) => const ProgressReport(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.physicalLibraryFilter,
       name: AppPages.physicalLibraryFilter,
       builder: (context, state) => const PhysicalLibraryFilterScreen(),

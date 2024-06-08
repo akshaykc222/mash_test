@@ -101,26 +101,6 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
       ),
     );
   }
-
-  _initPay() {
-    try {
-      var session = CFSessionBuilder()
-          .setEnvironment(CFEnvironment.SANDBOX)
-          .setOrderId("order_1981952hEBqJ8LvCpSnHuKnlJD2xjsqjC")
-          .setPaymentSessionId(
-              'session_NuUQ3Ng9JWoyUj1crLh5gtVmifPMMjOINbjzUQca5tBxPTUszpoBW1pRipCW1lMmF4BzrhKX5uDbHNR59saGo4JdUhLetJb3uS-Jd-qdKcFJ')
-          .build();
-      var cfWebCheckout =
-          CFWebCheckoutPaymentBuilder().setSession(session).build();
-      var cfpaymenteGateway = CFPaymentGatewayService();
-      cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {});
-      cfpaymenteGateway.doPayment(cfWebCheckout);
-
-      return session;
-    } on CFException catch (e) {
-      print(e.message);
-    }
-  }
 }
 
 class PaidWidget extends StatelessWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/payment_bottom_pay_widget.dart';
@@ -13,6 +12,7 @@ import '../../../../manager/bloc/profile_bloc/profile_bloc.dart';
 
 class PaymentConfirmationScreen extends StatefulWidget {
   final String totalAmount;
+
   const PaymentConfirmationScreen({super.key, required this.totalAmount});
 
   @override
@@ -27,12 +27,16 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
   final _descriptionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  String? instalMentIdSplitted;
+
   @override
   void initState() {
+    super.initState();
+
     final installMentId =
         context.read<PaymentBloc>().state.selectedCheckboxItems;
 
-    final instalMentIdSplitted = installMentId!.toList().join(',');
+    instalMentIdSplitted = installMentId!.toList().join(',');
 
     BlocProvider.of<PaymentBloc>(context).add(
         PaymentEvent.getPaymentFinalAmount(
@@ -41,7 +45,6 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
             studentId:
                 context.read<ProfileBloc>().state.selectedSibling?.userId ??
                     ""));
-    super.initState();
   }
 
   @override
@@ -62,7 +65,21 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
         height: 100,
         child: PaymentBottomWidget(
           onTap: () {
-            if (_formKey.currentState!.validate()) {}
+            if (_formKey.currentState!.validate()) {
+              BlocProvider.of<PaymentBloc>(context).add(
+                  PaymentEvent.getPaymentOrderId(
+                      email: _emailController.text,
+                      student: _nameController.text,
+                      mobile: _mobileController.text,
+                      remark: _descriptionController.text,
+                      installmentId: "$instalMentIdSplitted,",
+                      studentId: context
+                              .read<ProfileBloc>()
+                              .state
+                              .selectedSibling
+                              ?.userId ??
+                          ""));
+            }
           },
         ),
       ),
@@ -130,6 +147,7 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                     title: 'Mobile Number',
                     prefix: const Icon(Icons.call),
                     controller: _mobileController,
+                    textInputType: TextInputType.phone,
                   ),
                   spacer20,
                   CommonTextField(
@@ -151,6 +169,7 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
             ),
             spacer10,
             CommonTextField(
+              validator: (value) => _validateField(value, 'Remarks'),
               controller: _descriptionController,
               isOutlined: true,
               title: '',
@@ -166,7 +185,6 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
     if (value == null || value.isEmpty) {
       return '$fieldName is required';
     }
-
     return null; // Return null if the input is valid
   }
 }

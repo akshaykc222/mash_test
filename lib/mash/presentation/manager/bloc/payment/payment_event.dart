@@ -17,4 +17,23 @@ class PaymentEvent with _$PaymentEvent {
     required String installmentId,
     required String studentId,
   }) = _GetPaymentFinalAmount;
+  const factory PaymentEvent.getPaymentOrderId({
+    required String email,
+    required String student,
+    required String mobile,
+    required String remark,
+    required String installmentId,
+    required String studentId,
+  }) = _GetPaymentOrderId;
+  const factory PaymentEvent.getPaymentTokenAndOpenPayment({
+    required String email,
+    required String student,
+    required String mobile,
+    required String remark,
+    required String installmentId,
+    required String studentId,
+    required String orderId,
+  }) = _GetPaymentTokenAndOpenPayment;
+  const factory PaymentEvent.getPaymentCompleteResponse(
+      {required String orderId}) = _GetPaymentCompleteResponse;
 }

@@ -1,17 +1,30 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
+import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
+import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
+import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
+import 'package:mash/mash/data/remote/request/payment_complete_response_request.dart';
 import 'package:mash/mash/data/remote/request/payment_dashboard_request.dart';
 import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart';
+import 'package:mash/mash/data/remote/request/payment_token_request.dart';
+import 'package:mash/mash/data/remote/request/payment_uniqueid_request.dart';
+import 'package:mash/mash/domain/entities/payment/payment_complete_response_entity.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_final_amount_usecase.dart';
+import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.dart';
+import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
+import 'package:mash/mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart';
+import '../../../../domain/use_cases/payment/get_payment_complete_response_usecase.dart';
 import '../../../utils/enums.dart';
 
 part 'payment_event.dart';
@@ -23,14 +36,27 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   final GetPaymentDashboardUsecase getPaymentDashboardUsecase;
   final GetUserInfoUseCase getUserInfoUseCase;
   final GetPaymentFinalAmountUsecase getPaymentFinalAmountUsecase;
+  final GetPaymentOrderIdUsecase getPaymentOrderIdUsecase;
+  final GetPaymentTokenUsecase getPaymentTokenUsecase;
+  final GetPaymentCompleteResponseUsecase getPaymentCompleteResponseUsecase;
+  final PostPaymentStatusUpdateUsecase postPaymentStatusUpdateUsecase;
 
-  PaymentBloc(this.getPaymentDashboardUsecase, this.getUserInfoUseCase,
-      this.getPaymentFinalAmountUsecase)
+  PaymentBloc(
+      this.getPaymentDashboardUsecase,
+      this.getUserInfoUseCase,
+      this.getPaymentFinalAmountUsecase,
+      this.getPaymentOrderIdUsecase,
+      this.getPaymentTokenUsecase,
+      this.getPaymentCompleteResponseUsecase,
+      this.postPaymentStatusUpdateUsecase)
       : super(PaymentState.initial()) {
     on<_GetPaymentDashboard>(_onGetPaymentDashboard);
     on<_SelectedItemIndex>(_onSelectedItemIndex);
     on<_SelectPaymentsCheckboxEvent>(_onSelectPaymentsCheckboxEvent);
     on<_GetPaymentFinalAmount>(_getPaymentFinalAmount);
+    on<_GetPaymentOrderId>(_getPaymentOrderId);
+    on<_GetPaymentTokenAndOpenPayment>(_getPaymentTokenAndOpenPayment);
+    on<_GetPaymentCompleteResponse>(_getPaymentCompleteResponse);
   }
 
   Future<void> _onGetPaymentDashboard(
@@ -117,9 +143,111 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           pStudentId: event.studentId,
           pTotalAmount: event.totalAmount));
       emit(state.copyWith(totalAmount: data));
+
       log('response ------------------$data');
     } catch (e) {
       prettyPrint(e.toString());
+    }
+  }
+
+  _getPaymentOrderId(
+      _GetPaymentOrderId event, Emitter<PaymentState> emit) async {
+    emit(state.copyWith(paymentUniqueOrderId: ResponseClassify.loading()));
+    try {
+      final user = await getUserInfoUseCase.call(NoParams());
+      final data = await getPaymentOrderIdUsecase.call(PaymentUniqueIdRequest(
+        studentId: event.studentId,
+        compId: user?.compId,
+        installmentId: event.installmentId,
+        remark: event.remark,
+        totalAmount: state.totalAmount,
+        studentName: event.student,
+        parentName: event.student,
+        parentMob: event.mobile,
+        parentEmail: event.email,
+        academicId: user?.academicId,
+      ));
+      add(_GetPaymentTokenAndOpenPayment(
+        studentId: event.studentId,
+        installmentId: event.installmentId,
+        remark: event.remark,
+        email: event.email,
+        mobile: event.mobile,
+        orderId: data,
+        student: event.student,
+      ));
+    } catch (e) {
+      prettyPrint(e.toString());
+      emit(state.copyWith(paymentUniqueOrderId: ResponseClassify.error(e)));
+    }
+  }
+
+  _getPaymentTokenAndOpenPayment(
+      _GetPaymentTokenAndOpenPayment event, Emitter<PaymentState> emit) async {
+    final user = await getUserInfoUseCase.call(NoParams());
+    final sessionTokenData =
+        await getPaymentTokenUsecase.call(PaymentTokenRequest(
+      compId: user?.compId ?? "",
+      orderId: event.orderId,
+      orderAmount: state.totalAmount,
+      studentId: event.studentId,
+      userName: event.student,
+      userEmail: event.email,
+      userMob: event.mobile,
+      userRemark: event.remark,
+      platform: "UAT",
+    ));
+    try {
+      var session = CFSessionBuilder()
+          .setEnvironment(CFEnvironment.SANDBOX)
+          .setOrderId(sessionTokenData.orderId)
+          .setPaymentSessionId(sessionTokenData.paymentSessionId)
+          .build();
+      var cfWebCheckout =
+          CFWebCheckoutPaymentBuilder().setSession(session).build();
+      var cfpaymenteGateway = CFPaymentGatewayService();
+      cfpaymenteGateway.setCallback((orderId) {
+        add(_GetPaymentCompleteResponse(orderId: orderId));
+
+        prettyPrint('callback first ${orderId.toString()}');
+      }, (response, orderId) {
+        add(_GetPaymentCompleteResponse(orderId: orderId));
+        prettyPrint(
+            'callbad second response================= ${response.toString()} p1 ==========${orderId.toString()}');
+      });
+      cfpaymenteGateway.doPayment(cfWebCheckout);
+
+      return session;
+    } on CFException catch (e) {
+      print(e.message);
+    }
+  }
+
+  _getPaymentCompleteResponse(
+      _GetPaymentCompleteResponse event, Emitter<PaymentState> emit) async {
+    emit(state.copyWith(paymentCompleteResponse: ResponseClassify.initial()));
+    try {
+      final userInfo = await getUserInfoUseCase.call(NoParams());
+      final data = await getPaymentCompleteResponseUsecase
+          .call(PaymentCompleteResponseRequest(
+        compId: userInfo?.compId ?? "",
+        orderId: event.orderId,
+        platform: "UAT",
+      ));
+      prettyPrint('data $data');
+      //if reponse is success call payment status update
+      if (data.orderStatus == 'PAID') {
+        emit(state.copyWith(
+            paymentCompleteResponse: ResponseClassify.completed(data)));
+
+        //call save payment response api
+      } else if (data.orderStatus == 'ACTIVE') {
+        //redirect to processing page
+      } else if (data.orderStatus == 'FAILED') {
+        //redirect to failed page
+      }
+    } catch (e) {
+      emit(state.copyWith(paymentCompleteResponse: ResponseClassify.error(e)));
     }
   }
 }
