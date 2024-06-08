@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../core/response_classify.dart';
 import '../manager/bloc/profile_bloc/profile_bloc.dart';
@@ -99,4 +100,32 @@ class HelperClasses {
   }
 
   static Widget errorWidget(BuildContext context) => const SizedBox();
+
+  static Widget shimmerPlacerHolder() => const ShimmerPlaceholder();
+  static Widget shimmerPlacerHolderList() => ListView.builder(
+        shrinkWrap: true,
+        itemCount: 10,
+        itemBuilder: (context, index) => const ShimmerPlaceholder(),
+      );
+}
+
+class ShimmerPlaceholder extends StatelessWidget {
+  const ShimmerPlaceholder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        width: 50,
+        height: 80,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      ),
+    );
+  }
 }

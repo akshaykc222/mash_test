@@ -29,6 +29,7 @@ import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_s
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
@@ -62,6 +63,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
+import '../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
@@ -198,7 +200,13 @@ class AppRouteManager {
     GoRoute(
       path: AppPages.academicDetailLibraryScreen,
       name: AppPages.academicDetailLibraryScreen,
-      builder: (context, state) => const AcademicDetailScreen(),
+      builder: (context, state) {
+        if (state.extra != null) {
+          return AcademicDetailScreen(
+              entity: state.extra as DigitalLibraryEntity);
+        }
+        return const SizedBox();
+      },
     ),
     GoRoute(
       path: AppPages.quizOnBoardScreen,
@@ -496,6 +504,17 @@ class AppRouteManager {
           );
         }
         return const Placeholder();
+      },
+    ),
+    GoRoute(
+      path: AppPages.seeAllSubMedium,
+      name: AppPages.seeAllSubMedium,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return SeeAllSubAndMedium(
+              type: state.extra as SeeAllNonAcademicTypes);
+        }
+        return const SizedBox();
       },
     ),
     GoRoute(

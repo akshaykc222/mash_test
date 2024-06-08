@@ -16,26 +16,21 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
+  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(String? search, String? catId, String? subCatId)
-        getDigitalLibrary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,23 +38,24 @@ mixin _$DashboardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(_GetDigitalLibrary value) getDigitalLibrary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(_GetDigitalLibrary value)? getDigitalLibrary,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
-    TResult Function(_GetDigitalLibrary value)? getDigitalLibrary,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DashboardEventCopyWith<DashboardEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -68,6 +64,8 @@ abstract class $DashboardEventCopyWith<$Res> {
   factory $DashboardEventCopyWith(
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -79,14 +77,29 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_value.copyWith(
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res> {
+abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res>
+    implements $DashboardEventCopyWith<$Res> {
   factory _$$FetchWordAndThoughtOftheDayEventImplCopyWith(
           _$FetchWordAndThoughtOftheDayEventImpl value,
           $Res Function(_$FetchWordAndThoughtOftheDayEventImpl) then) =
       __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({BuildContext context});
 }
@@ -153,8 +166,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(String? search, String? catId, String? subCatId)
-        getDigitalLibrary,
   }) {
     return fetchWordAndThoughtOftheDayEvent(context);
   }
@@ -163,8 +174,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(context);
   }
@@ -173,8 +182,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -188,7 +195,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(_GetDigitalLibrary value) getDigitalLibrary,
   }) {
     return fetchWordAndThoughtOftheDayEvent(this);
   }
@@ -198,7 +204,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(_GetDigitalLibrary value)? getDigitalLibrary,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(this);
   }
@@ -208,7 +213,6 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
-    TResult Function(_GetDigitalLibrary value)? getDigitalLibrary,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -222,174 +226,13 @@ abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
   const factory _FetchWordAndThoughtOftheDayEvent(final BuildContext context) =
       _$FetchWordAndThoughtOftheDayEventImpl;
 
+  @override
   BuildContext get context;
+  @override
   @JsonKey(ignore: true)
   _$$FetchWordAndThoughtOftheDayEventImplCopyWith<
           _$FetchWordAndThoughtOftheDayEventImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetDigitalLibraryImplCopyWith<$Res> {
-  factory _$$GetDigitalLibraryImplCopyWith(_$GetDigitalLibraryImpl value,
-          $Res Function(_$GetDigitalLibraryImpl) then) =
-      __$$GetDigitalLibraryImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? search, String? catId, String? subCatId});
-}
-
-/// @nodoc
-class __$$GetDigitalLibraryImplCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$GetDigitalLibraryImpl>
-    implements _$$GetDigitalLibraryImplCopyWith<$Res> {
-  __$$GetDigitalLibraryImplCopyWithImpl(_$GetDigitalLibraryImpl _value,
-      $Res Function(_$GetDigitalLibraryImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? search = freezed,
-    Object? catId = freezed,
-    Object? subCatId = freezed,
-  }) {
-    return _then(_$GetDigitalLibraryImpl(
-      search: freezed == search
-          ? _value.search
-          : search // ignore: cast_nullable_to_non_nullable
-              as String?,
-      catId: freezed == catId
-          ? _value.catId
-          : catId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subCatId: freezed == subCatId
-          ? _value.subCatId
-          : subCatId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetDigitalLibraryImpl implements _GetDigitalLibrary {
-  const _$GetDigitalLibraryImpl({this.search, this.catId, this.subCatId});
-
-  @override
-  final String? search;
-  @override
-  final String? catId;
-  @override
-  final String? subCatId;
-
-  @override
-  String toString() {
-    return 'DashboardEvent.getDigitalLibrary(search: $search, catId: $catId, subCatId: $subCatId)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetDigitalLibraryImpl &&
-            (identical(other.search, search) || other.search == search) &&
-            (identical(other.catId, catId) || other.catId == catId) &&
-            (identical(other.subCatId, subCatId) ||
-                other.subCatId == subCatId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, search, catId, subCatId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetDigitalLibraryImplCopyWith<_$GetDigitalLibraryImpl> get copyWith =>
-      __$$GetDigitalLibraryImplCopyWithImpl<_$GetDigitalLibraryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(BuildContext context)
-        fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(String? search, String? catId, String? subCatId)
-        getDigitalLibrary,
-  }) {
-    return getDigitalLibrary(search, catId, subCatId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
-  }) {
-    return getDigitalLibrary?.call(search, catId, subCatId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
-    TResult Function(String? search, String? catId, String? subCatId)?
-        getDigitalLibrary,
-    required TResult orElse(),
-  }) {
-    if (getDigitalLibrary != null) {
-      return getDigitalLibrary(search, catId, subCatId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
-        fetchWordAndThoughtOftheDayEvent,
-    required TResult Function(_GetDigitalLibrary value) getDigitalLibrary,
-  }) {
-    return getDigitalLibrary(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
-        fetchWordAndThoughtOftheDayEvent,
-    TResult? Function(_GetDigitalLibrary value)? getDigitalLibrary,
-  }) {
-    return getDigitalLibrary?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
-        fetchWordAndThoughtOftheDayEvent,
-    TResult Function(_GetDigitalLibrary value)? getDigitalLibrary,
-    required TResult orElse(),
-  }) {
-    if (getDigitalLibrary != null) {
-      return getDigitalLibrary(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetDigitalLibrary implements DashboardEvent {
-  const factory _GetDigitalLibrary(
-      {final String? search,
-      final String? catId,
-      final String? subCatId}) = _$GetDigitalLibraryImpl;
-
-  String? get search;
-  String? get catId;
-  String? get subCatId;
-  @JsonKey(ignore: true)
-  _$$GetDigitalLibraryImplCopyWith<_$GetDigitalLibraryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

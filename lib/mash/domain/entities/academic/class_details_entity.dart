@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart';
 
 class ClassDetailsEntity extends Equatable {
   final String? className;
-  final double? classId;
-  final double? academicId;
-  final double? noSeats;
-  final double? order;
-  final double? mediumId;
-  final double? isActive;
+  final String? classId;
+  final String? academicId;
+  final String? noSeats;
+  final String? order;
+  final String? mediumId;
+  final String? isActive;
 
   const ClassDetailsEntity({
     required this.className,

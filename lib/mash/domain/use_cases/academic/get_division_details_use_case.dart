@@ -4,7 +4,7 @@ import 'package:mash/mash/data/remote/models/request/academic_subjects_request.d
 import 'package:mash/mash/domain/entities/academic/division_details_entity.dart';
 import 'package:mash/mash/domain/repositories/academic_repository.dart';
 
-@injectable
+@lazySingleton
 @lazySingleton
 class GetDivisionDetailsUseCase
     implements

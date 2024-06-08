@@ -114,4 +114,6 @@ class AppPages {
   static const newChat = "/newChat";
 
   static const comingSoon = '/comingSoon';
+  static const seeAllSubMedium = '/seeAllSubMedium';
+  static const nonAcademic = '/nonAcademic';
 }

@@ -1,25 +1,25 @@
 import 'package:equatable/equatable.dart';
 
 class DigitalLibraryEntity extends Equatable {
-  final String contentId;
-  final String contentName;
-  final String contentDesc;
-  final String typeId;
-  final String dgCatName;
-  final String dgSubCatName;
-  final String coverImg;
-  final String docName;
-  final String userType;
-  final String isActive;
-  final String createdBy;
-  final String createdOn;
-  final String lastModifyBy;
-  final String lastModifiedOn;
-  final String authorName;
-  final String dateOfPublish;
-  final String languageName;
-  final String dgTypeName;
-  final String publisher;
+  final String? contentId;
+  final String? contentName;
+  final String? contentDesc;
+  final String? typeId;
+  final String? dgCatName;
+  final String? dgSubCatName;
+  final String? coverImg;
+  final String? docName;
+  final String? userType;
+  final String? isActive;
+  final String? createdBy;
+  final String? createdOn;
+  final String? lastModifyBy;
+  final String? lastModifiedOn;
+  final String? authorName;
+  final String? dateOfPublish;
+  final String? languageName;
+  final String? dgTypeName;
+  final String? publisher;
 
   const DigitalLibraryEntity({
     required this.contentId,
