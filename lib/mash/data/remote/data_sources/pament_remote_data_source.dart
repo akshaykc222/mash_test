@@ -10,6 +10,7 @@ import '../../../domain/entities/payment/payment_dashboard_entity.dart';
 import '../request/payment_complete_response_request.dart';
 import '../request/payment_dashboard_request.dart';
 import '../request/payment_final_amount_request.dart';
+import '../request/payment_save_response.dart';
 import '../request/payment_status_update_request.dart';
 import '../request/payment_token_request.dart';
 import '../request/payment_uniqueid_request.dart';
@@ -23,6 +24,7 @@ abstract interface class PaymentRemoteDataSource {
   Future<PaymentCompleteResponseEntity> getPaymentCompleteResponse(
       PaymentCompleteResponseRequest params);
   Future<String> postPaymentStatusUpdate(PaymentStatusUpdateRequest params);
+  Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
 }
 
 @LazySingleton(as: PaymentRemoteDataSource)
@@ -85,5 +87,11 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
     final data = await apiProvider.post(
         AppRemoteRoutes.paymentStatusUpdate, params.toJson());
     return data['resMessage'];
+  }
+
+  @override
+  Future<void> savePaymentResponse(PaymentSaveResponseRequest params) async {
+    await apiProvider.post(
+        AppRemoteRoutes.savePaymentResponse, params.toJson());
   }
 }

@@ -7,6 +7,7 @@ import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart'
 
 import '../../data/remote/request/payment_complete_response_request.dart';
 import '../../data/remote/request/payment_dashboard_request.dart';
+import '../../data/remote/request/payment_save_response.dart';
 import '../entities/payment/payment_token_entity.dart';
 
 abstract interface class PaymentRepository {
@@ -21,5 +22,8 @@ abstract interface class PaymentRepository {
 
   Future<PaymentCompleteResponseEntity> getPaymentCompleteResponse(
       PaymentCompleteResponseRequest params);
+
   Future<String> postPaymentStatusUpdate(PaymentStatusUpdateRequest params);
+
+  Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
 }

@@ -93,6 +93,9 @@ class AppRemoteRoutes {
 
   static const paymentStatusUpdate =
       "UATRESTAPI/MashFlutterRestAPI/api/user/paymentStatusUpdate";
+
+  static const savePaymentResponse =
+      "MashFlutterRestAPI/api/user/savePaymentResponse";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";

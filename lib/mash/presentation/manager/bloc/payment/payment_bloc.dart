@@ -14,6 +14,8 @@ import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/data/remote/request/payment_complete_response_request.dart';
 import 'package:mash/mash/data/remote/request/payment_dashboard_request.dart';
 import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart';
+import 'package:mash/mash/data/remote/request/payment_save_response.dart';
+import 'package:mash/mash/data/remote/request/payment_status_update_request.dart';
 import 'package:mash/mash/data/remote/request/payment_token_request.dart';
 import 'package:mash/mash/data/remote/request/payment_uniqueid_request.dart';
 import 'package:mash/mash/domain/entities/payment/payment_complete_response_entity.dart';
@@ -25,6 +27,7 @@ import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.
 import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart';
 import '../../../../domain/use_cases/payment/get_payment_complete_response_usecase.dart';
+import '../../../../domain/use_cases/payment/save_payment_reponse_usecase.dart';
 import '../../../utils/enums.dart';
 
 part 'payment_event.dart';
@@ -40,7 +43,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   final GetPaymentTokenUsecase getPaymentTokenUsecase;
   final GetPaymentCompleteResponseUsecase getPaymentCompleteResponseUsecase;
   final PostPaymentStatusUpdateUsecase postPaymentStatusUpdateUsecase;
-
+  final SavePaymentResponseUsecase savePaymentResponseUsecase;
   PaymentBloc(
       this.getPaymentDashboardUsecase,
       this.getUserInfoUseCase,
@@ -48,7 +51,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       this.getPaymentOrderIdUsecase,
       this.getPaymentTokenUsecase,
       this.getPaymentCompleteResponseUsecase,
-      this.postPaymentStatusUpdateUsecase)
+      this.postPaymentStatusUpdateUsecase,
+      this.savePaymentResponseUsecase)
       : super(PaymentState.initial()) {
     on<_GetPaymentDashboard>(_onGetPaymentDashboard);
     on<_SelectedItemIndex>(_onSelectedItemIndex);
@@ -67,6 +71,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       emit(
           state.copyWith(paymentDashboardResponse: ResponseClassify.loading()));
     }
+
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
       final data = await getPaymentDashboardUsecase.call(
@@ -152,7 +157,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
   _getPaymentOrderId(
       _GetPaymentOrderId event, Emitter<PaymentState> emit) async {
-    emit(state.copyWith(paymentUniqueOrderId: ResponseClassify.loading()));
+    emit(state.copyWith(paymentOrderResponse: ResponseClassify.loading()));
     try {
       final user = await getUserInfoUseCase.call(NoParams());
       final data = await getPaymentOrderIdUsecase.call(PaymentUniqueIdRequest(
@@ -178,13 +183,14 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       ));
     } catch (e) {
       prettyPrint(e.toString());
-      emit(state.copyWith(paymentUniqueOrderId: ResponseClassify.error(e)));
+      emit(state.copyWith(paymentOrderResponse: ResponseClassify.error(e)));
     }
   }
 
   _getPaymentTokenAndOpenPayment(
       _GetPaymentTokenAndOpenPayment event, Emitter<PaymentState> emit) async {
     final user = await getUserInfoUseCase.call(NoParams());
+
     final sessionTokenData =
         await getPaymentTokenUsecase.call(PaymentTokenRequest(
       compId: user?.compId ?? "",
@@ -211,7 +217,13 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
         prettyPrint('callback first ${orderId.toString()}');
       }, (response, orderId) {
-        add(_GetPaymentCompleteResponse(orderId: orderId));
+        add(_GetPaymentCompleteResponse(
+          orderId: orderId,
+          email: event.email,
+          remark: event.remark,
+          userName: event.student,
+          studenId: event.studentId,
+        ));
         prettyPrint(
             'callbad second response================= ${response.toString()} p1 ==========${orderId.toString()}');
       });
@@ -225,29 +237,58 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
   _getPaymentCompleteResponse(
       _GetPaymentCompleteResponse event, Emitter<PaymentState> emit) async {
-    emit(state.copyWith(paymentCompleteResponse: ResponseClassify.initial()));
+    emit(state.copyWith(paymentOrderResponse: ResponseClassify.initial()));
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
       final data = await getPaymentCompleteResponseUsecase
           .call(PaymentCompleteResponseRequest(
         compId: userInfo?.compId ?? "",
-        orderId: event.orderId,
+        orderId: event.orderId ?? "",
         platform: "UAT",
       ));
-      prettyPrint('data $data');
+
       //if reponse is success call payment status update
-      if (data.orderStatus == 'PAID') {
+      if (data.cfOrderId != null) {
+        postPaymentStatusUpdateUsecase.call(PaymentStatusUpdateRequest(
+          compId: userInfo?.compId ?? "",
+          orderId: data.orderId ?? "",
+          paymentStatus: data.orderStatus ?? "",
+          payload: data.payload ?? "",
+        ));
+      }
+      if (data.orderStatus == OrderStatus.PAID.name) {
         emit(state.copyWith(
-            paymentCompleteResponse: ResponseClassify.completed(data)));
+            paymentOrderResponse:
+                ResponseClassify.completed(OrderStatus.PAID)));
+        await savePaymentResponseUsecase.call(PaymentSaveResponseRequest(
+          pCompId: userInfo?.compId,
+          pStudentId: event.studenId,
+          pInstalmentId: data.orderId,
+          pTotalAmount: data.orderAmount,
+          pUserName: event.userName,
+          pUserMob: event.mobile,
+          pUserEmail: event.email,
+          pCfOrderId: data.cfOrderId,
+          pPaymentType: '',
+          pPaymentDate: data.createdAt,
+          pRemark: event.remark,
+          pOrderId: data.orderId,
+        ));
 
         //call save payment response api
-      } else if (data.orderStatus == 'ACTIVE') {
+      } else if (data.orderStatus == OrderStatus.ACTIVE.name) {
+        emit(state.copyWith(
+            paymentOrderResponse:
+                ResponseClassify.completed(OrderStatus.ACTIVE)));
         //redirect to processing page
-      } else if (data.orderStatus == 'FAILED') {
+      } else if (data.orderStatus == OrderStatus.FAILED.name) {
+        emit(state.copyWith(
+            paymentOrderResponse:
+                ResponseClassify.completed(OrderStatus.FAILED)));
         //redirect to failed page
       }
     } catch (e) {
-      emit(state.copyWith(paymentCompleteResponse: ResponseClassify.error(e)));
+      emit(state.copyWith(paymentOrderResponse: ResponseClassify.error(e)));
     }
   }
 }

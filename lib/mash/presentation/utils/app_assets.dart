@@ -108,4 +108,8 @@ class AppAssets {
   static String tickLottie = "assets/lottie/tick_animation.json";
   static String noDataLottie = "assets/lottie/nodata.json";
   static String comingSoonLottie = "assets/lottie/coming_soon.json";
+
+  static String paymentProcessing = "assets/lottie/payment_processing.json";
+  static String paymentFailed = "assets/lottie/payment_failed.json";
+  static String paymentSuccess = "assets/lottie/payment_success.riv";
 }

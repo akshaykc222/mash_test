@@ -11,6 +11,7 @@ import '../../domain/entities/payment/payment_complete_response_entity.dart';
 import '../../domain/entities/payment/payment_token_entity.dart';
 import '../remote/data_sources/pament_remote_data_source.dart';
 import '../remote/request/payment_dashboard_request.dart';
+import '../remote/request/payment_save_response.dart';
 
 @LazySingleton(as: PaymentRepository)
 class PaymentRepoImpl implements PaymentRepository {
@@ -47,5 +48,10 @@ class PaymentRepoImpl implements PaymentRepository {
   @override
   Future<String> postPaymentStatusUpdate(PaymentStatusUpdateRequest params) {
     return paymentRemoteDataSource.postPaymentStatusUpdate(params);
+  }
+
+  @override
+  Future<void> savePaymentResponse(PaymentSaveResponseRequest params) {
+    return paymentRemoteDataSource.savePaymentResponse(params);
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/payment_response_screen.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 
 import '../../../../../../core/response_classify.dart';
@@ -25,6 +27,33 @@ class _PendingPaymentTabbarWidgetState
     return Column(
       children: [
         Expanded(child: _buildPaymentList(context)),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PaymentResponseScreen(
+                  orderStatus: OrderStatus.FAILED,
+                ),
+              ));
+            },
+            child: Text('failed')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PaymentResponseScreen(
+                  orderStatus: OrderStatus.PAID,
+                ),
+              ));
+            },
+            child: Text('Success')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PaymentResponseScreen(
+                  orderStatus: OrderStatus.ACTIVE,
+                ),
+              ));
+            },
+            child: Text('Processing')),
         PaymentBottomWidget(
           onTap: () async {
             await showDialog(

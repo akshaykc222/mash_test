@@ -34,6 +34,12 @@ class PaymentEvent with _$PaymentEvent {
     required String studentId,
     required String orderId,
   }) = _GetPaymentTokenAndOpenPayment;
-  const factory PaymentEvent.getPaymentCompleteResponse(
-      {required String orderId}) = _GetPaymentCompleteResponse;
+  const factory PaymentEvent.getPaymentCompleteResponse({
+    String? orderId,
+    String? userName,
+    String? email,
+    String? remark,
+    String? studenId,
+    String? mobile,
+  }) = _GetPaymentCompleteResponse;
 }

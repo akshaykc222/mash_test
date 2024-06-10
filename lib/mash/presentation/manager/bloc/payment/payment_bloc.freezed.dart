@@ -38,7 +38,9 @@ mixin _$PaymentEvent {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +65,9 @@ mixin _$PaymentEvent {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,7 +86,9 @@ mixin _$PaymentEvent {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -255,7 +261,9 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -283,7 +291,9 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -305,7 +315,9 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -473,7 +485,9 @@ class _$SelectPaymentsCheckboxEventImpl
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -501,7 +515,9 @@ class _$SelectPaymentsCheckboxEventImpl
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -523,7 +539,9 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -684,7 +702,9 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex(index);
   }
@@ -712,7 +732,9 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -734,7 +756,9 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -919,7 +943,9 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
   }
@@ -947,7 +973,9 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
   }
@@ -969,7 +997,9 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1189,7 +1219,9 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentOrderId(
         email, student, mobile, remark, installmentId, studentId);
@@ -1218,7 +1250,9 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentOrderId?.call(
         email, student, mobile, remark, installmentId, studentId);
@@ -1241,7 +1275,9 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1483,7 +1519,9 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentTokenAndOpenPayment(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1512,7 +1550,9 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentTokenAndOpenPayment?.call(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1535,7 +1575,9 @@ class _$GetPaymentTokenAndOpenPaymentImpl
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -1632,7 +1674,13 @@ abstract class _$$GetPaymentCompleteResponseImplCopyWith<$Res> {
           $Res Function(_$GetPaymentCompleteResponseImpl) then) =
       __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String orderId});
+  $Res call(
+      {String? orderId,
+      String? userName,
+      String? email,
+      String? remark,
+      String? studenId,
+      String? mobile});
 }
 
 /// @nodoc
@@ -1647,13 +1695,38 @@ class __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderId = null,
+    Object? orderId = freezed,
+    Object? userName = freezed,
+    Object? email = freezed,
+    Object? remark = freezed,
+    Object? studenId = freezed,
+    Object? mobile = freezed,
   }) {
     return _then(_$GetPaymentCompleteResponseImpl(
-      orderId: null == orderId
+      orderId: freezed == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      remark: freezed == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String?,
+      studenId: freezed == studenId
+          ? _value.studenId
+          : studenId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mobile: freezed == mobile
+          ? _value.mobile
+          : mobile // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1661,14 +1734,30 @@ class __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
-  const _$GetPaymentCompleteResponseImpl({required this.orderId});
+  const _$GetPaymentCompleteResponseImpl(
+      {this.orderId,
+      this.userName,
+      this.email,
+      this.remark,
+      this.studenId,
+      this.mobile});
 
   @override
-  final String orderId;
+  final String? orderId;
+  @override
+  final String? userName;
+  @override
+  final String? email;
+  @override
+  final String? remark;
+  @override
+  final String? studenId;
+  @override
+  final String? mobile;
 
   @override
   String toString() {
-    return 'PaymentEvent.getPaymentCompleteResponse(orderId: $orderId)';
+    return 'PaymentEvent.getPaymentCompleteResponse(orderId: $orderId, userName: $userName, email: $email, remark: $remark, studenId: $studenId, mobile: $mobile)';
   }
 
   @override
@@ -1676,11 +1765,19 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetPaymentCompleteResponseImpl &&
-            (identical(other.orderId, orderId) || other.orderId == orderId));
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.remark, remark) || other.remark == remark) &&
+            (identical(other.studenId, studenId) ||
+                other.studenId == studenId) &&
+            (identical(other.mobile, mobile) || other.mobile == mobile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderId);
+  int get hashCode => Object.hash(
+      runtimeType, orderId, userName, email, remark, studenId, mobile);
 
   @JsonKey(ignore: true)
   @override
@@ -1712,9 +1809,12 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String orderId) getPaymentCompleteResponse,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
-    return getPaymentCompleteResponse(orderId);
+    return getPaymentCompleteResponse(
+        orderId, userName, email, remark, studenId, mobile);
   }
 
   @override
@@ -1740,9 +1840,12 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String orderId)? getPaymentCompleteResponse,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
-    return getPaymentCompleteResponse?.call(orderId);
+    return getPaymentCompleteResponse?.call(
+        orderId, userName, email, remark, studenId, mobile);
   }
 
   @override
@@ -1762,11 +1865,14 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String orderId)? getPaymentCompleteResponse,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
-      return getPaymentCompleteResponse(orderId);
+      return getPaymentCompleteResponse(
+          orderId, userName, email, remark, studenId, mobile);
     }
     return orElse();
   }
@@ -1829,10 +1935,20 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
 }
 
 abstract class _GetPaymentCompleteResponse implements PaymentEvent {
-  const factory _GetPaymentCompleteResponse({required final String orderId}) =
-      _$GetPaymentCompleteResponseImpl;
+  const factory _GetPaymentCompleteResponse(
+      {final String? orderId,
+      final String? userName,
+      final String? email,
+      final String? remark,
+      final String? studenId,
+      final String? mobile}) = _$GetPaymentCompleteResponseImpl;
 
-  String get orderId;
+  String? get orderId;
+  String? get userName;
+  String? get email;
+  String? get remark;
+  String? get studenId;
+  String? get mobile;
   @JsonKey(ignore: true)
   _$$GetPaymentCompleteResponseImplCopyWith<_$GetPaymentCompleteResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1845,11 +1961,9 @@ mixin _$PaymentState {
   int? get selectedItemIndex => throw _privateConstructorUsedError;
   Set<String?>? get selectedCheckboxItems => throw _privateConstructorUsedError;
   String get totalAmount => throw _privateConstructorUsedError;
-  ResponseClassify<String> get paymentUniqueOrderId =>
-      throw _privateConstructorUsedError;
   ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse =>
       throw _privateConstructorUsedError;
-  ResponseClassify<PaymentCompleteResponseEntity> get paymentCompleteResponse =>
+  ResponseClassify<OrderStatus> get paymentOrderResponse =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1868,9 +1982,8 @@ abstract class $PaymentStateCopyWith<$Res> {
       int? selectedItemIndex,
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
-      ResponseClassify<String> paymentUniqueOrderId,
       ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
-      ResponseClassify<PaymentCompleteResponseEntity> paymentCompleteResponse});
+      ResponseClassify<OrderStatus> paymentOrderResponse});
 }
 
 /// @nodoc
@@ -1890,9 +2003,8 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
-    Object? paymentUniqueOrderId = null,
     Object? paymentHistoryResponse = null,
-    Object? paymentCompleteResponse = null,
+    Object? paymentOrderResponse = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -1911,18 +2023,14 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentUniqueOrderId: null == paymentUniqueOrderId
-          ? _value.paymentUniqueOrderId
-          : paymentUniqueOrderId // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<String>,
       paymentHistoryResponse: null == paymentHistoryResponse
           ? _value.paymentHistoryResponse
           : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<PaymentDashboardEntity>>,
-      paymentCompleteResponse: null == paymentCompleteResponse
-          ? _value.paymentCompleteResponse
-          : paymentCompleteResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<PaymentCompleteResponseEntity>,
+      paymentOrderResponse: null == paymentOrderResponse
+          ? _value.paymentOrderResponse
+          : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<OrderStatus>,
     ) as $Val);
   }
 }
@@ -1940,9 +2048,8 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       int? selectedItemIndex,
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
-      ResponseClassify<String> paymentUniqueOrderId,
       ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
-      ResponseClassify<PaymentCompleteResponseEntity> paymentCompleteResponse});
+      ResponseClassify<OrderStatus> paymentOrderResponse});
 }
 
 /// @nodoc
@@ -1960,9 +2067,8 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? selectedItemIndex = freezed,
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
-    Object? paymentUniqueOrderId = null,
     Object? paymentHistoryResponse = null,
-    Object? paymentCompleteResponse = null,
+    Object? paymentOrderResponse = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -1981,18 +2087,14 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentUniqueOrderId: null == paymentUniqueOrderId
-          ? _value.paymentUniqueOrderId
-          : paymentUniqueOrderId // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<String>,
       paymentHistoryResponse: null == paymentHistoryResponse
           ? _value.paymentHistoryResponse
           : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<PaymentDashboardEntity>>,
-      paymentCompleteResponse: null == paymentCompleteResponse
-          ? _value.paymentCompleteResponse
-          : paymentCompleteResponse // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<PaymentCompleteResponseEntity>,
+      paymentOrderResponse: null == paymentOrderResponse
+          ? _value.paymentOrderResponse
+          : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<OrderStatus>,
     ));
   }
 }
@@ -2005,9 +2107,8 @@ class _$PaymentStateImpl implements _PaymentState {
       required this.selectedItemIndex,
       required final Set<String?>? selectedCheckboxItems,
       required this.totalAmount,
-      required this.paymentUniqueOrderId,
       required this.paymentHistoryResponse,
-      required this.paymentCompleteResponse})
+      required this.paymentOrderResponse})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -2028,15 +2129,13 @@ class _$PaymentStateImpl implements _PaymentState {
   @override
   final String totalAmount;
   @override
-  final ResponseClassify<String> paymentUniqueOrderId;
-  @override
   final ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse;
   @override
-  final ResponseClassify<PaymentCompleteResponseEntity> paymentCompleteResponse;
+  final ResponseClassify<OrderStatus> paymentOrderResponse;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentUniqueOrderId: $paymentUniqueOrderId, paymentHistoryResponse: $paymentHistoryResponse, paymentCompleteResponse: $paymentCompleteResponse)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse)';
   }
 
   @override
@@ -2053,13 +2152,10 @@ class _$PaymentStateImpl implements _PaymentState {
                 .equals(other._selectedCheckboxItems, _selectedCheckboxItems) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
-            (identical(other.paymentUniqueOrderId, paymentUniqueOrderId) ||
-                other.paymentUniqueOrderId == paymentUniqueOrderId) &&
             (identical(other.paymentHistoryResponse, paymentHistoryResponse) ||
                 other.paymentHistoryResponse == paymentHistoryResponse) &&
-            (identical(
-                    other.paymentCompleteResponse, paymentCompleteResponse) ||
-                other.paymentCompleteResponse == paymentCompleteResponse));
+            (identical(other.paymentOrderResponse, paymentOrderResponse) ||
+                other.paymentOrderResponse == paymentOrderResponse));
   }
 
   @override
@@ -2069,9 +2165,8 @@ class _$PaymentStateImpl implements _PaymentState {
       selectedItemIndex,
       const DeepCollectionEquality().hash(_selectedCheckboxItems),
       totalAmount,
-      paymentUniqueOrderId,
       paymentHistoryResponse,
-      paymentCompleteResponse);
+      paymentOrderResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -2082,16 +2177,15 @@ class _$PaymentStateImpl implements _PaymentState {
 
 abstract class _PaymentState implements PaymentState {
   const factory _PaymentState(
-      {required final ResponseClassify<List<PaymentDashboardEntity>>
-          paymentDashboardResponse,
-      required final int? selectedItemIndex,
-      required final Set<String?>? selectedCheckboxItems,
-      required final String totalAmount,
-      required final ResponseClassify<String> paymentUniqueOrderId,
-      required final ResponseClassify<List<PaymentDashboardEntity>>
-          paymentHistoryResponse,
-      required final ResponseClassify<PaymentCompleteResponseEntity>
-          paymentCompleteResponse}) = _$PaymentStateImpl;
+          {required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentDashboardResponse,
+          required final int? selectedItemIndex,
+          required final Set<String?>? selectedCheckboxItems,
+          required final String totalAmount,
+          required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentHistoryResponse,
+          required final ResponseClassify<OrderStatus> paymentOrderResponse}) =
+      _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -2102,11 +2196,9 @@ abstract class _PaymentState implements PaymentState {
   @override
   String get totalAmount;
   @override
-  ResponseClassify<String> get paymentUniqueOrderId;
-  @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse;
   @override
-  ResponseClassify<PaymentCompleteResponseEntity> get paymentCompleteResponse;
+  ResponseClassify<OrderStatus> get paymentOrderResponse;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>
