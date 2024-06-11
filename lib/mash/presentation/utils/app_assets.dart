@@ -92,7 +92,7 @@ class AppAssets {
   static const chatMessageSendIcon = 'assets/icons/send.svg';
   static const attachmentIcon = 'assets/icons/attachment.svg';
   static const transactionHistory = 'assets/icons/transaction_history.svg';
-
+  static const share = 'assets/icons/share.svg';
   static var tcApply = "";
   static const call = 'assets/icons/call.svg';
   static const chat = 'assets/icons/chat.svg';
@@ -110,6 +110,9 @@ class AppAssets {
   static String comingSoonLottie = "assets/lottie/coming_soon.json";
 
   static String paymentProcessing = "assets/lottie/payment_processing.json";
-  static String paymentFailed = "assets/lottie/payment_failed.json";
-  static String paymentSuccess = "assets/lottie/payment_success.riv";
+
+  //riv
+  static String paymentFailed = "assets/riv/payment_failed.riv";
+  static String paymentSuccess = "assets/riv/payment_sucess.riv";
+  static String processing = "assets/riv/processing.riv";
 }

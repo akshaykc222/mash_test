@@ -81,7 +81,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
               ? 0
               : int.parse(event.trackId ?? ''),
           companyId: userInfo?.compId ?? "",
-          studentId: 'MGS1000685',
+          studentId: 'MGS1000513',
           academicId: userInfo?.academicId ?? '',
           actionId: event.paymentStatusType == PaymentStatusType.transaction
               ? '2'
@@ -145,7 +145,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       final data = await getPaymentFinalAmountUsecase.call(PaymentFinalRequest(
           pCompId: userInfo?.compId ?? '',
           pInstallmentId: event.installmentId,
-          pStudentId: event.studentId,
+          pStudentId: 'MGS1000513',
           pTotalAmount: event.totalAmount));
       emit(state.copyWith(totalAmount: data));
 
@@ -173,7 +173,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         academicId: user?.academicId,
       ));
       add(_GetPaymentTokenAndOpenPayment(
-        studentId: event.studentId,
+        studentId: 'MGS1000513',
         installmentId: event.installmentId,
         remark: event.remark,
         email: event.email,
@@ -196,13 +196,15 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       compId: user?.compId ?? "",
       orderId: event.orderId,
       orderAmount: state.totalAmount,
-      studentId: event.studentId,
+      studentId: 'MGS1000513',
       userName: event.student,
       userEmail: event.email,
       userMob: event.mobile,
       userRemark: event.remark,
       platform: "UAT",
     ));
+    if (sessionTokenData.cfOrderId.isNotEmpty) {
+    } else {}
     try {
       var session = CFSessionBuilder()
           .setEnvironment(CFEnvironment.SANDBOX)
@@ -222,7 +224,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           email: event.email,
           remark: event.remark,
           userName: event.student,
-          studenId: event.studentId,
+          studenId: 'MGS1000513',
         ));
         prettyPrint(
             'callbad second response================= ${response.toString()} p1 ==========${orderId.toString()}');
@@ -230,8 +232,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       cfpaymenteGateway.doPayment(cfWebCheckout);
 
       return session;
-    } on CFException catch (e) {
-      print(e.message);
+    } on CFException catch (e, s) {
+      print('error on cashfree --->>> ${e.message} strack race $s');
     }
   }
 
@@ -269,7 +271,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           pUserMob: event.mobile,
           pUserEmail: event.email,
           pCfOrderId: data.cfOrderId,
-          pPaymentType: '',
+          pPaymentType: data.paymentMethods,
           pPaymentDate: data.createdAt,
           pRemark: event.remark,
           pOrderId: data.orderId,

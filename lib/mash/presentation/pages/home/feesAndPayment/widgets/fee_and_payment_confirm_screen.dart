@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
@@ -62,7 +64,7 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
       appBar: commonAppbar(title: 'Fees & Payments'),
       bottomSheet: Container(
         color: const Color.fromRGBO(0, 0, 0, 0),
-        height: 100,
+        height: Platform.isIOS ? 120 : 100,
         child: PaymentBottomWidget(
           onTap: () {
             if (_formKey.currentState!.validate()) {
@@ -84,8 +86,9 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20)
-            .copyWith(bottom: MediaQuery.of(context).viewInsets.bottom / 3),
+        padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
+          bottom: MediaQuery.of(context).viewInsets.bottom / 3,
+        ),
         child: ListView(
           children: [
             Text(

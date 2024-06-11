@@ -89,7 +89,7 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentToken";
 
   static const paymentCompleteResponse =
-      "MashFlutterRestAPI/api/user/getPaymentCompleteResponse";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentCompleteResponse";
 
   static const paymentStatusUpdate =
       "UATRESTAPI/MashFlutterRestAPI/api/user/paymentStatusUpdate";

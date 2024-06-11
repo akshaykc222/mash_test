@@ -27,33 +27,6 @@ class _PendingPaymentTabbarWidgetState
     return Column(
       children: [
         Expanded(child: _buildPaymentList(context)),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => PaymentResponseScreen(
-                  orderStatus: OrderStatus.FAILED,
-                ),
-              ));
-            },
-            child: Text('failed')),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => PaymentResponseScreen(
-                  orderStatus: OrderStatus.PAID,
-                ),
-              ));
-            },
-            child: Text('Success')),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => PaymentResponseScreen(
-                  orderStatus: OrderStatus.ACTIVE,
-                ),
-              ));
-            },
-            child: Text('Processing')),
         PaymentBottomWidget(
           onTap: () async {
             await showDialog(
