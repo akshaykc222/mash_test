@@ -85,15 +85,27 @@ class AppRemoteRoutes {
   static const paymentFinal =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPendingFinalAmount";
 
+  static const paymentOrderId =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentNextUniqueId";
+  static const paymentToken =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentToken";
+
+  static const paymentCompleteResponse =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentCompleteResponse";
+
+  static const paymentStatusUpdate =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/paymentStatusUpdate";
+
+  static const savePaymentResponse =
+      "MashFlutterRestAPI/api/user/savePaymentResponse";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
 
- //  library
- static const getPhysicalLibrary =
+  //  library
+  static const getPhysicalLibrary =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlAllBooks";
 
- static const getPhysicalLibraryRequiredData =
+  static const getPhysicalLibraryRequiredData =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
-
 }

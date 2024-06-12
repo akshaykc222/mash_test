@@ -185,7 +185,7 @@ class AppRouteManager {
       path: AppPages.attendanceDetailScreen,
       name: AppPages.attendanceDetailScreen,
       builder: (context, state) {
-        return AttendenceDetailScreen();
+        return const AttendenceDetailScreen();
       },
     ),
     GoRoute(

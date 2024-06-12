@@ -26,6 +26,21 @@ mixin _$PaymentEvent {
     required TResult Function(
             String totalAmount, String installmentId, String studentId)
         getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +53,21 @@ mixin _$PaymentEvent {
     TResult? Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +80,15 @@ mixin _$PaymentEvent {
     TResult Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +100,11 @@ mixin _$PaymentEvent {
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
     required TResult Function(_GetPaymentFinalAmount value)
         getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +114,11 @@ mixin _$PaymentEvent {
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +128,11 @@ mixin _$PaymentEvent {
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -195,6 +249,21 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     required TResult Function(
             String totalAmount, String installmentId, String studentId)
         getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -210,6 +279,21 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult? Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -225,6 +309,15 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -242,6 +335,11 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
     required TResult Function(_GetPaymentFinalAmount value)
         getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard(this);
   }
@@ -254,6 +352,11 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard?.call(this);
   }
@@ -266,6 +369,11 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -365,6 +473,21 @@ class _$SelectPaymentsCheckboxEventImpl
     required TResult Function(
             String totalAmount, String installmentId, String studentId)
         getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -380,6 +503,21 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult? Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -395,6 +533,15 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -412,6 +559,11 @@ class _$SelectPaymentsCheckboxEventImpl
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
     required TResult Function(_GetPaymentFinalAmount value)
         getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent(this);
   }
@@ -424,6 +576,11 @@ class _$SelectPaymentsCheckboxEventImpl
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent?.call(this);
   }
@@ -436,6 +593,11 @@ class _$SelectPaymentsCheckboxEventImpl
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -528,6 +690,21 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     required TResult Function(
             String totalAmount, String installmentId, String studentId)
         getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex(index);
   }
@@ -543,6 +720,21 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult? Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -558,6 +750,15 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -575,6 +776,11 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
     required TResult Function(_GetPaymentFinalAmount value)
         getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex(this);
   }
@@ -587,6 +793,11 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
   }) {
     return selectedItemIndex?.call(this);
   }
@@ -599,6 +810,11 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -715,6 +931,21 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     required TResult Function(
             String totalAmount, String installmentId, String studentId)
         getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
   }
@@ -730,6 +961,21 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     TResult? Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
   }
@@ -745,6 +991,15 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     TResult Function(
             String totalAmount, String installmentId, String studentId)?
         getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -762,6 +1017,11 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     required TResult Function(_SelectedItemIndex value) selectedItemIndex,
     required TResult Function(_GetPaymentFinalAmount value)
         getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount(this);
   }
@@ -774,6 +1034,11 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         selectPaymentsCheckboxEvent,
     TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount?.call(this);
   }
@@ -786,6 +1051,11 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         selectPaymentsCheckboxEvent,
     TResult Function(_SelectedItemIndex value)? selectedItemIndex,
     TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -810,6 +1080,881 @@ abstract class _GetPaymentFinalAmount implements PaymentEvent {
 }
 
 /// @nodoc
+abstract class _$$GetPaymentOrderIdImplCopyWith<$Res> {
+  factory _$$GetPaymentOrderIdImplCopyWith(_$GetPaymentOrderIdImpl value,
+          $Res Function(_$GetPaymentOrderIdImpl) then) =
+      __$$GetPaymentOrderIdImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String email,
+      String student,
+      String mobile,
+      String remark,
+      String installmentId,
+      String studentId});
+}
+
+/// @nodoc
+class __$$GetPaymentOrderIdImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res, _$GetPaymentOrderIdImpl>
+    implements _$$GetPaymentOrderIdImplCopyWith<$Res> {
+  __$$GetPaymentOrderIdImplCopyWithImpl(_$GetPaymentOrderIdImpl _value,
+      $Res Function(_$GetPaymentOrderIdImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? student = null,
+    Object? mobile = null,
+    Object? remark = null,
+    Object? installmentId = null,
+    Object? studentId = null,
+  }) {
+    return _then(_$GetPaymentOrderIdImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      student: null == student
+          ? _value.student
+          : student // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobile: null == mobile
+          ? _value.mobile
+          : mobile // ignore: cast_nullable_to_non_nullable
+              as String,
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String,
+      installmentId: null == installmentId
+          ? _value.installmentId
+          : installmentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
+  const _$GetPaymentOrderIdImpl(
+      {required this.email,
+      required this.student,
+      required this.mobile,
+      required this.remark,
+      required this.installmentId,
+      required this.studentId});
+
+  @override
+  final String email;
+  @override
+  final String student;
+  @override
+  final String mobile;
+  @override
+  final String remark;
+  @override
+  final String installmentId;
+  @override
+  final String studentId;
+
+  @override
+  String toString() {
+    return 'PaymentEvent.getPaymentOrderId(email: $email, student: $student, mobile: $mobile, remark: $remark, installmentId: $installmentId, studentId: $studentId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPaymentOrderIdImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.student, student) || other.student == student) &&
+            (identical(other.mobile, mobile) || other.mobile == mobile) &&
+            (identical(other.remark, remark) || other.remark == remark) &&
+            (identical(other.installmentId, installmentId) ||
+                other.installmentId == installmentId) &&
+            (identical(other.studentId, studentId) ||
+                other.studentId == studentId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, email, student, mobile, remark, installmentId, studentId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetPaymentOrderIdImplCopyWith<_$GetPaymentOrderIdImpl> get copyWith =>
+      __$$GetPaymentOrderIdImplCopyWithImpl<_$GetPaymentOrderIdImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(
+            String totalAmount, String installmentId, String studentId)
+        getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentOrderId(
+        email, student, mobile, remark, installmentId, studentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentOrderId?.call(
+        email, student, mobile, remark, installmentId, studentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentOrderId != null) {
+      return getPaymentOrderId(
+          email, student, mobile, remark, installmentId, studentId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentOrderId(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentOrderId?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentOrderId != null) {
+      return getPaymentOrderId(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPaymentOrderId implements PaymentEvent {
+  const factory _GetPaymentOrderId(
+      {required final String email,
+      required final String student,
+      required final String mobile,
+      required final String remark,
+      required final String installmentId,
+      required final String studentId}) = _$GetPaymentOrderIdImpl;
+
+  String get email;
+  String get student;
+  String get mobile;
+  String get remark;
+  String get installmentId;
+  String get studentId;
+  @JsonKey(ignore: true)
+  _$$GetPaymentOrderIdImplCopyWith<_$GetPaymentOrderIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetPaymentTokenAndOpenPaymentImplCopyWith<$Res> {
+  factory _$$GetPaymentTokenAndOpenPaymentImplCopyWith(
+          _$GetPaymentTokenAndOpenPaymentImpl value,
+          $Res Function(_$GetPaymentTokenAndOpenPaymentImpl) then) =
+      __$$GetPaymentTokenAndOpenPaymentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String email,
+      String student,
+      String mobile,
+      String remark,
+      String installmentId,
+      String studentId,
+      String orderId});
+}
+
+/// @nodoc
+class __$$GetPaymentTokenAndOpenPaymentImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res,
+        _$GetPaymentTokenAndOpenPaymentImpl>
+    implements _$$GetPaymentTokenAndOpenPaymentImplCopyWith<$Res> {
+  __$$GetPaymentTokenAndOpenPaymentImplCopyWithImpl(
+      _$GetPaymentTokenAndOpenPaymentImpl _value,
+      $Res Function(_$GetPaymentTokenAndOpenPaymentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? student = null,
+    Object? mobile = null,
+    Object? remark = null,
+    Object? installmentId = null,
+    Object? studentId = null,
+    Object? orderId = null,
+  }) {
+    return _then(_$GetPaymentTokenAndOpenPaymentImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      student: null == student
+          ? _value.student
+          : student // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobile: null == mobile
+          ? _value.mobile
+          : mobile // ignore: cast_nullable_to_non_nullable
+              as String,
+      remark: null == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String,
+      installmentId: null == installmentId
+          ? _value.installmentId
+          : installmentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetPaymentTokenAndOpenPaymentImpl
+    implements _GetPaymentTokenAndOpenPayment {
+  const _$GetPaymentTokenAndOpenPaymentImpl(
+      {required this.email,
+      required this.student,
+      required this.mobile,
+      required this.remark,
+      required this.installmentId,
+      required this.studentId,
+      required this.orderId});
+
+  @override
+  final String email;
+  @override
+  final String student;
+  @override
+  final String mobile;
+  @override
+  final String remark;
+  @override
+  final String installmentId;
+  @override
+  final String studentId;
+  @override
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'PaymentEvent.getPaymentTokenAndOpenPayment(email: $email, student: $student, mobile: $mobile, remark: $remark, installmentId: $installmentId, studentId: $studentId, orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPaymentTokenAndOpenPaymentImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.student, student) || other.student == student) &&
+            (identical(other.mobile, mobile) || other.mobile == mobile) &&
+            (identical(other.remark, remark) || other.remark == remark) &&
+            (identical(other.installmentId, installmentId) ||
+                other.installmentId == installmentId) &&
+            (identical(other.studentId, studentId) ||
+                other.studentId == studentId) &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, student, mobile, remark,
+      installmentId, studentId, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetPaymentTokenAndOpenPaymentImplCopyWith<
+          _$GetPaymentTokenAndOpenPaymentImpl>
+      get copyWith => __$$GetPaymentTokenAndOpenPaymentImplCopyWithImpl<
+          _$GetPaymentTokenAndOpenPaymentImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(
+            String totalAmount, String installmentId, String studentId)
+        getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentTokenAndOpenPayment(
+        email, student, mobile, remark, installmentId, studentId, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentTokenAndOpenPayment?.call(
+        email, student, mobile, remark, installmentId, studentId, orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentTokenAndOpenPayment != null) {
+      return getPaymentTokenAndOpenPayment(
+          email, student, mobile, remark, installmentId, studentId, orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentTokenAndOpenPayment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentTokenAndOpenPayment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentTokenAndOpenPayment != null) {
+      return getPaymentTokenAndOpenPayment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPaymentTokenAndOpenPayment implements PaymentEvent {
+  const factory _GetPaymentTokenAndOpenPayment(
+      {required final String email,
+      required final String student,
+      required final String mobile,
+      required final String remark,
+      required final String installmentId,
+      required final String studentId,
+      required final String orderId}) = _$GetPaymentTokenAndOpenPaymentImpl;
+
+  String get email;
+  String get student;
+  String get mobile;
+  String get remark;
+  String get installmentId;
+  String get studentId;
+  String get orderId;
+  @JsonKey(ignore: true)
+  _$$GetPaymentTokenAndOpenPaymentImplCopyWith<
+          _$GetPaymentTokenAndOpenPaymentImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetPaymentCompleteResponseImplCopyWith<$Res> {
+  factory _$$GetPaymentCompleteResponseImplCopyWith(
+          _$GetPaymentCompleteResponseImpl value,
+          $Res Function(_$GetPaymentCompleteResponseImpl) then) =
+      __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String? orderId,
+      String? userName,
+      String? email,
+      String? remark,
+      String? studenId,
+      String? mobile});
+}
+
+/// @nodoc
+class __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res, _$GetPaymentCompleteResponseImpl>
+    implements _$$GetPaymentCompleteResponseImplCopyWith<$Res> {
+  __$$GetPaymentCompleteResponseImplCopyWithImpl(
+      _$GetPaymentCompleteResponseImpl _value,
+      $Res Function(_$GetPaymentCompleteResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = freezed,
+    Object? userName = freezed,
+    Object? email = freezed,
+    Object? remark = freezed,
+    Object? studenId = freezed,
+    Object? mobile = freezed,
+  }) {
+    return _then(_$GetPaymentCompleteResponseImpl(
+      orderId: freezed == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      remark: freezed == remark
+          ? _value.remark
+          : remark // ignore: cast_nullable_to_non_nullable
+              as String?,
+      studenId: freezed == studenId
+          ? _value.studenId
+          : studenId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mobile: freezed == mobile
+          ? _value.mobile
+          : mobile // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
+  const _$GetPaymentCompleteResponseImpl(
+      {this.orderId,
+      this.userName,
+      this.email,
+      this.remark,
+      this.studenId,
+      this.mobile});
+
+  @override
+  final String? orderId;
+  @override
+  final String? userName;
+  @override
+  final String? email;
+  @override
+  final String? remark;
+  @override
+  final String? studenId;
+  @override
+  final String? mobile;
+
+  @override
+  String toString() {
+    return 'PaymentEvent.getPaymentCompleteResponse(orderId: $orderId, userName: $userName, email: $email, remark: $remark, studenId: $studenId, mobile: $mobile)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetPaymentCompleteResponseImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.remark, remark) || other.remark == remark) &&
+            (identical(other.studenId, studenId) ||
+                other.studenId == studenId) &&
+            (identical(other.mobile, mobile) || other.mobile == mobile));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, orderId, userName, email, remark, studenId, mobile);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetPaymentCompleteResponseImplCopyWith<_$GetPaymentCompleteResponseImpl>
+      get copyWith => __$$GetPaymentCompleteResponseImplCopyWithImpl<
+          _$GetPaymentCompleteResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(
+            String totalAmount, String installmentId, String studentId)
+        getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentCompleteResponse(
+        orderId, userName, email, remark, studenId, mobile);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentCompleteResponse?.call(
+        orderId, userName, email, remark, studenId, mobile);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(String? orderId, String? userName, String? email,
+            String? remark, String? studenId, String? mobile)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentCompleteResponse != null) {
+      return getPaymentCompleteResponse(
+          orderId, userName, email, remark, studenId, mobile);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentCompleteResponse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+  }) {
+    return getPaymentCompleteResponse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    required TResult orElse(),
+  }) {
+    if (getPaymentCompleteResponse != null) {
+      return getPaymentCompleteResponse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetPaymentCompleteResponse implements PaymentEvent {
+  const factory _GetPaymentCompleteResponse(
+      {final String? orderId,
+      final String? userName,
+      final String? email,
+      final String? remark,
+      final String? studenId,
+      final String? mobile}) = _$GetPaymentCompleteResponseImpl;
+
+  String? get orderId;
+  String? get userName;
+  String? get email;
+  String? get remark;
+  String? get studenId;
+  String? get mobile;
+  @JsonKey(ignore: true)
+  _$$GetPaymentCompleteResponseImplCopyWith<_$GetPaymentCompleteResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PaymentState {
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse =>
       throw _privateConstructorUsedError;
@@ -817,6 +1962,8 @@ mixin _$PaymentState {
   Set<String?>? get selectedCheckboxItems => throw _privateConstructorUsedError;
   String get totalAmount => throw _privateConstructorUsedError;
   ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<OrderStatus> get paymentOrderResponse =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -835,7 +1982,8 @@ abstract class $PaymentStateCopyWith<$Res> {
       int? selectedItemIndex,
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
-      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse});
+      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
+      ResponseClassify<OrderStatus> paymentOrderResponse});
 }
 
 /// @nodoc
@@ -856,6 +2004,7 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
     Object? paymentHistoryResponse = null,
+    Object? paymentOrderResponse = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -878,6 +2027,10 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.paymentHistoryResponse
           : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<PaymentDashboardEntity>>,
+      paymentOrderResponse: null == paymentOrderResponse
+          ? _value.paymentOrderResponse
+          : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<OrderStatus>,
     ) as $Val);
   }
 }
@@ -895,7 +2048,8 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       int? selectedItemIndex,
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
-      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse});
+      ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
+      ResponseClassify<OrderStatus> paymentOrderResponse});
 }
 
 /// @nodoc
@@ -914,6 +2068,7 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? selectedCheckboxItems = freezed,
     Object? totalAmount = null,
     Object? paymentHistoryResponse = null,
+    Object? paymentOrderResponse = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -936,6 +2091,10 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.paymentHistoryResponse
           : paymentHistoryResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<PaymentDashboardEntity>>,
+      paymentOrderResponse: null == paymentOrderResponse
+          ? _value.paymentOrderResponse
+          : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<OrderStatus>,
     ));
   }
 }
@@ -948,7 +2107,8 @@ class _$PaymentStateImpl implements _PaymentState {
       required this.selectedItemIndex,
       required final Set<String?>? selectedCheckboxItems,
       required this.totalAmount,
-      required this.paymentHistoryResponse})
+      required this.paymentHistoryResponse,
+      required this.paymentOrderResponse})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -970,10 +2130,12 @@ class _$PaymentStateImpl implements _PaymentState {
   final String totalAmount;
   @override
   final ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse;
+  @override
+  final ResponseClassify<OrderStatus> paymentOrderResponse;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse)';
   }
 
   @override
@@ -991,7 +2153,9 @@ class _$PaymentStateImpl implements _PaymentState {
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
             (identical(other.paymentHistoryResponse, paymentHistoryResponse) ||
-                other.paymentHistoryResponse == paymentHistoryResponse));
+                other.paymentHistoryResponse == paymentHistoryResponse) &&
+            (identical(other.paymentOrderResponse, paymentOrderResponse) ||
+                other.paymentOrderResponse == paymentOrderResponse));
   }
 
   @override
@@ -1001,7 +2165,8 @@ class _$PaymentStateImpl implements _PaymentState {
       selectedItemIndex,
       const DeepCollectionEquality().hash(_selectedCheckboxItems),
       totalAmount,
-      paymentHistoryResponse);
+      paymentHistoryResponse,
+      paymentOrderResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -1012,13 +2177,15 @@ class _$PaymentStateImpl implements _PaymentState {
 
 abstract class _PaymentState implements PaymentState {
   const factory _PaymentState(
-      {required final ResponseClassify<List<PaymentDashboardEntity>>
-          paymentDashboardResponse,
-      required final int? selectedItemIndex,
-      required final Set<String?>? selectedCheckboxItems,
-      required final String totalAmount,
-      required final ResponseClassify<List<PaymentDashboardEntity>>
-          paymentHistoryResponse}) = _$PaymentStateImpl;
+          {required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentDashboardResponse,
+          required final int? selectedItemIndex,
+          required final Set<String?>? selectedCheckboxItems,
+          required final String totalAmount,
+          required final ResponseClassify<List<PaymentDashboardEntity>>
+              paymentHistoryResponse,
+          required final ResponseClassify<OrderStatus> paymentOrderResponse}) =
+      _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -1030,6 +2197,8 @@ abstract class _PaymentState implements PaymentState {
   String get totalAmount;
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse;
+  @override
+  ResponseClassify<OrderStatus> get paymentOrderResponse;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>
