@@ -3,7 +3,8 @@ class DigitalLibraryRequest {
   String pUserId;
   String pModuleName;
   String? prmContentId;
-  String prmIsActive;
+  String? prmIsActive;
+
   String? prmTypeId;
   String? prmCatId;
   String? prmSubId;
@@ -12,15 +13,17 @@ class DigitalLibraryRequest {
   String? prmSearchTxt;
   String? prmClassId;
   String? prmUserType;
-  int prmOffset;
-  int prmLimit;
+  String? pUserType;
+  String? pResearchId;
+  int? prmOffset;
+  int? prmLimit;
 
   DigitalLibraryRequest(
       {required this.pCompId,
       required this.pUserId,
       required this.pModuleName,
       this.prmContentId,
-      required this.prmIsActive,
+      this.prmIsActive,
       this.prmTypeId,
       this.prmCatId,
       this.prmSubId,
@@ -28,9 +31,11 @@ class DigitalLibraryRequest {
       this.prmLangId,
       this.prmSearchTxt,
       this.prmUserType,
-      required this.prmOffset,
-      required this.prmLimit,
-      this.prmClassId});
+      this.prmOffset,
+      this.prmLimit,
+      this.pResearchId,
+      this.prmClassId,
+      this.pUserType});
 
   factory DigitalLibraryRequest.fromJson(Map<String, dynamic> json) {
     return DigitalLibraryRequest(
@@ -66,8 +71,11 @@ class DigitalLibraryRequest {
       'prm_user_type': prmUserType,
       'prm_offset': prmOffset,
       'prm_limit': prmLimit,
-      'prm_class_id': prmClassId
+      'prm_class_id': prmClassId,
+      'p_usertype': pUserType,
+      'prm_research_id': pResearchId,
     };
+
     json.removeWhere((key, value) => value == null);
     return json;
   }

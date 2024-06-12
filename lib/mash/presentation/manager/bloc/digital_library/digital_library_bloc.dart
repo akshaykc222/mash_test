@@ -6,15 +6,15 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/di/injector.dart';
-import 'package:mash/mash/data/remote/models/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/models/request/digital_library_request.dart';
 import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_type_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 
-import '../../../../data/remote/models/request/di_type_request.dart';
+import '../../../../data/remote/request/academic_comp_id_request.dart';
+import '../../../../data/remote/request/di_type_request.dart';
+import '../../../../data/remote/request/digital_library_request.dart';
 import '../../../../domain/entities/academic/class_details_entity.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/academic/get_class_details_usecase.dart';
@@ -37,6 +37,7 @@ class DigitalLibraryBloc
     on<_SelectNonAcademicType>(_selectNonAcademicType);
     on<_SelectMedium>(_selectMedium);
     on<_SelectSubCat>(_selectSubCat);
+    on<_GetResearch>(_getResearch);
   }
 
   _getClasses(_GetClasses event, Emitter<DigitalLibraryState> emit) async {
@@ -162,26 +163,72 @@ class DigitalLibraryBloc
 
   _selectNonAcademicType(
       _SelectNonAcademicType event, Emitter<DigitalLibraryState> emit) {
-    if (state.selectedSubCat == null) {
+    if (state.getTypes == null) {
       add(const DigitalLibraryEvent.getTypes(
           "SUBCATEGORY_LIST", "1")); //getting sub category list
     }
-    if (state.selectedMedium == null) {
+    if (state.subCats == null) {
       add(const DigitalLibraryEvent.getTypes(
           "DL_TYPE", "0")); //getting medium list
+    }
+
+    switch (event.selected) {
+      case NonAcademicTypes.all:
+        if (state.selectedNonAcademic != NonAcademicTypes.all) {
+          add(const DigitalLibraryEvent.getNonAcademic(typeId: "-1"));
+        }
+        break;
+      case NonAcademicTypes.fiction:
+        if (state.selectedNonAcademic != NonAcademicTypes.fiction) {
+          if (state.selectedSubCat != null || state.selectedMedium != null) {
+            add(DigitalLibraryEvent.getNonAcademic(
+                typeId: state.selectedMedium?.typeId ??
+                    state.selectedSubCat?.typeId));
+          }
+        }
+        break;
+      case NonAcademicTypes.non_fiction:
+        if (state.selectedNonAcademic != NonAcademicTypes.non_fiction) {
+          if (state.selectedSubCat != null || state.selectedMedium != null) {
+            add(DigitalLibraryEvent.getNonAcademic(
+                typeId: state.selectedMedium?.typeId ??
+                    state.selectedSubCat?.typeId));
+          }
+        }
+        break;
+      case NonAcademicTypes.bookmarks:
+        if (state.selectedNonAcademic != NonAcademicTypes.bookmarks) {
+          if (state.selectedSubCat != null || state.selectedMedium != null) {
+            add(DigitalLibraryEvent.getNonAcademic(
+                typeId: state.selectedMedium?.typeId ??
+                    state.selectedSubCat?.typeId));
+          }
+        }
+        break;
     }
     emit(state.copyWith(selectedNonAcademic: event.selected));
     // add(event)
   }
 
   _selectSubCat(_SelectSubCat event, Emitter<DigitalLibraryState> emit) async {
-    emit(state.copyWith(selectedSubCat: event.selected));
+    emit(state.copyWith(selectedSubCat: event.selected, selectedMedium: null));
 
-    add(DigitalLibraryEvent.getNonAcademic(typeId: event.selected.typeId));
+    add(DigitalLibraryEvent.getNonAcademic(typeId: event.selected?.typeId));
   }
 
   _selectMedium(_SelectMedium event, Emitter<DigitalLibraryState> emit) {
-    emit(state.copyWith(selectedMedium: event.selected));
-    add(DigitalLibraryEvent.getNonAcademic(typeId: event.selected.typeId));
+    emit(state.copyWith(selectedMedium: event.selected, selectedSubCat: null));
+    add(DigitalLibraryEvent.getNonAcademic(typeId: event.selected?.typeId));
+  }
+
+  _getResearch(_GetResearch event, Emitter<DigitalLibraryState> emit) async {
+    var loginData = await loginInfo.call(NoParams());
+    add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
+        pCompId: loginData?.compId ?? "",
+        pUserId: loginData?.usrId ?? "",
+        pModuleName: "DL_RESEARCH_CONTENT_MOB",
+        prmSearchTxt: "",
+        pResearchId: "-1",
+        pUserType: loginData?.userType ?? "")));
   }
 }

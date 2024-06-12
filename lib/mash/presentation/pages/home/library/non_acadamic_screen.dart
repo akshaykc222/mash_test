@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/non_academic_body.dart';
@@ -27,13 +26,12 @@ class NonAcademic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DigitalLibraryBloc()
-        ..add(const DigitalLibraryEvent.getNonAcademic(typeId: "-1")),
-      child: Scaffold(
-        appBar: commonAppbar(title: 'NON ACADEMICS', searchFunction: (str) {}),
-        body: const NonAcademicBody(),
-      ),
+    DigitalLibraryBloc.get(context)
+        .add(const DigitalLibraryEvent.getNonAcademic(typeId: "-1"));
+
+    return Scaffold(
+      appBar: commonAppbar(title: 'NON ACADEMICS', searchFunction: (str) {}),
+      body: const NonAcademicBody(),
     );
   }
 }

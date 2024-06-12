@@ -14,8 +14,8 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_e
 import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/facility/facility_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
-import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
@@ -30,6 +30,9 @@ import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_s
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
+import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/research.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
@@ -123,7 +126,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -276,7 +279,8 @@ class AppRouteManager {
       path: AppPages.progressReport,
       name: AppPages.progressReport,
       builder: (context, state) => const ProgressReport(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.physicalLibraryFilter,
       name: AppPages.physicalLibraryFilter,
       builder: (context, state) => const PhysicalLibraryFilterScreen(),
@@ -542,11 +546,32 @@ class AppRouteManager {
       },
     ),
     GoRoute(
+      path: AppPages.bookDetailDigital,
+      name: AppPages.bookDetailDigital,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return BookDetailView(book: state.extra as DigitalLibraryEntity);
+        }
+        return const SizedBox();
+      },
+    ),
+
+    GoRoute(
       name: AppPages.newChat,
       path: AppPages.newChat,
       builder: (context, state) {
         return const NewChat();
       },
+    ),
+    GoRoute(
+      path: AppPages.nonAcademic,
+      name: AppPages.nonAcademic,
+      builder: (context, state) => const NonAcademic(),
+    ),
+    GoRoute(
+      path: AppPages.research,
+      name: AppPages.research,
+      builder: (context, state) => const ResearchScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

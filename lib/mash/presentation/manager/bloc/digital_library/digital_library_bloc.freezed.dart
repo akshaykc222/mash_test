@@ -20,9 +20,10 @@ mixin _$DigitalLibraryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -34,9 +35,10 @@ mixin _$DigitalLibraryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -48,9 +50,10 @@ mixin _$DigitalLibraryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -63,6 +66,7 @@ mixin _$DigitalLibraryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -77,6 +81,7 @@ mixin _$DigitalLibraryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -90,6 +95,7 @@ mixin _$DigitalLibraryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -138,12 +144,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'DigitalLibraryEvent.started'));
   }
 
   @override
@@ -160,9 +172,10 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -177,9 +190,10 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -194,9 +208,10 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -215,6 +230,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -232,6 +248,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -248,6 +265,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -286,12 +304,19 @@ class __$$GetClassesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetClassesImpl implements _GetClasses {
+class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   const _$GetClassesImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.getClasses()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getClasses'));
   }
 
   @override
@@ -308,9 +333,10 @@ class _$GetClassesImpl implements _GetClasses {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -325,9 +351,10 @@ class _$GetClassesImpl implements _GetClasses {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -342,9 +369,10 @@ class _$GetClassesImpl implements _GetClasses {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -363,6 +391,7 @@ class _$GetClassesImpl implements _GetClasses {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -380,6 +409,7 @@ class _$GetClassesImpl implements _GetClasses {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -396,6 +426,7 @@ class _$GetClassesImpl implements _GetClasses {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -414,6 +445,167 @@ class _$GetClassesImpl implements _GetClasses {
 
 abstract class _GetClasses implements DigitalLibraryEvent {
   const factory _GetClasses() = _$GetClassesImpl;
+}
+
+/// @nodoc
+abstract class _$$GetResearchImplCopyWith<$Res> {
+  factory _$$GetResearchImplCopyWith(
+          _$GetResearchImpl value, $Res Function(_$GetResearchImpl) then) =
+      __$$GetResearchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetResearchImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$GetResearchImpl>
+    implements _$$GetResearchImplCopyWith<$Res> {
+  __$$GetResearchImplCopyWithImpl(
+      _$GetResearchImpl _value, $Res Function(_$GetResearchImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
+  const _$GetResearchImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.getResearch()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getResearch'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetResearchImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return getResearch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return getResearch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getResearch != null) {
+      return getResearch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return getResearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return getResearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getResearch != null) {
+      return getResearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetResearch implements DigitalLibraryEvent {
+  const factory _GetResearch() = _$GetResearchImpl;
 }
 
 /// @nodoc
@@ -454,7 +646,7 @@ class __$$GetTypesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetTypesImpl implements _GetTypes {
+class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   const _$GetTypesImpl(this.moduleName, this.pJson);
 
   @override
@@ -463,8 +655,17 @@ class _$GetTypesImpl implements _GetTypes {
   final String pJson;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.getTypes(moduleName: $moduleName, pJson: $pJson)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getTypes'))
+      ..add(DiagnosticsProperty('moduleName', moduleName))
+      ..add(DiagnosticsProperty('pJson', pJson));
   }
 
   @override
@@ -491,9 +692,10 @@ class _$GetTypesImpl implements _GetTypes {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -508,9 +710,10 @@ class _$GetTypesImpl implements _GetTypes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -525,9 +728,10 @@ class _$GetTypesImpl implements _GetTypes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -546,6 +750,7 @@ class _$GetTypesImpl implements _GetTypes {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -563,6 +768,7 @@ class _$GetTypesImpl implements _GetTypes {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -579,6 +785,7 @@ class _$GetTypesImpl implements _GetTypes {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -612,7 +819,7 @@ abstract class _$$SelectMediumImplCopyWith<$Res> {
           _$SelectMediumImpl value, $Res Function(_$SelectMediumImpl) then) =
       __$$SelectMediumImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AcademicTypeEntity selected});
+  $Res call({AcademicTypeEntity? selected});
 }
 
 /// @nodoc
@@ -626,28 +833,36 @@ class __$$SelectMediumImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = null,
+    Object? selected = freezed,
   }) {
     return _then(_$SelectMediumImpl(
-      null == selected
+      freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as AcademicTypeEntity,
+              as AcademicTypeEntity?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SelectMediumImpl implements _SelectMedium {
+class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   const _$SelectMediumImpl(this.selected);
 
   @override
-  final AcademicTypeEntity selected;
+  final AcademicTypeEntity? selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.selectMedium(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.selectMedium'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
@@ -673,9 +888,10 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -690,9 +906,10 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -707,9 +924,10 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -728,6 +946,7 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -745,6 +964,7 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -761,6 +981,7 @@ class _$SelectMediumImpl implements _SelectMedium {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -778,10 +999,10 @@ class _$SelectMediumImpl implements _SelectMedium {
 }
 
 abstract class _SelectMedium implements DigitalLibraryEvent {
-  const factory _SelectMedium(final AcademicTypeEntity selected) =
+  const factory _SelectMedium(final AcademicTypeEntity? selected) =
       _$SelectMediumImpl;
 
-  AcademicTypeEntity get selected;
+  AcademicTypeEntity? get selected;
   @JsonKey(ignore: true)
   _$$SelectMediumImplCopyWith<_$SelectMediumImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -793,7 +1014,7 @@ abstract class _$$SelectSubCatImplCopyWith<$Res> {
           _$SelectSubCatImpl value, $Res Function(_$SelectSubCatImpl) then) =
       __$$SelectSubCatImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AcademicTypeEntity selected});
+  $Res call({AcademicTypeEntity? selected});
 }
 
 /// @nodoc
@@ -807,28 +1028,36 @@ class __$$SelectSubCatImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selected = null,
+    Object? selected = freezed,
   }) {
     return _then(_$SelectSubCatImpl(
-      null == selected
+      freezed == selected
           ? _value.selected
           : selected // ignore: cast_nullable_to_non_nullable
-              as AcademicTypeEntity,
+              as AcademicTypeEntity?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SelectSubCatImpl implements _SelectSubCat {
+class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   const _$SelectSubCatImpl(this.selected);
 
   @override
-  final AcademicTypeEntity selected;
+  final AcademicTypeEntity? selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.selectSubCat(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.selectSubCat'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
@@ -854,9 +1083,10 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -871,9 +1101,10 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -888,9 +1119,10 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -909,6 +1141,7 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -926,6 +1159,7 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -942,6 +1176,7 @@ class _$SelectSubCatImpl implements _SelectSubCat {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -959,10 +1194,10 @@ class _$SelectSubCatImpl implements _SelectSubCat {
 }
 
 abstract class _SelectSubCat implements DigitalLibraryEvent {
-  const factory _SelectSubCat(final AcademicTypeEntity selected) =
+  const factory _SelectSubCat(final AcademicTypeEntity? selected) =
       _$SelectSubCatImpl;
 
-  AcademicTypeEntity get selected;
+  AcademicTypeEntity? get selected;
   @JsonKey(ignore: true)
   _$$SelectSubCatImplCopyWith<_$SelectSubCatImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1011,7 +1246,9 @@ class __$$GetNonAcademicImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetNonAcademicImpl implements _GetNonAcademic {
+class _$GetNonAcademicImpl
+    with DiagnosticableTreeMixin
+    implements _GetNonAcademic {
   const _$GetNonAcademicImpl({this.typeId, this.catId, this.subId});
 
   @override
@@ -1022,8 +1259,18 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   final String? subId;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.getNonAcademic(typeId: $typeId, catId: $catId, subId: $subId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getNonAcademic'))
+      ..add(DiagnosticsProperty('typeId', typeId))
+      ..add(DiagnosticsProperty('catId', catId))
+      ..add(DiagnosticsProperty('subId', subId));
   }
 
   @override
@@ -1051,9 +1298,10 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -1068,9 +1316,10 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1085,9 +1334,10 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1106,6 +1356,7 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -1123,6 +1374,7 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -1139,6 +1391,7 @@ class _$GetNonAcademicImpl implements _GetNonAcademic {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -1203,15 +1456,26 @@ class __$$SelectNonAcademicTypeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
+class _$SelectNonAcademicTypeImpl
+    with DiagnosticableTreeMixin
+    implements _SelectNonAcademicType {
   const _$SelectNonAcademicTypeImpl(this.selected);
 
   @override
   final NonAcademicTypes selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.selectNonAcademicType(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'DigitalLibraryEvent.selectNonAcademicType'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
@@ -1238,9 +1502,10 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -1255,9 +1520,10 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1272,9 +1538,10 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1293,6 +1560,7 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -1310,6 +1578,7 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -1326,6 +1595,7 @@ class _$SelectNonAcademicTypeImpl implements _SelectNonAcademicType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -1385,15 +1655,23 @@ class __$$GetLibraryImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetLibraryImpl implements _GetLibrary {
+class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   const _$GetLibraryImpl(this.request);
 
   @override
   final DigitalLibraryRequest request;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.getLibrary(request: $request)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getLibrary'))
+      ..add(DiagnosticsProperty('request', request));
   }
 
   @override
@@ -1418,9 +1696,10 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -1435,9 +1714,10 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1452,9 +1732,10 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1473,6 +1754,7 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -1490,6 +1772,7 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -1506,6 +1789,7 @@ class _$GetLibraryImpl implements _GetLibrary {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -1565,15 +1849,23 @@ class __$$SelectClassImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectClassImpl implements _SelectClass {
+class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   const _$SelectClassImpl(this.selected);
 
   @override
   final ClassDetailsEntity selected;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryEvent.selectClass(selected: $selected)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.selectClass'))
+      ..add(DiagnosticsProperty('selected', selected));
   }
 
   @override
@@ -1599,9 +1891,10 @@ class _$SelectClassImpl implements _SelectClass {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
-    required TResult Function(AcademicTypeEntity selected) selectMedium,
-    required TResult Function(AcademicTypeEntity selected) selectSubCat,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
     required TResult Function(String? typeId, String? catId, String? subId)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
@@ -1616,9 +1909,10 @@ class _$SelectClassImpl implements _SelectClass {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
-    TResult? Function(AcademicTypeEntity selected)? selectMedium,
-    TResult? Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1633,9 +1927,10 @@ class _$SelectClassImpl implements _SelectClass {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
-    TResult Function(AcademicTypeEntity selected)? selectMedium,
-    TResult Function(AcademicTypeEntity selected)? selectSubCat,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
     TResult Function(String? typeId, String? catId, String? subId)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
@@ -1654,6 +1949,7 @@ class _$SelectClassImpl implements _SelectClass {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
     required TResult Function(_SelectSubCat value) selectSubCat,
@@ -1671,6 +1967,7 @@ class _$SelectClassImpl implements _SelectClass {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
     TResult? Function(_SelectSubCat value)? selectSubCat,
@@ -1687,6 +1984,7 @@ class _$SelectClassImpl implements _SelectClass {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
     TResult Function(_SelectSubCat value)? selectSubCat,
@@ -1902,7 +2200,9 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DigitalLibraryStateImpl implements _DigitalLibraryState {
+class _$DigitalLibraryStateImpl
+    with DiagnosticableTreeMixin
+    implements _DigitalLibraryState {
   const _$DigitalLibraryStateImpl(
       {this.getClasses,
       this.getLibrary,
@@ -1935,8 +2235,24 @@ class _$DigitalLibraryStateImpl implements _DigitalLibraryState {
   final ClassDetailsEntity? selectedClass;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, selectedSubCat: $selectedSubCat, selectedMedium: $selectedMedium, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryState'))
+      ..add(DiagnosticsProperty('getClasses', getClasses))
+      ..add(DiagnosticsProperty('getLibrary', getLibrary))
+      ..add(DiagnosticsProperty('getTypes', getTypes))
+      ..add(DiagnosticsProperty('subCats', subCats))
+      ..add(DiagnosticsProperty('mediums', mediums))
+      ..add(DiagnosticsProperty('selectedSubCat', selectedSubCat))
+      ..add(DiagnosticsProperty('selectedMedium', selectedMedium))
+      ..add(DiagnosticsProperty('selectedNonAcademic', selectedNonAcademic))
+      ..add(DiagnosticsProperty('selectedClass', selectedClass));
   }
 
   @override

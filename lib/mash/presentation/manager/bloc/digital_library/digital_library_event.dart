@@ -4,11 +4,12 @@ part of 'digital_library_bloc.dart';
 class DigitalLibraryEvent with _$DigitalLibraryEvent {
   const factory DigitalLibraryEvent.started() = _Started;
   const factory DigitalLibraryEvent.getClasses() = _GetClasses;
+  const factory DigitalLibraryEvent.getResearch() = _GetResearch;
   const factory DigitalLibraryEvent.getTypes(String moduleName, String pJson) =
       _GetTypes;
-  const factory DigitalLibraryEvent.selectMedium(AcademicTypeEntity selected) =
+  const factory DigitalLibraryEvent.selectMedium(AcademicTypeEntity? selected) =
       _SelectMedium;
-  const factory DigitalLibraryEvent.selectSubCat(AcademicTypeEntity selected) =
+  const factory DigitalLibraryEvent.selectSubCat(AcademicTypeEntity? selected) =
       _SelectSubCat;
   const factory DigitalLibraryEvent.getNonAcademic(
       {String? typeId, String? catId, String? subId}) = _GetNonAcademic;

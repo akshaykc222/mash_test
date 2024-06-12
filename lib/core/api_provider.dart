@@ -52,7 +52,7 @@ class ApiProvider {
     if (token.isNotEmpty) {
       prettyPrint('token ${token.first}');
       _dio.options.headers.addAll({
-        'Authorization': token,
+        'Authorization': token.first,
       });
     }
   }

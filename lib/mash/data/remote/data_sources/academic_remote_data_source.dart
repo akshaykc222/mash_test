@@ -14,14 +14,12 @@ import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import '../../../domain/entities/academic/syllabus_request.dart';
 import '../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../models/dashboard/digital_library_model.dart';
-import '../models/request/academic_comp_id_request.dart';
-import '../models/request/academic_subjects_request.dart';
-import '../models/request/di_type_request.dart';
-import '../models/request/digital_library_request.dart';
+import '../request/di_type_request.dart';
+import '../request/digital_library_request.dart';
 
 @factoryMethod
 abstract interface class AcademicRemoteDataSource {
-  Future<List<ClassDetailsModel?>> getClassDetails(
+  Future<List<ClassDetailsModel>> getClassDetails(
       AcademicAndCompIdRequest params);
   Future<List<AcademicSubjectModel>> getAcademicSubjects(
       ClassAndCompIdRequest params);

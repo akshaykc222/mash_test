@@ -14,10 +14,6 @@ import '../../../../../core/response_classify.dart';
 import '../../../../../di/injector.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
-import '../../../../../di/injector.dart';
-import '../../../../data/remote/request/digital_library_request.dart';
-import '../../../../domain/entities/dashboard/digital_library_entity.dart';
-import '../../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';
 
 part 'dashboard_bloc.freezed.dart';
@@ -36,8 +32,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc(this.fetchWordThoughtUseCase, this.userInfoUseCase)
       : super(DashboardState.initial()) {
     on<_FetchWordAndThoughtOftheDayEvent>(_fetchWordAndThoughtOftheDayEvent);
-
-
   }
 
   /// Handles the [_FetchWordAndThoughtOftheDayEvent] event by fetching the word and thought of the day.
@@ -72,5 +66,4 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ///[USE CASES]///
   final digitalLibraryUseCase = getIt<DigitalLibraryUseCase>();
   final getLoginUseCase = getIt<GetUserInfoUseCase>();
-
 }

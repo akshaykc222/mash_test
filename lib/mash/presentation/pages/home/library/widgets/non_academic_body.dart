@@ -5,9 +5,11 @@ import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/book_list_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/category_tile.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/utils/size_config.dart';
 
 import '../../../../manager/bloc/digital_library/digital_library_bloc.dart';
 
@@ -16,8 +18,46 @@ class NonAcademicBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return ListView(
-      children: [_filters(), _body()],
+      physics: const BouncingScrollPhysics(),
+      children: [_filters(), _selectedFilter(), _body()],
+    );
+  }
+
+  Widget _selectedFilter() {
+    return BlocBuilder<DigitalLibraryBloc, DigitalLibraryState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Row(
+            children: [
+              if (state.selectedMedium != null)
+                FilterChip(
+                  avatar: const Icon(Icons.close),
+                  label: Text(state.selectedMedium?.typeName ?? ""),
+                  onSelected: (b) {
+                    DigitalLibraryBloc.get(context)
+                        .add(const DigitalLibraryEvent.selectMedium(null));
+                  },
+                  backgroundColor: AppColors.primaryColor.withOpacity(0.4),
+                  selected: false,
+                ),
+              if (state.selectedSubCat != null)
+                FilterChip(
+                  avatar: const Icon(Icons.close),
+                  label: Text(state.selectedSubCat?.typeName ?? ""),
+                  onSelected: (b) {
+                    DigitalLibraryBloc.get(context)
+                        .add(const DigitalLibraryEvent.selectMedium(null));
+                  },
+                  backgroundColor: AppColors.primaryColor.withOpacity(0.4),
+                  selected: false,
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -195,27 +235,39 @@ class NonAcademicBody extends StatelessWidget {
           (previous.selectedSubCat != current.selectedSubCat),
       builder: (BuildContext context, state) {
         return state.selectedNonAcademic != NonAcademicTypes.all &&
-                (state.selectedMedium == null || state.selectedSubCat == null)
+                (state.selectedMedium == null && state.selectedSubCat == null)
             ? _buildCategory()
             : state.getLibrary?.status == Status.LOADING
-                ? HelperClasses.shimmerPlacerHolderList()
+                ? HelperClasses.shimmerPlacerHolderGrid()
                 : state.getLibrary?.status == Status.COMPLETED
-                    ? GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: state.getLibrary?.data?.length,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) => BookListWidget(
-                            entity: state.getLibrary!.data![index]),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 9 / 12,
-                        ),
-                      )
+                    ? state.getLibrary?.data?.isNotEmpty == true
+                        ? GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: state.getLibrary?.data?.length,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => BookListWidget(
+                              entity: state.getLibrary!.data![index],
+                              onTap: () {
+                                GoRouter.of(context).pushNamed(
+                                    AppPages.bookDetailDigital,
+                                    extra: state.getLibrary!.data![index]);
+                              },
+                            ),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                              childAspectRatio: 9 / 12,
+                            ),
+                          )
+                        : SizedBox(
+                            height: MediaQuery.of(context).size.height -
+                                SizeConfig.height(200),
+                            child:
+                                Center(child: HelperClasses.emptyDataWidget()))
                     : const SizedBox();
       },
     );

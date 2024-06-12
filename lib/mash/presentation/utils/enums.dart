@@ -29,7 +29,6 @@ enum PaymentStatusType {
   transaction,
 }
 
-
 enum UserTypes { staff, student, parent }
 
 UserTypes getUserType(String userType) {
