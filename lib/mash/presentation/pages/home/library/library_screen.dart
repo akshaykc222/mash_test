@@ -33,13 +33,13 @@ class LibraryScreen extends StatelessWidget {
           title: 'NON\nACADEMIC',
           asset: AppAssets.libImageNonAcademic,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.nonAcademic);
           }),
       LibraryItemModel(
           title: 'RESEARCH',
           asset: AppAssets.libImageResearch,
           onTap: () {
-            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+            GoRouter.of(context).pushNamed(AppPages.research);
           }),
       LibraryItemModel(
           title: 'USER\nACTIVITY',

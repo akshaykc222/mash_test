@@ -92,7 +92,7 @@ class AppAssets {
   static const chatMessageSendIcon = 'assets/icons/send.svg';
   static const attachmentIcon = 'assets/icons/attachment.svg';
   static const transactionHistory = 'assets/icons/transaction_history.svg';
-  static const share = 'assets/icons/share.svg';
+
   static var tcApply = "";
   static const call = 'assets/icons/call.svg';
   static const chat = 'assets/icons/chat.svg';
@@ -109,10 +109,17 @@ class AppAssets {
   static String noDataLottie = "assets/lottie/nodata.json";
   static String comingSoonLottie = "assets/lottie/coming_soon.json";
 
+  //vehicle tracker
+
+  static String bus = "assets/icons/school-bus.png";
+  static String busStopActive = "assets/icons/bus-stop.png";
+  static String busStop = "assets/icons/bus-stop-s.png";
+
   static String paymentProcessing = "assets/lottie/payment_processing.json";
 
   //riv
   static String paymentFailed = "assets/riv/payment_failed.riv";
   static String paymentSuccess = "assets/riv/payment_sucess.riv";
   static String processing = "assets/riv/processing.riv";
+  static const share = 'assets/icons/share.svg';
 }

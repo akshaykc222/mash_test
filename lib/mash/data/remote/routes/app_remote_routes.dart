@@ -1,10 +1,12 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
   static const baseUrlVendor = "https://app.avlview.com/";
+  static const getTypes =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDlDropdowns";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
   static const getVehicleLocation = "api/getvehiclecurrentlocation";
   static const digitalLibrary =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibraryAll";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibrary";
   static const updateProfile =
       "UATRESTAPI/MashFlutterRestAPI/api/user/updateStudentProfile";
   static const wordAndThougthofTheDay =
@@ -12,7 +14,7 @@ class AppRemoteRoutes {
   static const noticePopUp =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticePopUp";
   static const classDetails =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getClassDetails";
   // static const
 
   ///profile urls
@@ -50,7 +52,7 @@ class AppRemoteRoutes {
   // vehicle tracker url
   static const vehicleTrackerStops =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
-
+  static const vehicleVendor = "api/getvehiclecurrentlocation";
   // teacher url
   static const teacherRatingList =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";

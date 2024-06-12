@@ -12,9 +12,8 @@ import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/response_classify.dart';
 import '../../../../../di/injector.dart';
-import '../../../../data/remote/request/digital_library_request.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
-import '../../../../domain/use_cases/dashboard/get_digital_library_use_case.dart';
+import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';
 
 part 'dashboard_bloc.freezed.dart';
@@ -33,8 +32,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc(this.fetchWordThoughtUseCase, this.userInfoUseCase)
       : super(DashboardState.initial()) {
     on<_FetchWordAndThoughtOftheDayEvent>(_fetchWordAndThoughtOftheDayEvent);
-
-    on<_GetDigitalLibrary>(_getDigitalLibrary);
   }
 
   /// Handles the [_FetchWordAndThoughtOftheDayEvent] event by fetching the word and thought of the day.
@@ -69,31 +66,4 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ///[USE CASES]///
   final digitalLibraryUseCase = getIt<DigitalLibraryUseCase>();
   final getLoginUseCase = getIt<GetUserInfoUseCase>();
-
-  _getDigitalLibrary(
-      _GetDigitalLibrary event, Emitter<DashboardState> emit) async {
-    emit(state.copyWith(getDigitalLibrary: ResponseClassify.loading()));
-    try {
-      var loginUserInfo = await getLoginUseCase.call(NoParams());
-      var request = DigitalLibraryRequest(
-          pCompId: loginUserInfo?.compId ?? "",
-          pUserId: loginUserInfo?.usrId ?? "",
-          pModuleName: "DL_NON_ACADEMIC_CONTENT_MOB",
-          prmContentId: "-1",
-          prmIsActive: "-1",
-          prmTypeId: "-1",
-          prmCatId: "-1",
-          prmSubcatId: "-1",
-          prmLangId: "-1",
-          prmSearchTxt: event.search ?? "",
-          prmUserType: 2,
-          prmOffset: 0,
-          prmLimit: 25);
-      var getDigitalLibrary = await digitalLibraryUseCase.call(request);
-      emit(state.copyWith(
-          getDigitalLibrary: ResponseClassify.completed(getDigitalLibrary)));
-    } catch (e) {
-      emit(state.copyWith(getDigitalLibrary: ResponseClassify.error(e)));
-    }
-  }
 }

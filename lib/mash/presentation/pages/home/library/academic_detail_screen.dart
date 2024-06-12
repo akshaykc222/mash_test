@@ -1,17 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
+import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart';
+import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
+import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class AcademicDetailScreen extends StatelessWidget {
-  const AcademicDetailScreen({super.key});
+  final DigitalLibraryEntity entity;
+
+  const AcademicDetailScreen({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
+    DigitalLibraryBloc.get(context)
+        .add(const DigitalLibraryEvent.getTypes("DL_TYPE", "1"));
     return Scaffold(
       drawer: const DrawerWidget(),
-      appBar: commonAppbar(title: 'DYNAMIC'),
+      appBar: commonAppbar(title: entity.contentName ?? ""),
       body: academicDetailBody(),
     );
   }
@@ -19,21 +29,38 @@ class AcademicDetailScreen extends StatelessWidget {
   academicDetailBody() {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-      child: GridView.builder(
-          itemCount: 4,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8.0,
-            mainAxisSpacing: 8.0,
-            childAspectRatio: 1,
-          ),
-          itemBuilder: (context, index) {
-            return detailCard();
-          }),
+      child: BlocConsumer<DigitalLibraryBloc, DigitalLibraryState>(
+        buildWhen: (previous, current) =>
+            previous.getTypes?.status != current.getTypes?.status,
+        builder: (context, state) {
+          return state.getTypes?.status == Status.LOADING
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : GridView.builder(
+                  itemCount: state.getTypes?.data?.length ?? 0,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                    childAspectRatio: 1,
+                  ),
+                  itemBuilder: (context, index) {
+                    return detailCard(state.getTypes!.data![index]);
+                  });
+        },
+        listener: (BuildContext context, DigitalLibraryState state) {
+          if (state.getTypes?.status == Status.ERROR) {
+            handleErrorUi(context: context, error: state.getTypes?.error);
+          }
+        },
+        listenWhen: (previous, current) =>
+            previous.getTypes?.status != current.getTypes?.status,
+      ),
     );
   }
 
-  detailCard() {
+  detailCard(AcademicTypeEntity entity) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Column(
@@ -43,8 +70,7 @@ class AcademicDetailScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CachedNetworkImage(
-                imageUrl:
-                    "https://d3nn873nee648n.cloudfront.net/HomeImages/Concept-and-Ideas.jpg?w=248&fit=crop&auto=format",
+                imageUrl: entity.iconUrl,
                 fit: BoxFit.fill,
                 // height: 50,
                 // width: 50,
@@ -57,10 +83,10 @@ class AcademicDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 1,
             child: Center(
-              child: Text('books'),
+              child: Text(entity.typeName),
             ),
           )
         ],

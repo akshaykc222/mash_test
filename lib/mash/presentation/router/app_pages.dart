@@ -121,4 +121,9 @@ class AppPages {
   static const newChat = "/newChat";
 
   static const comingSoon = '/comingSoon';
+  static const seeAllSubMedium = '/seeAllSubMedium';
+  static const nonAcademic = '/nonAcademic';
+  static const bookDetailDigital = '/bookDetailDigital';
+
+  static const research = "/research";
 }

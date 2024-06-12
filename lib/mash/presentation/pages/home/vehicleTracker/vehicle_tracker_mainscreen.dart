@@ -58,110 +58,142 @@ class _VehicleTrackerBodyState extends State<VehicleTrackerBody> {
       child: BlocBuilder<VehicleTrackerStopsBloc, VehicleTrackerStopsState>(
         builder: (context, state) {
           return state.isLoading
-              ? state.getTrackerStops == null
-                  ? const Center(
-                      child: Text(
-                          "Can't fetch bus location at the time please try again after some time"),
-                    )
-                  : state.getBusLiveLocation == null
-                      ? const Center(
-                          child: Text("Something went wrong"),
-                        )
-                      : const Center(
-                          child: CircularProgressIndicator(),
-                        )
-              : Stack(
-                  children: [
-                    GoogleMap(
-                      padding: const EdgeInsets.only(bottom: 80),
-                      initialCameraPosition: CameraPosition(
-                          target: LatLng(
-                              state.getTrackerStops?.vehicleDetails?.latitude ??
-                                  0,
-                              state.getTrackerStops?.vehicleDetails
-                                      ?.longitude ??
-                                  0),
-                          zoom: 14.5),
-                      onMapCreated: (GoogleMapController controller) {
-                        _mapController.complete(controller);
-                      },
-                      markers: {
-                        ...?state.getTrackerStops?.vehicleStops
-                            .map((e) => Marker(
-                                markerId: MarkerId(e.stops),
-                                position: LatLng(e.latitude, e.longitude)))
-                            .toSet(),
-                        // Marker(
-                        //     markerId: const MarkerId('School Bus'),
-                        //     position: LatLng(
-                        //         state.getBusLiveLocation?.latitude ?? 0,
-                        //         state.getBusLiveLocation?.longitude ?? 0)),
-                      },
-                      polylines: state.polyLines ?? {},
-                    ),
-                    Positioned(
-                      top: 20,
-                      child: SizedBox(
-                        height: size.height * 0.1,
-                        width: size.width,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: TrackerDetailWidget(
-                              detail: '17' ' ' 'Min',
-                              descTitle: AppStrings.time,
-                            )),
-                            Expanded(
-                                child: TrackerDetailWidget(
-                              detail: '8.0' ' ' 'KM',
-                              descTitle: AppStrings.distance,
-                            )),
-                            Expanded(
-                                child: TrackerDetailWidget(
-                              detail: '\u24D8',
-                              descTitle: AppStrings.info,
-                            )),
-                          ],
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : state.getBusLiveLocation != null
+                  ? Stack(
+                      children: [
+                        ValueListenableBuilder(
+                            valueListenable: state.getBusLiveLocation!,
+                            builder: (context, data, child) {
+                              if (data?.longitude != null &&
+                                  data?.latitude != null) {
+                                _updateCamara(LatLng(
+                                    data?.latitude ?? 0, data?.longitude ?? 0));
+                              }
+
+                              return GoogleMap(
+                                padding: const EdgeInsets.only(bottom: 80),
+                                initialCameraPosition: CameraPosition(
+                                    target: LatLng(
+                                        state.studentStop?.latitude ?? 0,
+                                        state.studentStop?.longitude ?? 0),
+                                    zoom: 14.5),
+                                onMapCreated: (GoogleMapController controller) {
+                                  _mapController.complete(controller);
+                                },
+                                markers: {
+                                  ...?state.getTrackerStops?.vehicleStops
+                                      .map((e) => Marker(
+                                          markerId: MarkerId(e.stops),
+                                          position:
+                                              LatLng(e.latitude, e.longitude),
+                                          icon: e == state.studentStop
+                                              ? state.studentMarker!
+                                              : state.stopMarker!))
+                                      .toSet(),
+                                  Marker(
+                                      markerId: const MarkerId('School Bus'),
+                                      position: LatLng(data?.latitude ?? 0,
+                                          data?.longitude ?? 0),
+                                      icon: state.busMakerIcon ??
+                                          BitmapDescriptor.defaultMarker),
+                                },
+                                polylines: state.polyLines ?? {},
+                              );
+                            }),
+                        Positioned(
+                          top: 20,
+                          child: ValueListenableBuilder(
+                              valueListenable: state.getBusLiveLocation!,
+                              builder: (context, data, child) {
+                                return SizedBox(
+                                  height: size.height * 0.1,
+                                  width: size.width,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                          child: TrackerDetailWidget(
+                                        detail: data?.time ?? "",
+                                        descTitle: AppStrings.time,
+                                      )),
+                                      Expanded(
+                                          child: TrackerDetailWidget(
+                                        detail: data?.distance.toString() ?? "",
+                                        descTitle: AppStrings.distance,
+                                      )),
+                                      const Expanded(
+                                          child: TrackerDetailWidget(
+                                        detail: '\u24D8',
+                                        descTitle: AppStrings.info,
+                                      )),
+                                    ],
+                                  ),
+                                );
+                              }),
                         ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        width: size.width,
-                        height: SizeConfig.height(60),
-                        margin: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            color: AppColors.purpleLight.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            // crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                AppStrings.transIncharge,
-                                style: TextStyle(
-                                    color: AppColors.primaryColor,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: size.width,
+                            height: SizeConfig.height(60),
+                            margin: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: AppColors.purpleLight.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppStrings.transIncharge,
+                                    style: TextStyle(
+                                        color: AppColors.primaryColor,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  const Text('+91 - 8075776255',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600)),
+                                ],
                               ),
-                              const Text('+91 - 8075776255',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600)),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(
+                            right: 10,
+                            bottom: MediaQuery.of(context).size.height * 0.3,
+                            child: IconButton(
+                              icon: const Icon(Icons.my_location),
+                              onPressed: () {
+                                _updateCamara(LatLng(
+                                    state.studentStop?.latitude ?? 0,
+                                    state.studentStop?.longitude ?? 0));
+                              },
+                            ))
+                      ],
                     )
-                  ],
-                );
+                  : const SizedBox();
         },
       ),
     );
+  }
+
+  _updateCamara(LatLng latLng) async {
+    var mapController = await _mapController.future;
+    final _camaraPosistion = CameraPosition(
+        bearing: 192.8334901395799,
+        target: latLng,
+        tilt: 59.440717697143555,
+        zoom: 19.151926040649414);
+    mapController
+        .animateCamera(CameraUpdate.newCameraPosition(_camaraPosistion));
   }
 }

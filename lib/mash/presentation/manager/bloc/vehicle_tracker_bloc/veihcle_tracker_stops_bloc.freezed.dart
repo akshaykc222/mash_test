@@ -618,8 +618,14 @@ abstract class _AddPolyLines implements VehicleTrackerStopsEvent {
 mixin _$VehicleTrackerStopsState {
   StudentRouteEntity? get getTrackerStops => throw _privateConstructorUsedError;
   Set<Polyline>? get polyLines => throw _privateConstructorUsedError;
-  VehicleLocationEntity? get getBusLiveLocation =>
+  VehicleTrackerEntity? get studentStop => throw _privateConstructorUsedError;
+  double get distance => throw _privateConstructorUsedError;
+  String get time => throw _privateConstructorUsedError;
+  ValueNotifier<VehicleLocationEntity?>? get getBusLiveLocation =>
       throw _privateConstructorUsedError;
+  BitmapDescriptor? get busMakerIcon => throw _privateConstructorUsedError;
+  BitmapDescriptor? get studentMarker => throw _privateConstructorUsedError;
+  BitmapDescriptor? get stopMarker => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -636,7 +642,13 @@ abstract class $VehicleTrackerStopsStateCopyWith<$Res> {
   $Res call(
       {StudentRouteEntity? getTrackerStops,
       Set<Polyline>? polyLines,
-      VehicleLocationEntity? getBusLiveLocation,
+      VehicleTrackerEntity? studentStop,
+      double distance,
+      String time,
+      ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation,
+      BitmapDescriptor? busMakerIcon,
+      BitmapDescriptor? studentMarker,
+      BitmapDescriptor? stopMarker,
       bool isLoading});
 }
 
@@ -656,7 +668,13 @@ class _$VehicleTrackerStopsStateCopyWithImpl<$Res,
   $Res call({
     Object? getTrackerStops = freezed,
     Object? polyLines = freezed,
+    Object? studentStop = freezed,
+    Object? distance = null,
+    Object? time = null,
     Object? getBusLiveLocation = freezed,
+    Object? busMakerIcon = freezed,
+    Object? studentMarker = freezed,
+    Object? stopMarker = freezed,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -668,10 +686,34 @@ class _$VehicleTrackerStopsStateCopyWithImpl<$Res,
           ? _value.polyLines
           : polyLines // ignore: cast_nullable_to_non_nullable
               as Set<Polyline>?,
+      studentStop: freezed == studentStop
+          ? _value.studentStop
+          : studentStop // ignore: cast_nullable_to_non_nullable
+              as VehicleTrackerEntity?,
+      distance: null == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
       getBusLiveLocation: freezed == getBusLiveLocation
           ? _value.getBusLiveLocation
           : getBusLiveLocation // ignore: cast_nullable_to_non_nullable
-              as VehicleLocationEntity?,
+              as ValueNotifier<VehicleLocationEntity?>?,
+      busMakerIcon: freezed == busMakerIcon
+          ? _value.busMakerIcon
+          : busMakerIcon // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
+      studentMarker: freezed == studentMarker
+          ? _value.studentMarker
+          : studentMarker // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
+      stopMarker: freezed == stopMarker
+          ? _value.stopMarker
+          : stopMarker // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -692,7 +734,13 @@ abstract class _$$VehicleTrackerStopsStateImplCopyWith<$Res>
   $Res call(
       {StudentRouteEntity? getTrackerStops,
       Set<Polyline>? polyLines,
-      VehicleLocationEntity? getBusLiveLocation,
+      VehicleTrackerEntity? studentStop,
+      double distance,
+      String time,
+      ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation,
+      BitmapDescriptor? busMakerIcon,
+      BitmapDescriptor? studentMarker,
+      BitmapDescriptor? stopMarker,
       bool isLoading});
 }
 
@@ -711,7 +759,13 @@ class __$$VehicleTrackerStopsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getTrackerStops = freezed,
     Object? polyLines = freezed,
+    Object? studentStop = freezed,
+    Object? distance = null,
+    Object? time = null,
     Object? getBusLiveLocation = freezed,
+    Object? busMakerIcon = freezed,
+    Object? studentMarker = freezed,
+    Object? stopMarker = freezed,
     Object? isLoading = null,
   }) {
     return _then(_$VehicleTrackerStopsStateImpl(
@@ -723,10 +777,34 @@ class __$$VehicleTrackerStopsStateImplCopyWithImpl<$Res>
           ? _value._polyLines
           : polyLines // ignore: cast_nullable_to_non_nullable
               as Set<Polyline>?,
+      studentStop: freezed == studentStop
+          ? _value.studentStop
+          : studentStop // ignore: cast_nullable_to_non_nullable
+              as VehicleTrackerEntity?,
+      distance: null == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
       getBusLiveLocation: freezed == getBusLiveLocation
           ? _value.getBusLiveLocation
           : getBusLiveLocation // ignore: cast_nullable_to_non_nullable
-              as VehicleLocationEntity?,
+              as ValueNotifier<VehicleLocationEntity?>?,
+      busMakerIcon: freezed == busMakerIcon
+          ? _value.busMakerIcon
+          : busMakerIcon // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
+      studentMarker: freezed == studentMarker
+          ? _value.studentMarker
+          : studentMarker // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
+      stopMarker: freezed == stopMarker
+          ? _value.stopMarker
+          : stopMarker // ignore: cast_nullable_to_non_nullable
+              as BitmapDescriptor?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -743,7 +821,13 @@ class _$VehicleTrackerStopsStateImpl
   const _$VehicleTrackerStopsStateImpl(
       {this.getTrackerStops,
       final Set<Polyline>? polyLines,
+      this.studentStop,
+      this.distance = 0,
+      this.time = "",
       this.getBusLiveLocation,
+      this.busMakerIcon,
+      this.studentMarker,
+      this.stopMarker,
       this.isLoading = false})
       : _polyLines = polyLines;
 
@@ -760,14 +844,28 @@ class _$VehicleTrackerStopsStateImpl
   }
 
   @override
-  final VehicleLocationEntity? getBusLiveLocation;
+  final VehicleTrackerEntity? studentStop;
+  @override
+  @JsonKey()
+  final double distance;
+  @override
+  @JsonKey()
+  final String time;
+  @override
+  final ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation;
+  @override
+  final BitmapDescriptor? busMakerIcon;
+  @override
+  final BitmapDescriptor? studentMarker;
+  @override
+  final BitmapDescriptor? stopMarker;
   @override
   @JsonKey()
   final bool isLoading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'VehicleTrackerStopsState(getTrackerStops: $getTrackerStops, polyLines: $polyLines, getBusLiveLocation: $getBusLiveLocation, isLoading: $isLoading)';
+    return 'VehicleTrackerStopsState(getTrackerStops: $getTrackerStops, polyLines: $polyLines, studentStop: $studentStop, distance: $distance, time: $time, getBusLiveLocation: $getBusLiveLocation, busMakerIcon: $busMakerIcon, studentMarker: $studentMarker, stopMarker: $stopMarker, isLoading: $isLoading)';
   }
 
   @override
@@ -777,7 +875,13 @@ class _$VehicleTrackerStopsStateImpl
       ..add(DiagnosticsProperty('type', 'VehicleTrackerStopsState'))
       ..add(DiagnosticsProperty('getTrackerStops', getTrackerStops))
       ..add(DiagnosticsProperty('polyLines', polyLines))
+      ..add(DiagnosticsProperty('studentStop', studentStop))
+      ..add(DiagnosticsProperty('distance', distance))
+      ..add(DiagnosticsProperty('time', time))
       ..add(DiagnosticsProperty('getBusLiveLocation', getBusLiveLocation))
+      ..add(DiagnosticsProperty('busMakerIcon', busMakerIcon))
+      ..add(DiagnosticsProperty('studentMarker', studentMarker))
+      ..add(DiagnosticsProperty('stopMarker', stopMarker))
       ..add(DiagnosticsProperty('isLoading', isLoading));
   }
 
@@ -790,8 +894,19 @@ class _$VehicleTrackerStopsStateImpl
                 other.getTrackerStops == getTrackerStops) &&
             const DeepCollectionEquality()
                 .equals(other._polyLines, _polyLines) &&
+            (identical(other.studentStop, studentStop) ||
+                other.studentStop == studentStop) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance) &&
+            (identical(other.time, time) || other.time == time) &&
             (identical(other.getBusLiveLocation, getBusLiveLocation) ||
                 other.getBusLiveLocation == getBusLiveLocation) &&
+            (identical(other.busMakerIcon, busMakerIcon) ||
+                other.busMakerIcon == busMakerIcon) &&
+            (identical(other.studentMarker, studentMarker) ||
+                other.studentMarker == studentMarker) &&
+            (identical(other.stopMarker, stopMarker) ||
+                other.stopMarker == stopMarker) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -801,7 +916,13 @@ class _$VehicleTrackerStopsStateImpl
       runtimeType,
       getTrackerStops,
       const DeepCollectionEquality().hash(_polyLines),
+      studentStop,
+      distance,
+      time,
       getBusLiveLocation,
+      busMakerIcon,
+      studentMarker,
+      stopMarker,
       isLoading);
 
   @JsonKey(ignore: true)
@@ -816,7 +937,13 @@ abstract class _VehicleTrackerStopsState implements VehicleTrackerStopsState {
   const factory _VehicleTrackerStopsState(
       {final StudentRouteEntity? getTrackerStops,
       final Set<Polyline>? polyLines,
-      final VehicleLocationEntity? getBusLiveLocation,
+      final VehicleTrackerEntity? studentStop,
+      final double distance,
+      final String time,
+      final ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation,
+      final BitmapDescriptor? busMakerIcon,
+      final BitmapDescriptor? studentMarker,
+      final BitmapDescriptor? stopMarker,
       final bool isLoading}) = _$VehicleTrackerStopsStateImpl;
 
   @override
@@ -824,7 +951,19 @@ abstract class _VehicleTrackerStopsState implements VehicleTrackerStopsState {
   @override
   Set<Polyline>? get polyLines;
   @override
-  VehicleLocationEntity? get getBusLiveLocation;
+  VehicleTrackerEntity? get studentStop;
+  @override
+  double get distance;
+  @override
+  String get time;
+  @override
+  ValueNotifier<VehicleLocationEntity?>? get getBusLiveLocation;
+  @override
+  BitmapDescriptor? get busMakerIcon;
+  @override
+  BitmapDescriptor? get studentMarker;
+  @override
+  BitmapDescriptor? get stopMarker;
   @override
   bool get isLoading;
   @override
