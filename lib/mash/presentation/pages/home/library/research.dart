@@ -6,6 +6,7 @@ import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_libr
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../utils/app_colors.dart';
@@ -36,36 +37,37 @@ class _ResearchScreenState extends State<ResearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: commonAppbar(title: "Research"),
         body: BlocConsumer<DigitalLibraryBloc, DigitalLibraryState>(
-      listenWhen: (previous, current) =>
-          previous.getLibrary?.status != current.getLibrary?.status,
-      listener: (context, state) {
-        if (state.getLibrary?.status == Status.ERROR) {
-          handleErrorUi(context: context, error: state.getLibrary?.error);
-        }
-      },
-      buildWhen: (previous, current) =>
-          previous.getLibrary?.status != current.getLibrary?.status,
-      builder: (context, state) {
-        return state.getLibrary?.status == Status.LOADING
-            ? HelperClasses.shimmerPlacerHolderGrid()
-            : state.getLibrary?.status == Status.COMPLETED
-                ? state.getLibrary?.data?.isEmpty == true
-                    ? HelperClasses.emptyDataWidget()
-                    : GridView.builder(
-                        itemCount: state.getLibrary?.data?.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2),
-                        itemBuilder: (context, index) {
-                          return ResearchTile(
-                            entity: state.getLibrary!.data![index],
-                          );
-                        },
-                      )
-                : const SizedBox();
-      },
-    ));
+          listenWhen: (previous, current) =>
+              previous.getLibrary?.status != current.getLibrary?.status,
+          listener: (context, state) {
+            if (state.getLibrary?.status == Status.ERROR) {
+              handleErrorUi(context: context, error: state.getLibrary?.error);
+            }
+          },
+          buildWhen: (previous, current) =>
+              previous.getLibrary?.status != current.getLibrary?.status,
+          builder: (context, state) {
+            return state.getLibrary?.status == Status.LOADING
+                ? HelperClasses.shimmerPlacerHolderGrid()
+                : state.getLibrary?.status == Status.COMPLETED
+                    ? state.getLibrary?.data?.isEmpty == true
+                        ? HelperClasses.emptyDataWidget()
+                        : GridView.builder(
+                            itemCount: state.getLibrary?.data?.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemBuilder: (context, index) {
+                              return ResearchTile(
+                                entity: state.getLibrary!.data![index],
+                              );
+                            },
+                          )
+                    : const SizedBox();
+          },
+        ));
   }
 }
 
