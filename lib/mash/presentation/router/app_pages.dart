@@ -39,7 +39,7 @@ class AppPages {
   static const physicalLibraryScreen = '/physicalLibraryScreen';
 
   // support
-  static const supportScreen = '/supportScreen';
+  static const supportScreen = '/mash_support';
 
   //leave
   static const leaveScreen = '/leave';

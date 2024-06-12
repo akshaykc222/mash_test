@@ -21,10 +21,9 @@ part 'library_event.dart';
 part 'library_state.dart';
 part 'library_bloc.freezed.dart';
 
-
 @injectable
 class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
-  LibraryBloc() : super( LibraryState.initial()) {
+  LibraryBloc() : super(LibraryState.initial()) {
     on<LibraryEvent>((event, emit) {
       // TODO: implement event handler
     });
@@ -32,32 +31,49 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     on<_GetPhysicalLibraryFilterData>(_getPhysicalLibraryFilterData);
   }
 
-  final GetPhysicalLibraryUseCase getPhysicalLibraryUseCase = getIt<GetPhysicalLibraryUseCase>();
+  final GetPhysicalLibraryUseCase getPhysicalLibraryUseCase =
+      getIt<GetPhysicalLibraryUseCase>();
   final GetUserInfoUseCase getUserInfoUseCase = getIt<GetUserInfoUseCase>();
-  final GetRequiredPhysicalLibraryDataUseCase getRequiredPhysicalLibraryDataUseCase = getIt<GetRequiredPhysicalLibraryDataUseCase>();
+  final GetRequiredPhysicalLibraryDataUseCase
+      getRequiredPhysicalLibraryDataUseCase =
+      getIt<GetRequiredPhysicalLibraryDataUseCase>();
 
-  Future<FutureOr<void>> _getPhysicalLibraryItems(_GetPhysicalLibrary event, Emitter<LibraryState> emit) async {
+  Future<FutureOr<void>> _getPhysicalLibraryItems(
+      _GetPhysicalLibrary event, Emitter<LibraryState> emit) async {
     emit(state.copyWith(getPhysicalLibrary: ResponseClassify.loading()));
-    try{
+    try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
       // var reqData = await getRequiredPhysicalLibraryDataUseCase.call(params);
-      var response = await getPhysicalLibraryUseCase.call(GetPhysicalLibraryRequest(pCompId: loginInfo?.compId ?? '', prmLanguageId: event.prmLangId ??'', prmAuthorId: event.prmAuthId??'', prmSearch: event.prmSearch??'', prmBookDtlsId: '-1', prmOffset: '0', prmLimit: '50'));
-      emit(state.copyWith(getPhysicalLibrary: ResponseClassify.completed(response)));
-    }catch(e){
+      var response = await getPhysicalLibraryUseCase.call(
+          GetPhysicalLibraryRequest(
+              pCompId: loginInfo?.compId ?? '',
+              prmLanguageId: event.prmLangId ?? '',
+              prmAuthorId: event.prmAuthId ?? '',
+              prmSearch: event.prmSearch ?? '',
+              prmBookDtlsId: '-1',
+              prmOffset: '0',
+              prmLimit: '50'));
+      emit(state.copyWith(
+          getPhysicalLibrary: ResponseClassify.completed(response)));
+    } catch (e) {
       emit(state.copyWith(getPhysicalLibrary: ResponseClassify.error(e)));
     }
   }
 
-  Future<FutureOr<void>> _getPhysicalLibraryFilterData(_GetPhysicalLibraryFilterData event, Emitter<LibraryState> emit) async {
-
+  Future<FutureOr<void>> _getPhysicalLibraryFilterData(
+      _GetPhysicalLibraryFilterData event, Emitter<LibraryState> emit) async {
     emit(state.copyWith(getRequiredFilterData: ResponseClassify.loading()));
-    try{
+    try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
-      var response = await getRequiredPhysicalLibraryDataUseCase.call(GetRequiredLibraryDataRequest(pCompId: loginInfo?.compId ?? '', pSearch: '-1'));
-       emit(state.copyWith(getRequiredFilterData: ResponseClassify.completed(response)));
-    }catch(e){
+      var response = await getRequiredPhysicalLibraryDataUseCase.call(
+          GetRequiredLibraryDataRequest(
+              pCompId: loginInfo?.compId ?? '', pSearch: '-1'));
+      emit(state.copyWith(
+          getRequiredFilterData: ResponseClassify.completed(response)));
+    } catch (e) {
       emit(state.copyWith(getRequiredFilterData: ResponseClassify.error(e)));
     }
   }
+
   static LibraryBloc get(context) => BlocProvider.of(context);
 }

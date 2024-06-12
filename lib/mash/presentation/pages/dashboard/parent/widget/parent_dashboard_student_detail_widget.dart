@@ -189,13 +189,19 @@ class _ContactRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
             },
             child: const _IconWidget(img: AppAssets.chat),
           ),
-          const _IconWidget(img: AppAssets.call),
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {},
+            child: const _IconWidget(img: AppAssets.call),
+          ),
+          GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               GoRouter.of(context).pushNamed(AppPages.teacherRatingListScreen);
             },

@@ -29,26 +29,23 @@ part 'time_table_bloc.freezed.dart';
 @injectable
 class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
   TimeTableBloc() : super(TimeTableState.initial()) {
-    on<TimeTableEvent>((event, emit) {
-      // TODO: implement event handler
-    });
     on<_GetOfflineExamTerms>(_getOfflineExamTerm);
     on<_GetOfflineExamTimeTable>(_getOfflineExamTimeTable);
     on<_GetDailyTimeTable>(_getDailyTimeTable);
-    
   }
   final GetUserInfoUseCase getUserInfoUseCase = getIt<GetUserInfoUseCase>();
   final GetOfflineExamTimeTableUseCase getOfflineExamTimeTableUseCase =
-  getIt<GetOfflineExamTimeTableUseCase>();
+      getIt<GetOfflineExamTimeTableUseCase>();
   final GetOfflineExamTermsUseCase getOfflineExamTermsUseCase =
-  getIt<GetOfflineExamTermsUseCase>();
+      getIt<GetOfflineExamTermsUseCase>();
   final GetSiblingsUseCase getSiblingsUseCase = getIt<GetSiblingsUseCase>();
-  final GetDailyTimeTableUseCase getDailyTimeTableUseCase = getIt<GetDailyTimeTableUseCase>();
+  final GetDailyTimeTableUseCase getDailyTimeTableUseCase =
+      getIt<GetDailyTimeTableUseCase>();
 
   static TimeTableBloc get(context) => BlocProvider.of(context);
 
-  FutureOr<void> _getOfflineExamTerm(_GetOfflineExamTerms event,
-      Emitter<TimeTableState> emit) async {
+  FutureOr<void> _getOfflineExamTerm(
+      _GetOfflineExamTerms event, Emitter<TimeTableState> emit) async {
     emit(state.copyWith(getOfflineExamTerms: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
@@ -69,13 +66,18 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     }
   }
 
-  FutureOr<void> _getOfflineExamTimeTable(_GetOfflineExamTimeTable event,
-      Emitter<TimeTableState> emit) async {
+  FutureOr<void> _getOfflineExamTimeTable(
+      _GetOfflineExamTimeTable event, Emitter<TimeTableState> emit) async {
     emit(state.copyWith(getOfflineExamTimeTable: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
       var siblingInfo = await getSiblingsUseCase.call(loginInfo?.compId ?? '');
-      var response = await getOfflineExamTimeTableUseCase.call(ExamTimeTableRequest(companyId: loginInfo?.compId ?? '', pAcademicId: loginInfo?.academicId ?? '', pKidId:siblingInfo[0].userId ?? '', termId:event.termId));
+      var response = await getOfflineExamTimeTableUseCase.call(
+          ExamTimeTableRequest(
+              companyId: loginInfo?.compId ?? '',
+              pAcademicId: loginInfo?.academicId ?? '',
+              pKidId: siblingInfo[0].userId ?? '',
+              termId: event.termId));
       /*var response = await getOfflineExamTimeTableUseCase.call(
           ExamTimeTableRequest(
               companyId: '200001',
@@ -89,11 +91,16 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     }
   }
 
-  Future<FutureOr<void>> _getDailyTimeTable(_GetDailyTimeTable event, Emitter<TimeTableState> emit) async {
+  Future<FutureOr<void>> _getDailyTimeTable(
+      _GetDailyTimeTable event, Emitter<TimeTableState> emit) async {
     emit(state.copyWith(getDailyTimeTable: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
-       var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: loginInfo?.compId ?? '', userType: loginInfo?.userType ?? '', pDate: event.date, pStudentId: loginInfo?.studentId ?? ''));
+      var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(
+          compId: loginInfo?.compId ?? '',
+          userType: loginInfo?.userType ?? '',
+          pDate: event.date,
+          pStudentId: loginInfo?.studentId ?? ''));
       // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: "200001", userType: '2', pDate: event.date, pStudentId: '1000152'));
       emit(state.copyWith(
           getDailyTimeTable: ResponseClassify.completed(response)));
@@ -102,6 +109,3 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     }
   }
 }
-
-
-

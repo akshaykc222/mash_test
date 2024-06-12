@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mash/core/hive_service.dart';
+import 'package:mash/mash/data/local/models/login_local_model.dart';
+import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -61,6 +65,7 @@ import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker
 import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
@@ -91,32 +96,35 @@ class AppRouteManager {
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
-    var getUser = getIt<GetUserInfoUseCase>();
+    // var getUser = getIt<GetUserInfoUseCase>();
 
     return FutureBuilder(
-      future: getUser.call(NoParams()),
+      future: HiveService()
+          .getBox<LoginLocalModel>(boxName: LocalStorageNames.userInfo),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          var user = snapshot.data;
-          if (user == null) {
-            return const LoginScreen();
-          } else {
-            switch (getUserType(user.userType)) {
-              case UserTypes.staff:
-                return staff;
-              case UserTypes.student:
-                return student;
-              case UserTypes.parent:
-                return parent;
-              default:
-                return const SizedBox();
-            }
-          }
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+        return snapshot.hasData
+            ? ValueListenableBuilder(
+                valueListenable: snapshot.data!.listenable(),
+                builder: (context, data, _) {
+                  if (data.isNotEmpty) {
+                    var user = data.values.first;
+
+                    switch (getUserType(user.userType)) {
+                      case UserTypes.staff:
+                        return staff;
+                      case UserTypes.student:
+                        return student;
+                      case UserTypes.parent:
+                        return parent;
+                      default:
+                        return const SizedBox();
+                    }
+                  } else {
+                    return const Loader();
+                  }
+                },
+              )
+            : const Loader();
       },
     );
   }

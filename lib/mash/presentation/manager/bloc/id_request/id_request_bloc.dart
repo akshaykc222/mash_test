@@ -54,7 +54,7 @@ class IdRequestBloc extends Bloc<IdRequestEvent, IdRequestState> {
       var response = await postUserUseCase.call(PostIdRequest(
           pUserId: loginInfo?.usrId ?? '',
           pReqId: event.reqId,
-          pCreatedBy: event.userId ?? '',
+          pCreatedBy: event.userId,
           compId: loginInfo?.compId ?? '',
           remarks: event.remarks));
 

@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
@@ -43,18 +41,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   }
 
   feedbackBody(BuildContext context) {
-    List<String> options = [
-      'option 1',
-      'option 2',
-      'option 2',
-      'option 2',
-      'option 2',
-      'option 3',
-      'option 3',
-      'option 3',
-      'option 3',
-      'option 3'
-    ];
     var size = MediaQuery.sizeOf(context);
     return SingleChildScrollView(
       child: Container(
@@ -64,14 +50,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            titleText(AppStrings.selectModule),
-            CommonGestureDetector(
-              onTap: () => _openOptionsBottomSheet(
-                  context, _moduleController, options, AppStrings.selectModule),
-              textController: _moduleController,
-              hintText: 'Select Module',
-              icon: Icons.arrow_drop_down_circle_sharp,
-            ),
             spacer20,
             Align(
               alignment: Alignment.center,

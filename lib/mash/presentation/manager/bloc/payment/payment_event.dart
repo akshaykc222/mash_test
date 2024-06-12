@@ -41,5 +41,6 @@ class PaymentEvent with _$PaymentEvent {
     String? remark,
     String? studenId,
     String? mobile,
+    String? installMentId,
   }) = _GetPaymentCompleteResponse;
 }

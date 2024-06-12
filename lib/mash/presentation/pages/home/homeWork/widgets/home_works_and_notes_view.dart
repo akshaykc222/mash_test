@@ -9,6 +9,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
@@ -59,66 +60,54 @@ class _HomeworksAndNoteViewState extends State<HomeworksAndNoteView> {
       endDrawer: const DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.centerRight,
-              height: SizeConfig.height(35),
-              child: Image.asset(AppAssets.tekieImg),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: BlocBuilder<HomeWorkNotesBloc, HomeWorkNotesState>(
-                builder: (context, state) {
-                  //home work state
-                  final homeWorkData = state.homeWorkReportResponse;
-                  final homeWorkDataStatus = homeWorkData.status;
-                  final homeWorkDataItems = homeWorkData.data;
+        child: BlocBuilder<HomeWorkNotesBloc, HomeWorkNotesState>(
+          builder: (context, state) {
+            //home work state
+            final homeWorkData = state.homeWorkReportResponse;
+            final homeWorkDataStatus = homeWorkData.status;
+            final homeWorkDataItems = homeWorkData.data;
 
-                  //note state
-                  final notesData = state.noteWorkReportResponse;
-                  final notesDataStatus = notesData.status;
-                  final notesDataItems = notesData.data;
+            //note state
+            final notesData = state.noteWorkReportResponse;
+            final notesDataStatus = notesData.status;
+            final notesDataItems = notesData.data;
 
-                  if (homeWorkDataStatus == Status.initial ||
-                      homeWorkDataStatus == Status.LOADING ||
-                      notesDataStatus == Status.initial ||
-                      notesDataStatus == Status.LOADING) {
-                    return const Loader();
-                  } else if (homeWorkDataItems?.isEmpty == true ||
-                      notesDataItems?.isEmpty == true) {
-                    return const Text("no data found");
-                  } else {
-                    return ListView.separated(
-                      itemCount: isHomeWork
-                          ? homeWorkDataItems?.length ?? 0
-                          : notesDataItems?.length ?? 0,
-                      separatorBuilder: (context, index) => spacer10,
-                      itemBuilder: (context, index) {
-                        final item = homeWorkDataItems?[index];
-                        return isHomeWork
-                            ? HomeworkCard(
-                                subject: item?.description ?? "",
-                                task: item?.document ?? "",
-                                assignedDate: item?.createdDate ?? "",
-                                submissionDate: item?.submitDate ?? "",
-                                onTap: () {
-                                  context.pushNamed(
-                                      AppPages.homeWorksViewDetailsScreen,
-                                      extra: item?.workId);
-                                },
-                              )
-                            : NotesTile(
-                                notesData: notesDataItems!,
-                                index: index,
-                              );
-                      },
-                    );
-                  }
+            if (homeWorkDataStatus == Status.initial ||
+                homeWorkDataStatus == Status.LOADING ||
+                notesDataStatus == Status.initial ||
+                notesDataStatus == Status.LOADING) {
+              return const Loader();
+            } else if (homeWorkDataItems?.isEmpty == true ||
+                notesDataItems?.isEmpty == true) {
+              return HelperClasses.emptyDataWidget();
+            } else {
+              return ListView.separated(
+                itemCount: isHomeWork
+                    ? homeWorkDataItems?.length ?? 0
+                    : notesDataItems?.length ?? 0,
+                separatorBuilder: (context, index) => spacer10,
+                itemBuilder: (context, index) {
+                  final item = homeWorkDataItems?[index];
+                  return isHomeWork
+                      ? HomeworkCard(
+                          subject: item?.description ?? "",
+                          task: item?.document ?? "",
+                          assignedDate: item?.createdDate ?? "",
+                          submissionDate: item?.submitDate ?? "",
+                          onTap: () {
+                            context.pushNamed(
+                                AppPages.homeWorksViewDetailsScreen,
+                                extra: item?.workId);
+                          },
+                        )
+                      : NotesTile(
+                          notesData: notesDataItems!,
+                          index: index,
+                        );
                 },
-              ),
-            ),
-          ],
+              );
+            }
+          },
         ),
       ),
     );

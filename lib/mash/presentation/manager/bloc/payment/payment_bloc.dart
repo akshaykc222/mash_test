@@ -18,7 +18,6 @@ import 'package:mash/mash/data/remote/request/payment_save_response.dart';
 import 'package:mash/mash/data/remote/request/payment_status_update_request.dart';
 import 'package:mash/mash/data/remote/request/payment_token_request.dart';
 import 'package:mash/mash/data/remote/request/payment_uniqueid_request.dart';
-import 'package:mash/mash/domain/entities/payment/payment_complete_response_entity.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart';
@@ -81,7 +80,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
               ? 0
               : int.parse(event.trackId ?? ''),
           companyId: userInfo?.compId ?? "",
-          studentId: 'MGS1000513',
+          studentId: event.userId,
           academicId: userInfo?.academicId ?? '',
           actionId: event.paymentStatusType == PaymentStatusType.transaction
               ? '2'
@@ -98,7 +97,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         final Set<String?> dueId =
             data.where((e) => e.isDue == '1').map((e) => e.feeTrackId).toSet();
         final totalAmount = data
-            .where((i) => i.isDue == '1')
+            .where((i) => dueId.contains(i.feeTrackId))
             .fold(0, (sum, i) => sum + int.parse(i.feeAmountBalance ?? '0'));
         emit(state.copyWith(
           paymentDashboardResponse: ResponseClassify.completed(data),
@@ -133,7 +132,12 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     } else {
       currentSet.add(event.id);
     }
-    emit(state.copyWith(selectedCheckboxItems: currentSet));
+    final totalAmount = state.paymentDashboardResponse.data!
+        .where((i) => currentSet.contains(i.feeTrackId))
+        .fold(0, (sum, i) => sum + int.parse(i.feeAmountBalance ?? '0'));
+    emit(state.copyWith(
+        selectedCheckboxItems: currentSet,
+        totalAmount: totalAmount.toString()));
   }
 
   _getPaymentFinalAmount(
@@ -141,11 +145,11 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     emit(state.copyWith(totalAmount: '0'));
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
-
+      prettyPrint('installment id ${event.installmentId}');
       final data = await getPaymentFinalAmountUsecase.call(PaymentFinalRequest(
           pCompId: userInfo?.compId ?? '',
           pInstallmentId: event.installmentId,
-          pStudentId: 'MGS1000513',
+          pStudentId: event.studentId,
           pTotalAmount: event.totalAmount));
       emit(state.copyWith(totalAmount: data));
 
@@ -173,7 +177,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         academicId: user?.academicId,
       ));
       add(_GetPaymentTokenAndOpenPayment(
-        studentId: 'MGS1000513',
+        studentId: event.studentId,
         installmentId: event.installmentId,
         remark: event.remark,
         email: event.email,
@@ -196,15 +200,14 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       compId: user?.compId ?? "",
       orderId: event.orderId,
       orderAmount: state.totalAmount,
-      studentId: 'MGS1000513',
+      studentId: event.studentId,
       userName: event.student,
       userEmail: event.email,
       userMob: event.mobile,
       userRemark: event.remark,
       platform: "UAT",
     ));
-    if (sessionTokenData.cfOrderId.isNotEmpty) {
-    } else {}
+    if (sessionTokenData.cfOrderId.isNotEmpty) {}
     try {
       var session = CFSessionBuilder()
           .setEnvironment(CFEnvironment.SANDBOX)
@@ -215,16 +218,25 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           CFWebCheckoutPaymentBuilder().setSession(session).build();
       var cfpaymenteGateway = CFPaymentGatewayService();
       cfpaymenteGateway.setCallback((orderId) {
-        add(_GetPaymentCompleteResponse(orderId: orderId));
+        add(_GetPaymentCompleteResponse(
+            installMentId: event.installmentId,
+            orderId: orderId,
+            email: event.email,
+            remark: event.remark,
+            userName: event.student,
+            studenId: event.studentId,
+            mobile: event.mobile));
 
         prettyPrint('callback first ${orderId.toString()}');
       }, (response, orderId) {
         add(_GetPaymentCompleteResponse(
+          installMentId: event.installmentId,
           orderId: orderId,
           email: event.email,
           remark: event.remark,
           userName: event.student,
-          studenId: 'MGS1000513',
+          studenId: event.studentId,
+          mobile: event.mobile,
         ));
         prettyPrint(
             'callbad second response================= ${response.toString()} p1 ==========${orderId.toString()}');
@@ -248,10 +260,10 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         orderId: event.orderId ?? "",
         platform: "UAT",
       ));
-
+      prettyPrint('data from get payment complete response $data');
       //if reponse is success call payment status update
       if (data.cfOrderId != null) {
-        postPaymentStatusUpdateUsecase.call(PaymentStatusUpdateRequest(
+        await postPaymentStatusUpdateUsecase.call(PaymentStatusUpdateRequest(
           compId: userInfo?.compId ?? "",
           orderId: data.orderId ?? "",
           paymentStatus: data.orderStatus ?? "",
@@ -265,7 +277,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         await savePaymentResponseUsecase.call(PaymentSaveResponseRequest(
           pCompId: userInfo?.compId,
           pStudentId: event.studenId,
-          pInstalmentId: data.orderId,
+          pInstalmentId: event.installMentId,
           pTotalAmount: data.orderAmount,
           pUserName: event.userName,
           pUserMob: event.mobile,
