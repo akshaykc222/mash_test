@@ -48,8 +48,11 @@ class AppRemoteRoutes {
   static const newsBoard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNewsBoardView";
   static const roleMenu = "UATRESTAPI/MashFlutterRestAPI/api/user/getMenu";
+
   static const termDetails =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
+  static const scoreBoardDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getScoreBoardDtls";
   // vehicle tracker url
   static const vehicleTrackerStops =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";

@@ -54,11 +54,13 @@ class StudenProfileWidget extends StatelessWidget {
                     ],
                   ),
                   _UserInfo(user: user),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    color: AppColors.white,
-                    size: SizeConfig.height(24),
-                  ),
+                  state.getSiblings?.data?.isEmpty ?? true
+                      ? const SizedBox()
+                      : Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.white,
+                          size: SizeConfig.height(24),
+                        ),
                 ],
               ),
             ),

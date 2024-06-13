@@ -823,7 +823,7 @@ class _$VehicleTrackerStopsStateImpl
       final Set<Polyline>? polyLines,
       this.studentStop,
       this.distance = 0,
-      this.time = '0',
+      this.time = "",
       this.getBusLiveLocation,
       this.busMakerIcon,
       this.studentMarker,

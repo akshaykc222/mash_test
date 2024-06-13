@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/dashboard_common_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/subject_perfomance_widget.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -17,13 +20,10 @@ class ParentDashboardLastSection extends StatefulWidget {
 
 class ParentDashboardLastSectionState
     extends State<ParentDashboardLastSection> {
-  late final ValueNotifier<String> performanceValue;
-
   @override
   void initState() {
-    performanceValue =
-        ValueNotifier<String>(AppStrings.dashboardPerformanceList.first);
-
+    BlocProvider.of<DashboardBloc>(context)
+        .add(const DashboardEvent.getTermDetailsEvent());
     super.initState();
   }
 
@@ -55,31 +55,51 @@ class ParentDashboardLastSectionState
   }
 
   Widget _buildPerformanceSelectWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(AppStrings.performance, style: _titleStyle()),
-        const Spacer(),
-        TextButton(
-          onPressed: () => _showPerformanceSelection(),
-          child: ValueListenableBuilder(
-            valueListenable: performanceValue,
-            builder: (context, value, _) {
-              return Row(
+    return InkWell(
+      onTap: () => _showPerformanceSelection(),
+      splashColor: AppColors.primaryColor.withOpacity(0.2),
+      child: Row(
+        children: [
+          Text(AppStrings.performance, style: _titleStyle()),
+          spacerWidth20,
+          BlocBuilder<DashboardBloc, DashboardState>(
+            builder: (context, state) => Expanded(
+              child: Row(
                 children: [
-                  Text(
-                    performanceValue.value,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      state.termDetailsResponse?.data?[state.selectedTermIndex]
+                              .sectionName ??
+                          "",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.primaryColor,
+                      ),
+                      textAlign: TextAlign.start,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
                   ),
-                  const SizedBox(width: 4),
-                  const Icon(Icons.arrow_forward_ios, size: 12),
+                  spacerWidth20,
+                  Card(
+                    shape: const CircleBorder(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                  ),
                 ],
-              );
-            },
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -93,30 +113,46 @@ class ParentDashboardLastSectionState
   }
 
   Widget _buildPerformanceSelection() {
-    return Column(
-      children: AppStrings.dashboardPerformanceList.map((performance) {
-        final isSelected = performance == performanceValue.value;
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              performance,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: isSelected ? Colors.deepPurple : AppColors.black,
-              ),
-            ),
-            Radio(
-              value: true,
-              groupValue: isSelected,
-              onChanged: (value) {
-                performanceValue.value = performance;
-              },
-            ),
-          ],
+    return BlocBuilder<DashboardBloc, DashboardState>(
+      builder: (context, state) {
+        if (state.termDetailsResponse?.data == null) {
+          return const Center(child: Text('No data found'));
+        }
+
+        return ListView.builder(
+          itemCount: state.termDetailsResponse!.data!.length,
+          itemBuilder: (context, index) {
+            final performance = state.termDetailsResponse!.data![index];
+            final isSelected = performance.sectionName ==
+                state.termDetailsResponse?.data?[state.selectedTermIndex]
+                    .sectionName;
+
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  performance.sectionName!,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: isSelected ? Colors.deepPurple : Colors.black,
+                  ),
+                ),
+                Radio(
+                  value: isSelected,
+                  groupValue: true,
+                  onChanged: (value) {
+                    BlocProvider.of<DashboardBloc>(context).add(
+                      DashboardEvent.selectedTermIndexEvent(index),
+                    );
+                    context.pop();
+                  },
+                ),
+              ],
+            );
+          },
         );
-      }).toList(),
+      },
     );
   }
 
