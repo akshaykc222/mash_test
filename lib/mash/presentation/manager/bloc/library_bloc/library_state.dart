@@ -4,7 +4,7 @@ part of 'library_bloc.dart';
 class LibraryState with _$LibraryState {
 
   const factory LibraryState({
-    ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary,ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData
+    ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary,ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData,ResponseClassify<String>? postPhysicalLibraryRequest
   }) = _LibraryState;
 
 

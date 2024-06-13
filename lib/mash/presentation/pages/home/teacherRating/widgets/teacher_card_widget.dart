@@ -10,7 +10,8 @@ class TeacherCardWidget extends StatelessWidget {
     required this.teacherName,
     required this.subjectName,
     required this.rating,
-    required this.onTap
+    required this.onTap,
+    required this.isRated
   });
 
   final String imageUrl;
@@ -18,6 +19,7 @@ class TeacherCardWidget extends StatelessWidget {
   final String subjectName;
   final String rating;
   final VoidCallback onTap;
+  final bool isRated;
 
   @override
   Widget build(BuildContext context) {
@@ -27,66 +29,58 @@ class TeacherCardWidget extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
         height: SizeConfig.height(100),
         decoration: BoxDecoration(
-            color: AppColors.white,
+            color: isRated == true ?Colors.red.shade100 : AppColors.white,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
+                color: Colors.purple.withOpacity(0.3),
                 spreadRadius: 1,
-                blurRadius: 9,
+                blurRadius: 4,
                 offset: const Offset(0, 0),
               )
             ]
         ),
-        child: Center(
-          child: ListTile(
-            visualDensity: const VisualDensity(horizontal: -4, vertical: 0),
-            dense: false,
-            contentPadding: const EdgeInsets.all(0),
-            leading:  Transform(
-              transform: Matrix4.translationValues(-16, 0.0, 0.0),
-              child: CircleAvatar(radius: 60,
-              backgroundImage: CachedNetworkImageProvider(imageUrl,),
-              ),
-            ),
-            title:  Transform(
-                transform: Matrix4.translationValues(-20, 0.0, 0.0),
-                child: Text(teacherName,style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w600),)),
-            subtitle:  Transform(
-                transform: Matrix4.translationValues(-20, 0.0, 0.0),
-                child: Text('Subject : $subjectName',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w600),)),
-            trailing: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: SizedBox(
-                height: SizeConfig.height(150),
-                // width: SizeConfig.width(50),
-                child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const Icon(Icons.star,color: Colors.yellow,),
-                    spacer4,
-                    Container(
-                      width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.yellow.shade700
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(rating,style: TextStyle(fontSize: 16,color: AppColors.white),),
-                              spacerWidth6,
-                              const Icon(Icons.star,color: Colors.yellow,),
-                            ],
-                          ),
-                        )),
-                  ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Center(
+            child: ListTile(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: 0),
+              dense: false,
+              contentPadding: const EdgeInsets.all(0),
+              leading:  ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                clipBehavior: Clip.hardEdge,
+                child: Container(
+                  width: SizeConfig.width(60),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: CachedNetworkImageProvider(imageUrl,)
+                    )
+                  )
                 ),
               ),
+              title:  Text(teacherName,style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),
+              subtitle:  Text('Subject : $subjectName',style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400),),
+              trailing: Container(
+                height: SizeConfig.height(30),
+                  width: SizeConfig.width(60),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: isRated ? Colors.red.shade200 : AppColors.yellow
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(rating,style: TextStyle(fontSize: SizeConfig.textSize(15),color: AppColors.white),),
+                        spacerWidth6,
+                         Icon(Icons.star,color: AppColors.white,size: 15,),
+                      ],
+                    ),
+                  )),
             ),
           ),
         ),

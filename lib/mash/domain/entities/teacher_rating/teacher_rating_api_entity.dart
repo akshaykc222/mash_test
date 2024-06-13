@@ -2,37 +2,37 @@ import 'package:equatable/equatable.dart';
 
 
 class TeacherRatingEntity extends Equatable {
-  final String teacher;
-  final String subject;
+  final String teacherId;
+  final String subjectId;
   final String fullName;
-  final String subName;
-  final String subject1;
+  final String subjectName;
   final String docName;
-  final double rating;
+  final String rating;
   final bool ratedOrNot;
+  final String primaryMobile;
+  final String primaryEmail;
 
-  const TeacherRatingEntity({
-    required this.teacher,
-    required this.subject,
-    required this.fullName,
-    required this.subName,
-    required this.subject1,
-    required this.docName,
-    required this.rating,
-    required this.ratedOrNot,
-  });
+  const TeacherRatingEntity({required this.teacherId, required this.subjectId, required this.fullName, required this.subjectName, required this.docName, required this.rating, required this.ratedOrNot, required this.primaryMobile, required this.primaryEmail});
+
+
+
+
+
+
 
 
   @override
   List<Object> get props =>
       [
-        teacher,
-        subject,
+        teacherId,
+        subjectId,
         fullName,
-        subName,
-        subject1,
+        subjectName,
+        docName,
         docName,
         rating,
         ratedOrNot,
+        primaryMobile,
+        primaryEmail
       ];
 }

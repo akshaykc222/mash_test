@@ -3,32 +3,35 @@
 import 'package:mash/mash/domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 
 class TeacherRatingModel extends TeacherRatingEntity{
-  const TeacherRatingModel({required super.teacher, required super.subject, required super.fullName, required super.subName, required super.subject1, required super.docName, required super.rating, required super.ratedOrNot});
+  const TeacherRatingModel({required super.teacherId, required super.subjectId, required super.fullName, required super.subjectName, required super.docName, required super.rating, required super.ratedOrNot, required super.primaryMobile, required super.primaryEmail});
+
 
 
   factory TeacherRatingModel.fromJson(Map<String, dynamic> json) {
     return TeacherRatingModel(
-      teacher: json['TEACHER'],
-      subject: json['SUBJECT'],
-      fullName: json['FULL_NAME'],
-      subName: json['SUB_NAME'],
-      subject1: json['SUBJECT1'],
-      docName: json['DOC_NAME'],
-      rating: double.parse(json['RATING']),
-      ratedOrNot: json['RATED_OR_NOT'] == '1',
+      teacherId: json['TEACHER'] as String,
+      subjectId: json['SUBJECT'] as String,
+      fullName: json['FULL_NAME'] as String,
+      subjectName: json['SUB_NAME'] as String,
+      docName: json['DOC_NAME'] as String,
+      rating: json['RATING'] as String,
+      ratedOrNot: json['RATED_OR_NOT'] == "1",
+      primaryMobile: json['PRIMARY_MOBILE'] as String,
+      primaryEmail: json['PRIMARY_EMAIL'] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'TEACHER': teacher,
-      'SUBJECT': subject,
+      'TEACHER': teacherId,
+      'SUBJECT': subjectId,
       'FULL_NAME': fullName,
-      'SUB_NAME': subName,
-      'SUBJECT1': subject1,
+      'SUB_NAME': subjectName,
       'DOC_NAME': docName,
-      'RATING': rating.toString(),
-      'RATED_OR_NOT': ratedOrNot ? '1' : '0',
+      'RATING': rating,
+      'RATED_OR_NOT': ratedOrNot ? "1" : "0",
+      'PRIMARY_MOBILE': primaryMobile,
+      'PRIMARY_EMAIL': primaryEmail,
     };
   }
 }

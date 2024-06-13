@@ -43,6 +43,9 @@ class AppPages {
 
   //leave
   static const leaveScreen = '/leave';
+  static const leaveApplyScreen = '/leaveApplyScreen';
+  static const leaveStatusScreen = '/leaveStatusScreen';
+
 
   //progressReport
   static const progressReport = '/progress_report';

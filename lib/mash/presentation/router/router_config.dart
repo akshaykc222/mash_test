@@ -22,6 +22,9 @@ import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_an
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/note_view_detais_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/select_home_work_and_notes_details.dart';
 import 'package:mash/mash/presentation/pages/home/idCardRequest/id_card_request_screen.dart';
+import 'package:mash/mash/presentation/pages/home/leave/leave_apply_screen.dart';
+import 'package:mash/mash/presentation/pages/home/leave/leave_screen.dart';
+import 'package:mash/mash/presentation/pages/home/leave/leave_status_screen.dart';
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_week_plan_screen.dart';
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/insert_year_plan_screen.dart';
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/lesson_planner_main_screen.dart';
@@ -37,7 +40,6 @@ import 'package:mash/mash/presentation/pages/home/notes/widgets/add_note_widget.
 import 'package:mash/mash/presentation/pages/home/notes/widgets/note_adding_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/noticeBoard/notice_board_main_screen.dart';
-import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_filter_page.dart';
 import 'package:mash/mash/presentation/pages/home/physicalLibrary/physical_library_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/progressReport/progress_report.dart';
 import 'package:mash/mash/presentation/pages/home/quiz/question_page.dart';
@@ -58,7 +60,6 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_cancel_
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request_screen.dart';
 import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
-import 'package:mash/mash/presentation/pages/leave/leave_screen.dart';
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 
@@ -74,6 +75,7 @@ import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
@@ -121,7 +123,7 @@ class AppRouteManager {
     );
   }
 
-  static GoRouter router = GoRouter(initialLocation: AppPages.physicalLibraryScreen, routes: [
+  static GoRouter router = GoRouter(initialLocation: AppPages.splash, routes: [
     GoRoute(
       path: AppPages.home,
       name: AppPages.home,
@@ -170,6 +172,14 @@ class AppRouteManager {
       path: AppPages.forgotPassword,
       name: AppPages.forgotPassword,
       builder: (context, state) => const ForgotPasswordScreen(),
+    ), GoRoute(
+      path: AppPages.leaveApplyScreen,
+      name: AppPages.leaveApplyScreen,
+      builder: (context, state) => const LeaveApplyScreen(),
+    ), GoRoute(
+      path: AppPages.leaveStatusScreen,
+      name: AppPages.leaveStatusScreen,
+      builder: (context, state) => const LeaveStatusScreen(),
     ),
     GoRoute(
       path: AppPages.otpScreen,
@@ -180,7 +190,7 @@ class AppRouteManager {
       path: AppPages.attendanceDetailScreen,
       name: AppPages.attendanceDetailScreen,
       builder: (context, state) {
-        return AttendenceDetailScreen();
+        return const AttendenceDetailScreen();
       },
     ),
     GoRoute(

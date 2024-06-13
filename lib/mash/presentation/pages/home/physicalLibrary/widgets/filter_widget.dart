@@ -19,7 +19,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   String selectedLanguage = '-1';
 
   final ScrollController _controller = ScrollController();
-
+  late LibraryBloc _libraryBloc;
   @override
   void initState() {
     // TODO: implement initState

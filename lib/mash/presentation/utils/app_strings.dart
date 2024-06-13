@@ -25,6 +25,16 @@ class AppStrings {
   static const String view = 'VIEW';
   static const String teacher = 'Teacher';
 
+  // leave
+  static const String  applyLeave = 'APPLY LEAVE';
+  static const String  appliedLeaveCount = 'Applied Leave Count';
+  static const String  leaveReason = 'Leave Reason';
+  static const String  enterReason = 'Enter The Leave Reason';
+  static const String  docInfo = 'If any supporting documents for leave';
+  static const String  upload = 'Upload';
+  static const String  takePhoto = 'Take Photo';
+  static const String  leaveStatus = 'LEAVE STATUS';
+
   //quiz
   static const String onBoard1Title = "Let’s Start the Game";
   static const String onBoard1Desc =
@@ -67,6 +77,7 @@ class AppStrings {
   static const String weeklyTimeTableTitle = 'WEEKLY \nTIMETABLE';
   static const String examTableTitle = 'EXAM \nTIMETABLE';
   static const String dailyTimeTable = 'DAILY TIMETABLE';
+  static const String viewCapital = 'VIEW';
 
   //library
   static const String physicalLibrary = 'PHYSICAL LIBRARY';
@@ -76,6 +87,7 @@ class AppStrings {
   static const String author = 'Authors';
   static const String languages = 'Languages';
   static const String cancelSmall = 'Cancel';
+  static const String searchWarning = 'Please enter your search keyword';
 
   //AttendanceMarking
   static const String attendanceMarking = 'ATTENDANCE MARKING';
