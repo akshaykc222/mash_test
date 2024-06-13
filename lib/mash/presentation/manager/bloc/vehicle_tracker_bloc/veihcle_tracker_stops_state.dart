@@ -7,7 +7,7 @@ class VehicleTrackerStopsState with _$VehicleTrackerStopsState {
     Set<Polyline>? polyLines,
     VehicleTrackerEntity? studentStop,
     @Default(0) double distance,
-    @Default(0) String time,
+    @Default("") String time,
     ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation,
     BitmapDescriptor? busMakerIcon,
     BitmapDescriptor? studentMarker,

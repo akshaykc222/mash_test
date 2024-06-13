@@ -5,7 +5,6 @@ import 'package:mash/mash/domain/entities/notes/notes_report_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';

@@ -7,15 +7,20 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/usecase.dart';
 import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
+import 'package:mash/mash/data/remote/request/score_board_details_request.dart';
+import 'package:mash/mash/data/remote/request/term_details_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart';
+import 'package:mash/mash/domain/use_cases/dashboard/get_scoreboard_details_usecase.dart';
 import 'package:mash/mash/domain/use_cases/dashboard/get_term_details_usecase.dart';
 
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/response_classify.dart';
 import '../../../../../di/injector.dart';
-import '../../../../domain/entities/dashboard/digital_library_entity.dart';
+import '../../../../domain/entities/auth/auth_response_entity.dart';
+import '../../../../domain/entities/dashboard/score_board_details_entity.dart';
+import '../../../../domain/entities/dashboard/term_details_entity.dart';
 import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
 import '../../../utils/app_constants.dart';
 
@@ -29,15 +34,18 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final FetchWordThoughtUseCase fetchWordThoughtUseCase;
   final GetUserInfoUseCase userInfoUseCase;
   final GetTermDetailsUsecase getTermDetailsUsecase;
+  final GetScoreboardDetailsUsecase getScoreboardDetailsUsecase;
 
   /// Constructs a [DashboardBloc] instance.
   ///
   /// [fetchWordThoughtUseCase]: Use case for fetching word and thought of the day.
   DashboardBloc(this.fetchWordThoughtUseCase, this.userInfoUseCase,
-      this.getTermDetailsUsecase)
+      this.getTermDetailsUsecase, this.getScoreboardDetailsUsecase)
       : super(DashboardState.initial()) {
     on<_FetchWordAndThoughtOftheDayEvent>(_fetchWordAndThoughtOftheDayEvent);
     on<_GetTermDetailsEvent>(_getTermDetailsEvent);
+    on<_GetScoreboardDetailsEvent>(_getScoreboardDetails);
+    on<_SelectedTermIndexEvent>(_selectedTermIndexEvent);
   }
 
   /// Handles the [_FetchWordAndThoughtOftheDayEvent] event by fetching the word and thought of the day.
@@ -65,7 +73,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   }
 
 //For fetching user infomations from
-  _getUserInformation() async {
+  Future<LoginResTableEntity?> _getUserInformation() async {
     return await userInfoUseCase.call(NoParams());
   }
 
@@ -74,5 +82,45 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final getLoginUseCase = getIt<GetUserInfoUseCase>();
 
   FutureOr<void> _getTermDetailsEvent(
-      _GetTermDetailsEvent event, Emitter<DashboardState> emit) {}
+      _GetTermDetailsEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(termDetailsResponse: ResponseClassify.loading()));
+
+    try {
+      final user = await _getUserInformation();
+      final data = await getTermDetailsUsecase.call(TermDetailsRequest(
+          pCompId: user?.compId ?? "",
+          pAcademicId: user?.academicId ?? "",
+          pClassId: user?.classId ?? ""));
+
+      emit(state.copyWith(
+          termDetailsResponse: ResponseClassify.completed(data)));
+    } catch (e) {
+      emit(state.copyWith(
+          termDetailsResponse: ResponseClassify.error(e.toString())));
+    }
+  }
+
+  _getScoreboardDetails(
+      _GetScoreboardDetailsEvent event, Emitter<DashboardState> emit) async {
+    emit(state.copyWith(scoreBoardResponse: ResponseClassify.loading()));
+    try {
+      final user = await _getUserInformation();
+      final data =
+          await getScoreboardDetailsUsecase.call(ScoreBoardDetailsRequest(
+        compId: user?.compId ?? '',
+        termId: event.termId,
+        academicId: user?.academicId ?? "",
+        studentId: event.studentId,
+      ));
+      emit(
+          state.copyWith(scoreBoardResponse: ResponseClassify.completed(data)));
+    } catch (e) {
+      emit(state.copyWith(scoreBoardResponse: ResponseClassify.error(e)));
+    }
+  }
+
+  _selectedTermIndexEvent(
+      _SelectedTermIndexEvent event, Emitter<DashboardState> emit) {
+    emit(state.copyWith(selectedTermIndex: event.index));
+  }
 }
