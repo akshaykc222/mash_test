@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
-import 'package:mash/mash/data/remote/models/dashboard/digital_library_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/role_menu_model.dart';
+import 'package:mash/mash/data/remote/models/dashboard/term_details_model.dart';
 import 'package:mash/mash/data/remote/models/dashboard/word_thought_day_model.dart';
-import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
-import 'package:mash/mash/data/remote/request/digital_library_request.dart';
-import 'package:mash/mash/data/remote/request/role_menu_request.dart';
-import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart';
 
 import '../../../../core/api_provider.dart';
+import '../../../domain/entities/dashboard/term_details_entity.dart';
+import '../request/academic_comp_id_request.dart';
+import '../request/role_menu_request.dart';
+import '../request/term_details_request.dart';
 import '../routes/app_remote_routes.dart';
 
 /// Remote data source interface for fetching dashboard-related data.
@@ -19,8 +19,7 @@ abstract class DashBoardRemoteDataSource {
   Future<WordThoughtsModel> fetchWordandThoghtOfTheDay(
       AcademicAndCompIdRequest wordThoughtRequest);
   Future<List<RoleMenuModel>> getRolemenuItems(RoleMenuRequest params);
-  Future<List<DigitalLibraryEntity>> getDigitalLibrary(
-      DigitalLibraryRequest request);
+  Future<List<TermDetailsEntity>> getTermDetails(TermDetailsRequest params);
 }
 
 /// Implementation of the [DashBoardRemoteDataSource] interface.
@@ -50,11 +49,13 @@ class DashBoardRemoteDataSourceImpl extends DashBoardRemoteDataSource {
   }
 
   @override
-  Future<List<DigitalLibraryEntity>> getDigitalLibrary(
-      DigitalLibraryRequest request) async {
-    final data = await apiProvider.get(AppRemoteRoutes.digitalLibrary,
-        body: request.toJson());
-    return List<DigitalLibraryEntity>.from(
-        data['resTable'].map((e) => DigitalLibraryModel.fromJson(e))).toList();
+  Future<List<TermDetailsEntity>> getTermDetails(
+      TermDetailsRequest params) async {
+    final data = await apiProvider.get(AppRemoteRoutes.termDetails,
+        body: params.toJson());
+    final List<dynamic> dataList = data['resTable'];
+    final result = dataList.map((e) => TermDetailsModel.fromJson(e)).toList();
+
+    return result;
   }
 }

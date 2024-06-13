@@ -5,6 +5,5 @@ class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.fetchWordAndThoughtOftheDayEvent(
     BuildContext context,
   ) = _FetchWordAndThoughtOftheDayEvent;
-  const factory DashboardEvent.getDigitalLibrary(
-      {String? search, String? catId, String? subCatId}) = _GetDigitalLibrary;
+  const factory DashboardEvent.getTermDetailsEvent() = _GetTermDetailsEvent;
 }

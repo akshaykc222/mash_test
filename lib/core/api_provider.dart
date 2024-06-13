@@ -5,6 +5,7 @@ import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:xml/xml.dart';
 
 import '../mash/data/remote/routes/app_remote_routes.dart';
@@ -94,7 +95,7 @@ class ApiProvider {
   }
 
   Future<String> postXml(String endPoint, XmlDocument xmlBody) async {
-    prettyPrint("on post call${xmlBody.toXmlString(pretty: true)}");
+    prettyPrint("on post call$endPoint ${xmlBody.toXmlString(pretty: true)}");
 
     try {
       // await addToken();
@@ -102,6 +103,7 @@ class ApiProvider {
       final Response response = await Dio(BaseOptions(
         baseUrl: AppRemoteRoutes.baseUrlVendor,
         headers: {
+          'apiKey': AppConstants.trackerApiKey,
           'Content-Type': 'application/xml',
           'Accept': 'application/xml',
         },
@@ -110,7 +112,7 @@ class ApiProvider {
         data: xmlBody.toXmlString(),
       );
 
-      prettyPrint("getting response${response.data}");
+      prettyPrint("getting response xml ${response}");
 
       // Check the status code
       if (response.statusCode == 200) {

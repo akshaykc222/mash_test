@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image/image.dart' as img;
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/usecase.dart';
@@ -16,7 +19,10 @@ import 'package:mash/mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 
 import '../../../../domain/entities/vehicle_tracker/vehicle_location_entity.dart';
+import '../../../../domain/entities/vehicle_tracker/vehicle_tracker_entity.dart';
 import '../../../../domain/use_cases/vehicle_tracker_stops/get_vehicle_current_location.dart';
+import '../../../utils/app_assets.dart';
+import '../../../utils/app_colors.dart';
 
 part 'veihcle_tracker_stops_bloc.freezed.dart';
 part 'veihcle_tracker_stops_event.dart';
@@ -62,15 +68,36 @@ class VehicleTrackerStopsBloc
   _initMap(_InitMap event, Emitter<VehicleTrackerStopsState> emit) async {
     emit(state.copyWith(isLoading: true));
     try {
+      final BitmapDescriptor busMarker =
+          BitmapDescriptor.fromBytes(await _getMarkerAssetImage(AppAssets.bus));
+
+      final BitmapDescriptor activeBusStop = BitmapDescriptor.fromBytes(
+          await _getMarkerAssetImage(AppAssets.busStopActive));
+
+      final BitmapDescriptor busStop = BitmapDescriptor.fromBytes(
+          await _getMarkerAssetImage(AppAssets.busStop));
+      // var busMarker = await BitmapDescriptor.fromAssetImage(
+      //     const ImageConfiguration(size: Size(20, 20)), AppAssets.bus);
+
       var loginData = await loginInfoUseCase.call(NoParams());
-      final studentRoutes = await getVehicleTrackerStopsUseCase
-          .call(VehicleTrackerRequest(companyId: "200002"));
+      final studentRoutes = await getVehicleTrackerStopsUseCase.call(
+          VehicleTrackerRequest(companyId: "200001", studentId: "MGS1000369"));
 
       List<LatLng> locPoints = studentRoutes.vehicleStops
           .map((e) => LatLng(e.latitude, e.longitude))
           .toList();
       List<LatLng> polyLinePointList = [];
       List<Polyline> mapPolyLines = [];
+      VehicleTrackerEntity? initialPosition = studentRoutes.vehicleStops
+          .firstWhereOrNull((element) =>
+              element.routeCode == studentRoutes.vehicleDetails?.routeCode);
+
+      if (initialPosition != null) {
+        emit(state.copyWith(
+            studentStop: initialPosition,
+            studentMarker: activeBusStop,
+            stopMarker: busStop));
+      }
       // List<Polyline> polyline = await drawPolyLines(locPoints);
       PolylinePoints polylinePoints = PolylinePoints();
       try {
@@ -83,6 +110,7 @@ class VehicleTrackerStopsBloc
               PointLatLng(
                   locPoints[i + 1].latitude, locPoints[i + 1].longitude),
             );
+
             // print(result.points.length);
             if (result.points.isNotEmpty) {
               for (var element in result.points) {
@@ -91,6 +119,7 @@ class VehicleTrackerStopsBloc
               }
             }
             mapPolyLines.add(Polyline(
+                color: AppColors.primaryColor,
                 polylineId: PolylineId(DateTime.now().toString()),
                 points: polyLinePointList));
           }
@@ -100,7 +129,9 @@ class VehicleTrackerStopsBloc
       emit(state.copyWith(
           polyLines: mapPolyLines.toSet(),
           isLoading: false,
+          busMakerIcon: busMarker,
           getTrackerStops: studentRoutes));
+      add(const _GetBusLocation());
       // if (studentRoutes.isNotEmpty) {}
     } catch (e, stackTrace) {
       if (kDebugMode) {
@@ -119,6 +150,7 @@ class VehicleTrackerStopsBloc
 
   _getBusLocation(
       _GetBusLocation event, Emitter<VehicleTrackerStopsState> emit) async {
+    emit(state.copyWith(getBusLiveLocation: ValueNotifier(null)));
     if (state.getTrackerStops == null) {
       // add(const VehicleTrackerStopsEvent.initMap());
     } else {
@@ -126,9 +158,22 @@ class VehicleTrackerStopsBloc
         if (_debounce?.isActive ?? false) _debounce?.cancel();
         _debounce = Timer(_debounceDuration, () async {
           prettyPrint("DEBOUNCE ON ACTIVE STATE");
-          final loc = await getVehicleCurrentLocation
-              .call(state.getTrackerStops?.vehicleDetails?.regNumber ?? "");
-          emit(state.copyWith(getBusLiveLocation: loc));
+          final loc = await getVehicleCurrentLocation.call("KL 45 S 7320");
+
+          var polylinePoints = PolylinePoints();
+          PolylineResult distance =
+              await polylinePoints.getRouteBetweenCoordinates(
+            AppConstants.googleMapKey,
+            PointLatLng(loc.latitude, loc.longitude),
+            PointLatLng(
+                state.studentStop!.latitude, state.studentStop!.longitude),
+          );
+          loc.distance = distance.distance;
+          loc.time = distance.duration;
+
+          state.getBusLiveLocation?.value = loc;
+
+          state.getBusLiveLocation?.notifyListeners();
         });
       } catch (e, stackTrace) {
         if (kDebugMode) {
@@ -136,5 +181,14 @@ class VehicleTrackerStopsBloc
         }
       }
     }
+  }
+
+  Future<Uint8List> _getMarkerAssetImage(String asset) async {
+    final ByteData data = await rootBundle.load(asset);
+    final Uint8List bytes = data.buffer.asUint8List();
+    img.Image? image = img.decodeImage(bytes);
+    img.Image resizedImage = img.copyResize(image!, width: 150, height: 150);
+
+    return Uint8List.fromList(img.encodePng(resizedImage));
   }
 }

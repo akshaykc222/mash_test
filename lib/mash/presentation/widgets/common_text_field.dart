@@ -61,13 +61,13 @@ class CommonTextField extends StatelessWidget {
           obscureText: passwordField == true ? showPassword : false,
           keyboardType: textInputType ?? TextInputType.text,
           maxLines: passwordField == true ? 1 : lines,
-          cursorHeight: 16,
           decoration: InputDecoration(
             border: isOutlined == true
                 ? const OutlineInputBorder()
                 : const UnderlineInputBorder(),
-            contentPadding:
-                isOutlined == true ? const EdgeInsets.all(12) : EdgeInsets.zero,
+            contentPadding: isOutlined == true
+                ? const EdgeInsets.symmetric(horizontal: 12)
+                : EdgeInsets.zero,
             prefixIcon: prefix,
             suffixIcon: passwordField == true
                 ? IconButton(

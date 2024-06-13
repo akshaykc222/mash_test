@@ -10,18 +10,27 @@ import '../../../../utils/app_strings.dart';
 import '../../../../utils/size_utility.dart';
 import '../../../../widgets/svg_asset_img.dart';
 
-class DashboardCommonLastWidget extends StatelessWidget {
+class DashboardCommonLastWidget extends StatefulWidget {
   const DashboardCommonLastWidget({super.key});
 
   @override
+  State<DashboardCommonLastWidget> createState() =>
+      _DashboardCommonLastWidgetState();
+}
+
+class _DashboardCommonLastWidgetState extends State<DashboardCommonLastWidget> {
+  @override
+  void initState() {
+    BlocProvider.of<DashboardBloc>(context).add(
+      DashboardEvent.fetchWordAndThoughtOftheDayEvent(
+        context,
+      ),
+    );
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<DashboardBloc>(context).add(
-        DashboardEvent.fetchWordAndThoughtOftheDayEvent(
-          context,
-        ),
-      );
-    });
     return Column(
       children: [
         _wordOfTheDay(),

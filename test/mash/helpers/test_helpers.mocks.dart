@@ -25,7 +25,7 @@ import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.d
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart' as _i41;
 import 'package:mash/mash/data/local/models/login_local_model.dart' as _i27;
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart'
-    as _i55;
+    as _i59;
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
     as _i28;
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart'
@@ -33,17 +33,17 @@ import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart'
     as _i45;
 import 'package:mash/mash/data/remote/data_sources/home_remote_data_source.dart'
-    as _i65;
+    as _i69;
 import 'package:mash/mash/data/remote/models/academic/academic_subjects_model.dart'
-    as _i57;
+    as _i61;
 import 'package:mash/mash/data/remote/models/academic/class_details_model.dart'
-    as _i56;
-import 'package:mash/mash/data/remote/models/academic/division_details_model.dart'
-    as _i58;
-import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart'
-    as _i59;
-import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart'
     as _i60;
+import 'package:mash/mash/data/remote/models/academic/division_details_model.dart'
+    as _i62;
+import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart'
+    as _i63;
+import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart'
+    as _i64;
 import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart'
     as _i25;
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart' as _i6;
@@ -57,28 +57,35 @@ import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart'
     as _i32;
 import 'package:mash/mash/data/remote/request/academic_subjects_request.dart'
     as _i50;
-import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i63;
+import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i67;
+import 'package:mash/mash/data/remote/request/di_type_request.dart' as _i58;
 import 'package:mash/mash/data/remote/request/digital_library_request.dart'
-    as _i36;
-import 'package:mash/mash/data/remote/request/feed_back_request.dart' as _i64;
+    as _i56;
+import 'package:mash/mash/data/remote/request/feed_back_request.dart' as _i68;
 import 'package:mash/mash/data/remote/request/login_request.dart' as _i26;
 import 'package:mash/mash/data/remote/request/news_board_request.dart' as _i44;
 import 'package:mash/mash/data/remote/request/role_menu_request.dart' as _i34;
+import 'package:mash/mash/data/remote/request/term_details_request.dart'
+    as _i36;
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart'
     as _i49;
+import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart'
+    as _i57;
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart'
     as _i48;
 import 'package:mash/mash/domain/entities/academic/division_details_entity.dart'
     as _i51;
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart'
     as _i53;
-import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart' as _i62;
+import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart' as _i66;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i8;
 import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart'
-    as _i35;
+    as _i55;
 import 'package:mash/mash/domain/entities/dashboard/role_menu_entity.dart'
     as _i39;
+import 'package:mash/mash/domain/entities/dashboard/term_details_entity.dart'
+    as _i35;
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart'
     as _i38;
 import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart'
@@ -93,7 +100,7 @@ import 'package:mash/mash/domain/repositories/dash_board_repository.dart'
     as _i37;
 import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart'
     as _i42;
-import 'package:mash/mash/domain/repositories/home_repository.dart' as _i61;
+import 'package:mash/mash/domain/repositories/home_repository.dart' as _i65;
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart'
     as _i11;
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart' as _i9;
@@ -1291,16 +1298,16 @@ class MockDashBoardRemoteDataSource extends _i1.Mock
       ) as _i17.Future<List<_i33.RoleMenuModel>>);
 
   @override
-  _i17.Future<List<_i35.DigitalLibraryEntity>> getDigitalLibrary(
-          _i36.DigitalLibraryRequest? request) =>
+  _i17.Future<List<_i35.TermDetailsEntity>> getTermDetails(
+          _i36.TermDetailsRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getDigitalLibrary,
-          [request],
+          #getTermDetails,
+          [params],
         ),
-        returnValue: _i17.Future<List<_i35.DigitalLibraryEntity>>.value(
-            <_i35.DigitalLibraryEntity>[]),
-      ) as _i17.Future<List<_i35.DigitalLibraryEntity>>);
+        returnValue: _i17.Future<List<_i35.TermDetailsEntity>>.value(
+            <_i35.TermDetailsEntity>[]),
+      ) as _i17.Future<List<_i35.TermDetailsEntity>>);
 }
 
 /// A class which mocks [DashBoardRepository].
@@ -1336,16 +1343,16 @@ class MockDashBoardRepository extends _i1.Mock
       ) as _i17.Future<List<_i39.RoleMenuEntity>>);
 
   @override
-  _i17.Future<List<_i35.DigitalLibraryEntity>> getDigitalLibrary(
-          _i36.DigitalLibraryRequest? request) =>
+  _i17.Future<List<_i35.TermDetailsEntity>> getTermDetails(
+          _i36.TermDetailsRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getDigitalLibrary,
-          [request],
+          #getTermDetails,
+          [params],
         ),
-        returnValue: _i17.Future<List<_i35.DigitalLibraryEntity>>.value(
-            <_i35.DigitalLibraryEntity>[]),
-      ) as _i17.Future<List<_i35.DigitalLibraryEntity>>);
+        returnValue: _i17.Future<List<_i35.TermDetailsEntity>>.value(
+            <_i35.TermDetailsEntity>[]),
+      ) as _i17.Future<List<_i35.TermDetailsEntity>>);
 }
 
 /// A class which mocks [DashBoardLocalDataSource].
@@ -1434,16 +1441,16 @@ class MockAcademicRepository extends _i1.Mock
   }
 
   @override
-  _i17.Future<List<_i48.ClassDetailsEntity?>> getClassDetails(
+  _i17.Future<List<_i48.ClassDetailsEntity>> getClassDetails(
           _i32.AcademicAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getClassDetails,
           [params],
         ),
-        returnValue: _i17.Future<List<_i48.ClassDetailsEntity?>>.value(
-            <_i48.ClassDetailsEntity?>[]),
-      ) as _i17.Future<List<_i48.ClassDetailsEntity?>>);
+        returnValue: _i17.Future<List<_i48.ClassDetailsEntity>>.value(
+            <_i48.ClassDetailsEntity>[]),
+      ) as _i17.Future<List<_i48.ClassDetailsEntity>>);
 
   @override
   _i17.Future<List<_i49.AcademicSubjectEntity>> getAcademicSubjects(
@@ -1493,55 +1500,79 @@ class MockAcademicRepository extends _i1.Mock
         returnValue: _i17.Future<List<_i54.SyllabusTermEntity?>>.value(
             <_i54.SyllabusTermEntity?>[]),
       ) as _i17.Future<List<_i54.SyllabusTermEntity?>>);
+
+  @override
+  _i17.Future<List<_i55.DigitalLibraryEntity>> getDigitalLibrary(
+          _i56.DigitalLibraryRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getDigitalLibrary,
+          [request],
+        ),
+        returnValue: _i17.Future<List<_i55.DigitalLibraryEntity>>.value(
+            <_i55.DigitalLibraryEntity>[]),
+      ) as _i17.Future<List<_i55.DigitalLibraryEntity>>);
+
+  @override
+  _i17.Future<List<_i57.AcademicTypeEntity>> getAcademicTypes(
+          _i58.DlTypeRequest? dlTypeRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAcademicTypes,
+          [dlTypeRequest],
+        ),
+        returnValue: _i17.Future<List<_i57.AcademicTypeEntity>>.value(
+            <_i57.AcademicTypeEntity>[]),
+      ) as _i17.Future<List<_i57.AcademicTypeEntity>>);
 }
 
 /// A class which mocks [AcademicRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAcademicRemoteDataSource extends _i1.Mock
-    implements _i55.AcademicRemoteDataSource {
+    implements _i59.AcademicRemoteDataSource {
   MockAcademicRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i17.Future<List<_i56.ClassDetailsModel?>> getClassDetails(
+  _i17.Future<List<_i60.ClassDetailsModel>> getClassDetails(
           _i32.AcademicAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getClassDetails,
           [params],
         ),
-        returnValue: _i17.Future<List<_i56.ClassDetailsModel?>>.value(
-            <_i56.ClassDetailsModel?>[]),
-      ) as _i17.Future<List<_i56.ClassDetailsModel?>>);
+        returnValue: _i17.Future<List<_i60.ClassDetailsModel>>.value(
+            <_i60.ClassDetailsModel>[]),
+      ) as _i17.Future<List<_i60.ClassDetailsModel>>);
 
   @override
-  _i17.Future<List<_i57.AcademicSubjectModel>> getAcademicSubjects(
+  _i17.Future<List<_i61.AcademicSubjectModel>> getAcademicSubjects(
           _i50.ClassAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAcademicSubjects,
           [params],
         ),
-        returnValue: _i17.Future<List<_i57.AcademicSubjectModel>>.value(
-            <_i57.AcademicSubjectModel>[]),
-      ) as _i17.Future<List<_i57.AcademicSubjectModel>>);
+        returnValue: _i17.Future<List<_i61.AcademicSubjectModel>>.value(
+            <_i61.AcademicSubjectModel>[]),
+      ) as _i17.Future<List<_i61.AcademicSubjectModel>>);
 
   @override
-  _i17.Future<List<_i58.DivisionDetailsModel?>> getDivisionDetails(
+  _i17.Future<List<_i62.DivisionDetailsModel?>> getDivisionDetails(
           _i50.ClassAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getDivisionDetails,
           [params],
         ),
-        returnValue: _i17.Future<List<_i58.DivisionDetailsModel?>>.value(
-            <_i58.DivisionDetailsModel?>[]),
-      ) as _i17.Future<List<_i58.DivisionDetailsModel?>>);
+        returnValue: _i17.Future<List<_i62.DivisionDetailsModel?>>.value(
+            <_i62.DivisionDetailsModel?>[]),
+      ) as _i17.Future<List<_i62.DivisionDetailsModel?>>);
 
   @override
-  _i17.Future<List<_i59.SyllabusModel>> getSyllabus(
+  _i17.Future<List<_i63.SyllabusModel>> getSyllabus(
           _i53.SyllabusRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1549,43 +1580,67 @@ class MockAcademicRemoteDataSource extends _i1.Mock
           [params],
         ),
         returnValue:
-            _i17.Future<List<_i59.SyllabusModel>>.value(<_i59.SyllabusModel>[]),
-      ) as _i17.Future<List<_i59.SyllabusModel>>);
+            _i17.Future<List<_i63.SyllabusModel>>.value(<_i63.SyllabusModel>[]),
+      ) as _i17.Future<List<_i63.SyllabusModel>>);
 
   @override
-  _i17.Future<List<_i60.SyllabusTermModel?>> getSyllabusTerms(
+  _i17.Future<List<_i64.SyllabusTermModel?>> getSyllabusTerms(
           _i53.SyllabusTermsRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSyllabusTerms,
           [params],
         ),
-        returnValue: _i17.Future<List<_i60.SyllabusTermModel?>>.value(
-            <_i60.SyllabusTermModel?>[]),
-      ) as _i17.Future<List<_i60.SyllabusTermModel?>>);
+        returnValue: _i17.Future<List<_i64.SyllabusTermModel?>>.value(
+            <_i64.SyllabusTermModel?>[]),
+      ) as _i17.Future<List<_i64.SyllabusTermModel?>>);
+
+  @override
+  _i17.Future<List<_i55.DigitalLibraryEntity>> getDigitalLibrary(
+          _i56.DigitalLibraryRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getDigitalLibrary,
+          [request],
+        ),
+        returnValue: _i17.Future<List<_i55.DigitalLibraryEntity>>.value(
+            <_i55.DigitalLibraryEntity>[]),
+      ) as _i17.Future<List<_i55.DigitalLibraryEntity>>);
+
+  @override
+  _i17.Future<List<_i57.AcademicTypeEntity>> getAcademicTypes(
+          _i58.DlTypeRequest? dlTypeRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAcademicTypes,
+          [dlTypeRequest],
+        ),
+        returnValue: _i17.Future<List<_i57.AcademicTypeEntity>>.value(
+            <_i57.AcademicTypeEntity>[]),
+      ) as _i17.Future<List<_i57.AcademicTypeEntity>>);
 }
 
 /// A class which mocks [HomeRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHomeRepository extends _i1.Mock implements _i61.HomeRepository {
+class MockHomeRepository extends _i1.Mock implements _i65.HomeRepository {
   MockHomeRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i17.Future<List<_i62.AddOnEntity>> getAddon(_i63.AddOnRequest? params) =>
+  _i17.Future<List<_i66.AddOnEntity>> getAddon(_i67.AddOnRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAddon,
           [params],
         ),
         returnValue:
-            _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
-      ) as _i17.Future<List<_i62.AddOnEntity>>);
+            _i17.Future<List<_i66.AddOnEntity>>.value(<_i66.AddOnEntity>[]),
+      ) as _i17.Future<List<_i66.AddOnEntity>>);
 
   @override
-  _i17.Future<void> feedBackPost(_i64.FeedbackRequest? feedbackRequest) =>
+  _i17.Future<void> feedBackPost(_i68.FeedbackRequest? feedbackRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #feedBackPost,
@@ -1600,24 +1655,24 @@ class MockHomeRepository extends _i1.Mock implements _i61.HomeRepository {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i65.HomeRemoteDataSource {
+    implements _i69.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i17.Future<List<_i62.AddOnEntity>> getAddon(_i63.AddOnRequest? params) =>
+  _i17.Future<List<_i66.AddOnEntity>> getAddon(_i67.AddOnRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAddon,
           [params],
         ),
         returnValue:
-            _i17.Future<List<_i62.AddOnEntity>>.value(<_i62.AddOnEntity>[]),
-      ) as _i17.Future<List<_i62.AddOnEntity>>);
+            _i17.Future<List<_i66.AddOnEntity>>.value(<_i66.AddOnEntity>[]),
+      ) as _i17.Future<List<_i66.AddOnEntity>>);
 
   @override
-  _i17.Future<void> feedBackPost(_i64.FeedbackRequest? feedbackRequest) =>
+  _i17.Future<void> feedBackPost(_i68.FeedbackRequest? feedbackRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #feedBackPost,

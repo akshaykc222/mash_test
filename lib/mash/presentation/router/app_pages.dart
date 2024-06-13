@@ -39,7 +39,7 @@ class AppPages {
   static const physicalLibraryScreen = '/physicalLibraryScreen';
 
   // support
-  static const supportScreen = '/supportScreen';
+  static const supportScreen = '/mash_support';
 
   //leave
   static const leaveScreen = '/leave';
@@ -124,4 +124,9 @@ class AppPages {
   static const newChat = "/newChat";
 
   static const comingSoon = '/comingSoon';
+  static const seeAllSubMedium = '/seeAllSubMedium';
+  static const nonAcademic = '/nonAcademic';
+  static const bookDetailDigital = '/bookDetailDigital';
+
+  static const research = "/research";
 }

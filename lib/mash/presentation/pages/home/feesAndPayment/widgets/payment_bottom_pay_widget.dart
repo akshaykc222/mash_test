@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 
 import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../router/app_pages.dart';
@@ -11,13 +12,14 @@ import '../../../../widgets/buttons/animted_button.dart';
 import '../../../../widgets/buttons/icon_button.dart';
 
 class PaymentBottomWidget extends StatelessWidget {
-  const PaymentBottomWidget({super.key});
+  final Function onTap;
+  const PaymentBottomWidget({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10)
-          .copyWith(top: 5, bottom: 4),
+          .copyWith(top: 5, bottom: Platform.isIOS ? 25 : 4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: AppColors.greyClr200),
@@ -28,12 +30,7 @@ class PaymentBottomWidget extends StatelessWidget {
           spacer10,
           AnimatedSharedButton(
             isLoading: false,
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => const PaymentDialog(),
-              );
-            },
+            onTap: onTap,
             title: Text(
               'Pay Now',
               style: TextStyle(
@@ -82,8 +79,23 @@ class TotalAmountRow extends StatelessWidget {
   }
 }
 
-class PaymentDialog extends StatelessWidget {
+class PaymentDialog extends StatefulWidget {
   const PaymentDialog({super.key});
+
+  @override
+  State<PaymentDialog> createState() => _PaymentDialogState();
+}
+
+class _PaymentDialogState extends State<PaymentDialog> {
+  final TextEditingController _controller = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  String totalAmount = '';
+  @override
+  void initState() {
+    totalAmount = context.read<PaymentBloc>().state.totalAmount;
+    _controller.text = totalAmount;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,21 +144,59 @@ class PaymentDialog extends StatelessWidget {
                 ),
               ),
               spacer10,
-              const Padding(
-                padding: EdgeInsets.all(8),
-                child: PartialPaymentTextField(),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Form(
+                  key: _formKey,
+                  child: TextFormField(
+                    controller: _controller,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.zero,
+                        prefixIcon: const Icon(Icons.currency_rupee_sharp),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.primaryColor),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.primaryColor),
+                        ),
+                        border: const OutlineInputBorder(),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: AppColors.cancelRed))),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an amount';
+                      } else {
+                        final _totalAmount = int.parse(totalAmount);
+                        final _parsedValue = int.tryParse(value) ?? 0;
+                        if (_parsedValue <= 0 || _parsedValue > _totalAmount) {
+                          return 'Amount must be between 1 and $totalAmount';
+                        }
+                      }
+                      return null;
+                    },
+                    autovalidateMode: AutovalidateMode.always,
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: CustomIconButton(
+                  icon: '',
                   color: AppColors.primaryColor.withOpacity(0.2),
                   elevation: 0,
-                  icon: '',
                   onTap: () {
-                    context.pop();
-
-                    GoRouter.of(context)
-                        .pushNamed(AppPages.feesAndPaymentsConfirmation);
+                    if (_formKey.currentState!.validate()) {
+                      context.pop();
+                      GoRouter.of(context).pushNamed(
+                          AppPages.feesAndPaymentsConfirmation,
+                          extra: _controller.text);
+                    }
                   },
                   name: 'Submit',
                 ),
@@ -154,44 +204,6 @@ class PaymentDialog extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class PartialPaymentTextField extends StatefulWidget {
-  const PartialPaymentTextField({super.key});
-
-  @override
-  State<PartialPaymentTextField> createState() =>
-      _PartialPaymentTextFieldState();
-}
-
-class _PartialPaymentTextFieldState extends State<PartialPaymentTextField> {
-  final TextEditingController _controller = TextEditingController();
-  @override
-  void initState() {
-    _controller.text = context.read<PaymentBloc>().state.totalAmount;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: _controller,
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.zero,
-        prefixIcon: const Icon(Icons.currency_rupee_sharp),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primaryColor),
-        ),
       ),
     );
   }

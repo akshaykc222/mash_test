@@ -1,10 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart';
+import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../domain/entities/academic/class_details_entity.dart';
 import '../../../widgets/drawer_widget.dart';
 
 class AcademicsScreen extends StatefulWidget {
@@ -15,12 +23,20 @@ class AcademicsScreen extends StatefulWidget {
 }
 
 class _AcademicsScreenState extends State<AcademicsScreen> {
-  int selectedIndex = 0;
+  late DigitalLibraryBloc digitalLibraryBloc;
+
+  @override
+  void initState() {
+    digitalLibraryBloc = DigitalLibraryBloc.get(context);
+    digitalLibraryBloc.add(const DigitalLibraryEvent.getClasses());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const DrawerWidget(),
-      appBar: commonAppbar(title: 'ACADEMICS'),
+      appBar: commonAppbar(title: 'ACADEMICS', searchFunction: (str) {}),
       body: academicsBody(context),
     );
   }
@@ -50,62 +66,95 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
   }
 
   dropDown() {
-    List classes = [
-      'Pre-KG',
-      'LKG',
-      'UKG',
-      'I',
-      'II',
-      'III',
-      'IV',
-      'V',
-      'VI',
-      'VII',
-      'VIII',
-      'IX',
-      'X',
-      'XI'
-    ];
     // List<Widget> buttons = List.generate(classes.length, (index) => buttons(index,classes[index],classes));
     return SizedBox(
       height: 60,
       child: Padding(
         padding: const EdgeInsets.only(left: 10, bottom: 8.0, top: 8),
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: classes.length,
-            itemBuilder: (context, index) {
-              return buttons(index, classes[index], classes);
-            }),
+        child: BlocConsumer<DigitalLibraryBloc, DigitalLibraryState>(
+          listenWhen: (previous, current) =>
+              previous.getClasses?.status != current.getClasses?.status,
+          listener: (context, state) {
+            if (state.getClasses?.status == Status.ERROR) {
+              handleErrorUi(context: context, error: state.getClasses?.error);
+            }
+          },
+          buildWhen: (previous, current) =>
+              previous.getClasses?.status != current.getClasses?.status,
+          builder: (context, state) {
+            return state.getClasses?.status == Status.LOADING
+                ? ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return classChipShimmer();
+                    })
+                : state.getClasses?.status == Status.COMPLETED
+                    ? ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.getClasses?.data?.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return classChips(state.getClasses!.data![index]);
+                        })
+                    : const SizedBox();
+          },
+        ),
       ),
     );
   }
 
-  buttons(int index, title, List classes) {
+  classChips(ClassDetailsEntity entity) {
     // List<Color> buttonColors = List.generate(classes.length, (index) => Colors.blue);
+    return BlocBuilder<DigitalLibraryBloc, DigitalLibraryState>(
+      buildWhen: (previous, current) =>
+          previous.selectedClass != current.selectedClass,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: ElevatedButton(
+            onPressed: () {
+              var digitalLibraryBloc = DigitalLibraryBloc.get(context);
+              digitalLibraryBloc.add(DigitalLibraryEvent.selectClass(entity));
+            },
+            style: ElevatedButton.styleFrom(
+              side: const BorderSide(width: 1, color: Colors.purple),
+              backgroundColor: state.selectedClass == entity
+                  ? Colors.purple
+                  : Colors.white, // Set button color dynamically
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+            ),
+            child: Text(
+              entity.className ?? "",
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: state.selectedClass == entity
+                      ? Colors.white
+                      : Colors.purple),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  classChipShimmer() {
     return Padding(
       padding: const EdgeInsets.all(2.0),
-      child: ElevatedButton(
-        onPressed: () {
-          setState(() {
-            // Toggle button color
-            selectedIndex == index ? selectedIndex = -1 : selectedIndex = index;
-          });
-        },
-        style: ElevatedButton.styleFrom(
-          side: const BorderSide(width: 1, color: Colors.purple),
-          backgroundColor: index == selectedIndex
-              ? Colors.purple
-              : Colors.white, // Set button color dynamically
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Text(
+            " ",
+            style: TextStyle(
               fontWeight: FontWeight.w600,
-              color: index == selectedIndex ? Colors.white : Colors.purple),
+            ),
+          ),
         ),
       ),
     );
@@ -113,21 +162,39 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
 
   detailList() {
     return Expanded(
-      child: ListView.separated(
-          shrinkWrap: true,
-          separatorBuilder: (context, index) {
-            return spacer10;
-          },
-          itemCount: 7,
-          itemBuilder: (context, index) {
-            return const AcademicCardItem();
-          }),
+      child: BlocConsumer<DigitalLibraryBloc, DigitalLibraryState>(
+        listenWhen: (previous, current) =>
+            previous.getLibrary?.status != current.getLibrary?.status,
+        listener: (context, state) {
+          if (state.getLibrary?.status == Status.ERROR) {
+            handleErrorUi(context: context, error: state.getLibrary?.error);
+          }
+        },
+        buildWhen: (previous, current) =>
+            previous.getLibrary?.status != current.getLibrary?.status,
+        builder: (context, state) {
+          return state.getLibrary?.status == Status.LOADING
+              ? HelperClasses.shimmerPlacerHolderList()
+              : ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) {
+                    return spacer10;
+                  },
+                  itemCount: state.getLibrary?.data?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return AcademicCardItem(
+                      entity: state.getLibrary!.data![index],
+                    );
+                  });
+        },
+      ),
     );
   }
 }
 
 class AcademicCardItem extends StatelessWidget {
-  const AcademicCardItem({super.key});
+  final DigitalLibraryEntity entity;
+  const AcademicCardItem({super.key, required this.entity});
 
   @override
   Widget build(BuildContext context) {
@@ -150,10 +217,9 @@ class AcademicCardItem extends StatelessWidget {
             const EdgeInsets.only(left: 8.0, right: 8, top: 20, bottom: 20),
         child: ListTile(
           onTap: () => GoRouter.of(context)
-              .pushNamed(AppPages.academicDetailLibraryScreen),
+              .pushNamed(AppPages.academicDetailLibraryScreen, extra: entity),
           leading: CachedNetworkImage(
-            imageUrl:
-                "https://d3nn873nee648n.cloudfront.net/HomeImages/Concept-and-Ideas.jpg?w=248&fit=crop&auto=format",
+            imageUrl: entity.coverImg ?? "",
             fit: BoxFit.cover,
             height: 50,
             width: 50,
@@ -163,9 +229,9 @@ class AcademicCardItem extends StatelessWidget {
             errorWidget: (BuildContext context, String url, dynamic error) =>
                 const Icon(Icons.error),
           ),
-          title: const Text(
-            'library books',
-            style: TextStyle(fontWeight: FontWeight.w600),
+          title: Text(
+            entity.contentName ?? "",
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
       ),

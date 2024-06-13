@@ -56,8 +56,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                                       fontWeight: FontWeight.bold)),
                               children: [
                                 _buildFilterOption(
-                                    state
-                                        .getRequiredFilterData!.data!.authors,
+                                    state.getRequiredFilterData!.data!.authors,
                                     selectedAuthor, (value) {
                                   setState(() {
                                     selectedAuthor = value!;
@@ -76,8 +75,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                                       fontWeight: FontWeight.bold)),
                               children: [
                                 _buildFilterOptions(
-                                    state.getRequiredFilterData!.data!
-                                        .languages,
+                                    state
+                                        .getRequiredFilterData!.data!.languages,
                                     selectedLanguage, (value) {
                                   setState(() {
                                     print(value.toString());
@@ -112,10 +111,13 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              LibraryBloc.get(context).add( LibraryEvent.getPhysicalLibrary(
-                                  prmLangId: selectedLanguage, prmAuthId: selectedAuthor, prmSearch: "-1"));
-                            Navigator.pop(context);
-                              },
+                              LibraryBloc.get(context).add(
+                                  LibraryEvent.getPhysicalLibrary(
+                                      prmLangId: selectedLanguage,
+                                      prmAuthId: selectedAuthor,
+                                      prmSearch: "-1"));
+                              Navigator.pop(context);
+                            },
                             child: const Text(
                               AppStrings.submit,
                               style: TextStyle(fontSize: 18),

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
-import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
-import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/paid_payment_tabbar_widget.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/pending_payment_tabbar_widget.dart';
@@ -55,7 +49,8 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
     BlocProvider.of<PaymentBloc>(context).add(
       PaymentEvent.getPaymentDashboard(
         paymentStatusType: paymentStatusType,
-        userId: context.read<ProfileBloc>().state.selectedSibling?.userId ?? "",
+        userId:
+            context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ?? "",
       ),
     );
   }
@@ -79,47 +74,34 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
           ),
         ),
         endDrawer: const DrawerWidget(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            children: [
-              spacer10,
-              HelperClasses.getSelectedStudent(context, true),
-              spacer10,
-              Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: const [
-                    PendingPaymentTabbarWidget(),
-                    PaidPaymentTabbarWidget(),
-                  ],
+        body: BlocListener<ProfileBloc, ProfileState>(
+          listenWhen: (previous, current) =>
+              previous.getUserDetail != current.getUserDetail,
+          listener: (context, state) {
+            _handleTabIndexChange();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              children: [
+                spacer10,
+                HelperClasses.getSelectedStudent(context, true),
+                spacer10,
+                Expanded(
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const [
+                      PendingPaymentTabbarWidget(),
+                      PaidPaymentTabbarWidget(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
-  }
-
-  _initPay() {
-    try {
-      var session = CFSessionBuilder()
-          .setEnvironment(CFEnvironment.SANDBOX)
-          .setOrderId("order_1981952hEBqJ8LvCpSnHuKnlJD2xjsqjC")
-          .setPaymentSessionId(
-              'session_NuUQ3Ng9JWoyUj1crLh5gtVmifPMMjOINbjzUQca5tBxPTUszpoBW1pRipCW1lMmF4BzrhKX5uDbHNR59saGo4JdUhLetJb3uS-Jd-qdKcFJ')
-          .build();
-      var cfWebCheckout =
-          CFWebCheckoutPaymentBuilder().setSession(session).build();
-      var cfpaymenteGateway = CFPaymentGatewayService();
-      cfpaymenteGateway.setCallback((p0) {}, (p0, p1) {});
-      cfpaymenteGateway.doPayment(cfWebCheckout);
-
-      return session;
-    } on CFException catch (e) {
-      print(e.message);
-    }
   }
 }
 

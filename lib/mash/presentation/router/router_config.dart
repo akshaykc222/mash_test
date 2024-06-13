@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mash/core/hive_service.dart';
+import 'package:mash/mash/data/local/models/login_local_model.dart';
+import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -14,8 +18,8 @@ import 'package:mash/mash/presentation/pages/home/competitiveExams/competitive_e
 import 'package:mash/mash/presentation/pages/home/competitiveExams/exam_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/facility/facility_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart';
-import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
@@ -33,6 +37,10 @@ import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_year_plan_s
 import 'package:mash/mash/presentation/pages/home/lessonPlanner/view_yearly_plan_list_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academic_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
+import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/research.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
@@ -62,10 +70,12 @@ import 'package:mash/mash/presentation/pages/home/transferCertificate/tc_request
 import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker_mainscreen.dart';
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 
 import '../../../core/usecase.dart';
 import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
+import '../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
 import '../../domain/use_cases/auth/get_user_info_use_case.dart';
@@ -93,32 +103,35 @@ class AppRouteManager {
 
   static Widget navigateByUserType(
       {required Widget staff, required Widget parent, required student}) {
-    var getUser = getIt<GetUserInfoUseCase>();
+    // var getUser = getIt<GetUserInfoUseCase>();
 
     return FutureBuilder(
-      future: getUser.call(NoParams()),
+      future: HiveService()
+          .getBox<LoginLocalModel>(boxName: LocalStorageNames.userInfo),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          var user = snapshot.data;
-          if (user == null) {
-            return const LoginScreen();
-          } else {
-            switch (getUserType(user.userType)) {
-              case UserTypes.staff:
-                return staff;
-              case UserTypes.student:
-                return student;
-              case UserTypes.parent:
-                return parent;
-              default:
-                return const SizedBox();
-            }
-          }
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+        return snapshot.hasData
+            ? ValueListenableBuilder(
+                valueListenable: snapshot.data!.listenable(),
+                builder: (context, data, _) {
+                  if (data.isNotEmpty) {
+                    var user = data.values.first;
+
+                    switch (getUserType(user.userType)) {
+                      case UserTypes.staff:
+                        return staff;
+                      case UserTypes.student:
+                        return student;
+                      case UserTypes.parent:
+                        return parent;
+                      default:
+                        return const SizedBox();
+                    }
+                  } else {
+                    return const Loader();
+                  }
+                },
+              )
+            : const Loader();
       },
     );
   }
@@ -211,7 +224,13 @@ class AppRouteManager {
     GoRoute(
       path: AppPages.academicDetailLibraryScreen,
       name: AppPages.academicDetailLibraryScreen,
-      builder: (context, state) => const AcademicDetailScreen(),
+      builder: (context, state) {
+        if (state.extra != null) {
+          return AcademicDetailScreen(
+              entity: state.extra as DigitalLibraryEntity);
+        }
+        return const SizedBox();
+      },
     ),
     GoRoute(
       path: AppPages.quizOnBoardScreen,
@@ -278,7 +297,8 @@ class AppRouteManager {
       path: AppPages.progressReport,
       name: AppPages.progressReport,
       builder: (context, state) => const ProgressReport(),
-    ),GoRoute(
+    ),
+    GoRoute(
       path: AppPages.physicalLibraryFilter,
       name: AppPages.physicalLibraryFilter,
       builder: (context, state) => const PhysicalLibraryFilterScreen(),
@@ -437,7 +457,8 @@ class AppRouteManager {
     GoRoute(
       path: AppPages.feesAndPaymentsConfirmation,
       name: AppPages.feesAndPaymentsConfirmation,
-      builder: (context, state) => const PaymentConfirmationScreen(),
+      builder: (context, state) =>
+          PaymentConfirmationScreen(totalAmount: state.extra as String),
     ),
     GoRoute(
       name: AppPages.examTimetableScreen,
@@ -508,7 +529,8 @@ class AppRouteManager {
       name: AppPages.createGroup,
       path: AppPages.createGroup,
       builder: (context, state) => const GroupAddScreen(),
-    ),GoRoute(
+    ),
+    GoRoute(
       name: AppPages.dailyTimetableScreen,
       path: AppPages.dailyTimetableScreen,
       builder: (context, state) => const DailyTimeTableScreen(),
@@ -531,11 +553,43 @@ class AppRouteManager {
       },
     ),
     GoRoute(
+      path: AppPages.seeAllSubMedium,
+      name: AppPages.seeAllSubMedium,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return SeeAllSubAndMedium(
+              type: state.extra as SeeAllNonAcademicTypes);
+        }
+        return const SizedBox();
+      },
+    ),
+    GoRoute(
+      path: AppPages.bookDetailDigital,
+      name: AppPages.bookDetailDigital,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return BookDetailView(book: state.extra as DigitalLibraryEntity);
+        }
+        return const SizedBox();
+      },
+    ),
+
+    GoRoute(
       name: AppPages.newChat,
       path: AppPages.newChat,
       builder: (context, state) {
         return const NewChat();
       },
+    ),
+    GoRoute(
+      path: AppPages.nonAcademic,
+      name: AppPages.nonAcademic,
+      builder: (context, state) => const NonAcademic(),
+    ),
+    GoRoute(
+      path: AppPages.research,
+      name: AppPages.research,
+      builder: (context, state) => const ResearchScreen(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

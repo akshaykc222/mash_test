@@ -25,7 +25,7 @@ class CustomIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(SizeUtility(context).width / 1.6, 45),
+        fixedSize: Size(width ?? SizeUtility(context).width / 1.6, 50),
         elevation: elevation,
         backgroundColor: color,
       ),
@@ -38,8 +38,8 @@ class CustomIconButton extends StatelessWidget {
             name,
             style: TextStyle(
               fontSize: 16,
-              color: color == Colors.white
-                  ? AppColors.primaryColor
+              color: color == AppColors.primaryColor
+                  ? AppColors.white
                   : AppColors.primaryColor,
               fontWeight: FontWeight.w600,
             ),
@@ -51,14 +51,14 @@ class CustomIconButton extends StatelessWidget {
                   size: 16,
                 )
               : const SizedBox(),
-          icon != null
-              ? assetFromSvg(
+          icon == null || icon == ""
+              ? const SizedBox()
+              : assetFromSvg(
                   icon!,
-                  color: color == Colors.white
-                      ? AppColors.primaryColor
+                  color: color == AppColors.primaryColor
+                      ? AppColors.white
                       : AppColors.primaryColor,
                 )
-              : const SizedBox(),
         ],
       ),
     );

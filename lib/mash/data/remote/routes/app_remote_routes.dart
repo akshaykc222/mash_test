@@ -1,10 +1,12 @@
 class AppRemoteRoutes {
   static const baseUrl = "https://uat.mash-edu.com/";
   static const baseUrlVendor = "https://app.avlview.com/";
+  static const getTypes =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDlDropdowns";
   static const login = "UATRESTAPI/MashFlutterRestAPI/api/user/userLogin";
   static const getVehicleLocation = "api/getvehiclecurrentlocation";
   static const digitalLibrary =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibraryAll";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getDigitalLibrary";
   static const updateProfile =
       "UATRESTAPI/MashFlutterRestAPI/api/user/updateStudentProfile";
   static const wordAndThougthofTheDay =
@@ -12,7 +14,7 @@ class AppRemoteRoutes {
   static const noticePopUp =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNoticePopUp";
   static const classDetails =
-      "UATRESTAPI/MashFlutterRestAPI/api/user/getClassdtls";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getClassDetails";
   // static const
 
   ///profile urls
@@ -46,11 +48,12 @@ class AppRemoteRoutes {
   static const newsBoard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNewsBoardView";
   static const roleMenu = "UATRESTAPI/MashFlutterRestAPI/api/user/getMenu";
-
+  static const termDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
   // vehicle tracker url
   static const vehicleTrackerStops =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
-
+  static const vehicleVendor = "api/getvehiclecurrentlocation";
   // teacher url
   static const teacherRatingList =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getTeacherRatingList";
@@ -83,15 +86,28 @@ class AppRemoteRoutes {
   static const paymentFinal =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPendingFinalAmount";
 
+  static const paymentOrderId =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentNextUniqueId";
+  static const paymentToken =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentToken";
+
+  static const paymentCompleteResponse =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getPaymentCompleteResponse";
+
+  static const paymentStatusUpdate =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/paymentStatusUpdate";
+
+  static const savePaymentResponse =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/savePaymentResponse";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
 
- //  library
- static const getPhysicalLibrary =
+  //  library
+  static const getPhysicalLibrary =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlAllBooks";
 
- static const getPhysicalLibraryRequiredData =
+  static const getPhysicalLibraryRequiredData =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
 
  static const insertPhysicalLibraryRequest =

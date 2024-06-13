@@ -29,6 +29,12 @@ enum PaymentStatusType {
   transaction,
 }
 
+enum OrderStatus {
+  PAID,
+  ACTIVE,
+  FAILED,
+}
+
 enum UserTypes { staff, student, parent }
 
 UserTypes getUserType(String userType) {
@@ -44,5 +50,20 @@ UserTypes getUserType(String userType) {
 
     default:
       return UserTypes.student;
+  }
+}
+
+enum NonAcademicTypes { all, fiction, non_fiction, bookmarks }
+
+enum SeeAllNonAcademicTypes { subCategory, medium }
+
+extension GetTypString on SeeAllNonAcademicTypes {
+  String toName() {
+    switch (this) {
+      case SeeAllNonAcademicTypes.subCategory:
+        return "Sub categories";
+      case SeeAllNonAcademicTypes.medium:
+        return "Medium";
+    }
   }
 }

@@ -5,10 +5,15 @@ class VehicleTrackerStopsState with _$VehicleTrackerStopsState {
   const factory VehicleTrackerStopsState({
     StudentRouteEntity? getTrackerStops,
     Set<Polyline>? polyLines,
-    VehicleLocationEntity? getBusLiveLocation,
+    VehicleTrackerEntity? studentStop,
+    @Default(0) double distance,
+    @Default(0) String time,
+    ValueNotifier<VehicleLocationEntity?>? getBusLiveLocation,
+    BitmapDescriptor? busMakerIcon,
+    BitmapDescriptor? studentMarker,
+    BitmapDescriptor? stopMarker,
     @Default(false) bool isLoading,
   }) = _VehicleTrackerStopsState;
 
-  factory VehicleTrackerStopsState.initial() =>
-      const VehicleTrackerStopsState();
+  factory VehicleTrackerStopsState.initial() => VehicleTrackerStopsState();
 }

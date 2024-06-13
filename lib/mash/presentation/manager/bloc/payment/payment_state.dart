@@ -10,7 +10,7 @@ class PaymentState with _$PaymentState {
     required String totalAmount,
     required ResponseClassify<List<PaymentDashboardEntity>>
         paymentHistoryResponse,
-    required ResponseClassify<String> getPaymentFinalAmount,
+    required ResponseClassify<OrderStatus> paymentOrderResponse,
   }) = _PaymentState;
   factory PaymentState.initial() => PaymentState(
         paymentDashboardResponse: ResponseClassify.initial(),
@@ -18,6 +18,6 @@ class PaymentState with _$PaymentState {
         selectedCheckboxItems: {},
         totalAmount: '',
         paymentHistoryResponse: ResponseClassify.initial(),
-        getPaymentFinalAmount: ResponseClassify.initial(),
+        paymentOrderResponse: ResponseClassify.initial(),
       );
 }

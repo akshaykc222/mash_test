@@ -9,6 +9,7 @@ import 'app_colors.dart';
 class AppConstants {
   static const appName = "MASH";
   static const googleMapKey = 'AIzaSyC31l-Cu9WVeWEgnVHRCE_Ltp8jSURAgRw';
+  static const trackerApiKey = 'pGq2dyLIMA8bN8iWCpH7';
 }
 
 //height

@@ -108,4 +108,18 @@ class AppAssets {
   static String tickLottie = "assets/lottie/tick_animation.json";
   static String noDataLottie = "assets/lottie/nodata.json";
   static String comingSoonLottie = "assets/lottie/coming_soon.json";
+
+  //vehicle tracker
+
+  static String bus = "assets/icons/school-bus.png";
+  static String busStopActive = "assets/icons/bus-stop.png";
+  static String busStop = "assets/icons/bus-stop-s.png";
+
+  static String paymentProcessing = "assets/lottie/payment_processing.json";
+
+  //riv
+  static String paymentFailed = "assets/riv/payment_failed.riv";
+  static String paymentSuccess = "assets/riv/payment_sucess.riv";
+  static String processing = "assets/riv/processing.riv";
+  static const share = 'assets/icons/share.svg';
 }

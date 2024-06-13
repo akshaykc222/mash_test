@@ -72,8 +72,7 @@ class MashSupportScreen extends StatelessWidget {
 
   _launchCaller(number) async {
     var url = "tel:$number";
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (!await launchUrl(Uri.parse(url))) {
     } else {
       throw 'Could not launch $url';
     }
