@@ -88,10 +88,10 @@ import '../mash/domain/use_cases/academic/get_division_details_use_case.dart'
 import '../mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart'
     as _i62;
 import '../mash/domain/use_cases/academic/get_syllabus_use_case.dart' as _i63;
-import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i114;
-import '../mash/domain/use_cases/auth/login_use_case.dart' as _i115;
-import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i116;
-import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i113;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i115;
+import '../mash/domain/use_cases/auth/login_use_case.dart' as _i116;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i117;
+import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i114;
 import '../mash/domain/use_cases/chat/add_chat_room_use_case.dart' as _i82;
 import '../mash/domain/use_cases/chat/get_chat_rooms_use_case.dart' as _i80;
 import '../mash/domain/use_cases/chat/get_chat_use_case.dart' as _i83;
@@ -103,18 +103,20 @@ import '../mash/domain/use_cases/chat/update_room_use_case.dart' as _i87;
 import '../mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart'
     as _i106;
 import '../mash/domain/use_cases/dashboard/get_role_menu_usecase.dart' as _i107;
+import '../mash/domain/use_cases/dashboard/get_term_details_usecase.dart'
+    as _i108;
 import '../mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart'
     as _i66;
 import '../mash/domain/use_cases/home/get_add_on_usecase.dart' as _i71;
 import '../mash/domain/use_cases/home/post_feed_use_case.dart' as _i72;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_report_details_use_case.dart'
-    as _i109;
-import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
-    as _i108;
-import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
-    as _i111;
-import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
     as _i110;
+import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
+    as _i109;
+import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
+    as _i112;
+import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
+    as _i111;
 import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
     as _i104;
 import '../mash/domain/use_cases/id_request/post_id_request.dart' as _i105;
@@ -123,7 +125,7 @@ import '../mash/domain/use_cases/library/physical_library_use_case.dart'
 import '../mash/domain/use_cases/library/required_pysical_library_data_usecase.dart'
     as _i96;
 import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart'
-    as _i112;
+    as _i113;
 import '../mash/domain/use_cases/notice/notice_all_usecase.dart' as _i103;
 import '../mash/domain/use_cases/payment/get_payment_complete_response_usecase.dart'
     as _i75;
@@ -160,25 +162,25 @@ import '../mash/domain/use_cases/vehicle_tracker_stops/get_vehicle_current_locat
 import '../mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart'
     as _i61;
 import '../mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart'
-    as _i120;
+    as _i122;
 import '../mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart' as _i3;
 import '../mash/presentation/manager/bloc/chat_bloc/chat_bloc.dart' as _i4;
 import '../mash/presentation/manager/bloc/dashboard_bloc/dashboard_bloc.dart'
-    as _i123;
+    as _i120;
 import '../mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart'
     as _i12;
 import '../mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart'
-    as _i121;
-import '../mash/presentation/manager/bloc/home_bloc/home_bloc.dart' as _i119;
+    as _i123;
+import '../mash/presentation/manager/bloc/home_bloc/home_bloc.dart' as _i121;
 import '../mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart'
-    as _i122;
+    as _i124;
 import '../mash/presentation/manager/bloc/id_request/id_request_bloc.dart'
     as _i5;
 import '../mash/presentation/manager/bloc/library_bloc/library_bloc.dart'
     as _i6;
 import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart'
-    as _i118;
-import '../mash/presentation/manager/bloc/payment/payment_bloc.dart' as _i117;
+    as _i119;
+import '../mash/presentation/manager/bloc/payment/payment_bloc.dart' as _i118;
 import '../mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart'
     as _i7;
 import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'
@@ -392,29 +394,31 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i106.FetchWordThoughtUseCase(gh<_i97.DashBoardRepository>()));
     gh.factory<_i107.GetRoleMenuUsecase>(
         () => _i107.GetRoleMenuUsecase(gh<_i97.DashBoardRepository>()));
-    gh.lazySingleton<_i108.HomeWorkReportsUseCase>(() =>
-        _i108.HomeWorkReportsUseCase(
+    gh.factory<_i108.GetTermDetailsUsecase>(
+        () => _i108.GetTermDetailsUsecase(gh<_i97.DashBoardRepository>()));
+    gh.lazySingleton<_i109.HomeWorkReportsUseCase>(() =>
+        _i109.HomeWorkReportsUseCase(
             homeWorkNotesRepository: gh<_i91.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i109.GetHomeWorkDetails>(() => _i109.GetHomeWorkDetails(
+    gh.lazySingleton<_i110.GetHomeWorkDetails>(() => _i110.GetHomeWorkDetails(
         homeWorkNotesRepository: gh<_i91.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i110.NotesReportsUseCase>(() => _i110.NotesReportsUseCase(
+    gh.lazySingleton<_i111.NotesReportsUseCase>(() => _i111.NotesReportsUseCase(
         homeWorkNotesRepository: gh<_i91.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i111.GetNoteReportDetails>(() =>
-        _i111.GetNoteReportDetails(
+    gh.lazySingleton<_i112.GetNoteReportDetails>(() =>
+        _i112.GetNoteReportDetails(
             homeWorkNotesRepository: gh<_i91.HomeWorkNotesRepository>()));
-    gh.factory<_i112.GetNoticeBoardPopUp>(
-        () => _i112.GetNoticeBoardPopUp(gh<_i101.NoticeRepository>()));
-    gh.singleton<_i113.SignOutUseCase>(
-        () => _i113.SignOutUseCase(gh<_i99.AuthRepository>()));
-    gh.lazySingleton<_i114.GetUserInfoUseCase>(
-        () => _i114.GetUserInfoUseCase(gh<_i99.AuthRepository>()));
-    gh.lazySingleton<_i115.LoginUseCase>(
-        () => _i115.LoginUseCase(gh<_i99.AuthRepository>()));
-    gh.lazySingleton<_i116.SaveUserInfoUseCase>(
-        () => _i116.SaveUserInfoUseCase(gh<_i99.AuthRepository>()));
-    gh.factory<_i117.PaymentBloc>(() => _i117.PaymentBloc(
+    gh.factory<_i113.GetNoticeBoardPopUp>(
+        () => _i113.GetNoticeBoardPopUp(gh<_i101.NoticeRepository>()));
+    gh.singleton<_i114.SignOutUseCase>(
+        () => _i114.SignOutUseCase(gh<_i99.AuthRepository>()));
+    gh.lazySingleton<_i115.GetUserInfoUseCase>(
+        () => _i115.GetUserInfoUseCase(gh<_i99.AuthRepository>()));
+    gh.lazySingleton<_i116.LoginUseCase>(
+        () => _i116.LoginUseCase(gh<_i99.AuthRepository>()));
+    gh.lazySingleton<_i117.SaveUserInfoUseCase>(
+        () => _i117.SaveUserInfoUseCase(gh<_i99.AuthRepository>()));
+    gh.factory<_i118.PaymentBloc>(() => _i118.PaymentBloc(
           gh<_i76.GetPaymentDashboardUsecase>(),
-          gh<_i114.GetUserInfoUseCase>(),
+          gh<_i115.GetUserInfoUseCase>(),
           gh<_i64.GetPaymentFinalAmountUsecase>(),
           gh<_i65.GetPaymentOrderIdUsecase>(),
           gh<_i77.GetPaymentTokenUsecase>(),
@@ -422,38 +426,39 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i78.PostPaymentStatusUpdateUsecase>(),
           gh<_i79.SavePaymentResponseUsecase>(),
         ));
-    gh.factory<_i118.NoticeBloc>(() => _i118.NoticeBloc(
-          gh<_i112.GetNoticeBoardPopUp>(),
+    gh.factory<_i119.NoticeBloc>(() => _i119.NoticeBloc(
+          gh<_i113.GetNoticeBoardPopUp>(),
           gh<_i103.GetAllNoticeUseCase>(),
         ));
-    gh.factory<_i119.HomeBloc>(() => _i119.HomeBloc(
+    gh.factory<_i120.DashboardBloc>(() => _i120.DashboardBloc(
+          gh<_i106.FetchWordThoughtUseCase>(),
+          gh<_i115.GetUserInfoUseCase>(),
+          gh<_i108.GetTermDetailsUsecase>(),
+        ));
+    gh.factory<_i121.HomeBloc>(() => _i121.HomeBloc(
           gh<_i71.GetAddOnUsecase>(),
-          gh<_i114.GetUserInfoUseCase>(),
+          gh<_i115.GetUserInfoUseCase>(),
           gh<_i72.PostfeedbackUsecase>(),
         ));
-    gh.factory<_i120.AcademicBloc>(() => _i120.AcademicBloc(
+    gh.factory<_i122.AcademicBloc>(() => _i122.AcademicBloc(
           gh<_i48.GetDivisionDetailsUseCase>(),
           getClassInforUseCase: gh<_i70.GetClassInforUseCase>(),
-          getUserInfoUseCase: gh<_i114.GetUserInfoUseCase>(),
+          getUserInfoUseCase: gh<_i115.GetUserInfoUseCase>(),
           getAcademicSubjectUseCase: gh<_i47.GetAcademicSubjectUseCase>(),
           getSyllabusUseCase: gh<_i63.GetSyllabusUseCase>(),
           getSyllabusTermsUseCase: gh<_i62.GetSyllabusTermsUseCase>(),
         ));
-    gh.factory<_i121.DrawerBloc>(() => _i121.DrawerBloc(
+    gh.factory<_i123.DrawerBloc>(() => _i123.DrawerBloc(
           gh<_i66.GetNewsBoardUseCase>(),
-          gh<_i114.GetUserInfoUseCase>(),
+          gh<_i115.GetUserInfoUseCase>(),
           gh<_i107.GetRoleMenuUsecase>(),
         ));
-    gh.factory<_i122.HomeWorkNotesBloc>(() => _i122.HomeWorkNotesBloc(
-          gh<_i108.HomeWorkReportsUseCase>(),
-          gh<_i114.GetUserInfoUseCase>(),
-          gh<_i110.NotesReportsUseCase>(),
-          gh<_i111.GetNoteReportDetails>(),
-          gh<_i109.GetHomeWorkDetails>(),
-        ));
-    gh.factory<_i123.DashboardBloc>(() => _i123.DashboardBloc(
-          gh<_i106.FetchWordThoughtUseCase>(),
-          gh<_i114.GetUserInfoUseCase>(),
+    gh.factory<_i124.HomeWorkNotesBloc>(() => _i124.HomeWorkNotesBloc(
+          gh<_i109.HomeWorkReportsUseCase>(),
+          gh<_i115.GetUserInfoUseCase>(),
+          gh<_i111.NotesReportsUseCase>(),
+          gh<_i112.GetNoteReportDetails>(),
+          gh<_i110.GetHomeWorkDetails>(),
         ));
     return this;
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,6 +10,7 @@ import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart';
+import 'package:mash/mash/domain/use_cases/dashboard/get_term_details_usecase.dart';
 
 import '../../../../../core/custom_exception.dart';
 import '../../../../../core/response_classify.dart';
@@ -25,13 +28,16 @@ part 'dashboard_state.dart';
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final FetchWordThoughtUseCase fetchWordThoughtUseCase;
   final GetUserInfoUseCase userInfoUseCase;
+  final GetTermDetailsUsecase getTermDetailsUsecase;
 
   /// Constructs a [DashboardBloc] instance.
   ///
   /// [fetchWordThoughtUseCase]: Use case for fetching word and thought of the day.
-  DashboardBloc(this.fetchWordThoughtUseCase, this.userInfoUseCase)
+  DashboardBloc(this.fetchWordThoughtUseCase, this.userInfoUseCase,
+      this.getTermDetailsUsecase)
       : super(DashboardState.initial()) {
     on<_FetchWordAndThoughtOftheDayEvent>(_fetchWordAndThoughtOftheDayEvent);
+    on<_GetTermDetailsEvent>(_getTermDetailsEvent);
   }
 
   /// Handles the [_FetchWordAndThoughtOftheDayEvent] event by fetching the word and thought of the day.
@@ -66,4 +72,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ///[USE CASES]///
   final digitalLibraryUseCase = getIt<DigitalLibraryUseCase>();
   final getLoginUseCase = getIt<GetUserInfoUseCase>();
+
+  FutureOr<void> _getTermDetailsEvent(
+      _GetTermDetailsEvent event, Emitter<DashboardState> emit) {}
 }

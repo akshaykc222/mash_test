@@ -16,21 +16,23 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
-  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -38,24 +40,23 @@ mixin _$DashboardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DashboardEventCopyWith<DashboardEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -64,8 +65,6 @@ abstract class $DashboardEventCopyWith<$Res> {
   factory $DashboardEventCopyWith(
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
-  @useResult
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -77,29 +76,14 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-  }) {
-    return _then(_value.copyWith(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res>
-    implements $DashboardEventCopyWith<$Res> {
+abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res> {
   factory _$$FetchWordAndThoughtOftheDayEventImplCopyWith(
           _$FetchWordAndThoughtOftheDayEventImpl value,
           $Res Function(_$FetchWordAndThoughtOftheDayEventImpl) then) =
       __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({BuildContext context});
 }
@@ -166,6 +150,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent(context);
   }
@@ -174,6 +159,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(context);
   }
@@ -182,6 +168,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -195,6 +182,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent(this);
   }
@@ -204,6 +192,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(this);
   }
@@ -213,6 +202,7 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -226,13 +216,118 @@ abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
   const factory _FetchWordAndThoughtOftheDayEvent(final BuildContext context) =
       _$FetchWordAndThoughtOftheDayEventImpl;
 
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$FetchWordAndThoughtOftheDayEventImplCopyWith<
           _$FetchWordAndThoughtOftheDayEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetTermDetailsEventImplCopyWith<$Res> {
+  factory _$$GetTermDetailsEventImplCopyWith(_$GetTermDetailsEventImpl value,
+          $Res Function(_$GetTermDetailsEventImpl) then) =
+      __$$GetTermDetailsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetTermDetailsEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$GetTermDetailsEventImpl>
+    implements _$$GetTermDetailsEventImplCopyWith<$Res> {
+  __$$GetTermDetailsEventImplCopyWithImpl(_$GetTermDetailsEventImpl _value,
+      $Res Function(_$GetTermDetailsEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetTermDetailsEventImpl implements _GetTermDetailsEvent {
+  const _$GetTermDetailsEventImpl();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.getTermDetailsEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetTermDetailsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+  }) {
+    return getTermDetailsEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+  }) {
+    return getTermDetailsEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    required TResult orElse(),
+  }) {
+    if (getTermDetailsEvent != null) {
+      return getTermDetailsEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+  }) {
+    return getTermDetailsEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+  }) {
+    return getTermDetailsEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    required TResult orElse(),
+  }) {
+    if (getTermDetailsEvent != null) {
+      return getTermDetailsEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetTermDetailsEvent implements DashboardEvent {
+  const factory _GetTermDetailsEvent() = _$GetTermDetailsEventImpl;
 }
 
 /// @nodoc
