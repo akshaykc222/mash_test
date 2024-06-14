@@ -49,9 +49,9 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
 
   @override
   void initState() {
+    super.initState();
     TimeTableBloc.get(context).add(
         const TimeTableEvent.getOfflineExamTerms());
-    super.initState();
   }
 
   @override

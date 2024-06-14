@@ -198,7 +198,10 @@ class DailyTimeTableBody extends StatelessWidget {
                                     children: [
                                       CommonIconButton(
                                           icon: Icons.call_outlined,
-                                          onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile)),
+                                          // onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile),
+                                        onTap: ()=> HelperClasses.showDialogWithButton(messageTitle: 'Contact Teacher',
+                                            message: 'Are you sure to make a call?', submitButtonTitle: 'Call', context: context, onYesTap: ()=> _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile)),
+                                          ),
                                       CommonIconButton(
                                           icon: Icons.message_outlined,
                                           onTap: () {
