@@ -38,8 +38,14 @@ mixin _$PaymentEvent {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,8 +71,14 @@ mixin _$PaymentEvent {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,8 +98,14 @@ mixin _$PaymentEvent {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) =>
@@ -261,8 +279,14 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
@@ -291,8 +315,14 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
@@ -315,8 +345,14 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -485,8 +521,14 @@ class _$SelectPaymentsCheckboxEventImpl
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent(id);
@@ -515,8 +557,14 @@ class _$SelectPaymentsCheckboxEventImpl
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
@@ -539,8 +587,14 @@ class _$SelectPaymentsCheckboxEventImpl
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -702,8 +756,14 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return selectedItemIndex(index);
@@ -732,8 +792,14 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return selectedItemIndex?.call(index);
@@ -756,8 +822,14 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -943,8 +1015,14 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
@@ -973,8 +1051,14 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
@@ -997,8 +1081,14 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -1219,8 +1309,14 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return getPaymentOrderId(
@@ -1250,8 +1346,14 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return getPaymentOrderId?.call(
@@ -1275,8 +1377,14 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -1519,8 +1627,14 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return getPaymentTokenAndOpenPayment(
@@ -1550,8 +1664,14 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return getPaymentTokenAndOpenPayment?.call(
@@ -1575,8 +1695,14 @@ class _$GetPaymentTokenAndOpenPaymentImpl
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
@@ -1680,7 +1806,8 @@ abstract class _$$GetPaymentCompleteResponseImplCopyWith<$Res> {
       String? email,
       String? remark,
       String? studenId,
-      String? mobile});
+      String? mobile,
+      String? installMentId});
 }
 
 /// @nodoc
@@ -1701,6 +1828,7 @@ class __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>
     Object? remark = freezed,
     Object? studenId = freezed,
     Object? mobile = freezed,
+    Object? installMentId = freezed,
   }) {
     return _then(_$GetPaymentCompleteResponseImpl(
       orderId: freezed == orderId
@@ -1727,6 +1855,10 @@ class __$$GetPaymentCompleteResponseImplCopyWithImpl<$Res>
           ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String?,
+      installMentId: freezed == installMentId
+          ? _value.installMentId
+          : installMentId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1740,7 +1872,8 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
       this.email,
       this.remark,
       this.studenId,
-      this.mobile});
+      this.mobile,
+      this.installMentId});
 
   @override
   final String? orderId;
@@ -1754,10 +1887,12 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
   final String? studenId;
   @override
   final String? mobile;
+  @override
+  final String? installMentId;
 
   @override
   String toString() {
-    return 'PaymentEvent.getPaymentCompleteResponse(orderId: $orderId, userName: $userName, email: $email, remark: $remark, studenId: $studenId, mobile: $mobile)';
+    return 'PaymentEvent.getPaymentCompleteResponse(orderId: $orderId, userName: $userName, email: $email, remark: $remark, studenId: $studenId, mobile: $mobile, installMentId: $installMentId)';
   }
 
   @override
@@ -1772,12 +1907,14 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             (identical(other.remark, remark) || other.remark == remark) &&
             (identical(other.studenId, studenId) ||
                 other.studenId == studenId) &&
-            (identical(other.mobile, mobile) || other.mobile == mobile));
+            (identical(other.mobile, mobile) || other.mobile == mobile) &&
+            (identical(other.installMentId, installMentId) ||
+                other.installMentId == installMentId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, orderId, userName, email, remark, studenId, mobile);
+  int get hashCode => Object.hash(runtimeType, orderId, userName, email, remark,
+      studenId, mobile, installMentId);
 
   @JsonKey(ignore: true)
   @override
@@ -1809,12 +1946,18 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String studentId,
             String orderId)
         getPaymentTokenAndOpenPayment,
-    required TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
         getPaymentCompleteResponse,
   }) {
     return getPaymentCompleteResponse(
-        orderId, userName, email, remark, studenId, mobile);
+        orderId, userName, email, remark, studenId, mobile, installMentId);
   }
 
   @override
@@ -1840,12 +1983,18 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String studentId,
             String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult? Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
   }) {
     return getPaymentCompleteResponse?.call(
-        orderId, userName, email, remark, studenId, mobile);
+        orderId, userName, email, remark, studenId, mobile, installMentId);
   }
 
   @override
@@ -1865,14 +2014,20 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
     TResult Function(String email, String student, String mobile, String remark,
             String installmentId, String studentId, String orderId)?
         getPaymentTokenAndOpenPayment,
-    TResult Function(String? orderId, String? userName, String? email,
-            String? remark, String? studenId, String? mobile)?
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
         getPaymentCompleteResponse,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
       return getPaymentCompleteResponse(
-          orderId, userName, email, remark, studenId, mobile);
+          orderId, userName, email, remark, studenId, mobile, installMentId);
     }
     return orElse();
   }
@@ -1941,7 +2096,8 @@ abstract class _GetPaymentCompleteResponse implements PaymentEvent {
       final String? email,
       final String? remark,
       final String? studenId,
-      final String? mobile}) = _$GetPaymentCompleteResponseImpl;
+      final String? mobile,
+      final String? installMentId}) = _$GetPaymentCompleteResponseImpl;
 
   String? get orderId;
   String? get userName;
@@ -1949,6 +2105,7 @@ abstract class _GetPaymentCompleteResponse implements PaymentEvent {
   String? get remark;
   String? get studenId;
   String? get mobile;
+  String? get installMentId;
   @JsonKey(ignore: true)
   _$$GetPaymentCompleteResponseImplCopyWith<_$GetPaymentCompleteResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

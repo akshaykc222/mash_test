@@ -25,7 +25,9 @@ class DailyTimeTableScreen extends StatefulWidget {
 
 class _DailyTimeTableScreenState extends State<DailyTimeTableScreen> {
   String date = DateTime.now().toString();
-  late TimeTableBloc _timeTableBloc;
+
+
+
 
 
   @override
@@ -33,14 +35,17 @@ class _DailyTimeTableScreenState extends State<DailyTimeTableScreen> {
     super.initState();
     dateVariable();
     TimeTableBloc.get(context)
-        .add(TimeTableEvent.getDailyTimeTable(date: date));
+        .add( TimeTableEvent.getDailyTimeTable(date:date));
 
   }
 
-  void dateVariable() {
+  String dateVariable() {
     var parsedDate = DateTime.parse(date.toString());
     String convertedDate = DateFormat("dd-MM-yyyy").format(parsedDate);
-    date = convertedDate;
+    setState(() {
+      date = convertedDate;
+    });
+    return date;
   }
 
   @override
@@ -138,7 +143,7 @@ class DailyTimeTableBody extends StatelessWidget {
                                 spacer7,
                                  Text(
                                  "${state.getDailyTimeTable?.data?[index].startTime} - ${state.getDailyTimeTable!.data![index].endTime}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 18),
                                 ),
@@ -193,7 +198,10 @@ class DailyTimeTableBody extends StatelessWidget {
                                     children: [
                                       CommonIconButton(
                                           icon: Icons.call_outlined,
-                                          onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile)),
+                                          // onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile),
+                                        onTap: ()=> HelperClasses.showDialogWithButton(messageTitle: 'Contact Teacher',
+                                            message: 'Are you sure to make a call?', submitButtonTitle: 'Call', context: context, onYesTap: ()=> _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile)),
+                                          ),
                                       CommonIconButton(
                                           icon: Icons.message_outlined,
                                           onTap: () {

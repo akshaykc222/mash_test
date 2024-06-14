@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../core/response_classify.dart';
 import '../../../../../domain/entities/profile/student_detail_entity.dart';
@@ -31,7 +32,7 @@ class StudenProfileWidget extends StatelessWidget {
         horizontal: SizeUtility(context).width / 24,
       ).copyWith(
           top: Platform.isIOS
-              ? SizeUtility(context).height / 9
+              ? SizeUtility(context).height / 8
               : SizeUtility(context).height / 11),
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
@@ -54,11 +55,13 @@ class StudenProfileWidget extends StatelessWidget {
                     ],
                   ),
                   _UserInfo(user: user),
-                  Icon(
-                    Icons.keyboard_arrow_down,
-                    color: AppColors.white,
-                    size: SizeConfig.height(24),
-                  ),
+                  state.getSiblings?.data?.isEmpty ?? true
+                      ? const SizedBox()
+                      : Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.white,
+                          size: SizeConfig.height(24),
+                        ),
                 ],
               ),
             ),
@@ -159,7 +162,7 @@ class _UserInfo extends StatelessWidget {
                   ],
                 ),
                 spacer10,
-                const _ContactRow(),
+                _ContactRow(user?.mobile ?? ""),
                 spacer4,
               ],
             ),
@@ -171,7 +174,8 @@ class _UserInfo extends StatelessWidget {
 }
 
 class _ContactRow extends StatelessWidget {
-  const _ContactRow();
+  final String phoneNumber;
+  const _ContactRow(this.phoneNumber);
 
   @override
   Widget build(BuildContext context) {
@@ -188,13 +192,25 @@ class _ContactRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
             },
             child: const _IconWidget(img: AppAssets.chat),
           ),
-          const _IconWidget(img: AppAssets.call),
           GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () async {
+              var url = "tel:$phoneNumber";
+              if (!await launchUrl(Uri.parse(url))) {
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+            child: const _IconWidget(img: AppAssets.call),
+          ),
+          GestureDetector(
+            behavior: HitTestBehavior.translucent,
             onTap: () {
               GoRouter.of(context).pushNamed(AppPages.teacherRatingListScreen);
             },

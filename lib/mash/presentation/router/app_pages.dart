@@ -36,13 +36,15 @@ class AppPages {
   static const vehicleTracker = '/schoolBusTrackerScreen';
 
   //library
-  static const physicalLibraryScreen = '/physicalLibraryScreen';
+  static const physicalLibraryScreen = '/book_request';
 
   // support
-  static const supportScreen = '/supportScreen';
+  static const supportScreen = '/mash_support';
 
   //leave
   static const leaveScreen = '/leave';
+  static const leaveApplyScreen = '/leaveApplyScreen';
+  static const leaveStatusScreen = '/leaveStatusScreen';
 
   //progressReport
   static const progressReport = '/progress_report';

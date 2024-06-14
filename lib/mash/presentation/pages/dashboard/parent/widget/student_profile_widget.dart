@@ -67,8 +67,12 @@ class StudentProfileWidget extends StatelessWidget {
                                     CircleAvatar(
                                       radius: 25,
                                       backgroundImage:
-                                          HelperClasses.cachedNetworkImageProvider(
-                                         imageUrl: entity.profilePhoto),
+                                          entity.profilePhoto.isEmpty
+                                              ? null
+                                              : HelperClasses
+                                                  .cachedNetworkImageProvider(
+                                                  imageUrl: entity.profilePhoto,
+                                                ),
                                     ),
                                     const SizedBox(width: 10),
                                     Flexible(

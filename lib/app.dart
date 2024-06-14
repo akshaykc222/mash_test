@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/presentation/manager/bloc/leave_bloc/leave_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
@@ -46,6 +47,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<HomeBloc>()),
         BlocProvider(create: (context) => getIt<PaymentBloc>()),
         BlocProvider(create: (context) => getIt<LibraryBloc>()),
+        BlocProvider(create: (context) => getIt<LeaveBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),

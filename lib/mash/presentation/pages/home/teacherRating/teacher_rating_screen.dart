@@ -70,10 +70,10 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          image: const DecorationImage(
+                          image:  DecorationImage(
                             fit: BoxFit.cover,
                             image: CachedNetworkImageProvider(
-                              'https://placehold.co/600x400.png',
+                              widget.entity.docName,
                             ),
                           )),
                     ),
@@ -93,19 +93,19 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            widget.entity.subName,
+                            widget.entity.subjectName,
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            "widget.entity.",
+                            widget.entity.primaryMobile,
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            "widget.entity.",
+                            widget.entity.primaryEmail,
                             style: TextStyle(
                                 fontSize: SizeConfig.textSize(15),
                                 fontWeight: FontWeight.w500),
@@ -213,8 +213,8 @@ class _TeacherRatingBodyState extends State<TeacherRatingBody> {
                               question: e.qnsId, rating: e.rating))
                           .toList();
                       _teacherBloc.add(TeacherEvent.postTeacherRating(
-                          teacherId: widget.entity.teacher,
-                          subId: widget.entity.subject,
+                          teacherId: widget.entity.teacherId,
+                          subId: widget.entity.subjectId,
                           ratedQuestions: ratings ?? []));
                       // prettyPrint(ratingList.map((e) => e.toJson()).toString());
                     },

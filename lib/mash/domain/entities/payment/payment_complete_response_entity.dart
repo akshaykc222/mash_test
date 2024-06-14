@@ -10,12 +10,6 @@ class PaymentCompleteResponseEntity extends Equatable {
   final String? orderAmount;
   final String? payload;
 
-  final String? paymentSessionId;
-  final String? paymentsUrl;
-  final String? refundsUrl;
-  final String? settlementsUrl;
-  final String? orderExpiryTime;
-
   const PaymentCompleteResponseEntity(
       {required this.cfOrderId,
       required this.createdAt,
@@ -25,11 +19,7 @@ class PaymentCompleteResponseEntity extends Equatable {
       required this.orderNote,
       required this.orderAmount,
       required this.payload,
-      required this.paymentSessionId,
-      required this.paymentsUrl,
-      required this.refundsUrl,
-      required this.settlementsUrl,
-      required this.orderExpiryTime});
+      s});
   @override
   List<Object?> get props => [];
 }

@@ -36,6 +36,8 @@ class TeacherBloc extends Bloc<TeacherEvent, TeacherState> {
     emit(state.copyWith(getTeacherRating: ResponseClassify.loading()));
     try{
       var loginInfo = await getUserInfoUseCase.call(NoParams());
+      print('********* send data **********');
+      print('${loginInfo?.compId}, ${loginInfo?.userType}');
       var response = await getTeacherRatingUseCase.call(TeacherRatingRequest(companyId: loginInfo?.compId??"", userType: loginInfo?.userType?? '' ));
       emit(state.copyWith(getTeacherRating: ResponseClassify.completed(response)));
     }catch(e){

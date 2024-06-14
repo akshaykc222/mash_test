@@ -8,9 +8,9 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
-import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
+import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
 import 'package:mash/mash/presentation/widgets/common_gesture_detector.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/drawer_widget.dart';
@@ -31,8 +31,8 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
 
   @override
   void initState() {
-    IdRequestBloc.get(context).add(
-        const IdRequestEvent.getTransferRequestEvent());
+    IdRequestBloc.get(context)
+        .add(const IdRequestEvent.getTransferRequestEvent());
     super.initState();
   }
 
@@ -51,56 +51,72 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
       height: size.height,
       width: size.width,
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          titleText(AppStrings.studentName),
-          HelperClasses.getSelectedStudent(context,true),
-          titleText(AppStrings.request),
-          BlocConsumer<IdRequestBloc, IdRequestState>(
-            listener: (context, state) {
-              if(state.getIdRequestType?.status == Status.ERROR ){
-                handleErrorUi(context: context, error: state.getIdRequestType?.error);
-              }
-            },
-            builder: (context, state) {
-              return CommonGestureDetector(
-                  onTap: () =>
-                      _openOptionsBottomSheet(context, _requestController,
-                          AppStrings.selectModule,state.getIdRequestType!.data!),
-                  icon: Icons.arrow_drop_down_circle,
-                  textController: _requestController,
-                  hintText: AppStrings.requestType);
-            },
-          ),
-          titleText(AppStrings.remarks),
-          CommonTextField(
-              controller: _remarksController,
-              lines: 4, title: AppStrings.enterRemarks),
-          spacer30,
- 
-          BlocBuilder<IdRequestBloc, IdRequestState>(
-  builder: (context, state) {
-    return AnimatedSharedButton(
-              onTap: () {
-                var state = context.read<IdRequestBloc>().state;
-                var siblingInfo = context.read<ProfileBloc>().state.selectedSibling?.userId;
-                if(state.index == null){
-                  prettyPrint('Please select request type');
-                } else {
-                  IdRequestBloc.get(context).add(
-                      IdRequestEvent.idPostRequest(reqId: state.getIdRequestType!.data![state.index!].tabId, remarks: _remarksController.text, userId: siblingInfo.toString()));
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            titleText(AppStrings.studentName),
+            HelperClasses.getSelectedStudent(context, true),
+            titleText(AppStrings.request),
+            BlocConsumer<IdRequestBloc, IdRequestState>(
+              listener: (context, state) {
+                if (state.getIdRequestType?.status == Status.ERROR) {
+                  handleErrorUi(
+                      context: context, error: state.getIdRequestType?.error);
                 }
-                              },
-              title: Text(
-                AppStrings.submitCapital,
-                style: TextStyle(
-                    fontWeight: FontWeight.w600, color: AppColors.white),
-              ),
-              isLoading:state.postIdRequest?.status==Status.LOADING);
-  },
-)
-        ],
+              },
+              builder: (context, state) {
+                return CommonGestureDetector(
+                    onTap: () => _openOptionsBottomSheet(
+                        context,
+                        _requestController,
+                        AppStrings.selectModule,
+                        state.getIdRequestType!.data!),
+                    icon: Icons.arrow_drop_down_circle,
+                    textController: _requestController,
+                    hintText: AppStrings.requestType);
+              },
+            ),
+            titleText(AppStrings.remarks),
+            CommonTextField(
+                isOutlined: true,
+                controller: _remarksController,
+                lines: 4,
+                title: AppStrings.enterRemarks),
+            spacer30,
+            BlocBuilder<IdRequestBloc, IdRequestState>(
+              builder: (context, state) {
+                return AnimatedSharedButton(
+                  onTap: () {
+                    var state = context.read<IdRequestBloc>().state;
+                    var siblingInfo = context
+                        .read<ProfileBloc>()
+                        .state
+                        .getUserDetail
+                        ?.data
+                        ?.usrId;
+                    if (state.index == null) {
+                      prettyPrint('Please select request type');
+                    } else {
+                      IdRequestBloc.get(context).add(
+                          IdRequestEvent.idPostRequest(
+                              reqId: state
+                                  .getIdRequestType!.data![state.index!].tabId,
+                              remarks: _remarksController.text,
+                              userId: siblingInfo.toString()));
+                    }
+                  },
+                  title: Text(
+                    AppStrings.submitCapital,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: AppColors.white),
+                  ),
+                  isLoading: state.postIdRequest?.status == Status.LOADING,
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -115,45 +131,40 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
     );
   }
 
-  void _openOptionsBottomSheet(BuildContext context,
-      TextEditingController controller, String sheetTitle,List<IdRequestEntity> requestTypes) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext builder) {
-        return Container(
-          decoration: BoxDecoration(
-              border: Border.all(width: 10, color: Colors.grey),
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(16), topLeft: Radius.circular(16))),
-          height: SizeConfig.height(requestTypes.length * 90).toDouble(),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Text(
-                  sheetTitle,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w500, fontSize: 18),
-                ),
-              ),
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: requestTypes.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(requestTypes[index].request),
-                          onTap: () {
-                            IdRequestBloc.get(context).add(
-                                 IdRequestEvent.selectRequestId(index: index));
-                            controller.text = requestTypes[index].request;
-                            Navigator.of(context).pop();
-                          },
-                        );
-                      }))
-            ],
+  void _openOptionsBottomSheet(
+      BuildContext context,
+      TextEditingController controller,
+      String sheetTitle,
+      List<IdRequestEntity> requestTypes) {
+    commonBottomSheet(
+      context,
+      height: 0.40,
+      title: 'Select Module',
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            child: Text(
+              sheetTitle,
+              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+            ),
           ),
-        );
-      },
+          Expanded(
+              child: ListView.builder(
+                  itemCount: requestTypes.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(requestTypes[index].request),
+                      onTap: () {
+                        IdRequestBloc.get(context)
+                            .add(IdRequestEvent.selectRequestId(index: index));
+                        controller.text = requestTypes[index].request;
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  }))
+        ],
+      ),
     );
   }
 }

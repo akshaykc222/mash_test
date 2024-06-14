@@ -208,7 +208,7 @@ class _DashboardCommonLastWidgetState extends State<DashboardCommonLastWidget> {
             Text(
               data.resTable1?[index].wordName ?? "",
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
                 height: 1.2,
                 letterSpacing: 1.2,
@@ -218,7 +218,7 @@ class _DashboardCommonLastWidgetState extends State<DashboardCommonLastWidget> {
             Text(
               data.resTable1?[index].wordMeaning1 ?? "",
               style: TextStyle(
-                fontSize: 17,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: AppColors.grey700,
               ),

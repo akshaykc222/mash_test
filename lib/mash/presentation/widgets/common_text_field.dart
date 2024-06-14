@@ -16,6 +16,7 @@ class CommonTextField extends StatelessWidget {
   final bool? passwordField;
   final int? lines;
   final bool? isOutlined;
+  final void Function(String?)? onChange;
   CommonTextField({
     super.key,
     required this.title,
@@ -31,6 +32,7 @@ class CommonTextField extends StatelessWidget {
     this.lines,
     this.isOutlined,
     this.isCaps = false,
+    this.onChange,
   });
 
   final ValueNotifier<bool> showPasswordNotifier = ValueNotifier<bool>(true);
@@ -42,6 +44,7 @@ class CommonTextField extends StatelessWidget {
       valueListenable: showPasswordNotifier,
       builder: (context, showPassword, _) {
         return TextFormField(
+          onChanged: onChange,
           textCapitalization: TextCapitalization.sentences,
           style: const TextStyle(fontSize: 18),
           controller: controller,

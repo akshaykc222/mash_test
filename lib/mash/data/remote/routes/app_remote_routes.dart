@@ -49,6 +49,10 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/getNewsBoardView";
   static const roleMenu = "UATRESTAPI/MashFlutterRestAPI/api/user/getMenu";
 
+  static const termDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getTermsDtls";
+  static const scoreBoardDetails =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getScoreBoardDtls";
   // vehicle tracker url
   static const vehicleTrackerStops =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getStudentRoutes";
@@ -97,7 +101,7 @@ class AppRemoteRoutes {
       "UATRESTAPI/MashFlutterRestAPI/api/user/paymentStatusUpdate";
 
   static const savePaymentResponse =
-      "MashFlutterRestAPI/api/user/savePaymentResponse";
+      "UATRESTAPI/MashFlutterRestAPI/api/user/savePaymentResponse";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
@@ -108,4 +112,12 @@ class AppRemoteRoutes {
 
   static const getPhysicalLibraryRequiredData =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
+
+ static const insertPhysicalLibraryRequest =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/insertBookRequest";
+
+ // leave
+  static const getLeaveDashboard =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveDashboardDetails";
+
 }

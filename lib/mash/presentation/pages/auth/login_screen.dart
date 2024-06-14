@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if (state.loginResponse?.status == Status.COMPLETED &&
             state.loginResponse?.data?.token.isNotEmpty == true) {
-          GoRouter.of(context).pushNamed(AppPages.home);
+          GoRouter.of(context).goNamed(AppPages.home);
         } else if (state.loginResponse?.status == Status.ERROR) {
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text("${state.loginResponse?.error}")));

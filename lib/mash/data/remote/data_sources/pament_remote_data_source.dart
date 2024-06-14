@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
+import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_complete_response_model.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_dashboard_model.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_toke_model.dart';
@@ -91,7 +92,12 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
 
   @override
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params) async {
-    await apiProvider.post(
-        AppRemoteRoutes.savePaymentResponse, params.toJson());
+    try {
+      final data = await apiProvider.post(
+          AppRemoteRoutes.savePaymentResponse, params.toJson());
+      print('data ----- $data');
+    } catch (e, s) {
+      prettyPrint('error $e, stack race $s');
+    }
   }
 }

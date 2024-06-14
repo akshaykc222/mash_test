@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
@@ -42,10 +41,10 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
 
     BlocProvider.of<PaymentBloc>(context).add(
         PaymentEvent.getPaymentFinalAmount(
-            installmentId: "$instalMentIdSplitted,",
+            installmentId: "$instalMentIdSplitted ,",
             totalAmount: widget.totalAmount,
             studentId:
-                context.read<ProfileBloc>().state.selectedSibling?.userId ??
+                context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ??
                     ""));
   }
 
@@ -74,12 +73,13 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                       student: _nameController.text,
                       mobile: _mobileController.text,
                       remark: _descriptionController.text,
-                      installmentId: "$instalMentIdSplitted,",
+                      installmentId: "$instalMentIdSplitted ,",
                       studentId: context
                               .read<ProfileBloc>()
                               .state
-                              .selectedSibling
-                              ?.userId ??
+                              .getUserDetail
+                              ?.data
+                              ?.usrId ??
                           ""));
             }
           },
@@ -135,6 +135,7 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
             Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CommonTextField(
                     validator: (value) =>
@@ -154,29 +155,40 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                   ),
                   spacer20,
                   CommonTextField(
-                    validator: (value) => _validateField(value, 'Email'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an email';
+                      }
+                      // Regular expression for validating an email
+                      final RegExp emailRegExp =
+                          RegExp(r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
+                      if (!emailRegExp.hasMatch(value)) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
+                    },
                     title: 'Email',
                     controller: _emailController,
                     prefix: const Icon(Icons.email),
                   ),
+                  spacer30,
+                  Text(
+                    'Payment Remarks',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(color: AppColors.greyText),
+                  ),
+                  spacer10,
+                  CommonTextField(
+                    validator: (value) => _validateField(value, 'Remarks'),
+                    controller: _descriptionController,
+                    isOutlined: true,
+                    title: '',
+                    lines: 5,
+                  ),
                 ],
               ),
-            ),
-            spacer30,
-            Text(
-              'Payment Remarks',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(color: AppColors.greyText),
-            ),
-            spacer10,
-            CommonTextField(
-              validator: (value) => _validateField(value, 'Remarks'),
-              controller: _descriptionController,
-              isOutlined: true,
-              title: '',
-              lines: 5,
             ),
           ],
         ),

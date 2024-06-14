@@ -7,6 +7,7 @@ import 'package:mash/mash/presentation/pages/home/teacherRating/widgets/teacher_
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
@@ -25,13 +26,27 @@ class TeacherListScreen extends StatelessWidget {
   }
 }
 
-class TeacherListBody extends StatelessWidget {
+class TeacherListBody extends StatefulWidget {
   const TeacherListBody({super.key});
+
+  @override
+  State<TeacherListBody> createState() => _TeacherListBodyState();
+}
+
+class _TeacherListBodyState extends State<TeacherListBody> {
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    TeacherBloc.get(context).add(const TeacherEvent.getRatings());
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    TeacherBloc.get(context).add(const TeacherEvent.getRatings());
     return SizedBox(
       height: size.height,
       width: size.width,
@@ -41,18 +56,20 @@ class TeacherListBody extends StatelessWidget {
           builder: (context, state) {
             return state.getTeacherRating?.status == Status.LOADING
                 ? const Loader()
-                : ListView.builder(
+                :state.getTeacherRating?.data == null ? Center(child: HelperClasses.emptyDataWidget()) : ListView.builder(
                     itemBuilder: (context, index) {
                       return TeacherCardWidget(
-                        onTap: () => GoRouter.of(context)
-                            .pushNamed(AppPages.teacherRatingScreen,extra: state.getTeacherRating!.data![index]),
+                        onTap: state.getTeacherRating!.data![index].ratedOrNot == '0' ? () => GoRouter.of(context)
+                            .pushNamed(AppPages.teacherRatingScreen,extra: state.getTeacherRating!.data![index]): (){
+                          HelperClasses.showSnackBar(msg: 'Rating already submitted !');
+                        },
                         imageUrl: state.getTeacherRating!.data![index].docName,
                         teacherName:
                             state.getTeacherRating!.data![index].fullName,
                         subjectName:
-                            state.getTeacherRating!.data![index].subName,
+                            state.getTeacherRating!.data![index].subjectName,
                         rating: state.getTeacherRating!.data![index].rating
-                            .toString(),
+                            .toString(), isRated: state.getTeacherRating!.data![index].ratedOrNot == '0' ? false : true,
                       );
                     },
                     itemCount: state.getTeacherRating?.data?.length);

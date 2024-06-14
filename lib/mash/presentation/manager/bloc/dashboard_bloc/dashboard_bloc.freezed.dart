@@ -16,21 +16,32 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardEvent {
-  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+    required TResult Function(String termId, String studentId)
+        getScoreboardDetailsEvent,
+    required TResult Function(int index) selectedTermIndexEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+    TResult? Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult? Function(int index)? selectedTermIndexEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    TResult Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult Function(int index)? selectedTermIndexEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -38,24 +49,33 @@ mixin _$DashboardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+    required TResult Function(_GetScoreboardDetailsEvent value)
+        getScoreboardDetailsEvent,
+    required TResult Function(_SelectedTermIndexEvent value)
+        selectedTermIndexEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult? Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult? Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DashboardEventCopyWith<DashboardEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -64,8 +84,6 @@ abstract class $DashboardEventCopyWith<$Res> {
   factory $DashboardEventCopyWith(
           DashboardEvent value, $Res Function(DashboardEvent) then) =
       _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
-  @useResult
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -77,29 +95,14 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-  }) {
-    return _then(_value.copyWith(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res>
-    implements $DashboardEventCopyWith<$Res> {
+abstract class _$$FetchWordAndThoughtOftheDayEventImplCopyWith<$Res> {
   factory _$$FetchWordAndThoughtOftheDayEventImplCopyWith(
           _$FetchWordAndThoughtOftheDayEventImpl value,
           $Res Function(_$FetchWordAndThoughtOftheDayEventImpl) then) =
       __$$FetchWordAndThoughtOftheDayEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({BuildContext context});
 }
@@ -166,6 +169,10 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function(BuildContext context)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+    required TResult Function(String termId, String studentId)
+        getScoreboardDetailsEvent,
+    required TResult Function(int index) selectedTermIndexEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent(context);
   }
@@ -174,6 +181,10 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+    TResult? Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult? Function(int index)? selectedTermIndexEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(context);
   }
@@ -182,6 +193,10 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    TResult Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult Function(int index)? selectedTermIndexEvent,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -195,6 +210,11 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
         fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+    required TResult Function(_GetScoreboardDetailsEvent value)
+        getScoreboardDetailsEvent,
+    required TResult Function(_SelectedTermIndexEvent value)
+        selectedTermIndexEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent(this);
   }
@@ -204,6 +224,10 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult? Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult? Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
   }) {
     return fetchWordAndThoughtOftheDayEvent?.call(this);
   }
@@ -213,6 +237,10 @@ class _$FetchWordAndThoughtOftheDayEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
         fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
     required TResult orElse(),
   }) {
     if (fetchWordAndThoughtOftheDayEvent != null) {
@@ -226,9 +254,7 @@ abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
   const factory _FetchWordAndThoughtOftheDayEvent(final BuildContext context) =
       _$FetchWordAndThoughtOftheDayEventImpl;
 
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$FetchWordAndThoughtOftheDayEventImplCopyWith<
           _$FetchWordAndThoughtOftheDayEventImpl>
@@ -236,11 +262,472 @@ abstract class _FetchWordAndThoughtOftheDayEvent implements DashboardEvent {
 }
 
 /// @nodoc
+abstract class _$$GetTermDetailsEventImplCopyWith<$Res> {
+  factory _$$GetTermDetailsEventImplCopyWith(_$GetTermDetailsEventImpl value,
+          $Res Function(_$GetTermDetailsEventImpl) then) =
+      __$$GetTermDetailsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetTermDetailsEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$GetTermDetailsEventImpl>
+    implements _$$GetTermDetailsEventImplCopyWith<$Res> {
+  __$$GetTermDetailsEventImplCopyWithImpl(_$GetTermDetailsEventImpl _value,
+      $Res Function(_$GetTermDetailsEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetTermDetailsEventImpl implements _GetTermDetailsEvent {
+  const _$GetTermDetailsEventImpl();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.getTermDetailsEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetTermDetailsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+    required TResult Function(String termId, String studentId)
+        getScoreboardDetailsEvent,
+    required TResult Function(int index) selectedTermIndexEvent,
+  }) {
+    return getTermDetailsEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+    TResult? Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult? Function(int index)? selectedTermIndexEvent,
+  }) {
+    return getTermDetailsEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    TResult Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult Function(int index)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (getTermDetailsEvent != null) {
+      return getTermDetailsEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+    required TResult Function(_GetScoreboardDetailsEvent value)
+        getScoreboardDetailsEvent,
+    required TResult Function(_SelectedTermIndexEvent value)
+        selectedTermIndexEvent,
+  }) {
+    return getTermDetailsEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult? Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult? Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+  }) {
+    return getTermDetailsEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (getTermDetailsEvent != null) {
+      return getTermDetailsEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetTermDetailsEvent implements DashboardEvent {
+  const factory _GetTermDetailsEvent() = _$GetTermDetailsEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GetScoreboardDetailsEventImplCopyWith<$Res> {
+  factory _$$GetScoreboardDetailsEventImplCopyWith(
+          _$GetScoreboardDetailsEventImpl value,
+          $Res Function(_$GetScoreboardDetailsEventImpl) then) =
+      __$$GetScoreboardDetailsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String termId, String studentId});
+}
+
+/// @nodoc
+class __$$GetScoreboardDetailsEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$GetScoreboardDetailsEventImpl>
+    implements _$$GetScoreboardDetailsEventImplCopyWith<$Res> {
+  __$$GetScoreboardDetailsEventImplCopyWithImpl(
+      _$GetScoreboardDetailsEventImpl _value,
+      $Res Function(_$GetScoreboardDetailsEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? termId = null,
+    Object? studentId = null,
+  }) {
+    return _then(_$GetScoreboardDetailsEventImpl(
+      termId: null == termId
+          ? _value.termId
+          : termId // ignore: cast_nullable_to_non_nullable
+              as String,
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetScoreboardDetailsEventImpl implements _GetScoreboardDetailsEvent {
+  const _$GetScoreboardDetailsEventImpl(
+      {required this.termId, required this.studentId});
+
+  @override
+  final String termId;
+  @override
+  final String studentId;
+
+  @override
+  String toString() {
+    return 'DashboardEvent.getScoreboardDetailsEvent(termId: $termId, studentId: $studentId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetScoreboardDetailsEventImpl &&
+            (identical(other.termId, termId) || other.termId == termId) &&
+            (identical(other.studentId, studentId) ||
+                other.studentId == studentId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, termId, studentId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetScoreboardDetailsEventImplCopyWith<_$GetScoreboardDetailsEventImpl>
+      get copyWith => __$$GetScoreboardDetailsEventImplCopyWithImpl<
+          _$GetScoreboardDetailsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+    required TResult Function(String termId, String studentId)
+        getScoreboardDetailsEvent,
+    required TResult Function(int index) selectedTermIndexEvent,
+  }) {
+    return getScoreboardDetailsEvent(termId, studentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+    TResult? Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult? Function(int index)? selectedTermIndexEvent,
+  }) {
+    return getScoreboardDetailsEvent?.call(termId, studentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    TResult Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult Function(int index)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (getScoreboardDetailsEvent != null) {
+      return getScoreboardDetailsEvent(termId, studentId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+    required TResult Function(_GetScoreboardDetailsEvent value)
+        getScoreboardDetailsEvent,
+    required TResult Function(_SelectedTermIndexEvent value)
+        selectedTermIndexEvent,
+  }) {
+    return getScoreboardDetailsEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult? Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult? Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+  }) {
+    return getScoreboardDetailsEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (getScoreboardDetailsEvent != null) {
+      return getScoreboardDetailsEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetScoreboardDetailsEvent implements DashboardEvent {
+  const factory _GetScoreboardDetailsEvent(
+      {required final String termId,
+      required final String studentId}) = _$GetScoreboardDetailsEventImpl;
+
+  String get termId;
+  String get studentId;
+  @JsonKey(ignore: true)
+  _$$GetScoreboardDetailsEventImplCopyWith<_$GetScoreboardDetailsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectedTermIndexEventImplCopyWith<$Res> {
+  factory _$$SelectedTermIndexEventImplCopyWith(
+          _$SelectedTermIndexEventImpl value,
+          $Res Function(_$SelectedTermIndexEventImpl) then) =
+      __$$SelectedTermIndexEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$SelectedTermIndexEventImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$SelectedTermIndexEventImpl>
+    implements _$$SelectedTermIndexEventImplCopyWith<$Res> {
+  __$$SelectedTermIndexEventImplCopyWithImpl(
+      _$SelectedTermIndexEventImpl _value,
+      $Res Function(_$SelectedTermIndexEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$SelectedTermIndexEventImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectedTermIndexEventImpl implements _SelectedTermIndexEvent {
+  const _$SelectedTermIndexEventImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'DashboardEvent.selectedTermIndexEvent(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectedTermIndexEventImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectedTermIndexEventImplCopyWith<_$SelectedTermIndexEventImpl>
+      get copyWith => __$$SelectedTermIndexEventImplCopyWithImpl<
+          _$SelectedTermIndexEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function() getTermDetailsEvent,
+    required TResult Function(String termId, String studentId)
+        getScoreboardDetailsEvent,
+    required TResult Function(int index) selectedTermIndexEvent,
+  }) {
+    return selectedTermIndexEvent(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult? Function()? getTermDetailsEvent,
+    TResult? Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult? Function(int index)? selectedTermIndexEvent,
+  }) {
+    return selectedTermIndexEvent?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? fetchWordAndThoughtOftheDayEvent,
+    TResult Function()? getTermDetailsEvent,
+    TResult Function(String termId, String studentId)?
+        getScoreboardDetailsEvent,
+    TResult Function(int index)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (selectedTermIndexEvent != null) {
+      return selectedTermIndexEvent(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchWordAndThoughtOftheDayEvent value)
+        fetchWordAndThoughtOftheDayEvent,
+    required TResult Function(_GetTermDetailsEvent value) getTermDetailsEvent,
+    required TResult Function(_GetScoreboardDetailsEvent value)
+        getScoreboardDetailsEvent,
+    required TResult Function(_SelectedTermIndexEvent value)
+        selectedTermIndexEvent,
+  }) {
+    return selectedTermIndexEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult? Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult? Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult? Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+  }) {
+    return selectedTermIndexEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchWordAndThoughtOftheDayEvent value)?
+        fetchWordAndThoughtOftheDayEvent,
+    TResult Function(_GetTermDetailsEvent value)? getTermDetailsEvent,
+    TResult Function(_GetScoreboardDetailsEvent value)?
+        getScoreboardDetailsEvent,
+    TResult Function(_SelectedTermIndexEvent value)? selectedTermIndexEvent,
+    required TResult orElse(),
+  }) {
+    if (selectedTermIndexEvent != null) {
+      return selectedTermIndexEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectedTermIndexEvent implements DashboardEvent {
+  const factory _SelectedTermIndexEvent(final int index) =
+      _$SelectedTermIndexEventImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$SelectedTermIndexEventImplCopyWith<_$SelectedTermIndexEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DashboardState {
   ResponseClassify<WordThoughtsEntity>? get wordThoughtResponse =>
       throw _privateConstructorUsedError;
-  ResponseClassify<List<DigitalLibraryEntity>>? get getDigitalLibrary =>
+  ResponseClassify<List<TermDetailsEntity>>? get termDetailsResponse =>
       throw _privateConstructorUsedError;
+  ResponseClassify<ScoreBoardDetailsEntity> get scoreBoardResponse =>
+      throw _privateConstructorUsedError;
+  int get selectedTermIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DashboardStateCopyWith<DashboardState> get copyWith =>
@@ -255,7 +742,9 @@ abstract class $DashboardStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary});
+      ResponseClassify<List<TermDetailsEntity>>? termDetailsResponse,
+      ResponseClassify<ScoreBoardDetailsEntity> scoreBoardResponse,
+      int selectedTermIndex});
 }
 
 /// @nodoc
@@ -272,17 +761,27 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   @override
   $Res call({
     Object? wordThoughtResponse = freezed,
-    Object? getDigitalLibrary = freezed,
+    Object? termDetailsResponse = freezed,
+    Object? scoreBoardResponse = null,
+    Object? selectedTermIndex = null,
   }) {
     return _then(_value.copyWith(
       wordThoughtResponse: freezed == wordThoughtResponse
           ? _value.wordThoughtResponse
           : wordThoughtResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<WordThoughtsEntity>?,
-      getDigitalLibrary: freezed == getDigitalLibrary
-          ? _value.getDigitalLibrary
-          : getDigitalLibrary // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<DigitalLibraryEntity>>?,
+      termDetailsResponse: freezed == termDetailsResponse
+          ? _value.termDetailsResponse
+          : termDetailsResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<TermDetailsEntity>>?,
+      scoreBoardResponse: null == scoreBoardResponse
+          ? _value.scoreBoardResponse
+          : scoreBoardResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<ScoreBoardDetailsEntity>,
+      selectedTermIndex: null == selectedTermIndex
+          ? _value.selectedTermIndex
+          : selectedTermIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -297,7 +796,9 @@ abstract class _$$DashboardStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary});
+      ResponseClassify<List<TermDetailsEntity>>? termDetailsResponse,
+      ResponseClassify<ScoreBoardDetailsEntity> scoreBoardResponse,
+      int selectedTermIndex});
 }
 
 /// @nodoc
@@ -312,17 +813,27 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wordThoughtResponse = freezed,
-    Object? getDigitalLibrary = freezed,
+    Object? termDetailsResponse = freezed,
+    Object? scoreBoardResponse = null,
+    Object? selectedTermIndex = null,
   }) {
     return _then(_$DashboardStateImpl(
       wordThoughtResponse: freezed == wordThoughtResponse
           ? _value.wordThoughtResponse
           : wordThoughtResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<WordThoughtsEntity>?,
-      getDigitalLibrary: freezed == getDigitalLibrary
-          ? _value.getDigitalLibrary
-          : getDigitalLibrary // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<List<DigitalLibraryEntity>>?,
+      termDetailsResponse: freezed == termDetailsResponse
+          ? _value.termDetailsResponse
+          : termDetailsResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<TermDetailsEntity>>?,
+      scoreBoardResponse: null == scoreBoardResponse
+          ? _value.scoreBoardResponse
+          : scoreBoardResponse // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<ScoreBoardDetailsEntity>,
+      selectedTermIndex: null == selectedTermIndex
+          ? _value.selectedTermIndex
+          : selectedTermIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -331,16 +842,23 @@ class __$$DashboardStateImplCopyWithImpl<$Res>
 
 class _$DashboardStateImpl implements _DashboardState {
   const _$DashboardStateImpl(
-      {required this.wordThoughtResponse, this.getDigitalLibrary});
+      {required this.wordThoughtResponse,
+      required this.termDetailsResponse,
+      required this.scoreBoardResponse,
+      required this.selectedTermIndex});
 
   @override
   final ResponseClassify<WordThoughtsEntity>? wordThoughtResponse;
   @override
-  final ResponseClassify<List<DigitalLibraryEntity>>? getDigitalLibrary;
+  final ResponseClassify<List<TermDetailsEntity>>? termDetailsResponse;
+  @override
+  final ResponseClassify<ScoreBoardDetailsEntity> scoreBoardResponse;
+  @override
+  final int selectedTermIndex;
 
   @override
   String toString() {
-    return 'DashboardState(wordThoughtResponse: $wordThoughtResponse, getDigitalLibrary: $getDigitalLibrary)';
+    return 'DashboardState(wordThoughtResponse: $wordThoughtResponse, termDetailsResponse: $termDetailsResponse, scoreBoardResponse: $scoreBoardResponse, selectedTermIndex: $selectedTermIndex)';
   }
 
   @override
@@ -350,13 +868,17 @@ class _$DashboardStateImpl implements _DashboardState {
             other is _$DashboardStateImpl &&
             (identical(other.wordThoughtResponse, wordThoughtResponse) ||
                 other.wordThoughtResponse == wordThoughtResponse) &&
-            (identical(other.getDigitalLibrary, getDigitalLibrary) ||
-                other.getDigitalLibrary == getDigitalLibrary));
+            (identical(other.termDetailsResponse, termDetailsResponse) ||
+                other.termDetailsResponse == termDetailsResponse) &&
+            (identical(other.scoreBoardResponse, scoreBoardResponse) ||
+                other.scoreBoardResponse == scoreBoardResponse) &&
+            (identical(other.selectedTermIndex, selectedTermIndex) ||
+                other.selectedTermIndex == selectedTermIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, wordThoughtResponse, getDigitalLibrary);
+  int get hashCode => Object.hash(runtimeType, wordThoughtResponse,
+      termDetailsResponse, scoreBoardResponse, selectedTermIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -369,13 +891,20 @@ class _$DashboardStateImpl implements _DashboardState {
 abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
       {required final ResponseClassify<WordThoughtsEntity>? wordThoughtResponse,
-      final ResponseClassify<List<DigitalLibraryEntity>>?
-          getDigitalLibrary}) = _$DashboardStateImpl;
+      required final ResponseClassify<List<TermDetailsEntity>>?
+          termDetailsResponse,
+      required final ResponseClassify<ScoreBoardDetailsEntity>
+          scoreBoardResponse,
+      required final int selectedTermIndex}) = _$DashboardStateImpl;
 
   @override
   ResponseClassify<WordThoughtsEntity>? get wordThoughtResponse;
   @override
-  ResponseClassify<List<DigitalLibraryEntity>>? get getDigitalLibrary;
+  ResponseClassify<List<TermDetailsEntity>>? get termDetailsResponse;
+  @override
+  ResponseClassify<ScoreBoardDetailsEntity> get scoreBoardResponse;
+  @override
+  int get selectedTermIndex;
   @override
   @JsonKey(ignore: true)
   _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>

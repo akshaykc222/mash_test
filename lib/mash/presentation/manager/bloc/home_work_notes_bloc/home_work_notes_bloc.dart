@@ -1,3 +1,4 @@
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,8 +52,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: userData.classId ?? "",
-          divId: userData.divisionId ?? '',
+          classId: event.classId,
+          divId: event.divId,
           subjId: event.subId.isEmpty ? "0" : event.subId,
           acadId: userData.academicId ?? "",
         ));
@@ -75,8 +76,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: userData.classId ?? "",
-          divId: userData.divisionId ?? '',
+          classId: event.classId,
+          divId: event.divId,
           subjId: event.subjectId.isEmpty ? "0" : event.subjectId,
           acadId: userData.academicId ?? "",
         ));

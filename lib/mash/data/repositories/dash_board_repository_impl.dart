@@ -1,7 +1,11 @@
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/connection_checker.dart';
 import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.dart';
+import 'package:mash/mash/data/remote/request/score_board_details_request.dart';
+import 'package:mash/mash/data/remote/request/term_details_request.dart';
 import 'package:mash/mash/domain/entities/dashboard/role_menu_entity.dart';
+import 'package:mash/mash/domain/entities/dashboard/score_board_details_entity.dart';
+import 'package:mash/mash/domain/entities/dashboard/term_details_entity.dart';
 import 'package:mash/mash/domain/entities/dashboard/word_thought_entity.dart';
 import 'package:mash/mash/domain/repositories/dash_board_repository.dart';
 
@@ -48,5 +52,16 @@ class DashBoardRepoImpl implements DashBoardRepository {
   @override
   Future<List<RoleMenuEntity>> getRolemenuItems(RoleMenuRequest params) async {
     return await dashBoardDataSource.getRolemenuItems(params);
+  }
+
+  @override
+  Future<List<TermDetailsEntity>> getTermDetails(TermDetailsRequest params) {
+    return dashBoardDataSource.getTermDetails(params);
+  }
+
+  @override
+  Future<ScoreBoardDetailsEntity> getScoreboardDetails(
+      ScoreBoardDetailsRequest params) {
+    return dashBoardDataSource.getScoreboardDetails(params);
   }
 }
