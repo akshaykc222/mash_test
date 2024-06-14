@@ -3,11 +3,13 @@ import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_complete_response_model.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_dashboard_model.dart';
+import 'package:mash/mash/data/remote/models/payment/payment_final_amount_model.dart';
 import 'package:mash/mash/data/remote/models/payment/payment_toke_model.dart';
 import 'package:mash/mash/data/remote/routes/app_remote_routes.dart';
 import 'package:mash/mash/domain/entities/payment/payment_token_entity.dart';
 import '../../../domain/entities/payment/payment_complete_response_entity.dart';
 import '../../../domain/entities/payment/payment_dashboard_entity.dart';
+import '../../../domain/entities/payment/payment_final_amount_entiy.dart';
 import '../request/payment_complete_response_request.dart';
 import '../request/payment_dashboard_request.dart';
 import '../request/payment_final_amount_request.dart';
@@ -19,7 +21,7 @@ import '../request/payment_uniqueid_request.dart';
 abstract interface class PaymentRemoteDataSource {
   Future<List<PaymentDashboardEntity>> getPaymentDashboard(
       PaymentDashboardRequest params);
-  Future<String> getPaymentFinal(PaymentFinalRequest params);
+  Future<PaymentFinalAmountEntity> getPaymentFinal(PaymentFinalRequest params);
   Future<String> getPaymentOrderId(PaymentUniqueIdRequest params);
   Future<PaymentTokenEntity> getPaymentToken(PaymentTokenRequest params);
   Future<PaymentCompleteResponseEntity> getPaymentCompleteResponse(
@@ -49,16 +51,18 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
   }
 
   @override
-  Future<String> getPaymentFinal(params) async {
+  Future<PaymentFinalAmountEntity> getPaymentFinal(params) async {
     final data = await apiProvider.get(AppRemoteRoutes.paymentFinal,
         body: params.toJson());
-    return data['resMessage'];
+    final List<dynamic> dataList = data['resTable'];
+    return PaymentFinalAmountModel.fromJson(dataList.first);
   }
 
   @override
   Future<String> getPaymentOrderId(PaymentUniqueIdRequest params) async {
     final data = await apiProvider.get(AppRemoteRoutes.paymentOrderId,
         body: params.toJson());
+
     return data['resMessage'];
   }
 

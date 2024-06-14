@@ -19,6 +19,7 @@ import 'package:mash/mash/data/remote/request/payment_status_update_request.dart
 import 'package:mash/mash/data/remote/request/payment_token_request.dart';
 import 'package:mash/mash/data/remote/request/payment_uniqueid_request.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
+import 'package:mash/mash/domain/entities/payment/payment_final_amount_entiy.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_final_amount_usecase.dart';
@@ -151,7 +152,10 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           pInstallmentId: event.installmentId,
           pStudentId: event.studentId,
           pTotalAmount: event.totalAmount));
-      emit(state.copyWith(totalAmount: data));
+      emit(
+        state.copyWith(
+            paymentFinalAmountResponse: data, totalAmount: data.amount ?? ''),
+      );
 
       log('response ------------------$data');
     } catch (e) {

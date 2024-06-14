@@ -2122,6 +2122,8 @@ mixin _$PaymentState {
       throw _privateConstructorUsedError;
   ResponseClassify<OrderStatus> get paymentOrderResponse =>
       throw _privateConstructorUsedError;
+  PaymentFinalAmountEntity? get paymentFinalAmountResponse =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -2140,7 +2142,8 @@ abstract class $PaymentStateCopyWith<$Res> {
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
       ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
-      ResponseClassify<OrderStatus> paymentOrderResponse});
+      ResponseClassify<OrderStatus> paymentOrderResponse,
+      PaymentFinalAmountEntity? paymentFinalAmountResponse});
 }
 
 /// @nodoc
@@ -2162,6 +2165,7 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? totalAmount = null,
     Object? paymentHistoryResponse = null,
     Object? paymentOrderResponse = null,
+    Object? paymentFinalAmountResponse = freezed,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2188,6 +2192,10 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.paymentOrderResponse
           : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<OrderStatus>,
+      paymentFinalAmountResponse: freezed == paymentFinalAmountResponse
+          ? _value.paymentFinalAmountResponse
+          : paymentFinalAmountResponse // ignore: cast_nullable_to_non_nullable
+              as PaymentFinalAmountEntity?,
     ) as $Val);
   }
 }
@@ -2206,7 +2214,8 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       Set<String?>? selectedCheckboxItems,
       String totalAmount,
       ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse,
-      ResponseClassify<OrderStatus> paymentOrderResponse});
+      ResponseClassify<OrderStatus> paymentOrderResponse,
+      PaymentFinalAmountEntity? paymentFinalAmountResponse});
 }
 
 /// @nodoc
@@ -2226,6 +2235,7 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? totalAmount = null,
     Object? paymentHistoryResponse = null,
     Object? paymentOrderResponse = null,
+    Object? paymentFinalAmountResponse = freezed,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2252,6 +2262,10 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.paymentOrderResponse
           : paymentOrderResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<OrderStatus>,
+      paymentFinalAmountResponse: freezed == paymentFinalAmountResponse
+          ? _value.paymentFinalAmountResponse
+          : paymentFinalAmountResponse // ignore: cast_nullable_to_non_nullable
+              as PaymentFinalAmountEntity?,
     ));
   }
 }
@@ -2265,7 +2279,8 @@ class _$PaymentStateImpl implements _PaymentState {
       required final Set<String?>? selectedCheckboxItems,
       required this.totalAmount,
       required this.paymentHistoryResponse,
-      required this.paymentOrderResponse})
+      required this.paymentOrderResponse,
+      required this.paymentFinalAmountResponse})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -2289,10 +2304,12 @@ class _$PaymentStateImpl implements _PaymentState {
   final ResponseClassify<List<PaymentDashboardEntity>> paymentHistoryResponse;
   @override
   final ResponseClassify<OrderStatus> paymentOrderResponse;
+  @override
+  final PaymentFinalAmountEntity? paymentFinalAmountResponse;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse, paymentFinalAmountResponse: $paymentFinalAmountResponse)';
   }
 
   @override
@@ -2312,7 +2329,11 @@ class _$PaymentStateImpl implements _PaymentState {
             (identical(other.paymentHistoryResponse, paymentHistoryResponse) ||
                 other.paymentHistoryResponse == paymentHistoryResponse) &&
             (identical(other.paymentOrderResponse, paymentOrderResponse) ||
-                other.paymentOrderResponse == paymentOrderResponse));
+                other.paymentOrderResponse == paymentOrderResponse) &&
+            (identical(other.paymentFinalAmountResponse,
+                    paymentFinalAmountResponse) ||
+                other.paymentFinalAmountResponse ==
+                    paymentFinalAmountResponse));
   }
 
   @override
@@ -2323,7 +2344,8 @@ class _$PaymentStateImpl implements _PaymentState {
       const DeepCollectionEquality().hash(_selectedCheckboxItems),
       totalAmount,
       paymentHistoryResponse,
-      paymentOrderResponse);
+      paymentOrderResponse,
+      paymentFinalAmountResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -2334,15 +2356,16 @@ class _$PaymentStateImpl implements _PaymentState {
 
 abstract class _PaymentState implements PaymentState {
   const factory _PaymentState(
-          {required final ResponseClassify<List<PaymentDashboardEntity>>
-              paymentDashboardResponse,
-          required final int? selectedItemIndex,
-          required final Set<String?>? selectedCheckboxItems,
-          required final String totalAmount,
-          required final ResponseClassify<List<PaymentDashboardEntity>>
-              paymentHistoryResponse,
-          required final ResponseClassify<OrderStatus> paymentOrderResponse}) =
-      _$PaymentStateImpl;
+      {required final ResponseClassify<List<PaymentDashboardEntity>>
+          paymentDashboardResponse,
+      required final int? selectedItemIndex,
+      required final Set<String?>? selectedCheckboxItems,
+      required final String totalAmount,
+      required final ResponseClassify<List<PaymentDashboardEntity>>
+          paymentHistoryResponse,
+      required final ResponseClassify<OrderStatus> paymentOrderResponse,
+      required final PaymentFinalAmountEntity?
+          paymentFinalAmountResponse}) = _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -2356,6 +2379,8 @@ abstract class _PaymentState implements PaymentState {
   ResponseClassify<List<PaymentDashboardEntity>> get paymentHistoryResponse;
   @override
   ResponseClassify<OrderStatus> get paymentOrderResponse;
+  @override
+  PaymentFinalAmountEntity? get paymentFinalAmountResponse;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

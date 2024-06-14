@@ -4,6 +4,7 @@ import 'package:mash/mash/data/remote/request/payment_token_request.dart';
 import 'package:mash/mash/data/remote/request/payment_uniqueid_request.dart';
 import 'package:mash/mash/domain/entities/payment/payment_complete_response_entity.dart';
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
+import 'package:mash/mash/domain/entities/payment/payment_final_amount_entiy.dart';
 
 import '../../data/remote/request/payment_complete_response_request.dart';
 import '../../data/remote/request/payment_dashboard_request.dart';
@@ -14,7 +15,7 @@ abstract interface class PaymentRepository {
   Future<List<PaymentDashboardEntity>> getPaymentDashboard(
       PaymentDashboardRequest params);
 
-  Future<String> getPaymentFinal(PaymentFinalRequest params);
+  Future<PaymentFinalAmountEntity> getPaymentFinal(PaymentFinalRequest params);
 
   Future<String> getPaymentOrderId(PaymentUniqueIdRequest params);
 

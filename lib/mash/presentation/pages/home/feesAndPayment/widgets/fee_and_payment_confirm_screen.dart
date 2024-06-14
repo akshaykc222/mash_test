@@ -187,6 +187,20 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                     title: '',
                     lines: 5,
                   ),
+                  spacer15,
+                  BlocBuilder<PaymentBloc, PaymentState>(
+                    builder: (context, state) {
+                      final amounts = state.paymentFinalAmountResponse;
+                      return Text(
+                        'Congragulations you are eligible for ${amounts?.discountPercentage}% dicount as you used MASH for payment',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
             ),
