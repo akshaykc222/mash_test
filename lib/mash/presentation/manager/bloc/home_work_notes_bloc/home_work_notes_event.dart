@@ -6,11 +6,16 @@ class HomeWorkNotesEvent with _$HomeWorkNotesEvent {
     required String startDate,
     required String endDate,
     required String subId,
+    required String divId,
+    required String classId,
   }) = _GetHomeWorkReportEvent;
-  const factory HomeWorkNotesEvent.getNotesWorkReport(
-      {required String startDate,
-      required String endDate,
-      required String subjectId}) = _GetNotesWorkReport;
+  const factory HomeWorkNotesEvent.getNotesWorkReport({
+    required String startDate,
+    required String endDate,
+    required String subjectId,
+    required String divId,
+    required String classId,
+  }) = _GetNotesWorkReport;
   const factory HomeWorkNotesEvent.getNoteReportDetails({
     required String noteId,
   }) = _GetNoteReportDetails;

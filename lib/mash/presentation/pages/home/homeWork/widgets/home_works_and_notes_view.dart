@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mash/mash/domain/entities/notes/notes_report_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_work_notes_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -32,16 +33,22 @@ class _HomeworksAndNoteViewState extends State<HomeworksAndNoteView> {
     final academicState = context.read<AcademicBloc>().state;
 
     final bloc = HomeWorkNotesBloc.get(context);
+    final userDetails = context.read<ProfileBloc>().state.getUserDetail?.data;
     final event = widget.screenType == HomeWorkAndNoteScreenType.homeworkScreen
         ? HomeWorkNotesEvent.getHomeWorkReportEvent(
             subId: academicState.selectedSubjectId,
             startDate: academicState.selectedRange?.fromDate ?? "",
             endDate: academicState.selectedRange?.toDate ?? '',
+            classId: userDetails?.classId ?? '',
+            divId: userDetails?.divisionId ?? '',
           )
         : HomeWorkNotesEvent.getNotesWorkReport(
             startDate: academicState.selectedRange?.fromDate ?? "",
             endDate: academicState.selectedRange?.toDate ?? '',
-            subjectId: academicState.selectedSubjectId);
+            subjectId: academicState.selectedSubjectId,
+            classId: userDetails?.classId ?? '',
+            divId: userDetails?.divisionId ?? "",
+          );
     bloc.add(event);
 
     super.initState();

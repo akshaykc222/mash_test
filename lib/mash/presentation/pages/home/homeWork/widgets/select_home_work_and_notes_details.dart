@@ -54,6 +54,8 @@ class _HomeWorkAndNoteSelectDetailsScreenState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            HelperClasses.getSelectedStudent(context, true),
+            spacer15,
             BlocBuilder<AcademicBloc, AcademicState>(
               builder: (context, state) {
                 final selectedSubject = state.selectedSubject;

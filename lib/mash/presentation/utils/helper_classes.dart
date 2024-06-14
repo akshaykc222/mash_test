@@ -72,7 +72,8 @@ class HelperClasses {
                 borderRadius: 6,
                 marginVertical: 20,
               )
-            : state.selectedSibling == null
+            : state.selectedSibling == null ||
+                    state.getSiblings?.data?.isEmpty == true
                 ? const SizedBox()
                 : StudentProfileWidget(
                     onTap: () async {
