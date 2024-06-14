@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -8,8 +10,19 @@ import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
 import '../../../widgets/drawer_widget.dart';
 
-class NoticeBoardMainScreen extends StatelessWidget {
+class NoticeBoardMainScreen extends StatefulWidget {
   const NoticeBoardMainScreen({super.key});
+
+  @override
+  State<NoticeBoardMainScreen> createState() => _NoticeBoardMainScreenState();
+}
+
+class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<NoticeBloc>(context).add(const NoticeEvent.getAllNotice());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +35,20 @@ class NoticeBoardMainScreen extends StatelessWidget {
 
   noticeBoardBody(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
-    return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-      height: size.height,
-      width: size.width,
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return noticeCard(index, context);
-          },
-          separatorBuilder: (context, index) {
-            return spacer10;
-          },
-          itemCount: 2),
+    return BlocBuilder<NoticeBloc, NoticeState>(
+      builder: (context, state) => Container(
+        padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+        height: size.height,
+        width: size.width,
+        child: ListView.separated(
+            itemBuilder: (context, index) {
+              return noticeCard(index, context);
+            },
+            separatorBuilder: (context, index) {
+              return spacer10;
+            },
+            itemCount: state.noticeResponseData.data?.length ?? 0),
+      ),
     );
   }
 

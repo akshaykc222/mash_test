@@ -280,7 +280,7 @@ abstract class _GetAllNotice implements NoticeEvent {
 
 /// @nodoc
 mixin _$NoticeState {
-  ResponseClassify<dynamic> get noticeResponseData =>
+  ResponseClassify<List<NoticeAllEntity?>> get noticeResponseData =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -294,7 +294,7 @@ abstract class $NoticeStateCopyWith<$Res> {
           NoticeState value, $Res Function(NoticeState) then) =
       _$NoticeStateCopyWithImpl<$Res, NoticeState>;
   @useResult
-  $Res call({ResponseClassify<dynamic> noticeResponseData});
+  $Res call({ResponseClassify<List<NoticeAllEntity?>> noticeResponseData});
 }
 
 /// @nodoc
@@ -316,7 +316,7 @@ class _$NoticeStateCopyWithImpl<$Res, $Val extends NoticeState>
       noticeResponseData: null == noticeResponseData
           ? _value.noticeResponseData
           : noticeResponseData // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<dynamic>,
+              as ResponseClassify<List<NoticeAllEntity?>>,
     ) as $Val);
   }
 }
@@ -329,7 +329,7 @@ abstract class _$$NoticeStateImplCopyWith<$Res>
       __$$NoticeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<dynamic> noticeResponseData});
+  $Res call({ResponseClassify<List<NoticeAllEntity?>> noticeResponseData});
 }
 
 /// @nodoc
@@ -349,7 +349,7 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
       noticeResponseData: null == noticeResponseData
           ? _value.noticeResponseData
           : noticeResponseData // ignore: cast_nullable_to_non_nullable
-              as ResponseClassify<dynamic>,
+              as ResponseClassify<List<NoticeAllEntity?>>,
     ));
   }
 }
@@ -360,7 +360,7 @@ class _$NoticeStateImpl implements _NoticeState {
   const _$NoticeStateImpl({required this.noticeResponseData});
 
   @override
-  final ResponseClassify<dynamic> noticeResponseData;
+  final ResponseClassify<List<NoticeAllEntity?>> noticeResponseData;
 
   @override
   String toString() {
@@ -388,11 +388,11 @@ class _$NoticeStateImpl implements _NoticeState {
 
 abstract class _NoticeState implements NoticeState {
   const factory _NoticeState(
-          {required final ResponseClassify<dynamic> noticeResponseData}) =
-      _$NoticeStateImpl;
+      {required final ResponseClassify<List<NoticeAllEntity?>>
+          noticeResponseData}) = _$NoticeStateImpl;
 
   @override
-  ResponseClassify<dynamic> get noticeResponseData;
+  ResponseClassify<List<NoticeAllEntity?>> get noticeResponseData;
   @override
   @JsonKey(ignore: true)
   _$$NoticeStateImplCopyWith<_$NoticeStateImpl> get copyWith =>
