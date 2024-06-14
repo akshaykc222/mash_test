@@ -26,12 +26,8 @@ class PhysicalLibraryMainScreen extends StatefulWidget {
 }
 
 class _PhysicalLibraryMainScreenState extends State<PhysicalLibraryMainScreen> {
-
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     LibraryBloc.get(context).add(const LibraryEvent.getPhysicalLibrary(
         prmLangId: '-1', prmAuthId: '-1', prmSearch: "-1"));
@@ -42,15 +38,13 @@ class _PhysicalLibraryMainScreenState extends State<PhysicalLibraryMainScreen> {
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.physicalLibrary),
       endDrawer: const DrawerWidget(),
-      body:  const PhysicalLibraryBody(),
+      body: const PhysicalLibraryBody(),
     );
   }
 }
 
 class PhysicalLibraryBody extends StatelessWidget {
-  const PhysicalLibraryBody( {super.key});
-
-
+  const PhysicalLibraryBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +60,7 @@ class PhysicalLibraryBody extends StatelessWidget {
             height: SizeConfig.height(100),
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-               border: Border.all(width: 5,color: AppColors.greyClr100),
+              border: Border.all(width: 5, color: AppColors.greyClr100),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.8),
@@ -83,16 +77,21 @@ class PhysicalLibraryBody extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding:  const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Center(
                             child: CommonTextField(
-                              controller:  _searchController,
-                              onChange: (value){
-                                value!.isEmpty ? HelperClasses.showSnackBar(msg:AppStrings.searchWarning):
-                                LibraryBloc.get(context).add( LibraryEvent.getPhysicalLibrary(
-                                    prmLangId: '-1', prmAuthId: '-1', prmSearch: value ?? '-1'));
+                              controller: _searchController,
+                              onChange: (value) {
+                                value!.isEmpty
+                                    ? HelperClasses.showSnackBar(
+                                        msg: AppStrings.searchWarning)
+                                    : LibraryBloc.get(context).add(
+                                        LibraryEvent.getPhysicalLibrary(
+                                            prmLangId: '-1',
+                                            prmAuthId: '-1',
+                                            prmSearch: value ?? '-1'));
                               },
-                               // prefix: const Icon(Icons.search),
+                              // prefix: const Icon(Icons.search),
                               title: 'Search Book Here..',
                             ),
                           ),
@@ -100,15 +99,19 @@ class PhysicalLibraryBody extends StatelessWidget {
                       ),
                       IconButton(
                         style: IconButton.styleFrom(
-                          backgroundColor: AppColors.purpleLight,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                          )
-                        ),
-                        onPressed: (){
-                          _searchController.text.isEmpty ? HelperClasses.showSnackBar(msg:AppStrings.searchWarning):
-                          LibraryBloc.get(context).add( LibraryEvent.getPhysicalLibrary(
-                          prmLangId: '-1', prmAuthId: '-1', prmSearch: _searchController.text ?? '-1'));
+                            backgroundColor: AppColors.purpleLight,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        onPressed: () {
+                          _searchController.text.isEmpty
+                              ? HelperClasses.showSnackBar(
+                                  msg: AppStrings.searchWarning)
+                              : LibraryBloc.get(context).add(
+                                  LibraryEvent.getPhysicalLibrary(
+                                      prmLangId: '-1',
+                                      prmAuthId: '-1',
+                                      prmSearch:
+                                          _searchController.text ?? '-1'));
                         },
                         icon: const Icon(Icons.search_outlined),
                       ),
@@ -116,7 +119,10 @@ class PhysicalLibraryBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                Divider(height: 5,color: AppColors.white,),
+                Divider(
+                  height: 5,
+                  color: AppColors.white,
+                ),
                 Expanded(
                   child: Expanded(
                     child: InkWell(
@@ -124,12 +130,12 @@ class PhysicalLibraryBody extends StatelessWidget {
                           .pushNamed(AppPages.physicalLibraryFilter),
                       child: Container(
                         decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(bottomRight: Radius.circular(15),
+                            borderRadius: const BorderRadius.only(
+                                bottomRight: Radius.circular(15),
                                 bottomLeft: Radius.circular(15)),
                             color: AppColors.primaryColor),
                         child: Center(
                           child: Row(
-
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -157,27 +163,37 @@ class PhysicalLibraryBody extends StatelessWidget {
           Expanded(
             flex: 5,
             child: BlocConsumer<LibraryBloc, LibraryState>(
-              listenWhen: (previous, current) => previous.postPhysicalLibraryRequest?.status!=current.postPhysicalLibraryRequest?.status,
+              listenWhen: (previous, current) =>
+                  previous.postPhysicalLibraryRequest?.status !=
+                  current.postPhysicalLibraryRequest?.status,
               listener: (context, state) {
-                if(state.postPhysicalLibraryRequest?.status==Status.COMPLETED){
-                  HelperClasses.showSnackBar(msg: state.postPhysicalLibraryRequest?.data??"");
+                if (state.postPhysicalLibraryRequest?.status ==
+                    Status.COMPLETED) {
+                  HelperClasses.showSnackBar(
+                      msg: state.postPhysicalLibraryRequest?.data ?? "");
                 }
               },
               builder: (context, state) {
-                return  state.getPhysicalLibrary?.status == Status.LOADING ||state.getPhysicalLibrary?.data == null
-                    ?  const Loader()
+                return state.getPhysicalLibrary?.status == Status.LOADING ||
+                        state.getPhysicalLibrary?.data == null
+                    ? const Loader()
                     : GridView.builder(
-                    itemCount: state.getPhysicalLibrary?.data?.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                      childAspectRatio: 0.7,
-                    ),
-                    itemBuilder: (context, index) {
-                      return state.getPhysicalLibrary!.data!.isEmpty? HelperClasses.emptyDataWidget(): BookDetailCard(entity: state.getPhysicalLibrary!.data![index],);
-                    });
+                        itemCount: state.getPhysicalLibrary?.data?.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                          childAspectRatio: 0.7,
+                        ),
+                        itemBuilder: (context, index) {
+                          return state.getPhysicalLibrary!.data!.isEmpty
+                              ? HelperClasses.emptyDataWidget()
+                              : BookDetailCard(
+                                  entity:
+                                      state.getPhysicalLibrary!.data![index],
+                                );
+                        });
               },
             ),
           )
@@ -185,5 +201,4 @@ class PhysicalLibraryBody extends StatelessWidget {
       ),
     );
   }
-
 }

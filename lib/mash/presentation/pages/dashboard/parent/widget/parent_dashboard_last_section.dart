@@ -37,7 +37,7 @@ class ParentDashboardLastSectionState
           spacer30,
           _buildPerformanceSelectWidget(),
           spacer30,
-          const SubjectPerfomanceWidget(),
+          const SubjectPerformanceWidget(),
           spacer40,
           Align(
             alignment: Alignment.center,
