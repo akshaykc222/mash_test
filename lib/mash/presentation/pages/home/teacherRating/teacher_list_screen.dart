@@ -43,6 +43,7 @@ class _TeacherListBodyState extends State<TeacherListBody> {
     super.initState();
     TeacherBloc.get(context).add(const TeacherEvent.getRatings());
   }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
@@ -58,8 +59,10 @@ class _TeacherListBodyState extends State<TeacherListBody> {
                 :state.getTeacherRating?.data == null ? Center(child: HelperClasses.emptyDataWidget()) : ListView.builder(
                     itemBuilder: (context, index) {
                       return TeacherCardWidget(
-                        onTap: () => GoRouter.of(context)
-                            .pushNamed(AppPages.teacherRatingScreen,extra: state.getTeacherRating!.data![index]),
+                        onTap: state.getTeacherRating!.data![index].ratedOrNot == '0' ? () => GoRouter.of(context)
+                            .pushNamed(AppPages.teacherRatingScreen,extra: state.getTeacherRating!.data![index]): (){
+                          HelperClasses.showSnackBar(msg: 'Rating already submitted !');
+                        },
                         imageUrl: state.getTeacherRating!.data![index].docName,
                         teacherName:
                             state.getTeacherRating!.data![index].fullName,

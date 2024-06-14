@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 
 class TeacherCardWidget extends StatelessWidget {
@@ -50,14 +51,14 @@ class TeacherCardWidget extends StatelessWidget {
               leading:  ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 clipBehavior: Clip.hardEdge,
-                child: Container(
+                child: SizedBox(
                   width: SizeConfig.width(60),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
+                  height: SizeConfig.height(60),
+                  child: CachedNetworkImage( imageUrl: imageUrl,
                       fit: BoxFit.cover,
-                      image: CachedNetworkImageProvider(imageUrl,)
-                    )
-                  )
+                      placeholder: (context, url) => HelperClasses.personPlaceHolderImage(height: 60, width: 60),
+                      errorWidget: (context, url, error) => HelperClasses.personPlaceHolderImage(height: 60, width: 60)
+                  ) ,
                 ),
               ),
               title:  Text(teacherName,style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),

@@ -6,6 +6,7 @@ class AppColors {
     HexColor.fromHex('#03EFFD'),
   ]);
   static Color purpleLight = HexColor.fromHex('#FFEFC1FA');
+  static Color purpleLightBorder = HexColor.fromHex('#FFCBC3E3');
   static Color purple200 = HexColor.fromHex('#FFBB86FC');
   static Color purple500 = HexColor.fromHex('#FF6200EE');
   static Color purple700 = HexColor.fromHex('#FF3700B3');

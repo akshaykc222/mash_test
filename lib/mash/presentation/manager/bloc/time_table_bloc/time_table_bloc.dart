@@ -33,19 +33,20 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     on<_GetOfflineExamTimeTable>(_getOfflineExamTimeTable);
     on<_GetDailyTimeTable>(_getDailyTimeTable);
   }
+
   final GetUserInfoUseCase getUserInfoUseCase = getIt<GetUserInfoUseCase>();
   final GetOfflineExamTimeTableUseCase getOfflineExamTimeTableUseCase =
-      getIt<GetOfflineExamTimeTableUseCase>();
+  getIt<GetOfflineExamTimeTableUseCase>();
   final GetOfflineExamTermsUseCase getOfflineExamTermsUseCase =
-      getIt<GetOfflineExamTermsUseCase>();
+  getIt<GetOfflineExamTermsUseCase>();
   final GetSiblingsUseCase getSiblingsUseCase = getIt<GetSiblingsUseCase>();
   final GetDailyTimeTableUseCase getDailyTimeTableUseCase =
-      getIt<GetDailyTimeTableUseCase>();
+  getIt<GetDailyTimeTableUseCase>();
 
   static TimeTableBloc get(context) => BlocProvider.of(context);
 
-  FutureOr<void> _getOfflineExamTerm(
-      _GetOfflineExamTerms event, Emitter<TimeTableState> emit) async {
+  FutureOr<void> _getOfflineExamTerm(_GetOfflineExamTerms event,
+      Emitter<TimeTableState> emit) async {
     emit(state.copyWith(getOfflineExamTerms: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
@@ -66,8 +67,8 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     }
   }
 
-  FutureOr<void> _getOfflineExamTimeTable(
-      _GetOfflineExamTimeTable event, Emitter<TimeTableState> emit) async {
+  FutureOr<void> _getOfflineExamTimeTable(_GetOfflineExamTimeTable event,
+      Emitter<TimeTableState> emit) async {
     emit(state.copyWith(getOfflineExamTimeTable: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
@@ -91,26 +92,30 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     }
   }
 
-  FutureOr<void> _getDailyTimeTable(_GetDailyTimeTable event, Emitter<TimeTableState> emit) async {
-  Future<FutureOr<void>> _getDailyTimeTable(
-      _GetDailyTimeTable event, Emitter<TimeTableState> emit) async {
-    emit(state.copyWith(getDailyTimeTable: ResponseClassify.loading()));
-    try {
-      var loginInfo = await getUserInfoUseCase.call(NoParams());
-      print('********** login info check ***********');
-      print("${DailyTimeTableRequest(compId: loginInfo?.compId ?? '', userType: loginInfo?.userType ?? '', pDate: event.date, pStudentId: loginInfo?.studentId ?? '').toJson()}");
-         var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: loginInfo?.compId ?? '', userType: loginInfo?.userType ?? '', pDate: event.date, pStudentId: loginInfo?.studentId ?? ''));
-       // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: "200001", userType: '2', pDate: event.date, pStudentId: '1000152'));
-      var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(
-          compId: loginInfo?.compId ?? '',
-          userType: loginInfo?.userType ?? '',
-          pDate: event.date,
-          pStudentId: loginInfo?.studentId ?? ''));
-      // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: "200001", userType: '2', pDate: event.date, pStudentId: '1000152'));
-      emit(state.copyWith(
-          getDailyTimeTable: ResponseClassify.completed(response)));
-    } catch (e) {
-      emit(state.copyWith(getDailyTimeTable: ResponseClassify.error(e)));
+    Future<FutureOr<void>> _getDailyTimeTable(_GetDailyTimeTable event,
+        Emitter<TimeTableState> emit) async {
+      emit(state.copyWith(getDailyTimeTable: ResponseClassify.loading()));
+      try {
+        var loginInfo = await getUserInfoUseCase.call(NoParams());
+        print('********** login info check ***********');
+        print("${DailyTimeTableRequest(compId: loginInfo?.compId ?? '',
+            userType: loginInfo?.userType ?? '',
+            pDate: event.date,
+            pStudentId: loginInfo?.studentId ?? '').toJson()}");
+        // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: loginInfo?.compId ?? '', userType: loginInfo?.userType ?? '', pDate: event.date, pStudentId: loginInfo?.studentId ?? ''));
+        // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: "200001", userType: '2', pDate: event.date, pStudentId: '1000152'));
+        var response = await getDailyTimeTableUseCase.call(
+            DailyTimeTableRequest(
+                compId: loginInfo?.compId ?? '',
+                userType: loginInfo?.userType ?? '',
+                pDate: event.date,
+                pStudentId: loginInfo?.studentId ?? ''));
+        // var response = await getDailyTimeTableUseCase.call(DailyTimeTableRequest(compId: "200001", userType: '2', pDate: event.date, pStudentId: '1000152'));
+        emit(state.copyWith(
+            getDailyTimeTable: ResponseClassify.completed(response)));
+      } catch (e) {
+        emit(state.copyWith(getDailyTimeTable: ResponseClassify.error(e)));
+      }
     }
-  }
+
 }

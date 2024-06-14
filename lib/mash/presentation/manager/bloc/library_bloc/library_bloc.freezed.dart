@@ -23,6 +23,7 @@ mixin _$LibraryEvent {
             String prmLangId, String prmAuthId, String prmSearch)
         getPhysicalLibrary,
     required TResult Function() getRequiredFilterData,
+    required TResult Function(String bookId) postBookRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$LibraryEvent {
     TResult? Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult? Function()? getRequiredFilterData,
+    TResult? Function(String bookId)? postBookRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$LibraryEvent {
     TResult Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult Function()? getRequiredFilterData,
+    TResult Function(String bookId)? postBookRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$LibraryEvent {
     required TResult Function(_GetPhysicalLibrary value) getPhysicalLibrary,
     required TResult Function(_GetPhysicalLibraryFilterData value)
         getRequiredFilterData,
+    required TResult Function(_PostBookRequest value) postBookRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$LibraryEvent {
     TResult? Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult? Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult? Function(_PostBookRequest value)? postBookRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$LibraryEvent {
     TResult Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult Function(_PostBookRequest value)? postBookRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +136,7 @@ class _$StartedImpl implements _Started {
             String prmLangId, String prmAuthId, String prmSearch)
         getPhysicalLibrary,
     required TResult Function() getRequiredFilterData,
+    required TResult Function(String bookId) postBookRequest,
   }) {
     return started();
   }
@@ -141,6 +148,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult? Function()? getRequiredFilterData,
+    TResult? Function(String bookId)? postBookRequest,
   }) {
     return started?.call();
   }
@@ -152,6 +160,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult Function()? getRequiredFilterData,
+    TResult Function(String bookId)? postBookRequest,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -167,6 +176,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetPhysicalLibrary value) getPhysicalLibrary,
     required TResult Function(_GetPhysicalLibraryFilterData value)
         getRequiredFilterData,
+    required TResult Function(_PostBookRequest value) postBookRequest,
   }) {
     return started(this);
   }
@@ -178,6 +188,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult? Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult? Function(_PostBookRequest value)? postBookRequest,
   }) {
     return started?.call(this);
   }
@@ -189,6 +200,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult Function(_PostBookRequest value)? postBookRequest,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -294,6 +306,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
             String prmLangId, String prmAuthId, String prmSearch)
         getPhysicalLibrary,
     required TResult Function() getRequiredFilterData,
+    required TResult Function(String bookId) postBookRequest,
   }) {
     return getPhysicalLibrary(prmLangId, prmAuthId, prmSearch);
   }
@@ -305,6 +318,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
     TResult? Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult? Function()? getRequiredFilterData,
+    TResult? Function(String bookId)? postBookRequest,
   }) {
     return getPhysicalLibrary?.call(prmLangId, prmAuthId, prmSearch);
   }
@@ -316,6 +330,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
     TResult Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult Function()? getRequiredFilterData,
+    TResult Function(String bookId)? postBookRequest,
     required TResult orElse(),
   }) {
     if (getPhysicalLibrary != null) {
@@ -331,6 +346,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
     required TResult Function(_GetPhysicalLibrary value) getPhysicalLibrary,
     required TResult Function(_GetPhysicalLibraryFilterData value)
         getRequiredFilterData,
+    required TResult Function(_PostBookRequest value) postBookRequest,
   }) {
     return getPhysicalLibrary(this);
   }
@@ -342,6 +358,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
     TResult? Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult? Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult? Function(_PostBookRequest value)? postBookRequest,
   }) {
     return getPhysicalLibrary?.call(this);
   }
@@ -353,6 +370,7 @@ class _$GetPhysicalLibraryImpl implements _GetPhysicalLibrary {
     TResult Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult Function(_PostBookRequest value)? postBookRequest,
     required TResult orElse(),
   }) {
     if (getPhysicalLibrary != null) {
@@ -423,6 +441,7 @@ class _$GetPhysicalLibraryFilterDataImpl
             String prmLangId, String prmAuthId, String prmSearch)
         getPhysicalLibrary,
     required TResult Function() getRequiredFilterData,
+    required TResult Function(String bookId) postBookRequest,
   }) {
     return getRequiredFilterData();
   }
@@ -434,6 +453,7 @@ class _$GetPhysicalLibraryFilterDataImpl
     TResult? Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult? Function()? getRequiredFilterData,
+    TResult? Function(String bookId)? postBookRequest,
   }) {
     return getRequiredFilterData?.call();
   }
@@ -445,6 +465,7 @@ class _$GetPhysicalLibraryFilterDataImpl
     TResult Function(String prmLangId, String prmAuthId, String prmSearch)?
         getPhysicalLibrary,
     TResult Function()? getRequiredFilterData,
+    TResult Function(String bookId)? postBookRequest,
     required TResult orElse(),
   }) {
     if (getRequiredFilterData != null) {
@@ -460,6 +481,7 @@ class _$GetPhysicalLibraryFilterDataImpl
     required TResult Function(_GetPhysicalLibrary value) getPhysicalLibrary,
     required TResult Function(_GetPhysicalLibraryFilterData value)
         getRequiredFilterData,
+    required TResult Function(_PostBookRequest value) postBookRequest,
   }) {
     return getRequiredFilterData(this);
   }
@@ -471,6 +493,7 @@ class _$GetPhysicalLibraryFilterDataImpl
     TResult? Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult? Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult? Function(_PostBookRequest value)? postBookRequest,
   }) {
     return getRequiredFilterData?.call(this);
   }
@@ -482,6 +505,7 @@ class _$GetPhysicalLibraryFilterDataImpl
     TResult Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
     TResult Function(_GetPhysicalLibraryFilterData value)?
         getRequiredFilterData,
+    TResult Function(_PostBookRequest value)? postBookRequest,
     required TResult orElse(),
   }) {
     if (getRequiredFilterData != null) {
@@ -497,10 +521,166 @@ abstract class _GetPhysicalLibraryFilterData implements LibraryEvent {
 }
 
 /// @nodoc
+abstract class _$$PostBookRequestImplCopyWith<$Res> {
+  factory _$$PostBookRequestImplCopyWith(_$PostBookRequestImpl value,
+          $Res Function(_$PostBookRequestImpl) then) =
+      __$$PostBookRequestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String bookId});
+}
+
+/// @nodoc
+class __$$PostBookRequestImplCopyWithImpl<$Res>
+    extends _$LibraryEventCopyWithImpl<$Res, _$PostBookRequestImpl>
+    implements _$$PostBookRequestImplCopyWith<$Res> {
+  __$$PostBookRequestImplCopyWithImpl(
+      _$PostBookRequestImpl _value, $Res Function(_$PostBookRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bookId = null,
+  }) {
+    return _then(_$PostBookRequestImpl(
+      bookId: null == bookId
+          ? _value.bookId
+          : bookId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostBookRequestImpl implements _PostBookRequest {
+  const _$PostBookRequestImpl({required this.bookId});
+
+  @override
+  final String bookId;
+
+  @override
+  String toString() {
+    return 'LibraryEvent.postBookRequest(bookId: $bookId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostBookRequestImpl &&
+            (identical(other.bookId, bookId) || other.bookId == bookId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, bookId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostBookRequestImplCopyWith<_$PostBookRequestImpl> get copyWith =>
+      __$$PostBookRequestImplCopyWithImpl<_$PostBookRequestImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(
+            String prmLangId, String prmAuthId, String prmSearch)
+        getPhysicalLibrary,
+    required TResult Function() getRequiredFilterData,
+    required TResult Function(String bookId) postBookRequest,
+  }) {
+    return postBookRequest(bookId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String prmLangId, String prmAuthId, String prmSearch)?
+        getPhysicalLibrary,
+    TResult? Function()? getRequiredFilterData,
+    TResult? Function(String bookId)? postBookRequest,
+  }) {
+    return postBookRequest?.call(bookId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String prmLangId, String prmAuthId, String prmSearch)?
+        getPhysicalLibrary,
+    TResult Function()? getRequiredFilterData,
+    TResult Function(String bookId)? postBookRequest,
+    required TResult orElse(),
+  }) {
+    if (postBookRequest != null) {
+      return postBookRequest(bookId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetPhysicalLibrary value) getPhysicalLibrary,
+    required TResult Function(_GetPhysicalLibraryFilterData value)
+        getRequiredFilterData,
+    required TResult Function(_PostBookRequest value) postBookRequest,
+  }) {
+    return postBookRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
+    TResult? Function(_GetPhysicalLibraryFilterData value)?
+        getRequiredFilterData,
+    TResult? Function(_PostBookRequest value)? postBookRequest,
+  }) {
+    return postBookRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetPhysicalLibrary value)? getPhysicalLibrary,
+    TResult Function(_GetPhysicalLibraryFilterData value)?
+        getRequiredFilterData,
+    TResult Function(_PostBookRequest value)? postBookRequest,
+    required TResult orElse(),
+  }) {
+    if (postBookRequest != null) {
+      return postBookRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostBookRequest implements LibraryEvent {
+  const factory _PostBookRequest({required final String bookId}) =
+      _$PostBookRequestImpl;
+
+  String get bookId;
+  @JsonKey(ignore: true)
+  _$$PostBookRequestImplCopyWith<_$PostBookRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LibraryState {
   ResponseClassify<List<PhysicalLibraryEntity>>? get getPhysicalLibrary =>
       throw _privateConstructorUsedError;
   ResponseClassify<RequiredPhysicalLibraryEntity>? get getRequiredFilterData =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<String>? get postPhysicalLibraryRequest =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -516,7 +696,8 @@ abstract class $LibraryStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary,
-      ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData});
+      ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData,
+      ResponseClassify<String>? postPhysicalLibraryRequest});
 }
 
 /// @nodoc
@@ -534,6 +715,7 @@ class _$LibraryStateCopyWithImpl<$Res, $Val extends LibraryState>
   $Res call({
     Object? getPhysicalLibrary = freezed,
     Object? getRequiredFilterData = freezed,
+    Object? postPhysicalLibraryRequest = freezed,
   }) {
     return _then(_value.copyWith(
       getPhysicalLibrary: freezed == getPhysicalLibrary
@@ -544,6 +726,10 @@ class _$LibraryStateCopyWithImpl<$Res, $Val extends LibraryState>
           ? _value.getRequiredFilterData
           : getRequiredFilterData // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<RequiredPhysicalLibraryEntity>?,
+      postPhysicalLibraryRequest: freezed == postPhysicalLibraryRequest
+          ? _value.postPhysicalLibraryRequest
+          : postPhysicalLibraryRequest // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>?,
     ) as $Val);
   }
 }
@@ -558,7 +744,8 @@ abstract class _$$LibraryStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary,
-      ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData});
+      ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData,
+      ResponseClassify<String>? postPhysicalLibraryRequest});
 }
 
 /// @nodoc
@@ -574,6 +761,7 @@ class __$$LibraryStateImplCopyWithImpl<$Res>
   $Res call({
     Object? getPhysicalLibrary = freezed,
     Object? getRequiredFilterData = freezed,
+    Object? postPhysicalLibraryRequest = freezed,
   }) {
     return _then(_$LibraryStateImpl(
       getPhysicalLibrary: freezed == getPhysicalLibrary
@@ -584,6 +772,10 @@ class __$$LibraryStateImplCopyWithImpl<$Res>
           ? _value.getRequiredFilterData
           : getRequiredFilterData // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<RequiredPhysicalLibraryEntity>?,
+      postPhysicalLibraryRequest: freezed == postPhysicalLibraryRequest
+          ? _value.postPhysicalLibraryRequest
+          : postPhysicalLibraryRequest // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>?,
     ));
   }
 }
@@ -592,16 +784,20 @@ class __$$LibraryStateImplCopyWithImpl<$Res>
 
 class _$LibraryStateImpl implements _LibraryState {
   const _$LibraryStateImpl(
-      {this.getPhysicalLibrary, this.getRequiredFilterData});
+      {this.getPhysicalLibrary,
+      this.getRequiredFilterData,
+      this.postPhysicalLibraryRequest});
 
   @override
   final ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary;
   @override
   final ResponseClassify<RequiredPhysicalLibraryEntity>? getRequiredFilterData;
+  @override
+  final ResponseClassify<String>? postPhysicalLibraryRequest;
 
   @override
   String toString() {
-    return 'LibraryState(getPhysicalLibrary: $getPhysicalLibrary, getRequiredFilterData: $getRequiredFilterData)';
+    return 'LibraryState(getPhysicalLibrary: $getPhysicalLibrary, getRequiredFilterData: $getRequiredFilterData, postPhysicalLibraryRequest: $postPhysicalLibraryRequest)';
   }
 
   @override
@@ -612,12 +808,16 @@ class _$LibraryStateImpl implements _LibraryState {
             (identical(other.getPhysicalLibrary, getPhysicalLibrary) ||
                 other.getPhysicalLibrary == getPhysicalLibrary) &&
             (identical(other.getRequiredFilterData, getRequiredFilterData) ||
-                other.getRequiredFilterData == getRequiredFilterData));
+                other.getRequiredFilterData == getRequiredFilterData) &&
+            (identical(other.postPhysicalLibraryRequest,
+                    postPhysicalLibraryRequest) ||
+                other.postPhysicalLibraryRequest ==
+                    postPhysicalLibraryRequest));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, getPhysicalLibrary, getRequiredFilterData);
+  int get hashCode => Object.hash(runtimeType, getPhysicalLibrary,
+      getRequiredFilterData, postPhysicalLibraryRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -630,12 +830,16 @@ abstract class _LibraryState implements LibraryState {
   const factory _LibraryState(
       {final ResponseClassify<List<PhysicalLibraryEntity>>? getPhysicalLibrary,
       final ResponseClassify<RequiredPhysicalLibraryEntity>?
-          getRequiredFilterData}) = _$LibraryStateImpl;
+          getRequiredFilterData,
+      final ResponseClassify<String>?
+          postPhysicalLibraryRequest}) = _$LibraryStateImpl;
 
   @override
   ResponseClassify<List<PhysicalLibraryEntity>>? get getPhysicalLibrary;
   @override
   ResponseClassify<RequiredPhysicalLibraryEntity>? get getRequiredFilterData;
+  @override
+  ResponseClassify<String>? get postPhysicalLibraryRequest;
   @override
   @JsonKey(ignore: true)
   _$$LibraryStateImplCopyWith<_$LibraryStateImpl> get copyWith =>
