@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
@@ -11,6 +16,8 @@ import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_type_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
 import '../../../../data/remote/request/academic_comp_id_request.dart';
 import '../../../../data/remote/request/di_type_request.dart';
@@ -19,6 +26,7 @@ import '../../../../domain/entities/academic/class_details_entity.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/academic/get_class_details_usecase.dart';
 import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
+import '../../../router/app_pages.dart';
 
 part 'digital_library_bloc.freezed.dart';
 part 'digital_library_event.dart';
@@ -31,6 +39,9 @@ class DigitalLibraryBloc
   DigitalLibraryBloc() : super(DigitalLibraryState.initial()) {
     on<_GetClasses>(_getClasses);
     on<_SelectClass>(_selectClass);
+    on<_SeachNonAcademic>(_searchNonAcademic);
+    on<_SeachAcademic>(_searchAcademic);
+    on<_GetAcademicLibrary>(_getAcademicLibrary);
     on<_GetLibrary>(_getLibrary);
     on<_GetTypes>(_getTypes);
     on<_GetNonAcademic>(_getNonAcademic);
@@ -38,6 +49,9 @@ class DigitalLibraryBloc
     on<_SelectMedium>(_selectMedium);
     on<_SelectSubCat>(_selectSubCat);
     on<_GetResearch>(_getResearch);
+    on<_StartSearch>(_startSearch);
+    on<_CloseSearch>(_closeSearch);
+    on<_ReadBook>(_readBook);
   }
 
   _getClasses(_GetClasses event, Emitter<DigitalLibraryState> emit) async {
@@ -230,5 +244,117 @@ class DigitalLibraryBloc
         prmSearchTxt: "",
         pResearchId: "-1",
         pUserType: loginData?.userType ?? "")));
+  }
+
+  _readBook(_ReadBook event, Emitter<DigitalLibraryState> emit) async {
+    var tempPath = await getApplicationDocumentsDirectory();
+    prettyPrint("temp Path : $tempPath");
+// File(tempPath.path).
+    String path =
+        "${tempPath.path}/mash docs/${event.book.contentName}.${event.book.docExt}";
+    if (await File(path).exists()) {
+      prettyPrint("file already exists opening type ${event.book.docExt}");
+      switch (event.book.docExt) {
+        case "pdf":
+          GoRouter.of(event.context).pushNamed(AppPages.pdfOpener, extra: path);
+          break;
+        case "epub":
+          break;
+        default:
+          break;
+      }
+    } else {
+      File bookPath = await File(path).create(recursive: true);
+      ApiProvider apiProvider = getIt<ApiProvider>();
+      await apiProvider.downloadFile(
+          file: bookPath, url: event.book.docName ?? "");
+      // apiProvider.downloadProgressStream.listen((progress) {
+      //   emit(state.copyWith(downloadProgress: progress / 10));
+      // });
+
+      switch (event.book.docExt) {
+        case "pdf":
+          GoRouter.of(event.context).pushNamed(AppPages.pdfOpener, extra: path);
+          break;
+        case "epub":
+          VocsyEpub.setConfig(
+            themeColor: Theme.of(event.context).primaryColor,
+            identifier: event.book.contentName ?? "",
+            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+            allowSharing: true,
+            enableTts: true,
+            nightMode: true,
+          );
+
+          VocsyEpub.open(
+            bookPath.path,
+            // first page will open up if the value is null
+          );
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  _getAcademicLibrary(
+      _GetAcademicLibrary event, Emitter<DigitalLibraryState> emit) async {
+    var loginData = await loginInfo.call(NoParams());
+    add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
+        pCompId: loginData?.compId ?? "",
+        pUserId: loginData?.usrId ?? "",
+        pModuleName: "DL_ACADEMIC_CONTENT_MOB",
+        prmContentId: "-1",
+        prmIsActive: "1",
+        prmTypeId: event.typeId,
+        prmClassId: "-1",
+        prmSubId: "-1",
+        prmSearchTxt: "",
+        prmOffset: 0,
+        prmLimit: 10)));
+  }
+
+  _searchAcademic(
+      _SeachAcademic event, Emitter<DigitalLibraryState> emit) async {
+    var loginData = await loginInfo.call(NoParams());
+    add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
+        pCompId: loginData?.compId ?? "",
+        pUserId: loginData?.usrId ?? "",
+        pModuleName: "DL_ACADEMIC_CONTENT_MOB",
+        prmContentId: "-1",
+        prmIsActive: "1",
+        prmTypeId: "-1",
+        prmClassId: "-1",
+        prmSubId: "-1",
+        prmSearchTxt: event.search,
+        prmOffset: 0,
+        prmLimit: 10)));
+  }
+
+  _searchNonAcademic(
+      _SeachNonAcademic event, Emitter<DigitalLibraryState> emit) async {
+    var loginData = await loginInfo.call(NoParams());
+    add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
+        pCompId: loginData?.compId ?? "",
+        pUserId: loginData?.usrId ?? "",
+        pModuleName: "DL_ACADEMIC_CONTENT_MOB",
+        prmContentId: "-1",
+        prmIsActive: "1",
+        prmTypeId: "-1",
+        prmClassId: "-1",
+        prmSubId: "-1",
+        prmSearchTxt: event.search,
+        prmOffset: 0,
+        prmLimit: 10)));
+  }
+
+  _startSearch(_StartSearch event, Emitter<DigitalLibraryState> emit) {
+    prettyPrint("___STARTING SEARCH----");
+    emit(state.copyWith(isSearching: true));
+  }
+
+  _closeSearch(_CloseSearch event, Emitter<DigitalLibraryState> emit) {
+    prettyPrint("___STOPPING SEARCH___");
+    emit(state.copyWith(isSearching: false));
   }
 }

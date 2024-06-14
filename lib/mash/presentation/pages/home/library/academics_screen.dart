@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/search_widget.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
@@ -36,8 +37,27 @@ class _AcademicsScreenState extends State<AcademicsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const DrawerWidget(),
-      appBar: commonAppbar(title: 'ACADEMICS', searchFunction: (str) {}),
-      body: academicsBody(context),
+      appBar: commonAppbar(
+          title: 'ACADEMICS',
+          onClose: () {
+            DigitalLibraryBloc.get(context)
+              ..add(const DigitalLibraryEvent.getClasses())
+              ..add(const DigitalLibraryEvent.closeSearch());
+          },
+          searchFunction: (str) {
+            DigitalLibraryBloc.get(context)
+              ..add(DigitalLibraryEvent.searchAcademic(search: str))
+              ..add(const DigitalLibraryEvent.startSearch());
+          }),
+      body: BlocBuilder<DigitalLibraryBloc, DigitalLibraryState>(
+        buildWhen: (previous, current) =>
+            previous.isSearching != current.isSearching,
+        builder: (context, state) {
+          return state.isSearching
+              ? const SearchWidget()
+              : academicsBody(context);
+        },
+      ),
     );
   }
 

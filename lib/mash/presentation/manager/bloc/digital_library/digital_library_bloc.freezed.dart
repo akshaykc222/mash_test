@@ -20,11 +20,22 @@ mixin _$DigitalLibraryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -35,11 +46,22 @@ mixin _$DigitalLibraryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -50,11 +72,21 @@ mixin _$DigitalLibraryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -66,6 +98,14 @@ mixin _$DigitalLibraryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -81,6 +121,14 @@ mixin _$DigitalLibraryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -95,6 +143,14 @@ mixin _$DigitalLibraryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -172,11 +228,22 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -190,11 +257,22 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -208,11 +286,21 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -230,6 +318,14 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -248,6 +344,14 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -265,6 +369,14 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -333,11 +445,22 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -351,11 +474,22 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -369,11 +503,21 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -391,6 +535,14 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -409,6 +561,14 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -426,6 +586,14 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -445,6 +613,1989 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
 
 abstract class _GetClasses implements DigitalLibraryEvent {
   const factory _GetClasses() = _$GetClassesImpl;
+}
+
+/// @nodoc
+abstract class _$$StartSearchImplCopyWith<$Res> {
+  factory _$$StartSearchImplCopyWith(
+          _$StartSearchImpl value, $Res Function(_$StartSearchImpl) then) =
+      __$$StartSearchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartSearchImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$StartSearchImpl>
+    implements _$$StartSearchImplCopyWith<$Res> {
+  __$$StartSearchImplCopyWithImpl(
+      _$StartSearchImpl _value, $Res Function(_$StartSearchImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
+  const _$StartSearchImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.startSearch()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DigitalLibraryEvent.startSearch'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartSearchImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return startSearch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return startSearch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (startSearch != null) {
+      return startSearch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return startSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return startSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (startSearch != null) {
+      return startSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartSearch implements DigitalLibraryEvent {
+  const factory _StartSearch() = _$StartSearchImpl;
+}
+
+/// @nodoc
+abstract class _$$CloseSearchImplCopyWith<$Res> {
+  factory _$$CloseSearchImplCopyWith(
+          _$CloseSearchImpl value, $Res Function(_$CloseSearchImpl) then) =
+      __$$CloseSearchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CloseSearchImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$CloseSearchImpl>
+    implements _$$CloseSearchImplCopyWith<$Res> {
+  __$$CloseSearchImplCopyWithImpl(
+      _$CloseSearchImpl _value, $Res Function(_$CloseSearchImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
+  const _$CloseSearchImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.closeSearch()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'DigitalLibraryEvent.closeSearch'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CloseSearchImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return closeSearch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return closeSearch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (closeSearch != null) {
+      return closeSearch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return closeSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return closeSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (closeSearch != null) {
+      return closeSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CloseSearch implements DigitalLibraryEvent {
+  const factory _CloseSearch() = _$CloseSearchImpl;
+}
+
+/// @nodoc
+abstract class _$$SeachAcademicImplCopyWith<$Res> {
+  factory _$$SeachAcademicImplCopyWith(
+          _$SeachAcademicImpl value, $Res Function(_$SeachAcademicImpl) then) =
+      __$$SeachAcademicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String search});
+}
+
+/// @nodoc
+class __$$SeachAcademicImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$SeachAcademicImpl>
+    implements _$$SeachAcademicImplCopyWith<$Res> {
+  __$$SeachAcademicImplCopyWithImpl(
+      _$SeachAcademicImpl _value, $Res Function(_$SeachAcademicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? search = null,
+  }) {
+    return _then(_$SeachAcademicImpl(
+      search: null == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SeachAcademicImpl
+    with DiagnosticableTreeMixin
+    implements _SeachAcademic {
+  const _$SeachAcademicImpl({required this.search});
+
+  @override
+  final String search;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.searchAcademic(search: $search)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.searchAcademic'))
+      ..add(DiagnosticsProperty('search', search));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeachAcademicImpl &&
+            (identical(other.search, search) || other.search == search));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, search);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeachAcademicImplCopyWith<_$SeachAcademicImpl> get copyWith =>
+      __$$SeachAcademicImplCopyWithImpl<_$SeachAcademicImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return searchAcademic(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return searchAcademic?.call(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (searchAcademic != null) {
+      return searchAcademic(search);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return searchAcademic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return searchAcademic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (searchAcademic != null) {
+      return searchAcademic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SeachAcademic implements DigitalLibraryEvent {
+  const factory _SeachAcademic({required final String search}) =
+      _$SeachAcademicImpl;
+
+  String get search;
+  @JsonKey(ignore: true)
+  _$$SeachAcademicImplCopyWith<_$SeachAcademicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SeachNonAcademicImplCopyWith<$Res> {
+  factory _$$SeachNonAcademicImplCopyWith(_$SeachNonAcademicImpl value,
+          $Res Function(_$SeachNonAcademicImpl) then) =
+      __$$SeachNonAcademicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String search});
+}
+
+/// @nodoc
+class __$$SeachNonAcademicImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$SeachNonAcademicImpl>
+    implements _$$SeachNonAcademicImplCopyWith<$Res> {
+  __$$SeachNonAcademicImplCopyWithImpl(_$SeachNonAcademicImpl _value,
+      $Res Function(_$SeachNonAcademicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? search = null,
+  }) {
+    return _then(_$SeachNonAcademicImpl(
+      search: null == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SeachNonAcademicImpl
+    with DiagnosticableTreeMixin
+    implements _SeachNonAcademic {
+  const _$SeachNonAcademicImpl({required this.search});
+
+  @override
+  final String search;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.searchNonAcademic(search: $search)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'DigitalLibraryEvent.searchNonAcademic'))
+      ..add(DiagnosticsProperty('search', search));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeachNonAcademicImpl &&
+            (identical(other.search, search) || other.search == search));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, search);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeachNonAcademicImplCopyWith<_$SeachNonAcademicImpl> get copyWith =>
+      __$$SeachNonAcademicImplCopyWithImpl<_$SeachNonAcademicImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return searchNonAcademic(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return searchNonAcademic?.call(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (searchNonAcademic != null) {
+      return searchNonAcademic(search);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return searchNonAcademic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return searchNonAcademic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (searchNonAcademic != null) {
+      return searchNonAcademic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SeachNonAcademic implements DigitalLibraryEvent {
+  const factory _SeachNonAcademic({required final String search}) =
+      _$SeachNonAcademicImpl;
+
+  String get search;
+  @JsonKey(ignore: true)
+  _$$SeachNonAcademicImplCopyWith<_$SeachNonAcademicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaginateAcademicImplCopyWith<$Res> {
+  factory _$$PaginateAcademicImplCopyWith(_$PaginateAcademicImpl value,
+          $Res Function(_$PaginateAcademicImpl) then) =
+      __$$PaginateAcademicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String search});
+}
+
+/// @nodoc
+class __$$PaginateAcademicImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$PaginateAcademicImpl>
+    implements _$$PaginateAcademicImplCopyWith<$Res> {
+  __$$PaginateAcademicImplCopyWithImpl(_$PaginateAcademicImpl _value,
+      $Res Function(_$PaginateAcademicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? search = null,
+  }) {
+    return _then(_$PaginateAcademicImpl(
+      search: null == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaginateAcademicImpl
+    with DiagnosticableTreeMixin
+    implements _PaginateAcademic {
+  const _$PaginateAcademicImpl({required this.search});
+
+  @override
+  final String search;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.paginateAcademic(search: $search)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.paginateAcademic'))
+      ..add(DiagnosticsProperty('search', search));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaginateAcademicImpl &&
+            (identical(other.search, search) || other.search == search));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, search);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaginateAcademicImplCopyWith<_$PaginateAcademicImpl> get copyWith =>
+      __$$PaginateAcademicImplCopyWithImpl<_$PaginateAcademicImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return paginateAcademic(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return paginateAcademic?.call(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (paginateAcademic != null) {
+      return paginateAcademic(search);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return paginateAcademic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return paginateAcademic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (paginateAcademic != null) {
+      return paginateAcademic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaginateAcademic implements DigitalLibraryEvent {
+  const factory _PaginateAcademic({required final String search}) =
+      _$PaginateAcademicImpl;
+
+  String get search;
+  @JsonKey(ignore: true)
+  _$$PaginateAcademicImplCopyWith<_$PaginateAcademicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaginateNonAcademicImplCopyWith<$Res> {
+  factory _$$PaginateNonAcademicImplCopyWith(_$PaginateNonAcademicImpl value,
+          $Res Function(_$PaginateNonAcademicImpl) then) =
+      __$$PaginateNonAcademicImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String search});
+}
+
+/// @nodoc
+class __$$PaginateNonAcademicImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$PaginateNonAcademicImpl>
+    implements _$$PaginateNonAcademicImplCopyWith<$Res> {
+  __$$PaginateNonAcademicImplCopyWithImpl(_$PaginateNonAcademicImpl _value,
+      $Res Function(_$PaginateNonAcademicImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? search = null,
+  }) {
+    return _then(_$PaginateNonAcademicImpl(
+      search: null == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaginateNonAcademicImpl
+    with DiagnosticableTreeMixin
+    implements _PaginateNonAcademic {
+  const _$PaginateNonAcademicImpl({required this.search});
+
+  @override
+  final String search;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.paginateNonAcademic(search: $search)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'DigitalLibraryEvent.paginateNonAcademic'))
+      ..add(DiagnosticsProperty('search', search));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaginateNonAcademicImpl &&
+            (identical(other.search, search) || other.search == search));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, search);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaginateNonAcademicImplCopyWith<_$PaginateNonAcademicImpl> get copyWith =>
+      __$$PaginateNonAcademicImplCopyWithImpl<_$PaginateNonAcademicImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return paginateNonAcademic(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return paginateNonAcademic?.call(search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (paginateNonAcademic != null) {
+      return paginateNonAcademic(search);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return paginateNonAcademic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return paginateNonAcademic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (paginateNonAcademic != null) {
+      return paginateNonAcademic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaginateNonAcademic implements DigitalLibraryEvent {
+  const factory _PaginateNonAcademic({required final String search}) =
+      _$PaginateNonAcademicImpl;
+
+  String get search;
+  @JsonKey(ignore: true)
+  _$$PaginateNonAcademicImplCopyWith<_$PaginateNonAcademicImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetAcademicLibraryImplCopyWith<$Res> {
+  factory _$$GetAcademicLibraryImplCopyWith(_$GetAcademicLibraryImpl value,
+          $Res Function(_$GetAcademicLibraryImpl) then) =
+      __$$GetAcademicLibraryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? typeId, String? catId, String? subId});
+}
+
+/// @nodoc
+class __$$GetAcademicLibraryImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$GetAcademicLibraryImpl>
+    implements _$$GetAcademicLibraryImplCopyWith<$Res> {
+  __$$GetAcademicLibraryImplCopyWithImpl(_$GetAcademicLibraryImpl _value,
+      $Res Function(_$GetAcademicLibraryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? typeId = freezed,
+    Object? catId = freezed,
+    Object? subId = freezed,
+  }) {
+    return _then(_$GetAcademicLibraryImpl(
+      typeId: freezed == typeId
+          ? _value.typeId
+          : typeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      catId: freezed == catId
+          ? _value.catId
+          : catId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subId: freezed == subId
+          ? _value.subId
+          : subId // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAcademicLibraryImpl
+    with DiagnosticableTreeMixin
+    implements _GetAcademicLibrary {
+  const _$GetAcademicLibraryImpl({this.typeId, this.catId, this.subId});
+
+  @override
+  final String? typeId;
+  @override
+  final String? catId;
+  @override
+  final String? subId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.getAcademicLibrary(typeId: $typeId, catId: $catId, subId: $subId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'DigitalLibraryEvent.getAcademicLibrary'))
+      ..add(DiagnosticsProperty('typeId', typeId))
+      ..add(DiagnosticsProperty('catId', catId))
+      ..add(DiagnosticsProperty('subId', subId));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAcademicLibraryImpl &&
+            (identical(other.typeId, typeId) || other.typeId == typeId) &&
+            (identical(other.catId, catId) || other.catId == catId) &&
+            (identical(other.subId, subId) || other.subId == subId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, typeId, catId, subId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAcademicLibraryImplCopyWith<_$GetAcademicLibraryImpl> get copyWith =>
+      __$$GetAcademicLibraryImplCopyWithImpl<_$GetAcademicLibraryImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return getAcademicLibrary(typeId, catId, subId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return getAcademicLibrary?.call(typeId, catId, subId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getAcademicLibrary != null) {
+      return getAcademicLibrary(typeId, catId, subId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return getAcademicLibrary(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return getAcademicLibrary?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getAcademicLibrary != null) {
+      return getAcademicLibrary(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAcademicLibrary implements DigitalLibraryEvent {
+  const factory _GetAcademicLibrary(
+      {final String? typeId,
+      final String? catId,
+      final String? subId}) = _$GetAcademicLibraryImpl;
+
+  String? get typeId;
+  String? get catId;
+  String? get subId;
+  @JsonKey(ignore: true)
+  _$$GetAcademicLibraryImplCopyWith<_$GetAcademicLibraryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReadBookImplCopyWith<$Res> {
+  factory _$$ReadBookImplCopyWith(
+          _$ReadBookImpl value, $Res Function(_$ReadBookImpl) then) =
+      __$$ReadBookImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DigitalLibraryEntity book, BuildContext context});
+}
+
+/// @nodoc
+class __$$ReadBookImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$ReadBookImpl>
+    implements _$$ReadBookImplCopyWith<$Res> {
+  __$$ReadBookImplCopyWithImpl(
+      _$ReadBookImpl _value, $Res Function(_$ReadBookImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+    Object? context = null,
+  }) {
+    return _then(_$ReadBookImpl(
+      null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as DigitalLibraryEntity,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
+  const _$ReadBookImpl(this.book, {required this.context});
+
+  @override
+  final DigitalLibraryEntity book;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.readBook(book: $book, context: $context)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.readBook'))
+      ..add(DiagnosticsProperty('book', book))
+      ..add(DiagnosticsProperty('context', context));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReadBookImpl &&
+            (identical(other.book, book) || other.book == book) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReadBookImplCopyWith<_$ReadBookImpl> get copyWith =>
+      __$$ReadBookImplCopyWithImpl<_$ReadBookImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return readBook(book, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return readBook?.call(book, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (readBook != null) {
+      return readBook(book, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return readBook(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return readBook?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (readBook != null) {
+      return readBook(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReadBook implements DigitalLibraryEvent {
+  const factory _ReadBook(final DigitalLibraryEntity book,
+      {required final BuildContext context}) = _$ReadBookImpl;
+
+  DigitalLibraryEntity get book;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$ReadBookImplCopyWith<_$ReadBookImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -494,11 +2645,22 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -512,11 +2674,22 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -530,11 +2703,21 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -552,6 +2735,14 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -570,6 +2761,14 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -587,6 +2786,14 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -692,11 +2899,22 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -710,11 +2928,22 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -728,11 +2957,21 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -750,6 +2989,14 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -768,6 +3015,14 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -785,6 +3040,14 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -888,11 +3151,22 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -906,11 +3180,22 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -924,11 +3209,21 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -946,6 +3241,14 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -964,6 +3267,14 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -981,6 +3292,14 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -1083,11 +3402,22 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -1101,11 +3431,22 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -1119,11 +3460,21 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -1141,6 +3492,14 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -1159,6 +3518,14 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -1176,6 +3543,14 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -1209,7 +3584,7 @@ abstract class _$$GetNonAcademicImplCopyWith<$Res> {
           $Res Function(_$GetNonAcademicImpl) then) =
       __$$GetNonAcademicImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? typeId, String? catId, String? subId});
+  $Res call({String? typeId, String? catId, String? subId, String? moduleName});
 }
 
 /// @nodoc
@@ -1226,6 +3601,7 @@ class __$$GetNonAcademicImplCopyWithImpl<$Res>
     Object? typeId = freezed,
     Object? catId = freezed,
     Object? subId = freezed,
+    Object? moduleName = freezed,
   }) {
     return _then(_$GetNonAcademicImpl(
       typeId: freezed == typeId
@@ -1240,6 +3616,10 @@ class __$$GetNonAcademicImplCopyWithImpl<$Res>
           ? _value.subId
           : subId // ignore: cast_nullable_to_non_nullable
               as String?,
+      moduleName: freezed == moduleName
+          ? _value.moduleName
+          : moduleName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1249,7 +3629,8 @@ class __$$GetNonAcademicImplCopyWithImpl<$Res>
 class _$GetNonAcademicImpl
     with DiagnosticableTreeMixin
     implements _GetNonAcademic {
-  const _$GetNonAcademicImpl({this.typeId, this.catId, this.subId});
+  const _$GetNonAcademicImpl(
+      {this.typeId, this.catId, this.subId, this.moduleName});
 
   @override
   final String? typeId;
@@ -1257,10 +3638,12 @@ class _$GetNonAcademicImpl
   final String? catId;
   @override
   final String? subId;
+  @override
+  final String? moduleName;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DigitalLibraryEvent.getNonAcademic(typeId: $typeId, catId: $catId, subId: $subId)';
+    return 'DigitalLibraryEvent.getNonAcademic(typeId: $typeId, catId: $catId, subId: $subId, moduleName: $moduleName)';
   }
 
   @override
@@ -1270,7 +3653,8 @@ class _$GetNonAcademicImpl
       ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.getNonAcademic'))
       ..add(DiagnosticsProperty('typeId', typeId))
       ..add(DiagnosticsProperty('catId', catId))
-      ..add(DiagnosticsProperty('subId', subId));
+      ..add(DiagnosticsProperty('subId', subId))
+      ..add(DiagnosticsProperty('moduleName', moduleName));
   }
 
   @override
@@ -1280,11 +3664,14 @@ class _$GetNonAcademicImpl
             other is _$GetNonAcademicImpl &&
             (identical(other.typeId, typeId) || other.typeId == typeId) &&
             (identical(other.catId, catId) || other.catId == catId) &&
-            (identical(other.subId, subId) || other.subId == subId));
+            (identical(other.subId, subId) || other.subId == subId) &&
+            (identical(other.moduleName, moduleName) ||
+                other.moduleName == moduleName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, typeId, catId, subId);
+  int get hashCode =>
+      Object.hash(runtimeType, typeId, catId, subId, moduleName);
 
   @JsonKey(ignore: true)
   @override
@@ -1298,17 +3685,28 @@ class _$GetNonAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
     required TResult Function(ClassDetailsEntity selected) selectClass,
   }) {
-    return getNonAcademic(typeId, catId, subId);
+    return getNonAcademic(typeId, catId, subId, moduleName);
   }
 
   @override
@@ -1316,17 +3714,28 @@ class _$GetNonAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
     TResult? Function(ClassDetailsEntity selected)? selectClass,
   }) {
-    return getNonAcademic?.call(typeId, catId, subId);
+    return getNonAcademic?.call(typeId, catId, subId, moduleName);
   }
 
   @override
@@ -1334,11 +3743,21 @@ class _$GetNonAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -1346,7 +3765,7 @@ class _$GetNonAcademicImpl
     required TResult orElse(),
   }) {
     if (getNonAcademic != null) {
-      return getNonAcademic(typeId, catId, subId);
+      return getNonAcademic(typeId, catId, subId, moduleName);
     }
     return orElse();
   }
@@ -1356,6 +3775,14 @@ class _$GetNonAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -1374,6 +3801,14 @@ class _$GetNonAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -1391,6 +3826,14 @@ class _$GetNonAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -1412,11 +3855,13 @@ abstract class _GetNonAcademic implements DigitalLibraryEvent {
   const factory _GetNonAcademic(
       {final String? typeId,
       final String? catId,
-      final String? subId}) = _$GetNonAcademicImpl;
+      final String? subId,
+      final String? moduleName}) = _$GetNonAcademicImpl;
 
   String? get typeId;
   String? get catId;
   String? get subId;
+  String? get moduleName;
   @JsonKey(ignore: true)
   _$$GetNonAcademicImplCopyWith<_$GetNonAcademicImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1502,11 +3947,22 @@ class _$SelectNonAcademicTypeImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -1520,11 +3976,22 @@ class _$SelectNonAcademicTypeImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -1538,11 +4005,21 @@ class _$SelectNonAcademicTypeImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -1560,6 +4037,14 @@ class _$SelectNonAcademicTypeImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -1578,6 +4063,14 @@ class _$SelectNonAcademicTypeImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -1595,6 +4088,14 @@ class _$SelectNonAcademicTypeImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -1696,11 +4197,22 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -1714,11 +4226,22 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -1732,11 +4255,21 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -1754,6 +4287,14 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -1772,6 +4313,14 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -1789,6 +4338,14 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -1891,11 +4448,22 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+        readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
     required TResult Function(AcademicTypeEntity? selected) selectMedium,
     required TResult Function(AcademicTypeEntity? selected) selectSubCat,
-    required TResult Function(String? typeId, String? catId, String? subId)
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
         getNonAcademic,
     required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
     required TResult Function(DigitalLibraryRequest request) getLibrary,
@@ -1909,11 +4477,22 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+        readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
     TResult? Function(AcademicTypeEntity? selected)? selectMedium,
     TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult? Function(String? typeId, String? catId, String? subId)?
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
@@ -1927,11 +4506,21 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
     TResult Function(AcademicTypeEntity? selected)? selectSubCat,
-    TResult Function(String? typeId, String? catId, String? subId)?
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
         getNonAcademic,
     TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
     TResult Function(DigitalLibraryRequest request)? getLibrary,
@@ -1949,6 +4538,14 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
     required TResult Function(_GetResearch value) getResearch,
     required TResult Function(_GetTypes value) getTypes,
     required TResult Function(_SelectMedium value) selectMedium,
@@ -1967,6 +4564,14 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
     TResult? Function(_GetResearch value)? getResearch,
     TResult? Function(_GetTypes value)? getTypes,
     TResult? Function(_SelectMedium value)? selectMedium,
@@ -1984,6 +4589,14 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
     TResult Function(_GetResearch value)? getResearch,
     TResult Function(_GetTypes value)? getTypes,
     TResult Function(_SelectMedium value)? selectMedium,
@@ -2024,7 +4637,9 @@ mixin _$DigitalLibraryState {
   ResponseClassify<List<AcademicTypeEntity>>? get mediums =>
       throw _privateConstructorUsedError;
   AcademicTypeEntity? get selectedSubCat => throw _privateConstructorUsedError;
+  bool get isSearching => throw _privateConstructorUsedError;
   AcademicTypeEntity? get selectedMedium => throw _privateConstructorUsedError;
+  double? get downloadProgress => throw _privateConstructorUsedError;
   NonAcademicTypes get selectedNonAcademic =>
       throw _privateConstructorUsedError;
   ClassDetailsEntity? get selectedClass => throw _privateConstructorUsedError;
@@ -2047,7 +4662,9 @@ abstract class $DigitalLibraryStateCopyWith<$Res> {
       ResponseClassify<List<AcademicTypeEntity>>? subCats,
       ResponseClassify<List<AcademicTypeEntity>>? mediums,
       AcademicTypeEntity? selectedSubCat,
+      bool isSearching,
       AcademicTypeEntity? selectedMedium,
+      double? downloadProgress,
       NonAcademicTypes selectedNonAcademic,
       ClassDetailsEntity? selectedClass});
 }
@@ -2071,7 +4688,9 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
     Object? subCats = freezed,
     Object? mediums = freezed,
     Object? selectedSubCat = freezed,
+    Object? isSearching = null,
     Object? selectedMedium = freezed,
+    Object? downloadProgress = freezed,
     Object? selectedNonAcademic = null,
     Object? selectedClass = freezed,
   }) {
@@ -2100,10 +4719,18 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
           ? _value.selectedSubCat
           : selectedSubCat // ignore: cast_nullable_to_non_nullable
               as AcademicTypeEntity?,
+      isSearching: null == isSearching
+          ? _value.isSearching
+          : isSearching // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedMedium: freezed == selectedMedium
           ? _value.selectedMedium
           : selectedMedium // ignore: cast_nullable_to_non_nullable
               as AcademicTypeEntity?,
+      downloadProgress: freezed == downloadProgress
+          ? _value.downloadProgress
+          : downloadProgress // ignore: cast_nullable_to_non_nullable
+              as double?,
       selectedNonAcademic: null == selectedNonAcademic
           ? _value.selectedNonAcademic
           : selectedNonAcademic // ignore: cast_nullable_to_non_nullable
@@ -2131,7 +4758,9 @@ abstract class _$$DigitalLibraryStateImplCopyWith<$Res>
       ResponseClassify<List<AcademicTypeEntity>>? subCats,
       ResponseClassify<List<AcademicTypeEntity>>? mediums,
       AcademicTypeEntity? selectedSubCat,
+      bool isSearching,
       AcademicTypeEntity? selectedMedium,
+      double? downloadProgress,
       NonAcademicTypes selectedNonAcademic,
       ClassDetailsEntity? selectedClass});
 }
@@ -2153,7 +4782,9 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
     Object? subCats = freezed,
     Object? mediums = freezed,
     Object? selectedSubCat = freezed,
+    Object? isSearching = null,
     Object? selectedMedium = freezed,
+    Object? downloadProgress = freezed,
     Object? selectedNonAcademic = null,
     Object? selectedClass = freezed,
   }) {
@@ -2182,10 +4813,18 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
           ? _value.selectedSubCat
           : selectedSubCat // ignore: cast_nullable_to_non_nullable
               as AcademicTypeEntity?,
+      isSearching: null == isSearching
+          ? _value.isSearching
+          : isSearching // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedMedium: freezed == selectedMedium
           ? _value.selectedMedium
           : selectedMedium // ignore: cast_nullable_to_non_nullable
               as AcademicTypeEntity?,
+      downloadProgress: freezed == downloadProgress
+          ? _value.downloadProgress
+          : downloadProgress // ignore: cast_nullable_to_non_nullable
+              as double?,
       selectedNonAcademic: null == selectedNonAcademic
           ? _value.selectedNonAcademic
           : selectedNonAcademic // ignore: cast_nullable_to_non_nullable
@@ -2210,7 +4849,9 @@ class _$DigitalLibraryStateImpl
       this.subCats,
       this.mediums,
       this.selectedSubCat,
+      this.isSearching = false,
       this.selectedMedium,
+      this.downloadProgress = 0,
       this.selectedNonAcademic = NonAcademicTypes.all,
       this.selectedClass});
 
@@ -2227,7 +4868,13 @@ class _$DigitalLibraryStateImpl
   @override
   final AcademicTypeEntity? selectedSubCat;
   @override
+  @JsonKey()
+  final bool isSearching;
+  @override
   final AcademicTypeEntity? selectedMedium;
+  @override
+  @JsonKey()
+  final double? downloadProgress;
   @override
   @JsonKey()
   final NonAcademicTypes selectedNonAcademic;
@@ -2236,7 +4883,7 @@ class _$DigitalLibraryStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, selectedSubCat: $selectedSubCat, selectedMedium: $selectedMedium, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
+    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, selectedSubCat: $selectedSubCat, isSearching: $isSearching, selectedMedium: $selectedMedium, downloadProgress: $downloadProgress, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
   }
 
   @override
@@ -2250,7 +4897,9 @@ class _$DigitalLibraryStateImpl
       ..add(DiagnosticsProperty('subCats', subCats))
       ..add(DiagnosticsProperty('mediums', mediums))
       ..add(DiagnosticsProperty('selectedSubCat', selectedSubCat))
+      ..add(DiagnosticsProperty('isSearching', isSearching))
       ..add(DiagnosticsProperty('selectedMedium', selectedMedium))
+      ..add(DiagnosticsProperty('downloadProgress', downloadProgress))
       ..add(DiagnosticsProperty('selectedNonAcademic', selectedNonAcademic))
       ..add(DiagnosticsProperty('selectedClass', selectedClass));
   }
@@ -2270,8 +4919,12 @@ class _$DigitalLibraryStateImpl
             (identical(other.mediums, mediums) || other.mediums == mediums) &&
             (identical(other.selectedSubCat, selectedSubCat) ||
                 other.selectedSubCat == selectedSubCat) &&
+            (identical(other.isSearching, isSearching) ||
+                other.isSearching == isSearching) &&
             (identical(other.selectedMedium, selectedMedium) ||
                 other.selectedMedium == selectedMedium) &&
+            (identical(other.downloadProgress, downloadProgress) ||
+                other.downloadProgress == downloadProgress) &&
             (identical(other.selectedNonAcademic, selectedNonAcademic) ||
                 other.selectedNonAcademic == selectedNonAcademic) &&
             (identical(other.selectedClass, selectedClass) ||
@@ -2287,7 +4940,9 @@ class _$DigitalLibraryStateImpl
       subCats,
       mediums,
       selectedSubCat,
+      isSearching,
       selectedMedium,
+      downloadProgress,
       selectedNonAcademic,
       selectedClass);
 
@@ -2307,7 +4962,9 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
       final ResponseClassify<List<AcademicTypeEntity>>? subCats,
       final ResponseClassify<List<AcademicTypeEntity>>? mediums,
       final AcademicTypeEntity? selectedSubCat,
+      final bool isSearching,
       final AcademicTypeEntity? selectedMedium,
+      final double? downloadProgress,
       final NonAcademicTypes selectedNonAcademic,
       final ClassDetailsEntity? selectedClass}) = _$DigitalLibraryStateImpl;
 
@@ -2324,7 +4981,11 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
   @override
   AcademicTypeEntity? get selectedSubCat;
   @override
+  bool get isSearching;
+  @override
   AcademicTypeEntity? get selectedMedium;
+  @override
+  double? get downloadProgress;
   @override
   NonAcademicTypes get selectedNonAcademic;
   @override

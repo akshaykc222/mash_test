@@ -122,4 +122,6 @@ class AppAssets {
   static String paymentSuccess = "assets/riv/payment_sucess.riv";
   static String processing = "assets/riv/processing.riv";
   static const share = 'assets/icons/share.svg';
+  static const heart = 'assets/icons/heart.svg';
+  static const bookmark = 'assets/icons/bookmark.svg';
 }
