@@ -51,7 +51,9 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
       final userdata = await getUserInfoUseCase.call(NoParams());
       final data = await getAllNoticeUseCase.call(NoticeAllRequest(
         pCompId: userdata?.compId ?? "",
-        usertype: userdata?.userType ?? "",
+        // usertype: userdata?.userType ?? "",
+        usertype: '2',
+        noticeId: event.noticeId ?? '0', offset: '0', pLimit: '5',
       ));
       emit(state.copyWith(
         noticeResponseData: ResponseClassify.completed(data),
@@ -59,7 +61,6 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
     } catch (e) {
       emit(state.copyWith(
           noticeResponseData: ResponseClassify.error(e.toString())));
-
       prettyPrint(e.toString());
     }
   }

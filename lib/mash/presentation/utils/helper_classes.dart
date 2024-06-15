@@ -58,8 +58,22 @@ class HelperClasses {
 
 
 
-  static Widget getSelectedStudent(BuildContext context, bool dontPadd) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
+  static Widget getSelectedStudent(BuildContext context, bool dontPadd,
+      {Function(String)? listenFunction}) {
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listenWhen: (previous, current) {
+        if (previous.selectedSibling != current.selectedSibling) {
+          return true;
+        }
+        return false;
+      } ,
+      listener: (context, state) {
+        if(listenFunction!=null){
+          listenFunction(state.selectedSibling?.userId??"");
+        }
+
+
+      },
       buildWhen: (previous, current) {
         if (previous.selectedSibling != current.selectedSibling) {
           return true;

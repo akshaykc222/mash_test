@@ -57,7 +57,7 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
               classId: loginInfo?.classId ?? ''));
       if (response.isNotEmpty) {
         add(TimeTableEvent.getOfflineExamTimeTable(
-            termId: response.first.termId));
+            termId: response.first.termId, isInit: false, selectedUserId: event.selectedUserId));
       }
       emit(state.copyWith(
           getOfflineExamTerms: ResponseClassify.completed(response)));
@@ -72,12 +72,17 @@ class TimeTableBloc extends Bloc<TimeTableEvent, TimeTableState> {
     emit(state.copyWith(getOfflineExamTimeTable: ResponseClassify.loading()));
     try {
       var loginInfo = await getUserInfoUseCase.call(NoParams());
-      var siblingInfo = await getSiblingsUseCase.call(loginInfo?.compId ?? '');
+print('************* exam data ***************');
+print('${ExamTimeTableRequest(
+    companyId: loginInfo?.compId ?? '',
+    pAcademicId: loginInfo?.academicId ?? '',
+    pKidId:   event.selectedUserId,
+    termId: event.termId).toJson()}');
       var response = await getOfflineExamTimeTableUseCase.call(
           ExamTimeTableRequest(
               companyId: loginInfo?.compId ?? '',
               pAcademicId: loginInfo?.academicId ?? '',
-              pKidId: siblingInfo[0].userId ?? '',
+              pKidId:   event.selectedUserId,
               termId: event.termId));
       /*var response = await getOfflineExamTimeTableUseCase.call(
           ExamTimeTableRequest(

@@ -361,7 +361,7 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
-      builder: (context, state) => const NoticeBoardDetailScreen(),
+      builder: (context, state) =>  NoticeBoardDetailScreen(noticeId: state.extra as String,),
     ),
     GoRoute(
       name: AppPages.weeklyTimetableScreen,
@@ -444,7 +444,7 @@ class AppRouteManager {
       builder: (context, state) => const FeesAndPaymentsTabs(),
     ),
     // GoRoute(
-    //   name: AppPages.paymentHistoryScreen,
+    //   name: AppPages.,
     //   path: AppPages.paymentHistoryScreen,
     //   builder: (context, state) => const PaymentHistoryScreen(),
     // ),
