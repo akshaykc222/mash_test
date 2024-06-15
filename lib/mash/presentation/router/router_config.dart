@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
+import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -73,19 +73,18 @@ import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 
-import '../../../core/usecase.dart';
-import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
-import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/chat_screen.dart';
 import '../pages/chat/create_group.dart';
 import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/library/academic_books.dart';
+import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
@@ -185,11 +184,13 @@ class AppRouteManager {
       path: AppPages.forgotPassword,
       name: AppPages.forgotPassword,
       builder: (context, state) => const ForgotPasswordScreen(),
-    ), GoRoute(
+    ),
+    GoRoute(
       path: AppPages.leaveApplyScreen,
       name: AppPages.leaveApplyScreen,
       builder: (context, state) => const LeaveApplyScreen(),
-    ), GoRoute(
+    ),
+    GoRoute(
       path: AppPages.leaveStatusScreen,
       name: AppPages.leaveStatusScreen,
       builder: (context, state) => const LeaveStatusScreen(),
@@ -608,7 +609,7 @@ class AppRouteManager {
           ? AcademicBooks(
               type: state.extra as AcademicTypeEntity,
             )
-          : SizedBox(),
+          : const SizedBox(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
