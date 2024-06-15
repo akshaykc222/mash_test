@@ -6,6 +6,7 @@ import 'package:mash/mash/presentation/manager/bloc/home_work_notes_bloc/home_wo
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
@@ -45,15 +46,20 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: BlocListener<PdfDownloadCubit, PdfDownloadState>(
           listenWhen: (previous, current) =>
-              previous.pdfDownloadResponse.status != Status.COMPLETED &&
-              current.pdfDownloadResponse.status == Status.COMPLETED,
+              previous.pdfDownloadResponse.status !=
+              current.pdfDownloadResponse.status,
           listener: (context, state) {
-            GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
-                extra: state.pdfDownloadResponse.data);
+            if (state.pdfDownloadResponse.status == Status.COMPLETED) {
+              GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
+                  extra: state.pdfDownloadResponse.data);
+            } else if (state.pdfDownloadResponse.status == Status.ERROR) {
+              HelperClasses.showSnackBar(msg: state.pdfDownloadResponse.error);
+            }
           },
           child: BlocBuilder<HomeWorkNotesBloc, HomeWorkNotesState>(
             builder: (context, state) {
               final data = state.homeWorkReportDetailResponse;
+
               if (data.status == Status.LOADING ||
                   data.data == null && data.status != Status.ERROR) {
                 return const Loader();
@@ -136,9 +142,13 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
         spacer20,
         ListTile(
           onTap: () {
-            context
-                .read<PdfDownloadCubit>()
-                .downloadPdf(table2?.document ?? "");
+            if (table2?.ext == DoucumentType.PDF.name) {
+              context.read<PdfDownloadCubit>().downloadPdf(
+                  doucumentType: DoucumentType.PDF,
+                  filePath: table2?.wrkDoc ?? "");
+            } else {
+              context.pushNamed(AppPages.imageFullView, extra: table2?.wrkDoc);
+            }
           },
           title: Text(
             table2?.document ?? "",
@@ -148,11 +158,16 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
             ),
             maxLines: 1,
           ),
-          leading: HelperClasses.cachedNetworkImage(
-            imageUrl: table2?.wrkDoc ?? "",
-            height: 30,
-            width: 30,
-          ),
+          leading: table2?.ext == DoucumentType.PDF.name
+              ? Icon(
+                  Icons.picture_as_pdf,
+                  color: AppColors.redColor,
+                )
+              : HelperClasses.cachedNetworkImage(
+                  imageUrl: table2?.wrkDoc ?? "",
+                  height: 30,
+                  width: 30,
+                ),
           subtitle: Text(
             'Attaced File',
             style: TextStyle(

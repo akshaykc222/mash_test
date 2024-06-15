@@ -8,6 +8,7 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
@@ -56,8 +57,11 @@ class NewsBoardDetailScreen extends StatelessWidget {
                 icon: AppAssets.downloadIcon,
                 name: 'View Attachment',
                 onTap: () {
-                  BlocProvider.of<PdfDownloadCubit>(context).downloadPdf(
-                      'https://www.clickdimensions.com/links/TestPDFfile.pdf');
+                  if (newsDetails.ext == "PDF") {
+                    BlocProvider.of<PdfDownloadCubit>(context).downloadPdf(
+                        filePath: newsDetails.content ?? '',
+                        doucumentType: DoucumentType.PDF);
+                  } else {}
                 },
               )
             ],

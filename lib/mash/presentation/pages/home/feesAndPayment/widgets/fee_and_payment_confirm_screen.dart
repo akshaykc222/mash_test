@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/payment_bottom_pay_widget.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
@@ -54,6 +57,7 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
     _emailController.dispose();
     _mobileController.dispose();
     _descriptionController.dispose();
+
     super.dispose();
   }
 
@@ -66,22 +70,24 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
         height: Platform.isIOS ? 120 : 100,
         child: PaymentBottomWidget(
           onTap: () {
-            if (_formKey.currentState!.validate()) {
-              BlocProvider.of<PaymentBloc>(context).add(
-                  PaymentEvent.getPaymentOrderId(
-                      email: _emailController.text,
-                      student: _nameController.text,
-                      mobile: _mobileController.text,
-                      remark: _descriptionController.text,
-                      installmentId: "$instalMentIdSplitted ,",
-                      studentId: context
-                              .read<ProfileBloc>()
-                              .state
-                              .getUserDetail
-                              ?.data
-                              ?.usrId ??
-                          ""));
-            }
+            GoRouter.of(context)
+                .pushNamed(AppPages.paymentResponse, extra: OrderStatus.FAILED);
+            // if (_formKey.currentState!.validate()) {
+            //   BlocProvider.of<PaymentBloc>(context).add(
+            //       PaymentEvent.getPaymentOrderId(
+            //           email: _emailController.text,
+            //           student: _nameController.text,
+            //           mobile: _mobileController.text,
+            //           remark: _descriptionController.text,
+            //           installmentId: "$instalMentIdSplitted ,",
+            //           studentId: context
+            //                   .read<ProfileBloc>()
+            //                   .state
+            //                   .getUserDetail
+            //                   ?.data
+            //                   ?.usrId ??
+            //               ""));
+            // }
           },
         ),
       ),
@@ -188,16 +194,41 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                     lines: 5,
                   ),
                   spacer15,
-                  BlocBuilder<PaymentBloc, PaymentState>(
+                  BlocConsumer<PaymentBloc, PaymentState>(
+                    listener: (context, state) {
+                      if (state.paymentOrderResponse.data == OrderStatus.PAID) {
+                        context.pushNamed(AppPages.paymentResponse,
+                            extra: OrderStatus.PAID);
+                      } else if (state.paymentOrderResponse.data ==
+                          OrderStatus.ACTIVE) {
+                        context.pushNamed(AppPages.paymentResponse,
+                            extra: OrderStatus.ACTIVE);
+                      } else if (state.paymentOrderResponse.data ==
+                          OrderStatus.FAILED) {
+                        context.pushNamed(AppPages.paymentResponse,
+                            extra: OrderStatus.FAILED);
+                      }
+                    },
                     builder: (context, state) {
                       final amounts = state.paymentFinalAmountResponse;
-                      return Text(
-                        'Congragulations you are eligible for ${amounts?.discountPercentage}% dicount as you used MASH for payment',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: AppColors.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      return Row(
+                        children: [
+                          Icon(Icons.sell_outlined,
+                              color: AppColors.primaryColor),
+                          spacerWidth4,
+                          Flexible(
+                            child: Text(
+                              'Congragulations you are eligible for ${amounts?.discountPercentage}% dicount as you used MASH for payment',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       );
                     },
                   )

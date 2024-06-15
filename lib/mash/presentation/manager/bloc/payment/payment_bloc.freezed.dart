@@ -47,6 +47,7 @@ mixin _$PaymentEvent {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +81,7 @@ mixin _$PaymentEvent {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +109,7 @@ mixin _$PaymentEvent {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,6 +126,7 @@ mixin _$PaymentEvent {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -137,6 +141,7 @@ mixin _$PaymentEvent {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -151,6 +156,7 @@ mixin _$PaymentEvent {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -288,6 +294,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -324,6 +331,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -354,6 +362,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -376,6 +385,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return getPaymentDashboard(this);
   }
@@ -393,6 +403,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return getPaymentDashboard?.call(this);
   }
@@ -410,6 +421,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -530,6 +542,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -566,6 +579,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -596,6 +610,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -618,6 +633,7 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return selectPaymentsCheckboxEvent(this);
   }
@@ -635,6 +651,7 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return selectPaymentsCheckboxEvent?.call(this);
   }
@@ -652,6 +669,7 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -765,6 +783,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return selectedItemIndex(index);
   }
@@ -801,6 +820,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -831,6 +851,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -853,6 +874,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return selectedItemIndex(this);
   }
@@ -870,6 +892,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return selectedItemIndex?.call(this);
   }
@@ -887,6 +910,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -1024,6 +1048,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
   }
@@ -1060,6 +1085,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
   }
@@ -1090,6 +1116,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1112,6 +1139,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return getPaymentFinalAmount(this);
   }
@@ -1129,6 +1157,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return getPaymentFinalAmount?.call(this);
   }
@@ -1146,6 +1175,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1318,6 +1348,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return getPaymentOrderId(
         email, student, mobile, remark, installmentId, studentId);
@@ -1355,6 +1386,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return getPaymentOrderId?.call(
         email, student, mobile, remark, installmentId, studentId);
@@ -1386,6 +1418,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1409,6 +1442,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return getPaymentOrderId(this);
   }
@@ -1426,6 +1460,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return getPaymentOrderId?.call(this);
   }
@@ -1443,6 +1478,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1636,6 +1672,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return getPaymentTokenAndOpenPayment(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1673,6 +1710,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return getPaymentTokenAndOpenPayment?.call(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1704,6 +1742,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -1727,6 +1766,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return getPaymentTokenAndOpenPayment(this);
   }
@@ -1744,6 +1784,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return getPaymentTokenAndOpenPayment?.call(this);
   }
@@ -1761,6 +1802,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -1955,6 +1997,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? mobile,
             String? installMentId)
         getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
   }) {
     return getPaymentCompleteResponse(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -1992,6 +2035,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
   }) {
     return getPaymentCompleteResponse?.call(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -2023,6 +2067,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? mobile,
             String? installMentId)?
         getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
@@ -2046,6 +2091,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentTokenAndOpenPayment,
     required TResult Function(_GetPaymentCompleteResponse value)
         getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
   }) {
     return getPaymentCompleteResponse(this);
   }
@@ -2063,6 +2109,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentTokenAndOpenPayment,
     TResult? Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
   }) {
     return getPaymentCompleteResponse?.call(this);
   }
@@ -2080,6 +2127,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentTokenAndOpenPayment,
     TResult Function(_GetPaymentCompleteResponse value)?
         getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
@@ -2109,6 +2157,215 @@ abstract class _GetPaymentCompleteResponse implements PaymentEvent {
   @JsonKey(ignore: true)
   _$$GetPaymentCompleteResponseImplCopyWith<_$GetPaymentCompleteResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentDisposeEventImplCopyWith<$Res> {
+  factory _$$PaymentDisposeEventImplCopyWith(_$PaymentDisposeEventImpl value,
+          $Res Function(_$PaymentDisposeEventImpl) then) =
+      __$$PaymentDisposeEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaymentDisposeEventImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res, _$PaymentDisposeEventImpl>
+    implements _$$PaymentDisposeEventImplCopyWith<$Res> {
+  __$$PaymentDisposeEventImplCopyWithImpl(_$PaymentDisposeEventImpl _value,
+      $Res Function(_$PaymentDisposeEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
+  const _$PaymentDisposeEventImpl();
+
+  @override
+  String toString() {
+    return 'PaymentEvent.disposeEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentDisposeEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(
+            String totalAmount, String installmentId, String studentId)
+        getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
+        getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
+  }) {
+    return disposeEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
+        getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
+  }) {
+    return disposeEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
+        getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
+  }) {
+    return disposeEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
+  }) {
+    return disposeEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaymentDisposeEvent implements PaymentEvent {
+  const factory _PaymentDisposeEvent() = _$PaymentDisposeEventImpl;
 }
 
 /// @nodoc

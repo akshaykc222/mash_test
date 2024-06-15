@@ -52,8 +52,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: event.classId,
-          divId: event.divId,
+          classId: '152',
+          divId: '224',
           subjId: event.subId.isEmpty ? "0" : event.subId,
           acadId: userData.academicId ?? "",
         ));
@@ -76,8 +76,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: event.classId,
-          divId: event.divId,
+          classId: '152',
+          divId: '224',
           subjId: event.subjectId.isEmpty ? "0" : event.subjectId,
           acadId: userData.academicId ?? "",
         ));
@@ -117,7 +117,7 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
       final userData = await getUserInfoUseCase.call(NoParams());
       if (userData != null) {
         final data = await getHomeWorkDetails
-            .call(HomeWorkDetailsParams(userData.compId, event.workId));
+            .call(HomeWorkDetailsParams(userData.compId, '1145'));
         emit(state.copyWith(
             homeWorkReportDetailResponse: ResponseClassify.completed(data)));
         prettyPrint(data.toString());

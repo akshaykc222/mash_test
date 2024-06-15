@@ -9,6 +9,7 @@ import 'package:mash/mash/presentation/manager/cubit/pdf_download/pdf_download_c
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
@@ -109,9 +110,9 @@ class NoteViewDetailsScreenState extends State<NoteViewDetailsScreen> {
       return CachedNetworkImage(imageUrl: attachment.wrkDoc ?? "");
     } else if (attachment.ext == 'PDF') {
       return ListTile(
-        onTap: () => context
-            .read<PdfDownloadCubit>()
-            .downloadPdf(attachment.wrkDoc ?? ""),
+        onTap: () => context.read<PdfDownloadCubit>().downloadPdf(
+            filePath: attachment.wrkDoc ?? "",
+            doucumentType: DoucumentType.PDF),
         title: Text(
           attachment.document ?? "",
           style: TextStyle(

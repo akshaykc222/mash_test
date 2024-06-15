@@ -22,6 +22,7 @@ import 'package:mash/mash/presentation/pages/home/feedBack/feedback_screen.dart'
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/payment_history_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fee_and_payment_confirm_screen.dart';
 import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/fees_and_payments_tabs.dart';
+import 'package:mash/mash/presentation/pages/home/feesAndPayment/widgets/payment_response_screen.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_work_view_details.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/home_works_and_notes_view.dart';
 import 'package:mash/mash/presentation/pages/home/homeWork/widgets/note_view_detais_screen.dart';
@@ -41,6 +42,7 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
 import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/research.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/image_view_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
@@ -72,20 +74,18 @@ import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
-
-import '../../../core/usecase.dart';
-import '../../../di/injector.dart';
 import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
 import '../../domain/entities/teacher_rating/teacher_rating_api_entity.dart';
-import '../../domain/use_cases/auth/get_user_info_use_case.dart';
 import '../pages/chat/chat_screen.dart';
 import '../pages/chat/create_group.dart';
 import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/library/academic_books.dart';
+import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
@@ -185,11 +185,13 @@ class AppRouteManager {
       path: AppPages.forgotPassword,
       name: AppPages.forgotPassword,
       builder: (context, state) => const ForgotPasswordScreen(),
-    ), GoRoute(
+    ),
+    GoRoute(
       path: AppPages.leaveApplyScreen,
       name: AppPages.leaveApplyScreen,
       builder: (context, state) => const LeaveApplyScreen(),
-    ), GoRoute(
+    ),
+    GoRoute(
       path: AppPages.leaveStatusScreen,
       name: AppPages.leaveStatusScreen,
       builder: (context, state) => const LeaveStatusScreen(),
@@ -439,9 +441,21 @@ class AppRouteManager {
       builder: (context, state) => const CompetitiveExamScreen(),
     ),
     GoRoute(
+      path: AppPages.imageFullView,
+      name: AppPages.imageFullView,
+      builder: (context, state) =>
+          FullScreenImagePage(imageUrl: state.extra as String),
+    ),
+    GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
       builder: (context, state) => const FeesAndPaymentsTabs(),
+    ),
+    GoRoute(
+      path: AppPages.paymentResponse,
+      name: AppPages.paymentResponse,
+      builder: (context, state) =>
+          PaymentResponseScreen(orderStatus: state.extra as OrderStatus),
     ),
     // GoRoute(
     //   name: AppPages.paymentHistoryScreen,
@@ -588,7 +602,7 @@ class AppRouteManager {
         if (state.extra != null) {
           return PdfVieweScreen(path: state.extra as String);
         }
-        return SizedBox();
+        return const SizedBox();
       },
     ),
     GoRoute(
@@ -608,7 +622,7 @@ class AppRouteManager {
           ? AcademicBooks(
               type: state.extra as AcademicTypeEntity,
             )
-          : SizedBox(),
+          : const SizedBox(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

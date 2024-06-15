@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -68,7 +71,10 @@ class PaymentResponseScreen extends StatelessWidget {
                   ? 'Back to Payment'
                   : "Back to Home",
               onTap: () {
-                context.pop();
+                BlocProvider.of<PaymentBloc>(context)
+                    .add(const PaymentEvent.disposeEvent());
+                GoRouter.of(context)
+                    .pushReplacement(AppPages.feesAndPaymentScreen);
               },
             ),
           )
@@ -97,7 +103,7 @@ class PaymentResponseScreen extends StatelessWidget {
       case OrderStatus.PAID:
         return AppAssets.paymentSuccess;
       default:
-        return ""; // Return a default value or handle this case appropriately
+        return "";
     }
   }
 

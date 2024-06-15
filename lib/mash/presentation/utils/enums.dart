@@ -29,6 +29,13 @@ enum PaymentStatusType {
   transaction,
 }
 
+enum DoucumentType {
+  PDF,
+  JPG,
+  JPEG,
+  PNG,
+}
+
 enum OrderStatus {
   PAID,
   ACTIVE,

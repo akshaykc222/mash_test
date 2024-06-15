@@ -43,4 +43,5 @@ class PaymentEvent with _$PaymentEvent {
     String? mobile,
     String? installMentId,
   }) = _GetPaymentCompleteResponse;
+  const factory PaymentEvent.disposeEvent() = _PaymentDisposeEvent;
 }

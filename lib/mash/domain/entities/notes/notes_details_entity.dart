@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class NotesReportDetailsEntity extends Equatable {
-  final List<NotesDetailsResTable1Entity>? restable1;
-  final List<NotesDetailsResTable2Entity>? resTable2;
+  final List<NotesDetailsResTable1Entity?>? restable1;
+  final List<NotesDetailsResTable2Entity?>? resTable2;
 
   const NotesReportDetailsEntity(
       {required this.restable1, required this.resTable2});

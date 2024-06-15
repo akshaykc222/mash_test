@@ -61,6 +61,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     on<_GetPaymentOrderId>(_getPaymentOrderId);
     on<_GetPaymentTokenAndOpenPayment>(_getPaymentTokenAndOpenPayment);
     on<_GetPaymentCompleteResponse>(_getPaymentCompleteResponse);
+    on<_PaymentDisposeEvent>(_disposeEvent);
   }
 
   Future<void> _onGetPaymentDashboard(
@@ -157,6 +158,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
             paymentFinalAmountResponse: data, totalAmount: data.amount ?? ''),
       );
 
+      log('paymentFinalAmountResponse ${data.amount}  ${data.discountAmount}v${data.discountPercentage}');
       log('response ------------------$data');
     } catch (e) {
       prettyPrint(e.toString());
@@ -267,17 +269,26 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       prettyPrint('data from get payment complete response $data');
       //if reponse is success call payment status update
       if (data.cfOrderId != null) {
-        await postPaymentStatusUpdateUsecase.call(PaymentStatusUpdateRequest(
+        final res = await postPaymentStatusUpdateUsecase
+            .call(PaymentStatusUpdateRequest(
           compId: userInfo?.compId ?? "",
           orderId: data.orderId ?? "",
           paymentStatus: data.orderStatus ?? "",
           payload: data.payload ?? "",
         ));
+        prettyPrint('payment response $res');
       }
       if (data.orderStatus == OrderStatus.PAID.name) {
         emit(state.copyWith(
             paymentOrderResponse:
                 ResponseClassify.completed(OrderStatus.PAID)));
+        final discountAmount = state.paymentFinalAmountResponse?.discountAmount;
+        int isDiscount = 0;
+        if (int.parse(discountAmount!) > 1) {
+          isDiscount = 1;
+        } else {
+          isDiscount = 0;
+        }
         await savePaymentResponseUsecase.call(PaymentSaveResponseRequest(
           pCompId: userInfo?.compId,
           pStudentId: event.studenId,
@@ -291,6 +302,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           pPaymentDate: data.createdAt,
           pRemark: event.remark,
           pOrderId: data.orderId,
+          discountAmount: discountAmount,
+          isDiscount: isDiscount.toString(),
         ));
 
         //call save payment response api
@@ -308,5 +321,12 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     } catch (e) {
       emit(state.copyWith(paymentOrderResponse: ResponseClassify.error(e)));
     }
+  }
+
+  _disposeEvent(_PaymentDisposeEvent event, Emitter<PaymentState> emit) {
+    emit(state.copyWith(
+      totalAmount: '0',
+      paymentOrderResponse: ResponseClassify.initial(),
+    ));
   }
 }
