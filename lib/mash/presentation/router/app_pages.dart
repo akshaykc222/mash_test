@@ -128,4 +128,6 @@ class AppPages {
   static const bookDetailDigital = '/bookDetailDigital';
 
   static const research = "/research";
+  static const pdfOpener = "/pdfOpener";
+  static const academicBooksList = "/academic_book_list";
 }

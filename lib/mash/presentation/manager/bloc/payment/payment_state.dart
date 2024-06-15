@@ -11,6 +11,7 @@ class PaymentState with _$PaymentState {
     required ResponseClassify<List<PaymentDashboardEntity>>
         paymentHistoryResponse,
     required ResponseClassify<OrderStatus> paymentOrderResponse,
+    required PaymentFinalAmountEntity? paymentFinalAmountResponse,
   }) = _PaymentState;
   factory PaymentState.initial() => PaymentState(
         paymentDashboardResponse: ResponseClassify.initial(),
@@ -19,5 +20,6 @@ class PaymentState with _$PaymentState {
         totalAmount: '',
         paymentHistoryResponse: ResponseClassify.initial(),
         paymentOrderResponse: ResponseClassify.initial(),
+        paymentFinalAmountResponse: null,
       );
 }

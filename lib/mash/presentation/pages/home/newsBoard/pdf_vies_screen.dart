@@ -16,6 +16,7 @@ class _PdfViewerState extends State<PdfVieweScreen> {
       appBar: AppBar(),
       body: PDFView(
         filePath: widget.path,
+        onError: (error) => print(error),
       ),
     );
   }

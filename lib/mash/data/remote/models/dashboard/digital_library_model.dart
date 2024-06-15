@@ -20,30 +20,35 @@ class DigitalLibraryModel extends DigitalLibraryEntity {
       required super.dateOfPublish,
       required super.languageName,
       required super.dgTypeName,
-      required super.publisher});
+      required super.publisher,
+      super.likeStatus,
+      super.docExt,
+      super.bookMarkStatus});
 
   factory DigitalLibraryModel.fromJson(Map<String, dynamic> json) {
     return DigitalLibraryModel(
-      contentId: json['CONTENT_ID'],
-      contentName: json['CONTENT_NAME'],
-      contentDesc: json['CONTENT_DESC'],
-      typeId: json['TYPE_ID'],
-      dgCatName: json['DG_CAT_NAME'],
-      dgSubCatName: json['DG_SUB_CAT_NAME'],
-      coverImg: json['COVER_IMG'],
-      docName: json['DOC_NAME'],
-      userType: json['USER_TYPE'],
-      isActive: json['ISACTIVE'],
-      createdBy: json['CREATED_BY'],
-      createdOn: json['CREATED_ON'],
-      lastModifyBy: json['LAST_MODIFY_BY'] ?? '',
-      lastModifiedOn: json['LAST_MODIFIED_ON'] ?? '',
-      authorName: json['AUTHOR_NAME'],
-      dateOfPublish: json['DATEOFPUBLISH'],
-      languageName: json['LANGUAGE_NAME'],
-      dgTypeName: json['DG_TYPE_NAME'],
-      publisher: json['PUBLISHER'],
-    );
+        contentId: json['CONTENT_ID'],
+        contentName: json['CONTENT_NAME'],
+        contentDesc: json['CONTENT_DESC'],
+        typeId: json['TYPE_ID'],
+        dgCatName: json['DG_CAT_NAME'],
+        dgSubCatName: json['DG_SUB_CAT_NAME'],
+        coverImg: json['COVER_IMG'],
+        docName: json['DOC_NAME'],
+        userType: json['USER_TYPE'],
+        isActive: json['ISACTIVE'],
+        createdBy: json['CREATED_BY'],
+        createdOn: json['CREATED_ON'],
+        lastModifyBy: json['LAST_MODIFY_BY'] ?? '',
+        lastModifiedOn: json['LAST_MODIFIED_ON'] ?? '',
+        authorName: json['AUTHOR_NAME'],
+        dateOfPublish: json['DATEOFPUBLISH'],
+        languageName: json['LANGUAGE_NAME'],
+        dgTypeName: json['DG_TYPE_NAME'],
+        publisher: json['PUBLISHER'],
+        docExt: json['DOC_EXTN'],
+        likeStatus: json['LIKE_STATUS'],
+        bookMarkStatus: json['BOOKMARK_STATUS']);
   }
 
   Map<String, dynamic> toJson() {

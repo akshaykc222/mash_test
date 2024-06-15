@@ -87,6 +87,7 @@ class SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
+    FocusManager.instance.primaryFocus?.unfocus();
     super.initState();
 
     scaleController = AnimationController(

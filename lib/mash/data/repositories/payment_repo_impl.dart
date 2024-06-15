@@ -8,6 +8,7 @@ import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart'
 import 'package:mash/mash/domain/repositories/payment_repository.dart';
 
 import '../../domain/entities/payment/payment_complete_response_entity.dart';
+import '../../domain/entities/payment/payment_final_amount_entiy.dart';
 import '../../domain/entities/payment/payment_token_entity.dart';
 import '../remote/data_sources/pament_remote_data_source.dart';
 import '../remote/request/payment_dashboard_request.dart';
@@ -25,7 +26,7 @@ class PaymentRepoImpl implements PaymentRepository {
   }
 
   @override
-  Future<String> getPaymentFinal(PaymentFinalRequest params) {
+  Future<PaymentFinalAmountEntity> getPaymentFinal(PaymentFinalRequest params) {
     return paymentRemoteDataSource.getPaymentFinal(params);
   }
 

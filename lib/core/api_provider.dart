@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -54,6 +55,29 @@ class ApiProvider {
       _dio.options.headers.addAll({
         'Authorization': token.first,
       });
+    }
+  }
+
+  final StreamController<double> _progressController =
+      StreamController<double>();
+
+  Stream<double> get downloadProgressStream => _progressController.stream;
+  downloadFile({required File file, required String url}) async {
+    try {
+      await _dio.download(
+        url,
+        file.path,
+        onReceiveProgress: (count, total) {
+          if (total != -1) {
+            double progress = (count / total * 100);
+            _progressController.add(progress);
+          }
+        },
+      );
+      _progressController.close();
+    } catch (e) {
+      _progressController.close();
+      throw BadRequestException("Unable to download file.Try again");
     }
   }
 

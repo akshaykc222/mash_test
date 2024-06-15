@@ -3,16 +3,17 @@ import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart'
 import 'package:mash/mash/domain/repositories/payment_repository.dart';
 
 import '../../../../core/usecase.dart';
+import '../../entities/payment/payment_final_amount_entiy.dart';
 
 @lazySingleton
 @injectable
 class GetPaymentFinalAmountUsecase
-    implements UseCase<String, PaymentFinalRequest> {
+    implements UseCase<PaymentFinalAmountEntity, PaymentFinalRequest> {
   final PaymentRepository paymentRepository;
 
   GetPaymentFinalAmountUsecase({required this.paymentRepository});
   @override
-  Future<String> call(PaymentFinalRequest params) {
+  Future<PaymentFinalAmountEntity> call(PaymentFinalRequest params) {
     return paymentRepository.getPaymentFinal(params);
   }
 }
