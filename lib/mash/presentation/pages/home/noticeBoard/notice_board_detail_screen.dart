@@ -1,13 +1,36 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
+
 import '../../../widgets/drawer_widget.dart';
 
-class NoticeBoardDetailScreen extends StatelessWidget {
-  const NoticeBoardDetailScreen({super.key});
+class NoticeBoardDetailScreen extends StatefulWidget {
+  final String noticeId;
+
+  const NoticeBoardDetailScreen({super.key, required this.noticeId});
+
+  @override
+  State<NoticeBoardDetailScreen> createState() =>
+      _NoticeBoardDetailScreenState();
+}
+
+class _NoticeBoardDetailScreenState extends State<NoticeBoardDetailScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BlocProvider.of<NoticeBloc>(context).add(
+        NoticeEvent.getAllNotice(noticeId: widget.noticeId));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,29 +40,33 @@ class NoticeBoardDetailScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {}, label: const Text('VIEW ATTACHMENT')),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: noticeDetailBody(context),
+      body: noticeDetailBody(context)
     );
   }
 
-  noticeDetailBody(BuildContext context) {
+  noticeDetailBody(BuildContext context,) {
     var size = MediaQuery.sizeOf(context);
-    return Container(
-      padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-      height: size.height,
-      width: size.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          image(size),
-          spacer20,
-          title('South Indian Open Karate Championship 2024'),
-          spacer20,
-          date('18/02/2024'),
-          spacer20,
-          description(
-              'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available')
-        ],
-      ),
+    return BlocBuilder<NoticeBloc, NoticeState>(
+      builder: (context, state) {
+        return state.noticeResponseData.status == Status.LOADING ?  const Loader() :  Container(
+          padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+          height: size.height,
+          width: size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              image(size, state),
+              spacer20,
+              title(state.noticeResponseData.data![0]!.topicHead ?? ''),
+              spacer20,
+              date(state.noticeResponseData.data![0]!.topicDesc ?? ''),
+              spacer20,
+              description(
+                  'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available')
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -68,14 +95,14 @@ class NoticeBoardDetailScreen extends StatelessWidget {
     );
   }
 
-  image(Size size) {
+  image(Size size, NoticeState state) {
     return Container(
       height: size.height * 0.3,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          image: const DecorationImage(
+          image: DecorationImage(
               image: CachedNetworkImageProvider(
-                  'https://img.freepik.com/premium-photo/ecosystem-water-drop-nature-background-earth-day-campaign_839035-100466.jpg'))),
+                  state.noticeResponseData.data![0]!.docFile ?? ''))),
     );
   }
 }

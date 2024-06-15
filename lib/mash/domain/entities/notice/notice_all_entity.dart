@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class NoticeAllEntity extends Equatable {
-  final double? noticeId;
+  final String? noticeId;
   final String? topicHead;
   final String? topicDesc;
   final String? noticeDate;
   final String? createdBy;
-  final bool? readStatus;
+  final String? docFile;
+  final String? readStatus;
   final String? ext;
 
   const NoticeAllEntity({
@@ -16,6 +17,7 @@ class NoticeAllEntity extends Equatable {
     required this.noticeDate,
     required this.createdBy,
     required this.readStatus,
+    required this.docFile,
     required this.ext,
   });
 

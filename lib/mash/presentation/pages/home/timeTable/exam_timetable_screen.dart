@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
@@ -46,12 +47,16 @@ class OfflineExamTimeTableBody extends StatefulWidget {
 class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
   final TextEditingController _termController = TextEditingController();
   int selectedIndex = 0;
+   late ProfileBloc profileBloc;
 
   @override
   void initState() {
+    profileBloc = ProfileBloc.get(context);
     super.initState();
+
     TimeTableBloc.get(context).add(
-        const TimeTableEvent.getOfflineExamTerms());
+        TimeTableEvent.getOfflineExamTerms(selectedUserId: profileBloc.state.getUserDetail?.data?.usrId??""));
+
   }
 
   @override
@@ -63,13 +68,11 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Select Student',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-              )),
-          HelperClasses.getSelectedStudent(context, true),
+          HelperClasses.getSelectedStudent(context, true,listenFunction: (String selectedUser){
+            TimeTableBloc.get(context).add(
+                 TimeTableEvent.getOfflineExamTerms(selectedUserId: selectedUser));
+          }
+          ),
           const Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -133,7 +136,7 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
                           onTap: () {
                             var data = context.read<TimeTableBloc>().state;
                             TimeTableBloc.get(context).add(
-                                TimeTableEvent.getOfflineExamTimeTable(termId: data.getOfflineExamTerms?.data?[index].termId ?? ''));
+                                TimeTableEvent.getOfflineExamTimeTable(termId: data.getOfflineExamTerms?.data?[index].termId ?? '', isInit: false, selectedUserId: profileBloc.state.getUserDetail?.data?.usrId??""));
                             controller.text = optionList[index].sectionName;
                             Navigator.of(context).pop();
                           },
@@ -164,7 +167,8 @@ class _OfflineExamTimeTableBodyState extends State<OfflineExamTimeTableBody> {
               },
               itemCount: state.getOfflineExamTimeTable?.data?.length ?? 0,
               itemBuilder: (context, index) {
-                return examTableCard(
+                return state.getOfflineExamTimeTable?.data?.length == 0 ?
+                HelperClasses.emptyDataWidget() :examTableCard(
                     state.getOfflineExamTimeTable?.data?.length ?? 0,
                     state.getOfflineExamTimeTable?.data?[index].subjectName ?? '',
                     state.getOfflineExamTimeTable?.data?[index].portions);

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
@@ -20,7 +23,7 @@ class NoticeBoardMainScreen extends StatefulWidget {
 class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
   @override
   void initState() {
-    BlocProvider.of<NoticeBloc>(context).add(const NoticeEvent.getAllNotice());
+    BlocProvider.of<NoticeBloc>(context).add(const NoticeEvent.getAllNotice(noticeId: '0'));
     super.initState();
   }
 
@@ -42,17 +45,18 @@ class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
         width: size.width,
         child: ListView.separated(
             itemBuilder: (context, index) {
-              return noticeCard(index, context);
+              return state.noticeResponseData.status == Status.LOADING ?  Loader: state.noticeResponseData.data!.isEmpty ?  HelperClasses.emptyDataWidget():noticeCard(index, context,state.noticeResponseData.data![index]!.topicHead.toString(),state.noticeResponseData.data![index]!.topicDesc.toString(),state.noticeResponseData.data![index]!.noticeDate.toString(),state.noticeResponseData.data![index]!.noticeId.toString());
             },
             separatorBuilder: (context, index) {
               return spacer10;
             },
-            itemCount: state.noticeResponseData.data?.length ?? 0),
+             itemCount: state.noticeResponseData.data?.length ?? 0
+        ),
       ),
     );
   }
 
-  noticeCard(int index, BuildContext context) {
+  noticeCard(int index, BuildContext context,String noticeTitle,String descriptions,String noticeDate,String noticeId) {
     List<String> descList = [
       'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available',
       'Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text,'
@@ -60,15 +64,15 @@ class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
 
     return GestureDetector(
       onTap: () =>
-          GoRouter.of(context).pushNamed(AppPages.noticeBoardDetailScreen),
+          GoRouter.of(context).pushNamed(AppPages.noticeBoardDetailScreen,extra: noticeId),
       child: primaryShadowContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title('South Indian Open Karate Championship 2024'),
-            description(descList[index]),
+            title(noticeTitle),
+            description(descriptions),
             dateAndDetailRow(
-              '18/9/2023',
+              noticeDate,
             )
           ],
         ),

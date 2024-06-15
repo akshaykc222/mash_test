@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/domain/entities/id_module/id_request_entity.dart';
 import 'package:mash/mash/presentation/manager/bloc/id_request/id_request_bloc.dart';
@@ -63,6 +64,9 @@ class _IdCardRequestScreenState extends State<IdCardRequestScreen> {
                 if (state.getIdRequestType?.status == Status.ERROR) {
                   handleErrorUi(
                       context: context, error: state.getIdRequestType?.error);
+                }else if(state.postIdRequest?.status == Status.COMPLETED){
+                  HelperClasses.showSnackBar(msg: 'Request Submitted Successfully');
+                  context.pop();
                 }
               },
               builder: (context, state) {
