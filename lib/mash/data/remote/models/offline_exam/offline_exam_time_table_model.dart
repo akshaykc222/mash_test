@@ -13,14 +13,14 @@ class OfflineExamTimeTableModel extends OfflineExamTimeTableEntity{
 
   factory OfflineExamTimeTableModel.fromJson(Map<String, dynamic> json) {
     return OfflineExamTimeTableModel(
-      examId: json['EXAM_ID'],
-      classId: json['CLASS'],
-      subjectName: json['SUB_NAME'],
-      examDate: json['EXAM_DATE'],
-      term: json['TERM'],
-      startTime: json['START_TIME'],
-      endTime: json['END_TIME'],
-      portions: List<String>.from(json['PORTIONS']),
+      examId: json['EXAM_ID'].toString(),
+      classId: json['CLASS'] ?? '',
+      subjectName: json['SUB_NAME'] ?? '',
+      examDate: json['EXAM_DATE'] ?? '',
+      term: json['TERM'] ?? '',
+      startTime: json['START_TIME'] ?? '',
+      endTime: json['END_TIME'] ?? '',
+      portions: List<String>.from(json['PORTIONS']) ?? [],
     );
   }
 

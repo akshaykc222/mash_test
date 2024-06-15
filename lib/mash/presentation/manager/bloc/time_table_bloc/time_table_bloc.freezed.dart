@@ -19,24 +19,27 @@ mixin _$TimeTableEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOfflineExamTerms,
-    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String selectedUserId) getOfflineExamTerms,
+    required TResult Function(String termId, bool isInit, String selectedUserId)
+        getOfflineExamTimeTable,
     required TResult Function(String date) getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOfflineExamTerms,
-    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String selectedUserId)? getOfflineExamTerms,
+    TResult? Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult? Function(String date)? getDailyTimeTable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOfflineExamTerms,
-    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String selectedUserId)? getOfflineExamTerms,
+    TResult Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) =>
@@ -126,8 +129,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOfflineExamTerms,
-    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String selectedUserId) getOfflineExamTerms,
+    required TResult Function(String termId, bool isInit, String selectedUserId)
+        getOfflineExamTimeTable,
     required TResult Function(String date) getDailyTimeTable,
   }) {
     return started();
@@ -137,8 +141,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOfflineExamTerms,
-    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String selectedUserId)? getOfflineExamTerms,
+    TResult? Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult? Function(String date)? getDailyTimeTable,
   }) {
     return started?.call();
@@ -148,8 +153,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOfflineExamTerms,
-    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String selectedUserId)? getOfflineExamTerms,
+    TResult Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
@@ -207,6 +213,8 @@ abstract class _$$GetOfflineExamTermsImplCopyWith<$Res> {
   factory _$$GetOfflineExamTermsImplCopyWith(_$GetOfflineExamTermsImpl value,
           $Res Function(_$GetOfflineExamTermsImpl) then) =
       __$$GetOfflineExamTermsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String selectedUserId});
 }
 
 /// @nodoc
@@ -216,61 +224,89 @@ class __$$GetOfflineExamTermsImplCopyWithImpl<$Res>
   __$$GetOfflineExamTermsImplCopyWithImpl(_$GetOfflineExamTermsImpl _value,
       $Res Function(_$GetOfflineExamTermsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedUserId = null,
+  }) {
+    return _then(_$GetOfflineExamTermsImpl(
+      selectedUserId: null == selectedUserId
+          ? _value.selectedUserId
+          : selectedUserId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
-  const _$GetOfflineExamTermsImpl();
+  const _$GetOfflineExamTermsImpl({required this.selectedUserId});
+
+  @override
+  final String selectedUserId;
 
   @override
   String toString() {
-    return 'TimeTableEvent.getOfflineExamTerms()';
+    return 'TimeTableEvent.getOfflineExamTerms(selectedUserId: $selectedUserId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetOfflineExamTermsImpl);
+            other is _$GetOfflineExamTermsImpl &&
+            (identical(other.selectedUserId, selectedUserId) ||
+                other.selectedUserId == selectedUserId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, selectedUserId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOfflineExamTermsImplCopyWith<_$GetOfflineExamTermsImpl> get copyWith =>
+      __$$GetOfflineExamTermsImplCopyWithImpl<_$GetOfflineExamTermsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOfflineExamTerms,
-    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String selectedUserId) getOfflineExamTerms,
+    required TResult Function(String termId, bool isInit, String selectedUserId)
+        getOfflineExamTimeTable,
     required TResult Function(String date) getDailyTimeTable,
   }) {
-    return getOfflineExamTerms();
+    return getOfflineExamTerms(selectedUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOfflineExamTerms,
-    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String selectedUserId)? getOfflineExamTerms,
+    TResult? Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult? Function(String date)? getDailyTimeTable,
   }) {
-    return getOfflineExamTerms?.call();
+    return getOfflineExamTerms?.call(selectedUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOfflineExamTerms,
-    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String selectedUserId)? getOfflineExamTerms,
+    TResult Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTerms != null) {
-      return getOfflineExamTerms();
+      return getOfflineExamTerms(selectedUserId);
     }
     return orElse();
   }
@@ -315,7 +351,13 @@ class _$GetOfflineExamTermsImpl implements _GetOfflineExamTerms {
 }
 
 abstract class _GetOfflineExamTerms implements TimeTableEvent {
-  const factory _GetOfflineExamTerms() = _$GetOfflineExamTermsImpl;
+  const factory _GetOfflineExamTerms({required final String selectedUserId}) =
+      _$GetOfflineExamTermsImpl;
+
+  String get selectedUserId;
+  @JsonKey(ignore: true)
+  _$$GetOfflineExamTermsImplCopyWith<_$GetOfflineExamTermsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -325,7 +367,7 @@ abstract class _$$GetOfflineExamTimeTableImplCopyWith<$Res> {
           $Res Function(_$GetOfflineExamTimeTableImpl) then) =
       __$$GetOfflineExamTimeTableImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String termId});
+  $Res call({String termId, bool isInit, String selectedUserId});
 }
 
 /// @nodoc
@@ -341,11 +383,21 @@ class __$$GetOfflineExamTimeTableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? termId = null,
+    Object? isInit = null,
+    Object? selectedUserId = null,
   }) {
     return _then(_$GetOfflineExamTimeTableImpl(
       termId: null == termId
           ? _value.termId
           : termId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isInit: null == isInit
+          ? _value.isInit
+          : isInit // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedUserId: null == selectedUserId
+          ? _value.selectedUserId
+          : selectedUserId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -354,14 +406,21 @@ class __$$GetOfflineExamTimeTableImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
-  const _$GetOfflineExamTimeTableImpl({required this.termId});
+  const _$GetOfflineExamTimeTableImpl(
+      {required this.termId,
+      required this.isInit,
+      required this.selectedUserId});
 
   @override
   final String termId;
+  @override
+  final bool isInit;
+  @override
+  final String selectedUserId;
 
   @override
   String toString() {
-    return 'TimeTableEvent.getOfflineExamTimeTable(termId: $termId)';
+    return 'TimeTableEvent.getOfflineExamTimeTable(termId: $termId, isInit: $isInit, selectedUserId: $selectedUserId)';
   }
 
   @override
@@ -369,11 +428,14 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOfflineExamTimeTableImpl &&
-            (identical(other.termId, termId) || other.termId == termId));
+            (identical(other.termId, termId) || other.termId == termId) &&
+            (identical(other.isInit, isInit) || other.isInit == isInit) &&
+            (identical(other.selectedUserId, selectedUserId) ||
+                other.selectedUserId == selectedUserId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, termId);
+  int get hashCode => Object.hash(runtimeType, termId, isInit, selectedUserId);
 
   @JsonKey(ignore: true)
   @override
@@ -386,35 +448,38 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOfflineExamTerms,
-    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String selectedUserId) getOfflineExamTerms,
+    required TResult Function(String termId, bool isInit, String selectedUserId)
+        getOfflineExamTimeTable,
     required TResult Function(String date) getDailyTimeTable,
   }) {
-    return getOfflineExamTimeTable(termId);
+    return getOfflineExamTimeTable(termId, isInit, selectedUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOfflineExamTerms,
-    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String selectedUserId)? getOfflineExamTerms,
+    TResult? Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult? Function(String date)? getDailyTimeTable,
   }) {
-    return getOfflineExamTimeTable?.call(termId);
+    return getOfflineExamTimeTable?.call(termId, isInit, selectedUserId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOfflineExamTerms,
-    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String selectedUserId)? getOfflineExamTerms,
+    TResult Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {
     if (getOfflineExamTimeTable != null) {
-      return getOfflineExamTimeTable(termId);
+      return getOfflineExamTimeTable(termId, isInit, selectedUserId);
     }
     return orElse();
   }
@@ -459,10 +524,14 @@ class _$GetOfflineExamTimeTableImpl implements _GetOfflineExamTimeTable {
 }
 
 abstract class _GetOfflineExamTimeTable implements TimeTableEvent {
-  const factory _GetOfflineExamTimeTable({required final String termId}) =
-      _$GetOfflineExamTimeTableImpl;
+  const factory _GetOfflineExamTimeTable(
+      {required final String termId,
+      required final bool isInit,
+      required final String selectedUserId}) = _$GetOfflineExamTimeTableImpl;
 
   String get termId;
+  bool get isInit;
+  String get selectedUserId;
   @JsonKey(ignore: true)
   _$$GetOfflineExamTimeTableImplCopyWith<_$GetOfflineExamTimeTableImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -534,8 +603,9 @@ class _$GetDailyTimeTableImpl implements _GetDailyTimeTable {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getOfflineExamTerms,
-    required TResult Function(String termId) getOfflineExamTimeTable,
+    required TResult Function(String selectedUserId) getOfflineExamTerms,
+    required TResult Function(String termId, bool isInit, String selectedUserId)
+        getOfflineExamTimeTable,
     required TResult Function(String date) getDailyTimeTable,
   }) {
     return getDailyTimeTable(date);
@@ -545,8 +615,9 @@ class _$GetDailyTimeTableImpl implements _GetDailyTimeTable {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getOfflineExamTerms,
-    TResult? Function(String termId)? getOfflineExamTimeTable,
+    TResult? Function(String selectedUserId)? getOfflineExamTerms,
+    TResult? Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult? Function(String date)? getDailyTimeTable,
   }) {
     return getDailyTimeTable?.call(date);
@@ -556,8 +627,9 @@ class _$GetDailyTimeTableImpl implements _GetDailyTimeTable {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getOfflineExamTerms,
-    TResult Function(String termId)? getOfflineExamTimeTable,
+    TResult Function(String selectedUserId)? getOfflineExamTerms,
+    TResult Function(String termId, bool isInit, String selectedUserId)?
+        getOfflineExamTimeTable,
     TResult Function(String date)? getDailyTimeTable,
     required TResult orElse(),
   }) {

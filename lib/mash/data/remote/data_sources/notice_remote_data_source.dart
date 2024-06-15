@@ -31,7 +31,7 @@ class NoticeRemoteDataSourceImpl implements NoticeRemoteDataSource {
   @override
   Future<List<NoticeAllEntity>> getAllNotice(NoticeAllRequest params) async {
     final data =
-        await apiProvider.post(AppRemoteRoutes.noticeAll, params.toJson());
+        await apiProvider.get(AppRemoteRoutes.noticeAll,body:params.toJson());
     final List<dynamic> dataList = data['resTable'];
     return dataList.map((e) => NoticeAllModel.fromJson(e)).toList();
   }
