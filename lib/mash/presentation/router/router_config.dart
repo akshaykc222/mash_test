@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
@@ -85,7 +86,6 @@ import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
-import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';
@@ -582,6 +582,16 @@ class AppRouteManager {
       },
     ),
     GoRoute(
+      name: AppPages.pdfOpener,
+      path: AppPages.pdfOpener,
+      builder: (context, state) {
+        if (state.extra != null) {
+          return PdfVieweScreen(path: state.extra as String);
+        }
+        return SizedBox();
+      },
+    ),
+    GoRoute(
       path: AppPages.nonAcademic,
       name: AppPages.nonAcademic,
       builder: (context, state) => const NonAcademic(),
@@ -590,6 +600,15 @@ class AppRouteManager {
       path: AppPages.research,
       name: AppPages.research,
       builder: (context, state) => const ResearchScreen(),
+    ),
+    GoRoute(
+      path: AppPages.academicBooksList,
+      name: AppPages.academicBooksList,
+      builder: (context, state) => state.extra != null
+          ? AcademicBooks(
+              type: state.extra as AcademicTypeEntity,
+            )
+          : SizedBox(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

@@ -6,14 +6,15 @@ typedef BoolCallback = void Function(bool value);
 class AnimatedSharedButton extends StatefulWidget {
   final Function onTap;
   final Widget title;
+  final double? progress;
   final bool isLoading;
 
-  const AnimatedSharedButton({
-    super.key,
-    required this.onTap,
-    required this.title,
-    required this.isLoading,
-  });
+  const AnimatedSharedButton(
+      {super.key,
+      required this.onTap,
+      required this.title,
+      required this.isLoading,
+      this.progress});
 
   @override
   State<AnimatedSharedButton> createState() => _AnimatedSharedButtonState();
@@ -90,6 +91,7 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
                                     color: AppColors.white,
                                     strokeCap: StrokeCap.round,
                                     strokeWidth: 2,
+                                    value: widget.progress,
                                   ),
                                 )
                               : const SizedBox(),

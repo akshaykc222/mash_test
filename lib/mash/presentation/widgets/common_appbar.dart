@@ -13,20 +13,25 @@ void main() {
 }
 
 PreferredSize commonAppbar(
-    {required String title, Function(String)? searchFunction}) {
+    {required String title,
+    Function(String)? searchFunction,
+    Function? onClose}) {
   return PreferredSize(
       preferredSize: const Size(double.infinity, 60),
       child: CustomAppBar(
         title: title,
         searchFunction: searchFunction,
+        onClose: onClose,
       ));
 }
 
 class CustomAppBar extends StatefulWidget {
   final Function(String)? searchFunction;
   final String title;
+  final Function? onClose;
 
-  const CustomAppBar({super.key, this.searchFunction, required this.title});
+  const CustomAppBar(
+      {super.key, this.searchFunction, required this.title, this.onClose});
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -101,15 +106,12 @@ class _CustomAppBarState extends State<CustomAppBar>
                                   AnimationStatus.completed
                               ? null
                               : BoxDecoration(
-                                  gradient: RadialGradient(
-                                    // Use RadialGradient for center emphasis
-                                    center: Alignment.center,
-                                    radius:
-                                        0.8, // Adjust radius for border thickness
+                                  gradient: LinearGradient(
                                     colors: [
                                       Colors.white, // Inner color - white
                                       Colors.purple.withOpacity(
-                                          0.3), // Outer color - purple
+                                          0.5), // Outer color - purple
+                                      Colors.white,
                                     ],
                                   ),
                                   borderRadius: BorderRadius.circular(20)),
@@ -120,6 +122,11 @@ class _CustomAppBarState extends State<CustomAppBar>
                                       children: [
                                         Expanded(
                                           child: TextField(
+                                            onChanged:
+                                                widget.searchFunction != null
+                                                    ? (value) => widget
+                                                        .searchFunction!(value)
+                                                    : null,
                                             decoration: InputDecoration(
                                               hintText: "Search...",
                                               prefixIcon:
@@ -142,6 +149,10 @@ class _CustomAppBarState extends State<CustomAppBar>
                                         IconButton(
                                           icon: const Icon(Icons.close),
                                           onPressed: () {
+                                            if (widget.onClose != null) {
+                                              widget.onClose!();
+                                            }
+
                                             _expandTextFieldAnimation.reverse();
                                           },
                                         ),
