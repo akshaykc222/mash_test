@@ -46,33 +46,33 @@ import '../mash/data/remote/data_sources/time_table_data_source.dart' as _i20;
 import '../mash/data/remote/data_sources/vehicle_tracker_data_source.dart'
     as _i17;
 import '../mash/data/repositories/academic_repository_impl.dart' as _i40;
-import '../mash/data/repositories/auth_repository_impl.dart' as _i106;
+import '../mash/data/repositories/auth_repository_impl.dart' as _i107;
 import '../mash/data/repositories/chat_repository_impl.dart' as _i34;
-import '../mash/data/repositories/dash_board_repository_impl.dart' as _i104;
+import '../mash/data/repositories/dash_board_repository_impl.dart' as _i105;
 import '../mash/data/repositories/drawer_menu_items_repository_impl.dart'
     as _i52;
 import '../mash/data/repositories/home_repository_impl.dart' as _i57;
-import '../mash/data/repositories/home_work_repository_impl.dart' as _i96;
+import '../mash/data/repositories/home_work_repository_impl.dart' as _i97;
 import '../mash/data/repositories/id_request_type_repo_impl.dart' as _i78;
 import '../mash/data/repositories/leave_repository_impl.dart' as _i70;
 import '../mash/data/repositories/library_repo_impl.dart' as _i42;
-import '../mash/data/repositories/notice_repository_impl.dart' as _i108;
+import '../mash/data/repositories/notice_repository_impl.dart' as _i109;
 import '../mash/data/repositories/offline_exam_repo_impl.dart' as _i31;
 import '../mash/data/repositories/payment_repo_impl.dart' as _i47;
 import '../mash/data/repositories/profile_repository_impl.dart' as _i37;
 import '../mash/data/repositories/teacher_repo_impl.dart' as _i26;
 import '../mash/data/repositories/vehicle_tracker_repo_impl.dart' as _i19;
 import '../mash/domain/repositories/academic_repository.dart' as _i39;
-import '../mash/domain/repositories/auth_repository.dart' as _i105;
+import '../mash/domain/repositories/auth_repository.dart' as _i106;
 import '../mash/domain/repositories/chat_repository.dart' as _i33;
-import '../mash/domain/repositories/dash_board_repository.dart' as _i103;
+import '../mash/domain/repositories/dash_board_repository.dart' as _i104;
 import '../mash/domain/repositories/drawer_menu_items_repository.dart' as _i51;
 import '../mash/domain/repositories/home_repository.dart' as _i56;
-import '../mash/domain/repositories/home_work_notes_repository.dart' as _i95;
+import '../mash/domain/repositories/home_work_notes_repository.dart' as _i96;
 import '../mash/domain/repositories/id_request_repository.dart' as _i77;
 import '../mash/domain/repositories/leave_repository.dart' as _i69;
 import '../mash/domain/repositories/library_repository.dart' as _i41;
-import '../mash/domain/repositories/notice_repository.dart' as _i107;
+import '../mash/domain/repositories/notice_repository.dart' as _i108;
 import '../mash/domain/repositories/payment_repository.dart' as _i46;
 import '../mash/domain/repositories/profile_repository.dart' as _i36;
 import '../mash/domain/repositories/teacher_repository.dart' as _i25;
@@ -81,64 +81,66 @@ import '../mash/domain/repositories/vehicle_tracker_repository.dart' as _i18;
 import '../mash/domain/use_cases/academic/get_academic_subject_usecase.dart'
     as _i49;
 import '../mash/domain/use_cases/academic/get_academic_type_use_case.dart'
-    as _i97;
+    as _i98;
 import '../mash/domain/use_cases/academic/get_class_details_usecase.dart'
     as _i74;
 import '../mash/domain/use_cases/academic/get_digital_library_use_case.dart'
-    as _i98;
+    as _i99;
 import '../mash/domain/use_cases/academic/get_division_details_use_case.dart'
     as _i50;
 import '../mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart'
     as _i64;
 import '../mash/domain/use_cases/academic/get_syllabus_use_case.dart' as _i65;
-import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i122;
-import '../mash/domain/use_cases/auth/login_use_case.dart' as _i123;
-import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i124;
-import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i121;
-import '../mash/domain/use_cases/chat/add_chat_room_use_case.dart' as _i86;
-import '../mash/domain/use_cases/chat/get_chat_rooms_use_case.dart' as _i84;
-import '../mash/domain/use_cases/chat/get_chat_use_case.dart' as _i87;
-import '../mash/domain/use_cases/chat/get_group_members_use_case.dart' as _i88;
-import '../mash/domain/use_cases/chat/get_users_use_case.dart' as _i89;
-import '../mash/domain/use_cases/chat/send_message_use_case.dart' as _i85;
-import '../mash/domain/use_cases/chat/update_message_use_case.dart' as _i90;
-import '../mash/domain/use_cases/chat/update_room_use_case.dart' as _i91;
+import '../mash/domain/use_cases/auth/get_user_info_use_case.dart' as _i123;
+import '../mash/domain/use_cases/auth/login_use_case.dart' as _i124;
+import '../mash/domain/use_cases/auth/save_user_info_use_case.dart' as _i125;
+import '../mash/domain/use_cases/auth/sign_out_use_case.dart' as _i122;
+import '../mash/domain/use_cases/chat/add_chat_room_use_case.dart' as _i87;
+import '../mash/domain/use_cases/chat/get_chat_rooms_use_case.dart' as _i85;
+import '../mash/domain/use_cases/chat/get_chat_use_case.dart' as _i88;
+import '../mash/domain/use_cases/chat/get_group_members_use_case.dart' as _i89;
+import '../mash/domain/use_cases/chat/get_users_use_case.dart' as _i90;
+import '../mash/domain/use_cases/chat/send_message_use_case.dart' as _i86;
+import '../mash/domain/use_cases/chat/update_message_use_case.dart' as _i91;
+import '../mash/domain/use_cases/chat/update_room_use_case.dart' as _i92;
 import '../mash/domain/use_cases/dashboard/fetch_word_thought_usecase.dart'
-    as _i112;
-import '../mash/domain/use_cases/dashboard/get_role_menu_usecase.dart' as _i113;
+    as _i113;
+import '../mash/domain/use_cases/dashboard/get_role_menu_usecase.dart' as _i114;
 import '../mash/domain/use_cases/dashboard/get_scoreboard_details_usecase.dart'
-    as _i114;
-import '../mash/domain/use_cases/dashboard/get_term_details_usecase.dart'
     as _i115;
+import '../mash/domain/use_cases/dashboard/get_term_details_usecase.dart'
+    as _i116;
 import '../mash/domain/use_cases/drawer_menu_items_repository/get_news_board_usecase.dart'
     as _i68;
 import '../mash/domain/use_cases/home/get_add_on_usecase.dart' as _i75;
 import '../mash/domain/use_cases/home/post_feed_use_case.dart' as _i76;
 import '../mash/domain/use_cases/home_work_notes/get_home_work_report_details_use_case.dart'
-    as _i117;
-import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
-    as _i116;
-import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
-    as _i119;
-import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
     as _i118;
-import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
-    as _i110;
-import '../mash/domain/use_cases/id_request/post_id_request.dart' as _i111;
-import '../mash/domain/use_cases/leave/leave_use_case.dart' as _i99;
-import '../mash/domain/use_cases/library/physical_library_use_case.dart'
-    as _i100;
-import '../mash/domain/use_cases/library/post_physical_library_request.dart'
-    as _i101;
-import '../mash/domain/use_cases/library/required_pysical_library_data_usecase.dart'
-    as _i102;
-import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart'
+import '../mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart'
+    as _i117;
+import '../mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart'
     as _i120;
-import '../mash/domain/use_cases/notice/notice_all_usecase.dart' as _i109;
+import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart'
+    as _i119;
+import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
+    as _i111;
+import '../mash/domain/use_cases/id_request/post_id_request.dart' as _i112;
+import '../mash/domain/use_cases/leave/leave_use_case.dart' as _i100;
+import '../mash/domain/use_cases/library/physical_library_use_case.dart'
+    as _i101;
+import '../mash/domain/use_cases/library/post_physical_library_request.dart'
+    as _i102;
+import '../mash/domain/use_cases/library/required_pysical_library_data_usecase.dart'
+    as _i103;
+import '../mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart'
+    as _i121;
+import '../mash/domain/use_cases/notice/notice_all_usecase.dart' as _i110;
 import '../mash/domain/use_cases/payment/get_payment_complete_response_usecase.dart'
     as _i79;
 import '../mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart'
     as _i80;
+import '../mash/domain/use_cases/payment/get_payment_fee_receipt_usecase.dart'
+    as _i84;
 import '../mash/domain/use_cases/payment/get_payment_final_amount_usecase.dart'
     as _i66;
 import '../mash/domain/use_cases/payment/get_payment_order_id_usecase.dart'
@@ -160,11 +162,11 @@ import '../mash/domain/use_cases/teacher/post_teacher_rating_usecase.dart'
 import '../mash/domain/use_cases/teacher/teacher_rating_questions_usecase.dart'
     as _i73;
 import '../mash/domain/use_cases/time_table_usecase/daily_time_table_use_case.dart'
-    as _i92;
-import '../mash/domain/use_cases/time_table_usecase/offline_exam_terms_use_case.dart'
     as _i93;
-import '../mash/domain/use_cases/time_table_usecase/offline_time_table_use_case.dart'
+import '../mash/domain/use_cases/time_table_usecase/offline_exam_terms_use_case.dart'
     as _i94;
+import '../mash/domain/use_cases/time_table_usecase/offline_time_table_use_case.dart'
+    as _i95;
 import '../mash/domain/use_cases/vehicle_tracker_stops/get_vehicle_current_location.dart'
     as _i62;
 import '../mash/domain/use_cases/vehicle_tracker_stops/vehicle_tracker_stops_usecase.dart'
@@ -189,7 +191,7 @@ import '../mash/presentation/manager/bloc/library_bloc/library_bloc.dart'
     as _i7;
 import '../mash/presentation/manager/bloc/notice_bloc/notice_bloc.dart'
     as _i127;
-import '../mash/presentation/manager/bloc/payment/payment_bloc.dart' as _i125;
+import '../mash/presentation/manager/bloc/payment/payment_bloc.dart' as _i132;
 import '../mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart'
     as _i8;
 import '../mash/presentation/manager/bloc/teacher_bloc/teacher_bloc.dart'
@@ -352,135 +354,138 @@ extension GetItInjectableX on _i1.GetIt {
         _i82.PostPaymentStatusUpdateUsecase(gh<_i46.PaymentRepository>()));
     gh.factory<_i83.SavePaymentResponseUsecase>(
         () => _i83.SavePaymentResponseUsecase(gh<_i46.PaymentRepository>()));
-    gh.singleton<_i84.GetChatRoomsUseCase>(
-        () => _i84.GetChatRoomsUseCase(gh<_i33.ChatRepository>()));
-    gh.singleton<_i85.SendMessageUserCase>(
-        () => _i85.SendMessageUserCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i86.AddChatRoomUseCase>(
-        () => _i86.AddChatRoomUseCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i87.GetChatUseCase>(
-        () => _i87.GetChatUseCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i88.GetUserMembersUseCase>(
-        () => _i88.GetUserMembersUseCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i89.GetUsersUseCase>(
-        () => _i89.GetUsersUseCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i90.UpdateMessageUseCase>(
-        () => _i90.UpdateMessageUseCase(gh<_i33.ChatRepository>()));
-    gh.factory<_i91.UpdateRoomUseCase>(
-        () => _i91.UpdateRoomUseCase(gh<_i33.ChatRepository>()));
-    gh.lazySingleton<_i92.GetDailyTimeTableUseCase>(
-        () => _i92.GetDailyTimeTableUseCase(gh<_i30.TimeTableRepository>()));
-    gh.lazySingleton<_i93.GetOfflineExamTermsUseCase>(
-        () => _i93.GetOfflineExamTermsUseCase(gh<_i30.TimeTableRepository>()));
-    gh.lazySingleton<_i94.GetOfflineExamTimeTableUseCase>(() =>
-        _i94.GetOfflineExamTimeTableUseCase(gh<_i30.TimeTableRepository>()));
-    gh.lazySingleton<_i95.HomeWorkNotesRepository>(() =>
-        _i96.HomeWorkNotesReportRepositoryImpl(
+    gh.factory<_i84.GetPaymentFeeReceiptUsecase>(
+        () => _i84.GetPaymentFeeReceiptUsecase(gh<_i46.PaymentRepository>()));
+    gh.singleton<_i85.GetChatRoomsUseCase>(
+        () => _i85.GetChatRoomsUseCase(gh<_i33.ChatRepository>()));
+    gh.singleton<_i86.SendMessageUserCase>(
+        () => _i86.SendMessageUserCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i87.AddChatRoomUseCase>(
+        () => _i87.AddChatRoomUseCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i88.GetChatUseCase>(
+        () => _i88.GetChatUseCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i89.GetUserMembersUseCase>(
+        () => _i89.GetUserMembersUseCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i90.GetUsersUseCase>(
+        () => _i90.GetUsersUseCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i91.UpdateMessageUseCase>(
+        () => _i91.UpdateMessageUseCase(gh<_i33.ChatRepository>()));
+    gh.factory<_i92.UpdateRoomUseCase>(
+        () => _i92.UpdateRoomUseCase(gh<_i33.ChatRepository>()));
+    gh.lazySingleton<_i93.GetDailyTimeTableUseCase>(
+        () => _i93.GetDailyTimeTableUseCase(gh<_i30.TimeTableRepository>()));
+    gh.lazySingleton<_i94.GetOfflineExamTermsUseCase>(
+        () => _i94.GetOfflineExamTermsUseCase(gh<_i30.TimeTableRepository>()));
+    gh.lazySingleton<_i95.GetOfflineExamTimeTableUseCase>(() =>
+        _i95.GetOfflineExamTimeTableUseCase(gh<_i30.TimeTableRepository>()));
+    gh.lazySingleton<_i96.HomeWorkNotesRepository>(() =>
+        _i97.HomeWorkNotesReportRepositoryImpl(
             homeWorkNotesRemoteDataSource:
                 gh<_i58.HomeWorkNotesRemoteDataSource>()));
-    gh.lazySingleton<_i97.GetAcademicTypesUseCase>(
-        () => _i97.GetAcademicTypesUseCase(gh<_i39.AcademicRepository>()));
-    gh.lazySingleton<_i98.DigitalLibraryUseCase>(
-        () => _i98.DigitalLibraryUseCase(gh<_i39.AcademicRepository>()));
-    gh.lazySingleton<_i99.GetDashboardLeaveUseCase>(
-        () => _i99.GetDashboardLeaveUseCase(gh<_i69.LeaveRepository>()));
-    gh.lazySingleton<_i100.GetPhysicalLibraryUseCase>(
-        () => _i100.GetPhysicalLibraryUseCase(gh<_i41.LibraryRepository>()));
-    gh.lazySingleton<_i101.PostPhysicalLibraryUseCase>(
-        () => _i101.PostPhysicalLibraryUseCase(gh<_i41.LibraryRepository>()));
-    gh.lazySingleton<_i102.GetRequiredPhysicalLibraryDataUseCase>(() =>
-        _i102.GetRequiredPhysicalLibraryDataUseCase(
+    gh.lazySingleton<_i98.GetAcademicTypesUseCase>(
+        () => _i98.GetAcademicTypesUseCase(gh<_i39.AcademicRepository>()));
+    gh.lazySingleton<_i99.DigitalLibraryUseCase>(
+        () => _i99.DigitalLibraryUseCase(gh<_i39.AcademicRepository>()));
+    gh.lazySingleton<_i100.GetDashboardLeaveUseCase>(
+        () => _i100.GetDashboardLeaveUseCase(gh<_i69.LeaveRepository>()));
+    gh.lazySingleton<_i101.GetPhysicalLibraryUseCase>(
+        () => _i101.GetPhysicalLibraryUseCase(gh<_i41.LibraryRepository>()));
+    gh.lazySingleton<_i102.PostPhysicalLibraryUseCase>(
+        () => _i102.PostPhysicalLibraryUseCase(gh<_i41.LibraryRepository>()));
+    gh.lazySingleton<_i103.GetRequiredPhysicalLibraryDataUseCase>(() =>
+        _i103.GetRequiredPhysicalLibraryDataUseCase(
             gh<_i41.LibraryRepository>()));
-    gh.lazySingleton<_i103.DashBoardRepository>(() => _i104.DashBoardRepoImpl(
+    gh.lazySingleton<_i104.DashBoardRepository>(() => _i105.DashBoardRepoImpl(
           gh<_i48.DashBoardRemoteDataSource>(),
           gh<_i54.ConnectionChecker>(),
           gh<_i61.DashBoardLocalDataSource>(),
         ));
-    gh.lazySingleton<_i105.AuthRepository>(() => _i106.AuthRepositoryImpl(
+    gh.lazySingleton<_i106.AuthRepository>(() => _i107.AuthRepositoryImpl(
           gh<_i54.ConnectionChecker>(),
           authRemoteDataSource: gh<_i59.AuthRemoteDataSource>(),
           authLocalDataSource: gh<_i53.AuthLocalDataSource>(),
         ));
-    gh.lazySingleton<_i107.NoticeRepository>(() => _i108.NoticeRepositoryImpl(
+    gh.lazySingleton<_i108.NoticeRepository>(() => _i109.NoticeRepositoryImpl(
         noticeRemoteDataSource: gh<_i60.NoticeRemoteDataSource>()));
-    gh.factory<_i109.GetAllNoticeUseCase>(() => _i109.GetAllNoticeUseCase(
-        noticeRepository: gh<_i107.NoticeRepository>()));
-    gh.lazySingleton<_i110.GetIdRequestTypeUseCase>(
-        () => _i110.GetIdRequestTypeUseCase(gh<_i77.IdRequestRepository>()));
-    gh.lazySingleton<_i111.PostIdRequestUseCase>(
-        () => _i111.PostIdRequestUseCase(gh<_i77.IdRequestRepository>()));
-    gh.factory<_i112.FetchWordThoughtUseCase>(
-        () => _i112.FetchWordThoughtUseCase(gh<_i103.DashBoardRepository>()));
-    gh.factory<_i113.GetRoleMenuUsecase>(
-        () => _i113.GetRoleMenuUsecase(gh<_i103.DashBoardRepository>()));
-    gh.factory<_i114.GetScoreboardDetailsUsecase>(() =>
-        _i114.GetScoreboardDetailsUsecase(gh<_i103.DashBoardRepository>()));
-    gh.factory<_i115.GetTermDetailsUsecase>(
-        () => _i115.GetTermDetailsUsecase(gh<_i103.DashBoardRepository>()));
-    gh.lazySingleton<_i116.HomeWorkReportsUseCase>(() =>
-        _i116.HomeWorkReportsUseCase(
-            homeWorkNotesRepository: gh<_i95.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i117.GetHomeWorkDetails>(() => _i117.GetHomeWorkDetails(
-        homeWorkNotesRepository: gh<_i95.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i118.NotesReportsUseCase>(() => _i118.NotesReportsUseCase(
-        homeWorkNotesRepository: gh<_i95.HomeWorkNotesRepository>()));
-    gh.lazySingleton<_i119.GetNoteReportDetails>(() =>
-        _i119.GetNoteReportDetails(
-            homeWorkNotesRepository: gh<_i95.HomeWorkNotesRepository>()));
-    gh.factory<_i120.GetNoticeBoardPopUp>(
-        () => _i120.GetNoticeBoardPopUp(gh<_i107.NoticeRepository>()));
-    gh.singleton<_i121.SignOutUseCase>(
-        () => _i121.SignOutUseCase(gh<_i105.AuthRepository>()));
-    gh.lazySingleton<_i122.GetUserInfoUseCase>(
-        () => _i122.GetUserInfoUseCase(gh<_i105.AuthRepository>()));
-    gh.lazySingleton<_i123.LoginUseCase>(
-        () => _i123.LoginUseCase(gh<_i105.AuthRepository>()));
-    gh.lazySingleton<_i124.SaveUserInfoUseCase>(
-        () => _i124.SaveUserInfoUseCase(gh<_i105.AuthRepository>()));
-    gh.factory<_i125.PaymentBloc>(() => _i125.PaymentBloc(
-          gh<_i80.GetPaymentDashboardUsecase>(),
-          gh<_i122.GetUserInfoUseCase>(),
-          gh<_i66.GetPaymentFinalAmountUsecase>(),
-          gh<_i67.GetPaymentOrderIdUsecase>(),
-          gh<_i81.GetPaymentTokenUsecase>(),
-          gh<_i79.GetPaymentCompleteResponseUsecase>(),
-          gh<_i82.PostPaymentStatusUpdateUsecase>(),
-          gh<_i83.SavePaymentResponseUsecase>(),
-        ));
+    gh.factory<_i110.GetAllNoticeUseCase>(() => _i110.GetAllNoticeUseCase(
+        noticeRepository: gh<_i108.NoticeRepository>()));
+    gh.lazySingleton<_i111.GetIdRequestTypeUseCase>(
+        () => _i111.GetIdRequestTypeUseCase(gh<_i77.IdRequestRepository>()));
+    gh.lazySingleton<_i112.PostIdRequestUseCase>(
+        () => _i112.PostIdRequestUseCase(gh<_i77.IdRequestRepository>()));
+    gh.factory<_i113.FetchWordThoughtUseCase>(
+        () => _i113.FetchWordThoughtUseCase(gh<_i104.DashBoardRepository>()));
+    gh.factory<_i114.GetRoleMenuUsecase>(
+        () => _i114.GetRoleMenuUsecase(gh<_i104.DashBoardRepository>()));
+    gh.factory<_i115.GetScoreboardDetailsUsecase>(() =>
+        _i115.GetScoreboardDetailsUsecase(gh<_i104.DashBoardRepository>()));
+    gh.factory<_i116.GetTermDetailsUsecase>(
+        () => _i116.GetTermDetailsUsecase(gh<_i104.DashBoardRepository>()));
+    gh.lazySingleton<_i117.HomeWorkReportsUseCase>(() =>
+        _i117.HomeWorkReportsUseCase(
+            homeWorkNotesRepository: gh<_i96.HomeWorkNotesRepository>()));
+    gh.lazySingleton<_i118.GetHomeWorkDetails>(() => _i118.GetHomeWorkDetails(
+        homeWorkNotesRepository: gh<_i96.HomeWorkNotesRepository>()));
+    gh.lazySingleton<_i119.NotesReportsUseCase>(() => _i119.NotesReportsUseCase(
+        homeWorkNotesRepository: gh<_i96.HomeWorkNotesRepository>()));
+    gh.lazySingleton<_i120.GetNoteReportDetails>(() =>
+        _i120.GetNoteReportDetails(
+            homeWorkNotesRepository: gh<_i96.HomeWorkNotesRepository>()));
+    gh.factory<_i121.GetNoticeBoardPopUp>(
+        () => _i121.GetNoticeBoardPopUp(gh<_i108.NoticeRepository>()));
+    gh.singleton<_i122.SignOutUseCase>(
+        () => _i122.SignOutUseCase(gh<_i106.AuthRepository>()));
+    gh.lazySingleton<_i123.GetUserInfoUseCase>(
+        () => _i123.GetUserInfoUseCase(gh<_i106.AuthRepository>()));
+    gh.lazySingleton<_i124.LoginUseCase>(
+        () => _i124.LoginUseCase(gh<_i106.AuthRepository>()));
+    gh.lazySingleton<_i125.SaveUserInfoUseCase>(
+        () => _i125.SaveUserInfoUseCase(gh<_i106.AuthRepository>()));
     gh.factory<_i126.DashboardBloc>(() => _i126.DashboardBloc(
-          gh<_i112.FetchWordThoughtUseCase>(),
-          gh<_i122.GetUserInfoUseCase>(),
-          gh<_i115.GetTermDetailsUsecase>(),
-          gh<_i114.GetScoreboardDetailsUsecase>(),
+          gh<_i113.FetchWordThoughtUseCase>(),
+          gh<_i123.GetUserInfoUseCase>(),
+          gh<_i116.GetTermDetailsUsecase>(),
+          gh<_i115.GetScoreboardDetailsUsecase>(),
         ));
     gh.factory<_i127.NoticeBloc>(() => _i127.NoticeBloc(
-          gh<_i120.GetNoticeBoardPopUp>(),
-          gh<_i109.GetAllNoticeUseCase>(),
+          gh<_i121.GetNoticeBoardPopUp>(),
+          gh<_i110.GetAllNoticeUseCase>(),
         ));
     gh.factory<_i128.HomeBloc>(() => _i128.HomeBloc(
           gh<_i75.GetAddOnUsecase>(),
-          gh<_i122.GetUserInfoUseCase>(),
+          gh<_i123.GetUserInfoUseCase>(),
           gh<_i76.PostfeedbackUsecase>(),
         ));
     gh.factory<_i129.AcademicBloc>(() => _i129.AcademicBloc(
           gh<_i50.GetDivisionDetailsUseCase>(),
           getClassInforUseCase: gh<_i74.GetClassInforUseCase>(),
-          getUserInfoUseCase: gh<_i122.GetUserInfoUseCase>(),
+          getUserInfoUseCase: gh<_i123.GetUserInfoUseCase>(),
           getAcademicSubjectUseCase: gh<_i49.GetAcademicSubjectUseCase>(),
           getSyllabusUseCase: gh<_i65.GetSyllabusUseCase>(),
           getSyllabusTermsUseCase: gh<_i64.GetSyllabusTermsUseCase>(),
         ));
     gh.factory<_i130.DrawerBloc>(() => _i130.DrawerBloc(
           gh<_i68.GetNewsBoardUseCase>(),
-          gh<_i122.GetUserInfoUseCase>(),
-          gh<_i113.GetRoleMenuUsecase>(),
+          gh<_i123.GetUserInfoUseCase>(),
+          gh<_i114.GetRoleMenuUsecase>(),
         ));
     gh.factory<_i131.HomeWorkNotesBloc>(() => _i131.HomeWorkNotesBloc(
-          gh<_i116.HomeWorkReportsUseCase>(),
-          gh<_i122.GetUserInfoUseCase>(),
-          gh<_i118.NotesReportsUseCase>(),
-          gh<_i119.GetNoteReportDetails>(),
-          gh<_i117.GetHomeWorkDetails>(),
+          gh<_i117.HomeWorkReportsUseCase>(),
+          gh<_i123.GetUserInfoUseCase>(),
+          gh<_i119.NotesReportsUseCase>(),
+          gh<_i120.GetNoteReportDetails>(),
+          gh<_i118.GetHomeWorkDetails>(),
+        ));
+    gh.factory<_i132.PaymentBloc>(() => _i132.PaymentBloc(
+          gh<_i80.GetPaymentDashboardUsecase>(),
+          gh<_i123.GetUserInfoUseCase>(),
+          gh<_i66.GetPaymentFinalAmountUsecase>(),
+          gh<_i67.GetPaymentOrderIdUsecase>(),
+          gh<_i81.GetPaymentTokenUsecase>(),
+          gh<_i79.GetPaymentCompleteResponseUsecase>(),
+          gh<_i82.PostPaymentStatusUpdateUsecase>(),
+          gh<_i83.SavePaymentResponseUsecase>(),
+          gh<_i84.GetPaymentFeeReceiptUsecase>(),
         ));
     return this;
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
@@ -42,7 +41,6 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
 import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/research.dart';
-import 'package:mash/mash/presentation/pages/home/library/widgets/image_view_widget.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
@@ -84,7 +82,6 @@ import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
-import '../pages/home/library/academic_books.dart';
 import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -195,6 +192,12 @@ class AppRouteManager {
       path: AppPages.leaveStatusScreen,
       name: AppPages.leaveStatusScreen,
       builder: (context, state) => const LeaveStatusScreen(),
+    ),
+    GoRoute(
+      path: AppPages.paymentResponse,
+      name: AppPages.paymentResponse,
+      builder: (context, state) =>
+          PaymentResponseScreen(orderStatus: state.extra as OrderStatus),
     ),
     GoRoute(
       path: AppPages.otpScreen,
@@ -363,7 +366,9 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
-      builder: (context, state) => const NoticeBoardDetailScreen(),
+      builder: (context, state) => const NoticeBoardDetailScreen(
+        noticeId: '',
+      ),
     ),
     GoRoute(
       name: AppPages.weeklyTimetableScreen,
@@ -441,21 +446,9 @@ class AppRouteManager {
       builder: (context, state) => const CompetitiveExamScreen(),
     ),
     GoRoute(
-      path: AppPages.imageFullView,
-      name: AppPages.imageFullView,
-      builder: (context, state) =>
-          FullScreenImagePage(imageUrl: state.extra as String),
-    ),
-    GoRoute(
       name: AppPages.feesAndPaymentScreen,
       path: AppPages.feesAndPaymentScreen,
       builder: (context, state) => const FeesAndPaymentsTabs(),
-    ),
-    GoRoute(
-      path: AppPages.paymentResponse,
-      name: AppPages.paymentResponse,
-      builder: (context, state) =>
-          PaymentResponseScreen(orderStatus: state.extra as OrderStatus),
     ),
     // GoRoute(
     //   name: AppPages.paymentHistoryScreen,
@@ -596,16 +589,6 @@ class AppRouteManager {
       },
     ),
     GoRoute(
-      name: AppPages.pdfOpener,
-      path: AppPages.pdfOpener,
-      builder: (context, state) {
-        if (state.extra != null) {
-          return PdfVieweScreen(path: state.extra as String);
-        }
-        return const SizedBox();
-      },
-    ),
-    GoRoute(
       path: AppPages.nonAcademic,
       name: AppPages.nonAcademic,
       builder: (context, state) => const NonAcademic(),
@@ -614,15 +597,6 @@ class AppRouteManager {
       path: AppPages.research,
       name: AppPages.research,
       builder: (context, state) => const ResearchScreen(),
-    ),
-    GoRoute(
-      path: AppPages.academicBooksList,
-      name: AppPages.academicBooksList,
-      builder: (context, state) => state.extra != null
-          ? AcademicBooks(
-              type: state.extra as AcademicTypeEntity,
-            )
-          : const SizedBox(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);

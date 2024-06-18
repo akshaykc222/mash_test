@@ -43,9 +43,9 @@ class PaymentResponseScreen extends StatelessWidget {
           SizedBox(height: SizeUtility(context).height / 10),
           orderStatus == OrderStatus.PAID
               ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomIconButton(
                         width: SizeUtility(context).width / 2,
@@ -54,10 +54,9 @@ class PaymentResponseScreen extends StatelessWidget {
                         name: 'View Reciept',
                         onTap: () {},
                       ),
+                      spacerWidth15,
                       _iconContainerWidget(
-                        assetFromSvg(AppAssets.downloadIcon),
-                      ),
-                      _iconContainerWidget(assetFromSvg(AppAssets.share))
+                          assetFromSvg(AppAssets.downloadIcon)),
                     ],
                   ),
                 )
@@ -73,8 +72,8 @@ class PaymentResponseScreen extends StatelessWidget {
               onTap: () {
                 BlocProvider.of<PaymentBloc>(context)
                     .add(const PaymentEvent.disposeEvent());
-                GoRouter.of(context)
-                    .pushReplacement(AppPages.feesAndPaymentScreen);
+                // GoRouter.of(context).goNamed(AppPages.feesAndPaymentScreen);
+                context.pop();
               },
             ),
           )
@@ -84,13 +83,16 @@ class PaymentResponseScreen extends StatelessWidget {
   }
 
   Widget _iconContainerWidget(Widget child) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppColors.primaryColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(6),
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 

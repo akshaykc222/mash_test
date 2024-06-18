@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:mash/core/pretty_printer.dart';
 
 class PdfVieweScreen extends StatefulWidget {
   final String path;
@@ -12,11 +13,14 @@ class PdfVieweScreen extends StatefulWidget {
 class _PdfViewerState extends State<PdfVieweScreen> {
   @override
   Widget build(BuildContext context) {
+    prettyPrint(widget.path);
     return Scaffold(
       appBar: AppBar(),
       body: PDFView(
         filePath: widget.path,
-        onError: (error) => print(error),
+        onError: (error) {
+          print(error);
+        },
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +11,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
@@ -33,12 +36,16 @@ class NewsBoardDetailScreen extends StatelessWidget {
         color: AppColors.white,
         child: BlocConsumer<PdfDownloadCubit, PdfDownloadState>(
           listenWhen: (previous, current) {
-            return current.pdfDownloadResponse.status == Status.COMPLETED &&
-                previous.pdfDownloadResponse.status != Status.COMPLETED;
+            return current.pdfDownloadResponse.status !=
+                previous.pdfDownloadResponse.status;
           },
           listener: (context, state) {
-            GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
-                extra: state.pdfDownloadResponse.data);
+            if (state.pdfDownloadResponse.status == Status.COMPLETED) {
+              GoRouter.of(context).pushNamed(AppPages.pdfViewScreen,
+                  extra: state.pdfDownloadResponse.data);
+            } else if (state.pdfDownloadResponse.status == Status.ERROR) {
+              HelperClasses.showSnackBar(msg: state.pdfDownloadResponse.error);
+            }
           },
           builder: (context, state) => Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -57,6 +64,7 @@ class NewsBoardDetailScreen extends StatelessWidget {
                 icon: AppAssets.downloadIcon,
                 name: 'View Attachment',
                 onTap: () {
+                  log('document typep ${newsDetails.ext}');
                   if (newsDetails.ext == "PDF") {
                     BlocProvider.of<PdfDownloadCubit>(context).downloadPdf(
                         filePath: newsDetails.content ?? '',

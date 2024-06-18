@@ -17,7 +17,7 @@ class PdfDownloadCubit extends Cubit<PdfDownloadState> {
   downloadPdf(
       {required String filePath, required DoucumentType doucumentType}) async {
     emit(state.copyWith(pdfDownloadResponse: ResponseClassify.loading()));
-    final fileName = filePath;
+    final fileName = "https://www.clickdimensions.com/links/TestPDFfile.pdf";
     if (fileName.isEmpty) {
       prettyPrint('Error: File name is empty');
       return;
@@ -59,7 +59,7 @@ class PdfDownloadCubit extends Cubit<PdfDownloadState> {
         state.copyWith(
             pdfDownloadProgressState: 0,
             pdfDownloadResponse:
-                ResponseClassify.error('something erro found')),
+                ResponseClassify.error('something error found')),
       );
       prettyPrint('Error: $err stacktrace $stackTrace');
     }

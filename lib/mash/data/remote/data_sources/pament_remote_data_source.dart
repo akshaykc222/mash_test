@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -10,6 +12,7 @@ import 'package:mash/mash/domain/entities/payment/payment_token_entity.dart';
 import '../../../domain/entities/payment/payment_complete_response_entity.dart';
 import '../../../domain/entities/payment/payment_dashboard_entity.dart';
 import '../../../domain/entities/payment/payment_final_amount_entiy.dart';
+import '../request/get_fee_success_receipt_request.dart';
 import '../request/payment_complete_response_request.dart';
 import '../request/payment_dashboard_request.dart';
 import '../request/payment_final_amount_request.dart';
@@ -28,6 +31,8 @@ abstract interface class PaymentRemoteDataSource {
       PaymentCompleteResponseRequest params);
   Future<String> postPaymentStatusUpdate(PaymentStatusUpdateRequest params);
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
+  Future<String> getFeeSuccessReceipt(
+      GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest);
 }
 
 @LazySingleton(as: PaymentRemoteDataSource)
@@ -103,5 +108,14 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
     } catch (e, s) {
       prettyPrint('error $e, stack race $s');
     }
+  }
+
+  @override
+  Future<String> getFeeSuccessReceipt(
+      GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest) async {
+    final data = await apiProvider.get(AppRemoteRoutes.getFeeSuccessReceipt,
+        body: getFeeSuccessReceiptRequest.toJson());
+    final res = json.decode(data['resMessage']);
+    return res;
   }
 }

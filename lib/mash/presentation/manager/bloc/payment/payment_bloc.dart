@@ -22,6 +22,7 @@ import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart'
 import 'package:mash/mash/domain/entities/payment/payment_final_amount_entiy.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart';
+import 'package:mash/mash/domain/use_cases/payment/get_payment_fee_receipt_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_final_amount_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
@@ -44,6 +45,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   final GetPaymentCompleteResponseUsecase getPaymentCompleteResponseUsecase;
   final PostPaymentStatusUpdateUsecase postPaymentStatusUpdateUsecase;
   final SavePaymentResponseUsecase savePaymentResponseUsecase;
+  final GetPaymentFeeReceiptUsecase getPaymentFeeReceiptUsecase;
   PaymentBloc(
       this.getPaymentDashboardUsecase,
       this.getUserInfoUseCase,
@@ -52,7 +54,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       this.getPaymentTokenUsecase,
       this.getPaymentCompleteResponseUsecase,
       this.postPaymentStatusUpdateUsecase,
-      this.savePaymentResponseUsecase)
+      this.savePaymentResponseUsecase,
+      this.getPaymentFeeReceiptUsecase)
       : super(PaymentState.initial()) {
     on<_GetPaymentDashboard>(_onGetPaymentDashboard);
     on<_SelectedItemIndex>(_onSelectedItemIndex);
@@ -62,6 +65,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     on<_GetPaymentTokenAndOpenPayment>(_getPaymentTokenAndOpenPayment);
     on<_GetPaymentCompleteResponse>(_getPaymentCompleteResponse);
     on<_PaymentDisposeEvent>(_disposeEvent);
+    on<_GetFeeReceipt>(_getFeeReceipt);
   }
 
   Future<void> _onGetPaymentDashboard(
@@ -161,7 +165,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       log('paymentFinalAmountResponse ${data.amount}  ${data.discountAmount}v${data.discountPercentage}');
       log('response ------------------$data');
     } catch (e) {
-      prettyPrint(e.toString());
+      emit(state.copyWith(
+          paymentError: "An error occurred. Please try again later."));
     }
   }
 
@@ -327,6 +332,10 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     emit(state.copyWith(
       totalAmount: '0',
       paymentOrderResponse: ResponseClassify.initial(),
+      paymentFinalAmountResponse: null,
+      paymentError: '',
     ));
   }
+
+  _getFeeReceipt(_GetFeeReceipt event, Emitter<PaymentState> emit) async {}
 }
