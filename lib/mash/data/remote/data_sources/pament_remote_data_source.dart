@@ -115,7 +115,7 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
       GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest) async {
     final data = await apiProvider.get(AppRemoteRoutes.getFeeSuccessReceipt,
         body: getFeeSuccessReceiptRequest.toJson());
-    final res = json.decode(data['resMessage']);
+    final res = data['resMessage'];
     return res;
   }
 }

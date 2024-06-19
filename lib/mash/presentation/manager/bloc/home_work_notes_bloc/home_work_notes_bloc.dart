@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,7 +13,6 @@ import 'package:mash/mash/domain/use_cases/home_work_notes/get_home_work_report_
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_home_work_reports_use_case.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_notes_report_details_usecase.dart';
 import 'package:mash/mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_report.dart';
-
 import '../../../../domain/entities/home_work/home_work_entity.dart';
 
 part 'home_work_notes_event.dart';
@@ -52,8 +49,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: '152',
-          divId: '224',
+          classId: event.classId,
+          divId: event.divId,
           subjId: event.subId.isEmpty ? "0" : event.subId,
           acadId: userData.academicId ?? "",
         ));
@@ -76,8 +73,8 @@ class HomeWorkNotesBloc extends Bloc<HomeWorkNotesEvent, HomeWorkNotesState> {
           compId: userData.compId,
           startDate: event.startDate,
           endDate: event.endDate,
-          classId: '152',
-          divId: '224',
+          classId: event.classId,
+          divId: event.divId,
           subjId: event.subjectId.isEmpty ? "0" : event.subjectId,
           acadId: userData.academicId ?? "",
         ));

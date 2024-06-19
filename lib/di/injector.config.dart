@@ -140,17 +140,17 @@ import '../mash/domain/use_cases/payment/get_payment_complete_response_usecase.d
 import '../mash/domain/use_cases/payment/get_payment_dashboard_usecase.dart'
     as _i80;
 import '../mash/domain/use_cases/payment/get_payment_fee_receipt_usecase.dart'
-    as _i84;
+    as _i81;
 import '../mash/domain/use_cases/payment/get_payment_final_amount_usecase.dart'
     as _i66;
 import '../mash/domain/use_cases/payment/get_payment_order_id_usecase.dart'
     as _i67;
 import '../mash/domain/use_cases/payment/get_payment_token_usecase.dart'
-    as _i81;
-import '../mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart'
     as _i82;
-import '../mash/domain/use_cases/payment/save_payment_reponse_usecase.dart'
+import '../mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart'
     as _i83;
+import '../mash/domain/use_cases/payment/save_payment_reponse_usecase.dart'
+    as _i84;
 import '../mash/domain/use_cases/profile/get_siblings_use_case.dart' as _i43;
 import '../mash/domain/use_cases/profile/get_user_details_use_case.dart'
     as _i44;
@@ -348,14 +348,14 @@ extension GetItInjectableX on _i1.GetIt {
         _i79.GetPaymentCompleteResponseUsecase(gh<_i46.PaymentRepository>()));
     gh.factory<_i80.GetPaymentDashboardUsecase>(
         () => _i80.GetPaymentDashboardUsecase(gh<_i46.PaymentRepository>()));
-    gh.factory<_i81.GetPaymentTokenUsecase>(
-        () => _i81.GetPaymentTokenUsecase(gh<_i46.PaymentRepository>()));
-    gh.factory<_i82.PostPaymentStatusUpdateUsecase>(() =>
-        _i82.PostPaymentStatusUpdateUsecase(gh<_i46.PaymentRepository>()));
-    gh.factory<_i83.SavePaymentResponseUsecase>(
-        () => _i83.SavePaymentResponseUsecase(gh<_i46.PaymentRepository>()));
-    gh.factory<_i84.GetPaymentFeeReceiptUsecase>(
-        () => _i84.GetPaymentFeeReceiptUsecase(gh<_i46.PaymentRepository>()));
+    gh.factory<_i81.GetPaymentFeeReceiptUsecase>(
+        () => _i81.GetPaymentFeeReceiptUsecase(gh<_i46.PaymentRepository>()));
+    gh.factory<_i82.GetPaymentTokenUsecase>(
+        () => _i82.GetPaymentTokenUsecase(gh<_i46.PaymentRepository>()));
+    gh.factory<_i83.PostPaymentStatusUpdateUsecase>(() =>
+        _i83.PostPaymentStatusUpdateUsecase(gh<_i46.PaymentRepository>()));
+    gh.factory<_i84.SavePaymentResponseUsecase>(
+        () => _i84.SavePaymentResponseUsecase(gh<_i46.PaymentRepository>()));
     gh.singleton<_i85.GetChatRoomsUseCase>(
         () => _i85.GetChatRoomsUseCase(gh<_i33.ChatRepository>()));
     gh.singleton<_i86.SendMessageUserCase>(
@@ -481,11 +481,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i123.GetUserInfoUseCase>(),
           gh<_i66.GetPaymentFinalAmountUsecase>(),
           gh<_i67.GetPaymentOrderIdUsecase>(),
-          gh<_i81.GetPaymentTokenUsecase>(),
+          gh<_i82.GetPaymentTokenUsecase>(),
           gh<_i79.GetPaymentCompleteResponseUsecase>(),
-          gh<_i82.PostPaymentStatusUpdateUsecase>(),
-          gh<_i83.SavePaymentResponseUsecase>(),
-          gh<_i84.GetPaymentFeeReceiptUsecase>(),
+          gh<_i83.PostPaymentStatusUpdateUsecase>(),
+          gh<_i84.SavePaymentResponseUsecase>(),
+          gh<_i81.GetPaymentFeeReceiptUsecase>(),
         ));
     return this;
   }

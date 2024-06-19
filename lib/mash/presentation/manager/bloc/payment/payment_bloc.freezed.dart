@@ -48,7 +48,7 @@ mixin _$PaymentEvent {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,7 +83,7 @@ mixin _$PaymentEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,7 +112,7 @@ mixin _$PaymentEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -301,7 +301,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -339,7 +339,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -371,7 +371,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -555,7 +555,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -593,7 +593,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -625,7 +625,7 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -802,7 +802,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return selectedItemIndex(index);
   }
@@ -840,7 +840,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -872,7 +872,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -1073,7 +1073,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
   }
@@ -1111,7 +1111,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
   }
@@ -1143,7 +1143,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1379,7 +1379,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return getPaymentOrderId(
         email, student, mobile, remark, installmentId, studentId);
@@ -1418,7 +1418,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return getPaymentOrderId?.call(
         email, student, mobile, remark, installmentId, studentId);
@@ -1451,7 +1451,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1709,7 +1709,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return getPaymentTokenAndOpenPayment(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1748,7 +1748,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return getPaymentTokenAndOpenPayment?.call(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1781,7 +1781,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -2040,7 +2040,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return getPaymentCompleteResponse(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -2079,7 +2079,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return getPaymentCompleteResponse?.call(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -2112,7 +2112,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
@@ -2276,7 +2276,7 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
     return disposeEvent();
   }
@@ -2314,7 +2314,7 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
     return disposeEvent?.call();
   }
@@ -2346,7 +2346,7 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (disposeEvent != null) {
@@ -2427,6 +2427,8 @@ abstract class _$$GetFeeReceiptImplCopyWith<$Res> {
   factory _$$GetFeeReceiptImplCopyWith(
           _$GetFeeReceiptImpl value, $Res Function(_$GetFeeReceiptImpl) then) =
       __$$GetFeeReceiptImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String studentId});
 }
 
 /// @nodoc
@@ -2436,26 +2438,51 @@ class __$$GetFeeReceiptImplCopyWithImpl<$Res>
   __$$GetFeeReceiptImplCopyWithImpl(
       _$GetFeeReceiptImpl _value, $Res Function(_$GetFeeReceiptImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? studentId = null,
+  }) {
+    return _then(_$GetFeeReceiptImpl(
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetFeeReceiptImpl implements _GetFeeReceipt {
-  const _$GetFeeReceiptImpl();
+  const _$GetFeeReceiptImpl({required this.studentId});
+
+  @override
+  final String studentId;
 
   @override
   String toString() {
-    return 'PaymentEvent.getFeeReceipt()';
+    return 'PaymentEvent.getFeeReceipt(studentId: $studentId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetFeeReceiptImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetFeeReceiptImpl &&
+            (identical(other.studentId, studentId) ||
+                other.studentId == studentId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, studentId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetFeeReceiptImplCopyWith<_$GetFeeReceiptImpl> get copyWith =>
+      __$$GetFeeReceiptImplCopyWithImpl<_$GetFeeReceiptImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2490,9 +2517,9 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function() getFeeReceipt,
+    required TResult Function(String studentId) getFeeReceipt,
   }) {
-    return getFeeReceipt();
+    return getFeeReceipt(studentId);
   }
 
   @override
@@ -2528,9 +2555,9 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function()? getFeeReceipt,
+    TResult? Function(String studentId)? getFeeReceipt,
   }) {
-    return getFeeReceipt?.call();
+    return getFeeReceipt?.call(studentId);
   }
 
   @override
@@ -2560,11 +2587,11 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function()? getFeeReceipt,
+    TResult Function(String studentId)? getFeeReceipt,
     required TResult orElse(),
   }) {
     if (getFeeReceipt != null) {
-      return getFeeReceipt();
+      return getFeeReceipt(studentId);
     }
     return orElse();
   }
@@ -2633,7 +2660,13 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
 }
 
 abstract class _GetFeeReceipt implements PaymentEvent {
-  const factory _GetFeeReceipt() = _$GetFeeReceiptImpl;
+  const factory _GetFeeReceipt({required final String studentId}) =
+      _$GetFeeReceiptImpl;
+
+  String get studentId;
+  @JsonKey(ignore: true)
+  _$$GetFeeReceiptImplCopyWith<_$GetFeeReceiptImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2652,6 +2685,7 @@ mixin _$PaymentState {
   String get paymentError => throw _privateConstructorUsedError;
   ResponseClassify<String> get feeRecieptResponse =>
       throw _privateConstructorUsedError;
+  String get installmentId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -2673,7 +2707,8 @@ abstract class $PaymentStateCopyWith<$Res> {
       ResponseClassify<OrderStatus> paymentOrderResponse,
       PaymentFinalAmountEntity? paymentFinalAmountResponse,
       String paymentError,
-      ResponseClassify<String> feeRecieptResponse});
+      ResponseClassify<String> feeRecieptResponse,
+      String installmentId});
 }
 
 /// @nodoc
@@ -2698,6 +2733,7 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? paymentFinalAmountResponse = freezed,
     Object? paymentError = null,
     Object? feeRecieptResponse = null,
+    Object? installmentId = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2736,6 +2772,10 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.feeRecieptResponse
           : feeRecieptResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
+      installmentId: null == installmentId
+          ? _value.installmentId
+          : installmentId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -2757,7 +2797,8 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       ResponseClassify<OrderStatus> paymentOrderResponse,
       PaymentFinalAmountEntity? paymentFinalAmountResponse,
       String paymentError,
-      ResponseClassify<String> feeRecieptResponse});
+      ResponseClassify<String> feeRecieptResponse,
+      String installmentId});
 }
 
 /// @nodoc
@@ -2780,6 +2821,7 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? paymentFinalAmountResponse = freezed,
     Object? paymentError = null,
     Object? feeRecieptResponse = null,
+    Object? installmentId = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2818,6 +2860,10 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.feeRecieptResponse
           : feeRecieptResponse // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
+      installmentId: null == installmentId
+          ? _value.installmentId
+          : installmentId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -2834,7 +2880,8 @@ class _$PaymentStateImpl implements _PaymentState {
       required this.paymentOrderResponse,
       required this.paymentFinalAmountResponse,
       required this.paymentError,
-      required this.feeRecieptResponse})
+      required this.feeRecieptResponse,
+      required this.installmentId})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -2864,10 +2911,12 @@ class _$PaymentStateImpl implements _PaymentState {
   final String paymentError;
   @override
   final ResponseClassify<String> feeRecieptResponse;
+  @override
+  final String installmentId;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse, paymentFinalAmountResponse: $paymentFinalAmountResponse, paymentError: $paymentError, feeRecieptResponse: $feeRecieptResponse)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse, paymentFinalAmountResponse: $paymentFinalAmountResponse, paymentError: $paymentError, feeRecieptResponse: $feeRecieptResponse, installmentId: $installmentId)';
   }
 
   @override
@@ -2895,7 +2944,9 @@ class _$PaymentStateImpl implements _PaymentState {
             (identical(other.paymentError, paymentError) ||
                 other.paymentError == paymentError) &&
             (identical(other.feeRecieptResponse, feeRecieptResponse) ||
-                other.feeRecieptResponse == feeRecieptResponse));
+                other.feeRecieptResponse == feeRecieptResponse) &&
+            (identical(other.installmentId, installmentId) ||
+                other.installmentId == installmentId));
   }
 
   @override
@@ -2909,7 +2960,8 @@ class _$PaymentStateImpl implements _PaymentState {
       paymentOrderResponse,
       paymentFinalAmountResponse,
       paymentError,
-      feeRecieptResponse);
+      feeRecieptResponse,
+      installmentId);
 
   @JsonKey(ignore: true)
   @override
@@ -2920,18 +2972,18 @@ class _$PaymentStateImpl implements _PaymentState {
 
 abstract class _PaymentState implements PaymentState {
   const factory _PaymentState(
-          {required final ResponseClassify<List<PaymentDashboardEntity>>
-              paymentDashboardResponse,
-          required final int? selectedItemIndex,
-          required final Set<String?>? selectedCheckboxItems,
-          required final String totalAmount,
-          required final ResponseClassify<List<PaymentDashboardEntity>>
-              paymentHistoryResponse,
-          required final ResponseClassify<OrderStatus> paymentOrderResponse,
-          required final PaymentFinalAmountEntity? paymentFinalAmountResponse,
-          required final String paymentError,
-          required final ResponseClassify<String> feeRecieptResponse}) =
-      _$PaymentStateImpl;
+      {required final ResponseClassify<List<PaymentDashboardEntity>>
+          paymentDashboardResponse,
+      required final int? selectedItemIndex,
+      required final Set<String?>? selectedCheckboxItems,
+      required final String totalAmount,
+      required final ResponseClassify<List<PaymentDashboardEntity>>
+          paymentHistoryResponse,
+      required final ResponseClassify<OrderStatus> paymentOrderResponse,
+      required final PaymentFinalAmountEntity? paymentFinalAmountResponse,
+      required final String paymentError,
+      required final ResponseClassify<String> feeRecieptResponse,
+      required final String installmentId}) = _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -2951,6 +3003,8 @@ abstract class _PaymentState implements PaymentState {
   String get paymentError;
   @override
   ResponseClassify<String> get feeRecieptResponse;
+  @override
+  String get installmentId;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

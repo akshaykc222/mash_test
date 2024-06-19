@@ -1,16 +1,24 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
+import 'dart:typed_data';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
+import 'package:flutter_download_manager/flutter_download_manager.dart';
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
+import 'package:mash/mash/data/remote/request/get_fee_success_receipt_request.dart';
 import 'package:mash/mash/data/remote/request/payment_complete_response_request.dart';
 import 'package:mash/mash/data/remote/request/payment_dashboard_request.dart';
 import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart';
@@ -27,6 +35,8 @@ import 'package:mash/mash/domain/use_cases/payment/get_payment_final_amount_usec
 import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../../../domain/use_cases/payment/get_payment_complete_response_usecase.dart';
 import '../../../../domain/use_cases/payment/save_payment_reponse_usecase.dart';
 import '../../../utils/enums.dart';
@@ -148,7 +158,10 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
   _getPaymentFinalAmount(
       _GetPaymentFinalAmount event, Emitter<PaymentState> emit) async {
-    emit(state.copyWith(totalAmount: '0'));
+    emit(state.copyWith(
+      totalAmount: '0',
+      installmentId: event.installmentId,
+    ));
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
       prettyPrint('installment id ${event.installmentId}');
@@ -161,9 +174,6 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         state.copyWith(
             paymentFinalAmountResponse: data, totalAmount: data.amount ?? ''),
       );
-
-      log('paymentFinalAmountResponse ${data.amount}  ${data.discountAmount}v${data.discountPercentage}');
-      log('response ------------------$data');
     } catch (e) {
       emit(state.copyWith(
           paymentError: "An error occurred. Please try again later."));
@@ -334,8 +344,88 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       paymentOrderResponse: ResponseClassify.initial(),
       paymentFinalAmountResponse: null,
       paymentError: '',
+      feeRecieptResponse: ResponseClassify.initial(),
     ));
   }
 
-  _getFeeReceipt(_GetFeeReceipt event, Emitter<PaymentState> emit) async {}
+  _getFeeReceipt(_GetFeeReceipt event, Emitter<PaymentState> emit) async {
+    emit(state.copyWith(feeRecieptResponse: ResponseClassify.loading()));
+    try {
+      final userInfo = await getUserInfoUseCase.call(NoParams());
+      final data = await getPaymentFeeReceiptUsecase.call(
+          GetFeeSuccessReceiptRequest(
+              compId: userInfo?.compId ?? "",
+              studentId: 'MGS1000513',
+              academicId: userInfo?.academicId ?? "",
+              installmentId: '0'));
+
+      final receipt = await _downLoadReceipt(data);
+
+      emit(state.copyWith(
+          feeRecieptResponse: ResponseClassify.completed(receipt)));
+    } catch (e) {
+      emit(state.copyWith(feeRecieptResponse: ResponseClassify.error(e)));
+      prettyPrint('error fee reciept $e');
+    }
+  }
+
+  Future<String?> _downLoadReceipt(String url) async {
+    try {
+      if (!await _requestStoragePermission()) {
+        if (!await FlutterFileDialog.isPickDirectorySupported()) {
+          print("Picking directory not supported");
+          return null;
+        }
+
+        // Get temporary directory
+        final tempDir = await getTemporaryDirectory();
+
+        final tempPath = '${tempDir.path}/receipt.pdf';
+        print(File(tempPath).absolute);
+        await Dio().download(url, tempPath);
+
+        // Read file bytes
+        Uint8List uint8List = await File(tempPath).readAsBytes();
+
+        // Pick directory to save file
+        final pickedDirectory = await FlutterFileDialog.pickDirectory();
+        if (pickedDirectory != null) {
+          String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+          String fileName = "receipt_$timestamp.pdf";
+
+          // Save file to picked directory
+
+          final params = SaveFileDialogParams(
+            data: uint8List,
+            fileName: fileName,
+          );
+          final path = await FlutterFileDialog.saveFile(params: params);
+          print('path $path');
+          return tempPath;
+        } else {
+          print('Permission denied or directory not selected');
+        }
+      } else {
+        print('Storage permission not granted');
+      }
+    } catch (e) {
+      print('Error on downloading receipt: $e');
+    }
+    return null;
+  }
+
+  Future<bool> _requestStoragePermission() async {
+    var status = await Permission.storage.status;
+    if (status.isGranted) {
+      return true;
+    } else if (status.isDenied) {
+      var result = await Permission.storage.request();
+      return result.isGranted;
+    } else if (status.isPermanentlyDenied) {
+      // The user has previously denied the permission.
+      openAppSettings();
+      return false;
+    }
+    return false;
+  }
 }

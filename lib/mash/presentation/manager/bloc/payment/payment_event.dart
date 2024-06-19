@@ -44,5 +44,7 @@ class PaymentEvent with _$PaymentEvent {
     String? installMentId,
   }) = _GetPaymentCompleteResponse;
   const factory PaymentEvent.disposeEvent() = _PaymentDisposeEvent;
-  const factory PaymentEvent.getFeeReceipt() = _GetFeeReceipt;
+  const factory PaymentEvent.getFeeReceipt({
+    required String studentId,
+  }) = _GetFeeReceipt;
 }
