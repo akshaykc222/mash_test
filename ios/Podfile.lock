@@ -946,6 +946,7 @@ PODS:
     - abseil/meta/type_traits
     - abseil/xcprivacy
   - abseil/xcprivacy (1.20240116.2)
+  - AEXML (4.6.0)
   - BoringSSL-GRPC (0.0.32):
     - BoringSSL-GRPC/Implementation (= 0.0.32)
     - BoringSSL-GRPC/Interface (= 0.0.32)
@@ -967,6 +968,13 @@ PODS:
     - Flutter
   - device_info_plus (0.0.1):
     - Flutter
+  - EpubViewerKit (0.1.3):
+    - AEXML (= 4.6.0)
+    - FontBlaster (= 5.1.1)
+    - MenuItemKit (= 4.0.1)
+    - RealmSwift (= 5.5.1)
+    - SSZipArchive (= 2.2.3)
+    - ZFDragableModalTransition (= 0.6)
   - Firebase/Auth (10.25.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.25.0)
@@ -1051,6 +1059,7 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
+  - FontBlaster (5.1.1)
   - geolocator_apple (1.2.0):
     - Flutter
   - google_maps_flutter_ios (0.0.1):
@@ -1174,6 +1183,7 @@ PODS:
   - leveldb-library (1.22.5)
   - location (0.0.1):
     - Flutter
+  - MenuItemKit (4.0.1)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -1182,16 +1192,28 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - permission_handler_apple (9.3.0):
+    - Flutter
   - PromisesObjC (2.4.0)
+  - Realm (5.5.1):
+    - Realm/Headers (= 5.5.1)
+  - Realm/Headers (5.5.1)
+  - RealmSwift (5.5.1):
+    - Realm (= 5.5.1)
   - RecaptchaInterop (100.0.0)
   - rive_common (0.0.1):
     - Flutter
   - sqflite (0.0.3):
     - Flutter
     - FlutterMacOS
+  - SSZipArchive (2.2.3)
   - Toast (4.1.1)
   - url_launcher_ios (0.0.1):
     - Flutter
+  - vocsy_epub_viewer (2.0.0):
+    - EpubViewerKit (~> 0.1.3)
+    - Flutter
+  - ZFDragableModalTransition (0.6)
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
@@ -1209,19 +1231,23 @@ DEPENDENCIES:
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - location (from `.symlinks/plugins/location/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - rive_common (from `.symlinks/plugins/rive_common/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - vocsy_epub_viewer (from `.symlinks/plugins/vocsy_epub_viewer/ios`)
 
 SPEC REPOS:
   trunk:
     - abseil
+    - AEXML
     - BoringSSL-GRPC
     - CashfreeAnalyticsSDK
     - CashfreePG
     - CashfreePGCoreSDK
     - CashfreePGUISDK
     - CFNetworkSDK
+    - EpubViewerKit
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -1233,6 +1259,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseMessaging
     - FirebaseSharedSwift
+    - FontBlaster
     - GoogleDataTransport
     - GoogleMaps
     - GoogleUtilities
@@ -1240,10 +1267,15 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - MenuItemKit
     - nanopb
     - PromisesObjC
+    - Realm
+    - RealmSwift
     - RecaptchaInterop
+    - SSZipArchive
     - Toast
+    - ZFDragableModalTransition
 
 EXTERNAL SOURCES:
   cloud_firestore:
@@ -1276,15 +1308,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/location/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   rive_common:
     :path: ".symlinks/plugins/rive_common/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
+  vocsy_epub_viewer:
+    :path: ".symlinks/plugins/vocsy_epub_viewer/ios"
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
+  AEXML: 2fbb73d8724797ed2cde888731e176fa4d44dd83
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   CashfreeAnalyticsSDK: 6d3825916b1f37e38e26cc3b825eef31c9a8b4b9
   CashfreePG: 1dd86f7cfe5a674a304680437d8cdecbb7d50b5d
@@ -1293,6 +1330,7 @@ SPEC CHECKSUMS:
   CFNetworkSDK: 02adc1210041ce65a6653049c730c9db2f73451a
   cloud_firestore: 792f773e5e8c080ffcbadd49f9fb397927f29af6
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
+  EpubViewerKit: 5f6c8ff9161bba18d6742c59b3c575c19f0623a9
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   firebase_auth: 76ea642e91a9e914b3af751a416046ce1a965cf4
   firebase_core: 0b39f4f424e02eecabb2356ddf331fa07b772af8
@@ -1312,6 +1350,7 @@ SPEC CHECKSUMS:
   flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
   flutter_pdfview: 25f53dd6097661e6395b17de506e6060585946bd
   fluttertoast: e9a18c7be5413da53898f660530c56f35edfba9c
+  FontBlaster: 8897ebdbb4b6ace3ab78c92b665d88c954f19e4a
   geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
   google_maps_flutter_ios: c454f18e0e22df6ac0e9f2a4df340858f5a3680c
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
@@ -1323,14 +1362,21 @@ SPEC CHECKSUMS:
   image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   leveldb-library: e8eadf9008a61f9e1dde3978c086d2b6d9b9dc28
   location: d5cf8598915965547c3f36761ae9cc4f4e87d22e
+  MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  Realm: c2ffe0667f9c98c9ba65f608ba85684d39826145
+  RealmSwift: 5a35c1c35c3e1925e6fcd092c881d5cc4a826bff
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   rive_common: 8a159d68033a8b073e5853acc50f03aa486a2888
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+  vocsy_epub_viewer: 2dce338f2e0ca766f2db27525977456b10fc0612
+  ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
 PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
 

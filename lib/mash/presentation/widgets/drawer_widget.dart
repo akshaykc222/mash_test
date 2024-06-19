@@ -52,9 +52,11 @@ class DrawerWidget extends StatelessWidget {
                     return GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
+                        context.pop();
                         try {
                           prettyPrint(
                               '/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}');
+
                           GoRouter.of(context).pushNamed(
                               "/${data[index].menuName.toLowerCase().replaceAll(' ', '_')}");
                         } catch (e) {

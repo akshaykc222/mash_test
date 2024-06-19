@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -18,13 +20,20 @@ class ParentDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      drawer: DrawerWidget(),
-      body: CustomScrollView(
-        slivers: [
-          _Header(),
-          _Body(),
-        ],
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        log('did pope $didPop');
+        // _handleOnPopInvoked(didPop);
+      },
+      child: const Scaffold(
+        drawer: DrawerWidget(),
+        body: CustomScrollView(
+          slivers: [
+            _Header(),
+            _Body(),
+          ],
+        ),
       ),
     );
   }

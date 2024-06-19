@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
@@ -40,9 +43,9 @@ class PaymentResponseScreen extends StatelessWidget {
           SizedBox(height: SizeUtility(context).height / 10),
           orderStatus == OrderStatus.PAID
               ? Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomIconButton(
                         width: SizeUtility(context).width / 2,
@@ -51,10 +54,9 @@ class PaymentResponseScreen extends StatelessWidget {
                         name: 'View Reciept',
                         onTap: () {},
                       ),
+                      spacerWidth15,
                       _iconContainerWidget(
-                        assetFromSvg(AppAssets.downloadIcon),
-                      ),
-                      _iconContainerWidget(assetFromSvg(AppAssets.share))
+                          assetFromSvg(AppAssets.downloadIcon)),
                     ],
                   ),
                 )
@@ -68,6 +70,9 @@ class PaymentResponseScreen extends StatelessWidget {
                   ? 'Back to Payment'
                   : "Back to Home",
               onTap: () {
+                BlocProvider.of<PaymentBloc>(context)
+                    .add(const PaymentEvent.disposeEvent());
+                // GoRouter.of(context).goNamed(AppPages.feesAndPaymentScreen);
                 context.pop();
               },
             ),
@@ -78,13 +83,16 @@ class PaymentResponseScreen extends StatelessWidget {
   }
 
   Widget _iconContainerWidget(Widget child) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppColors.primaryColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(6),
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 
@@ -97,7 +105,7 @@ class PaymentResponseScreen extends StatelessWidget {
       case OrderStatus.PAID:
         return AppAssets.paymentSuccess;
       default:
-        return ""; // Return a default value or handle this case appropriately
+        return "";
     }
   }
 

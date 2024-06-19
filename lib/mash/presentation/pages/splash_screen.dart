@@ -97,7 +97,7 @@ class SplashScreenState extends State<SplashScreen>
         prettyPrint(status.toString());
         if (status == AnimationStatus.completed) {
           final routeName = await _init();
-          context.pushNamed(routeName);
+          context.goNamed(routeName);
           Timer(const Duration(milliseconds: 300), () {
             scaleController.reset();
           });

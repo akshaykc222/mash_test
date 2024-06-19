@@ -6,6 +6,7 @@ import 'package:mash/mash/domain/entities/payment/payment_complete_response_enti
 import 'package:mash/mash/domain/entities/payment/payment_dashboard_entity.dart';
 import 'package:mash/mash/domain/entities/payment/payment_final_amount_entiy.dart';
 
+import '../../data/remote/request/get_fee_success_receipt_request.dart';
 import '../../data/remote/request/payment_complete_response_request.dart';
 import '../../data/remote/request/payment_dashboard_request.dart';
 import '../../data/remote/request/payment_save_response.dart';
@@ -27,4 +28,6 @@ abstract interface class PaymentRepository {
   Future<String> postPaymentStatusUpdate(PaymentStatusUpdateRequest params);
 
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
+  Future<String> getFeeSuccessReceipt(
+      GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest);
 }

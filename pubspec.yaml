@@ -67,6 +67,7 @@ dependencies:
   vocsy_epub_viewer: ^2.0.0
 
   animated_rating_bar: ^0.0.8
+  permission_handler: ^11.3.1
 
 
 
