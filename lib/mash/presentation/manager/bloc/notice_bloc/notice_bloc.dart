@@ -1,3 +1,4 @@
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -10,7 +11,6 @@ import 'package:mash/mash/domain/use_cases/notice/get_notice_pop_up_usecase.dart
 import 'package:mash/mash/domain/use_cases/notice/notice_all_usecase.dart';
 
 import '../../../../../di/injector.dart';
-import '../../../../data/remote/request/notice_pop_up_request.dart';
 import '../../../../domain/use_cases/auth/get_user_info_use_case.dart';
 
 part 'notice_event.dart';
@@ -25,7 +25,9 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
   NoticeBloc(this.getNoticeBoardPopUp, this.getAllNoticeUseCase)
       : super(NoticeState.initial()) {
     // on<_GetNoticePopUp>(_getNoticePopUp);
-    on<_GetAllNotice>(_getAllNotice);
+    on<_GetNoticeDetail>(_getNoticeDetail);
+    on<_GetNoticeAllData>(_getNoticeAllData);
+
   }
 
   // _getNoticePopUp(_GetNoticePopUp event, Emitter<NoticeState> emit) async {
@@ -45,7 +47,7 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
   //   }
   // }
 
-  _getAllNotice(_GetAllNotice event, Emitter<NoticeState> emit) async {
+  _getNoticeDetail(_GetNoticeDetail event, Emitter<NoticeState> emit) async {
     emit(state.copyWith(noticeResponseData: ResponseClassify.loading()));
     try {
       final userdata = await getUserInfoUseCase.call(NoParams());
@@ -61,6 +63,25 @@ class NoticeBloc extends Bloc<NoticeEvent, NoticeState> {
     } catch (e) {
       emit(state.copyWith(
           noticeResponseData: ResponseClassify.error(e.toString())));
+      prettyPrint(e.toString());
+    }
+  }
+
+   _getNoticeAllData(_GetNoticeAllData event, Emitter<NoticeState> emit) async {
+    emit(state.copyWith(noticeAllData: ResponseClassify.loading()));
+    try {
+      final userdata = await getUserInfoUseCase.call(NoParams());
+      final data = await getAllNoticeUseCase.call(NoticeAllRequest(
+        pCompId: userdata?.compId ?? "",
+        usertype: '2',
+        noticeId:  '0', offset: '0', pLimit: '5',
+      ));
+      emit(state.copyWith(
+        noticeAllData: ResponseClassify.completed(data),
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          noticeAllData: ResponseClassify.error(e.toString())));
       prettyPrint(e.toString());
     }
   }
