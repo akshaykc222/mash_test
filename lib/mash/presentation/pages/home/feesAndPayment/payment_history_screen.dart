@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
@@ -34,15 +35,29 @@ class PaymentHistoryScreen extends StatelessWidget {
                   extra: state.feeReceiptByDocname.data);
             }
           },
-          builder: (context, state) =>
-              state.feeReceiptByDocname.status == Status.LOADING
-                  ? Container(
-                      color: Colors.black.withOpacity(0.4),
-                      child: const Loader())
-                  : TransactHistoryItems(
-                      trackId: trackId,
-                      state: state,
-                    )),
+          builder: (context, state) => state.feeReceiptByDocname.status ==
+                  Status.LOADING
+              ? Container(
+                  color: Colors.black.withOpacity(0.4),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Loader(),
+                      spacer20,
+                      ValueListenableBuilder(
+                          valueListenable: state.progressEvent,
+                          builder: (context, data, _) {
+                            return Text(
+                              'Downloading ${data.floor()}',
+                              style: TextStyle(color: AppColors.primaryColor),
+                            );
+                          })
+                    ],
+                  ))
+              : TransactHistoryItems(
+                  trackId: trackId,
+                  state: state,
+                )),
     );
   }
 }

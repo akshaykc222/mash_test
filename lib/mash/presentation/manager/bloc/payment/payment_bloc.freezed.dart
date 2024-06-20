@@ -3038,7 +3038,7 @@ mixin _$PaymentState {
   String get shareFile => throw _privateConstructorUsedError;
   ResponseClassify<String> get feeReceiptByDocname =>
       throw _privateConstructorUsedError;
-  ValueNotifier get progressEvent => throw _privateConstructorUsedError;
+  ValueNotifier<double> get progressEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -3064,7 +3064,7 @@ abstract class $PaymentStateCopyWith<$Res> {
       String installmentId,
       String shareFile,
       ResponseClassify<String> feeReceiptByDocname,
-      ValueNotifier progressEvent});
+      ValueNotifier<double> progressEvent});
 }
 
 /// @nodoc
@@ -3092,7 +3092,7 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? installmentId = null,
     Object? shareFile = null,
     Object? feeReceiptByDocname = null,
-    Object? progressEvent = freezed,
+    Object? progressEvent = null,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -3143,10 +3143,10 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.feeReceiptByDocname
           : feeReceiptByDocname // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
-      progressEvent: freezed == progressEvent
+      progressEvent: null == progressEvent
           ? _value.progressEvent
           : progressEvent // ignore: cast_nullable_to_non_nullable
-              as ValueNotifier,
+              as ValueNotifier<double>,
     ) as $Val);
   }
 }
@@ -3172,7 +3172,7 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       String installmentId,
       String shareFile,
       ResponseClassify<String> feeReceiptByDocname,
-      ValueNotifier progressEvent});
+      ValueNotifier<double> progressEvent});
 }
 
 /// @nodoc
@@ -3198,7 +3198,7 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? installmentId = null,
     Object? shareFile = null,
     Object? feeReceiptByDocname = null,
-    Object? progressEvent = freezed,
+    Object? progressEvent = null,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -3249,10 +3249,10 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.feeReceiptByDocname
           : feeReceiptByDocname // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<String>,
-      progressEvent: freezed == progressEvent
+      progressEvent: null == progressEvent
           ? _value.progressEvent
           : progressEvent // ignore: cast_nullable_to_non_nullable
-              as ValueNotifier,
+              as ValueNotifier<double>,
     ));
   }
 }
@@ -3310,7 +3310,7 @@ class _$PaymentStateImpl implements _PaymentState {
   @override
   final ResponseClassify<String> feeReceiptByDocname;
   @override
-  final ValueNotifier progressEvent;
+  final ValueNotifier<double> progressEvent;
 
   @override
   String toString() {
@@ -3349,8 +3349,8 @@ class _$PaymentStateImpl implements _PaymentState {
                 other.shareFile == shareFile) &&
             (identical(other.feeReceiptByDocname, feeReceiptByDocname) ||
                 other.feeReceiptByDocname == feeReceiptByDocname) &&
-            const DeepCollectionEquality()
-                .equals(other.progressEvent, progressEvent));
+            (identical(other.progressEvent, progressEvent) ||
+                other.progressEvent == progressEvent));
   }
 
   @override
@@ -3368,7 +3368,7 @@ class _$PaymentStateImpl implements _PaymentState {
       installmentId,
       shareFile,
       feeReceiptByDocname,
-      const DeepCollectionEquality().hash(progressEvent));
+      progressEvent);
 
   @JsonKey(ignore: true)
   @override
@@ -3393,7 +3393,7 @@ abstract class _PaymentState implements PaymentState {
       required final String installmentId,
       required final String shareFile,
       required final ResponseClassify<String> feeReceiptByDocname,
-      required final ValueNotifier progressEvent}) = _$PaymentStateImpl;
+      required final ValueNotifier<double> progressEvent}) = _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -3420,7 +3420,7 @@ abstract class _PaymentState implements PaymentState {
   @override
   ResponseClassify<String> get feeReceiptByDocname;
   @override
-  ValueNotifier get progressEvent;
+  ValueNotifier<double> get progressEvent;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

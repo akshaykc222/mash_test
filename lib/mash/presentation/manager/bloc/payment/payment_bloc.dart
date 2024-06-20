@@ -414,11 +414,12 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       final tempDir = await getTemporaryDirectory();
       final tempPath = '${tempDir.path}/receipt.pdf';
 
-      ApiProvider()
-          .downloadFile(file: File(tempPath), url: data)
-          .listen((event) {
+      ApiProvider().downloadFile(file: File(tempPath), url: data).listen(
+          onDone: () {
+        // state.progressEvent.value = 0;
+      }, (event) {
         state.progressEvent.value = event;
-        log('progreon on bloc ${state.progressEvent.value}');
+        state.progressEvent.notifyListeners();
       });
 
       emit(state.copyWith(

@@ -17,7 +17,7 @@ class PaymentState with _$PaymentState {
     required String installmentId,
     required String shareFile,
     required ResponseClassify<String> feeReceiptByDocname,
-    required ValueNotifier progressEvent,
+    required ValueNotifier<double> progressEvent,
   }) = _PaymentState;
 
   factory PaymentState.initial() => PaymentState(
@@ -33,6 +33,6 @@ class PaymentState with _$PaymentState {
         installmentId: '',
         shareFile: '',
         feeReceiptByDocname: ResponseClassify.initial(),
-        progressEvent: ValueNotifier(0),
+        progressEvent: ValueNotifier<double>(0),
       );
 }
