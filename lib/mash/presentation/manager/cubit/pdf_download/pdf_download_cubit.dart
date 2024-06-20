@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../../../core/pretty_printer.dart';
@@ -13,7 +14,8 @@ part 'pdf_download_cubit.freezed.dart';
 
 class PdfDownloadCubit extends Cubit<PdfDownloadState> {
   PdfDownloadCubit() : super(PdfDownloadState.initial());
-  downloadPdf(String filePath) async {
+  downloadPdf(
+      {required String filePath, required DoucumentType doucumentType}) async {
     emit(state.copyWith(pdfDownloadResponse: ResponseClassify.loading()));
     final fileName = filePath;
     if (fileName.isEmpty) {
@@ -53,10 +55,12 @@ class PdfDownloadCubit extends Cubit<PdfDownloadState> {
         }
       }
     } on Exception catch (err, stackTrace) {
-      emit(state.copyWith(
-        pdfDownloadProgressState: 0,
-        pdfDownloadResponse: ResponseClassify.error(err.toString()),
-      ));
+      emit(
+        state.copyWith(
+            pdfDownloadProgressState: 0,
+            pdfDownloadResponse:
+                ResponseClassify.error('something error found')),
+      );
       prettyPrint('Error: $err stacktrace $stackTrace');
     }
   }

@@ -136,7 +136,7 @@ class ApiProvider {
         data: xmlBody.toXmlString(),
       );
 
-      prettyPrint("getting response xml ${response}");
+      prettyPrint("getting response xml $response");
 
       // Check the status code
       if (response.statusCode == 200) {

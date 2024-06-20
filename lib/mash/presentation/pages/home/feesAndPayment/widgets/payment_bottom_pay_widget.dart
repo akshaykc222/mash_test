@@ -108,7 +108,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
             top: -30,
             child: InkResponse(
               onTap: () {
-                Navigator.of(context).pop();
+                context.pop();
               },
               child: CircleAvatar(
                 radius: 15,

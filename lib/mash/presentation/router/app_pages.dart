@@ -66,7 +66,6 @@ class AppPages {
   static const noticeBoardDetailScreen = '/noticeDetailScreen';
 
   //timeTable
-
   static const timeTableMainScreen = '/timeTableMainScreen';
   static const weeklyTimetableScreen = '/weeklyTimetableScreen';
   static const examTimetableScreen = '/examTimetableScreen';
@@ -108,12 +107,13 @@ class AppPages {
   static const idCardRequestScreen = '/id_card_request';
   static const competitiveExamScreen = '/competitie_exam';
   static const examDetailScreen = '/examDetailScreen';
-
+  static const imageFullView = '/imageFullView';
   //fees and payments
   static const feesAndPaymentScreen = '/fees_&_payments';
   static const paymentHistoryScreen = '/paymentHistoryScreen';
   static const feesAndPaymentsConfirmation = '/feesAndPaymentConfirmation';
   static const transactionHistory = '/transactionHistory';
+  static const paymentResponse = '/paymentResponse';
 
   //chats
   static const chatsListScreen = "/chat_room";

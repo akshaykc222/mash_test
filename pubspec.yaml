@@ -61,15 +61,20 @@ dependencies:
   photo_view:
   url_launcher:
   table_calendar: ^3.1.1
-  flutter_cashfree_pg_sdk: any
+  flutter_cashfree_pg_sdk: ^2.1.2+32
   fluttertoast: ^8.2.6
   rive: ^0.11.7
   vocsy_epub_viewer: ^2.0.0
-
+  better_player_plus: any
   animated_rating_bar: ^0.0.8
   just_audio: ^0.9.38
   flick_video_player: ^0.8.0
   video_player: ^2.8.7
+
+  permission_handler: ^11.3.1
+  flutter_download_manager: ^0.5.5
+  flutter_file_dialog: ^3.0.2
+  share_plus: ^9.0.0
 
 
 

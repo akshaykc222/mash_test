@@ -32,7 +32,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    log('reeee builded');
     return Scaffold(
       appBar: commonAppbar(title: AppStrings.feedbackForm),
       endDrawer: const DrawerWidget(),

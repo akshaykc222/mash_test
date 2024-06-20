@@ -102,6 +102,9 @@ class AppRemoteRoutes {
 
   static const savePaymentResponse =
       "UATRESTAPI/MashFlutterRestAPI/api/user/savePaymentResponse";
+
+  static const getFeeSuccessReceipt =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getFeeSuccessRecieptView";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";
@@ -113,10 +116,10 @@ class AppRemoteRoutes {
   static const getPhysicalLibraryRequiredData =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
 
-  static const insertPhysicalLibraryRequest =
+ static const insertPhysicalLibraryRequest =
       "UATRESTAPI/MashFlutterRestAPI/api/user/insertBookRequest";
 
-  // leave
+ // leave
   static const getLeaveDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveDashboardDetails";
   static const insertDlClick =

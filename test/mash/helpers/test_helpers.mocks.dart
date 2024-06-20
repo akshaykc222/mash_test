@@ -26,7 +26,7 @@ import 'package:mash/mash/data/local/data_sources/dash_board_local_data_source.d
 import 'package:mash/mash/data/local/models/dash_board_hive_model.dart' as _i44;
 import 'package:mash/mash/data/local/models/login_local_model.dart' as _i29;
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart'
-    as _i63;
+    as _i62;
 import 'package:mash/mash/data/remote/data_sources/auth_remote_data_source.dart'
     as _i30;
 import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.dart'
@@ -34,17 +34,17 @@ import 'package:mash/mash/data/remote/data_sources/dashboard_remote_data_source.
 import 'package:mash/mash/data/remote/data_sources/drawer_menu_items_remote_data_source.dart'
     as _i48;
 import 'package:mash/mash/data/remote/data_sources/home_remote_data_source.dart'
-    as _i73;
+    as _i72;
 import 'package:mash/mash/data/remote/models/academic/academic_subjects_model.dart'
-    as _i65;
-import 'package:mash/mash/data/remote/models/academic/class_details_model.dart'
     as _i64;
+import 'package:mash/mash/data/remote/models/academic/class_details_model.dart'
+    as _i63;
 import 'package:mash/mash/data/remote/models/academic/division_details_model.dart'
-    as _i66;
+    as _i65;
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_models.dart'
-    as _i67;
+    as _i66;
 import 'package:mash/mash/data/remote/models/academic/syllabus/syllabus_term_model.dart'
-    as _i68;
+    as _i67;
 import 'package:mash/mash/data/remote/models/chat/chat_message_model.dart'
     as _i27;
 import 'package:mash/mash/data/remote/models/chat/chat_room_model.dart' as _i6;
@@ -58,12 +58,11 @@ import 'package:mash/mash/data/remote/request/academic_comp_id_request.dart'
     as _i34;
 import 'package:mash/mash/data/remote/request/academic_subjects_request.dart'
     as _i53;
-import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i71;
+import 'package:mash/mash/data/remote/request/add_on_request.dart' as _i70;
 import 'package:mash/mash/data/remote/request/di_type_request.dart' as _i61;
 import 'package:mash/mash/data/remote/request/digital_library_request.dart'
     as _i59;
-import 'package:mash/mash/data/remote/request/feed_back_request.dart' as _i72;
-import 'package:mash/mash/data/remote/request/insert_dl_click.dart' as _i62;
+import 'package:mash/mash/data/remote/request/feed_back_request.dart' as _i71;
 import 'package:mash/mash/data/remote/request/login_request.dart' as _i28;
 import 'package:mash/mash/data/remote/request/news_board_request.dart' as _i47;
 import 'package:mash/mash/data/remote/request/role_menu_request.dart' as _i36;
@@ -81,7 +80,7 @@ import 'package:mash/mash/domain/entities/academic/division_details_entity.dart'
     as _i54;
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart'
     as _i56;
-import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart' as _i70;
+import 'package:mash/mash/domain/entities/add_on/add_on_entity.dart' as _i69;
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart'
     as _i8;
 import 'package:mash/mash/domain/entities/dashboard/digital_library_entity.dart'
@@ -106,7 +105,7 @@ import 'package:mash/mash/domain/repositories/dash_board_repository.dart'
     as _i40;
 import 'package:mash/mash/domain/repositories/drawer_menu_items_repository.dart'
     as _i45;
-import 'package:mash/mash/domain/repositories/home_repository.dart' as _i69;
+import 'package:mash/mash/domain/repositories/home_repository.dart' as _i68;
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart'
     as _i11;
 import 'package:mash/mash/domain/use_cases/auth/login_use_case.dart' as _i9;
@@ -1597,66 +1596,55 @@ class MockAcademicRepository extends _i1.Mock
         returnValue: _i18.Future<List<_i60.AcademicTypeEntity>>.value(
             <_i60.AcademicTypeEntity>[]),
       ) as _i18.Future<List<_i60.AcademicTypeEntity>>);
-
-  @override
-  _i18.Future<void> insertDlClick(_i62.BookmarkLikeModel? request) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #insertDlClick,
-          [request],
-        ),
-        returnValue: _i18.Future<void>.value(),
-        returnValueForMissingStub: _i18.Future<void>.value(),
-      ) as _i18.Future<void>);
 }
 
 /// A class which mocks [AcademicRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAcademicRemoteDataSource extends _i1.Mock
-    implements _i63.AcademicRemoteDataSource {
+    implements _i62.AcademicRemoteDataSource {
   MockAcademicRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i18.Future<List<_i64.ClassDetailsModel>> getClassDetails(
+  _i18.Future<List<_i63.ClassDetailsModel>> getClassDetails(
           _i34.AcademicAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getClassDetails,
           [params],
         ),
-        returnValue: _i18.Future<List<_i64.ClassDetailsModel>>.value(
-            <_i64.ClassDetailsModel>[]),
-      ) as _i18.Future<List<_i64.ClassDetailsModel>>);
+        returnValue: _i18.Future<List<_i63.ClassDetailsModel>>.value(
+            <_i63.ClassDetailsModel>[]),
+      ) as _i18.Future<List<_i63.ClassDetailsModel>>);
 
   @override
-  _i18.Future<List<_i65.AcademicSubjectModel>> getAcademicSubjects(
+  _i18.Future<List<_i64.AcademicSubjectModel>> getAcademicSubjects(
           _i53.ClassAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAcademicSubjects,
           [params],
         ),
-        returnValue: _i18.Future<List<_i65.AcademicSubjectModel>>.value(
-            <_i65.AcademicSubjectModel>[]),
-      ) as _i18.Future<List<_i65.AcademicSubjectModel>>);
+        returnValue: _i18.Future<List<_i64.AcademicSubjectModel>>.value(
+            <_i64.AcademicSubjectModel>[]),
+      ) as _i18.Future<List<_i64.AcademicSubjectModel>>);
 
   @override
-  _i18.Future<List<_i66.DivisionDetailsModel?>> getDivisionDetails(
+  _i18.Future<List<_i65.DivisionDetailsModel?>> getDivisionDetails(
           _i53.ClassAndCompIdRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getDivisionDetails,
           [params],
         ),
-        returnValue: _i18.Future<List<_i66.DivisionDetailsModel?>>.value(
-            <_i66.DivisionDetailsModel?>[]),
-      ) as _i18.Future<List<_i66.DivisionDetailsModel?>>);
+        returnValue: _i18.Future<List<_i65.DivisionDetailsModel?>>.value(
+            <_i65.DivisionDetailsModel?>[]),
+      ) as _i18.Future<List<_i65.DivisionDetailsModel?>>);
 
   @override
-  _i18.Future<List<_i67.SyllabusModel>> getSyllabus(
+  _i18.Future<List<_i66.SyllabusModel>> getSyllabus(
           _i56.SyllabusRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -1664,20 +1652,20 @@ class MockAcademicRemoteDataSource extends _i1.Mock
           [params],
         ),
         returnValue:
-            _i18.Future<List<_i67.SyllabusModel>>.value(<_i67.SyllabusModel>[]),
-      ) as _i18.Future<List<_i67.SyllabusModel>>);
+            _i18.Future<List<_i66.SyllabusModel>>.value(<_i66.SyllabusModel>[]),
+      ) as _i18.Future<List<_i66.SyllabusModel>>);
 
   @override
-  _i18.Future<List<_i68.SyllabusTermModel?>> getSyllabusTerms(
+  _i18.Future<List<_i67.SyllabusTermModel?>> getSyllabusTerms(
           _i56.SyllabusTermsRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSyllabusTerms,
           [params],
         ),
-        returnValue: _i18.Future<List<_i68.SyllabusTermModel?>>.value(
-            <_i68.SyllabusTermModel?>[]),
-      ) as _i18.Future<List<_i68.SyllabusTermModel?>>);
+        returnValue: _i18.Future<List<_i67.SyllabusTermModel?>>.value(
+            <_i67.SyllabusTermModel?>[]),
+      ) as _i18.Future<List<_i67.SyllabusTermModel?>>);
 
   @override
   _i18.Future<List<_i58.DigitalLibraryEntity>> getDigitalLibrary(
@@ -1702,40 +1690,29 @@ class MockAcademicRemoteDataSource extends _i1.Mock
         returnValue: _i18.Future<List<_i60.AcademicTypeEntity>>.value(
             <_i60.AcademicTypeEntity>[]),
       ) as _i18.Future<List<_i60.AcademicTypeEntity>>);
-
-  @override
-  _i18.Future<void> insertDlClick(_i62.BookmarkLikeModel? request) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #insertDlClick,
-          [request],
-        ),
-        returnValue: _i18.Future<void>.value(),
-        returnValueForMissingStub: _i18.Future<void>.value(),
-      ) as _i18.Future<void>);
 }
 
 /// A class which mocks [HomeRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHomeRepository extends _i1.Mock implements _i69.HomeRepository {
+class MockHomeRepository extends _i1.Mock implements _i68.HomeRepository {
   MockHomeRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i18.Future<List<_i70.AddOnEntity>> getAddon(_i71.AddOnRequest? params) =>
+  _i18.Future<List<_i69.AddOnEntity>> getAddon(_i70.AddOnRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAddon,
           [params],
         ),
         returnValue:
-            _i18.Future<List<_i70.AddOnEntity>>.value(<_i70.AddOnEntity>[]),
-      ) as _i18.Future<List<_i70.AddOnEntity>>);
+            _i18.Future<List<_i69.AddOnEntity>>.value(<_i69.AddOnEntity>[]),
+      ) as _i18.Future<List<_i69.AddOnEntity>>);
 
   @override
-  _i18.Future<void> feedBackPost(_i72.FeedbackRequest? feedbackRequest) =>
+  _i18.Future<void> feedBackPost(_i71.FeedbackRequest? feedbackRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #feedBackPost,
@@ -1750,24 +1727,24 @@ class MockHomeRepository extends _i1.Mock implements _i69.HomeRepository {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRemoteDataSource extends _i1.Mock
-    implements _i73.HomeRemoteDataSource {
+    implements _i72.HomeRemoteDataSource {
   MockHomeRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i18.Future<List<_i70.AddOnEntity>> getAddon(_i71.AddOnRequest? params) =>
+  _i18.Future<List<_i69.AddOnEntity>> getAddon(_i70.AddOnRequest? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAddon,
           [params],
         ),
         returnValue:
-            _i18.Future<List<_i70.AddOnEntity>>.value(<_i70.AddOnEntity>[]),
-      ) as _i18.Future<List<_i70.AddOnEntity>>);
+            _i18.Future<List<_i69.AddOnEntity>>.value(<_i69.AddOnEntity>[]),
+      ) as _i18.Future<List<_i69.AddOnEntity>>);
 
   @override
-  _i18.Future<void> feedBackPost(_i72.FeedbackRequest? feedbackRequest) =>
+  _i18.Future<void> feedBackPost(_i71.FeedbackRequest? feedbackRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #feedBackPost,

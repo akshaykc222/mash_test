@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:mash/mash/data/remote/request/get_fee_success_receipt_request.dart';
 import 'package:mash/mash/data/remote/request/payment_complete_response_request.dart';
 import 'package:mash/mash/data/remote/request/payment_final_amount_request.dart';
 import 'package:mash/mash/data/remote/request/payment_status_update_request.dart';
@@ -54,5 +55,12 @@ class PaymentRepoImpl implements PaymentRepository {
   @override
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params) {
     return paymentRemoteDataSource.savePaymentResponse(params);
+  }
+
+  @override
+  Future<String> getFeeSuccessReceipt(
+      GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest) {
+    return paymentRemoteDataSource
+        .getFeeSuccessReceipt(getFeeSuccessReceiptRequest);
   }
 }

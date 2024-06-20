@@ -11,6 +11,8 @@ class PaymentSaveResponseRequest {
   final String? pPaymentDate;
   final String? pRemark;
   final String? pOrderId;
+  final String? discountAmount;
+  final String? isDiscount;
 
   PaymentSaveResponseRequest({
     required this.pCompId,
@@ -25,6 +27,8 @@ class PaymentSaveResponseRequest {
     required this.pPaymentDate,
     required this.pRemark,
     required this.pOrderId,
+    required this.discountAmount,
+    required this.isDiscount,
   });
 
   Map<String, dynamic> toJson() {
@@ -41,6 +45,8 @@ class PaymentSaveResponseRequest {
       'P_PAYMENT_DATE': pPaymentDate,
       'P_REMARK': pRemark,
       'P_ORDER_ID': pOrderId,
+      'P_DISCOUNT_AMT': discountAmount,
+      'P_IS_DISCOUNT': isDiscount,
     };
   }
 }

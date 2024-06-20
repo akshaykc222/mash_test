@@ -12,7 +12,11 @@ class PaymentState with _$PaymentState {
         paymentHistoryResponse,
     required ResponseClassify<OrderStatus> paymentOrderResponse,
     required PaymentFinalAmountEntity? paymentFinalAmountResponse,
+    required String paymentError,
+    required ResponseClassify<String> feeRecieptResponse,
+    required String installmentId,
   }) = _PaymentState;
+
   factory PaymentState.initial() => PaymentState(
         paymentDashboardResponse: ResponseClassify.initial(),
         selectedItemIndex: null,
@@ -21,5 +25,8 @@ class PaymentState with _$PaymentState {
         paymentHistoryResponse: ResponseClassify.initial(),
         paymentOrderResponse: ResponseClassify.initial(),
         paymentFinalAmountResponse: null,
+        paymentError: '',
+        feeRecieptResponse: ResponseClassify.initial(),
+        installmentId: '',
       );
 }

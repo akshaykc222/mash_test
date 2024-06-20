@@ -19,6 +19,7 @@ mixin _$PdfDownloadState {
   ResponseClassify<String> get pdfDownloadResponse =>
       throw _privateConstructorUsedError;
   int get pdfDownloadProgressState => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PdfDownloadStateCopyWith<PdfDownloadState> get copyWith =>
@@ -33,7 +34,8 @@ abstract class $PdfDownloadStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ResponseClassify<String> pdfDownloadResponse,
-      int pdfDownloadProgressState});
+      int pdfDownloadProgressState,
+      String image});
 }
 
 /// @nodoc
@@ -51,6 +53,7 @@ class _$PdfDownloadStateCopyWithImpl<$Res, $Val extends PdfDownloadState>
   $Res call({
     Object? pdfDownloadResponse = null,
     Object? pdfDownloadProgressState = null,
+    Object? image = null,
   }) {
     return _then(_value.copyWith(
       pdfDownloadResponse: null == pdfDownloadResponse
@@ -61,6 +64,10 @@ class _$PdfDownloadStateCopyWithImpl<$Res, $Val extends PdfDownloadState>
           ? _value.pdfDownloadProgressState
           : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
               as int,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +82,8 @@ abstract class _$$PdfDownloadStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {ResponseClassify<String> pdfDownloadResponse,
-      int pdfDownloadProgressState});
+      int pdfDownloadProgressState,
+      String image});
 }
 
 /// @nodoc
@@ -91,6 +99,7 @@ class __$$PdfDownloadStateImplCopyWithImpl<$Res>
   $Res call({
     Object? pdfDownloadResponse = null,
     Object? pdfDownloadProgressState = null,
+    Object? image = null,
   }) {
     return _then(_$PdfDownloadStateImpl(
       pdfDownloadResponse: null == pdfDownloadResponse
@@ -101,6 +110,10 @@ class __$$PdfDownloadStateImplCopyWithImpl<$Res>
           ? _value.pdfDownloadProgressState
           : pdfDownloadProgressState // ignore: cast_nullable_to_non_nullable
               as int,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,16 +123,19 @@ class __$$PdfDownloadStateImplCopyWithImpl<$Res>
 class _$PdfDownloadStateImpl implements _PdfDownloadState {
   const _$PdfDownloadStateImpl(
       {required this.pdfDownloadResponse,
-      required this.pdfDownloadProgressState});
+      required this.pdfDownloadProgressState,
+      required this.image});
 
   @override
   final ResponseClassify<String> pdfDownloadResponse;
   @override
   final int pdfDownloadProgressState;
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'PdfDownloadState(pdfDownloadResponse: $pdfDownloadResponse, pdfDownloadProgressState: $pdfDownloadProgressState)';
+    return 'PdfDownloadState(pdfDownloadResponse: $pdfDownloadResponse, pdfDownloadProgressState: $pdfDownloadProgressState, image: $image)';
   }
 
   @override
@@ -131,12 +147,13 @@ class _$PdfDownloadStateImpl implements _PdfDownloadState {
                 other.pdfDownloadResponse == pdfDownloadResponse) &&
             (identical(
                     other.pdfDownloadProgressState, pdfDownloadProgressState) ||
-                other.pdfDownloadProgressState == pdfDownloadProgressState));
+                other.pdfDownloadProgressState == pdfDownloadProgressState) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pdfDownloadResponse, pdfDownloadProgressState);
+  int get hashCode => Object.hash(
+      runtimeType, pdfDownloadResponse, pdfDownloadProgressState, image);
 
   @JsonKey(ignore: true)
   @override
@@ -149,12 +166,15 @@ class _$PdfDownloadStateImpl implements _PdfDownloadState {
 abstract class _PdfDownloadState implements PdfDownloadState {
   const factory _PdfDownloadState(
       {required final ResponseClassify<String> pdfDownloadResponse,
-      required final int pdfDownloadProgressState}) = _$PdfDownloadStateImpl;
+      required final int pdfDownloadProgressState,
+      required final String image}) = _$PdfDownloadStateImpl;
 
   @override
   ResponseClassify<String> get pdfDownloadResponse;
   @override
   int get pdfDownloadProgressState;
+  @override
+  String get image;
   @override
   @JsonKey(ignore: true)
   _$$PdfDownloadStateImplCopyWith<_$PdfDownloadStateImpl> get copyWith =>

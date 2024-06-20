@@ -4,14 +4,6 @@ import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: commonAppbar(title: "title", searchFunction: (str) {}),
-    ),
-  ));
-}
-
 PreferredSize commonAppbar(
     {required String title,
     Function(String)? searchFunction,
