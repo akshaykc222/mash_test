@@ -21,9 +21,10 @@ class NoticeBoardMainScreen extends StatefulWidget {
 }
 
 class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
+
   @override
   void initState() {
-    BlocProvider.of<NoticeBloc>(context).add(const NoticeEvent.getAllNotice(noticeId: '0'));
+    BlocProvider.of<NoticeBloc>(context).add(const NoticeEvent.getNoticeAllData());
     super.initState();
   }
 
@@ -44,23 +45,19 @@ class _NoticeBoardMainScreenState extends State<NoticeBoardMainScreen> {
         height: size.height,
         width: size.width,
         child: ListView.separated(
+            itemCount: state.noticeAllData.data?.length ?? 0,
             itemBuilder: (context, index) {
-              return state.noticeResponseData.status == Status.LOADING ?  Loader: state.noticeResponseData.data!.isEmpty ?  HelperClasses.emptyDataWidget():noticeCard(index, context,state.noticeResponseData.data![index]!.topicHead.toString(),state.noticeResponseData.data![index]!.topicDesc.toString(),state.noticeResponseData.data![index]!.noticeDate.toString(),state.noticeResponseData.data![index]!.noticeId.toString());
+              return state.noticeAllData.status == Status.LOADING ?  Loader: state.noticeAllData.data!.isEmpty ?  HelperClasses.emptyDataWidget():noticeCard(index, context,state.noticeAllData.data![index]!.topicHead.toString(),state.noticeAllData.data![index]!.topicDesc.toString(),state.noticeAllData.data![index]!.noticeDate.toString(),state.noticeAllData.data![index]!.noticeId.toString());
             },
             separatorBuilder: (context, index) {
               return spacer10;
             },
-             itemCount: state.noticeResponseData.data?.length ?? 0
         ),
       ),
     );
   }
 
   noticeCard(int index, BuildContext context,String noticeTitle,String descriptions,String noticeDate,String noticeId) {
-    List<String> descList = [
-      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available',
-      'Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text,'
-    ];
 
     return GestureDetector(
       onTap: () =>

@@ -83,6 +83,8 @@ import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
 import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
+import '../pages/home/library/academic_books.dart';
+import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
 import '../utils/enums.dart';

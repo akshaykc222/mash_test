@@ -19,38 +19,44 @@ mixin _$NoticeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNoticePopUp,
-    required TResult Function(String noticeId) getAllNotice,
+    required TResult Function(String noticeId) getNoticeDetail,
+    required TResult Function() getNoticeAllData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNoticePopUp,
-    TResult? Function(String noticeId)? getAllNotice,
+    TResult? Function(String noticeId)? getNoticeDetail,
+    TResult? Function()? getNoticeAllData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNoticePopUp,
-    TResult Function(String noticeId)? getAllNotice,
+    TResult Function(String noticeId)? getNoticeDetail,
+    TResult Function()? getNoticeAllData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNoticePopUp value) getNoticePopUp,
-    required TResult Function(_GetAllNotice value) getAllNotice,
+    required TResult Function(_GetNoticeDetail value) getNoticeDetail,
+    required TResult Function(_GetNoticeAllData value) getNoticeAllData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult? Function(_GetAllNotice value)? getAllNotice,
+    TResult? Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult? Function(_GetNoticeAllData value)? getNoticeAllData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult Function(_GetAllNotice value)? getAllNotice,
+    TResult Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult Function(_GetNoticeAllData value)? getNoticeAllData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +119,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNoticePopUp,
-    required TResult Function(String noticeId) getAllNotice,
+    required TResult Function(String noticeId) getNoticeDetail,
+    required TResult Function() getNoticeAllData,
   }) {
     return getNoticePopUp();
   }
@@ -122,7 +129,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNoticePopUp,
-    TResult? Function(String noticeId)? getAllNotice,
+    TResult? Function(String noticeId)? getNoticeDetail,
+    TResult? Function()? getNoticeAllData,
   }) {
     return getNoticePopUp?.call();
   }
@@ -131,7 +139,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNoticePopUp,
-    TResult Function(String noticeId)? getAllNotice,
+    TResult Function(String noticeId)? getNoticeDetail,
+    TResult Function()? getNoticeAllData,
     required TResult orElse(),
   }) {
     if (getNoticePopUp != null) {
@@ -144,7 +153,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNoticePopUp value) getNoticePopUp,
-    required TResult Function(_GetAllNotice value) getAllNotice,
+    required TResult Function(_GetNoticeDetail value) getNoticeDetail,
+    required TResult Function(_GetNoticeAllData value) getNoticeAllData,
   }) {
     return getNoticePopUp(this);
   }
@@ -153,7 +163,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult? Function(_GetAllNotice value)? getAllNotice,
+    TResult? Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult? Function(_GetNoticeAllData value)? getNoticeAllData,
   }) {
     return getNoticePopUp?.call(this);
   }
@@ -162,7 +173,8 @@ class _$GetNoticePopUpImpl implements _GetNoticePopUp {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult Function(_GetAllNotice value)? getAllNotice,
+    TResult Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult Function(_GetNoticeAllData value)? getNoticeAllData,
     required TResult orElse(),
   }) {
     if (getNoticePopUp != null) {
@@ -177,20 +189,20 @@ abstract class _GetNoticePopUp implements NoticeEvent {
 }
 
 /// @nodoc
-abstract class _$$GetAllNoticeImplCopyWith<$Res> {
-  factory _$$GetAllNoticeImplCopyWith(
-          _$GetAllNoticeImpl value, $Res Function(_$GetAllNoticeImpl) then) =
-      __$$GetAllNoticeImplCopyWithImpl<$Res>;
+abstract class _$$GetNoticeDetailImplCopyWith<$Res> {
+  factory _$$GetNoticeDetailImplCopyWith(_$GetNoticeDetailImpl value,
+          $Res Function(_$GetNoticeDetailImpl) then) =
+      __$$GetNoticeDetailImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String noticeId});
 }
 
 /// @nodoc
-class __$$GetAllNoticeImplCopyWithImpl<$Res>
-    extends _$NoticeEventCopyWithImpl<$Res, _$GetAllNoticeImpl>
-    implements _$$GetAllNoticeImplCopyWith<$Res> {
-  __$$GetAllNoticeImplCopyWithImpl(
-      _$GetAllNoticeImpl _value, $Res Function(_$GetAllNoticeImpl) _then)
+class __$$GetNoticeDetailImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$GetNoticeDetailImpl>
+    implements _$$GetNoticeDetailImplCopyWith<$Res> {
+  __$$GetNoticeDetailImplCopyWithImpl(
+      _$GetNoticeDetailImpl _value, $Res Function(_$GetNoticeDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +210,7 @@ class __$$GetAllNoticeImplCopyWithImpl<$Res>
   $Res call({
     Object? noticeId = null,
   }) {
-    return _then(_$GetAllNoticeImpl(
+    return _then(_$GetNoticeDetailImpl(
       noticeId: null == noticeId
           ? _value.noticeId
           : noticeId // ignore: cast_nullable_to_non_nullable
@@ -209,22 +221,22 @@ class __$$GetAllNoticeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetAllNoticeImpl implements _GetAllNotice {
-  const _$GetAllNoticeImpl({required this.noticeId});
+class _$GetNoticeDetailImpl implements _GetNoticeDetail {
+  const _$GetNoticeDetailImpl({required this.noticeId});
 
   @override
   final String noticeId;
 
   @override
   String toString() {
-    return 'NoticeEvent.getAllNotice(noticeId: $noticeId)';
+    return 'NoticeEvent.getNoticeDetail(noticeId: $noticeId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetAllNoticeImpl &&
+            other is _$GetNoticeDetailImpl &&
             (identical(other.noticeId, noticeId) ||
                 other.noticeId == noticeId));
   }
@@ -235,36 +247,40 @@ class _$GetAllNoticeImpl implements _GetAllNotice {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetAllNoticeImplCopyWith<_$GetAllNoticeImpl> get copyWith =>
-      __$$GetAllNoticeImplCopyWithImpl<_$GetAllNoticeImpl>(this, _$identity);
+  _$$GetNoticeDetailImplCopyWith<_$GetNoticeDetailImpl> get copyWith =>
+      __$$GetNoticeDetailImplCopyWithImpl<_$GetNoticeDetailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getNoticePopUp,
-    required TResult Function(String noticeId) getAllNotice,
+    required TResult Function(String noticeId) getNoticeDetail,
+    required TResult Function() getNoticeAllData,
   }) {
-    return getAllNotice(noticeId);
+    return getNoticeDetail(noticeId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNoticePopUp,
-    TResult? Function(String noticeId)? getAllNotice,
+    TResult? Function(String noticeId)? getNoticeDetail,
+    TResult? Function()? getNoticeAllData,
   }) {
-    return getAllNotice?.call(noticeId);
+    return getNoticeDetail?.call(noticeId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNoticePopUp,
-    TResult Function(String noticeId)? getAllNotice,
+    TResult Function(String noticeId)? getNoticeDetail,
+    TResult Function()? getNoticeAllData,
     required TResult orElse(),
   }) {
-    if (getAllNotice != null) {
-      return getAllNotice(noticeId);
+    if (getNoticeDetail != null) {
+      return getNoticeDetail(noticeId);
     }
     return orElse();
   }
@@ -273,47 +289,160 @@ class _$GetAllNoticeImpl implements _GetAllNotice {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetNoticePopUp value) getNoticePopUp,
-    required TResult Function(_GetAllNotice value) getAllNotice,
+    required TResult Function(_GetNoticeDetail value) getNoticeDetail,
+    required TResult Function(_GetNoticeAllData value) getNoticeAllData,
   }) {
-    return getAllNotice(this);
+    return getNoticeDetail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult? Function(_GetAllNotice value)? getAllNotice,
+    TResult? Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult? Function(_GetNoticeAllData value)? getNoticeAllData,
   }) {
-    return getAllNotice?.call(this);
+    return getNoticeDetail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetNoticePopUp value)? getNoticePopUp,
-    TResult Function(_GetAllNotice value)? getAllNotice,
+    TResult Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult Function(_GetNoticeAllData value)? getNoticeAllData,
     required TResult orElse(),
   }) {
-    if (getAllNotice != null) {
-      return getAllNotice(this);
+    if (getNoticeDetail != null) {
+      return getNoticeDetail(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetAllNotice implements NoticeEvent {
-  const factory _GetAllNotice({required final String noticeId}) =
-      _$GetAllNoticeImpl;
+abstract class _GetNoticeDetail implements NoticeEvent {
+  const factory _GetNoticeDetail({required final String noticeId}) =
+      _$GetNoticeDetailImpl;
 
   String get noticeId;
   @JsonKey(ignore: true)
-  _$$GetAllNoticeImplCopyWith<_$GetAllNoticeImpl> get copyWith =>
+  _$$GetNoticeDetailImplCopyWith<_$GetNoticeDetailImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetNoticeAllDataImplCopyWith<$Res> {
+  factory _$$GetNoticeAllDataImplCopyWith(_$GetNoticeAllDataImpl value,
+          $Res Function(_$GetNoticeAllDataImpl) then) =
+      __$$GetNoticeAllDataImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetNoticeAllDataImplCopyWithImpl<$Res>
+    extends _$NoticeEventCopyWithImpl<$Res, _$GetNoticeAllDataImpl>
+    implements _$$GetNoticeAllDataImplCopyWith<$Res> {
+  __$$GetNoticeAllDataImplCopyWithImpl(_$GetNoticeAllDataImpl _value,
+      $Res Function(_$GetNoticeAllDataImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetNoticeAllDataImpl implements _GetNoticeAllData {
+  const _$GetNoticeAllDataImpl();
+
+  @override
+  String toString() {
+    return 'NoticeEvent.getNoticeAllData()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetNoticeAllDataImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNoticePopUp,
+    required TResult Function(String noticeId) getNoticeDetail,
+    required TResult Function() getNoticeAllData,
+  }) {
+    return getNoticeAllData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNoticePopUp,
+    TResult? Function(String noticeId)? getNoticeDetail,
+    TResult? Function()? getNoticeAllData,
+  }) {
+    return getNoticeAllData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNoticePopUp,
+    TResult Function(String noticeId)? getNoticeDetail,
+    TResult Function()? getNoticeAllData,
+    required TResult orElse(),
+  }) {
+    if (getNoticeAllData != null) {
+      return getNoticeAllData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetNoticePopUp value) getNoticePopUp,
+    required TResult Function(_GetNoticeDetail value) getNoticeDetail,
+    required TResult Function(_GetNoticeAllData value) getNoticeAllData,
+  }) {
+    return getNoticeAllData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult? Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult? Function(_GetNoticeAllData value)? getNoticeAllData,
+  }) {
+    return getNoticeAllData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetNoticePopUp value)? getNoticePopUp,
+    TResult Function(_GetNoticeDetail value)? getNoticeDetail,
+    TResult Function(_GetNoticeAllData value)? getNoticeAllData,
+    required TResult orElse(),
+  }) {
+    if (getNoticeAllData != null) {
+      return getNoticeAllData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetNoticeAllData implements NoticeEvent {
+  const factory _GetNoticeAllData() = _$GetNoticeAllDataImpl;
 }
 
 /// @nodoc
 mixin _$NoticeState {
   ResponseClassify<List<NoticeAllEntity?>> get noticeResponseData =>
+      throw _privateConstructorUsedError;
+  ResponseClassify<List<NoticeAllEntity?>> get noticeAllData =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -327,7 +456,9 @@ abstract class $NoticeStateCopyWith<$Res> {
           NoticeState value, $Res Function(NoticeState) then) =
       _$NoticeStateCopyWithImpl<$Res, NoticeState>;
   @useResult
-  $Res call({ResponseClassify<List<NoticeAllEntity?>> noticeResponseData});
+  $Res call(
+      {ResponseClassify<List<NoticeAllEntity?>> noticeResponseData,
+      ResponseClassify<List<NoticeAllEntity?>> noticeAllData});
 }
 
 /// @nodoc
@@ -344,11 +475,16 @@ class _$NoticeStateCopyWithImpl<$Res, $Val extends NoticeState>
   @override
   $Res call({
     Object? noticeResponseData = null,
+    Object? noticeAllData = null,
   }) {
     return _then(_value.copyWith(
       noticeResponseData: null == noticeResponseData
           ? _value.noticeResponseData
           : noticeResponseData // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<NoticeAllEntity?>>,
+      noticeAllData: null == noticeAllData
+          ? _value.noticeAllData
+          : noticeAllData // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<NoticeAllEntity?>>,
     ) as $Val);
   }
@@ -362,7 +498,9 @@ abstract class _$$NoticeStateImplCopyWith<$Res>
       __$$NoticeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ResponseClassify<List<NoticeAllEntity?>> noticeResponseData});
+  $Res call(
+      {ResponseClassify<List<NoticeAllEntity?>> noticeResponseData,
+      ResponseClassify<List<NoticeAllEntity?>> noticeAllData});
 }
 
 /// @nodoc
@@ -377,11 +515,16 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? noticeResponseData = null,
+    Object? noticeAllData = null,
   }) {
     return _then(_$NoticeStateImpl(
       noticeResponseData: null == noticeResponseData
           ? _value.noticeResponseData
           : noticeResponseData // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<List<NoticeAllEntity?>>,
+      noticeAllData: null == noticeAllData
+          ? _value.noticeAllData
+          : noticeAllData // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<NoticeAllEntity?>>,
     ));
   }
@@ -390,14 +533,17 @@ class __$$NoticeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NoticeStateImpl implements _NoticeState {
-  const _$NoticeStateImpl({required this.noticeResponseData});
+  const _$NoticeStateImpl(
+      {required this.noticeResponseData, required this.noticeAllData});
 
   @override
   final ResponseClassify<List<NoticeAllEntity?>> noticeResponseData;
+  @override
+  final ResponseClassify<List<NoticeAllEntity?>> noticeAllData;
 
   @override
   String toString() {
-    return 'NoticeState(noticeResponseData: $noticeResponseData)';
+    return 'NoticeState(noticeResponseData: $noticeResponseData, noticeAllData: $noticeAllData)';
   }
 
   @override
@@ -406,11 +552,14 @@ class _$NoticeStateImpl implements _NoticeState {
         (other.runtimeType == runtimeType &&
             other is _$NoticeStateImpl &&
             (identical(other.noticeResponseData, noticeResponseData) ||
-                other.noticeResponseData == noticeResponseData));
+                other.noticeResponseData == noticeResponseData) &&
+            (identical(other.noticeAllData, noticeAllData) ||
+                other.noticeAllData == noticeAllData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, noticeResponseData);
+  int get hashCode =>
+      Object.hash(runtimeType, noticeResponseData, noticeAllData);
 
   @JsonKey(ignore: true)
   @override
@@ -422,10 +571,14 @@ class _$NoticeStateImpl implements _NoticeState {
 abstract class _NoticeState implements NoticeState {
   const factory _NoticeState(
       {required final ResponseClassify<List<NoticeAllEntity?>>
-          noticeResponseData}) = _$NoticeStateImpl;
+          noticeResponseData,
+      required final ResponseClassify<List<NoticeAllEntity?>>
+          noticeAllData}) = _$NoticeStateImpl;
 
   @override
   ResponseClassify<List<NoticeAllEntity?>> get noticeResponseData;
+  @override
+  ResponseClassify<List<NoticeAllEntity?>> get noticeAllData;
   @override
   @JsonKey(ignore: true)
   _$$NoticeStateImplCopyWith<_$NoticeStateImpl> get copyWith =>
