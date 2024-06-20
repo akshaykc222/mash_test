@@ -30,4 +30,5 @@ abstract interface class PaymentRepository {
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
   Future<String> getFeeSuccessReceipt(
       GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest);
+  Future<String> getFeeReceiptByDocname(String docName);
 }

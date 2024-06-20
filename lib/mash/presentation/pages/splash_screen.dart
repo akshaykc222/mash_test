@@ -98,7 +98,7 @@ class SplashScreenState extends State<SplashScreen>
         prettyPrint(status.toString());
         if (status == AnimationStatus.completed) {
           final routeName = await _init();
-          context.goNamed(AppPages.paymentResponse, extra: OrderStatus.PAID);
+          context.goNamed(routeName);
           Timer(const Duration(milliseconds: 300), () {
             scaleController.reset();
           });

@@ -946,35 +946,21 @@ PODS:
     - abseil/meta/type_traits
     - abseil/xcprivacy
   - abseil/xcprivacy (1.20240116.2)
-  - AEXML (4.6.0)
   - BoringSSL-GRPC (0.0.32):
     - BoringSSL-GRPC/Implementation (= 0.0.32)
     - BoringSSL-GRPC/Interface (= 0.0.32)
   - BoringSSL-GRPC/Implementation (0.0.32):
     - BoringSSL-GRPC/Interface (= 0.0.32)
   - BoringSSL-GRPC/Interface (0.0.32)
-  - CashfreeAnalyticsSDK (2.0.5):
-    - CFNetworkSDK (~> 2.0.5)
-  - CashfreePG (2.0.10):
-    - CashfreePGUISDK (~> 2.0.10)
-  - CashfreePGCoreSDK (2.0.10):
-    - CashfreeAnalyticsSDK (~> 2.0.5)
-  - CashfreePGUISDK (2.0.10):
-    - CashfreePGCoreSDK (~> 2.0.10)
-  - CFNetworkSDK (2.0.5)
   - cloud_firestore (4.17.3):
-    - Firebase/Firestore (= 10.25.0)
+    - Firebase/CoreOnly (~> 10.25.0)
+    - Firebase/Firestore (~> 10.25.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
   - device_info_plus (0.0.1):
-    - Flutter
-  - EpubViewerKit (0.1.3):
-    - AEXML (= 4.6.0)
-    - FontBlaster (= 5.1.1)
-    - MenuItemKit (= 4.0.1)
-    - RealmSwift (= 5.5.1)
-    - SSZipArchive (= 2.2.3)
-    - ZFDragableModalTransition (= 0.6)
+    - FlutterMacOS
+  - file_selector_macos (0.0.1):
+    - FlutterMacOS
   - Firebase/Auth (10.25.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.25.0)
@@ -987,16 +973,18 @@ PODS:
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.25.0)
   - firebase_auth (4.19.5):
-    - Firebase/Auth (= 10.25.0)
+    - Firebase/Auth (~> 10.25.0)
+    - Firebase/CoreOnly (~> 10.25.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
   - firebase_core (2.31.0):
-    - Firebase/CoreOnly (= 10.25.0)
-    - Flutter
+    - Firebase/CoreOnly (~> 10.25.0)
+    - FlutterMacOS
   - firebase_messaging (14.9.2):
-    - Firebase/Messaging (= 10.25.0)
+    - Firebase/CoreOnly (~> 10.25.0)
+    - Firebase/Messaging (~> 10.25.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
   - FirebaseAppCheckInterop (10.25.0)
   - FirebaseAuth (10.25.0):
     - FirebaseAppCheckInterop (~> 10.17)
@@ -1048,34 +1036,15 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30911.0, >= 2.30908.0)
   - FirebaseSharedSwift (10.25.0)
-  - Flutter (1.0.0)
-  - flutter_cashfree_pg_sdk (0.0.1):
-    - CashfreePG (~> 2.0.9)
-    - Flutter
-  - flutter_file_dialog (0.0.1):
-    - Flutter
   - flutter_local_notifications (0.0.1):
-    - Flutter
-  - flutter_pdfview (1.0.2):
-    - Flutter
-  - fluttertoast (0.0.2):
-    - Flutter
-    - Toast
-  - FontBlaster (5.1.1)
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
   - geolocator_apple (1.2.0):
-    - Flutter
-  - google_maps_flutter_ios (0.0.1):
-    - Flutter
-    - GoogleMaps (< 9.0, >= 8.4)
+    - FlutterMacOS
   - GoogleDataTransport (9.4.1):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMaps (8.4.0):
-    - GoogleMaps/Maps (= 8.4.0)
-  - GoogleMaps/Base (8.4.0)
-  - GoogleMaps/Maps (8.4.0):
-    - GoogleMaps/Base
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -1180,12 +1149,9 @@ PODS:
   - gRPC-Core/Interface (1.62.5)
   - gRPC-Core/Privacy (1.62.5)
   - GTMSessionFetcher/Core (3.4.1)
-  - image_picker_ios (0.0.1):
-    - Flutter
   - leveldb-library (1.22.5)
   - location (0.0.1):
-    - Flutter
-  - MenuItemKit (4.0.1)
+    - FlutterMacOS
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -1194,66 +1160,38 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - permission_handler_apple (9.3.0):
-    - Flutter
   - PromisesObjC (2.4.0)
-  - Realm (5.5.1):
-    - Realm/Headers (= 5.5.1)
-  - Realm/Headers (5.5.1)
-  - RealmSwift (5.5.1):
-    - Realm (= 5.5.1)
-  - RecaptchaInterop (100.0.0)
   - rive_common (0.0.1):
-    - Flutter
+    - FlutterMacOS
   - share_plus (0.0.1):
-    - Flutter
+    - FlutterMacOS
   - sqflite (0.0.3):
     - Flutter
     - FlutterMacOS
-  - SSZipArchive (2.2.3)
-  - Toast (4.1.1)
-  - url_launcher_ios (0.0.1):
-    - Flutter
-  - vocsy_epub_viewer (2.0.0):
-    - EpubViewerKit (~> 0.1.3)
-    - Flutter
-  - ZFDragableModalTransition (0.6)
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
 
 DEPENDENCIES:
-  - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
-  - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
-  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
-  - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
-  - Flutter (from `Flutter`)
-  - flutter_cashfree_pg_sdk (from `.symlinks/plugins/flutter_cashfree_pg_sdk/ios`)
-  - flutter_file_dialog (from `.symlinks/plugins/flutter_file_dialog/ios`)
-  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
-  - flutter_pdfview (from `.symlinks/plugins/flutter_pdfview/ios`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
-  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
-  - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
-  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - location (from `.symlinks/plugins/location/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
-  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
-  - rive_common (from `.symlinks/plugins/rive_common/ios`)
-  - share_plus (from `.symlinks/plugins/share_plus/ios`)
-  - sqflite (from `.symlinks/plugins/sqflite/darwin`)
-  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
-  - vocsy_epub_viewer (from `.symlinks/plugins/vocsy_epub_viewer/ios`)
+  - cloud_firestore (from `Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos`)
+  - device_info_plus (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos`)
+  - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
+  - firebase_auth (from `Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos`)
+  - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
+  - firebase_messaging (from `Flutter/ephemeral/.symlinks/plugins/firebase_messaging/macos`)
+  - flutter_local_notifications (from `Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - geolocator_apple (from `Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos`)
+  - location (from `Flutter/ephemeral/.symlinks/plugins/location/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - rive_common (from `Flutter/ephemeral/.symlinks/plugins/rive_common/macos`)
+  - share_plus (from `Flutter/ephemeral/.symlinks/plugins/share_plus/macos`)
+  - sqflite (from `Flutter/ephemeral/.symlinks/plugins/sqflite/darwin`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
 
 SPEC REPOS:
   trunk:
     - abseil
-    - AEXML
     - BoringSSL-GRPC
-    - CashfreeAnalyticsSDK
-    - CashfreePG
-    - CashfreePGCoreSDK
-    - CashfreePGUISDK
-    - CFNetworkSDK
-    - EpubViewerKit
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -1265,86 +1203,57 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseMessaging
     - FirebaseSharedSwift
-    - FontBlaster
     - GoogleDataTransport
-    - GoogleMaps
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
-    - MenuItemKit
     - nanopb
     - PromisesObjC
-    - Realm
-    - RealmSwift
-    - RecaptchaInterop
-    - SSZipArchive
-    - Toast
-    - ZFDragableModalTransition
 
 EXTERNAL SOURCES:
   cloud_firestore:
-    :path: ".symlinks/plugins/cloud_firestore/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos
   device_info_plus:
-    :path: ".symlinks/plugins/device_info_plus/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos
+  file_selector_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
   firebase_auth:
-    :path: ".symlinks/plugins/firebase_auth/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos
   firebase_core:
-    :path: ".symlinks/plugins/firebase_core/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_core/macos
   firebase_messaging:
-    :path: ".symlinks/plugins/firebase_messaging/ios"
-  Flutter:
-    :path: Flutter
-  flutter_cashfree_pg_sdk:
-    :path: ".symlinks/plugins/flutter_cashfree_pg_sdk/ios"
-  flutter_file_dialog:
-    :path: ".symlinks/plugins/flutter_file_dialog/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_messaging/macos
   flutter_local_notifications:
-    :path: ".symlinks/plugins/flutter_local_notifications/ios"
-  flutter_pdfview:
-    :path: ".symlinks/plugins/flutter_pdfview/ios"
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
   geolocator_apple:
-    :path: ".symlinks/plugins/geolocator_apple/ios"
-  google_maps_flutter_ios:
-    :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
-  image_picker_ios:
-    :path: ".symlinks/plugins/image_picker_ios/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos
   location:
-    :path: ".symlinks/plugins/location/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/location/macos
   path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/darwin"
-  permission_handler_apple:
-    :path: ".symlinks/plugins/permission_handler_apple/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
   rive_common:
-    :path: ".symlinks/plugins/rive_common/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/rive_common/macos
   share_plus:
-    :path: ".symlinks/plugins/share_plus/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/share_plus/macos
   sqflite:
-    :path: ".symlinks/plugins/sqflite/darwin"
-  url_launcher_ios:
-    :path: ".symlinks/plugins/url_launcher_ios/ios"
-  vocsy_epub_viewer:
-    :path: ".symlinks/plugins/vocsy_epub_viewer/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite/darwin
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
 SPEC CHECKSUMS:
   abseil: d121da9ef7e2ff4cab7666e76c5a3e0915ae08c3
-  AEXML: 2fbb73d8724797ed2cde888731e176fa4d44dd83
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
-  CashfreeAnalyticsSDK: 6d3825916b1f37e38e26cc3b825eef31c9a8b4b9
-  CashfreePG: 1dd86f7cfe5a674a304680437d8cdecbb7d50b5d
-  CashfreePGCoreSDK: d2b251715acd96942097e480eeba584dd5ac289e
-  CashfreePGUISDK: 1fbe9c4f730e2ba2a33a8a00f087be449a629851
-  CFNetworkSDK: 02adc1210041ce65a6653049c730c9db2f73451a
-  cloud_firestore: 792f773e5e8c080ffcbadd49f9fb397927f29af6
-  device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
-  EpubViewerKit: 5f6c8ff9161bba18d6742c59b3c575c19f0623a9
+  cloud_firestore: e9533a69290a167590302619e0dfa4896a3a451a
+  device_info_plus: ce1b7762849d3ec103d0e0517299f2db7ad60720
+  file_selector_macos: 54fdab7caa3ac3fc43c9fac4d7d8d231277f8cf2
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
-  firebase_auth: 76ea642e91a9e914b3af751a416046ce1a965cf4
-  firebase_core: 0b39f4f424e02eecabb2356ddf331fa07b772af8
-  firebase_messaging: 8999827b6efc9c3ab4b1f9dc246deaa7f13dbf88
+  firebase_auth: 88f0918ad5a62cae02f4bdbc1da7ec848fe9ba1c
+  firebase_core: fdf12e0c4349815c2e832d9dcad59fbff0ff394b
+  firebase_messaging: d846ba0c4f69424dd537681b466fff6d40d34723
   FirebaseAppCheckInterop: 5da5ce93e8797a215e3f677fb0654b74e736c8b8
   FirebaseAuth: c0f93dcc570c9da2bffb576969d793e95c344fbb
   FirebaseCore: 7ec4d0484817f12c3373955bc87762d96842d483
@@ -1355,41 +1264,24 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 91950fe859846fff0fbd296180909dd273103b09
   FirebaseMessaging: 88950ba9485052891ebe26f6c43a52bb62248952
   FirebaseSharedSwift: 0274086954b1b2d5fd7e829eccc587044d72a4ba
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_cashfree_pg_sdk: 9ce154ee42d51a92a66e42bb6bd5f6dd3ff8a226
-  flutter_file_dialog: 4c014a45b105709a27391e266c277d7e588e9299
-  flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
-  flutter_pdfview: 25f53dd6097661e6395b17de506e6060585946bd
-  fluttertoast: e9a18c7be5413da53898f660530c56f35edfba9c
-  FontBlaster: 8897ebdbb4b6ace3ab78c92b665d88c954f19e4a
-  geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
-  google_maps_flutter_ios: c454f18e0e22df6ac0e9f2a4df340858f5a3680c
+  flutter_local_notifications: 3805ca215b2fb7f397d78b66db91f6a747af52e4
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  geolocator_apple: 72a78ae3f3e4ec0db62117bd93e34523f5011d58
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   "gRPC-C++": e725ef63c4475d7cdb7e2cf16eb0fde84bd9ee51
   gRPC-Core: eee4be35df218649fe66d721a05a7f27a28f069b
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
-  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   leveldb-library: e8eadf9008a61f9e1dde3978c086d2b6d9b9dc28
-  location: d5cf8598915965547c3f36761ae9cc4f4e87d22e
-  MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
+  location: 7cdb0665bd6577d382b0a343acdadbcb7f964775
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
-  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  Realm: c2ffe0667f9c98c9ba65f608ba85684d39826145
-  RealmSwift: 5a35c1c35c3e1925e6fcd092c881d5cc4a826bff
-  RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  rive_common: 8a159d68033a8b073e5853acc50f03aa486a2888
-  share_plus: 8875f4f2500512ea181eef553c3e27dba5135aad
+  rive_common: acedcab7802c0ece4b0d838b71d7deb637e1309a
+  share_plus: 36537c04ce0c3e3f5bd297ce4318b6d5ee5fd6cf
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
-  SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
-  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
-  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
-  vocsy_epub_viewer: 2dce338f2e0ca766f2db27525977456b10fc0612
-  ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
+  url_launcher_macos: 5f437abeda8c85500ceb03f5c1938a8c5a705399
 
-PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
 
 COCOAPODS: 1.15.2

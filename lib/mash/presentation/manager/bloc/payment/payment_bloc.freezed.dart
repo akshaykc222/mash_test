@@ -48,7 +48,9 @@ mixin _$PaymentEvent {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,7 +85,8 @@ mixin _$PaymentEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -112,7 +115,8 @@ mixin _$PaymentEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +135,8 @@ mixin _$PaymentEvent {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -147,6 +153,7 @@ mixin _$PaymentEvent {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -163,6 +170,7 @@ mixin _$PaymentEvent {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -301,7 +309,9 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return getPaymentDashboard(paymentStatusType, userId, trackId);
   }
@@ -339,7 +349,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return getPaymentDashboard?.call(paymentStatusType, userId, trackId);
   }
@@ -371,7 +382,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -396,6 +408,8 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getPaymentDashboard(this);
   }
@@ -415,6 +429,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getPaymentDashboard?.call(this);
   }
@@ -434,6 +449,7 @@ class _$GetPaymentDashboardImpl implements _GetPaymentDashboard {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentDashboard != null) {
@@ -555,7 +571,9 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return selectPaymentsCheckboxEvent(id);
   }
@@ -593,7 +611,8 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return selectPaymentsCheckboxEvent?.call(id);
   }
@@ -625,7 +644,8 @@ class _$SelectPaymentsCheckboxEventImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -650,6 +670,8 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return selectPaymentsCheckboxEvent(this);
   }
@@ -669,6 +691,7 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return selectPaymentsCheckboxEvent?.call(this);
   }
@@ -688,6 +711,7 @@ class _$SelectPaymentsCheckboxEventImpl
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (selectPaymentsCheckboxEvent != null) {
@@ -802,7 +826,9 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return selectedItemIndex(index);
   }
@@ -840,7 +866,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return selectedItemIndex?.call(index);
   }
@@ -872,7 +899,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -897,6 +925,8 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return selectedItemIndex(this);
   }
@@ -916,6 +946,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return selectedItemIndex?.call(this);
   }
@@ -935,6 +966,7 @@ class _$SelectedItemIndexImpl implements _SelectedItemIndex {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (selectedItemIndex != null) {
@@ -1073,7 +1105,9 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return getPaymentFinalAmount(totalAmount, installmentId, studentId);
   }
@@ -1111,7 +1145,8 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return getPaymentFinalAmount?.call(totalAmount, installmentId, studentId);
   }
@@ -1143,7 +1178,8 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1168,6 +1204,8 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getPaymentFinalAmount(this);
   }
@@ -1187,6 +1225,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getPaymentFinalAmount?.call(this);
   }
@@ -1206,6 +1245,7 @@ class _$GetPaymentFinalAmountImpl implements _GetPaymentFinalAmount {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentFinalAmount != null) {
@@ -1379,7 +1419,9 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return getPaymentOrderId(
         email, student, mobile, remark, installmentId, studentId);
@@ -1418,7 +1460,8 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return getPaymentOrderId?.call(
         email, student, mobile, remark, installmentId, studentId);
@@ -1451,7 +1494,8 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1477,6 +1521,8 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getPaymentOrderId(this);
   }
@@ -1496,6 +1542,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getPaymentOrderId?.call(this);
   }
@@ -1515,6 +1562,7 @@ class _$GetPaymentOrderIdImpl implements _GetPaymentOrderId {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentOrderId != null) {
@@ -1709,7 +1757,9 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return getPaymentTokenAndOpenPayment(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1748,7 +1798,8 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return getPaymentTokenAndOpenPayment?.call(
         email, student, mobile, remark, installmentId, studentId, orderId);
@@ -1781,7 +1832,8 @@ class _$GetPaymentTokenAndOpenPaymentImpl
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -1807,6 +1859,8 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getPaymentTokenAndOpenPayment(this);
   }
@@ -1826,6 +1880,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getPaymentTokenAndOpenPayment?.call(this);
   }
@@ -1845,6 +1900,7 @@ class _$GetPaymentTokenAndOpenPaymentImpl
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentTokenAndOpenPayment != null) {
@@ -2040,7 +2096,9 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return getPaymentCompleteResponse(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -2079,7 +2137,8 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return getPaymentCompleteResponse?.call(
         orderId, userName, email, remark, studenId, mobile, installMentId);
@@ -2112,7 +2171,8 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
@@ -2138,6 +2198,8 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getPaymentCompleteResponse(this);
   }
@@ -2157,6 +2219,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getPaymentCompleteResponse?.call(this);
   }
@@ -2176,6 +2239,7 @@ class _$GetPaymentCompleteResponseImpl implements _GetPaymentCompleteResponse {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getPaymentCompleteResponse != null) {
@@ -2276,7 +2340,9 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
     return disposeEvent();
   }
@@ -2314,7 +2380,8 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
     return disposeEvent?.call();
   }
@@ -2346,7 +2413,8 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (disposeEvent != null) {
@@ -2371,6 +2439,8 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return disposeEvent(this);
   }
@@ -2390,6 +2460,7 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return disposeEvent?.call(this);
   }
@@ -2409,6 +2480,7 @@ class _$PaymentDisposeEventImpl implements _PaymentDisposeEvent {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (disposeEvent != null) {
@@ -2428,7 +2500,7 @@ abstract class _$$GetFeeReceiptImplCopyWith<$Res> {
           _$GetFeeReceiptImpl value, $Res Function(_$GetFeeReceiptImpl) then) =
       __$$GetFeeReceiptImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String studentId});
+  $Res call({String studentId, ReceiptType receiptType});
 }
 
 /// @nodoc
@@ -2443,12 +2515,17 @@ class __$$GetFeeReceiptImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? studentId = null,
+    Object? receiptType = null,
   }) {
     return _then(_$GetFeeReceiptImpl(
       studentId: null == studentId
           ? _value.studentId
           : studentId // ignore: cast_nullable_to_non_nullable
               as String,
+      receiptType: null == receiptType
+          ? _value.receiptType
+          : receiptType // ignore: cast_nullable_to_non_nullable
+              as ReceiptType,
     ));
   }
 }
@@ -2456,14 +2533,17 @@ class __$$GetFeeReceiptImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetFeeReceiptImpl implements _GetFeeReceipt {
-  const _$GetFeeReceiptImpl({required this.studentId});
+  const _$GetFeeReceiptImpl(
+      {required this.studentId, required this.receiptType});
 
   @override
   final String studentId;
+  @override
+  final ReceiptType receiptType;
 
   @override
   String toString() {
-    return 'PaymentEvent.getFeeReceipt(studentId: $studentId)';
+    return 'PaymentEvent.getFeeReceipt(studentId: $studentId, receiptType: $receiptType)';
   }
 
   @override
@@ -2472,11 +2552,13 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
         (other.runtimeType == runtimeType &&
             other is _$GetFeeReceiptImpl &&
             (identical(other.studentId, studentId) ||
-                other.studentId == studentId));
+                other.studentId == studentId) &&
+            (identical(other.receiptType, receiptType) ||
+                other.receiptType == receiptType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, studentId);
+  int get hashCode => Object.hash(runtimeType, studentId, receiptType);
 
   @JsonKey(ignore: true)
   @override
@@ -2517,9 +2599,11 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)
         getPaymentCompleteResponse,
     required TResult Function() disposeEvent,
-    required TResult Function(String studentId) getFeeReceipt,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
   }) {
-    return getFeeReceipt(studentId);
+    return getFeeReceipt(studentId, receiptType);
   }
 
   @override
@@ -2555,9 +2639,10 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult? Function()? disposeEvent,
-    TResult? Function(String studentId)? getFeeReceipt,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
   }) {
-    return getFeeReceipt?.call(studentId);
+    return getFeeReceipt?.call(studentId, receiptType);
   }
 
   @override
@@ -2587,11 +2672,12 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
             String? installMentId)?
         getPaymentCompleteResponse,
     TResult Function()? disposeEvent,
-    TResult Function(String studentId)? getFeeReceipt,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getFeeReceipt != null) {
-      return getFeeReceipt(studentId);
+      return getFeeReceipt(studentId, receiptType);
     }
     return orElse();
   }
@@ -2612,6 +2698,8 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
         getPaymentCompleteResponse,
     required TResult Function(_PaymentDisposeEvent value) disposeEvent,
     required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
   }) {
     return getFeeReceipt(this);
   }
@@ -2631,6 +2719,7 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
         getPaymentCompleteResponse,
     TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
   }) {
     return getFeeReceipt?.call(this);
   }
@@ -2650,6 +2739,7 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
         getPaymentCompleteResponse,
     TResult Function(_PaymentDisposeEvent value)? disposeEvent,
     TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
     required TResult orElse(),
   }) {
     if (getFeeReceipt != null) {
@@ -2660,13 +2750,272 @@ class _$GetFeeReceiptImpl implements _GetFeeReceipt {
 }
 
 abstract class _GetFeeReceipt implements PaymentEvent {
-  const factory _GetFeeReceipt({required final String studentId}) =
-      _$GetFeeReceiptImpl;
+  const factory _GetFeeReceipt(
+      {required final String studentId,
+      required final ReceiptType receiptType}) = _$GetFeeReceiptImpl;
 
   String get studentId;
+  ReceiptType get receiptType;
   @JsonKey(ignore: true)
   _$$GetFeeReceiptImplCopyWith<_$GetFeeReceiptImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetFeeReceiptByDocNameImplCopyWith<$Res> {
+  factory _$$GetFeeReceiptByDocNameImplCopyWith(
+          _$GetFeeReceiptByDocNameImpl value,
+          $Res Function(_$GetFeeReceiptByDocNameImpl) then) =
+      __$$GetFeeReceiptByDocNameImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String docName});
+}
+
+/// @nodoc
+class __$$GetFeeReceiptByDocNameImplCopyWithImpl<$Res>
+    extends _$PaymentEventCopyWithImpl<$Res, _$GetFeeReceiptByDocNameImpl>
+    implements _$$GetFeeReceiptByDocNameImplCopyWith<$Res> {
+  __$$GetFeeReceiptByDocNameImplCopyWithImpl(
+      _$GetFeeReceiptByDocNameImpl _value,
+      $Res Function(_$GetFeeReceiptByDocNameImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? docName = null,
+  }) {
+    return _then(_$GetFeeReceiptByDocNameImpl(
+      null == docName
+          ? _value.docName
+          : docName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetFeeReceiptByDocNameImpl implements _GetFeeReceiptByDocName {
+  const _$GetFeeReceiptByDocNameImpl(this.docName);
+
+  @override
+  final String docName;
+
+  @override
+  String toString() {
+    return 'PaymentEvent.getFeeReceiptByDocName(docName: $docName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetFeeReceiptByDocNameImpl &&
+            (identical(other.docName, docName) || other.docName == docName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, docName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetFeeReceiptByDocNameImplCopyWith<_$GetFeeReceiptByDocNameImpl>
+      get copyWith => __$$GetFeeReceiptByDocNameImplCopyWithImpl<
+          _$GetFeeReceiptByDocNameImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            PaymentStatusType paymentStatusType, String userId, String? trackId)
+        getPaymentDashboard,
+    required TResult Function(String id) selectPaymentsCheckboxEvent,
+    required TResult Function(int? index) selectedItemIndex,
+    required TResult Function(
+            String totalAmount, String installmentId, String studentId)
+        getPaymentFinalAmount,
+    required TResult Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)
+        getPaymentOrderId,
+    required TResult Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)
+        getPaymentCompleteResponse,
+    required TResult Function() disposeEvent,
+    required TResult Function(String studentId, ReceiptType receiptType)
+        getFeeReceipt,
+    required TResult Function(String docName) getFeeReceiptByDocName,
+  }) {
+    return getFeeReceiptByDocName(docName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult? Function(String id)? selectPaymentsCheckboxEvent,
+    TResult? Function(int? index)? selectedItemIndex,
+    TResult? Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult? Function(String email, String student, String mobile,
+            String remark, String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult? Function(
+            String email,
+            String student,
+            String mobile,
+            String remark,
+            String installmentId,
+            String studentId,
+            String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
+        getPaymentCompleteResponse,
+    TResult? Function()? disposeEvent,
+    TResult? Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult? Function(String docName)? getFeeReceiptByDocName,
+  }) {
+    return getFeeReceiptByDocName?.call(docName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PaymentStatusType paymentStatusType, String userId,
+            String? trackId)?
+        getPaymentDashboard,
+    TResult Function(String id)? selectPaymentsCheckboxEvent,
+    TResult Function(int? index)? selectedItemIndex,
+    TResult Function(
+            String totalAmount, String installmentId, String studentId)?
+        getPaymentFinalAmount,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId)?
+        getPaymentOrderId,
+    TResult Function(String email, String student, String mobile, String remark,
+            String installmentId, String studentId, String orderId)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(
+            String? orderId,
+            String? userName,
+            String? email,
+            String? remark,
+            String? studenId,
+            String? mobile,
+            String? installMentId)?
+        getPaymentCompleteResponse,
+    TResult Function()? disposeEvent,
+    TResult Function(String studentId, ReceiptType receiptType)? getFeeReceipt,
+    TResult Function(String docName)? getFeeReceiptByDocName,
+    required TResult orElse(),
+  }) {
+    if (getFeeReceiptByDocName != null) {
+      return getFeeReceiptByDocName(docName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPaymentDashboard value) getPaymentDashboard,
+    required TResult Function(_SelectPaymentsCheckboxEvent value)
+        selectPaymentsCheckboxEvent,
+    required TResult Function(_SelectedItemIndex value) selectedItemIndex,
+    required TResult Function(_GetPaymentFinalAmount value)
+        getPaymentFinalAmount,
+    required TResult Function(_GetPaymentOrderId value) getPaymentOrderId,
+    required TResult Function(_GetPaymentTokenAndOpenPayment value)
+        getPaymentTokenAndOpenPayment,
+    required TResult Function(_GetPaymentCompleteResponse value)
+        getPaymentCompleteResponse,
+    required TResult Function(_PaymentDisposeEvent value) disposeEvent,
+    required TResult Function(_GetFeeReceipt value) getFeeReceipt,
+    required TResult Function(_GetFeeReceiptByDocName value)
+        getFeeReceiptByDocName,
+  }) {
+    return getFeeReceiptByDocName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult? Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult? Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult? Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult? Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult? Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult? Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    TResult? Function(_PaymentDisposeEvent value)? disposeEvent,
+    TResult? Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult? Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
+  }) {
+    return getFeeReceiptByDocName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPaymentDashboard value)? getPaymentDashboard,
+    TResult Function(_SelectPaymentsCheckboxEvent value)?
+        selectPaymentsCheckboxEvent,
+    TResult Function(_SelectedItemIndex value)? selectedItemIndex,
+    TResult Function(_GetPaymentFinalAmount value)? getPaymentFinalAmount,
+    TResult Function(_GetPaymentOrderId value)? getPaymentOrderId,
+    TResult Function(_GetPaymentTokenAndOpenPayment value)?
+        getPaymentTokenAndOpenPayment,
+    TResult Function(_GetPaymentCompleteResponse value)?
+        getPaymentCompleteResponse,
+    TResult Function(_PaymentDisposeEvent value)? disposeEvent,
+    TResult Function(_GetFeeReceipt value)? getFeeReceipt,
+    TResult Function(_GetFeeReceiptByDocName value)? getFeeReceiptByDocName,
+    required TResult orElse(),
+  }) {
+    if (getFeeReceiptByDocName != null) {
+      return getFeeReceiptByDocName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetFeeReceiptByDocName implements PaymentEvent {
+  const factory _GetFeeReceiptByDocName(final String docName) =
+      _$GetFeeReceiptByDocNameImpl;
+
+  String get docName;
+  @JsonKey(ignore: true)
+  _$$GetFeeReceiptByDocNameImplCopyWith<_$GetFeeReceiptByDocNameImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2686,6 +3035,10 @@ mixin _$PaymentState {
   ResponseClassify<String> get feeRecieptResponse =>
       throw _privateConstructorUsedError;
   String get installmentId => throw _privateConstructorUsedError;
+  String get shareFile => throw _privateConstructorUsedError;
+  ResponseClassify<String> get feeReceiptByDocname =>
+      throw _privateConstructorUsedError;
+  ValueNotifier get progressEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentStateCopyWith<PaymentState> get copyWith =>
@@ -2708,7 +3061,10 @@ abstract class $PaymentStateCopyWith<$Res> {
       PaymentFinalAmountEntity? paymentFinalAmountResponse,
       String paymentError,
       ResponseClassify<String> feeRecieptResponse,
-      String installmentId});
+      String installmentId,
+      String shareFile,
+      ResponseClassify<String> feeReceiptByDocname,
+      ValueNotifier progressEvent});
 }
 
 /// @nodoc
@@ -2734,6 +3090,9 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
     Object? paymentError = null,
     Object? feeRecieptResponse = null,
     Object? installmentId = null,
+    Object? shareFile = null,
+    Object? feeReceiptByDocname = null,
+    Object? progressEvent = freezed,
   }) {
     return _then(_value.copyWith(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2776,6 +3135,18 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
           ? _value.installmentId
           : installmentId // ignore: cast_nullable_to_non_nullable
               as String,
+      shareFile: null == shareFile
+          ? _value.shareFile
+          : shareFile // ignore: cast_nullable_to_non_nullable
+              as String,
+      feeReceiptByDocname: null == feeReceiptByDocname
+          ? _value.feeReceiptByDocname
+          : feeReceiptByDocname // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
+      progressEvent: freezed == progressEvent
+          ? _value.progressEvent
+          : progressEvent // ignore: cast_nullable_to_non_nullable
+              as ValueNotifier,
     ) as $Val);
   }
 }
@@ -2798,7 +3169,10 @@ abstract class _$$PaymentStateImplCopyWith<$Res>
       PaymentFinalAmountEntity? paymentFinalAmountResponse,
       String paymentError,
       ResponseClassify<String> feeRecieptResponse,
-      String installmentId});
+      String installmentId,
+      String shareFile,
+      ResponseClassify<String> feeReceiptByDocname,
+      ValueNotifier progressEvent});
 }
 
 /// @nodoc
@@ -2822,6 +3196,9 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
     Object? paymentError = null,
     Object? feeRecieptResponse = null,
     Object? installmentId = null,
+    Object? shareFile = null,
+    Object? feeReceiptByDocname = null,
+    Object? progressEvent = freezed,
   }) {
     return _then(_$PaymentStateImpl(
       paymentDashboardResponse: null == paymentDashboardResponse
@@ -2864,6 +3241,18 @@ class __$$PaymentStateImplCopyWithImpl<$Res>
           ? _value.installmentId
           : installmentId // ignore: cast_nullable_to_non_nullable
               as String,
+      shareFile: null == shareFile
+          ? _value.shareFile
+          : shareFile // ignore: cast_nullable_to_non_nullable
+              as String,
+      feeReceiptByDocname: null == feeReceiptByDocname
+          ? _value.feeReceiptByDocname
+          : feeReceiptByDocname // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<String>,
+      progressEvent: freezed == progressEvent
+          ? _value.progressEvent
+          : progressEvent // ignore: cast_nullable_to_non_nullable
+              as ValueNotifier,
     ));
   }
 }
@@ -2881,7 +3270,10 @@ class _$PaymentStateImpl implements _PaymentState {
       required this.paymentFinalAmountResponse,
       required this.paymentError,
       required this.feeRecieptResponse,
-      required this.installmentId})
+      required this.installmentId,
+      required this.shareFile,
+      required this.feeReceiptByDocname,
+      required this.progressEvent})
       : _selectedCheckboxItems = selectedCheckboxItems;
 
   @override
@@ -2913,10 +3305,16 @@ class _$PaymentStateImpl implements _PaymentState {
   final ResponseClassify<String> feeRecieptResponse;
   @override
   final String installmentId;
+  @override
+  final String shareFile;
+  @override
+  final ResponseClassify<String> feeReceiptByDocname;
+  @override
+  final ValueNotifier progressEvent;
 
   @override
   String toString() {
-    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse, paymentFinalAmountResponse: $paymentFinalAmountResponse, paymentError: $paymentError, feeRecieptResponse: $feeRecieptResponse, installmentId: $installmentId)';
+    return 'PaymentState(paymentDashboardResponse: $paymentDashboardResponse, selectedItemIndex: $selectedItemIndex, selectedCheckboxItems: $selectedCheckboxItems, totalAmount: $totalAmount, paymentHistoryResponse: $paymentHistoryResponse, paymentOrderResponse: $paymentOrderResponse, paymentFinalAmountResponse: $paymentFinalAmountResponse, paymentError: $paymentError, feeRecieptResponse: $feeRecieptResponse, installmentId: $installmentId, shareFile: $shareFile, feeReceiptByDocname: $feeReceiptByDocname, progressEvent: $progressEvent)';
   }
 
   @override
@@ -2946,7 +3344,13 @@ class _$PaymentStateImpl implements _PaymentState {
             (identical(other.feeRecieptResponse, feeRecieptResponse) ||
                 other.feeRecieptResponse == feeRecieptResponse) &&
             (identical(other.installmentId, installmentId) ||
-                other.installmentId == installmentId));
+                other.installmentId == installmentId) &&
+            (identical(other.shareFile, shareFile) ||
+                other.shareFile == shareFile) &&
+            (identical(other.feeReceiptByDocname, feeReceiptByDocname) ||
+                other.feeReceiptByDocname == feeReceiptByDocname) &&
+            const DeepCollectionEquality()
+                .equals(other.progressEvent, progressEvent));
   }
 
   @override
@@ -2961,7 +3365,10 @@ class _$PaymentStateImpl implements _PaymentState {
       paymentFinalAmountResponse,
       paymentError,
       feeRecieptResponse,
-      installmentId);
+      installmentId,
+      shareFile,
+      feeReceiptByDocname,
+      const DeepCollectionEquality().hash(progressEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -2983,7 +3390,10 @@ abstract class _PaymentState implements PaymentState {
       required final PaymentFinalAmountEntity? paymentFinalAmountResponse,
       required final String paymentError,
       required final ResponseClassify<String> feeRecieptResponse,
-      required final String installmentId}) = _$PaymentStateImpl;
+      required final String installmentId,
+      required final String shareFile,
+      required final ResponseClassify<String> feeReceiptByDocname,
+      required final ValueNotifier progressEvent}) = _$PaymentStateImpl;
 
   @override
   ResponseClassify<List<PaymentDashboardEntity>> get paymentDashboardResponse;
@@ -3005,6 +3415,12 @@ abstract class _PaymentState implements PaymentState {
   ResponseClassify<String> get feeRecieptResponse;
   @override
   String get installmentId;
+  @override
+  String get shareFile;
+  @override
+  ResponseClassify<String> get feeReceiptByDocname;
+  @override
+  ValueNotifier get progressEvent;
   @override
   @JsonKey(ignore: true)
   _$$PaymentStateImplCopyWith<_$PaymentStateImpl> get copyWith =>

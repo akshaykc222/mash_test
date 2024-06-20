@@ -1,16 +1,15 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
+
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
 import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
-import 'package:flutter_download_manager/flutter_download_manager.dart';
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -18,6 +17,7 @@ import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
+import 'package:mash/di/injector.dart';
 import 'package:mash/mash/data/remote/request/get_fee_success_receipt_request.dart';
 import 'package:mash/mash/data/remote/request/payment_complete_response_request.dart';
 import 'package:mash/mash/data/remote/request/payment_dashboard_request.dart';
@@ -36,7 +36,7 @@ import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.
 import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+import '../../../../domain/use_cases/payment/get_fee_receipt_by_docname_usecase.dart';
 import '../../../../domain/use_cases/payment/get_payment_complete_response_usecase.dart';
 import '../../../../domain/use_cases/payment/save_payment_reponse_usecase.dart';
 import '../../../utils/enums.dart';
@@ -56,6 +56,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   final PostPaymentStatusUpdateUsecase postPaymentStatusUpdateUsecase;
   final SavePaymentResponseUsecase savePaymentResponseUsecase;
   final GetPaymentFeeReceiptUsecase getPaymentFeeReceiptUsecase;
+  final GetFeeReceiptByDocnameUsecase getFeeReceiptByDocnameUsecase;
   PaymentBloc(
       this.getPaymentDashboardUsecase,
       this.getUserInfoUseCase,
@@ -65,7 +66,8 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       this.getPaymentCompleteResponseUsecase,
       this.postPaymentStatusUpdateUsecase,
       this.savePaymentResponseUsecase,
-      this.getPaymentFeeReceiptUsecase)
+      this.getPaymentFeeReceiptUsecase,
+      this.getFeeReceiptByDocnameUsecase)
       : super(PaymentState.initial()) {
     on<_GetPaymentDashboard>(_onGetPaymentDashboard);
     on<_SelectedItemIndex>(_onSelectedItemIndex);
@@ -76,6 +78,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     on<_GetPaymentCompleteResponse>(_getPaymentCompleteResponse);
     on<_PaymentDisposeEvent>(_disposeEvent);
     on<_GetFeeReceipt>(_getFeeReceipt);
+    on<_GetFeeReceiptByDocName>(_getFeeReceiptByName);
   }
 
   Future<void> _onGetPaymentDashboard(
@@ -338,94 +341,128 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     }
   }
 
-  _disposeEvent(_PaymentDisposeEvent event, Emitter<PaymentState> emit) {
+  void _disposeEvent(_PaymentDisposeEvent event, Emitter<PaymentState> emit) {
+    final Set<String> currentSet = Set.from(state.selectedCheckboxItems ?? {});
+    currentSet.clear();
+    final dueItems = state.paymentDashboardResponse.data
+            ?.where((element) => element.due == '1')
+            .map((e) => e.feeTrackId)
+            .toSet() ??
+        {};
+
+    currentSet.removeAll(dueItems);
+
     emit(state.copyWith(
       totalAmount: '0',
       paymentOrderResponse: ResponseClassify.initial(),
       paymentFinalAmountResponse: null,
       paymentError: '',
       feeRecieptResponse: ResponseClassify.initial(),
+      shareFile: '',
+      selectedCheckboxItems: currentSet,
     ));
   }
 
   _getFeeReceipt(_GetFeeReceipt event, Emitter<PaymentState> emit) async {
     emit(state.copyWith(feeRecieptResponse: ResponseClassify.loading()));
+
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
+      final compId = userInfo?.compId ?? "";
+      final academicId = userInfo?.academicId ?? "";
+
+      if (compId.isEmpty || academicId.isEmpty) {
+        throw Exception("User information is incomplete");
+      }
+
       final data = await getPaymentFeeReceiptUsecase.call(
-          GetFeeSuccessReceiptRequest(
-              compId: userInfo?.compId ?? "",
-              studentId: 'MGS1000513',
-              academicId: userInfo?.academicId ?? "",
-              installmentId: '0'));
+        GetFeeSuccessReceiptRequest(
+          compId: compId,
+          studentId: event.studentId,
+          academicId: academicId,
+          installmentId: '0',
+        ),
+      );
 
-      final receipt = await _downLoadReceipt(data);
+      final receipt = await _downloadReceipt(data, event.receiptType);
 
-      emit(state.copyWith(
-          feeRecieptResponse: ResponseClassify.completed(receipt)));
-    } catch (e) {
-      emit(state.copyWith(feeRecieptResponse: ResponseClassify.error(e)));
-      prettyPrint('error fee reciept $e');
-    }
-  }
-
-  Future<String?> _downLoadReceipt(String url) async {
-    try {
-      if (!await _requestStoragePermission()) {
-        if (!await FlutterFileDialog.isPickDirectorySupported()) {
-          print("Picking directory not supported");
-          return null;
-        }
-
-        // Get temporary directory
-        final tempDir = await getTemporaryDirectory();
-
-        final tempPath = '${tempDir.path}/receipt.pdf';
-        print(File(tempPath).absolute);
-        await Dio().download(url, tempPath);
-
-        // Read file bytes
-        Uint8List uint8List = await File(tempPath).readAsBytes();
-
-        // Pick directory to save file
-        final pickedDirectory = await FlutterFileDialog.pickDirectory();
-        if (pickedDirectory != null) {
-          String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-          String fileName = "receipt_$timestamp.pdf";
-
-          // Save file to picked directory
-
-          final params = SaveFileDialogParams(
-            data: uint8List,
-            fileName: fileName,
-          );
-          final path = await FlutterFileDialog.saveFile(params: params);
-          print('path $path');
-          return tempPath;
+      if (receipt != null) {
+        if (event.receiptType == ReceiptType.view) {
+          emit(state.copyWith(
+              feeRecieptResponse: ResponseClassify.completed(receipt)));
         } else {
-          print('Permission denied or directory not selected');
+          emit(state.copyWith(feeRecieptResponse: ResponseClassify.initial()));
+          emit(state.copyWith(shareFile: receipt));
         }
       } else {
-        print('Storage permission not granted');
+        emit(state.copyWith(
+            feeRecieptResponse:
+                ResponseClassify.error('Failed to download receipt')));
       }
     } catch (e) {
-      print('Error on downloading receipt: $e');
+      emit(state.copyWith(
+          feeRecieptResponse:
+              ResponseClassify.error('Error fetching receipt: $e')));
     }
-    return null;
   }
 
-  Future<bool> _requestStoragePermission() async {
-    var status = await Permission.storage.status;
-    if (status.isGranted) {
-      return true;
-    } else if (status.isDenied) {
-      var result = await Permission.storage.request();
-      return result.isGranted;
-    } else if (status.isPermanentlyDenied) {
-      // The user has previously denied the permission.
-      openAppSettings();
-      return false;
+  _getFeeReceiptByName(
+      _GetFeeReceiptByDocName event, Emitter<PaymentState> emit) async {
+    emit(state.copyWith(feeReceiptByDocname: ResponseClassify.loading()));
+    try {
+      final data = await getFeeReceiptByDocnameUsecase.call(event.docName);
+      final tempDir = await getTemporaryDirectory();
+      final tempPath = '${tempDir.path}/receipt.pdf';
+
+      ApiProvider()
+          .downloadFile(file: File(tempPath), url: data)
+          .listen((event) {
+        state.progressEvent.value = event;
+        log('progreon on bloc ${state.progressEvent.value}');
+      });
+
+      emit(state.copyWith(
+          feeReceiptByDocname: ResponseClassify.completed(tempPath)));
+    } catch (e) {
+      emit(state.copyWith(feeReceiptByDocname: ResponseClassify.error(e)));
     }
-    return false;
+  }
+
+  Future<String?> _downloadReceipt(String url, ReceiptType receiptType) async {
+    try {
+      if (!await FlutterFileDialog.isPickDirectorySupported()) {
+        prettyPrint("Picking directory not supported");
+        return null;
+      }
+
+      final tempDir = await getTemporaryDirectory();
+      final tempPath = '${tempDir.path}/receipt.pdf';
+
+      await ApiProvider().downloadFile(file: File(tempPath), url: url);
+
+      if (receiptType == ReceiptType.share) {
+        return tempPath;
+      }
+
+      final pickedDirectory = await FlutterFileDialog.pickDirectory();
+      if (pickedDirectory != null) {
+        final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+        final fileName = "receipt_$timestamp.pdf";
+
+        final uint8List = await File(tempPath).readAsBytes();
+        final params = SaveFileDialogParams(
+          data: uint8List,
+          fileName: fileName,
+        );
+
+        await FlutterFileDialog.saveFile(params: params);
+        return tempPath;
+      } else {
+        prettyPrint("Directory not picked");
+      }
+    } catch (e) {
+      prettyPrint('Error downloading receipt: $e');
+    }
+    return null;
   }
 }

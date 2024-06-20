@@ -12,6 +12,7 @@ import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/icon_button.dart';
@@ -33,11 +34,18 @@ class PaymentResponseScreen extends StatelessWidget {
       body: BlocConsumer<PaymentBloc, PaymentState>(
         listenWhen: (previous, current) {
           return previous.feeRecieptResponse.status == Status.LOADING &&
-              current.feeRecieptResponse.status == Status.COMPLETED;
+              (current.feeRecieptResponse.status == Status.COMPLETED ||
+                  current.feeRecieptResponse.status == Status.ERROR);
         },
         listener: (context, state) {
-          context.pushReplacementNamed(AppPages.pdfViewScreen,
-              extra: state.feeRecieptResponse.data);
+          if (state.feeRecieptResponse.status == Status.COMPLETED) {
+            context.pushReplacementNamed(AppPages.pdfViewScreen,
+                extra: state.feeRecieptResponse.data);
+            BlocProvider.of<PaymentBloc>(context)
+                .add(const PaymentEvent.disposeEvent());
+          } else if (state.feeRecieptResponse.status == Status.ERROR) {
+            HelperClasses.showSnackBar(msg: state.feeRecieptResponse.error);
+          }
         },
         builder: (context, state) => state.feeRecieptResponse.status ==
                 Status.LOADING
@@ -83,6 +91,7 @@ class PaymentResponseScreen extends StatelessWidget {
                                               ?.data
                                               ?.usrId ??
                                           "",
+                                      receiptType: ReceiptType.view,
                                     ),
                                   );
                                 },
@@ -119,23 +128,35 @@ class PaymentResponseScreen extends StatelessWidget {
   Widget _iconContainerWidget(
     Widget child,
   ) {
-    return GestureDetector(
-      onTap: () async {
-        var path = File('/data/user/0/com.example.mash/cache/temp.pdf');
+    return BlocConsumer<PaymentBloc, PaymentState>(
+      listener: (context, state) async {
+        if (state.shareFile != "") {
+          var path = File(state.shareFile);
 
-        if (await path.exists()) {
-          Share.shareXFiles([XFile(path.path)]);
-        } else {
-          prettyPrint('noto found');
+          if (await path.exists()) {
+            Share.shareXFiles([XFile(path.path)]);
+          } else {
+            prettyPrint('noto found');
+          }
         }
       },
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(6),
+      builder: (context, state) => GestureDetector(
+        onTap: () async {
+          BlocProvider.of<PaymentBloc>(context).add(PaymentEvent.getFeeReceipt(
+            studentId:
+                context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ??
+                    "",
+            receiptType: ReceiptType.share,
+          ));
+        },
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: AppColors.primaryColor.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: child,
         ),
-        child: child,
       ),
     );
   }

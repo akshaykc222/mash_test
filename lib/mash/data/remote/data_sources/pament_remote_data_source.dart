@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -33,6 +31,7 @@ abstract interface class PaymentRemoteDataSource {
   Future<void> savePaymentResponse(PaymentSaveResponseRequest params);
   Future<String> getFeeSuccessReceipt(
       GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest);
+  Future<String> getFeeReceiptByDocname(String docName);
 }
 
 @LazySingleton(as: PaymentRemoteDataSource)
@@ -115,6 +114,14 @@ class PaymentRemoteDataSourceImpl extends PaymentRemoteDataSource {
       GetFeeSuccessReceiptRequest getFeeSuccessReceiptRequest) async {
     final data = await apiProvider.get(AppRemoteRoutes.getFeeSuccessReceipt,
         body: getFeeSuccessReceiptRequest.toJson());
+    final res = data['resMessage'];
+    return res;
+  }
+
+  @override
+  Future<String> getFeeReceiptByDocname(String docName) async {
+    final data = await apiProvider.get(AppRemoteRoutes.getFeeReceiptByDocname,
+        body: {'P_MODULE_NAME': 'FEES', 'P_DOC_NAME': docName});
     final res = data['resMessage'];
     return res;
   }
