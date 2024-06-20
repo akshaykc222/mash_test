@@ -16,6 +16,7 @@ import '../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../models/dashboard/digital_library_model.dart';
 import '../request/di_type_request.dart';
 import '../request/digital_library_request.dart';
+import '../request/insert_dl_click.dart';
 
 @factoryMethod
 abstract interface class AcademicRemoteDataSource {
@@ -32,6 +33,7 @@ abstract interface class AcademicRemoteDataSource {
       DigitalLibraryRequest request);
   Future<List<AcademicTypeEntity>> getAcademicTypes(
       DlTypeRequest dlTypeRequest);
+  Future<void> insertDlClick(BookmarkLikeModel request);
 }
 
 @LazySingleton(as: AcademicRemoteDataSource)
@@ -105,6 +107,11 @@ class AcademicRemoteDataSourceImpl extends AcademicRemoteDataSource {
         body: dlTypeRequest.toJson());
     return List<AcademicTypeEntity>.from(data['resTable']
         .map((e) => AcademicTypeModel.fromJson(e, dlTypeRequest.pModuleName)));
+  }
+
+  @override
+  Future<void> insertDlClick(BookmarkLikeModel request) async {
+    await apiProvider.post(AppRemoteRoutes.insertDlClick, request.toJson());
   }
 }
 // List<T> _convertToDivisionDetailsList<T>(dynamic data, T Function(Map<String, dynamic>) fromJson) {

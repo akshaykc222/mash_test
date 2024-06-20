@@ -41,7 +41,9 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
 import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/research.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/audio_player.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/vedio_player.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
@@ -362,7 +364,9 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
-      builder: (context, state) =>  NoticeBoardDetailScreen(noticeId: state.extra as String,),
+      builder: (context, state) => NoticeBoardDetailScreen(
+        noticeId: state.extra as String,
+      ),
     ),
     GoRoute(
       name: AppPages.weeklyTimetableScreen,
@@ -601,6 +605,24 @@ class AppRouteManager {
       path: AppPages.research,
       name: AppPages.research,
       builder: (context, state) => const ResearchScreen(),
+    ),
+    GoRoute(
+      path: AppPages.audioPlayer,
+      name: AppPages.audioPlayer,
+      builder: (context, state) => state.pathParameters.isNotEmpty
+          ? AudioPlayerScreen(
+              audio: state.pathParameters['audio'] ?? "",
+              title: state.pathParameters['title'] ?? "")
+          : const SizedBox(),
+    ),
+    GoRoute(
+      path: AppPages.videoPlayer,
+      name: AppPages.videoPlayer,
+      builder: (context, state) => state.pathParameters.isNotEmpty
+          ? VideoPlayerScreen(
+              url: state.pathParameters['url'] ?? "",
+            )
+          : const SizedBox(),
     ),
     GoRoute(
       path: AppPages.academicBooksList,

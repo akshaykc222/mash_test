@@ -67,3 +67,43 @@ extension GetTypString on SeeAllNonAcademicTypes {
     }
   }
 }
+
+enum DocType { video, audio, pdf, image, other }
+
+extension DocTypeExtension on DocType {
+  static DocType fromString(String value) {
+    switch (value.toLowerCase()) {
+      case 'mp4':
+      case 'avi':
+      case 'mov':
+        return DocType.video;
+      case 'mp3':
+      case 'wav':
+        return DocType.audio;
+      case 'pdf':
+        return DocType.pdf;
+      case 'jpg':
+      case 'jpeg':
+      case 'png':
+      case 'gif':
+        return DocType.image;
+      default:
+        return DocType.other;
+    }
+  }
+
+  String get name {
+    switch (this) {
+      case DocType.video:
+        return 'video';
+      case DocType.audio:
+        return 'audio';
+      case DocType.pdf:
+        return 'pdf';
+      case DocType.image:
+        return 'image';
+      case DocType.other:
+        return 'other';
+    }
+  }
+}

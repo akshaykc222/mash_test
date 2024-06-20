@@ -5,6 +5,12 @@ class DigitalLibraryEvent with _$DigitalLibraryEvent {
   const factory DigitalLibraryEvent.started() = _Started;
   const factory DigitalLibraryEvent.getClasses() = _GetClasses;
   const factory DigitalLibraryEvent.startSearch() = _StartSearch;
+  const factory DigitalLibraryEvent.insertDlClick({
+    String? moduleName,
+    String? contentId,
+    String? bookmark,
+    String? like,
+  }) = _InsertDlClick;
   const factory DigitalLibraryEvent.closeSearch() = _CloseSearch;
   const factory DigitalLibraryEvent.searchAcademic({required String search}) =
       _SeachAcademic;
@@ -17,7 +23,7 @@ class DigitalLibraryEvent with _$DigitalLibraryEvent {
   const factory DigitalLibraryEvent.getAcademicLibrary(
       {String? typeId, String? catId, String? subId}) = _GetAcademicLibrary;
   const factory DigitalLibraryEvent.readBook(DigitalLibraryEntity book,
-      {required BuildContext context}) = _ReadBook;
+      {required BuildContext context, required bool isNonAcademic}) = _ReadBook;
   const factory DigitalLibraryEvent.getResearch() = _GetResearch;
   const factory DigitalLibraryEvent.getTypes(String moduleName, String pJson) =
       _GetTypes;

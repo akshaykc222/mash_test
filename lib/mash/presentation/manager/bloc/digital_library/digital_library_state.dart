@@ -8,6 +8,7 @@ class DigitalLibraryState with _$DigitalLibraryState {
       ResponseClassify<List<AcademicTypeEntity>>? getTypes,
       ResponseClassify<List<AcademicTypeEntity>>? subCats,
       ResponseClassify<List<AcademicTypeEntity>>? mediums,
+      ResponseClassify<void>? insertDlClick,
       AcademicTypeEntity? selectedSubCat,
       @Default(false) bool isSearching,
       AcademicTypeEntity? selectedMedium,

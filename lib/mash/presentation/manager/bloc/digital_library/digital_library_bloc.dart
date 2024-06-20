@@ -14,14 +14,16 @@ import 'package:mash/di/injector.dart';
 import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_type_use_case.dart';
+import 'package:mash/mash/domain/use_cases/academic/insert_dl_click_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
-import 'package:mash/mash/presentation/utils/enums.dart';
+import 'package:mash/mash/presentation/utils/enumutils/helper_classes.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
 import '../../../../data/remote/request/academic_comp_id_request.dart';
 import '../../../../data/remote/request/di_type_request.dart';
 import '../../../../data/remote/request/digital_library_request.dart';
+import '../../../../data/remote/request/insert_dl_click.dart';
 import '../../../../domain/entities/academic/class_details_entity.dart';
 import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/academic/get_class_details_usecase.dart';
@@ -44,6 +46,7 @@ class DigitalLibraryBloc
     on<_GetAcademicLibrary>(_getAcademicLibrary);
     on<_GetLibrary>(_getLibrary);
     on<_GetTypes>(_getTypes);
+    on<_InsertDlClick>(_insertDlClick);
     on<_GetNonAcademic>(_getNonAcademic);
     on<_SelectNonAcademicType>(_selectNonAcademicType);
     on<_SelectMedium>(_selectMedium);
@@ -77,6 +80,7 @@ class DigitalLibraryBloc
   final loginInfo = getIt<GetUserInfoUseCase>();
   final getDigitalLibraryUseCase = getIt<DigitalLibraryUseCase>();
   final getTypes = getIt<GetAcademicTypesUseCase>();
+  final insertDlUseCase = getIt<InsertDlClickUseCase>();
 
   _selectClass(_SelectClass event, Emitter<DigitalLibraryState> emit) async {
     emit(state.copyWith(selectedClass: event.selected));
@@ -247,6 +251,8 @@ class DigitalLibraryBloc
   }
 
   _readBook(_ReadBook event, Emitter<DigitalLibraryState> emit) async {
+    add(DigitalLibraryEvent.insertDlClick(
+        contentId: event.book.contentId ?? "", moduleName: ""));
     var tempPath = await getApplicationDocumentsDirectory();
     prettyPrint("temp Path : $tempPath");
 // File(tempPath.path).
@@ -254,14 +260,22 @@ class DigitalLibraryBloc
         "${tempPath.path}/mash docs/${event.book.contentName}.${event.book.docExt}";
     if (await File(path).exists()) {
       prettyPrint("file already exists opening type ${event.book.docExt}");
-      switch (event.book.docExt) {
-        case "pdf":
+      switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
+        case DocType.video:
+          GoRouter.of(event.context)
+              .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
+          break;
+        case DocType.audio:
+          GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
+              pathParameters: {
+                'audio': path,
+                'title': event.book.contentName ?? ""
+              });
+        case DocType.pdf:
           GoRouter.of(event.context).pushNamed(AppPages.pdfOpener, extra: path);
-          break;
-        case "epub":
-          break;
-        default:
-          break;
+        case DocType.image:
+        case DocType.other:
+        // TODO: Handle this case.
       }
     } else {
       File bookPath = await File(path).create(recursive: true);
@@ -356,5 +370,26 @@ class DigitalLibraryBloc
   _closeSearch(_CloseSearch event, Emitter<DigitalLibraryState> emit) {
     prettyPrint("___STOPPING SEARCH___");
     emit(state.copyWith(isSearching: false));
+  }
+
+  _insertDlClick(
+      _InsertDlClick event, Emitter<DigitalLibraryState> emit) async {
+    emit(state.copyWith(insertDlClick: ResponseClassify.loading()));
+    try {
+      var loginData = await loginInfo.call(NoParams());
+      emit(state.copyWith(
+          insertDlClick: ResponseClassify.completed(await insertDlUseCase.call(
+              BookmarkLikeModel(
+                  pCompId: loginData?.compId ?? "",
+                  pUserId: loginData?.usrId ?? "",
+                  pModuleName: event.moduleName ?? "",
+                  prmContentId: event.contentId ?? "",
+                  prmUserType: loginData?.userType ?? "",
+                  prmFromMob: "1",
+                  prmBookmark: event.bookmark ?? "",
+                  prmLike: event.like ?? "")))));
+    } catch (e) {
+      emit(state.copyWith(insertDlClick: ResponseClassify.error(e)));
+    }
   }
 }

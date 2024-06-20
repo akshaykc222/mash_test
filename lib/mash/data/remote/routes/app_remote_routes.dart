@@ -113,11 +113,12 @@ class AppRemoteRoutes {
   static const getPhysicalLibraryRequiredData =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getPlLangAuth";
 
- static const insertPhysicalLibraryRequest =
+  static const insertPhysicalLibraryRequest =
       "UATRESTAPI/MashFlutterRestAPI/api/user/insertBookRequest";
 
- // leave
+  // leave
   static const getLeaveDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveDashboardDetails";
-
+  static const insertDlClick =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/InsertDLUserClick";
 }

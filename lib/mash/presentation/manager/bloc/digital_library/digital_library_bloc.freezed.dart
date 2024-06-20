@@ -21,6 +21,9 @@ mixin _$DigitalLibraryEvent {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -28,7 +31,8 @@ mixin _$DigitalLibraryEvent {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -47,6 +51,9 @@ mixin _$DigitalLibraryEvent {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -54,7 +61,8 @@ mixin _$DigitalLibraryEvent {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -73,6 +81,9 @@ mixin _$DigitalLibraryEvent {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -80,7 +91,9 @@ mixin _$DigitalLibraryEvent {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -99,6 +112,7 @@ mixin _$DigitalLibraryEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -122,6 +136,7 @@ mixin _$DigitalLibraryEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -144,6 +159,7 @@ mixin _$DigitalLibraryEvent {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -229,6 +245,9 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -236,7 +255,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -258,6 +278,9 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -265,7 +288,8 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -287,6 +311,9 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -294,7 +321,9 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -319,6 +348,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -345,6 +375,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -370,6 +401,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -446,6 +478,9 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -453,7 +488,8 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -475,6 +511,9 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -482,7 +521,8 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -504,6 +544,9 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -511,7 +554,9 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -536,6 +581,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -562,6 +608,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -587,6 +634,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -663,6 +711,9 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -670,7 +721,8 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -692,6 +744,9 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -699,7 +754,8 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -721,6 +777,9 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -728,7 +787,9 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -753,6 +814,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -779,6 +841,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -804,6 +867,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -830,6 +894,313 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
 
 abstract class _StartSearch implements DigitalLibraryEvent {
   const factory _StartSearch() = _$StartSearchImpl;
+}
+
+/// @nodoc
+abstract class _$$InsertDlClickImplCopyWith<$Res> {
+  factory _$$InsertDlClickImplCopyWith(
+          _$InsertDlClickImpl value, $Res Function(_$InsertDlClickImpl) then) =
+      __$$InsertDlClickImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String? moduleName, String? contentId, String? bookmark, String? like});
+}
+
+/// @nodoc
+class __$$InsertDlClickImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$InsertDlClickImpl>
+    implements _$$InsertDlClickImplCopyWith<$Res> {
+  __$$InsertDlClickImplCopyWithImpl(
+      _$InsertDlClickImpl _value, $Res Function(_$InsertDlClickImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? moduleName = freezed,
+    Object? contentId = freezed,
+    Object? bookmark = freezed,
+    Object? like = freezed,
+  }) {
+    return _then(_$InsertDlClickImpl(
+      moduleName: freezed == moduleName
+          ? _value.moduleName
+          : moduleName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      contentId: freezed == contentId
+          ? _value.contentId
+          : contentId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bookmark: freezed == bookmark
+          ? _value.bookmark
+          : bookmark // ignore: cast_nullable_to_non_nullable
+              as String?,
+      like: freezed == like
+          ? _value.like
+          : like // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InsertDlClickImpl
+    with DiagnosticableTreeMixin
+    implements _InsertDlClick {
+  const _$InsertDlClickImpl(
+      {this.moduleName, this.contentId, this.bookmark, this.like});
+
+  @override
+  final String? moduleName;
+  @override
+  final String? contentId;
+  @override
+  final String? bookmark;
+  @override
+  final String? like;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.insertDlClick(moduleName: $moduleName, contentId: $contentId, bookmark: $bookmark, like: $like)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.insertDlClick'))
+      ..add(DiagnosticsProperty('moduleName', moduleName))
+      ..add(DiagnosticsProperty('contentId', contentId))
+      ..add(DiagnosticsProperty('bookmark', bookmark))
+      ..add(DiagnosticsProperty('like', like));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InsertDlClickImpl &&
+            (identical(other.moduleName, moduleName) ||
+                other.moduleName == moduleName) &&
+            (identical(other.contentId, contentId) ||
+                other.contentId == contentId) &&
+            (identical(other.bookmark, bookmark) ||
+                other.bookmark == bookmark) &&
+            (identical(other.like, like) || other.like == like));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, moduleName, contentId, bookmark, like);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InsertDlClickImplCopyWith<_$InsertDlClickImpl> get copyWith =>
+      __$$InsertDlClickImplCopyWithImpl<_$InsertDlClickImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return insertDlClick(moduleName, contentId, bookmark, like);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return insertDlClick?.call(moduleName, contentId, bookmark, like);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (insertDlClick != null) {
+      return insertDlClick(moduleName, contentId, bookmark, like);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return insertDlClick(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return insertDlClick?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (insertDlClick != null) {
+      return insertDlClick(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InsertDlClick implements DigitalLibraryEvent {
+  const factory _InsertDlClick(
+      {final String? moduleName,
+      final String? contentId,
+      final String? bookmark,
+      final String? like}) = _$InsertDlClickImpl;
+
+  String? get moduleName;
+  String? get contentId;
+  String? get bookmark;
+  String? get like;
+  @JsonKey(ignore: true)
+  _$$InsertDlClickImplCopyWith<_$InsertDlClickImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -880,6 +1251,9 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -887,7 +1261,8 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -909,6 +1284,9 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -916,7 +1294,8 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -938,6 +1317,9 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -945,7 +1327,9 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -970,6 +1354,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -996,6 +1381,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1021,6 +1407,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1126,6 +1513,9 @@ class _$SeachAcademicImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -1133,7 +1523,8 @@ class _$SeachAcademicImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -1155,6 +1546,9 @@ class _$SeachAcademicImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -1162,7 +1556,8 @@ class _$SeachAcademicImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -1184,6 +1579,9 @@ class _$SeachAcademicImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -1191,7 +1589,9 @@ class _$SeachAcademicImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -1216,6 +1616,7 @@ class _$SeachAcademicImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -1242,6 +1643,7 @@ class _$SeachAcademicImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1267,6 +1669,7 @@ class _$SeachAcademicImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1380,6 +1783,9 @@ class _$SeachNonAcademicImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -1387,7 +1793,8 @@ class _$SeachNonAcademicImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -1409,6 +1816,9 @@ class _$SeachNonAcademicImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -1416,7 +1826,8 @@ class _$SeachNonAcademicImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -1438,6 +1849,9 @@ class _$SeachNonAcademicImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -1445,7 +1859,9 @@ class _$SeachNonAcademicImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -1470,6 +1886,7 @@ class _$SeachNonAcademicImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -1496,6 +1913,7 @@ class _$SeachNonAcademicImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1521,6 +1939,7 @@ class _$SeachNonAcademicImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1633,6 +2052,9 @@ class _$PaginateAcademicImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -1640,7 +2062,8 @@ class _$PaginateAcademicImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -1662,6 +2085,9 @@ class _$PaginateAcademicImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -1669,7 +2095,8 @@ class _$PaginateAcademicImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -1691,6 +2118,9 @@ class _$PaginateAcademicImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -1698,7 +2128,9 @@ class _$PaginateAcademicImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -1723,6 +2155,7 @@ class _$PaginateAcademicImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -1749,6 +2182,7 @@ class _$PaginateAcademicImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1774,6 +2208,7 @@ class _$PaginateAcademicImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -1887,6 +2322,9 @@ class _$PaginateNonAcademicImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -1894,7 +2332,8 @@ class _$PaginateNonAcademicImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -1916,6 +2355,9 @@ class _$PaginateNonAcademicImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -1923,7 +2365,8 @@ class _$PaginateNonAcademicImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -1945,6 +2388,9 @@ class _$PaginateNonAcademicImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -1952,7 +2398,9 @@ class _$PaginateNonAcademicImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -1977,6 +2425,7 @@ class _$PaginateNonAcademicImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -2003,6 +2452,7 @@ class _$PaginateNonAcademicImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2028,6 +2478,7 @@ class _$PaginateNonAcademicImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2159,6 +2610,9 @@ class _$GetAcademicLibraryImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -2166,7 +2620,8 @@ class _$GetAcademicLibraryImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -2188,6 +2643,9 @@ class _$GetAcademicLibraryImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -2195,7 +2653,8 @@ class _$GetAcademicLibraryImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -2217,6 +2676,9 @@ class _$GetAcademicLibraryImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -2224,7 +2686,9 @@ class _$GetAcademicLibraryImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -2249,6 +2713,7 @@ class _$GetAcademicLibraryImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -2275,6 +2740,7 @@ class _$GetAcademicLibraryImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2300,6 +2766,7 @@ class _$GetAcademicLibraryImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2344,7 +2811,8 @@ abstract class _$$ReadBookImplCopyWith<$Res> {
           _$ReadBookImpl value, $Res Function(_$ReadBookImpl) then) =
       __$$ReadBookImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DigitalLibraryEntity book, BuildContext context});
+  $Res call(
+      {DigitalLibraryEntity book, BuildContext context, bool isNonAcademic});
 }
 
 /// @nodoc
@@ -2360,6 +2828,7 @@ class __$$ReadBookImplCopyWithImpl<$Res>
   $Res call({
     Object? book = null,
     Object? context = null,
+    Object? isNonAcademic = null,
   }) {
     return _then(_$ReadBookImpl(
       null == book
@@ -2370,6 +2839,10 @@ class __$$ReadBookImplCopyWithImpl<$Res>
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
+      isNonAcademic: null == isNonAcademic
+          ? _value.isNonAcademic
+          : isNonAcademic // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2377,16 +2850,19 @@ class __$$ReadBookImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
-  const _$ReadBookImpl(this.book, {required this.context});
+  const _$ReadBookImpl(this.book,
+      {required this.context, required this.isNonAcademic});
 
   @override
   final DigitalLibraryEntity book;
   @override
   final BuildContext context;
+  @override
+  final bool isNonAcademic;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DigitalLibraryEvent.readBook(book: $book, context: $context)';
+    return 'DigitalLibraryEvent.readBook(book: $book, context: $context, isNonAcademic: $isNonAcademic)';
   }
 
   @override
@@ -2395,7 +2871,8 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     properties
       ..add(DiagnosticsProperty('type', 'DigitalLibraryEvent.readBook'))
       ..add(DiagnosticsProperty('book', book))
-      ..add(DiagnosticsProperty('context', context));
+      ..add(DiagnosticsProperty('context', context))
+      ..add(DiagnosticsProperty('isNonAcademic', isNonAcademic));
   }
 
   @override
@@ -2404,11 +2881,13 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
         (other.runtimeType == runtimeType &&
             other is _$ReadBookImpl &&
             (identical(other.book, book) || other.book == book) &&
-            (identical(other.context, context) || other.context == context));
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.isNonAcademic, isNonAcademic) ||
+                other.isNonAcademic == isNonAcademic));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, book, context);
+  int get hashCode => Object.hash(runtimeType, book, context, isNonAcademic);
 
   @JsonKey(ignore: true)
   @override
@@ -2422,6 +2901,9 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -2429,7 +2911,8 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -2442,7 +2925,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     required TResult Function(DigitalLibraryRequest request) getLibrary,
     required TResult Function(ClassDetailsEntity selected) selectClass,
   }) {
-    return readBook(book, context);
+    return readBook(book, context, isNonAcademic);
   }
 
   @override
@@ -2451,6 +2934,9 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -2458,7 +2944,8 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -2471,7 +2958,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult? Function(DigitalLibraryRequest request)? getLibrary,
     TResult? Function(ClassDetailsEntity selected)? selectClass,
   }) {
-    return readBook?.call(book, context);
+    return readBook?.call(book, context, isNonAcademic);
   }
 
   @override
@@ -2480,6 +2967,9 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -2487,7 +2977,9 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -2501,7 +2993,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     required TResult orElse(),
   }) {
     if (readBook != null) {
-      return readBook(book, context);
+      return readBook(book, context, isNonAcademic);
     }
     return orElse();
   }
@@ -2512,6 +3004,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -2538,6 +3031,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2563,6 +3057,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2589,10 +3084,12 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
 
 abstract class _ReadBook implements DigitalLibraryEvent {
   const factory _ReadBook(final DigitalLibraryEntity book,
-      {required final BuildContext context}) = _$ReadBookImpl;
+      {required final BuildContext context,
+      required final bool isNonAcademic}) = _$ReadBookImpl;
 
   DigitalLibraryEntity get book;
   BuildContext get context;
+  bool get isNonAcademic;
   @JsonKey(ignore: true)
   _$$ReadBookImplCopyWith<_$ReadBookImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2646,6 +3143,9 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -2653,7 +3153,8 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -2675,6 +3176,9 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -2682,7 +3186,8 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -2704,6 +3209,9 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -2711,7 +3219,9 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -2736,6 +3246,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -2762,6 +3273,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2787,6 +3299,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -2900,6 +3413,9 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -2907,7 +3423,8 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -2929,6 +3446,9 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -2936,7 +3456,8 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -2958,6 +3479,9 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -2965,7 +3489,9 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -2990,6 +3516,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -3016,6 +3543,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3041,6 +3569,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3152,6 +3681,9 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -3159,7 +3691,8 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -3181,6 +3714,9 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -3188,7 +3724,8 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -3210,6 +3747,9 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -3217,7 +3757,9 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -3242,6 +3784,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -3268,6 +3811,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3293,6 +3837,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3403,6 +3948,9 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -3410,7 +3958,8 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -3432,6 +3981,9 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -3439,7 +3991,8 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -3461,6 +4014,9 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -3468,7 +4024,9 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -3493,6 +4051,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -3519,6 +4078,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3544,6 +4104,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3686,6 +4247,9 @@ class _$GetNonAcademicImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -3693,7 +4257,8 @@ class _$GetNonAcademicImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -3715,6 +4280,9 @@ class _$GetNonAcademicImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -3722,7 +4290,8 @@ class _$GetNonAcademicImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -3744,6 +4313,9 @@ class _$GetNonAcademicImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -3751,7 +4323,9 @@ class _$GetNonAcademicImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -3776,6 +4350,7 @@ class _$GetNonAcademicImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -3802,6 +4377,7 @@ class _$GetNonAcademicImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3827,6 +4403,7 @@ class _$GetNonAcademicImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -3948,6 +4525,9 @@ class _$SelectNonAcademicTypeImpl
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -3955,7 +4535,8 @@ class _$SelectNonAcademicTypeImpl
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -3977,6 +4558,9 @@ class _$SelectNonAcademicTypeImpl
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -3984,7 +4568,8 @@ class _$SelectNonAcademicTypeImpl
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -4006,6 +4591,9 @@ class _$SelectNonAcademicTypeImpl
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -4013,7 +4601,9 @@ class _$SelectNonAcademicTypeImpl
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -4038,6 +4628,7 @@ class _$SelectNonAcademicTypeImpl
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -4064,6 +4655,7 @@ class _$SelectNonAcademicTypeImpl
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4089,6 +4681,7 @@ class _$SelectNonAcademicTypeImpl
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4198,6 +4791,9 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -4205,7 +4801,8 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -4227,6 +4824,9 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -4234,7 +4834,8 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -4256,6 +4857,9 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -4263,7 +4867,9 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -4288,6 +4894,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -4314,6 +4921,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4339,6 +4947,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4449,6 +5058,9 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     required TResult Function() started,
     required TResult Function() getClasses,
     required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
     required TResult Function() closeSearch,
     required TResult Function(String search) searchAcademic,
     required TResult Function(String search) searchNonAcademic,
@@ -4456,7 +5068,8 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     required TResult Function(String search) paginateNonAcademic,
     required TResult Function(String? typeId, String? catId, String? subId)
         getAcademicLibrary,
-    required TResult Function(DigitalLibraryEntity book, BuildContext context)
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
         readBook,
     required TResult Function() getResearch,
     required TResult Function(String moduleName, String pJson) getTypes,
@@ -4478,6 +5091,9 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult? Function()? started,
     TResult? Function()? getClasses,
     TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult? Function()? closeSearch,
     TResult? Function(String search)? searchAcademic,
     TResult? Function(String search)? searchNonAcademic,
@@ -4485,7 +5101,8 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult? Function(String search)? paginateNonAcademic,
     TResult? Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult? Function(DigitalLibraryEntity book, BuildContext context)?
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
         readBook,
     TResult? Function()? getResearch,
     TResult? Function(String moduleName, String pJson)? getTypes,
@@ -4507,6 +5124,9 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult Function()? started,
     TResult Function()? getClasses,
     TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
     TResult Function()? closeSearch,
     TResult Function(String search)? searchAcademic,
     TResult Function(String search)? searchNonAcademic,
@@ -4514,7 +5134,9 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult Function(String search)? paginateNonAcademic,
     TResult Function(String? typeId, String? catId, String? subId)?
         getAcademicLibrary,
-    TResult Function(DigitalLibraryEntity book, BuildContext context)? readBook,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
     TResult Function()? getResearch,
     TResult Function(String moduleName, String pJson)? getTypes,
     TResult Function(AcademicTypeEntity? selected)? selectMedium,
@@ -4539,6 +5161,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
     required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
     required TResult Function(_SeachAcademic value) searchAcademic,
     required TResult Function(_SeachNonAcademic value) searchNonAcademic,
@@ -4565,6 +5188,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
     TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
     TResult? Function(_SeachAcademic value)? searchAcademic,
     TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4590,6 +5214,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
     TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
     TResult Function(_SeachAcademic value)? searchAcademic,
     TResult Function(_SeachNonAcademic value)? searchNonAcademic,
@@ -4636,6 +5261,8 @@ mixin _$DigitalLibraryState {
       throw _privateConstructorUsedError;
   ResponseClassify<List<AcademicTypeEntity>>? get mediums =>
       throw _privateConstructorUsedError;
+  ResponseClassify<void>? get insertDlClick =>
+      throw _privateConstructorUsedError;
   AcademicTypeEntity? get selectedSubCat => throw _privateConstructorUsedError;
   bool get isSearching => throw _privateConstructorUsedError;
   AcademicTypeEntity? get selectedMedium => throw _privateConstructorUsedError;
@@ -4661,6 +5288,7 @@ abstract class $DigitalLibraryStateCopyWith<$Res> {
       ResponseClassify<List<AcademicTypeEntity>>? getTypes,
       ResponseClassify<List<AcademicTypeEntity>>? subCats,
       ResponseClassify<List<AcademicTypeEntity>>? mediums,
+      ResponseClassify<void>? insertDlClick,
       AcademicTypeEntity? selectedSubCat,
       bool isSearching,
       AcademicTypeEntity? selectedMedium,
@@ -4687,6 +5315,7 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
     Object? getTypes = freezed,
     Object? subCats = freezed,
     Object? mediums = freezed,
+    Object? insertDlClick = freezed,
     Object? selectedSubCat = freezed,
     Object? isSearching = null,
     Object? selectedMedium = freezed,
@@ -4715,6 +5344,10 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
           ? _value.mediums
           : mediums // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<AcademicTypeEntity>>?,
+      insertDlClick: freezed == insertDlClick
+          ? _value.insertDlClick
+          : insertDlClick // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
       selectedSubCat: freezed == selectedSubCat
           ? _value.selectedSubCat
           : selectedSubCat // ignore: cast_nullable_to_non_nullable
@@ -4757,6 +5390,7 @@ abstract class _$$DigitalLibraryStateImplCopyWith<$Res>
       ResponseClassify<List<AcademicTypeEntity>>? getTypes,
       ResponseClassify<List<AcademicTypeEntity>>? subCats,
       ResponseClassify<List<AcademicTypeEntity>>? mediums,
+      ResponseClassify<void>? insertDlClick,
       AcademicTypeEntity? selectedSubCat,
       bool isSearching,
       AcademicTypeEntity? selectedMedium,
@@ -4781,6 +5415,7 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
     Object? getTypes = freezed,
     Object? subCats = freezed,
     Object? mediums = freezed,
+    Object? insertDlClick = freezed,
     Object? selectedSubCat = freezed,
     Object? isSearching = null,
     Object? selectedMedium = freezed,
@@ -4809,6 +5444,10 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
           ? _value.mediums
           : mediums // ignore: cast_nullable_to_non_nullable
               as ResponseClassify<List<AcademicTypeEntity>>?,
+      insertDlClick: freezed == insertDlClick
+          ? _value.insertDlClick
+          : insertDlClick // ignore: cast_nullable_to_non_nullable
+              as ResponseClassify<void>?,
       selectedSubCat: freezed == selectedSubCat
           ? _value.selectedSubCat
           : selectedSubCat // ignore: cast_nullable_to_non_nullable
@@ -4848,6 +5487,7 @@ class _$DigitalLibraryStateImpl
       this.getTypes,
       this.subCats,
       this.mediums,
+      this.insertDlClick,
       this.selectedSubCat,
       this.isSearching = false,
       this.selectedMedium,
@@ -4866,6 +5506,8 @@ class _$DigitalLibraryStateImpl
   @override
   final ResponseClassify<List<AcademicTypeEntity>>? mediums;
   @override
+  final ResponseClassify<void>? insertDlClick;
+  @override
   final AcademicTypeEntity? selectedSubCat;
   @override
   @JsonKey()
@@ -4883,7 +5525,7 @@ class _$DigitalLibraryStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, selectedSubCat: $selectedSubCat, isSearching: $isSearching, selectedMedium: $selectedMedium, downloadProgress: $downloadProgress, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
+    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, insertDlClick: $insertDlClick, selectedSubCat: $selectedSubCat, isSearching: $isSearching, selectedMedium: $selectedMedium, downloadProgress: $downloadProgress, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
   }
 
   @override
@@ -4896,6 +5538,7 @@ class _$DigitalLibraryStateImpl
       ..add(DiagnosticsProperty('getTypes', getTypes))
       ..add(DiagnosticsProperty('subCats', subCats))
       ..add(DiagnosticsProperty('mediums', mediums))
+      ..add(DiagnosticsProperty('insertDlClick', insertDlClick))
       ..add(DiagnosticsProperty('selectedSubCat', selectedSubCat))
       ..add(DiagnosticsProperty('isSearching', isSearching))
       ..add(DiagnosticsProperty('selectedMedium', selectedMedium))
@@ -4917,6 +5560,8 @@ class _$DigitalLibraryStateImpl
                 other.getTypes == getTypes) &&
             (identical(other.subCats, subCats) || other.subCats == subCats) &&
             (identical(other.mediums, mediums) || other.mediums == mediums) &&
+            (identical(other.insertDlClick, insertDlClick) ||
+                other.insertDlClick == insertDlClick) &&
             (identical(other.selectedSubCat, selectedSubCat) ||
                 other.selectedSubCat == selectedSubCat) &&
             (identical(other.isSearching, isSearching) ||
@@ -4939,6 +5584,7 @@ class _$DigitalLibraryStateImpl
       getTypes,
       subCats,
       mediums,
+      insertDlClick,
       selectedSubCat,
       isSearching,
       selectedMedium,
@@ -4961,6 +5607,7 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
       final ResponseClassify<List<AcademicTypeEntity>>? getTypes,
       final ResponseClassify<List<AcademicTypeEntity>>? subCats,
       final ResponseClassify<List<AcademicTypeEntity>>? mediums,
+      final ResponseClassify<void>? insertDlClick,
       final AcademicTypeEntity? selectedSubCat,
       final bool isSearching,
       final AcademicTypeEntity? selectedMedium,
@@ -4978,6 +5625,8 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
   ResponseClassify<List<AcademicTypeEntity>>? get subCats;
   @override
   ResponseClassify<List<AcademicTypeEntity>>? get mediums;
+  @override
+  ResponseClassify<void>? get insertDlClick;
   @override
   AcademicTypeEntity? get selectedSubCat;
   @override

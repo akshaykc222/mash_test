@@ -33,6 +33,7 @@ class AcademicBloc extends Bloc<AcademicEvent, AcademicState> {
   final GetDivisionDetailsUseCase getDivisionDetailsUseCase;
   final GetSyllabusUseCase getSyllabusUseCase;
   final GetSyllabusTermsUseCase getSyllabusTermsUseCase;
+
   AcademicBloc(
     this.getDivisionDetailsUseCase, {
     required this.getClassInforUseCase,
