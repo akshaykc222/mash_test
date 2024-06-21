@@ -42,6 +42,15 @@ enum OrderStatus {
   FAILED,
 }
 
+bool isBool(String val) {
+  if (val == '1') {
+    return true;
+  } else if (val == '0') {
+    false;
+  }
+  return false;
+}
+
 enum ReceiptType {
   share,
   view,
