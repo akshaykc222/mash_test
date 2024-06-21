@@ -5,6 +5,8 @@ class AppColors {
     HexColor.fromHex('#A8FDE9'),
     HexColor.fromHex('#03EFFD'),
   ]);
+  static Color purpleLight = HexColor.fromHex('#FFEFC1FA');
+  static Color purpleLightBorder = HexColor.fromHex('#FFCBC3E3');
   static Color purple200 = HexColor.fromHex('#FFBB86FC');
   static Color purple500 = HexColor.fromHex('#FF6200EE');
   static Color purple700 = HexColor.fromHex('#FF3700B3');
@@ -14,6 +16,7 @@ class AppColors {
   static Color white = HexColor.fromHex('#FFFFFFFF');
   static Color gradientItem = HexColor.fromHex('#A8FED9');
   static Color primaryColor = HexColor.fromHex('#A45EE5');
+  static Color selPrimaryColor = HexColor.fromHex('#7FFF00');
   static Color secondaryColor = HexColor.fromHex('#7F00FF');
   static Color backgroundColor = HexColor.fromHex('#FFFFFFFF');
   static Color backgroundDarkColor = HexColor.fromHex('#FAFAFA');
@@ -27,11 +30,14 @@ class AppColors {
   static Color transparentLogin = HexColor.fromHex('#80000000');
   static Color green2 = HexColor.fromHex('#32CD30');
   static Color grey200 = HexColor.fromHex('#999999');
+  static Color greyClr100 = Colors.grey.shade100;
   static Color greyClr200 = Colors.grey.shade200;
+  static Color greyClr300 = Colors.grey.shade300;
   static Color violet = HexColor.fromHex('#873FC6');
   static Color quizhead = HexColor.fromHex('#F5309C');
   static Color violet100 = HexColor.fromHex('#8800FF');
   static Color grey400 = HexColor.fromHex('#F0EAE9');
+  static Color greyClr400 = Colors.grey.shade400;
   static Color textOrangeColor = HexColor.fromHex('#FF6A4D');
   static Color green100 = HexColor.fromHex('#21AD00');
   static Color blue100 = HexColor.fromHex('#009BDE');
@@ -44,6 +50,7 @@ class AppColors {
   static Color textColorNew = HexColor.fromHex('#5D5D5D');
   static Color headText = HexColor.fromHex('#222222');
   static Color grey600 = Colors.grey.shade600;
+  static Color grey700 = Colors.grey.shade700;
   static Color gradeTxt = HexColor.fromHex('#AB7EFF');
   static Color violetSmooth = HexColor.fromHex('#8543FF');
   static Color greyText = HexColor.fromHex('#6F6F6F');
@@ -104,7 +111,7 @@ class AppColors {
   static Color lemonShade = HexColor.fromHex('#F7BC34');
   static Color greyBg = HexColor.fromHex('#808080');
   static Color labelYellow = HexColor.fromHex('#FFFF4D');
-  static Color redIndication = HexColor.fromHex('#FF000D');
+  static Color redColor = HexColor.fromHex('#FF000D');
   static Color card1 = HexColor.fromHex('#D9F5F8');
   static Color card2 = HexColor.fromHex('#FFEDD9');
   static Color card3 = HexColor.fromHex('#ECEAFF');
@@ -136,6 +143,15 @@ class AppColors {
       Color(0xfffe439e),
     ],
   );
+  static LinearGradient primaryLinearGradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        // AppColors.primaryColor.withOpacity(0.5),
+
+        AppColors.primaryColor.withOpacity(0.9),
+        AppColors.primaryColor.withOpacity(0.7),
+      ]);
   static const LinearGradient quizRankListGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.topRight,
@@ -157,8 +173,6 @@ class AppColors {
     colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
   ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 }
-
-
 
 extension HexColor on Color {
   static Color fromHex(String hexColorString) {

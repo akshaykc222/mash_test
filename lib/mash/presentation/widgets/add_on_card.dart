@@ -2,7 +2,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_strings.dart';
 
 class AddOnCard extends StatelessWidget {
@@ -29,7 +28,7 @@ class AddOnCard extends StatelessWidget {
                 height: size.height* 0.22,
                 width: size.width,
                 placeholder: (BuildContext context, String url) => Container(color: Colors.grey.shade50,),
-                errorWidget: (BuildContext context, String url, dynamic error) => const Icon(Icons.error),
+                errorWidget: (BuildContext context, String url, dynamic error) =>  Image.asset('assets/images/mash_place_holder.jpg'),
               ),
             ),
             Positioned(
@@ -39,6 +38,10 @@ class AddOnCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Colors.purple,
+                  boxShadow: [BoxShadow(
+                    color: Colors.purple.withOpacity(0.8),
+                    blurRadius: 5.0,
+                  ),],
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Padding(

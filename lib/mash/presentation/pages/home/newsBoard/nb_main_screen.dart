@@ -1,65 +1,72 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
+import 'package:mash/mash/domain/entities/drawer_menu_items/news_board_entity.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
-class NewsBoardMainScreen extends StatelessWidget {
+import '../../../manager/bloc/drawer_bloc/drawer_bloc.dart';
+import '../../../widgets/drawer_widget.dart';
+
+class NewsBoardMainScreen extends StatefulWidget {
   const NewsBoardMainScreen({super.key});
 
   @override
+  State<NewsBoardMainScreen> createState() => _NewsBoardMainScreenState();
+}
+
+class _NewsBoardMainScreenState extends State<NewsBoardMainScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<DrawerBloc>(context).add(const DrawerEvent.getNewsBoard());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      endDrawer: DrawerWidget(),
+    return Scaffold(
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'NEWS BOARD'),
       body: newsBoardBody(context),
     );
   }
 
   newsBoardBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
-    return Container(
-      padding: const EdgeInsets.only(left: 15,right: 15,top: 10),
-      height: size.height,
-      width: size.width,
-      child: ListView.separated(itemBuilder: (context,index){
-        return newsCard(index,context);
-      },
-          separatorBuilder: (context,index){
-        return spacer10;
-      }, itemCount: 2),
-    );
+    return BlocBuilder<DrawerBloc, DrawerState>(builder: (context, state) {
+      return ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          itemBuilder: (context, index) {
+            return newsCard(
+              index,
+              state,
+              context,
+            );
+          },
+          separatorBuilder: (context, index) {
+            return spacer15;
+          },
+          itemCount: state.newsBoardResponse.data?.length ?? 0);
+    });
   }
 
-  newsCard(int index, BuildContext context) {
-    List<String> descList = ['In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available','Lorem ipsum, placeholder or dummy text used in typesetting and graphic design for previewing layouts. It features scrambled Latin text,'];
-
+  newsCard(int index, DrawerState state, BuildContext context) {
+    final data = state.newsBoardResponse.data?[index];
     return GestureDetector(
-     onTap: ()=> GoRouter.of(context).pushNamed(AppPages.newsBoardDetailScreen),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: AppColors.white, boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 9,
-            offset: const Offset(0, 0),
-          )
-        ]),
+      onTap: () => GoRouter.of(context).pushNamed(
+          AppPages.newsBoardDetailScreen,
+          extra: data as NewsBoardEntity),
+      child: primaryShadowContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            title('South Indian Open Karate Championship 2024'),
-            description(descList[index]),
-            dateAndDetailRow('18/9/2023',)
+            title(data?.newsTitle ?? ""),
+            description(data?.description ?? ""),
+            dateAndDetailRow(
+              data?.newsDate ?? "",
+            )
           ],
         ),
       ),
@@ -67,13 +74,23 @@ class NewsBoardMainScreen extends StatelessWidget {
   }
 
   title(title) {
-    return Text(title,style: TextStyle(fontSize: SizeConfig.textSize(16),fontWeight: FontWeight.w600),);
+    return Text(
+      title,
+      style: TextStyle(
+          fontSize: SizeConfig.textSize(16), fontWeight: FontWeight.w600),
+    );
   }
 
   description(desc) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Text(desc,),
+      child: Text(
+        desc,
+        style: TextStyle(
+          fontSize: SizeConfig.textSize(14),
+          color: AppColors.greyText,
+        ),
+      ),
     );
   }
 
@@ -81,11 +98,28 @@ class NewsBoardMainScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(date,style: TextStyle(color: AppColors.greyText),),
+        Text(
+          date,
+          style: TextStyle(
+            color: AppColors.greyText,
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+          ),
+        ),
         Row(
           children: [
-            Text('Details',style: TextStyle(color: AppColors.grey600),),
-             Icon(Icons.arrow_forward_ios_outlined,size: 13,color: AppColors.grey600,)
+            Text(
+              'Details',
+              style: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios_outlined,
+              size: 13,
+              color: AppColors.primaryColor,
+            )
           ],
         )
       ],

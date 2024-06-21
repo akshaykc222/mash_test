@@ -1,15 +1,12 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:mash/mash/presentation/pages/dashboard/parent/widget/student_profile_widget.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/app_strings.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/common_bottom_sheet.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class TransferRequestScreen extends StatefulWidget {
   const TransferRequestScreen({super.key});
@@ -24,11 +21,10 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
 
   DateTime _selectedDate = DateTime.now();
 
-
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
+      initialDate: _selectedDate,
       firstDate: DateTime(1900),
       lastDate: DateTime(2050),
     );
@@ -40,12 +36,11 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
     }
   }
 
-
   void _openOptionsBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext builder) {
-        return Container(
+        return SizedBox(
           height: SizeConfig.height(300),
           child: Column(
             children: [
@@ -101,7 +96,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'TC REQUEST'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: tcRequestBody(context),
     );
   }
@@ -116,11 +111,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           titles('Student Name'),
-          StudentProfileWidget(
-            onTap: () async {
-              _showModelSheet(context);
-            },
-          ),
+          HelperClasses.getSelectedStudent(context,false),
           titles('Expected Date'),
           dateSelection(),
           titles('Reason for Applying TC'),
@@ -132,32 +123,20 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
     );
   }
 
-  Future<void> _showModelSheet(BuildContext context) {
-    return commonBottomSheet(
-      context,
-      child: ListView.separated(
-          itemBuilder: (context, index) {
-            return StudentProfileWidget(
-              onTap: () {},
-            );
-          },
-          separatorBuilder: (context, index) => spacer10,
-          itemCount: 3),
-      title: AppStrings.selectProfile,
-      height: 0.55,
-    );
-  }
-
   titles(title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-      child: Text(title,style: TextStyle(fontSize: SizeConfig.textSize(17),fontWeight: FontWeight.w500),),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Text(
+        title,
+        style: TextStyle(
+            fontSize: SizeConfig.textSize(17), fontWeight: FontWeight.w500),
+      ),
     );
   }
 
   dateSelection() {
     return GestureDetector(
-      onTap: ()=> _selectDate(context),
+      onTap: () => _selectDate(context),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -177,14 +156,17 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
                         child: TextFormField(
                           controller: _dateController,
                           enabled: false,
-                          style:  TextStyle(color: AppColors.black),
+                          style: TextStyle(color: AppColors.black),
                           decoration: const InputDecoration(
                             hintText: 'Select a date',
                             border: InputBorder.none,
                           ),
                         ),
                       ),
-                       Icon(Icons.edit_calendar,color: AppColors.primaryColor,),
+                      Icon(
+                        Icons.edit_calendar,
+                        color: AppColors.primaryColor,
+                      ),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -197,7 +179,7 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
 
   selectReason() {
     return GestureDetector(
-      onTap: ()=> _openOptionsBottomSheet(context),
+      onTap: () => _openOptionsBottomSheet(context),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -217,14 +199,17 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
                         child: TextFormField(
                           controller: _optionController,
                           enabled: false,
-                          style:  TextStyle(color: AppColors.black),
+                          style: TextStyle(color: AppColors.black),
                           decoration: const InputDecoration(
                             hintText: 'Select a reason to apply',
                             border: InputBorder.none,
                           ),
                         ),
                       ),
-                       Icon(Icons.arrow_drop_down_circle,color: AppColors.primaryColor,),
+                      Icon(
+                        Icons.arrow_drop_down_circle,
+                        color: AppColors.primaryColor,
+                      ),
                       const SizedBox(width: 10),
                     ],
                   ),
@@ -238,7 +223,16 @@ class _TransferRequestScreenState extends State<TransferRequestScreen> {
   applyButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 60.0),
-      child: AnimatedSharedButton(onTap: (){}, title: Text('APPLY',style: TextStyle(color: AppColors.white,fontWeight: FontWeight.w600,fontSize: SizeConfig.textSize(18)),) , isLoading: false),
+      child: AnimatedSharedButton(
+          onTap: () {},
+          title: Text(
+            'APPLY',
+            style: TextStyle(
+                color: AppColors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: SizeConfig.textSize(18)),
+          ),
+          isLoading: false),
     );
   }
 }

@@ -46,7 +46,7 @@ class AddOnDetailCard extends StatelessWidget {
                         height: size.height* 0.22,
                         width: size.width,
                         placeholder: (BuildContext context, String url) => Image.asset(AppAssets.mashLoginLogo),
-                        errorWidget: (BuildContext context, String url, dynamic error) => const Icon(Icons.error),
+                        errorWidget: (BuildContext context, String url, dynamic error) =>  Image.asset('assets/images/mash_place_holder.jpg'),
                       ),
                     )),
                  Expanded(

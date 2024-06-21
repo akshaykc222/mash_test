@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mash/app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/response_classify.dart' as res;
+import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 
-import '../router/app_pages.dart';
 import 'app_colors.dart';
 
 class AppConstants {
   static const appName = "MASH";
+  static const googleMapKey = 'AIzaSyC31l-Cu9WVeWEgnVHRCE_Ltp8jSURAgRw';
+  static const trackerApiKey = 'pGq2dyLIMA8bN8iWCpH7';
 }
 
 //height
@@ -71,6 +74,9 @@ const spacerWidth6 = SizedBox(
 const spacerWidth10 = SizedBox(
   width: 10,
 );
+const spacerWidth15 = SizedBox(
+  width: 15,
+);
 const spacerWidth20 = SizedBox(
   width: 20,
 );
@@ -90,13 +96,17 @@ const spacerWidth70 = SizedBox(
   width: 70,
 );
 
-handleUnAuthorizedError() {
+handleUnAuthorizedError(BuildContext context) {
   showModalBottomSheet(
       isDismissible: false,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      context: navigatorKey.currentState!.context,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+      )),
+      context: context,
       builder: (context) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
             child: Wrap(
               children: [
                 Padding(
@@ -104,7 +114,10 @@ handleUnAuthorizedError() {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: Text(
                     "Session Expired!",
-                    style: Theme.of(context).textTheme.bodyLarge,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
@@ -121,12 +134,22 @@ handleUnAuthorizedError() {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      GoRouter.of(context).goNamed(AppPages.login);
+                  child: BlocConsumer<AuthBloc, AuthState>(
+                    listener: (context, state) {},
+                    builder: (ctx, state) {
+                      return AnimatedSharedButton(
+                        onTap: () {
+                          AuthBloc.get(context)
+                              .add(AuthEvent.signOut(context: context));
+                        },
+                        title: const Text(
+                          "Login",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        isLoading:
+                            state.signOutResponse?.status == res.Status.LOADING,
+                      );
                     },
-                    child: const Text("Login"),
                   ),
                 )
               ],
@@ -176,4 +199,28 @@ handleError(BuildContext context, String error, Function action) {
               ],
             ),
           ));
+}
+
+primaryShadowContainer(
+    {required Widget child,
+    double marginHorizontal = 0.0,
+    double marginVertical = 0.0}) {
+  return Container(
+    margin: EdgeInsets.symmetric(
+        horizontal: marginHorizontal, vertical: marginVertical),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: AppColors.greyClr100,
+        border: Border.all(color: AppColors.white),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primaryColor.withOpacity(0.4),
+            offset: const Offset(2, 2),
+            blurRadius: 4,
+            spreadRadius: 1,
+          ),
+        ]),
+    child: child,
+  );
 }

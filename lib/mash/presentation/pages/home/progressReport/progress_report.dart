@@ -3,7 +3,8 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class ProgressReport extends StatefulWidget {
   const ProgressReport({super.key});
@@ -18,7 +19,7 @@ class _ProgressReportState extends State<ProgressReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'PROGRESS REPORT'),
       body: progressReportBody(context),
     );
@@ -55,7 +56,7 @@ class _ProgressReportState extends State<ProgressReport> {
   }
 
   _selectTermTitle() {
-    return Expanded(
+    return const Expanded(
       flex: 1,
       child: Align(
           alignment: Alignment.centerLeft,
@@ -225,7 +226,7 @@ class _ProgressReportState extends State<ProgressReport> {
           Expanded(
             flex: 2,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -285,7 +286,7 @@ class _ProgressReportState extends State<ProgressReport> {
         flex: 1,
         child: Text(
           title,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ));
   }
 

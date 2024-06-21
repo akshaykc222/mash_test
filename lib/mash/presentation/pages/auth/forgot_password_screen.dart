@@ -13,7 +13,7 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
- const ForgotPasswordScreen({super.key});
+  const ForgotPasswordScreen({super.key});
 
   @override
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
@@ -24,7 +24,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   int _countDown = 30;
 
-  bool _showResendButton = false;
+  bool showResendButton = false;
 
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -32,7 +32,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         if (_countDown > 0) {
           _countDown--;
         } else {
-          _showResendButton = true;
+          showResendButton = true;
           _timer!.cancel();
         }
       });
@@ -41,11 +41,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     startTimer();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +55,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   _loginBody(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
+    MediaQuery.sizeOf(context);
     return Stack(
       children: [
         Positioned(
             top: 0,
             right: 0,
-            child: SvgPicture.asset(AppAssets.loginStackImage,color: Colors.purple.withOpacity(0.5),)),
+            child: SvgPicture.asset(
+              AppAssets.loginStackImage,
+              color: Colors.purple.withOpacity(0.5),
+            )),
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView(
@@ -106,7 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
   }
 
-  sizedBox(height){
+  sizedBox(height) {
     return SizedBox(
       height: SizeConfig.height(height),
     );
@@ -165,10 +166,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
             fixedSize: const Size(double.infinity, 50)),
-        onPressed: () =>
-            GoRouter.of(context).pushNamed(AppPages.otpScreen),
+        onPressed: () => GoRouter.of(context).pushNamed(AppPages.otpScreen),
         child: const Text(
-          AppStrings.sendotp,
+          AppStrings.sendOtp,
         ));
   }
 
@@ -191,13 +191,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
   }
 
-
   @override
   void dispose() {
     _timer!.cancel();
     super.dispose();
   }
-
-
-  
 }

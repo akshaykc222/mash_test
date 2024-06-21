@@ -1,6 +1,9 @@
+import 'dart:developer';
 
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton()
 class HiveService {
   Future<Box<T>> getBox<T>({required String boxName}) async {
     if (Hive.isBoxOpen(boxName)) {
@@ -19,14 +22,13 @@ class HiveService {
   addBoxes<T>(List<T> items, String boxName) async {
     final openBox = await getBox<T>(boxName: boxName);
     final existingItems = openBox.values.toList();
-
+    log('existing values $existingItems}');
     for (var item in items) {
       if (existingItems.contains(item)) {
         // prettyPrint(msg: "item exits $item");
-
       } else {
         // prettyPrint(msg: "item added $item");
-        openBox.add(item);
+        await openBox.add(item);
       }
     }
   }

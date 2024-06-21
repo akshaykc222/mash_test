@@ -1,30 +1,22 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
-import 'package:mash/mash/data/remote/models/request/login_request.dart';
-import 'package:mash/mash/presentation/manager/auth_bloc/auth_bloc.dart';
+import 'package:mash/mash/data/remote/request/login_request.dart';
+import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/app_size.dart';
-import 'package:mash/mash/presentation/utils/app_theme.dart';
+import 'package:mash/mash/presentation/utils/app_strings.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_text_field.dart';
 import 'package:mash/mash/presentation/widgets/svg_asset_img.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    theme: AppThemes.mainTheme,
-    debugShowCheckedModeBanner: false,
-    home: const LoginScreen(),
-  ));
-}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,18 +26,39 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late AuthBloc _authBloc;
+  final _formKey = GlobalKey<FormState>();
+  final _userNameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  AndroidDeviceInfo? androidInfo;
+  _init() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    androidInfo = await deviceInfo.androidInfo;
+  }
+
   @override
   void initState() {
-    _authBloc = AuthBloc.get(context);
+    _init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: _loginBody(context),
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.loginResponse?.status == Status.COMPLETED &&
+            state.loginResponse?.data?.token.isNotEmpty == true) {
+          GoRouter.of(context).goNamed(AppPages.home);
+        } else if (state.loginResponse?.status == Status.ERROR) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("${state.loginResponse?.error}")));
+        }
+      },
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Form(
+            key: _formKey,
+            child: _loginBody(context),
+          )),
     );
   }
 
@@ -173,10 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: 50,
           decoration: BoxDecoration(
               color: AppColors.primaryColor,
-              gradient: LinearGradient(colors: [
-                AppColors.primaryColor,
-                AppColors.primaryColor.withOpacity(0.5),
-              ]),
+              gradient: AppColors.primaryLinearGradient,
               borderRadius: BorderRadius.circular(8)),
         )
       ],
@@ -187,16 +197,21 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return AnimatedSharedButton(
-            onTap: () {
-              // if (state.loginResponse.status == Status.INITIAL) {
-              _authBloc.add(AuthEvent.login(
-                  loginRequest: LoginRequest(
-                      userId: '1',
-                      password: '1',
-                      deviceId: '1',
-                      appType: '1')));
-              GoRouter.of(context).goNamed(AppPages.home);
-
+            onTap: () async {
+              // if (state.loginResponse?.status == Status.INITIAL) {
+              if (_formKey.currentState?.validate() == true) {
+                BlocProvider.of<AuthBloc>(context).add(
+                  AuthEvent.login(
+                    context: context,
+                    loginRequest: LoginRequest(
+                      userId: _userNameController.text,
+                      password: _passwordController.text,
+                      deviceId: androidInfo?.id ?? "",
+                      appType: AppStrings.appType,
+                    ),
+                  ),
+                );
+              }
               // }
             },
             title: Text(
@@ -206,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
-            isLoading: state.loginResponse.status == Status.LOADING);
+            isLoading: state.loginResponse?.status == Status.LOADING);
       },
     );
   }
@@ -214,6 +229,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _userIDTextField() {
     return CommonTextField(
         title: 'User Id',
+        controller: _userNameController,
+        isCaps: true,
+        validator: (val) {
+          if (val.isEmpty) {
+            return AppStrings.kUserNameInvalidError;
+          }
+        },
         prefix: Padding(
           padding: const EdgeInsets.all(12),
           child: assetFromSvg(
@@ -227,7 +249,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _passwordTextField() {
     return CommonTextField(
         title: 'Password',
+        controller: _passwordController,
         passwordField: true,
+        validator: (val) {
+          if (val.isEmpty || val.length < 4) {
+            return AppStrings.kPasswordInvalidError;
+          }
+        },
         prefix: Padding(
           padding: const EdgeInsets.all(12),
           child: assetFromSvg(
@@ -261,7 +289,8 @@ class TextFieldWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isPassword,
-      decoration: InputDecoration(
+      decoration
+      : InputDecoration(
         prefixIcon: Icon(icon),
         hintText: hintText,
         suffixIcon: isPassword ? const Icon(Icons.remove_red_eye_outlined): null,

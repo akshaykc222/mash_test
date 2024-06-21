@@ -1,52 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
-import 'package:mash/mash/presentation/utils/size_utility.dart';
-
-void main() {
-  ValueNotifier<bool> _isLoading = ValueNotifier(false);
-
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ValueListenableBuilder(
-              valueListenable: _isLoading,
-              builder: (context, data, child) {
-                return AnimatedSharedButton(
-                  onTap: () {
-                    _isLoading.value = !_isLoading.value;
-                    Future.delayed(const Duration(seconds: 2), () {
-                      _isLoading.value = !_isLoading.value;
-                      _isLoading.notifyListeners();
-                    });
-                  },
-                  title: const Text(
-                    "Login",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  isLoading: data,
-                );
-              }),
-        ],
-      ),
-    ),
-  ));
-}
 
 typedef BoolCallback = void Function(bool value);
 
 class AnimatedSharedButton extends StatefulWidget {
   final Function onTap;
   final Widget title;
+  final double? progress;
   final bool isLoading;
 
-  const AnimatedSharedButton({
-    super.key,
-    required this.onTap,
-    required this.title,
-    required this.isLoading,
-  });
+  const AnimatedSharedButton(
+      {super.key,
+      required this.onTap,
+      required this.title,
+      required this.isLoading,
+      this.progress});
 
   @override
   State<AnimatedSharedButton> createState() => _AnimatedSharedButtonState();
@@ -94,7 +62,7 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
-            onTap: () => widget.onTap(),
+            onTap: widget.isLoading == true ? null : () => widget.onTap(),
             child: Container(
                 width: MediaQuery.sizeOf(context).width,
                 height: 50,
@@ -109,15 +77,24 @@ class _AnimatedSharedButtonState extends State<AnimatedSharedButton>
                           height: 50,
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                              color: AppColors.primaryColor,
-                              borderRadius: BorderRadius.circular(80)),
+                            color: AppColors.primaryColor,
+                            shape: _colorSizeAnimation.value == minSize
+                                ? BoxShape.circle
+                                : BoxShape.rectangle,
+                            borderRadius: _colorSizeAnimation.value == minSize
+                                ? null
+                                : BorderRadius.circular(80),
+                          ),
                           child: _colorSizeAnimation.value == minSize
-                              ? const Center(
+                              ? Center(
                                   child: CircularProgressIndicator(
-                                    color: Colors.white,
+                                    color: AppColors.white,
+                                    strokeCap: StrokeCap.round,
+                                    strokeWidth: 2,
+                                    value: widget.progress,
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                         ),
                       ),
                     ),

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mash/mash/domain/entities/home_work_Item_data.dart';
+import 'package:mash/mash/domain/entities/home_work_item_data.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
 
-import '../../../router/app_pages.dart';
+import '../../../widgets/drawer_widget.dart';
 
 class TransferCertificateMainScreen extends StatelessWidget {
   const TransferCertificateMainScreen({super.key});
@@ -15,7 +13,7 @@ class TransferCertificateMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'TRANSFER CERTIFICATE'),
       body: homeWorkBody(context),
     );

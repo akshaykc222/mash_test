@@ -7,19 +7,19 @@ import 'package:mash/mash/presentation/utils/size_utility.dart';
 import '../../../utils/app_colors.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: TimeTable(),
+  runApp(const MaterialApp(
+    home: WeeklyTimeTable(),
   ));
 }
 
-class TimeTable extends StatefulWidget {
-  const TimeTable({super.key});
+class WeeklyTimeTable extends StatefulWidget {
+  const WeeklyTimeTable({super.key});
 
   @override
-  State<TimeTable> createState() => _TimeTableState();
+  State<WeeklyTimeTable> createState() => _WeeklyTimeTableState();
 }
 
-class _TimeTableState extends State<TimeTable> {
+class _WeeklyTimeTableState extends State<WeeklyTimeTable> {
   List<PeriodModel> periods = [];
 
   List<Day> daysList = [];
@@ -69,10 +69,21 @@ class _TimeTableState extends State<TimeTable> {
     ]);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
+    print(periods.map((e) => e.toJson()));
     super.initState();
   }
 
   final ValueNotifier<PeriodModel?> _selectedItem = ValueNotifier(null);
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -351,4 +362,16 @@ class PeriodModel {
             "if is period is true don't enter day"),
         assert(isPeriod == true || day != null,
             "if not a period day must be entered ");
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'isPeriod': isPeriod,
+      'startTime': startTime.toIso8601String(),
+      'endTime': endTime.toIso8601String(),
+      'day': day?.name,
+      'teacher': teacher,
+      'isBreak': isBreak,
+    };
+  }
 }

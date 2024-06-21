@@ -10,50 +10,55 @@ class CustomIconButton extends StatelessWidget {
   final String? icon;
   final VoidCallback onTap;
   final double? width;
+  final Color? color;
+  final double? elevation;
   const CustomIconButton(
       {super.key,
       required this.name,
       this.icon,
+      this.elevation,
       required this.onTap,
-      this.width});
+      this.width,
+      this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(SizeUtility(context).width / 2, 45),
-        elevation: 2,
-        backgroundColor: AppColors.white,
+        fixedSize: Size(width ?? SizeUtility(context).width / 1.6, 50),
+        elevation: elevation,
+        backgroundColor: color,
       ),
       onPressed: onTap,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          icon != null
-              ? assetFromSvg(
-                  icon!,
-                  color: AppColors.primaryColor,
-                )
-              : const SizedBox(),
           spacerWidth10,
           Text(
             name,
             style: TextStyle(
               fontSize: 16,
-              color: AppColors.black,
-              fontWeight: FontWeight.w400,
+              color: color == AppColors.primaryColor
+                  ? AppColors.white
+                  : AppColors.primaryColor,
+              fontWeight: FontWeight.w600,
             ),
           ),
           icon == null
-              ? Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryColor,
-                    size: 16,
-                  ),
+              ? Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColors.primaryColor,
+                  size: 16,
                 )
               : const SizedBox(),
+          icon == null || icon == ""
+              ? const SizedBox()
+              : assetFromSvg(
+                  icon!,
+                  color: color == AppColors.primaryColor
+                      ? AppColors.white
+                      : AppColors.primaryColor,
+                )
         ],
       ),
     );

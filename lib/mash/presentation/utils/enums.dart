@@ -11,12 +11,86 @@ enum ProgressIndicatorType {
   circular,
 }
 
-enum Day {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday
+enum Day { monday, tuesday, wednesday, thursday, friday, saturday, sunday }
+
+enum ChatType {
+  personal,
+  group,
+}
+
+enum HomeWorkAndNoteScreenType {
+  homeworkScreen,
+  noteScreen,
+}
+
+enum PaymentStatusType {
+  paid,
+  pending,
+  transaction,
+}
+
+enum AddOnTabsType{
+  academic,
+  nonAcademic
+}
+
+enum DoucumentType {
+  PDF,
+  JPG,
+  JPEG,
+  PNG,
+}
+
+enum OrderStatus {
+  PAID,
+  ACTIVE,
+  FAILED,
+}
+
+bool isBool(String val) {
+  if (val == '1') {
+    return true;
+  } else if (val == '0') {
+    false;
+  }
+  return false;
+}
+
+enum ReceiptType {
+  share,
+  view,
+  download,
+}
+
+enum UserTypes { staff, student, parent }
+
+UserTypes getUserType(String userType) {
+  switch (userType) {
+    case "2":
+      return UserTypes.student;
+
+    case "3":
+      return UserTypes.parent;
+
+    case "5":
+      return UserTypes.staff;
+
+    default:
+      return UserTypes.student;
+  }
+}
+
+enum NonAcademicTypes { all, fiction, non_fiction, bookmarks }
+
+enum SeeAllNonAcademicTypes { subCategory, medium }
+
+extension GetTypString on SeeAllNonAcademicTypes {
+  String toName() {
+    switch (this) {
+      case SeeAllNonAcademicTypes.subCategory:
+        return "Sub categories";
+      case SeeAllNonAcademicTypes.medium:
+        return "Medium";
+    }
+  }
 }

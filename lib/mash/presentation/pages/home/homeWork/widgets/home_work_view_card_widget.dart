@@ -12,13 +12,13 @@ class HomeworkCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const HomeworkCard({
-    Key? key,
+    super.key,
     required this.subject,
     required this.task,
     required this.assignedDate,
     required this.submissionDate,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

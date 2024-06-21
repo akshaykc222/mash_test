@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/core/pretty_printer.dart';
+import 'package:mash/core/response_classify.dart';
+import 'package:mash/mash/presentation/manager/bloc/academic_bloc/academic_bloc.dart';
+import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
+import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class SyllabusScreen extends StatefulWidget {
   const SyllabusScreen({super.key});
@@ -11,13 +18,18 @@ class SyllabusScreen extends StatefulWidget {
 }
 
 class _SyllabusScreenState extends State<SyllabusScreen> {
-  int selectedIndex = 0;
+  @override
+  void initState() {
+    BlocProvider.of<AcademicBloc>(context)
+        .add(const AcademicEvent.getSyllabusTerms());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: commonAppbar(title: 'SYLLABUS'),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: syllabusBody(),
     );
   }
@@ -27,137 +39,167 @@ class _SyllabusScreenState extends State<SyllabusScreen> {
     return Container(
       height: size.height,
       width: size.width,
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        children: [_selectTermTitle(), spacer10,_termsField(), _syllabusList()],
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: BlocConsumer<AcademicBloc, AcademicState>(
+        listenWhen: (previousState, currentState) {
+          return currentState.syllabusTerms.data?.first?.termId?.isNotEmpty ==
+                  true &&
+              (previousState.syllabusTerms.data?.first?.termId?.isEmpty ??
+                  true);
+        },
+        listener: (context, state) {
+          prettyPrint('listening');
+          BlocProvider.of<AcademicBloc>(context).add(
+            AcademicEvent.getSyllabus(state.syllabusTerms.data!.first!.termId!),
+          );
+        },
+        builder: (context, state) {
+          return Column(
+            children: [
+              _selectTermTitle(),
+              spacer10,
+              _termsField(state),
+              spacer10,
+              state.syllabus.status == Status.LOADING
+                  ? const Loader()
+                  : _syllabusList(state),
+            ],
+          );
+        },
       ),
     );
   }
 
   _selectTermTitle() {
     return const Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          'Select Term',
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-        ));
-  }
-
-  _termsField() {
-    List classes = ['First Term', 'Mid Term', 'Final Term'];
-    return SizedBox(
-      height: 50,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: classes.length,
-          itemBuilder: (context, index) {
-            return buttons(index, classes[index], classes);
-          }),
-    );
-  }
-
-  buttons(int index, title, List classes) {
-    // List<Color> buttonColors = List.generate(classes.length, (index) => Colors.blue);
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: ElevatedButton(
-        onPressed: () {
-          setState(() {
-            // Toggle button color
-            selectedIndex == index ? selectedIndex = -1 : selectedIndex = index;
-          });
-        },
-        style: ElevatedButton.styleFrom(
-          side: const BorderSide(width: 1, color: Colors.purple),
-          backgroundColor: index == selectedIndex
-              ? Colors.purple
-              : Colors.white, // Set button color dynamically
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              color: index == selectedIndex ? Colors.white : Colors.purple),
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Select Term',
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 20,
         ),
       ),
     );
   }
 
-  _syllabusList() {
-    List itemList = [
-      ['names', 'demos', 'demo items names'],
-      ['names', 'demos',],
-      ['names', 'demos', 'demo items names','name list'],
-      ['names', 'demos', 'demo items names'],
-    ];
-    List<String> subNameList = ['Malayalam', 'Hindi','English','Physics'];
+  Widget _termsField(AcademicState state) {
+    List<String?> classes =
+        state.syllabusTerms.data?.map((e) => e?.termName).toList() ?? [];
+    return Wrap(
+      spacing: 5,
+      children: List.generate(classes.length, (index) {
+        return FilterChip(
+          checkmarkColor: AppColors.white,
+          padding: const EdgeInsets.all(6),
+          shape: StadiumBorder(
+              side: BorderSide(
+            color: state.selectedTermIndex == index
+                ? AppColors.white
+                : AppColors.primaryColor,
+          )),
+          label: Text(
+            classes[index] ?? '',
+          ),
+          selected: state.selectedTermIndex == index,
+          onSelected: (isSelected) {
+            BlocProvider.of<AcademicBloc>(context)
+              ..add(AcademicEvent.changeSyllabusTermIndex(index))
+              ..add(AcademicEvent.getSyllabus(
+                  state.syllabusTerms.data?[index]?.termId.toString() ?? ''));
+          },
+        );
+      }),
+    );
+  }
+
+  _syllabusList(AcademicState state) {
+    final List<String?>? titleList =
+        state.syllabus.data?.map((e) => e?.subjectName).toList();
+    final subNameList =
+        state.syllabus.data?.map((e) => e?.chapterNames).toList();
     return Expanded(
-      flex: 1,
       child: ListView.separated(
           shrinkWrap: true,
           separatorBuilder: (context, index) {
-            return spacer10;
+            return spacer20;
           },
-          itemCount: subNameList.length,
+          itemCount: titleList?.length ?? 0,
           itemBuilder: (context, index) {
-            // return Container(height: 10,color: Colors.red,width: 200,);
             return syllabusCard(
-                itemList[index].length, subNameList[index], itemList[index]);
+                itemCount: subNameList?[index]?.length ?? 0,
+                title: titleList?[index] ?? '',
+                items: subNameList?[index] ?? []);
           }),
     );
   }
 
-  syllabusCard(int itemCount, subName, items) {
-    return SizedBox(
-      height: itemCount * 50 + 50,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 50,
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(subName,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),)),
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.purple.shade100,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 1,
-                    blurRadius: 9,
-                    offset: const Offset(0, 0),
-                  )
-                ]),
-            height: itemCount * 50,
-            child: ListView.separated(
+  syllabusCard(
+      {required int itemCount,
+      required String title,
+      required List<String> items}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8).copyWith(top: 10),
+      decoration: BoxDecoration(
+        color: AppColors.grey200.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: SizedBox(
+        height: itemCount * 54 + 50,
+        child: Column(
+          children: [
+            Align(
+                alignment: Alignment.center,
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+            spacer10,
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColors.primaryColor.withOpacity(0.1),
+                border: Border.all(
+                  color: AppColors.white,
+                ),
+              ),
+              child: ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
+                padding: const EdgeInsets.all(4),
                 itemBuilder: (context, index) {
                   return Container(
-                    padding:const EdgeInsets.only(left: 15),
+                      padding: const EdgeInsets.only(left: 15),
                       height: 50,
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(items[index]),
+                        child: Text(
+                          items[index],
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.greyText,
+                          ),
+                        ),
                       ));
                 },
                 separatorBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Divider(
-                      height: 2,
-                       color: Colors.purple,
+                      height: 1,
+                      color: AppColors.white,
                     ),
                   );
                 },
-                itemCount: itemCount),
-          )
-        ],
+                itemCount: itemCount,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

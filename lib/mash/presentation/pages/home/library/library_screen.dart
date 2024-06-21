@@ -1,63 +1,96 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/mash/domain/entities/library/library_item_model.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
-import 'package:mash/mash/presentation/router/router_config.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
+import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
-import 'package:mash/mash/presentation/widgets/side_drawer.dart';
+
+import '../../../widgets/drawer_widget.dart';
 
 class LibraryScreen extends StatelessWidget {
-   const LibraryScreen({super.key});
-
+  const LibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(),
+      drawer: const DrawerWidget(),
       appBar: commonAppbar(title: 'LIBRARY'),
-      body: libraryBody(),
+      body: libraryBody(context),
     );
   }
 
-  libraryBody() {
-    List list =[AppAssets.libImageAcademic,AppAssets.libImageNonAcademic,AppAssets.libImageResearch,AppAssets.libImageUserActivity];
-    List titleList = ['ACADEMIC','NON ACADEMIC','RESEARCH', 'USER ACTIVITY'];
-    List routes = [AppPages.academicLibraryScreen,];
-      return Padding(
-        padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
-        child: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context,index){
-          return libraryCard(()=> GoRouter.of(context).pushNamed(routes[0]),titleList[index],list[index]);
-        }),
-      );
+  libraryBody(BuildContext context) {
+    List<LibraryItemModel> items = [
+      LibraryItemModel(
+          title: 'ACADEMIC',
+          asset: AppAssets.libImageAcademic,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.academicLibraryScreen);
+          }),
+      LibraryItemModel(
+          title: 'NON\nACADEMIC',
+          asset: AppAssets.libImageNonAcademic,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.nonAcademic);
+          }),
+      LibraryItemModel(
+          title: 'RESEARCH',
+          asset: AppAssets.libImageResearch,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.research);
+          }),
+      LibraryItemModel(
+          title: 'USER\nACTIVITY',
+          asset: AppAssets.libImageUserActivity,
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppPages.userActivity);
+          }),
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+      child: ListView.builder(
+          itemCount: 4,
+          itemBuilder: (context, index) {
+            return libraryCard(items[index], context);
+          }),
+    );
   }
 
-  libraryCard(onPress,title,assetName) {
+  libraryCard(LibraryItemModel data, BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: InkWell(
-          onTap: onPress,
+          onTap: () => data.onTap(),
           child: Container(
+            height: SizeUtility(context).height / 4.5,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow:  [BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                blurRadius: 5.0,
-              ),],
-            ),
-            child:  Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: SvgPicture.asset(assetName),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.6),
+                  blurRadius: 5.0,
                 ),
-                Padding(
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text(title))
+                    child: SvgPicture.asset(data.asset),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(data.title)),
+                )
               ],
             ),
           )),
