@@ -18,11 +18,11 @@ part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final GetAddOnUsecase getAddOnUsecase;
+  final GetAddOnUsecase getAddOnUseCase;
   final GetUserInfoUseCase getUserInfoUseCase;
   final PostfeedbackUsecase postfeedbackUsecase;
   HomeBloc(
-      this.getAddOnUsecase, this.getUserInfoUseCase, this.postfeedbackUsecase)
+      this.getAddOnUseCase, this.getUserInfoUseCase, this.postfeedbackUsecase)
       : super(HomeState.initial()) {
     on<_GetAddOnEvent>(_getAddOn);
     on<_PostFeedback>(_postFeedback);
@@ -34,7 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final userInfo = await getUserInfoUseCase.call(NoParams());
 
-      final data = await getAddOnUsecase.call(AddOnRequest(
+      final data = await getAddOnUseCase.call(AddOnRequest(
         compId: userInfo?.compId ?? "",
         categoryId: '1',
         categoryType: '2',
