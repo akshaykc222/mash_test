@@ -12,8 +12,10 @@ import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfexceptions.dart';
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mash/core/api_provider.dart';
+import 'package:mash/core/notification.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
@@ -36,6 +38,7 @@ import 'package:mash/mash/domain/use_cases/payment/get_payment_order_id_usecase.
 import 'package:mash/mash/domain/use_cases/payment/get_payment_token_usecase.dart';
 import 'package:mash/mash/domain/use_cases/payment/payment_post_paymentstatus_update.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../../domain/use_cases/payment/get_fee_receipt_by_docname_usecase.dart';
 import '../../../../domain/use_cases/payment/get_payment_complete_response_usecase.dart';
 import '../../../../domain/use_cases/payment/save_payment_reponse_usecase.dart';
@@ -387,12 +390,13 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       final receipt = await _downloadReceipt(data, event.receiptType);
 
       if (receipt != null) {
-        if (event.receiptType == ReceiptType.view) {
-          emit(state.copyWith(
-              feeRecieptResponse: ResponseClassify.completed(receipt)));
-        } else {
+        if (event.receiptType == ReceiptType.share) {
           emit(state.copyWith(feeRecieptResponse: ResponseClassify.initial()));
           emit(state.copyWith(shareFile: receipt));
+        } else {
+          emit(state.copyWith(
+              feeRecieptResponse: ResponseClassify.completed(receipt)));
+          NotificationService().showNotification(receipt);
         }
       } else {
         emit(state.copyWith(
@@ -429,7 +433,10 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     }
   }
 
-  Future<String?> _downloadReceipt(String url, ReceiptType receiptType) async {
+  Future<String?> _downloadReceipt(
+    String url,
+    ReceiptType receiptType,
+  ) async {
     try {
       if (!await FlutterFileDialog.isPickDirectorySupported()) {
         prettyPrint("Picking directory not supported");
@@ -439,9 +446,22 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       final tempDir = await getTemporaryDirectory();
       final tempPath = '${tempDir.path}/receipt.pdf';
 
-      await ApiProvider().downloadFile(file: File(tempPath), url: url);
+      ApiProvider().downloadFile(file: File(tempPath), url: url).listen(
+          onDone: () {
+        // state.progressEvent.value = 0;
+      }, (event) {
+        state.progressEvent.value = event;
+        state.progressEvent.notifyListeners();
+      });
 
       if (receiptType == ReceiptType.share) {
+        var path = File(state.shareFile);
+
+        if (await path.exists()) {
+          Share.shareXFiles([XFile(path.path)]);
+        } else {
+          prettyPrint('noto found');
+        }
         return tempPath;
       }
 
@@ -457,6 +477,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         );
 
         await FlutterFileDialog.saveFile(params: params);
+
         return tempPath;
       } else {
         prettyPrint("Directory not picked");

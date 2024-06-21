@@ -45,6 +45,7 @@ enum OrderStatus {
 enum ReceiptType {
   share,
   view,
+  download,
 }
 
 enum UserTypes { staff, student, parent }

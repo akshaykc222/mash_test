@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
@@ -28,15 +27,24 @@ class PaymentHistoryScreen extends StatelessWidget {
       body: BlocConsumer<PaymentBloc, PaymentState>(
           listenWhen: (previous, current) =>
               previous.feeReceiptByDocname.status != Status.COMPLETED &&
-              current.feeReceiptByDocname.status == Status.COMPLETED,
-          listener: (context, state) {
+                  current.feeReceiptByDocname.status == Status.COMPLETED ||
+              previous.feeRecieptResponse.status == Status.LOADING &&
+                  (current.feeRecieptResponse.status == Status.COMPLETED ||
+                      current.feeRecieptResponse.status == Status.ERROR),
+          listener: (context, state) async {
             if (state.feeReceiptByDocname.status == Status.COMPLETED) {
               context.pushNamed(AppPages.pdfViewScreen,
                   extra: state.feeReceiptByDocname.data);
+            } else if (state.feeRecieptResponse.status == Status.COMPLETED) {
+              context.pushReplacementNamed(AppPages.pdfViewScreen,
+                  extra: state.feeRecieptResponse.data);
+              BlocProvider.of<PaymentBloc>(context)
+                  .add(const PaymentEvent.disposeEvent());
             }
           },
           builder: (context, state) => state.feeReceiptByDocname.status ==
-                  Status.LOADING
+                      Status.LOADING ||
+                  state.feeRecieptResponse.status == Status.LOADING
               ? Container(
                   color: Colors.black.withOpacity(0.4),
                   child: Column(
@@ -80,6 +88,7 @@ class _TransactHistoryItemsState extends State<TransactHistoryItems> {
         trackId: widget.trackId,
         userId: context.read<ProfileBloc>().state.getUserDetail?.data?.usrId ??
             ""));
+
     super.initState();
   }
 
@@ -173,11 +182,34 @@ class _TransactHistoryItemsState extends State<TransactHistoryItems> {
                             Row(
                               children: [
                                 CommonIconButton(
-                                  onTap: () {},
+                                  onTap: () {
+                                    BlocProvider.of<PaymentBloc>(context).add(
+                                        PaymentEvent.getFeeReceipt(
+                                            studentId: context
+                                                    .read<ProfileBloc>()
+                                                    .state
+                                                    .getUserDetail
+                                                    ?.data
+                                                    ?.usrId ??
+                                                "",
+                                            receiptType: ReceiptType.download));
+                                  },
                                   icon: Icons.file_download_outlined,
                                 ),
                                 CommonIconButton(
-                                  onTap: () {},
+                                  onTap: () {
+                                    BlocProvider.of<PaymentBloc>(context)
+                                        .add(PaymentEvent.getFeeReceipt(
+                                      studentId: context
+                                              .read<ProfileBloc>()
+                                              .state
+                                              .getUserDetail
+                                              ?.data
+                                              ?.usrId ??
+                                          "",
+                                      receiptType: ReceiptType.share,
+                                    ));
+                                  },
                                   icon: Icons.share,
                                 )
                               ],
