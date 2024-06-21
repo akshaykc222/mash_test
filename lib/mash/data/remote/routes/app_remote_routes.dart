@@ -125,4 +125,12 @@ class AppRemoteRoutes {
   // leave
   static const getLeaveDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveDashboardDetails";
+  static const getAddOn =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getAddOn";
+
+
+  // facilities
+  static const getFacilitiesDashboard =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getFacilityDashboard";
+
 }

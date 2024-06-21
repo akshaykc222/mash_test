@@ -4,6 +4,7 @@ import 'package:mash/mash/data/remote/request/notice_all_request.dart';
 import 'package:mash/mash/domain/entities/notice/notice_all_entity.dart';
 import 'package:mash/mash/domain/repositories/notice_repository.dart';
 
+@lazySingleton
 @injectable
 class GetAllNoticeUseCase
     implements UseCase<List<NoticeAllEntity?>, NoticeAllRequest> {

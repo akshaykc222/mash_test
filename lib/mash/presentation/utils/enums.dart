@@ -29,6 +29,11 @@ enum PaymentStatusType {
   transaction,
 }
 
+enum AddOnTabsType{
+  academic,
+  nonAcademic
+}
+
 enum DoucumentType {
   PDF,
   JPG,
