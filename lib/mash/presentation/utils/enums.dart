@@ -47,6 +47,12 @@ enum OrderStatus {
   FAILED,
 }
 
+enum ReceiptType {
+  share,
+  view,
+  download,
+}
+
 enum UserTypes { staff, student, parent }
 
 UserTypes getUserType(String userType) {

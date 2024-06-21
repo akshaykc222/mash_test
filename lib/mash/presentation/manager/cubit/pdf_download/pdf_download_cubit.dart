@@ -17,7 +17,7 @@ class PdfDownloadCubit extends Cubit<PdfDownloadState> {
   downloadPdf(
       {required String filePath, required DoucumentType doucumentType}) async {
     emit(state.copyWith(pdfDownloadResponse: ResponseClassify.loading()));
-    final fileName = "https://www.clickdimensions.com/links/TestPDFfile.pdf";
+    final fileName = filePath;
     if (fileName.isEmpty) {
       prettyPrint('Error: File name is empty');
       return;

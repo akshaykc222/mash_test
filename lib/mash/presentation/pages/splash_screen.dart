@@ -54,6 +54,7 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 
 import '../../../core/hive_service.dart';
 import '../../data/remote/routes/local_storage_name.dart';
+import '../utils/enums.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

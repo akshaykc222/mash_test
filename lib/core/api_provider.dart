@@ -58,27 +58,29 @@ class ApiProvider {
     }
   }
 
-  final StreamController<double> _progressController =
-      StreamController<double>();
+  Stream<double> downloadFile({required File file, required String url}) {
+    final StreamController<double> progressController =
+        StreamController<double>();
 
-  Stream<double> get downloadProgressStream => _progressController.stream;
-  downloadFile({required File file, required String url}) async {
-    try {
-      await _dio.download(
-        url,
-        file.path,
-        onReceiveProgress: (count, total) {
-          if (total != -1) {
-            double progress = (count / total * 100);
-            _progressController.add(progress);
-          }
-        },
-      );
-      _progressController.close();
-    } catch (e) {
-      _progressController.close();
-      throw BadRequestException("Unable to download file.Try again");
-    }
+    _dio.download(
+      url,
+      file.path,
+      onReceiveProgress: (count, total) {
+        if (total != -1) {
+          double progress = (count / total * 100);
+          progressController.add(progress);
+          prettyPrint('prodgress $progress');
+        }
+      },
+    ).then((_) {
+      progressController.close();
+    }).catchError((e) {
+      progressController
+          .addError(BadRequestException("Unable to download file. Try again"));
+      progressController.close();
+    });
+
+    return progressController.stream;
   }
 
   Future<Map<String, dynamic>> get(String endPoint,
@@ -136,7 +138,7 @@ class ApiProvider {
         data: xmlBody.toXmlString(),
       );
 
-      prettyPrint("getting response xml ${response}");
+      prettyPrint("getting response xml $response");
 
       // Check the status code
       if (response.statusCode == 200) {

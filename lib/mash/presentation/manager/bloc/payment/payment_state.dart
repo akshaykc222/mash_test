@@ -14,7 +14,12 @@ class PaymentState with _$PaymentState {
     required PaymentFinalAmountEntity? paymentFinalAmountResponse,
     required String paymentError,
     required ResponseClassify<String> feeRecieptResponse,
+    required String installmentId,
+    required String shareFile,
+    required ResponseClassify<String> feeReceiptByDocname,
+    required ValueNotifier<double> progressEvent,
   }) = _PaymentState;
+
   factory PaymentState.initial() => PaymentState(
         paymentDashboardResponse: ResponseClassify.initial(),
         selectedItemIndex: null,
@@ -25,5 +30,9 @@ class PaymentState with _$PaymentState {
         paymentFinalAmountResponse: null,
         paymentError: '',
         feeRecieptResponse: ResponseClassify.initial(),
+        installmentId: '',
+        shareFile: '',
+        feeReceiptByDocname: ResponseClassify.initial(),
+        progressEvent: ValueNotifier<double>(0),
       );
 }

@@ -105,6 +105,9 @@ class AppRemoteRoutes {
 
   static const getFeeSuccessReceipt =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getFeeSuccessRecieptView";
+
+  static const getFeeReceiptByDocname =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/getUrlByDocname";
   // time table
   static const dailyTimeTable =
       "UATRESTAPI/MashFlutterRestAPI/api/user/selectTimetableView";

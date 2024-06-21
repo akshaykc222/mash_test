@@ -580,24 +580,21 @@ class MockApiProvider extends _i1.Mock implements _i19.ApiProvider {
   }
 
   @override
-  _i18.Stream<double> get downloadProgressStream => (super.noSuchMethod(
-        Invocation.getter(#downloadProgressStream),
-        returnValue: _i18.Stream<double>.empty(),
-      ) as _i18.Stream<double>);
-
-  @override
-  dynamic downloadFile({
+  _i18.Stream<double> downloadFile({
     required _i20.File? file,
     required String? url,
   }) =>
-      super.noSuchMethod(Invocation.method(
-        #downloadFile,
-        [],
-        {
-          #file: file,
-          #url: url,
-        },
-      ));
+      (super.noSuchMethod(
+        Invocation.method(
+          #downloadFile,
+          [],
+          {
+            #file: file,
+            #url: url,
+          },
+        ),
+        returnValue: _i18.Stream<double>.empty(),
+      ) as _i18.Stream<double>);
 
   @override
   _i18.Future<Map<String, dynamic>> get(
