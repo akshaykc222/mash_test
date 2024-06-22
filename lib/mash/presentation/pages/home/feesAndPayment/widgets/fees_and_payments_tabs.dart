@@ -35,6 +35,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabIndexChange);
+
     fetchPaymentDashboard(PaymentStatusType.pending);
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mash/di/injector.dart';
+import 'package:mash/mash/presentation/manager/bloc/addon_bloc/add_on_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/leave_bloc/leave_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/payment/payment_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/home_bloc/home_bloc.dart';
@@ -40,6 +41,7 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<AuthBloc>()),
         BlocProvider(create: (context) => getIt<DashboardBloc>()),
         BlocProvider(create: (context) => getIt<TeacherBloc>()),
+        BlocProvider(create: (_) => getIt<AddOnBloc>()),
         BlocProvider(create: (context) => getIt<DigitalLibraryBloc>()),
         BlocProvider(create: (context) => getIt<VehicleTrackerStopsBloc>()),
         BlocProvider(create: (context) => getIt<IdRequestBloc>()),
@@ -51,11 +53,11 @@ class MashApp extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 getIt<ProfileBloc>()..add(const ProfileEvent.getSiblings())),
-        BlocProvider(create: (_) => getIt<NoticeBloc>()),
         BlocProvider(create: (_) => getIt<DashboardBloc>()),
         BlocProvider(
-            create: (_) =>
-                getIt<DrawerBloc>()..add(const DrawerEvent.getRoleMenuEvent())),
+            create: (_) => getIt<DrawerBloc>()
+              ..add(const DrawerEvent.getRoleMenuEvent())
+              ..add(const DrawerEvent.getNewsBoard())),
         BlocProvider(create: (_) => getIt<AcademicBloc>()),
         BlocProvider(create: (_) => getIt<HomeWorkNotesBloc>()),
         BlocProvider(create: (_) => getIt<ChatBloc>()),

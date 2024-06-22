@@ -25,15 +25,16 @@ class FullScreenImagePage extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: 30,
-              right: 30,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
-                onPressed: () => Navigator.pop(context),
-              ))
+            top: 30,
+            right: 30,
+            child: IconButton(
+              icon: const Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
+          )
         ],
       ),
     );

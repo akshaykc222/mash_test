@@ -29,6 +29,11 @@ enum PaymentStatusType {
   transaction,
 }
 
+enum AddOnTabsType{
+  academic,
+  nonAcademic
+}
+
 enum DoucumentType {
   PDF,
   JPG,
@@ -40,6 +45,21 @@ enum OrderStatus {
   PAID,
   ACTIVE,
   FAILED,
+}
+
+bool isBool(String val) {
+  if (val == '1') {
+    return true;
+  } else if (val == '0') {
+    false;
+  }
+  return false;
+}
+
+enum ReceiptType {
+  share,
+  view,
+  download,
 }
 
 enum UserTypes { staff, student, parent }

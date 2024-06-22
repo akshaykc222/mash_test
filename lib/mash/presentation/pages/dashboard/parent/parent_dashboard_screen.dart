@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mash/core/notification.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_last_section.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/widget/parent_dashboard_top_section.dart';
@@ -20,20 +21,13 @@ class ParentDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        log('did pope $didPop');
-        // _handleOnPopInvoked(didPop);
-      },
-      child: const Scaffold(
-        drawer: DrawerWidget(),
-        body: CustomScrollView(
-          slivers: [
-            _Header(),
-            _Body(),
-          ],
-        ),
+    return const Scaffold(
+      drawer: DrawerWidget(),
+      body: CustomScrollView(
+        slivers: [
+          _Header(),
+          _Body(),
+        ],
       ),
     );
   }

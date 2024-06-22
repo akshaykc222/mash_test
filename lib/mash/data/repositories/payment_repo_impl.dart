@@ -63,4 +63,9 @@ class PaymentRepoImpl implements PaymentRepository {
     return paymentRemoteDataSource
         .getFeeSuccessReceipt(getFeeSuccessReceiptRequest);
   }
+
+  @override
+  Future<String> getFeeReceiptByDocname(String docName) {
+    return paymentRemoteDataSource.getFeeReceiptByDocname(docName);
+  }
 }

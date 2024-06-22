@@ -13,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   configureDependencies();
   runApp(const MashApp());
 }

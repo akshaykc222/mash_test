@@ -26,17 +26,12 @@ class DailyTimeTableScreen extends StatefulWidget {
 class _DailyTimeTableScreenState extends State<DailyTimeTableScreen> {
   String date = DateTime.now().toString();
 
-
-
-
-
   @override
   void initState() {
     super.initState();
     dateVariable();
     TimeTableBloc.get(context)
-        .add( TimeTableEvent.getDailyTimeTable(date:date));
-
+        .add(TimeTableEvent.getDailyTimeTable(date: date));
   }
 
   String dateVariable() {
@@ -81,139 +76,166 @@ class DailyTimeTableBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<TimeTableBloc, TimeTableState>(
               builder: (context, state) {
-
-                return state.getDailyTimeTable?.data?.isNotEmpty == true ? ListView.separated(
-                    separatorBuilder: (context, index) {
-                      return spacer7;
-                    },
-                    itemCount: state.getDailyTimeTable?.data?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      return state.getDailyTimeTable?.status == Status.LOADING
-                          ? const Center(
-                        child: SizedBox(
-                          height: 60,
-                          width: 60,
-                          child: CircularProgressIndicator(),
-                        ),
-                      ) :  Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 5),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: state.getDailyTimeTable?.data?[index].attnStatus == '0' ?
-                               Colors.red.shade50
-                              : Colors.green.shade50,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.purple.withOpacity(0.6),
-                              blurRadius: 3.0,
-                            ),
-                          ],
-                        ),
-                        child: Theme(
-                          data: Theme.of(context)
-                              .copyWith(dividerColor: Colors.transparent),
-                          child: ExpansionTile(
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                 Text(
-                                  state.getDailyTimeTable!.data![index].subName,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),
-                                ),
-                                spacer7,
-                                Text(
-                                  state.getDailyTimeTable?.data?[index].attnStatus == '0' ? 'Class not attended' : 'Class attended',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                      color: AppColors.barRed),
-                                ),
-                                spacer7,
-                                Text(
-                                  state.getDailyTimeTable!.data![index].fullName,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppColors.greyText),
-                                ),
-                                spacer7,
-                                 Text(
-                                 "${state.getDailyTimeTable?.data?[index].startTime} - ${state.getDailyTimeTable!.data![index].endTime}",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            children: <Widget>[
-                              ElevatedButton.icon(
-                                  style: ElevatedButton.styleFrom(
-                                      elevation: 6,
-                                      backgroundColor: AppColors.white),
-                                  icon: Icon(
-                                    Icons.file_copy_outlined,
-                                    color: AppColors.black,
+                return state.getDailyTimeTable?.data?.isNotEmpty == true
+                    ? ListView.separated(
+                        separatorBuilder: (context, index) {
+                          return spacer7;
+                        },
+                        itemCount: state.getDailyTimeTable?.data?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return state.getDailyTimeTable?.status ==
+                                  Status.LOADING
+                              ? const Center(
+                                  child: SizedBox(
+                                    height: 60,
+                                    width: 60,
+                                    child: CircularProgressIndicator(),
                                   ),
-                                  onPressed: () {
-                                    GoRouter.of(context).pushNamed(AppPages.homeWorksAndNoteViewScreen);
-                                  },
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 5),
-                                    child: Text(
-                                      AppStrings.homeWorksCapital,
-                                      style: TextStyle(color: AppColors.black),
-                                    ),
-                                  )),
-                              spacer10,
-                              const Divider(),
-                              spacer10,
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                   Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        '${AppStrings.teacher} - ',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 16),
-                                      ),
-                                      Text(
-                                        state.getDailyTimeTable!.data![index].fullName,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 17),
+                                )
+                              : Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: state.getDailyTimeTable?.data?[index]
+                                                .attnStatus ==
+                                            '0'
+                                        ? Colors.red.shade50
+                                        : Colors.green.shade50,
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.purple.withOpacity(0.6),
+                                        blurRadius: 3.0,
                                       ),
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      CommonIconButton(
-                                          icon: Icons.call_outlined,
-                                          // onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile),
-                                        onTap: ()=> HelperClasses.showDialogWithButton(messageTitle: 'Contact Teacher',
-                                            message: 'Are you sure to make a call?', submitButtonTitle: 'Call', context: context, onYesTap: ()=> _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile)),
+                                  child: Theme(
+                                      data: Theme.of(context).copyWith(
+                                          dividerColor: Colors.transparent),
+                                      child: ExpansionTile(
+                                        title: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              state.getDailyTimeTable!
+                                                  .data![index].subName,
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 18),
+                                            ),
+                                            spacer7,
+                                            Text(
+                                              state
+                                                          .getDailyTimeTable
+                                                          ?.data?[index]
+                                                          .attnStatus ==
+                                                      '0'
+                                                  ? 'Class not attended'
+                                                  : 'Class attended',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 16,
+                                                  color: AppColors.barRed),
+                                            ),
+                                            spacer7,
+                                            Text(
+                                              state.getDailyTimeTable!
+                                                  .data![index].fullName,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 16,
+                                                  color: AppColors.greyText),
+                                            ),
+                                            spacer7,
+                                            Text(
+                                              "${state.getDailyTimeTable?.data?[index].startTime} - ${state.getDailyTimeTable!.data![index].endTime}",
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 18),
+                                            ),
+                                          ],
+                                        ),
+                                        children: <Widget>[
+                                          ElevatedButton.icon(
+                                              style: ElevatedButton.styleFrom(
+                                                  elevation: 6,
+                                                  backgroundColor:
+                                                      AppColors.white),
+                                              icon: Icon(
+                                                Icons.file_copy_outlined,
+                                                color: AppColors.black,
+                                              ),
+                                              onPressed: () {
+                                                GoRouter.of(context).pushNamed(
+                                                    AppPages
+                                                        .homeWorksAndNoteViewScreen);
+                                              },
+                                              label: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 10,
+                                                        vertical: 5),
+                                                child: Text(
+                                                  AppStrings.homeWorksCapital,
+                                                  style: TextStyle(
+                                                      color: AppColors.black),
+                                                ),
+                                              )),
+                                          spacer10,
+                                          const Divider(),
+                                          spacer10,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  const Text(
+                                                    '${AppStrings.teacher} - ',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 16),
+                                                  ),
+                                                  Text(
+                                                    state.getDailyTimeTable!
+                                                        .data![index].fullName,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 17),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  CommonIconButton(
+                                                      icon: Icons.call_outlined,
+                                                      // onTap: () => _launchCaller(state.getDailyTimeTable!.data![index].primaryMobile),
+                                                      onTap: () => HelperClasses
+                                                              .showDialogWithButton(
+                                                            context: context,
+                                                          )),
+                                                  CommonIconButton(
+                                                      icon: Icons
+                                                          .message_outlined,
+                                                      onTap: () {
+                                                        GoRouter.of(context)
+                                                            .pushNamed(AppPages
+                                                                .chatsListScreen);
+                                                      }),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                      CommonIconButton(
-                                          icon: Icons.message_outlined,
-                                          onTap: () {
-                                            GoRouter.of(context).pushNamed(AppPages.chatsListScreen);
-                                          }),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )));
-                    }): noData();
+                                        ],
+                                      )));
+                        })
+                    : noData();
               },
             ),
           )
@@ -224,7 +246,10 @@ class DailyTimeTableBody extends StatelessWidget {
 
   noData() {
     return Center(
-      child: SvgPicture.asset('assets/images/app_no_data.svg',height: SizeConfig.height(250),),
+      child: SvgPicture.asset(
+        'assets/images/app_no_data.svg',
+        height: SizeConfig.height(250),
+      ),
     );
   }
 

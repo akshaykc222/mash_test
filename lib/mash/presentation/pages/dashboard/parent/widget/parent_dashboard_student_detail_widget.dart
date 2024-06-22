@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../core/response_classify.dart';
@@ -162,7 +163,7 @@ class _UserInfo extends StatelessWidget {
                   ],
                 ),
                 spacer10,
-                _ContactRow(user?.mobile ?? ""),
+                const _ContactRow(),
                 spacer4,
               ],
             ),
@@ -174,8 +175,7 @@ class _UserInfo extends StatelessWidget {
 }
 
 class _ContactRow extends StatelessWidget {
-  final String phoneNumber;
-  const _ContactRow(this.phoneNumber);
+  const _ContactRow();
 
   @override
   Widget build(BuildContext context) {
@@ -201,11 +201,9 @@ class _ContactRow extends StatelessWidget {
           GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () async {
-              var url = "tel:$phoneNumber";
-              if (!await launchUrl(Uri.parse(url))) {
-              } else {
-                throw 'Could not launch $url';
-              }
+              HelperClasses.showDialogWithButton(
+                context: context,
+              );
             },
             child: const _IconWidget(img: AppAssets.call),
           ),
