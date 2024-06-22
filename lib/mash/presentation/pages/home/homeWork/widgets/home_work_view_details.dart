@@ -145,6 +145,7 @@ class HomeWorkViewDetailsScreenState extends State<HomeWorkViewDetailsScreen> {
             if (table2?.ext == DoucumentType.PDF.name) {
               context.read<PdfDownloadCubit>().downloadPdf(
                   doucumentType: DoucumentType.PDF,
+                  document: table2?.document ?? "",
                   filePath: table2?.wrkDoc ?? "");
             } else {
               context.pushNamed(AppPages.imageFullView, extra: table2?.wrkDoc);

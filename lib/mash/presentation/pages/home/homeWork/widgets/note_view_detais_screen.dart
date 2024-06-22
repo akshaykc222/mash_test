@@ -15,6 +15,8 @@ import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/utils/size_utility.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
 
+import '../../../../../domain/entities/notes/notes_details_entity.dart';
+
 class NoteViewDetailsScreen extends StatefulWidget {
   final String id;
   const NoteViewDetailsScreen({super.key, required this.id});
@@ -103,27 +105,56 @@ class NoteViewDetailsScreenState extends State<NoteViewDetailsScreen> {
     );
   }
 
-  Widget _buildAttachmentList(BuildContext context, var data) {
-    final attachment = data.resTable2.first;
-    prettyPrint(attachment.ext);
-    if (attachment.ext == 'JPG') {
-      return CachedNetworkImage(imageUrl: attachment.wrkDoc ?? "");
-    } else if (attachment.ext == 'PDF') {
-      return ListTile(
-        onTap: () => context.read<PdfDownloadCubit>().downloadPdf(
-            filePath: attachment.wrkDoc ?? "",
-            doucumentType: DoucumentType.PDF),
-        title: Text(
-          attachment.document ?? "",
-          style: TextStyle(
-              fontSize: 14,
-              color: AppColors.greyText,
-              fontWeight: FontWeight.w500),
-          maxLines: 1,
+  Widget _buildAttachmentList(
+      BuildContext context, NotesReportDetailsEntity data) {
+    final attachment = data.resTable2?.first;
+    prettyPrint(attachment?.ext);
+    if (attachment?.ext == 'JPG') {
+      return CachedNetworkImage(imageUrl: attachment?.wrkDoc ?? "");
+    } else if (attachment?.ext == 'PDF') {
+      return Expanded(
+        child: ListView.builder(
+          itemCount: data.resTable2?.length ?? 0,
+          itemBuilder: (context, index) {
+            final attachment = data.resTable2?[index];
+            prettyPrint(attachment?.ext);
+
+            if (attachment?.ext == 'JPG') {
+              return CachedNetworkImage(
+                imageUrl: attachment?.wrkDoc ?? "",
+                placeholder: (context, url) =>
+                    const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              );
+            } else if (attachment?.ext == 'PDF') {
+              return ListTile(
+                onTap: () => context.read<PdfDownloadCubit>().downloadPdf(
+                    filePath: attachment?.wrkDoc ?? "",
+                    doucumentType: DoucumentType.PDF,
+                    document: attachment?.document ?? ""),
+                title: Text(
+                  attachment?.document ?? "",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.greyText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                ),
+                subtitle: Text(
+                  'Attached File',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.greyText,
+                  ),
+                ),
+                leading: Icon(Icons.picture_as_pdf, color: AppColors.redColor),
+              );
+            } else {
+              return const SizedBox();
+            }
+          },
         ),
-        subtitle: Text('Attached File',
-            style: TextStyle(fontSize: 12, color: AppColors.greyText)),
-        leading: Icon(Icons.picture_as_pdf, color: AppColors.redColor),
       );
     } else {
       return const SizedBox();

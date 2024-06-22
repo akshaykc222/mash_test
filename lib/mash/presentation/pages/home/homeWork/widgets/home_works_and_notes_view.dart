@@ -101,9 +101,15 @@ class _HomeworksAndNoteViewState extends State<HomeworksAndNoteView> {
                           assignedDate: item?.createdDate ?? "",
                           submissionDate: item?.submitDate ?? "",
                           onTap: () {
-                            context.pushNamed(
-                                AppPages.homeWorksViewDetailsScreen,
-                                extra: item?.workId);
+                            if (widget.screenType ==
+                                HomeWorkAndNoteScreenType.homeworkScreen) {
+                              context.pushNamed(
+                                  AppPages.homeWorksViewDetailsScreen,
+                                  extra: item?.workId);
+                            } else {
+                              context.pushNamed(AppPages.noteViewDetails,
+                                  extra: item?.workId);
+                            }
                           },
                         )
                       : NotesTile(

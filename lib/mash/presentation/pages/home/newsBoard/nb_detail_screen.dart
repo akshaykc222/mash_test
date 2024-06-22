@@ -67,6 +67,7 @@ class NewsBoardDetailScreen extends StatelessWidget {
                   log('document typep ${newsDetails.ext}');
                   if (newsDetails.ext == "PDF") {
                     BlocProvider.of<PdfDownloadCubit>(context).downloadPdf(
+                        document: newsDetails.content ?? "",
                         filePath: newsDetails.content ?? '',
                         doucumentType: DoucumentType.PDF);
                   } else {}

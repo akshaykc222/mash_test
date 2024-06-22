@@ -15,29 +15,28 @@ part 'pdf_download_cubit.freezed.dart';
 class PdfDownloadCubit extends Cubit<PdfDownloadState> {
   PdfDownloadCubit() : super(PdfDownloadState.initial());
   downloadPdf(
-      {required String filePath, required DoucumentType doucumentType}) async {
+      {required String filePath,
+      required DoucumentType doucumentType,
+      required String document}) async {
     emit(state.copyWith(pdfDownloadResponse: ResponseClassify.loading()));
-    final fileName = filePath;
-    if (fileName.isEmpty) {
+    final fileUrl = filePath;
+    if (fileUrl.isEmpty) {
       prettyPrint('Error: File name is empty');
       return;
     }
 
-    Dio dio = Dio();
-
-    File? file;
-
     try {
       final dir = await getApplicationDocumentsDirectory();
-      file = File('${dir.path}/$fileName');
+      prettyPrint('path ---------------------- $fileUrl');
+      String path = "${dir.path}mash docs/$document.pdf";
 
-      if (await file.exists()) {
-        prettyPrint('file name f=$file ==--==- size ${file.length()}');
+      if (await File(path).exists()) {
         emit(state.copyWith(
-            pdfDownloadResponse: ResponseClassify.completed(file.path)));
+            pdfDownloadResponse: ResponseClassify.completed(path)));
       } else {
-        final res = await dio.download(
-          fileName,
+        var file = await File(path).create(recursive: true);
+        final res = await Dio().download(
+          fileUrl,
           file.path,
           onReceiveProgress: (count, total) {
             var status = count / total * 100;

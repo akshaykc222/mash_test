@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:mash/core/pretty_printer.dart';
@@ -19,7 +21,7 @@ class _PdfViewerState extends State<PdfVieweScreen> {
       body: PDFView(
         filePath: widget.path,
         onError: (error) {
-          print(error);
+          log(error);
         },
       ),
     );
