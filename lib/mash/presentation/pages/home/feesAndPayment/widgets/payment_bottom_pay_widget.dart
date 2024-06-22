@@ -172,13 +172,19 @@ class _PaymentDialogState extends State<PaymentDialog> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter an amount';
                       } else {
-                        final _totalAmount = int.parse(totalAmount);
-                        final _parsedValue = int.tryParse(value) ?? 0;
-                        if (_parsedValue <= 0 || _parsedValue > _totalAmount) {
-                          return 'Amount must be between 1 and $totalAmount';
+                        final parsedValue = int.tryParse(value) ?? 0;
+                        if (parsedValue <= 0) {
+                          return 'Amount should not be 0 or negative';
                         }
+
+                        final int totalAmountInt =
+                            int.tryParse(totalAmount) ?? 0;
+                        if (parsedValue > totalAmountInt) {
+                          return 'Amount should not be higher than $totalAmountInt';
+                        }
+
+                        return null;
                       }
-                      return null;
                     },
                     autovalidateMode: AutovalidateMode.always,
                   ),

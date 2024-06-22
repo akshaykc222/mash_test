@@ -36,6 +36,8 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           BlocBuilder<DrawerBloc, DrawerState>(
+            buildWhen: (previous, current) =>
+                previous.roleMenuResponse != current.roleMenuResponse,
             builder: (context, state) {
               final data = state.roleMenuResponse.data ?? [];
 
@@ -55,13 +57,7 @@ class DrawerWidget extends StatelessWidget {
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
                         if (data[index].menuName.toLowerCase() == 'logout') {
-                          prettyPrint(data[index].menuName.toLowerCase());
-
-                          BlocProvider.of<AuthBloc>(context)
-                              .add(AuthEvent.signOut(context: context));
-                          BlocProvider.of<ProfileBloc>(context)
-                              .add(const ProfileEvent.disposeEvent());
-                          GoRouter.of(context).goNamed(AppPages.login);
+                          _showLogoutDialog(context);
                         } else {
                           context.pop();
                           try {
@@ -107,6 +103,45 @@ class DrawerWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Are you sure?'),
+          content: const Text('Do you really want to logout?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                context.pop();
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppColors.redColor),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                BlocProvider.of<AuthBloc>(context)
+                    .add(AuthEvent.signOut(context: context));
+                BlocProvider.of<ProfileBloc>(context)
+                    .add(const ProfileEvent.disposeEvent());
+                GoRouter.of(context).goNamed(AppPages.login);
+              },
+              child: const Text(
+                'Logout',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

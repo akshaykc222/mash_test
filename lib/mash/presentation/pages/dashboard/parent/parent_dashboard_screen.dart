@@ -87,7 +87,9 @@ class _Header extends StatelessWidget {
         spacerWidth15,
         _AppBarIconWidget(
           img: AppAssets.notificationIcon,
-          onTap: () {},
+          onTap: () {
+            context.pushNamed(AppPages.noticeBoardMainScreen);
+          },
         ),
         spacerWidth20,
       ],

@@ -209,25 +209,29 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                     },
                     builder: (context, state) {
                       final amounts = state.paymentFinalAmountResponse;
-                      return Row(
-                        children: [
-                          Icon(Icons.sell_outlined,
-                              color: AppColors.primaryColor),
-                          spacerWidth4,
-                          Flexible(
-                            child: Text(
-                              'Congragulations you are eligible for ${amounts?.discountPercentage}% dicount as you used MASH for payment',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: AppColors.primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      );
+                      return (double.tryParse(amounts?.discountAmount ?? '') ??
+                                  0) >
+                              0
+                          ? Row(
+                              children: [
+                                Icon(Icons.sell_outlined,
+                                    color: AppColors.primaryColor),
+                                spacerWidth4,
+                                Flexible(
+                                  child: Text(
+                                    'Congragulations you are eligible for ${amounts?.discountPercentage}% dicount as you used MASH for payment',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: AppColors.primaryColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : const SizedBox();
                     },
                   )
                 ],

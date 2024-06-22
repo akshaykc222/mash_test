@@ -33,7 +33,10 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(
+      length: 2,
+      vsync: this,
+    );
     _tabController.addListener(_handleTabIndexChange);
 
     fetchPaymentDashboard(PaymentStatusType.pending);
@@ -66,6 +69,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
           centerTitle: true,
           title: const Text(AppStrings.feesAndPaymentScreen),
           bottom: TabBar(
+            isScrollable: false,
             indicatorWeight: 3,
             controller: _tabController,
             tabs: const [
@@ -90,6 +94,7 @@ class _FeesAndPaymentsTabsState extends State<FeesAndPaymentsTabs>
                 spacer10,
                 Expanded(
                   child: TabBarView(
+                    physics: NeverScrollableScrollPhysics(),
                     controller: _tabController,
                     children: const [
                       PendingPaymentTabbarWidget(),
@@ -242,7 +247,7 @@ class PaidWidget extends StatelessWidget {
                       ),
               ],
             ),
-            isSelected && entity.feeAmountPaid != "0"
+            isSelected
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -256,20 +261,22 @@ class PaidWidget extends StatelessWidget {
                         ),
                       ),
                       spacer15,
-                      Align(
-                        alignment: Alignment.center,
-                        child: CustomIconButton(
-                          elevation: 0,
-                          color: AppColors.primaryColor.withOpacity(0.2),
-                          name: 'Transaction History',
-                          onTap: () {
-                            GoRouter.of(context).pushNamed(
-                                AppPages.transactionHistory,
-                                extra: entity.feeTrackId);
-                          },
-                          icon: AppAssets.transactionHistory,
-                        ),
-                      ),
+                      entity.feeAmountPaid != "0"
+                          ? Align(
+                              alignment: Alignment.center,
+                              child: CustomIconButton(
+                                elevation: 0,
+                                color: AppColors.primaryColor.withOpacity(0.2),
+                                name: 'Transaction History',
+                                onTap: () {
+                                  GoRouter.of(context).pushNamed(
+                                      AppPages.transactionHistory,
+                                      extra: entity.feeTrackId);
+                                },
+                                icon: AppAssets.transactionHistory,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                       isPending
                           ? Container(
                               margin: const EdgeInsets.only(top: 15, bottom: 5),

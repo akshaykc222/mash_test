@@ -53,9 +53,8 @@ class MashApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<ProfileBloc>()),
         BlocProvider(create: (_) => getIt<DashboardBloc>()),
         BlocProvider(
-            create: (_) => getIt<DrawerBloc>()
-              ..add(const DrawerEvent.getRoleMenuEvent())
-              ..add(const DrawerEvent.getNewsBoard())),
+            create: (_) =>
+                getIt<DrawerBloc>()..add(const DrawerEvent.getNewsBoard())),
         BlocProvider(create: (_) => getIt<AcademicBloc>()),
         BlocProvider(create: (_) => getIt<HomeWorkNotesBloc>()),
         BlocProvider(create: (_) => getIt<ChatBloc>()),

@@ -300,6 +300,9 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
         prettyPrint('payment response $res');
       }
       if (data.orderStatus == OrderStatus.PAID.name) {
+        add(_GetPaymentDashboard(
+            paymentStatusType: PaymentStatusType.pending,
+            userId: event.studenId ?? ""));
         emit(state.copyWith(
             paymentOrderResponse:
                 ResponseClassify.completed(OrderStatus.PAID)));
@@ -456,7 +459,6 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 
       if (receiptType == ReceiptType.share) {
         var path = File(state.shareFile);
-
         if (await path.exists()) {
           Share.shareXFiles([XFile(path.path)]);
         } else {

@@ -5,6 +5,7 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
 
 import '../../../../../../core/response_classify.dart';
+import '../../../../../domain/entities/payment/payment_dashboard_entity.dart';
 import '../../../../manager/bloc/payment/payment_bloc.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/loader.dart';
@@ -64,8 +65,8 @@ class _PendingPaymentTabbarWidgetState
 }
 
 class PaymentListView extends StatelessWidget {
-  final List<dynamic> duePayments;
-  final List<dynamic> upcomingPayments;
+  final List<PaymentDashboardEntity> duePayments;
+  final List<PaymentDashboardEntity> upcomingPayments;
   final PaymentState state;
 
   const PaymentListView({
@@ -115,7 +116,7 @@ class PaymentListView extends StatelessWidget {
 }
 
 class PaymentItem extends StatelessWidget {
-  final dynamic data;
+  final PaymentDashboardEntity data;
   final bool isSelected;
   final bool isChecked;
   final int index;
@@ -141,9 +142,11 @@ class PaymentItem extends StatelessWidget {
         );
       },
       onChanged: (_) {
-        BlocProvider.of<PaymentBloc>(context).add(
-          PaymentEvent.selectPaymentsCheckboxEvent(data.feeTrackId!),
-        );
+        data.isDue == '0'
+            ? BlocProvider.of<PaymentBloc>(context).add(
+                PaymentEvent.selectPaymentsCheckboxEvent(data.feeTrackId!),
+              )
+            : null;
       },
       isChecked: isChecked,
       isSelected: isSelected,
