@@ -202,6 +202,11 @@ class AppStrings {
   static const String noDataFound = 'NO DATA FOUND';
   static const String payNow = 'PAY NOW';
 
+
+  //facility
+  static const String unSubscribe = 'Unsubscribe';
+
+
   static List<String> dashboardPerformanceList = <String>[
     'ANNUAL ASSESSMENT',
     'FIRST TERMINAL ASSESSMENT',

@@ -12,6 +12,7 @@ class CommonSmallButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
+        elevation: 5,
         backgroundColor: color
       ),
       icon: Icon(prefixIcon),
