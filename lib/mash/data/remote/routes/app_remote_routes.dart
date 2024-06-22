@@ -125,12 +125,21 @@ class AppRemoteRoutes {
   // leave
   static const getLeaveDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveDashboardDetails";
+<<<<<<< HEAD
   static const getLeaveStatus =
       "https://uat.mash-edu.com/UATRESTAPI/MashFlutterRestAPI/api/user/ForGetTheLeaveStatusAndCount";
 
+=======
+>>>>>>> 9d3aef6f61ec28951b78b86039030beb9e7f098d
   static const getAddOn = "UATRESTAPI/MashFlutterRestAPI/api/user/getAddOn";
 
   // facilities
   static const getFacilitiesDashboard =
       "UATRESTAPI/MashFlutterRestAPI/api/user/getFacilityDashboard";
+<<<<<<< HEAD
+=======
+
+  static const insertDlClick =
+      "UATRESTAPI/MashFlutterRestAPI/api/user/InsertDLUserClick";
+>>>>>>> 9d3aef6f61ec28951b78b86039030beb9e7f098d
 }

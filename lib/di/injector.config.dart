@@ -97,6 +97,8 @@ import '../mash/domain/use_cases/academic/get_division_details_use_case.dart'
 import '../mash/domain/use_cases/academic/get_syllabus_terms_use_case.dart'
     as _i70;
 import '../mash/domain/use_cases/academic/get_syllabus_use_case.dart' as _i71;
+import '../mash/domain/use_cases/academic/insert_dl_click_use_case.dart'
+    as _i107;
 import '../mash/domain/use_cases/add_on/get_add_on_detail_use_case.dart'
     as _i117;
 import '../mash/domain/use_cases/add_on/get_add_on_list_usecase.dart' as _i118;
@@ -136,8 +138,12 @@ import '../mash/domain/use_cases/home_work_notes/get_notes_reports_use_case_repo
 import '../mash/domain/use_cases/id_request/id_request_type_usecase.dart'
     as _i123;
 import '../mash/domain/use_cases/id_request/post_id_request.dart' as _i124;
+<<<<<<< HEAD
 import '../mash/domain/use_cases/leave/leave_status_usecase.dart' as _i108;
 import '../mash/domain/use_cases/leave/leave_use_case.dart' as _i107;
+=======
+import '../mash/domain/use_cases/leave/leave_use_case.dart' as _i108;
+>>>>>>> 9d3aef6f61ec28951b78b86039030beb9e7f098d
 import '../mash/domain/use_cases/library/physical_library_use_case.dart'
     as _i109;
 import '../mash/domain/use_cases/library/post_physical_library_request.dart'
@@ -414,10 +420,17 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i105.GetAcademicTypesUseCase(gh<_i39.AcademicRepository>()));
     gh.lazySingleton<_i106.DigitalLibraryUseCase>(
         () => _i106.DigitalLibraryUseCase(gh<_i39.AcademicRepository>()));
+<<<<<<< HEAD
     gh.lazySingleton<_i107.GetDashboardLeaveUseCase>(
         () => _i107.GetDashboardLeaveUseCase(gh<_i75.LeaveRepository>()));
     gh.lazySingleton<_i108.GetLeaveStatusUsecase>(
         () => _i108.GetLeaveStatusUsecase(gh<_i75.LeaveRepository>()));
+=======
+    gh.lazySingleton<_i107.InsertDlClickUseCase>(
+        () => _i107.InsertDlClickUseCase(gh<_i39.AcademicRepository>()));
+    gh.lazySingleton<_i108.GetDashboardLeaveUseCase>(
+        () => _i108.GetDashboardLeaveUseCase(gh<_i75.LeaveRepository>()));
+>>>>>>> 9d3aef6f61ec28951b78b86039030beb9e7f098d
     gh.lazySingleton<_i109.GetPhysicalLibraryUseCase>(
         () => _i109.GetPhysicalLibraryUseCase(gh<_i42.LibraryRepository>()));
     gh.lazySingleton<_i110.PostPhysicalLibraryUseCase>(

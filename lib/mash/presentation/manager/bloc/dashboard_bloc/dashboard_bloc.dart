@@ -22,6 +22,7 @@ import '../../../../domain/entities/auth/auth_response_entity.dart';
 import '../../../../domain/entities/dashboard/score_board_details_entity.dart';
 import '../../../../domain/entities/dashboard/term_details_entity.dart';
 import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
+import '../../../../domain/use_cases/academic/insert_dl_click_use_case.dart';
 import '../../../utils/app_constants.dart';
 
 part 'dashboard_bloc.freezed.dart';
@@ -118,6 +119,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       emit(state.copyWith(scoreBoardResponse: ResponseClassify.error(e)));
     }
   }
+
+  final insertDlClickUseCase = getIt<InsertDlClickUseCase>();
 
   _selectedTermIndexEvent(
       _SelectedTermIndexEvent event, Emitter<DashboardState> emit) {

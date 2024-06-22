@@ -129,5 +129,8 @@ class AppPages {
 
   static const research = "/research";
   static const pdfOpener = "/pdfOpener";
+  static const audioPlayer = "/audioPlayer";
+  static const videoPlayer = "/videoPlayer";
   static const academicBooksList = "/academic_book_list";
+  static const webview = "/webview";
 }

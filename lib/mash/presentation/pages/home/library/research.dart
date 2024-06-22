@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_library_bloc.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
 import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/utils/helper_classes.dart';
@@ -55,9 +57,12 @@ class _ResearchScreenState extends State<ResearchScreen> {
                     ? state.getLibrary?.data?.isEmpty == true
                         ? HelperClasses.emptyDataWidget()
                         : GridView.builder(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             itemCount: state.getLibrary?.data?.length,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
+                                    mainAxisSpacing: 20,
+                                    crossAxisSpacing: 20,
                                     crossAxisCount: 2),
                             itemBuilder: (context, index) {
                               return ResearchTile(
@@ -78,28 +83,40 @@ class ResearchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: AppColors.white, boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.3),
-          spreadRadius: 1,
-          blurRadius: 9,
-          offset: const Offset(0, 0),
-        )
-      ]),
-      child: Column(
-        children: [
-          CachedNetworkImage(
-            imageUrl: entity.coverImg ?? "",
-            width: 80,
-            height: 80,
-          ),
-          spacer10,
-          Text(
-            entity.contentName ?? "",
-            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
-          )
-        ],
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).pushNamed(AppPages.webview, pathParameters: {
+          'url': entity.urlLink ?? "",
+          'title': entity.researchName ?? ""
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 1,
+                blurRadius: 9,
+                offset: const Offset(0, 0),
+              )
+            ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CachedNetworkImage(
+              imageUrl: entity.docImg ?? "",
+              width: 80,
+              height: 80,
+            ),
+            spacer10,
+            Text(
+              entity.researchName ?? "",
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+            )
+          ],
+        ),
       ),
     );
   }

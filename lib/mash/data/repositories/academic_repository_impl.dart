@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/data/remote/data_sources/academic_remote_data_source.dart';
 import 'package:mash/mash/data/remote/request/academic_subjects_request.dart';
+import 'package:mash/mash/data/remote/request/insert_dl_click.dart';
 import 'package:mash/mash/domain/entities/academic/academic_subject_entity.dart';
 import 'package:mash/mash/domain/entities/academic/class_details_entity.dart';
 import 'package:mash/mash/domain/entities/academic/syllabus_request.dart';
@@ -68,5 +69,10 @@ class AcademicRepositoryImpl implements AcademicRepository {
   Future<List<AcademicTypeEntity>> getAcademicTypes(
       DlTypeRequest dlTypeRequest) {
     return academicRemoteDataSource.getAcademicTypes(dlTypeRequest);
+  }
+
+  @override
+  Future<void> insertDlClick(BookmarkLikeModel request) {
+    return academicRemoteDataSource.insertDlClick(request);
   }
 }

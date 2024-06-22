@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mash/core/hive_service.dart';
 import 'package:mash/mash/data/local/models/login_local_model.dart';
 import 'package:mash/mash/data/remote/routes/local_storage_name.dart';
+import 'package:mash/mash/domain/entities/academic/academic_type_entity.dart';
 import 'package:mash/mash/presentation/pages/auth/forgot_password_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/login_screen.dart';
 import 'package:mash/mash/presentation/pages/auth/otp_screen.dart';
@@ -41,7 +42,10 @@ import 'package:mash/mash/presentation/pages/home/library/academics_screen.dart'
 import 'package:mash/mash/presentation/pages/home/library/book_detail_view.dart';
 import 'package:mash/mash/presentation/pages/home/library/non_acadamic_screen.dart';
 import 'package:mash/mash/presentation/pages/home/library/research.dart';
+import 'package:mash/mash/presentation/pages/home/library/user_activity_screen.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/audio_player.dart';
 import 'package:mash/mash/presentation/pages/home/library/widgets/see_all_cat_medium.dart';
+import 'package:mash/mash/presentation/pages/home/library/widgets/vedio_player.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_detail_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/nb_main_screen.dart';
 import 'package:mash/mash/presentation/pages/home/newsBoard/pdf_vies_screen.dart';
@@ -72,6 +76,7 @@ import 'package:mash/mash/presentation/pages/home/vehicleTracker/vehicle_tracker
 import 'package:mash/mash/presentation/pages/profile/profile_screen.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
+import 'package:mash/mash/presentation/widgets/common_webview.dart';
 
 import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/dashboard/digital_library_entity.dart';
@@ -83,6 +88,7 @@ import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
+import '../pages/home/library/academic_books.dart';
 import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
 import '../pages/splash_screen.dart';
@@ -218,7 +224,10 @@ class AppRouteManager {
       builder: (context, state) {
         final String? addOnId = state.pathParameters['addOnId'];
         final String? addOnType = state.pathParameters['addOnType'];
-        return AddonDetailScreen(addOnId: addOnId,addOnType: addOnType,);
+        return AddonDetailScreen(
+          addOnId: addOnId,
+          addOnType: addOnType,
+        );
       },
     ),
     GoRoute(
@@ -371,8 +380,8 @@ class AppRouteManager {
     GoRoute(
       name: AppPages.noticeBoardDetailScreen,
       path: AppPages.noticeBoardDetailScreen,
-      builder: (context, state) => const NoticeBoardDetailScreen(
-        noticeId: '',
+      builder: (context, state) => NoticeBoardDetailScreen(
+        noticeId: state.extra as String,
       ),
     ),
     GoRoute(
@@ -602,6 +611,47 @@ class AppRouteManager {
       path: AppPages.research,
       name: AppPages.research,
       builder: (context, state) => const ResearchScreen(),
+    ),
+    GoRoute(
+      path: "${AppPages.audioPlayer}/:audio/:title",
+      name: AppPages.audioPlayer,
+      builder: (context, state) => state.pathParameters.isNotEmpty
+          ? AudioPlayerScreen(
+              audio: state.pathParameters['audio'] ?? "",
+              title: state.pathParameters['title'] ?? "")
+          : const SizedBox(),
+    ),
+    GoRoute(
+      path: "${AppPages.videoPlayer}/:url",
+      name: AppPages.videoPlayer,
+      builder: (context, state) => state.pathParameters.isNotEmpty
+          ? VideoPlayerScreen(
+              url: state.pathParameters['url'] ?? "",
+            )
+          : const SizedBox(),
+    ),
+    GoRoute(
+      path: AppPages.academicBooksList,
+      name: AppPages.academicBooksList,
+      builder: (context, state) => state.extra != null
+          ? AcademicBooks(
+              type: state.extra as AcademicTypeEntity,
+            )
+          : const SizedBox(),
+    ),
+
+    GoRoute(
+        path: AppPages.userActivity,
+        name: AppPages.userActivity,
+        builder: (context, state) => const UserActivityScreen()),
+    GoRoute(
+      path: "${AppPages.webview}/:url/:title",
+      name: AppPages.webview,
+      builder: (context, state) => state.pathParameters.isNotEmpty
+          ? WebViewScreen(
+              url: state.pathParameters['url'] ?? "",
+              title: state.pathParameters['title'] ?? "")
+          : const SizedBox(),
     ),
     GoRoute(path: home(), builder: _homePageRouteBuilder)
   ]);
