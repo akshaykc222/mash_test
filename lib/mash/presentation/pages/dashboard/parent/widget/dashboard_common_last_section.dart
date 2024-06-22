@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
+import 'package:mash/mash/presentation/router/app_pages.dart';
+import 'package:mash/mash/presentation/utils/helper_classes.dart';
 
 import '../../../../../domain/entities/dashboard/word_thought_entity.dart';
 import '../../../../manager/bloc/dashboard_bloc/dashboard_bloc.dart';
@@ -41,89 +47,99 @@ class _DashboardCommonLastWidgetState extends State<DashboardCommonLastWidget> {
   }
 
   Widget _newsAndArticles(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<DrawerBloc, DrawerState>(
+      builder: (context, state) {
+        final data = state.newsBoardResponse.data?.first;
+        return Column(
           children: [
-            Text(
-              AppStrings.newsAndArticles,
-              style: _titleStyle(),
-            ),
-            Text(
-              AppStrings.viewAll,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryColor,
-              ),
-            ),
-          ],
-        ),
-        spacer20,
-        SizedBox(
-          width: SizeUtility(context).width,
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      'assets/images/student_dummy.png',
-                      height: SizeUtility(context).height / 5.5,
-                      width: SizeUtility(context).width,
-                      fit: BoxFit.cover,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.newsAndArticles,
+                  style: _titleStyle(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context.push(AppPages.newsBoardMainScreen);
+                  },
+                  behavior: HitTestBehavior.translucent,
+                  child: Text(
+                    AppStrings.viewAll,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.primaryColor,
                     ),
                   ),
-                  spacer15,
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Mathematic Lab', style: _titleStyle()),
-                        const SizedBox(height: 4),
-                        Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor',
-                          style: TextStyle(
-                            overflow: TextOverflow.ellipsis,
-                            color: AppColors.greyText,
-                          ),
-                          maxLines: 2,
+                ),
+              ],
+            ),
+            spacer20,
+            SizedBox(
+              width: SizeUtility(context).width,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: HelperClasses.cachedNetworkImage(
+                          imageUrl: data?.content ?? "",
+                          height: SizeUtility(context).height / 5.5,
+                          width: SizeUtility(context).width,
                         ),
-                        spacer20,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      spacer15,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('19/03/2024', style: _lightText()),
-                            Text('2 min read', style: _lightText()),
+                            Text(data?.newsTitle ?? '', style: _titleStyle()),
+                            spacerWidth4,
+                            Text(
+                              data?.description ?? '',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: AppColors.greyText,
+                              ),
+                              maxLines: 2,
+                            ),
+                            spacer20,
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 10,
-                                  width: 10,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.grey200),
+                                Text(data?.newsDate ?? "", style: _lightText()),
+                                Text('2 min read', style: _lightText()),
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 10,
+                                      width: 10,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: AppColors.grey200),
+                                    ),
+                                    spacerWidth4,
+                                    Text('General', style: _lightText()),
+                                  ],
                                 ),
-                                spacerWidth4,
-                                Text('General', style: _lightText()),
                               ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 

@@ -10,8 +10,11 @@ import 'package:lottie/lottie.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
+import 'package:mash/mash/presentation/utils/enums.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
+import 'package:mash/mash/presentation/widgets/buttons/default_button.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/response_classify.dart';
 import '../manager/bloc/profile_bloc/profile_bloc.dart';
@@ -56,8 +59,6 @@ class HelperClasses {
     );
   }
 
-
-
   static Widget getSelectedStudent(BuildContext context, bool dontPadd,
       {Function(String)? listenFunction}) {
     return BlocConsumer<ProfileBloc, ProfileState>(
@@ -66,13 +67,11 @@ class HelperClasses {
           return true;
         }
         return false;
-      } ,
+      },
       listener: (context, state) {
-        if(listenFunction!=null){
-          listenFunction(state.selectedSibling?.userId??"");
+        if (listenFunction != null) {
+          listenFunction(state.selectedSibling?.userId ?? "");
         }
-
-
       },
       buildWhen: (previous, current) {
         if (previous.selectedSibling != current.selectedSibling) {
@@ -110,78 +109,140 @@ class HelperClasses {
     );
   }
 
-  static Widget personPlaceHolderImage({required double height,required double width}) {
+  static Widget personPlaceHolderImage(
+      {required double height, required double width}) {
     return Container(
-      height: height ,
+      height: height,
       width: width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),image: const DecorationImage(
-        fit: BoxFit.cover,
-        image: AssetImage('assets/images/place_holder_image.jpg',)
-      )
-      ),
+          borderRadius: BorderRadius.circular(10),
+          image: const DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(
+                'assets/images/place_holder_image.jpg',
+              ))),
     );
   }
-
 
   static Future<dynamic> showDialogWithButton({
-    required String messageTitle,required String message,required submitButtonTitle
-    ,required BuildContext context,required VoidCallback onYesTap,}){
+    required BuildContext context,
+  }) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          elevation: 5,
-          backgroundColor: Colors.red.shade50,
-          shape:  RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-              side: BorderSide(
-                  width: 5,
-                  color: AppColors.purpleLightBorder)),
-          title: Text(messageTitle),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Dismiss the dialog
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: onYesTap,
-              child: Text(submitButtonTitle),
-            ),
-          ],
+        return BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            final data = state.getUserDetail?.data;
+            return AlertDialog(
+              elevation: 5,
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              title: Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  'Are you sure to make a call?',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.black.withOpacity(0.7),
+                  ),
+                ),
+              ),
+              content: RichText(
+                text: TextSpan(
+                  children: [
+                    const TextSpan(
+                      text:
+                          'The teacher is not available to call now. Please call between ',
+                      style: TextStyle(
+                          letterSpacing: 1.1,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black54),
+                    ),
+                    TextSpan(
+                      text: data?.callFromTime ?? '',
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black),
+                    ),
+                    const TextSpan(
+                      text: ' to ',
+                      style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black54),
+                    ),
+                    TextSpan(
+                      text: data?.callToTime ?? '',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black),
+                    ),
+                    const TextSpan(
+                      text: '.',
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                DefaultButton(
+                  onTap: () {
+                    context.pop();
+                  },
+                  title: 'Cancel',
+                  textColor: AppColors.redColor,
+                  color: AppColors.redColor.withOpacity(0.2),
+                ),
+                isBool(data?.isCall ?? '') == false
+                    ? const SizedBox()
+                    : DefaultButton(
+                        onTap: () async {
+                          var url = "tel:${data?.mobile}";
+                          if (!await launchUrl(Uri.parse(url))) {
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                        },
+                        title: 'Call',
+                        color: AppColors.primaryColor.withOpacity(0.2),
+                        textColor: AppColors.primaryColor,
+                      ),
+              ],
+            );
+          },
         );
       },
     );
-}
+  }
 
   static Future<dynamic> showDialogWithoutButton({
-    required String messageTitle,required String message
-    ,required BuildContext context,}){
+    required String messageTitle,
+    required String message,
+    required BuildContext context,
+  }) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.red.shade50,
-          shape:  RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
-              side: BorderSide(
-                  width: 5,
-                  color: AppColors.purpleLightBorder)),
+              side: BorderSide(width: 5, color: AppColors.purpleLightBorder)),
           title: Text(messageTitle),
           content: Text(message),
         );
       },
     );
   }
-
-
-
-
-
-
 
   static cachedNetworkImage(
       {required String imageUrl,

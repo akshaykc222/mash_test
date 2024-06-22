@@ -21,20 +21,13 @@ class ParentDashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        log('did pope $didPop');
-        // _handleOnPopInvoked(didPop);
-      },
-      child: const Scaffold(
-        drawer: DrawerWidget(),
-        body: CustomScrollView(
-          slivers: [
-            _Header(),
-            _Body(),
-          ],
-        ),
+    return const Scaffold(
+      drawer: DrawerWidget(),
+      body: CustomScrollView(
+        slivers: [
+          _Header(),
+          _Body(),
+        ],
       ),
     );
   }
