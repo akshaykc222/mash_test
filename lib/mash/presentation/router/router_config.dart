@@ -78,7 +78,6 @@ import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/loader.dart';
 import 'package:mash/mash/presentation/widgets/common_webview.dart';
 
-
 import '../../data/remote/models/chat/chat_room_model.dart';
 import '../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../domain/entities/drawer_menu_items/news_board_entity.dart';
@@ -89,7 +88,6 @@ import '../pages/chat/message_details.dart';
 import '../pages/chat/message_screen.dart';
 import '../pages/chat/new_chat.dart';
 import '../pages/home/home_screen.dart';
-import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/library/academic_books.dart';
 import '../pages/home/physicalLibrary/physical_library_filter_screen.dart';
 import '../pages/home/quiz/quiz_completed_screen.dart';
@@ -226,7 +224,10 @@ class AppRouteManager {
       builder: (context, state) {
         final String? addOnId = state.pathParameters['addOnId'];
         final String? addOnType = state.pathParameters['addOnType'];
-        return AddonDetailScreen(addOnId: addOnId,addOnType: addOnType,);
+        return AddonDetailScreen(
+          addOnId: addOnId,
+          addOnType: addOnType,
+        );
       },
     ),
     GoRoute(
@@ -612,7 +613,7 @@ class AppRouteManager {
       builder: (context, state) => const ResearchScreen(),
     ),
     GoRoute(
-      path: AppPages.audioPlayer,
+      path: "${AppPages.audioPlayer}/:audio/:title",
       name: AppPages.audioPlayer,
       builder: (context, state) => state.pathParameters.isNotEmpty
           ? AudioPlayerScreen(
@@ -621,7 +622,7 @@ class AppRouteManager {
           : const SizedBox(),
     ),
     GoRoute(
-      path: AppPages.videoPlayer,
+      path: "${AppPages.videoPlayer}/:url",
       name: AppPages.videoPlayer,
       builder: (context, state) => state.pathParameters.isNotEmpty
           ? VideoPlayerScreen(

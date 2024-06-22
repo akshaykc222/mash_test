@@ -5628,6 +5628,7 @@ mixin _$DigitalLibraryState {
   bool get isSearching => throw _privateConstructorUsedError;
   AcademicTypeEntity? get selectedMedium => throw _privateConstructorUsedError;
   double? get downloadProgress => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   NonAcademicTypes get selectedNonAcademic =>
       throw _privateConstructorUsedError;
   ClassDetailsEntity? get selectedClass => throw _privateConstructorUsedError;
@@ -5654,6 +5655,7 @@ abstract class $DigitalLibraryStateCopyWith<$Res> {
       bool isSearching,
       AcademicTypeEntity? selectedMedium,
       double? downloadProgress,
+      bool isLoading,
       NonAcademicTypes selectedNonAcademic,
       ClassDetailsEntity? selectedClass});
 }
@@ -5681,6 +5683,7 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
     Object? isSearching = null,
     Object? selectedMedium = freezed,
     Object? downloadProgress = freezed,
+    Object? isLoading = null,
     Object? selectedNonAcademic = null,
     Object? selectedClass = freezed,
   }) {
@@ -5725,6 +5728,10 @@ class _$DigitalLibraryStateCopyWithImpl<$Res, $Val extends DigitalLibraryState>
           ? _value.downloadProgress
           : downloadProgress // ignore: cast_nullable_to_non_nullable
               as double?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedNonAcademic: null == selectedNonAcademic
           ? _value.selectedNonAcademic
           : selectedNonAcademic // ignore: cast_nullable_to_non_nullable
@@ -5756,6 +5763,7 @@ abstract class _$$DigitalLibraryStateImplCopyWith<$Res>
       bool isSearching,
       AcademicTypeEntity? selectedMedium,
       double? downloadProgress,
+      bool isLoading,
       NonAcademicTypes selectedNonAcademic,
       ClassDetailsEntity? selectedClass});
 }
@@ -5781,6 +5789,7 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
     Object? isSearching = null,
     Object? selectedMedium = freezed,
     Object? downloadProgress = freezed,
+    Object? isLoading = null,
     Object? selectedNonAcademic = null,
     Object? selectedClass = freezed,
   }) {
@@ -5825,6 +5834,10 @@ class __$$DigitalLibraryStateImplCopyWithImpl<$Res>
           ? _value.downloadProgress
           : downloadProgress // ignore: cast_nullable_to_non_nullable
               as double?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedNonAcademic: null == selectedNonAcademic
           ? _value.selectedNonAcademic
           : selectedNonAcademic // ignore: cast_nullable_to_non_nullable
@@ -5853,6 +5866,7 @@ class _$DigitalLibraryStateImpl
       this.isSearching = false,
       this.selectedMedium,
       this.downloadProgress = 0,
+      this.isLoading = false,
       this.selectedNonAcademic = NonAcademicTypes.all,
       this.selectedClass});
 
@@ -5880,13 +5894,16 @@ class _$DigitalLibraryStateImpl
   final double? downloadProgress;
   @override
   @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
   final NonAcademicTypes selectedNonAcademic;
   @override
   final ClassDetailsEntity? selectedClass;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, insertDlClick: $insertDlClick, selectedSubCat: $selectedSubCat, isSearching: $isSearching, selectedMedium: $selectedMedium, downloadProgress: $downloadProgress, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
+    return 'DigitalLibraryState(getClasses: $getClasses, getLibrary: $getLibrary, getTypes: $getTypes, subCats: $subCats, mediums: $mediums, insertDlClick: $insertDlClick, selectedSubCat: $selectedSubCat, isSearching: $isSearching, selectedMedium: $selectedMedium, downloadProgress: $downloadProgress, isLoading: $isLoading, selectedNonAcademic: $selectedNonAcademic, selectedClass: $selectedClass)';
   }
 
   @override
@@ -5904,6 +5921,7 @@ class _$DigitalLibraryStateImpl
       ..add(DiagnosticsProperty('isSearching', isSearching))
       ..add(DiagnosticsProperty('selectedMedium', selectedMedium))
       ..add(DiagnosticsProperty('downloadProgress', downloadProgress))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('selectedNonAcademic', selectedNonAcademic))
       ..add(DiagnosticsProperty('selectedClass', selectedClass));
   }
@@ -5931,6 +5949,8 @@ class _$DigitalLibraryStateImpl
                 other.selectedMedium == selectedMedium) &&
             (identical(other.downloadProgress, downloadProgress) ||
                 other.downloadProgress == downloadProgress) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.selectedNonAcademic, selectedNonAcademic) ||
                 other.selectedNonAcademic == selectedNonAcademic) &&
             (identical(other.selectedClass, selectedClass) ||
@@ -5950,6 +5970,7 @@ class _$DigitalLibraryStateImpl
       isSearching,
       selectedMedium,
       downloadProgress,
+      isLoading,
       selectedNonAcademic,
       selectedClass);
 
@@ -5973,6 +5994,7 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
       final bool isSearching,
       final AcademicTypeEntity? selectedMedium,
       final double? downloadProgress,
+      final bool isLoading,
       final NonAcademicTypes selectedNonAcademic,
       final ClassDetailsEntity? selectedClass}) = _$DigitalLibraryStateImpl;
 
@@ -5996,6 +6018,8 @@ abstract class _DigitalLibraryState implements DigitalLibraryState {
   AcademicTypeEntity? get selectedMedium;
   @override
   double? get downloadProgress;
+  @override
+  bool get isLoading;
   @override
   NonAcademicTypes get selectedNonAcademic;
   @override

@@ -13,6 +13,7 @@ class DigitalLibraryState with _$DigitalLibraryState {
       @Default(false) bool isSearching,
       AcademicTypeEntity? selectedMedium,
       @Default(0) double? downloadProgress,
+      @Default(false) bool isLoading,
       @Default(NonAcademicTypes.all) NonAcademicTypes selectedNonAcademic,
       ClassDetailsEntity? selectedClass}) = _DigitalLibraryState;
 

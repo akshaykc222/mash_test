@@ -77,7 +77,7 @@ class _BookDetailViewState extends State<BookDetailView>
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<DigitalLibraryBloc, DigitalLibraryState>(
           buildWhen: (previous, current) =>
-              previous.downloadProgress != current.downloadProgress,
+              previous.isLoading != current.isLoading,
           builder: (context, state) {
             return AnimatedSharedButton(
                 onTap: () {
@@ -92,7 +92,7 @@ class _BookDetailViewState extends State<BookDetailView>
                   style: TextStyle(color: AppColors.white),
                 ),
                 progress: state.downloadProgress,
-                isLoading: false);
+                isLoading: state.isLoading);
           },
         ),
       ),

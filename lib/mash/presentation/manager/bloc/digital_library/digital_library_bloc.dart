@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mash/core/api_provider.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/core/response_classify.dart';
 import 'package:mash/core/usecase.dart';
@@ -203,7 +203,8 @@ class DigitalLibraryBloc
           if (state.selectedSubCat != null || state.selectedMedium != null) {
             add(DigitalLibraryEvent.getNonAcademic(
                 typeId: state.selectedMedium?.typeId ??
-                    state.selectedSubCat?.typeId));
+                    state.selectedSubCat?.typeId,
+                catId: "1"));
           }
         }
         break;
@@ -212,7 +213,8 @@ class DigitalLibraryBloc
           if (state.selectedSubCat != null || state.selectedMedium != null) {
             add(DigitalLibraryEvent.getNonAcademic(
                 typeId: state.selectedMedium?.typeId ??
-                    state.selectedSubCat?.typeId));
+                    state.selectedSubCat?.typeId,
+                catId: "2"));
           }
         }
         break;
@@ -260,91 +262,93 @@ class DigitalLibraryBloc
 // File(tempPath.path).
     String path =
         "${tempPath.path}/mash docs/${event.book.contentName}.${event.book.docExt}";
-//     if (await File(path).exists()) {
-//       prettyPrint("file already exists opening type ${event.book.docExt}");
-//       switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
-//         case DocType.video:
-//           GoRouter.of(event.context)
-//               .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
-//           break;
-//         case DocType.audio:
-//           GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
-//               pathParameters: {
-//                 'audio': path,
-//                 'title': event.book.contentName ?? ""
-//               });
-//         case DocType.pdf:
-//           GoRouter.of(event.context)
-//               .pushNamed(AppPages.pdfViewScreen, extra: path);
-//         case DocType.image:
-//           var imageProvider = FileImage(File(path));
-//           showImageViewer(event.context, imageProvider, onViewerDismissed: () {
-//             print("dismissed");
-//           });
-//         case DocType.other:
-//         // TODO: Handle this case.
-//         case DocType.epub:
-//           VocsyEpub.setConfig(
-//             themeColor: Theme.of(event.context).primaryColor,
-//             identifier: event.book.contentName ?? "",
-//             scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-//             allowSharing: true,
-//             enableTts: true,
-//             nightMode: true,
-//           );
-//
-//           VocsyEpub.open(
-//             path,
-//             // first page will open up if the value is null
-//           );
-//       }
-//     } else {
-    File bookPath = await File(path).create(recursive: true);
-    ApiProvider apiProvider = getIt<ApiProvider>();
-    prettyPrint(event.book.docName);
-    await apiProvider.downloadFile(
-        file: bookPath, url: event.book.docName ?? "");
-    // apiProvider.downloadProgressStream.listen((progress) {
-    //   emit(state.copyWith(downloadProgress: progress / 10));
-    // });
+//     String path = "${tempPath.path}/mash docs/test.epub";
+    if (await File(path).exists()) {
+      prettyPrint("file already exists opening type ${event.book.docExt}");
+      switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
+        case DocType.video:
+          GoRouter.of(event.context)
+              .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
+          break;
+        case DocType.audio:
+          GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
+              pathParameters: {
+                'audio': path,
+                'title': event.book.contentName ?? ""
+              });
+        case DocType.pdf:
+          GoRouter.of(event.context)
+              .pushNamed(AppPages.pdfViewScreen, extra: path);
+        case DocType.image:
+          var imageProvider = FileImage(File(path));
+          showImageViewer(event.context, imageProvider, onViewerDismissed: () {
+            print("dismissed");
+          });
+        case DocType.other:
+        // TODO: Handle this case.
+        case DocType.epub:
+          VocsyEpub.setConfig(
+            themeColor: Theme.of(event.context).primaryColor,
+            identifier: event.book.contentName ?? "",
+            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+            allowSharing: true,
+            enableTts: true,
+            nightMode: true,
+          );
 
-    switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
-      case DocType.video:
-        GoRouter.of(event.context)
-            .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
-        break;
-      case DocType.audio:
-        GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
-            pathParameters: {
-              'audio': path,
-              'title': event.book.contentName ?? ""
-            });
-      case DocType.pdf:
-        GoRouter.of(event.context)
-            .pushNamed(AppPages.pdfViewScreen, extra: path);
-      case DocType.image:
-        var imageProvider = FileImage(File(path));
-        showImageViewer(event.context, imageProvider, onViewerDismissed: () {
-          print("dismissed");
-        });
-      case DocType.other:
-      // TODO: Handle this case.
-      case DocType.epub:
-        VocsyEpub.setConfig(
-          themeColor: Theme.of(event.context).primaryColor,
-          identifier: event.book.contentName ?? "",
-          scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-          allowSharing: true,
-          enableTts: true,
-          nightMode: true,
-        );
+          VocsyEpub.open(
+            path,
+            // first page will open up if the value is null
+          );
+      }
+    } else {
+      emit(state.copyWith(isLoading: true));
+      File bookPath = await File(path).create(recursive: true);
 
-        VocsyEpub.open(
-          path,
-          // first page will open up if the value is null
-        );
+      prettyPrint(event.book.docName);
+      prettyPrint(" book path : ${bookPath.path}");
+      await Dio().download(event.book.docName ?? "", bookPath.path,
+          onReceiveProgress: (received, total) {
+        // Calculate the progress percentage
+      });
+      emit(state.copyWith(isLoading: false));
+      switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
+        case DocType.video:
+          GoRouter.of(event.context)
+              .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
+          break;
+        case DocType.audio:
+          GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
+              pathParameters: {
+                'audio': path,
+                'title': event.book.contentName ?? ""
+              });
+        case DocType.pdf:
+          GoRouter.of(event.context)
+              .pushNamed(AppPages.pdfViewScreen, extra: path);
+        case DocType.image:
+          var imageProvider = FileImage(File(path));
+          showImageViewer(event.context, imageProvider, onViewerDismissed: () {
+            print("dismissed");
+          });
+        case DocType.other:
+        // TODO: Handle this case.
+        case DocType.epub:
+          VocsyEpub.setConfig(
+            themeColor: Theme.of(event.context).primaryColor,
+            identifier: event.book.contentName ?? "",
+            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+            allowSharing: true,
+            enableTts: true,
+            nightMode: true,
+          );
+
+          VocsyEpub.open(
+            path,
+            // first page will open up if the value is null
+          );
+      }
     }
-    // }
   }
 
   _getAcademicLibrary(
