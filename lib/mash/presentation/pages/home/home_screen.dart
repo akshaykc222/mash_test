@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/pages/bottomBar/bottom_navigation_bar.dart';
 import 'package:mash/mash/presentation/pages/dashboard/parent/parent_dashboard_screen.dart';
 import 'package:mash/mash/presentation/pages/dashboard/teacher_dashboard.dart';
@@ -19,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
+    BlocProvider.of<ProfileBloc>(context).add(const ProfileEvent.getSiblings());
     _init();
     super.initState();
   }

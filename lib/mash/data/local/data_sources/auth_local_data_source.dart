@@ -29,7 +29,11 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   @override
   Future<void> saveUserToken(String token) async {
     try {
+      ///clearing box before saving
+      await hiveService.clearAllValues<String>(LocalStorageNames.token);
+
       ///adding token to hive
+
       await hiveService.addBoxes<String>([token], LocalStorageNames.token);
     } catch (e) {
       throw Exception(e);

@@ -49,7 +49,7 @@ class _DashboardCommonLastWidgetState extends State<DashboardCommonLastWidget> {
   Widget _newsAndArticles(BuildContext context) {
     return BlocBuilder<DrawerBloc, DrawerState>(
       builder: (context, state) {
-        final data = state.newsBoardResponse.data?.first;
+        final data = state.newsBoardResponse.data?.last;
         return Column(
           children: [
             Row(

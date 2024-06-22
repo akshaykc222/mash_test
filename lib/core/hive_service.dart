@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mash/core/pretty_printer.dart';
 
 @LazySingleton()
 class HiveService {
@@ -35,7 +36,12 @@ class HiveService {
 
   clearAllValues<T>(String boxName) async {
     final openBox = await getBox<T>(boxName: boxName);
+    prettyPrint(
+        'box before **********************************${openBox.values}');
+
     await openBox.clear();
+    prettyPrint(
+        'box after **********************************${openBox.values}');
   }
 
   getBoxes<T>(String boxName) async {

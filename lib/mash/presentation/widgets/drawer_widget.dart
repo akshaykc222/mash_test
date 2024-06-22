@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mash/core/pretty_printer.dart';
 import 'package:mash/mash/presentation/manager/bloc/auth_bloc/auth_bloc.dart';
 import 'package:mash/mash/presentation/manager/bloc/drawer_bloc/drawer_bloc.dart';
+import 'package:mash/mash/presentation/manager/bloc/profile_bloc/profile_bloc.dart';
 import 'package:mash/mash/presentation/router/app_pages.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 
@@ -55,9 +56,12 @@ class DrawerWidget extends StatelessWidget {
                       onTap: () {
                         if (data[index].menuName.toLowerCase() == 'logout') {
                           prettyPrint(data[index].menuName.toLowerCase());
-                          GoRouter.of(context).goNamed(AppPages.login);
+
                           BlocProvider.of<AuthBloc>(context)
                               .add(AuthEvent.signOut(context: context));
+                          BlocProvider.of<ProfileBloc>(context)
+                              .add(const ProfileEvent.disposeEvent());
+                          GoRouter.of(context).goNamed(AppPages.login);
                         } else {
                           context.pop();
                           try {

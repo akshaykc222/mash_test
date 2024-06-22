@@ -10,4 +10,5 @@ class ProfileEvent with _$ProfileEvent {
       {required UpdateProfileRequest request}) = _UpdateProfile;
   const factory ProfileEvent.getUserDetails(
       {required GetUserDetailsRequest request}) = _GetUserDetails;
+      const factory ProfileEvent.disposeEvent()= _DisposeEvent;
 }

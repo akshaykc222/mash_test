@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -26,6 +28,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<_GetSiblings>(_getSiblings);
     on<_SelectSibling>(_selectSibling);
     on<_GetUserDetails>(_getUserDetail);
+    on<_DisposeEvent>(_disposeEvent);
   }
   _getUserDetail(_GetUserDetails event, emit) async {
     emit(state.copyWith(getUserDetail: ResponseClassify.loading()));
@@ -81,6 +84,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(state.copyWith(getSiblings: ResponseClassify.error(e)));
       }
     }
+  }
+
+  _disposeEvent(_DisposeEvent event, Emitter<ProfileState> emit) {
+    emit(state.copyWith(
+      getSiblings: null,
+      getUserDetail: null,
+      selectedSibling: null,
+    ));
   }
 
   ///use case

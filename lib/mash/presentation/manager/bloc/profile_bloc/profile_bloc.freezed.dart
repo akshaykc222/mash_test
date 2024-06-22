@@ -23,6 +23,7 @@ mixin _$ProfileEvent {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$ProfileEvent {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$ProfileEvent {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$ProfileEvent {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$ProfileEvent {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$ProfileEvent {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) {
     return started();
   }
@@ -147,6 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) {
     return started?.call();
   }
@@ -159,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +184,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return started(this);
   }
@@ -187,6 +197,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return started?.call(this);
   }
@@ -199,6 +210,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -281,6 +293,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) {
     return selectSibling(student);
   }
@@ -293,6 +306,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) {
     return selectSibling?.call(student);
   }
@@ -305,6 +319,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectSibling != null) {
@@ -321,6 +336,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return selectSibling(this);
   }
@@ -333,6 +349,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return selectSibling?.call(this);
   }
@@ -345,6 +362,7 @@ class _$SelectSiblingImpl implements _SelectSibling {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (selectSibling != null) {
@@ -407,6 +425,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) {
     return getSiblings();
   }
@@ -419,6 +438,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) {
     return getSiblings?.call();
   }
@@ -431,6 +451,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSiblings != null) {
@@ -447,6 +468,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getSiblings(this);
   }
@@ -459,6 +481,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getSiblings?.call(this);
   }
@@ -471,6 +494,7 @@ class _$GetSiblingsImpl implements _GetSiblings {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getSiblings != null) {
@@ -553,6 +577,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) {
     return updateProfile(request);
   }
@@ -565,6 +590,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) {
     return updateProfile?.call(request);
   }
@@ -577,6 +603,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -593,6 +620,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return updateProfile(this);
   }
@@ -605,6 +633,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return updateProfile?.call(this);
   }
@@ -617,6 +646,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
@@ -706,6 +736,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     required TResult Function() getSiblings,
     required TResult Function(UpdateProfileRequest request) updateProfile,
     required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
   }) {
     return getUserDetails(request);
   }
@@ -718,6 +749,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult? Function()? getSiblings,
     TResult? Function(UpdateProfileRequest request)? updateProfile,
     TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
   }) {
     return getUserDetails?.call(request);
   }
@@ -730,6 +762,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult Function()? getSiblings,
     TResult Function(UpdateProfileRequest request)? updateProfile,
     TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
     required TResult orElse(),
   }) {
     if (getUserDetails != null) {
@@ -746,6 +779,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     required TResult Function(_GetSiblings value) getSiblings,
     required TResult Function(_UpdateProfile value) updateProfile,
     required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
   }) {
     return getUserDetails(this);
   }
@@ -758,6 +792,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult? Function(_GetSiblings value)? getSiblings,
     TResult? Function(_UpdateProfile value)? updateProfile,
     TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
   }) {
     return getUserDetails?.call(this);
   }
@@ -770,6 +805,7 @@ class _$GetUserDetailsImpl implements _GetUserDetails {
     TResult Function(_GetSiblings value)? getSiblings,
     TResult Function(_UpdateProfile value)? updateProfile,
     TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
     required TResult orElse(),
   }) {
     if (getUserDetails != null) {
@@ -787,6 +823,132 @@ abstract class _GetUserDetails implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$GetUserDetailsImplCopyWith<_$GetUserDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DisposeEventImplCopyWith<$Res> {
+  factory _$$DisposeEventImplCopyWith(
+          _$DisposeEventImpl value, $Res Function(_$DisposeEventImpl) then) =
+      __$$DisposeEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisposeEventImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$DisposeEventImpl>
+    implements _$$DisposeEventImplCopyWith<$Res> {
+  __$$DisposeEventImplCopyWithImpl(
+      _$DisposeEventImpl _value, $Res Function(_$DisposeEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisposeEventImpl implements _DisposeEvent {
+  const _$DisposeEventImpl();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.disposeEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DisposeEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(StudentEntity student) selectSibling,
+    required TResult Function() getSiblings,
+    required TResult Function(UpdateProfileRequest request) updateProfile,
+    required TResult Function(GetUserDetailsRequest request) getUserDetails,
+    required TResult Function() disposeEvent,
+  }) {
+    return disposeEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(StudentEntity student)? selectSibling,
+    TResult? Function()? getSiblings,
+    TResult? Function(UpdateProfileRequest request)? updateProfile,
+    TResult? Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult? Function()? disposeEvent,
+  }) {
+    return disposeEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(StudentEntity student)? selectSibling,
+    TResult Function()? getSiblings,
+    TResult Function(UpdateProfileRequest request)? updateProfile,
+    TResult Function(GetUserDetailsRequest request)? getUserDetails,
+    TResult Function()? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SelectSibling value) selectSibling,
+    required TResult Function(_GetSiblings value) getSiblings,
+    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_GetUserDetails value) getUserDetails,
+    required TResult Function(_DisposeEvent value) disposeEvent,
+  }) {
+    return disposeEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SelectSibling value)? selectSibling,
+    TResult? Function(_GetSiblings value)? getSiblings,
+    TResult? Function(_UpdateProfile value)? updateProfile,
+    TResult? Function(_GetUserDetails value)? getUserDetails,
+    TResult? Function(_DisposeEvent value)? disposeEvent,
+  }) {
+    return disposeEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SelectSibling value)? selectSibling,
+    TResult Function(_GetSiblings value)? getSiblings,
+    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_GetUserDetails value)? getUserDetails,
+    TResult Function(_DisposeEvent value)? disposeEvent,
+    required TResult orElse(),
+  }) {
+    if (disposeEvent != null) {
+      return disposeEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisposeEvent implements ProfileEvent {
+  const factory _DisposeEvent() = _$DisposeEventImpl;
 }
 
 /// @nodoc
