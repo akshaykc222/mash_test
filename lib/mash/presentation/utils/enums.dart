@@ -75,7 +75,7 @@ extension GetTypString on SeeAllNonAcademicTypes {
   }
 }
 
-enum DocType { video, audio, pdf, image, other }
+enum DocType { video, audio, pdf, image, other, epub }
 
 extension DocTypeExtension on DocType {
   static DocType fromString(String value) {
@@ -94,6 +94,9 @@ extension DocTypeExtension on DocType {
       case 'png':
       case 'gif':
         return DocType.image;
+
+      case 'epub':
+        return DocType.epub;
       default:
         return DocType.other;
     }
@@ -111,6 +114,8 @@ extension DocTypeExtension on DocType {
         return 'image';
       case DocType.other:
         return 'other';
+      case DocType.epub:
+        return "epub";
     }
   }
 }

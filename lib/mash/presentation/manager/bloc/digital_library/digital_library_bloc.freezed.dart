@@ -20,6 +20,7 @@ mixin _$DigitalLibraryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -50,6 +51,7 @@ mixin _$DigitalLibraryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -80,6 +82,7 @@ mixin _$DigitalLibraryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -111,6 +114,7 @@ mixin _$DigitalLibraryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -135,6 +139,7 @@ mixin _$DigitalLibraryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -158,6 +163,7 @@ mixin _$DigitalLibraryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -244,6 +250,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -277,6 +284,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -310,6 +318,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -347,6 +356,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -374,6 +384,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -400,6 +411,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -477,6 +489,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -510,6 +523,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -543,6 +557,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -580,6 +595,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -607,6 +623,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -633,6 +650,7 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -661,6 +679,247 @@ class _$GetClassesImpl with DiagnosticableTreeMixin implements _GetClasses {
 
 abstract class _GetClasses implements DigitalLibraryEvent {
   const factory _GetClasses() = _$GetClassesImpl;
+}
+
+/// @nodoc
+abstract class _$$GetUserActivityImplCopyWith<$Res> {
+  factory _$$GetUserActivityImplCopyWith(_$GetUserActivityImpl value,
+          $Res Function(_$GetUserActivityImpl) then) =
+      __$$GetUserActivityImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetUserActivityImplCopyWithImpl<$Res>
+    extends _$DigitalLibraryEventCopyWithImpl<$Res, _$GetUserActivityImpl>
+    implements _$$GetUserActivityImplCopyWith<$Res> {
+  __$$GetUserActivityImplCopyWithImpl(
+      _$GetUserActivityImpl _value, $Res Function(_$GetUserActivityImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetUserActivityImpl
+    with DiagnosticableTreeMixin
+    implements _GetUserActivity {
+  const _$GetUserActivityImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DigitalLibraryEvent.getUserActivity()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'DigitalLibraryEvent.getUserActivity'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetUserActivityImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
+    required TResult Function() startSearch,
+    required TResult Function(String? moduleName, String? contentId,
+            String? bookmark, String? like)
+        insertDlClick,
+    required TResult Function() closeSearch,
+    required TResult Function(String search) searchAcademic,
+    required TResult Function(String search) searchNonAcademic,
+    required TResult Function(String search) paginateAcademic,
+    required TResult Function(String search) paginateNonAcademic,
+    required TResult Function(String? typeId, String? catId, String? subId)
+        getAcademicLibrary,
+    required TResult Function(
+            DigitalLibraryEntity book, BuildContext context, bool isNonAcademic)
+        readBook,
+    required TResult Function() getResearch,
+    required TResult Function(String moduleName, String pJson) getTypes,
+    required TResult Function(AcademicTypeEntity? selected) selectMedium,
+    required TResult Function(AcademicTypeEntity? selected) selectSubCat,
+    required TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)
+        getNonAcademic,
+    required TResult Function(NonAcademicTypes selected) selectNonAcademicType,
+    required TResult Function(DigitalLibraryRequest request) getLibrary,
+    required TResult Function(ClassDetailsEntity selected) selectClass,
+  }) {
+    return getUserActivity();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
+    TResult? Function()? startSearch,
+    TResult? Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
+    TResult? Function()? closeSearch,
+    TResult? Function(String search)? searchAcademic,
+    TResult? Function(String search)? searchNonAcademic,
+    TResult? Function(String search)? paginateAcademic,
+    TResult? Function(String search)? paginateNonAcademic,
+    TResult? Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult? Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
+    TResult? Function()? getResearch,
+    TResult? Function(String moduleName, String pJson)? getTypes,
+    TResult? Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult? Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult? Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult? Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult? Function(DigitalLibraryRequest request)? getLibrary,
+    TResult? Function(ClassDetailsEntity selected)? selectClass,
+  }) {
+    return getUserActivity?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
+    TResult Function()? startSearch,
+    TResult Function(String? moduleName, String? contentId, String? bookmark,
+            String? like)?
+        insertDlClick,
+    TResult Function()? closeSearch,
+    TResult Function(String search)? searchAcademic,
+    TResult Function(String search)? searchNonAcademic,
+    TResult Function(String search)? paginateAcademic,
+    TResult Function(String search)? paginateNonAcademic,
+    TResult Function(String? typeId, String? catId, String? subId)?
+        getAcademicLibrary,
+    TResult Function(DigitalLibraryEntity book, BuildContext context,
+            bool isNonAcademic)?
+        readBook,
+    TResult Function()? getResearch,
+    TResult Function(String moduleName, String pJson)? getTypes,
+    TResult Function(AcademicTypeEntity? selected)? selectMedium,
+    TResult Function(AcademicTypeEntity? selected)? selectSubCat,
+    TResult Function(
+            String? typeId, String? catId, String? subId, String? moduleName)?
+        getNonAcademic,
+    TResult Function(NonAcademicTypes selected)? selectNonAcademicType,
+    TResult Function(DigitalLibraryRequest request)? getLibrary,
+    TResult Function(ClassDetailsEntity selected)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getUserActivity != null) {
+      return getUserActivity();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
+    required TResult Function(_StartSearch value) startSearch,
+    required TResult Function(_InsertDlClick value) insertDlClick,
+    required TResult Function(_CloseSearch value) closeSearch,
+    required TResult Function(_SeachAcademic value) searchAcademic,
+    required TResult Function(_SeachNonAcademic value) searchNonAcademic,
+    required TResult Function(_PaginateAcademic value) paginateAcademic,
+    required TResult Function(_PaginateNonAcademic value) paginateNonAcademic,
+    required TResult Function(_GetAcademicLibrary value) getAcademicLibrary,
+    required TResult Function(_ReadBook value) readBook,
+    required TResult Function(_GetResearch value) getResearch,
+    required TResult Function(_GetTypes value) getTypes,
+    required TResult Function(_SelectMedium value) selectMedium,
+    required TResult Function(_SelectSubCat value) selectSubCat,
+    required TResult Function(_GetNonAcademic value) getNonAcademic,
+    required TResult Function(_SelectNonAcademicType value)
+        selectNonAcademicType,
+    required TResult Function(_GetLibrary value) getLibrary,
+    required TResult Function(_SelectClass value) selectClass,
+  }) {
+    return getUserActivity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
+    TResult? Function(_StartSearch value)? startSearch,
+    TResult? Function(_InsertDlClick value)? insertDlClick,
+    TResult? Function(_CloseSearch value)? closeSearch,
+    TResult? Function(_SeachAcademic value)? searchAcademic,
+    TResult? Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult? Function(_PaginateAcademic value)? paginateAcademic,
+    TResult? Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult? Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult? Function(_ReadBook value)? readBook,
+    TResult? Function(_GetResearch value)? getResearch,
+    TResult? Function(_GetTypes value)? getTypes,
+    TResult? Function(_SelectMedium value)? selectMedium,
+    TResult? Function(_SelectSubCat value)? selectSubCat,
+    TResult? Function(_GetNonAcademic value)? getNonAcademic,
+    TResult? Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult? Function(_GetLibrary value)? getLibrary,
+    TResult? Function(_SelectClass value)? selectClass,
+  }) {
+    return getUserActivity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
+    TResult Function(_StartSearch value)? startSearch,
+    TResult Function(_InsertDlClick value)? insertDlClick,
+    TResult Function(_CloseSearch value)? closeSearch,
+    TResult Function(_SeachAcademic value)? searchAcademic,
+    TResult Function(_SeachNonAcademic value)? searchNonAcademic,
+    TResult Function(_PaginateAcademic value)? paginateAcademic,
+    TResult Function(_PaginateNonAcademic value)? paginateNonAcademic,
+    TResult Function(_GetAcademicLibrary value)? getAcademicLibrary,
+    TResult Function(_ReadBook value)? readBook,
+    TResult Function(_GetResearch value)? getResearch,
+    TResult Function(_GetTypes value)? getTypes,
+    TResult Function(_SelectMedium value)? selectMedium,
+    TResult Function(_SelectSubCat value)? selectSubCat,
+    TResult Function(_GetNonAcademic value)? getNonAcademic,
+    TResult Function(_SelectNonAcademicType value)? selectNonAcademicType,
+    TResult Function(_GetLibrary value)? getLibrary,
+    TResult Function(_SelectClass value)? selectClass,
+    required TResult orElse(),
+  }) {
+    if (getUserActivity != null) {
+      return getUserActivity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetUserActivity implements DigitalLibraryEvent {
+  const factory _GetUserActivity() = _$GetUserActivityImpl;
 }
 
 /// @nodoc
@@ -710,6 +969,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -743,6 +1003,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -776,6 +1037,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -813,6 +1075,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -840,6 +1103,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -866,6 +1130,7 @@ class _$StartSearchImpl with DiagnosticableTreeMixin implements _StartSearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -1005,6 +1270,7 @@ class _$InsertDlClickImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -1038,6 +1304,7 @@ class _$InsertDlClickImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1071,6 +1338,7 @@ class _$InsertDlClickImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1108,6 +1376,7 @@ class _$InsertDlClickImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -1135,6 +1404,7 @@ class _$InsertDlClickImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -1161,6 +1431,7 @@ class _$InsertDlClickImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -1250,6 +1521,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -1283,6 +1555,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1316,6 +1589,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1353,6 +1627,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -1380,6 +1655,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -1406,6 +1682,7 @@ class _$CloseSearchImpl with DiagnosticableTreeMixin implements _CloseSearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -1512,6 +1789,7 @@ class _$SeachAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -1545,6 +1823,7 @@ class _$SeachAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1578,6 +1857,7 @@ class _$SeachAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1615,6 +1895,7 @@ class _$SeachAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -1642,6 +1923,7 @@ class _$SeachAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -1668,6 +1950,7 @@ class _$SeachAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -1782,6 +2065,7 @@ class _$SeachNonAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -1815,6 +2099,7 @@ class _$SeachNonAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1848,6 +2133,7 @@ class _$SeachNonAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -1885,6 +2171,7 @@ class _$SeachNonAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -1912,6 +2199,7 @@ class _$SeachNonAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -1938,6 +2226,7 @@ class _$SeachNonAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -2051,6 +2340,7 @@ class _$PaginateAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -2084,6 +2374,7 @@ class _$PaginateAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2117,6 +2408,7 @@ class _$PaginateAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2154,6 +2446,7 @@ class _$PaginateAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -2181,6 +2474,7 @@ class _$PaginateAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -2207,6 +2501,7 @@ class _$PaginateAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -2321,6 +2616,7 @@ class _$PaginateNonAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -2354,6 +2650,7 @@ class _$PaginateNonAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2387,6 +2684,7 @@ class _$PaginateNonAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2424,6 +2722,7 @@ class _$PaginateNonAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -2451,6 +2750,7 @@ class _$PaginateNonAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -2477,6 +2777,7 @@ class _$PaginateNonAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -2609,6 +2910,7 @@ class _$GetAcademicLibraryImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -2642,6 +2944,7 @@ class _$GetAcademicLibraryImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2675,6 +2978,7 @@ class _$GetAcademicLibraryImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2712,6 +3016,7 @@ class _$GetAcademicLibraryImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -2739,6 +3044,7 @@ class _$GetAcademicLibraryImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -2765,6 +3071,7 @@ class _$GetAcademicLibraryImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -2900,6 +3207,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -2933,6 +3241,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -2966,6 +3275,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3003,6 +3313,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -3030,6 +3341,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -3056,6 +3368,7 @@ class _$ReadBookImpl with DiagnosticableTreeMixin implements _ReadBook {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -3142,6 +3455,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -3175,6 +3489,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3208,6 +3523,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3245,6 +3561,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -3272,6 +3589,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -3298,6 +3616,7 @@ class _$GetResearchImpl with DiagnosticableTreeMixin implements _GetResearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -3412,6 +3731,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -3445,6 +3765,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3478,6 +3799,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3515,6 +3837,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -3542,6 +3865,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -3568,6 +3892,7 @@ class _$GetTypesImpl with DiagnosticableTreeMixin implements _GetTypes {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -3680,6 +4005,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -3713,6 +4039,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3746,6 +4073,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -3783,6 +4111,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -3810,6 +4139,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -3836,6 +4166,7 @@ class _$SelectMediumImpl with DiagnosticableTreeMixin implements _SelectMedium {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -3947,6 +4278,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -3980,6 +4312,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4013,6 +4346,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4050,6 +4384,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -4077,6 +4412,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -4103,6 +4439,7 @@ class _$SelectSubCatImpl with DiagnosticableTreeMixin implements _SelectSubCat {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -4246,6 +4583,7 @@ class _$GetNonAcademicImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -4279,6 +4617,7 @@ class _$GetNonAcademicImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4312,6 +4651,7 @@ class _$GetNonAcademicImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4349,6 +4689,7 @@ class _$GetNonAcademicImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -4376,6 +4717,7 @@ class _$GetNonAcademicImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -4402,6 +4744,7 @@ class _$GetNonAcademicImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -4524,6 +4867,7 @@ class _$SelectNonAcademicTypeImpl
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -4557,6 +4901,7 @@ class _$SelectNonAcademicTypeImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4590,6 +4935,7 @@ class _$SelectNonAcademicTypeImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4627,6 +4973,7 @@ class _$SelectNonAcademicTypeImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -4654,6 +5001,7 @@ class _$SelectNonAcademicTypeImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -4680,6 +5028,7 @@ class _$SelectNonAcademicTypeImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -4790,6 +5139,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -4823,6 +5173,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4856,6 +5207,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -4893,6 +5245,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -4920,6 +5273,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -4946,6 +5300,7 @@ class _$GetLibraryImpl with DiagnosticableTreeMixin implements _GetLibrary {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,
@@ -5057,6 +5412,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getClasses,
+    required TResult Function() getUserActivity,
     required TResult Function() startSearch,
     required TResult Function(String? moduleName, String? contentId,
             String? bookmark, String? like)
@@ -5090,6 +5446,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getClasses,
+    TResult? Function()? getUserActivity,
     TResult? Function()? startSearch,
     TResult? Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -5123,6 +5480,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getClasses,
+    TResult Function()? getUserActivity,
     TResult Function()? startSearch,
     TResult Function(String? moduleName, String? contentId, String? bookmark,
             String? like)?
@@ -5160,6 +5518,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetClasses value) getClasses,
+    required TResult Function(_GetUserActivity value) getUserActivity,
     required TResult Function(_StartSearch value) startSearch,
     required TResult Function(_InsertDlClick value) insertDlClick,
     required TResult Function(_CloseSearch value) closeSearch,
@@ -5187,6 +5546,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetClasses value)? getClasses,
+    TResult? Function(_GetUserActivity value)? getUserActivity,
     TResult? Function(_StartSearch value)? startSearch,
     TResult? Function(_InsertDlClick value)? insertDlClick,
     TResult? Function(_CloseSearch value)? closeSearch,
@@ -5213,6 +5573,7 @@ class _$SelectClassImpl with DiagnosticableTreeMixin implements _SelectClass {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetClasses value)? getClasses,
+    TResult Function(_GetUserActivity value)? getUserActivity,
     TResult Function(_StartSearch value)? startSearch,
     TResult Function(_InsertDlClick value)? insertDlClick,
     TResult Function(_CloseSearch value)? closeSearch,

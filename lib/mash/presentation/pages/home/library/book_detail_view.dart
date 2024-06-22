@@ -10,7 +10,6 @@ import 'package:mash/mash/presentation/manager/bloc/digital_library/digital_libr
 import 'package:mash/mash/presentation/utils/app_assets.dart';
 import 'package:mash/mash/presentation/utils/app_colors.dart';
 import 'package:mash/mash/presentation/utils/app_constants.dart';
-import 'package:mash/mash/presentation/utils/handle_error.dart';
 import 'package:mash/mash/presentation/utils/size_config.dart';
 import 'package:mash/mash/presentation/widgets/buttons/animted_button.dart';
 import 'package:mash/mash/presentation/widgets/common_appbar.dart';
@@ -102,7 +101,7 @@ class _BookDetailViewState extends State<BookDetailView>
             previous.insertDlClick?.status == current.insertDlClick?.status,
         listener: (context, state) {
           if (state.insertDlClick?.status == Status.ERROR) {
-            handleErrorUi(context: context, error: state.insertDlClick?.error);
+            // handleErrorUi(context: context, error: state.insertDlClick?.error);
           }
         },
         child: ListView(

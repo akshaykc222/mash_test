@@ -7,6 +7,7 @@ void handleErrorUi({required BuildContext context, required dynamic error}) {
   if (error is UnauthorisedException) {
     handleUnAuthorizedError(context);
   } else {
-    handleError(context, error.toString(), () => context.pop());
+    handleError(context, error.toString(),
+        () => context.canPop() ? context.pop() : null);
   }
 }

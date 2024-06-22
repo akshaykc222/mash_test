@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,10 +17,8 @@ import 'package:mash/mash/domain/entities/auth/auth_response_entity.dart';
 import 'package:mash/mash/domain/use_cases/academic/get_academic_type_use_case.dart';
 import 'package:mash/mash/domain/use_cases/academic/insert_dl_click_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
-import 'package:mash/mash/presentation/utils/enumutils/helper_classes.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:vocsy_epub_viewer/epub_viewer.dart';
-
 
 import '../../../../data/remote/request/academic_comp_id_request.dart';
 import '../../../../data/remote/request/di_type_request.dart';
@@ -30,6 +29,7 @@ import '../../../../domain/entities/dashboard/digital_library_entity.dart';
 import '../../../../domain/use_cases/academic/get_class_details_usecase.dart';
 import '../../../../domain/use_cases/academic/get_digital_library_use_case.dart';
 import '../../../router/app_pages.dart';
+import '../../../utils/enums.dart';
 
 part 'digital_library_bloc.freezed.dart';
 part 'digital_library_event.dart';
@@ -56,6 +56,7 @@ class DigitalLibraryBloc
     on<_StartSearch>(_startSearch);
     on<_CloseSearch>(_closeSearch);
     on<_ReadBook>(_readBook);
+    on<_GetUserActivity>(_getUserActivity);
   }
 
   _getClasses(_GetClasses event, Emitter<DigitalLibraryState> emit) async {
@@ -243,12 +244,12 @@ class DigitalLibraryBloc
   _getResearch(_GetResearch event, Emitter<DigitalLibraryState> emit) async {
     var loginData = await loginInfo.call(NoParams());
     add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
-        pCompId: loginData?.compId ?? "",
-        pUserId: loginData?.usrId ?? "",
+        pCompId: "200001",
+        pUserId: "MGS1000152",
         pModuleName: "DL_RESEARCH_CONTENT_MOB",
-        prmSearchTxt: "",
-        pResearchId: "-1",
-        pUserType: loginData?.userType ?? "")));
+        pSearchTxt: "",
+        pResearchId: "0",
+        pUserType: "2")));
   }
 
   _readBook(_ReadBook event, Emitter<DigitalLibraryState> emit) async {
@@ -259,57 +260,91 @@ class DigitalLibraryBloc
 // File(tempPath.path).
     String path =
         "${tempPath.path}/mash docs/${event.book.contentName}.${event.book.docExt}";
-    if (await File(path).exists()) {
-      prettyPrint("file already exists opening type ${event.book.docExt}");
-      switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
-        case DocType.video:
-          GoRouter.of(event.context)
-              .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
-          break;
-        case DocType.audio:
-          GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
-              pathParameters: {
-                'audio': path,
-                'title': event.book.contentName ?? ""
-              });
-        case DocType.pdf:
-          GoRouter.of(event.context).pushNamed(AppPages.pdfOpener, extra: path);
-        case DocType.image:
-        case DocType.other:
-        // TODO: Handle this case.
-      }
-    } else {
-      File bookPath = await File(path).create(recursive: true);
-      ApiProvider apiProvider = getIt<ApiProvider>();
-      await apiProvider.downloadFile(
-          file: bookPath, url: event.book.docName ?? "");
-      // apiProvider.downloadProgressStream.listen((progress) {
-      //   emit(state.copyWith(downloadProgress: progress / 10));
-      // });
+//     if (await File(path).exists()) {
+//       prettyPrint("file already exists opening type ${event.book.docExt}");
+//       switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
+//         case DocType.video:
+//           GoRouter.of(event.context)
+//               .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
+//           break;
+//         case DocType.audio:
+//           GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
+//               pathParameters: {
+//                 'audio': path,
+//                 'title': event.book.contentName ?? ""
+//               });
+//         case DocType.pdf:
+//           GoRouter.of(event.context)
+//               .pushNamed(AppPages.pdfViewScreen, extra: path);
+//         case DocType.image:
+//           var imageProvider = FileImage(File(path));
+//           showImageViewer(event.context, imageProvider, onViewerDismissed: () {
+//             print("dismissed");
+//           });
+//         case DocType.other:
+//         // TODO: Handle this case.
+//         case DocType.epub:
+//           VocsyEpub.setConfig(
+//             themeColor: Theme.of(event.context).primaryColor,
+//             identifier: event.book.contentName ?? "",
+//             scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+//             allowSharing: true,
+//             enableTts: true,
+//             nightMode: true,
+//           );
+//
+//           VocsyEpub.open(
+//             path,
+//             // first page will open up if the value is null
+//           );
+//       }
+//     } else {
+    File bookPath = await File(path).create(recursive: true);
+    ApiProvider apiProvider = getIt<ApiProvider>();
+    prettyPrint(event.book.docName);
+    await apiProvider.downloadFile(
+        file: bookPath, url: event.book.docName ?? "");
+    // apiProvider.downloadProgressStream.listen((progress) {
+    //   emit(state.copyWith(downloadProgress: progress / 10));
+    // });
 
-      switch (event.book.docExt) {
-        case "pdf":
-          GoRouter.of(event.context).pushNamed(AppPages.pdfOpener, extra: path);
-          break;
-        case "epub":
-          VocsyEpub.setConfig(
-            themeColor: Theme.of(event.context).primaryColor,
-            identifier: event.book.contentName ?? "",
-            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-            allowSharing: true,
-            enableTts: true,
-            nightMode: true,
-          );
+    switch (DocTypeExtension.fromString(event.book.docExt ?? "")) {
+      case DocType.video:
+        GoRouter.of(event.context)
+            .pushNamed(AppPages.videoPlayer, pathParameters: {'url': path});
+        break;
+      case DocType.audio:
+        GoRouter.of(event.context).pushNamed(AppPages.audioPlayer,
+            pathParameters: {
+              'audio': path,
+              'title': event.book.contentName ?? ""
+            });
+      case DocType.pdf:
+        GoRouter.of(event.context)
+            .pushNamed(AppPages.pdfViewScreen, extra: path);
+      case DocType.image:
+        var imageProvider = FileImage(File(path));
+        showImageViewer(event.context, imageProvider, onViewerDismissed: () {
+          print("dismissed");
+        });
+      case DocType.other:
+      // TODO: Handle this case.
+      case DocType.epub:
+        VocsyEpub.setConfig(
+          themeColor: Theme.of(event.context).primaryColor,
+          identifier: event.book.contentName ?? "",
+          scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+          allowSharing: true,
+          enableTts: true,
+          nightMode: true,
+        );
 
-          VocsyEpub.open(
-            bookPath.path,
-            // first page will open up if the value is null
-          );
-          break;
-        default:
-          break;
-      }
+        VocsyEpub.open(
+          path,
+          // first page will open up if the value is null
+        );
     }
+    // }
   }
 
   _getAcademicLibrary(
@@ -392,5 +427,18 @@ class DigitalLibraryBloc
     } catch (e) {
       emit(state.copyWith(insertDlClick: ResponseClassify.error(e)));
     }
+  }
+
+  _getUserActivity(
+      _GetUserActivity event, Emitter<DigitalLibraryState> emit) async {
+    var loginData = await loginInfo.call(NoParams());
+    add(DigitalLibraryEvent.getLibrary(DigitalLibraryRequest(
+        pCompId: loginData?.compId ?? "",
+        pUserId: loginData?.usrId ?? "",
+        pModuleName: "USER_ACTIVITY_MOB",
+        prmOffset: 0,
+        prmSearchTxt: "",
+        prm_usr_act_id: "0",
+        prm_viewmine: "0")));
   }
 }

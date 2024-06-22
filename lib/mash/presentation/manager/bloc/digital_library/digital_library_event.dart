@@ -4,6 +4,7 @@ part of 'digital_library_bloc.dart';
 class DigitalLibraryEvent with _$DigitalLibraryEvent {
   const factory DigitalLibraryEvent.started() = _Started;
   const factory DigitalLibraryEvent.getClasses() = _GetClasses;
+  const factory DigitalLibraryEvent.getUserActivity() = _GetUserActivity;
   const factory DigitalLibraryEvent.startSearch() = _StartSearch;
   const factory DigitalLibraryEvent.insertDlClick({
     String? moduleName,

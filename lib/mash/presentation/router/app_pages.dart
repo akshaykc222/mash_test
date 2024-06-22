@@ -132,4 +132,5 @@ class AppPages {
   static const audioPlayer = "/audioPlayer";
   static const videoPlayer = "/videoPlayer";
   static const academicBooksList = "/academic_book_list";
+  static const webview = "/webview";
 }

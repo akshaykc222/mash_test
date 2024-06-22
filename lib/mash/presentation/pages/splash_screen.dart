@@ -54,7 +54,6 @@ import 'package:mash/mash/presentation/utils/app_colors.dart';
 
 import '../../../core/hive_service.dart';
 import '../../data/remote/routes/local_storage_name.dart';
-import '../utils/enums.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -98,7 +97,9 @@ class SplashScreenState extends State<SplashScreen>
         prettyPrint(status.toString());
         if (status == AnimationStatus.completed) {
           final routeName = await _init();
-          context.goNamed(AppPages.paymentResponse, extra: OrderStatus.PAID);
+          context.goNamed(
+            AppPages.home,
+          );
           Timer(const Duration(milliseconds: 300), () {
             scaleController.reset();
           });
