@@ -18,7 +18,7 @@ import 'package:mash/mash/domain/use_cases/academic/get_academic_type_use_case.d
 import 'package:mash/mash/domain/use_cases/academic/insert_dl_click_use_case.dart';
 import 'package:mash/mash/domain/use_cases/auth/get_user_info_use_case.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:vocsy_epub_viewer/epub_viewer.dart';
+// import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
 import '../../../../data/remote/request/academic_comp_id_request.dart';
 import '../../../../data/remote/request/di_type_request.dart';
@@ -286,20 +286,22 @@ class DigitalLibraryBloc
           });
         case DocType.other:
         // TODO: Handle this case.
-        case DocType.epub:
-          VocsyEpub.setConfig(
-            themeColor: Theme.of(event.context).primaryColor,
-            identifier: event.book.contentName ?? "",
-            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-            allowSharing: true,
-            enableTts: true,
-            nightMode: true,
-          );
+        // case DocType.epub:
+        //   VocsyEpub.setConfig(
+        //     themeColor: Theme.of(event.context).primaryColor,
+        //     identifier: event.book.contentName ?? "",
+        //     scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+        //     allowSharing: true,
+        //     enableTts: true,
+        //     nightMode: true,
+        //   );
 
-          VocsyEpub.open(
-            path,
-            // first page will open up if the value is null
-          );
+        //   VocsyEpub.open(
+        //     path,
+        //     // first page will open up if the value is null
+        //   );
+        case DocType.epub:
+        // TODO: Handle this case.
       }
     } else {
       emit(state.copyWith(isLoading: true));
@@ -334,19 +336,19 @@ class DigitalLibraryBloc
         case DocType.other:
         // TODO: Handle this case.
         case DocType.epub:
-          VocsyEpub.setConfig(
-            themeColor: Theme.of(event.context).primaryColor,
-            identifier: event.book.contentName ?? "",
-            scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-            allowSharing: true,
-            enableTts: true,
-            nightMode: true,
-          );
+        // VocsyEpub.setConfig(
+        //   themeColor: Theme.of(event.context).primaryColor,
+        //   identifier: event.book.contentName ?? "",
+        //   scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+        //   allowSharing: true,
+        //   enableTts: true,
+        //   nightMode: true,
+        // );
 
-          VocsyEpub.open(
-            path,
-            // first page will open up if the value is null
-          );
+        // VocsyEpub.open(
+        //   path,
+        //   // first page will open up if the value is null
+        // );
       }
     }
   }
